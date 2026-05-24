@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/releases/6.4R/relnotes-alpha/">
+
+  <title>
+    FreeBSD/alpha 6.4-RELEASE Release Notes |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD/alpha 6.4-RELEASE Release Notes " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/releases/6.4R/relnotes-alpha/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/releases\/6.4R\/relnotes-alpha\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/where></a></li>
+  <li>
+    <a href=/releases>Release Information</a>
+    <ul>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Legacy Release: <a href=ZgotmplZ></a></li>
+    </ul>
+  </li>
+  <li>
+    <a href=/snapshots>Snapshot Releases</a>
+      <ul>
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+      </ul>
+  </li>
+  <li><a href=/ports>Ported Applications</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD/alpha 6.4-RELEASE Release Notes</h1><h3 class="CORPAUTHOR">The FreeBSD Project</h3>
+
+<p class="COPYRIGHT">Copyright © 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
+2008 The FreeBSD Documentation Project</p>
+
+<p class="PUBDATE">$FreeBSD:
+releng/6.4/release/doc/en_US.ISO8859-1/relnotes/common/new.sgml 185279 2008-11-25
+02:19:13Z hrs $<br/>
+</p>
+
+<div class="LEGALNOTICE"><a id="TRADEMARKS" name="TRADEMARKS"></a>
+<p>FreeBSD is a registered trademark of the FreeBSD Foundation.</p>
+
+<p>IBM, AIX, EtherJet, Netfinity, OS/2, PowerPC, PS/2, S/390, and ThinkPad are trademarks
+of International Business Machines Corporation in the United States, other countries, or
+both.</p>
+
+<p>IEEE, POSIX, and 802 are registered trademarks of Institute of Electrical and
+Electronics Engineers, Inc. in the United States.</p>
+
+<p>Intel, Celeron, EtherExpress, i386, i486, Itanium, Pentium, and Xeon are trademarks or
+registered trademarks of Intel Corporation or its subsidiaries in the United States and
+other countries.</p>
+
+<p>Sparc, Sparc64, SPARCEngine, and UltraSPARC are trademarks of SPARC International, Inc
+in the United States and other countries. Products bearing SPARC trademarks are based
+upon architecture developed by Sun Microsystems, Inc.</p>
+
+<p>Many of the designations used by manufacturers and sellers to distinguish their
+products are claimed as trademarks. Where those designations appear in this document, and
+the FreeBSD Project was aware of the trademark claim, the designations have been followed
+by the “™” or the “®” symbol.</p>
+</div>
+
+<div>
+<div class="ABSTRACT"><a id="AEN26" name="AEN26"></a>
+<p>The release notes for FreeBSD 6.4-RELEASE contain a summary of the changes made to the
+FreeBSD base system on the 6.4-STABLE development line. This document lists applicable
+security advisories that were issued since the last release, as well as significant
+changes to the FreeBSD kernel and userland. Some brief remarks on upgrading are also
+presented.</p>
+</div>
+</div>
+
+<hr/>
+
+
+<div class="TOC">
+<dl>
+<dt><b>Table of Contents</b></dt>
+
+<dt>1 <a href="#INTRO">Introduction</a></dt>
+
+<dt>2 <a href="#NEW">What&#39;s New</a></dt>
+
+<dd>
+<dl>
+<dt>2.1 <a href="#SECURITY">Security Advisories</a></dt>
+
+<dt>2.2 <a href="#KERNEL">Kernel Changes</a></dt>
+
+<dd>
+<dl>
+<dt>2.2.1 <a href="#BOOT">Boot Loader Changes</a></dt>
+
+<dt>2.2.2 <a href="#PROC">Hardware Support</a></dt>
+
+<dt>2.2.3 <a href="#NET-PROTO">Network Protocols</a></dt>
+
+<dt>2.2.4 <a href="#DISKS">Disks and Storage</a></dt>
+</dl>
+</dd>
+
+<dt>2.3 <a href="#USERLAND">Userland Changes</a></dt>
+
+<dd>
+<dl>
+<dt>2.3.1 <a href="#RC-SCRIPTS"><tt class="FILENAME">/etc/rc.d</tt> Scripts</a></dt>
+</dl>
+</dd>
+
+<dt>2.4 <a href="#CONTRIB">Contributed Software</a></dt>
+
+<dt>2.5 <a href="#PORTS">Ports/Packages Collection Infrastructure</a></dt>
+
+<dt>2.6 <a href="#RELENG">Release Engineering and Integration</a></dt>
+</dl>
+</dd>
+
+<dt>3 <a href="#UPGRADE">Upgrading from previous releases of FreeBSD</a></dt>
+</dl>
+</div>
+
+<div class="SECT1">
+<h2 class="SECT1"><a id="INTRO" name="INTRO">1 Introduction</a></h2>
+
+<p>This document contains the release notes for FreeBSD 6.4-RELEASE on the Alpha/AXP
+hardware platform. It describes recently added, changed, or deleted features of FreeBSD.
+It also provides some notes on upgrading from previous versions of FreeBSD.</p>
+
+<p>This distribution of FreeBSD 6.4-RELEASE is a release distribution. It can be found at
+<a href="ftp://ftp.FreeBSD.org/" target="_top">ftp://ftp.FreeBSD.org/</a> or any of its
+mirrors. More information on obtaining this (or other) release distributions of FreeBSD
+can be found in the <a href="http://www.FreeBSD.org/doc/en_US.ISO8859-1/books/handbook/mirrors.html" target="_top">“Obtaining FreeBSD” appendix</a> to the <a href="http://www.FreeBSD.org/doc/en_US.ISO8859-1/books/handbook/" target="_top">FreeBSD
+Handbook</a>.</p>
+
+<p>All users are encouraged to consult the release errata before installing FreeBSD. The
+errata document is updated with “late-breaking” information discovered late
+in the release cycle or after the release. Typically, it contains information on known
+bugs, security advisories, and corrections to documentation. An up-to-date copy of the
+errata for FreeBSD 6.4-RELEASE can be found on the FreeBSD Web site.</p>
+</div>
+
+<div class="SECT1">
+<hr/>
+<h2 class="SECT1"><a id="NEW" name="NEW">2 What&#39;s New</a></h2>
+
+<p>This section describes the most user-visible new or changed features in FreeBSD since
+6.3-RELEASE.</p>
+
+<p>Typical release note items document recent security advisories issued after
+6.3-RELEASE, new drivers or hardware support, new commands or options, major bug fixes,
+or contributed software upgrades. They may also list changes to major ports/packages or
+release engineering practices. Clearly the release notes cannot list every single change
+made to FreeBSD between releases; this document focuses primarily on security advisories,
+user-visible changes, and major architectural improvements.</p>
+
+<div class="SECT2">
+<hr/>
+<h3 class="SECT2"><a id="SECURITY" name="SECURITY">2.1 Security Advisories</a></h3>
+
+<p>Problems described in the following security advisories has been fixed. For more
+information, consult the individual advisories available from <a href="http://security.FreeBSD.org/" target="_top">http://security.FreeBSD.org/</a>.</p>
+
+<div class="INFORMALTABLE"><a id="AEN46" name="AEN46"></a>
+<table border="0" frame="void" class="CALSTABLE">
+<colgroup><col width="1*"/>
+<col width="1*"/>
+<col width="3*"/>
+</colgroup><thead>
+<tr>
+<th>Advisory</th>
+<th>Date</th>
+<th>Topic</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="http://security.FreeBSD.org/advisories/FreeBSD-SA-08:03.sendfile.asc" target="_top">SA-08:03.sendfile</a></td>
+<td>14 February 2008</td>
+<td>
+<p><a href="http://www.FreeBSD.org/cgi/man.cgi?query=sendfile&amp;sektion=2&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">sendfile</span>(2)</span></a>
+write-only file permission bypass</p>
+</td>
+</tr>
+
+<tr>
+<td><a href="http://security.freebsd.org/advisories/FreeBSD-SA-08:05.openssh.asc" target="_top">SA-08:05.openssh</a></td>
+<td>17 April 2008</td>
+<td>
+<p>OpenSSH X11-forwarding privilege escalation</p>
+</td>
+</tr>
+
+<tr>
+<td><a href="http://security.freebsd.org/advisories/FreeBSD-SA-08:06.bind.asc" target="_top">SA-08:06.bind</a></td>
+<td>13 July 2008</td>
+<td>
+<p>DNS cache poisoning</p>
+</td>
+</tr>
+
+<tr>
+<td><a href="http://security.freebsd.org/advisories/FreeBSD-SA-08:07.amd64.asc" target="_top">SA-08:07.amd64</a></td>
+<td>3 September 2008</td>
+<td>
+<p>amd64 swapgs local privilege escalation</p>
+</td>
+</tr>
+
+<tr>
+<td><a href="http://security.freebsd.org/advisories/FreeBSD-SA-08:09.icmp6.asc" target="_top">SA-08:09.icmp6</a></td>
+<td>3 September 2008</td>
+<td>
+<p>Remote kernel panics on IPv6 connections</p>
+</td>
+</tr>
+
+<tr>
+<td><a href="http://security.freebsd.org/advisories/FreeBSD-SA-08:10.nd6.asc" target="_top">SA-08:10.nd6</a></td>
+<td>1 October 2008</td>
+<td>
+<p>IPv6 Neighbor Discovery Protocol routing vulnerability</p>
+</td>
+</tr>
+
+<tr>
+<td><a href="http://security.freebsd.org/advisories/FreeBSD-SA-08:11.arc4random.asc" target="_top">SA-08:11.arc4random</a></td>
+<td>24 November 2008</td>
+<td>
+<p><a href="http://www.FreeBSD.org/cgi/man.cgi?query=arc4random&amp;sektion=9&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">arc4random</span>(9)</span></a>
+predictable sequence vulnerability</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="SECT2">
+<hr/>
+<h3 class="SECT2"><a id="KERNEL" name="KERNEL">2.2 Kernel Changes</a></h3>
+
+<p>The opencrypto framework (<a href="http://www.FreeBSD.org/cgi/man.cgi?query=crypto&amp;sektion=9&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">crypto</span>(9)</span></a>) and
+<a href="http://www.FreeBSD.org/cgi/man.cgi?query=ipsec&amp;sektion=4&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">ipsec</span>(4)</span></a>
+subsystem now support Camellia block cipher.</p>
+
+<p>The FreeBSD kernel <a href="http://www.FreeBSD.org/cgi/man.cgi?query=malloc&amp;sektion=9&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">malloc</span>(9)</span></a> now
+supports buffer corruption protection (RedZone). This detects both buffer underflow and
+buffer overflow bugs at runtime on <a href="http://www.FreeBSD.org/cgi/man.cgi?query=free&amp;sektion=9&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">free</span>(9)</span></a> and <a href="http://www.FreeBSD.org/cgi/man.cgi?query=realloc&amp;sektion=9&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">realloc</span>(9)</span></a> and
+prints backtraces from where memory was allocated and from where it was freed. For more
+details, see <tt class="LITERAL">DEBUG_REDZONE</tt> kernel option.</p>
+
+<p>The client side functionality of <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rpc.lockd&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">rpc.lockd</span>(8)</span></a> has
+been implemented in FreeBSD kernel. This implementation provides the correct semantics
+for <a href="http://www.FreeBSD.org/cgi/man.cgi?query=flock&amp;sektion=2&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">flock</span>(2)</span></a> style
+locks which are used by the <a href="http://www.FreeBSD.org/cgi/man.cgi?query=lockf&amp;sektion=1&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">lockf</span>(1)</span></a> command
+line tool and the <a href="http://www.FreeBSD.org/cgi/man.cgi?query=pidfile&amp;sektion=3&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">pidfile</span>(3)</span></a>
+library. It also implements recovery from server restarts and ensures that dirty cache
+blocks are written to the server before obtaining locks (allowing multiple clients to use
+file locking to safely share data). Also, a new kernel option <tt class="LITERAL">options
+NFSLOCKD</tt> has been added and enabled by default. If the kernel support is enabled, <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rpc.lockd&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">rpc.lockd</span>(8)</span></a>
+automatically detects and uses the functionality.</p>
+
+<div class="SECT3">
+<hr/>
+<h4 class="SECT3"><a id="BOOT" name="BOOT">2.2.1 Boot Loader Changes</a></h4>
+
+<p>FreeBSD now support booting from GPT-labeled disks from the BIOS.</p>
+</div>
+
+<div class="SECT3">
+<hr/>
+<h4 class="SECT3"><a id="PROC" name="PROC">2.2.2 Hardware Support</a></h4>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=acpi_asus&amp;sektion=4&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">acpi_asus</span>(4)</span></a>
+driver now supports Asus EeePC backlight control.</p>
+
+<div class="SECT4">
+<hr/>
+<h5 class="SECT4"><a id="MM" name="MM">2.2.2.1 Multimedia Support</a></h5>
+
+<p>The <tt class="FILENAME">DRM</tt> driver now supports i915 GME device.</p>
+</div>
+
+<div class="SECT4">
+<hr/>
+<h5 class="SECT4"><a id="NET-IF" name="NET-IF">2.2.2.2 Network Interface Support</a></h5>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=bge&amp;sektion=4&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">bge</span>(4)</span></a> driver
+now supports BCM5906-based adapters.</p>
+</div>
+</div>
+
+<div class="SECT3">
+<hr/>
+<h4 class="SECT3"><a id="NET-PROTO" name="NET-PROTO">2.2.3 Network Protocols</a></h4>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=dummynet&amp;sektion=4&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">dummynet</span>(4)</span></a>
+subsystem now supports <tt class="LITERAL">fast</tt> mode operation which allows certain
+packets to bypass the dummynet scheduler. This can achieve lower latency and lower
+overhead when the packet flow is under the pipe bandwidth, and eliminate recursion in the
+subsystem. The new sysctl variable <code class="VARNAME">net.inet.ip.dummynet.io_fast</code> has been added to enable this
+feature.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=resolver&amp;sektion=3&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">resolver</span>(3)</span></a> now
+allows underscore in domain names. Although this is a violation of RFC 1034 [STD 13], it
+is accepted by certain name servers as well as other popular operating systems&#39; resolver
+library.</p>
+</div>
+
+<div class="SECT3">
+<hr/>
+<h4 class="SECT3"><a id="DISKS" name="DISKS">2.2.4 Disks and Storage</a></h4>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=aac&amp;sektion=4&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">aac</span>(4)</span></a> driver
+now supports 64-bit array support for RAIDs larger than 2TB and simultaneous opens of the
+device for issuing commands to the controller.</p>
+
+<p>A data corruption problem of the <a href="http://www.FreeBSD.org/cgi/man.cgi?query=ata&amp;sektion=4&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">ata</span>(4)</span></a> driver on
+ServerWorks HT1000 chipsets has been fixed.</p>
+
+<p>Stability of the <a href="http://www.FreeBSD.org/cgi/man.cgi?query=iir&amp;sektion=4&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">iir</span>(4)</span></a> driver
+has been improved.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=mpt&amp;sektion=4&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">mpt</span>(4)</span></a> driver
+now supports <tt class="LITERAL">mpt_user</tt> personality.</p>
+</div>
+</div>
+
+<div class="SECT2">
+<hr/>
+<h3 class="SECT2"><a id="USERLAND" name="USERLAND">2.3 Userland Changes</a></h3>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=bsdtar&amp;sektion=1&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">bsdtar</span>(1)</span></a>
+utility now supports the following options: <code class="OPTION">--numeric-owner</code>,
+<code class="OPTION">-S</code>, and <code class="OPTION">-s</code>.</p>
+
+<p>A bug in <a href="http://www.FreeBSD.org/cgi/man.cgi?query=cp&amp;sektion=1&amp;manpath=FreeBSD+6.4-RELEASE"><span class="CITEREFENTRY"><span class="REFENTRYTITLE">cp</span>(1)</span></a> utility which
+prevents POSIX.1e ACL (see also <a href="http://www.FreeBSD.org/cgi/man.cgi?query=acl&amp;sektion=3&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">acl</span>(3)</span></a>) from
+copying properly has been fixed.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=cron&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">cron</span>(8)</span></a> utility
+now supports <code class="OPTION">-m</code> flag which overrides the default mail
+recipient for cron mails unless explicitly provided by <tt class="LITERAL">MAILTO=</tt>
+line in <tt class="FILENAME">crontab</tt> file.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=cvs&amp;sektion=1&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">cvs</span>(1)</span></a> now
+supports <code class="OPTION">-n</code> flag which is the opposite of <code class="OPTION">-N</code> flag.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=dump&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">dump</span>(8)</span></a> and <a href="http://www.FreeBSD.org/cgi/man.cgi?query=restore&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">restore</span>(8)</span></a>
+utility now support extended attributes (see also <a href="http://www.FreeBSD.org/cgi/man.cgi?query=extattr&amp;sektion=9&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">extattr</span>(9)</span></a>).</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=fortune&amp;sektion=6&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">fortune</span>(6)</span></a>
+program now supports <code class="VARNAME">FORTUNE_PATH</code> environment variable to
+specify search path of the fortune files.</p>
+
+<p>A bug in the <a href="http://www.FreeBSD.org/cgi/man.cgi?query=fortune&amp;sektion=6&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">fortune</span>(6)</span></a>
+program that prevents <code class="OPTION">-e</code> option with multiple files from
+working has been fixed.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=freebsd-update.conf&amp;sektion=5&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">freebsd-update.conf</span>(5)</span></a> now supports <tt class="LITERAL">IDSIgnorePaths</tt> statement.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=fwcontrol&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">fwcontrol</span>(8)</span></a>
+utility now supports <code class="OPTION">-f <tt class="REPLACEABLE"><i>node</i></tt></code> option which specifies <tt class="REPLACEABLE"><i>node</i></tt> as the root node on the next bus reset.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=make&amp;sektion=1&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">make</span>(1)</span></a> utility
+now supports <tt class="LITERAL">:u</tt> variable modifier which removes adjacent
+duplicate words.</p>
+
+<p>The incorrect output grammer of <a href="http://www.FreeBSD.org/cgi/man.cgi?query=morse&amp;sektion=6&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">morse</span>(6)</span></a> program
+has been fixed.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=mountd&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">mountd</span>(8)</span></a>
+utility now supports <code class="OPTION">-h <tt class="REPLACEABLE"><i>bindip</i></tt></code> option which specifies IP addresses to bind
+to for TCP and UDP requests. This option may be specified multiple times. If no <code class="OPTION">-h</code> option is specified, <tt class="LITERAL">INADDR_ANY</tt> will be
+used. Note that when specifying IP addresses with this option, it will automatically add
+<tt class="LITERAL">127.0.0.1</tt> and if IPv6 is enabled, <tt class="LITERAL">::1</tt>
+to the list.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=moused&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">moused</span>(8)</span></a>
+utility now supports <code class="OPTION">-L</code> flag which changes the speed of
+scrolling and changes <code class="OPTION">-U</code> option behavior to only affect the
+scroll threshold.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=mv&amp;sektion=1&amp;manpath=FreeBSD+6.4-RELEASE"><span class="CITEREFENTRY"><span class="REFENTRYTITLE">mv</span>(1)</span></a> now support
+POSIX specification when moving a directory to an existing directory across devices.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=periodic&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">periodic</span>(8)</span></a> now
+supports <code class="VARNAME">daily_status_mail_rejects_shorten</code> configuration
+variable in <a href="http://www.FreeBSD.org/cgi/man.cgi?query=periodic.conf&amp;sektion=5&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">periodic.conf</span>(5)</span></a>. This allows the rejected mail
+reports to tally the rejects per blacklist without providing details about individual
+sender hosts. The default configuration keeps the reports in their original form.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=ping6&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">ping6</span>(8)</span></a> now
+uses exit status of <tt class="LITERAL">0</tt> and <tt class="LITERAL">2</tt> in the same
+manner as <a href="http://www.FreeBSD.org/cgi/man.cgi?query=ping&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">ping</span>(8)</span></a>.</p>
+
+<p>A bug in <a href="http://www.FreeBSD.org/cgi/man.cgi?query=telnetd&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">telnetd</span>(8)</span></a> that
+it attempts authentication even when <code class="OPTION">-a all</code> option is
+specified has been fixed.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=top&amp;sektion=1&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">top</span>(1)</span></a> and <a href="http://www.FreeBSD.org/cgi/man.cgi?query=vmstat&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">vmstat</span>(8)</span></a> now
+support <code class="OPTION">-P</code> flag which displays per-CPU statistics.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=watch&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">watch</span>(8)</span></a> utility
+now supports more than 10 <a href="http://www.FreeBSD.org/cgi/man.cgi?query=snp&amp;sektion=4&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">snp</span>(4)</span></a> devices
+at a time.</p>
+
+<div class="SECT3">
+<hr/>
+<h4 class="SECT3"><a id="RC-SCRIPTS" name="RC-SCRIPTS">2.3.1 <tt class="FILENAME">/etc/rc.d</tt> Scripts</a></h4>
+
+<p>The <tt class="FILENAME">ike</tt> <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rc&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE"><span class="CITEREFENTRY"><span class="REFENTRYTITLE">rc</span>(8)</span></a> script has been
+removed.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rc.conf&amp;sektion=5&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">rc.conf</span>(5)</span></a> now
+supports <code class="VARNAME">dummynet_enable</code> variable which allow <a href="http://www.FreeBSD.org/cgi/man.cgi?query=dummynet&amp;sektion=4&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">dummynet</span>(4)</span></a>
+kernel module to be loaded when <code class="VARNAME">firewall_enable</code> is <tt class="LITERAL">YES</tt>.</p>
+
+<p>The <tt class="FILENAME">ppp</tt> <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rc&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE"><span class="CITEREFENTRY"><span class="REFENTRYTITLE">rc</span>(8)</span></a> script now
+supports multiple instances. For more details, see description of <code class="VARNAME">ppp_profile</code> variable in <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rc.conf&amp;sektion=5&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">rc.conf</span>(5)</span></a>.</p>
+
+<p>The <tt class="FILENAME">rfcomm_pppd_server</tt> <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rc&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE"><span class="CITEREFENTRY"><span class="REFENTRYTITLE">rc</span>(8)</span></a> script which
+allows start <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rfcomm_pppd&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">rfcomm_pppd</span>(8)</span></a>
+in server mode at boot time, has been added. Multiple profiles can be started at the same
+time. For more details, see <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rc.conf&amp;sektion=5&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">rc.conf</span>(5)</span></a>.</p>
+
+<p>The <tt class="FILENAME">sysctl</tt> <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rc&amp;sektion=8&amp;manpath=FreeBSD+6.4-RELEASE"><span class="CITEREFENTRY"><span class="REFENTRYTITLE">rc</span>(8)</span></a> script now
+supports loading <tt class="FILENAME">/etc/sysctl.conf.local</tt> in addition to <tt class="FILENAME">/etc/sysctl.conf</tt>.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rc.conf&amp;sektion=5&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">rc.conf</span>(5)</span></a> now
+supports configuration of interfaces and attached networks for firewall rule set by <tt class="FILENAME">rc.firewall</tt> when <code class="VARNAME">firewall_type</code> is <tt class="LITERAL">simple</tt> or <tt class="LITERAL">client</tt>. See <code class="VARNAME">firewall_client_net</code>, <code class="VARNAME">firewall_simple_iif</code>, <code class="VARNAME">firewall_simple_inet</code>, <code class="VARNAME">firewall_simple_oif</code>, and <code class="VARNAME">firewall_simple_onet</code>.</p>
+</div>
+</div>
+
+<div class="SECT2">
+<hr/>
+<h3 class="SECT2"><a id="CONTRIB" name="CONTRIB">2.4 Contributed Software</a></h3>
+
+<p><b class="APPLICATION">am-utils</b> has been updated to version 6.1.5.</p>
+
+<p><b class="APPLICATION">ISC BIND</b> has been updated to version 9.3.5-P2.</p>
+
+<p><b class="APPLICATION">bzip2</b> has been updated from 1.0.4 to 1.0.5.</p>
+
+<p><b class="APPLICATION">NTP</b> has been updated to version 4.2.4p5.</p>
+
+<p><b class="APPLICATION">FILE</b> has been updated to version 4.21.</p>
+
+<p><tt class="FILENAME">libarchive</tt> has been virtually updated to 2.5.4b. Note that
+the internal version number remains 1.9.25 because the API/ABI compatibility is
+preserved.</p>
+
+<p><b class="APPLICATION">ncurses</b> library has been updated to version
+5.6-20080503.</p>
+
+<p><b class="APPLICATION">OpenPAM</b> has been updated to Hydrangea release.</p>
+
+<p><b class="APPLICATION">sendmail</b> has been updated from 8.14.2 to 8.14.3.</p>
+
+<p><b class="APPLICATION">tcsh</b> has been updated to version 6.15.00.</p>
+
+<p>The timezone database has been updated from the <b class="APPLICATION">tzdata2007k</b>
+release to the <b class="APPLICATION">tzdata2008e</b> release.</p>
+</div>
+
+<div class="SECT2">
+<hr/>
+<h3 class="SECT2"><a id="PORTS" name="PORTS">2.5 Ports/Packages Collection
+Infrastructure</a></h3>
+
+<p>The <tt class="FILENAME">pkg_install</tt> utilities have been upgraded to snapshot on
+8.0-CURRENT as of May 30, 2008.</p>
+
+<p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=pkg_sign&amp;sektion=1&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">pkg_sign</span>(1)</span></a> and
+the <a href="http://www.FreeBSD.org/cgi/man.cgi?query=pkg_check&amp;sektion=1&amp;manpath=FreeBSD+6.4-RELEASE">
+<span class="CITEREFENTRY"><span class="REFENTRYTITLE">pkg_check</span>(1)</span></a>
+utility have been removed.</p>
+</div>
+
+<div class="SECT2">
+<hr/>
+<h3 class="SECT2"><a id="RELENG" name="RELENG">2.6 Release Engineering and
+Integration</a></h3>
+
+<p>The supported version of the <b class="APPLICATION">GNOME</b> desktop environment (<a href="http://www.FreeBSD.org/cgi/url.cgi?ports/x11/gnome2/pkg-descr"><tt class="FILENAME">x11/gnome2</tt></a>) has been updated from 2.20.1 to 2.22.3.</p>
+
+<p>The supported version of the <b class="APPLICATION">KDE</b> desktop environment (<a href="http://www.FreeBSD.org/cgi/url.cgi?ports/x11/kde3/pkg-descr"><tt class="FILENAME">x11/kde3</tt></a>) has been updated from 3.5.8 to 3.5.10.</p>
+</div>
+</div>
+
+<div class="SECT1">
+<hr/>
+<h2 class="SECT1"><a id="UPGRADE" name="UPGRADE">3 Upgrading from previous releases of
+FreeBSD</a></h2>
+
+<p>Source upgrades to FreeBSD 6.4-RELEASE are only supported from FreeBSD 5.3-RELEASE or
+later. Users of older systems wanting to upgrade 6.4-RELEASE will need to update to
+FreeBSD 5.3 or newer first, then to FreeBSD 6.4-RELEASE.</p>
+
+<div class="IMPORTANT">
+<blockquote class="IMPORTANT">
+<p><b>Important:</b> Upgrading FreeBSD should, of course, only be attempted after backing
+up <span class="emphasis"><i class="EMPHASIS">all</i></span> data and configuration
+files.</p>
+</blockquote>
+</div>
+</div>
+
+
+<hr/>
+<p align="center"><small>This file, and other release-related documents, can be
+downloaded from <a href="ftp://ftp.FreeBSD.org/">ftp://ftp.FreeBSD.org/</a>.</small></p>
+
+<p align="center"><small>For questions about FreeBSD, read the <a href="http://www.FreeBSD.org/docs.html">documentation</a> before contacting &lt;<a href="mailto:questions@FreeBSD.org">questions@FreeBSD.org</a>&gt;.</small></p>
+
+<p align="center"><small>For questions about this documentation, e-mail &lt;<a href="mailto:doc@FreeBSD.org">doc@FreeBSD.org</a>&gt;.</small></p>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: May 15, 2021 by <a href="https://cgit.freebsd.org/doc/commit/?id=b334e69268" target="_blank">Allan Jude</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

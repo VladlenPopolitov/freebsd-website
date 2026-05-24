@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/administration/">
+
+  <title>
+    FreeBSD Project Administration and Management |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD Project Administration and Management " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/administration/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/administration\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+            <li>
+              <a href="/ru/administration/" lang="ru">Russian</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/about/></a></li>
+  <li><a href=/features/></a></li>
+  <li><a href=/applications/>Applications</a></li>
+  <li><a href=/administration/>Administration</a></li>
+  <li><a href=/news/>News</a></li>
+  <li><a href=/events></a></li>
+  <li><a href=/press>Press</a></li>
+  <li><a href=/art>Artwork</a></li>
+  <li><a href=/donations>Donations</a></li>
+  <li><a href=/copyright></a></li>
+  <li><a href=/privacy>Privacy Policy</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD Project Administration and Management</h1><div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This page lists teams, groups and individuals within the FreeBSD project with designated project roles and areas of responsibility, along with brief descriptions and contact information.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Management</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#t-core">Core Team</a></p>
+</li>
+<li>
+<p><a href="#t-doceng">Documentation Engineering Team</a></p>
+</li>
+<li>
+<p><a href="#t-portmgr">Ports Management Team</a></p>
+</li>
+<li>
+<p><a href="#t-pkgmgr">Packages Management Team</a></p>
+</li>
+<li>
+<p><a href="#t-srcmgr">Source Management Team</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Teams</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#t-donations">Donations Team</a></p>
+</li>
+<li>
+<p><a href="#t-re">Release Engineering Team</a></p>
+</li>
+<li>
+<p><a href="#t-secteam">Security Team</a></p>
+</li>
+<li>
+<p><a href="#t-ports-secteam">Ports Security Team</a></p>
+</li>
+<li>
+<p><a href="#t-vendor">Vendor Relations</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Secretaries</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#t-core-secretary">Core Team Secretary</a></p>
+</li>
+<li>
+<p><a href="#t-doceng-secretary">Documentation Engineering Team Secretary</a></p>
+</li>
+<li>
+<p><a href="#t-portmgr-secretary">Ports Management Team Secretary</a></p>
+</li>
+<li>
+<p><a href="#t-srcmgr-secretary">Source Management Team Secretary</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Internal Administration</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#t-accounts">Accounts Team</a></p>
+</li>
+<li>
+<p><a href="#t-backups">Backup Administrators</a></p>
+</li>
+<li>
+<p><a href="#t-bugmeister">Bugmeister</a></p>
+</li>
+<li>
+<p><a href="#t-clusteradm">Cluster Administrators</a></p>
+</li>
+<li>
+<p><a href="#t-dnsadm">DNS Administrators</a></p>
+</li>
+<li>
+<p><a href="#t-forum-admins">Forum Administrators</a></p>
+</li>
+<li>
+<p><a href="#t-git">Git Administrators</a></p>
+</li>
+<li>
+<p><a href="#t-github-automation">GitHub Repository Mirror</a></p>
+</li>
+<li>
+<p><a href="#t-jenkins-admin">Jenkins Continuous Integration Testing Administrators</a></p>
+</li>
+<li>
+<p><a href="#t-mirror-admin">FTP/WWW Mirror Site Coordinators</a></p>
+</li>
+<li>
+<p><a href="#t-phabric-admin">Phabricator Code Review Administration</a></p>
+</li>
+<li>
+<p><a href="#t-postmaster">Postmaster Team</a></p>
+</li>
+<li>
+<p><a href="#t-webmaster">Webmaster Team</a></p>
+</li>
+<li>
+<p><a href="#t-wiki">Wiki Admin Team</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-core">FreeBSD Core Team &lt;<a href="mailto:core@FreeBSD.org">core@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The FreeBSD Core Team constitutes the project’s &#34;Board of Directors&#34;, responsible for deciding the project’s overall goals and direction as well as managing specific areas of the FreeBSD project landscape.
+The Core Team is elected by the active developers in the project.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allan Jude &lt;<a href="mailto:allanjude@FreeBSD.org">allanjude@FreeBSD.org</a>&gt; (Security Team Liaison)</p>
+</li>
+<li>
+<p>Dave Cottlehuber &lt;<a href="mailto:dch@FreeBSD.org">dch@FreeBSD.org</a>&gt; (Release Engineering Team Liaison)</p>
+</li>
+<li>
+<p>Gleb Smirnoff &lt;<a href="mailto:glebius@FreeBSD.org">glebius@FreeBSD.org</a>&gt; (Bugmeister Team and Source Management Team Liaison)</p>
+</li>
+<li>
+<p>Hiroki Sato &lt;<a href="mailto:hrs@FreeBSD.org">hrs@FreeBSD.org</a>&gt; (Foundation Liaison)</p>
+</li>
+<li>
+<p>Li-Wen Hsu &lt;<a href="mailto:lwhsu@FreeBSD.org">lwhsu@FreeBSD.org</a>&gt; (Documentation Engineering Team Liaison)</p>
+</li>
+<li>
+<p>Mathieu Arnold &lt;<a href="mailto:mat@FreeBSD.org">mat@FreeBSD.org</a>&gt; (Cluster Administrators Team and Ports Management Team Liaison)</p>
+</li>
+<li>
+<p>Olivier Cochard-Labbé &lt;<a href="mailto:olivier@FreeBSD.org">olivier@FreeBSD.org</a>&gt; (CI Team Liaison)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-doceng">FreeBSD Documentation Engineering Team &lt;<a href="mailto:doceng@FreeBSD.org">doceng@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The FreeBSD Documentation Engineering Team is responsible for defining and following up documentation goals for the committers in the Documentation project.
+The <a href="https://www.freebsd.org/internal/doceng/">doceng team charter</a> describes the duties and responsibilities of the Documentation Engineering Team in greater detail.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Marc Fonvieille &lt;<a href="mailto:blackend@FreeBSD.org">blackend@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Hiroki Sato &lt;<a href="mailto:hrs@FreeBSD.org">hrs@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Edson Brandi &lt;<a href="mailto:ebrandi@FreeBSD.org">ebrandi@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-portmgr">FreeBSD Ports Management Team &lt;<a href="mailto:portmgr@FreeBSD.org">portmgr@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The primary responsibility of the FreeBSD Ports Management Team is to ensure that the FreeBSD Ports Developer community provides a ports collection that is functional, stable, up-to-date and full-featured.
+Its secondary responsibility is to coordinate among the committers and developers who work on it.
+The <a href="https://www.freebsd.org/portmgr/charter/">portmgr team charter</a> describes the duties and responsibilities of the Ports Management Team in greater detail.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Baptiste Daroussin &lt;<a href="mailto:bapt@FreeBSD.org">bapt@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Mathieu Arnold &lt;<a href="mailto:mat@FreeBSD.org">mat@FreeBSD.org</a>&gt; (Cluster Administration Team Liaison)</p>
+</li>
+<li>
+<p>Luca Pizzamiglio &lt;<a href="mailto:pizzamig@FreeBSD.org">pizzamig@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>René Ladan &lt;<a href="mailto:rene@FreeBSD.org">rene@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Dan Langille &lt;<a href="mailto:dvl@FreeBSD.org">dvl@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-pkgmgr">FreeBSD Packages Management Team &lt;<a href="mailto:pkgmgr@FreeBSD.org">pkgmgr@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The primary responsibility of the FreeBSD Packages Management Team is to assure the ports tree remains functional, this includes running test builds of proposed changes, reverting/fixing broken commits that break the builds, maintain the automated package building cluster, and make the resulting packages available for download by FreeBSD users.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Antoine Brodin &lt;<a href="mailto:antoine@FreeBSD.org">antoine@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Bryan Drewery &lt;<a href="mailto:bdrewery@FreeBSD.org">bdrewery@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-srcmgr">FreeBSD Source Management Team &lt;<a href="mailto:srcmgr@FreeBSD.org">srcmgr@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The FreeBSD Source Management Team (also known as srcmgr due to its email alias) is responsible for issues relating to the base system.
+The <a href="https://www.freebsd.org/srcmgr/charter/">srcmgr team charter</a> describes the duties and responsibilities of the Source Management Team in greater detail.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ed Maste &lt;<a href="mailto:emaste@FreeBSD.org">emaste@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Warner Losh &lt;<a href="mailto:imp@FreeBSD.org">imp@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>John Baldwin &lt;<a href="mailto:jhb@FreeBSD.org">jhb@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Mark Johnston &lt;<a href="mailto:markj@FreeBSD.org">markj@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-donations">Donations Team &lt;<a href="mailto:donations@FreeBSD.org">donations@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Donations Team is responsible for responding to donations offers, establishing donation guidelines and procedures, and coordinating donation offers with the FreeBSD developer community.
+A more detailed description of the duties of the Donations Team is available at <a href="https://www.freebsd.org/donations/">FreeBSD Donations Liaison</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pietro Cerutti &lt;<a href="mailto:gahr@FreeBSD.org">gahr@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Bradley T. Hughes &lt;<a href="mailto:bhughes@FreeBSD.org">bhughes@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Adriaan de Groot &lt;<a href="mailto:adridg@FreeBSD.org">adridg@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-re">Release Engineering Team &lt;<a href="mailto:re@FreeBSD.org">re@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Release Engineering Team is responsible for setting and publishing release schedules for official project releases of FreeBSD, announcing code freezes and maintaining <code>releng/*</code> branches, among other things.
+The <a href="https://www.freebsd.org/releng/charter/">release engineering team charter</a> describes the duties and responsibilities of the Release Engineering Team in greater detail.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sergio Carlavilla Delgado &lt;<a href="mailto:carlavilla@FreeBSD.org">carlavilla@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Dave Cottlehuber &lt;<a href="mailto:dch@FreeBSD.org">dch@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Marc Fonvieille &lt;<a href="mailto:blackend@FreeBSD.org">blackend@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Craig Leres &lt;<a href="mailto:leres@FreeBSD.org">leres@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Xin Li &lt;<a href="mailto:delphij@FreeBSD.org">delphij@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Ed Maste &lt;<a href="mailto:emaste@FreeBSD.org">emaste@FreeBSD.org</a>&gt; (Deputy Lead)</p>
+</li>
+<li>
+<p>Colin Percival &lt;<a href="mailto:cperciva@FreeBSD.org">cperciva@FreeBSD.org</a>&gt; (Lead)</p>
+</li>
+<li>
+<p>Muhammad Moinur Rahman &lt;<a href="mailto:bofh@FreeBSD.org">bofh@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Vladlen Popolitov &lt;<a href="mailto:vladlen@FreeBSD.org">vladlen@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Lexi Winter &lt;<a href="mailto:ivy@FreeBSD.org">ivy@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Alexander Ziaee &lt;<a href="mailto:ziaee@FreeBSD.org">ziaee@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-secteam">Security Team &lt;<a href="mailto:secteam@FreeBSD.org">secteam@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The FreeBSD Security Team (headed by the Security Officer) is responsible for keeping the community aware of bugs, exploits and security risks affecting the FreeBSD src and ports trees, and to promote and distribute information needed to safely run FreeBSD systems.
+Furthermore, it is responsible for resolving software bugs affecting the security of FreeBSD and issuing security advisories.
+The FreeBSD Security Officer Charter describes the duties and responsibilities of the Security Officer in greater detail.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gordon Tetlow &lt;<a href="mailto:gordon@FreeBSD.org">gordon@FreeBSD.org</a>&gt; (Officer)</p>
+</li>
+<li>
+<p>Allan Jude &lt;<a href="mailto:allanjude@FreeBSD.org">allanjude@FreeBSD.org</a>&gt; (Core Team Liaison)</p>
+</li>
+<li>
+<p>Xin Li &lt;<a href="mailto:delphij@FreeBSD.org">delphij@FreeBSD.org</a>&gt; (Officer Emeritus, Release Engineering Team Liaison)</p>
+</li>
+<li>
+<p>Dag-Erling Smørgrav &lt;<a href="mailto:des@FreeBSD.org">des@FreeBSD.org</a>&gt; (Officer Emeritus)</p>
+</li>
+<li>
+<p>Ed Maste &lt;<a href="mailto:emaste@FreeBSD.org">emaste@FreeBSD.org</a>&gt; (Deputy Officer)</p>
+</li>
+<li>
+<p>Pierre Pronchery &lt;<a href="mailto:khorben@FreeBSD.org">khorben@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Mark Johnston &lt;<a href="mailto:markj@FreeBSD.org">markj@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Mariusz Zaborski &lt;<a href="mailto:oshogbo@FreeBSD.org">oshogbo@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Philip Paeps &lt;<a href="mailto:philip@FreeBSD.org">philip@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-ports-secteam">FreeBSD Ports Security Team &lt;<a href="mailto:ports-secteam@FreeBSD.org">ports-secteam@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The primary responsibility of the FreeBSD Port Security Team is to provide rapid response to security incidents that affects the FreeBSD ports collection and protect the FreeBSD user community by keeping the community informed of bugs, exploits, popular attacks, and other risks.
+More details are available on the <a href="https://wiki.freebsd.org/PortsSecteam">Wiki page</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Fernando Apesteguia &lt;<a href="mailto:fernape@FreeBSD.org">fernape@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Dima Panov &lt;<a href="mailto:fluffy@FreeBSD.org">fluffy@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Jochen Neumeister &lt;<a href="mailto:joneum@FreeBSD.org">joneum@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Thomas Zander &lt;<a href="mailto:riggs@FreeBSD.org">riggs@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Torsten Zuehlsdorff &lt;<a href="mailto:tz@FreeBSD.org">tz@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-vendor">Vendor Relations &lt;<a href="mailto:vendor-relations@FreeBSD.org">vendor-relations@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vendor Relations is responsible for handling email from hardware and software vendors.
+Email sent to Vendor Relations is forwarded to the FreeBSD Core Team in addition to the FreeBSD Foundation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-core-secretary">Core Team Secretary &lt;<a href="mailto:core-secretary@FreeBSD.org">core-secretary@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The FreeBSD Core Team Secretary is a non-voting member of the Core Team, responsible for documenting the work done by core, keeping track of the core agenda, contacting non-core members on behalf of core, sending mail to core, and interfacing with the admin team for committer/account approval.
+The Core Team Secretary is also responsible for writing and sending out monthly status reports to the FreeBSD Developer community, containing a summary of core’s latest decisions and actions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>René Ladan &lt;<a href="mailto:rene@FreeBSD.org">rene@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-doceng-secretary">Documentation Engineering Team Secretary &lt;<a href="mailto:doceng-secretary@FreeBSD.org">doceng-secretary@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The FreeBSD Documentation Engineering Team Secretary is a non-voting member of the Documentation Engineering Team, responsible for documenting the work done by doceng, keeping track of voting procedures, and to be an interface to the other teams, especially the admin and Core teams.</p>
+</div>
+<div class="paragraph">
+<p>There is currently no Documentation Engineering Team Secretary appointed; emails are being forwarded to the Documentation Engineering Team.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-portmgr-secretary">Ports Management Team Secretary &lt;<a href="mailto:portmgr-secretary@FreeBSD.org">portmgr-secretary@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The FreeBSD Ports Management Team Secretary is a non-voting member of the Ports Management Team, responsible for documenting the work done by portmgr, keeping track of voting procedures, and to be an interface to the other teams, especially the admin and Core teams.
+The Ports Management Team Secretary is also responsible for writing and sending out monthly status reports to the FreeBSD Developer community, containing a summary of portmgr’s latest decisions and actions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(vacant)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-srctmgr-secretary">Source Management Team Secretary &lt;<a href="mailto:srcmgr-secretary@FreeBSD.org">srcmgr-secretary@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is currently no Source Management Team Secretary appointed; emails are being forwarded to the Source Management Team.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-accounts">Accounts Team &lt;accounts@&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Accounts Team is responsible for setting up accounts for new committers in the project.
+Requests for new accounts will not be acted upon without the proper approval from the appropriate entity.</p>
+</div>
+<div class="paragraph">
+<p>Email sent to the Accounts Team is handled by the Cluster Administrators.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-backups">Backups Administrators &lt;backups@&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Backups Administrators handle all backups on the FreeBSD cluster.</p>
+</div>
+<div class="paragraph">
+<p>Email sent to the Backups Team is handled by the Cluster Administrators.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-bugmeister">Bugmeister &lt;<a href="mailto:bugmeister@FreeBSD.org">bugmeister@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Bugmeister Team is responsible for ensuring that the problem report software is in working order, that the entries are correctly categorised and that there are no invalid entries.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Mark Linimon &lt;<a href="mailto:linimon@FreeBSD.org">linimon@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Siva Mahadevan &lt;<a href="mailto:siva@FreeBSD.org">siva@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Alexander Ziaee &lt;<a href="mailto:ziaee@FreeBSD.org">ziaee@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-clusteradm">Cluster Administrators &lt;clusteradm@&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Cluster Administrators are responsible for maintaining the machines and services that the project relies on for its distributed work and communication.
+Issues concerning the project’s infrastructure or setting up new machines or services should be directed to them.
+This team is led by the lead cluster administrator whose duties and responsbilities are described in the <a href="https://www.freebsd.org/internal/clusteradm/">cluster administration charter</a> in greater detail.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Baptiste Daroussin &lt;<a href="mailto:bapt@FreeBSD.org">bapt@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Muhammad Moinur Rahman &lt;<a href="mailto:bofh@FreeBSD.org">bofh@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Danilo G. Baio &lt;<a href="mailto:dbaio@FreeBSD.org">dbaio@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>David Wolfskill &lt;<a href="mailto:dhw@FreeBSD.org">dhw@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Li-Wen Hsu &lt;<a href="mailto:lwhsu@FreeBSD.org">lwhsu@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Peter Wemm &lt;<a href="mailto:peter@FreeBSD.org">peter@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Philip Paeps &lt;<a href="mailto:philip@FreeBSD.org">philip@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Ryan Steinmetz &lt;<a href="mailto:zi@FreeBSD.org">zi@FreeBSD.org</a>&gt; (Lead)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please consider using one of the more specific aliases (e.g. accounts@, dnsadm@, mirror-admin@,…​) or <a href="https://bugs.freebsd.org/submit/">opening a bug report</a> to report problems with the cluster infrastructure.  Select &#34;Services&#34; and then &#34;Core Infrastructure&#34;.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-dnsadm">DNS Administrators &lt;dnsadm@&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The DNS Administrators are responsible for managing DNS and related services.</p>
+</div>
+<div class="paragraph">
+<p>Email sent to the DNS Administrators handled by the Cluster Administrators.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-forum-admins">FreeBSD Forum Administrators &lt;<a href="mailto:forum-admins@FreeBSD.org">forum-admins@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Forum Administrators maintain the FreeBSD Project’s Internet forum, located at <a href="https://forums.freebsd.org/" class="bare">https://forums.freebsd.org/</a> and lead the group of moderators who work to ensure the relevance and quality of the forum’s content.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Brad Davis &lt;<a href="mailto:brd@FreeBSD.org">brd@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Daniel Geržo &lt;<a href="mailto:danger@FreeBSD.org">danger@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Ben C. O. Grimm &lt;<a href="mailto:dutchdaemon@FreeBSD.org">dutchdaemon@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Lars Engels &lt;<a href="mailto:lme@FreeBSD.org">lme@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-git">Git Administrators &lt;gitadm@&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The FreeBSD Git Administrators are responsible for maintaining the health of the Git repositories.</p>
+</div>
+<div class="paragraph">
+<p>Email to the Git Administrators is handled by the Cluster Administrators.</p>
+</div>
+<div class="paragraph">
+<p>Please <a href="https://bugs.freebsd.org/submit/">open a bug report</a> to report problems with the Git repositories.  Select &#34;Services&#34; and then &#34;Core Infrastructure&#34;.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-github-automation">Repository Automated Mirroring to GitHub Coordinators &lt;<a href="mailto:github-automation@FreeBSD.org">github-automation@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The GitHub Automation team oversees the export of FreeBSD source code repository content to the read-only repository instances on GitHub</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Kubilay Kocak &lt;<a href="mailto:koobs@FreeBSD.org">koobs@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Marcus von Appen &lt;<a href="mailto:mva@FreeBSD.org">mva@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Bartek Rutkowski &lt;<a href="mailto:robak@FreeBSD.org">robak@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Craig Rodrigues &lt;<a href="mailto:rodrigc@FreeBSD.org">rodrigc@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Ulrich Spörlein &lt;<a href="mailto:uqs@FreeBSD.org">uqs@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-jenkins-admin">Jenkins Continuous Integration Testing Administrators &lt;<a href="mailto:jenkins-admin@FreeBSD.org">jenkins-admin@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins Administrators maintain the Continuous Integration and testing infrastructure for The FreeBSD Project.
+This includes maintaining the Jenkins instance and the jobs that run builds and execute tests.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Baptiste Daroussin &lt;<a href="mailto:bapt@FreeBSD.org">bapt@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Brad Davis &lt;<a href="mailto:brd@FreeBSD.org">brd@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Brooks Davis &lt;<a href="mailto:brooks@FreeBSD.org">brooks@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Li-Wen Hsu &lt;<a href="mailto:lwhsu@FreeBSD.org">lwhsu@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Siva Mahadevan &lt;<a href="mailto:siva@FreeBSD.org">siva@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-mirror-admin">FTP/WWW Mirror Site Coordinators &lt;mirror-admin@&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The FTP/WWW Mirror Site Coordinators coordinate all the FTP/WWW mirror site administrators to ensure that they are distributing current versions of the software, that they have the capacity to update themselves when major updates are in progress, and making it easy for the general public to find their closest FTP/WWW mirror.</p>
+</div>
+<div class="paragraph">
+<p>Email to the Mirror Site Coordinators is handled by the Cluster Administrators.</p>
+</div>
+<div class="paragraph">
+<p>Please <a href="https://bugs.freebsd.org/submit/">open a bug report</a> to report problems with the mirror infrastructure.  Select &#34;Services&#34; and then &#34;FTP/WWW Sites &amp; Mirrors&#34;.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-phabric-admin">Phabricator Code Review Application Administrators &lt;<a href="mailto:phabric-admin@FreeBSD.org">phabric-admin@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Phabricator Administrators are responsible for maintaining the FreeBSD’s instance of the Phabricator on-line code review tool located at <a href="https://reviews.freebsd.org/" class="bare">https://reviews.freebsd.org/</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allan Jude &lt;<a href="mailto:allanjude@FreeBSD.org">allanjude@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Muhammad Moinur Rahman &lt;<a href="mailto:bofh@FreeBSD.org">bofh@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Eitan Adler &lt;<a href="mailto:eadler@FreeBSD.org">eadler@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Ed Maste &lt;<a href="mailto:emaste@FreeBSD.org">emaste@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Jonathan T. Looney &lt;<a href="mailto:jtl@FreeBSD.org">jtl@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Li-Wen Hsu &lt;<a href="mailto:lwhsu@FreeBSD.org">lwhsu@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Mathieu Arnold &lt;<a href="mailto:mat@FreeBSD.org">mat@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Kurt Jaeger &lt;<a href="mailto:pi@FreeBSD.org">pi@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For any problems regarding Phabricator, please <a href="https://bugs.freebsd.org/submit/">open a bug report</a> and select &#34;Services&#34; and then &#34;Code Review&#34;.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-postmaster">Postmaster Team &lt;<a href="mailto:postmaster@FreeBSD.org">postmaster@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Postmaster Team is responsible for mail being correctly delivered to the committers&#39; email address, ensuring that the mailing lists work, and should take measures against possible disruptions of project mail services, such as having troll-, spam- and virus-filters.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Baptiste Daroussin &lt;<a href="mailto:bapt@FreeBSD.org">bapt@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Larry Rosenman &lt;<a href="mailto:ler@FreeBSD.org">ler@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Philip Paeps &lt;<a href="mailto:philip@FreeBSD.org">philip@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Kurt Jaeger &lt;<a href="mailto:pi@FreeBSD.org">pi@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Eygene Ryabinkin &lt;<a href="mailto:rea@FreeBSD.org">rea@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Vsevolod Stakhov &lt;<a href="mailto:vsevolod@FreeBSD.org">vsevolod@FreeBSD.org</a>&gt;</p>
+</li>
+<li>
+<p>Ryan Steinmetz &lt;<a href="mailto:zi@FreeBSD.org">zi@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-webmaster">Webmaster Team &lt;<a href="mailto:webmaster@FreeBSD.org">webmaster@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The FreeBSD Webmaster Team is appointed by FreeBSD Documentation Engineering Team, and responsible for keeping the main FreeBSD web sites up and running.
+This means web server configuration, CGI scripts, fulltext and mailing list search. Anything web related, technical stuff belongs to the scope of the Webmaster Team, excluding bugs in the documentation.</p>
+</div>
+<div class="paragraph">
+<p>Email to the Webmaster Team is currently forwarded to the Documentation Engineering team with the addition of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Wolfram Schneider &lt;<a href="mailto:wosch@FreeBSD.org">wosch@FreeBSD.org</a>&gt;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="t-wiki">Wiki Admin Team &lt;<a href="mailto:wiki-admin@FreeBSD.org">wiki-admin@FreeBSD.org</a>&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The FreeBSD Wiki Team is responsible for keeping the FreeBSD <a href="https://wiki.FreeBSD.org/">Wiki</a> site up and running. They also shape the overall design and content structure.</p>
+</div>
+<div class="paragraph">
+<p>Email to the Wiki Administrators is handled by the Cluster Administrators.</p>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: April 21, 2026 by <a href="https://cgit.freebsd.org/doc/commit/?id=261b7ec088" target="_blank">Alexander Ziaee</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

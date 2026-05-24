@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/status/report-2025-01-2025-03/ipv6-support-on-ng_ksocket/">
+
+  <title>
+    
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content="  " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/status/report-2025-01-2025-03/ipv6-support-on-ng_ksocket/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/status\/report-2025-01-2025-03\/ipv6-support-on-ng_ksocket\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/about/></a></li>
+  <li><a href=/features/></a></li>
+  <li><a href=/applications/>Applications</a></li>
+  <li><a href=/administration/>Administration</a></li>
+  <li><a href=/news/newsflash/>News</a></li>
+  <li><a href=/events></a></li>
+  <li><a href=/press>Press</a></li>
+  <li><a href=/art>Artwork</a></li>
+  <li><a href=/donations>Donations</a></li>
+  <li><a href=/copyright></a></li>
+  <li><a href=/privacy>Privacy Policy</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1></h1><div class="sect2">
+<h3 id="_ipv6_support_on_ksocket_netgraph_module">IPv6 Support on ksocket Netgraph Module</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://reviews.freebsd.org/D48204">Add IPv6 support for address parsing and unparsing in ng_ksocket</a> URL: <a href="https://reviews.freebsd.org/D48204" class="bare">https://reviews.freebsd.org/D48204</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Seyed Pouria Mousavizadeh Tehrani &lt;<a href="mailto:info@spmzt.net">info@spmzt.net</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Support for IPv6 has been added to the <a href="https://man.freebsd.org/cgi/man.cgi?query=ng_ksocket&amp;sektion=4&amp;format=html">ng_ksocket(4)</a> module.</p>
+</div>
+<div class="paragraph">
+<p>The <code>ng_ksocket</code> node type allows users to open a socket inside the kernel and have it appear as a <code>netgraph</code> node.
+While attempting to export traffic flow using <a href="https://man.freebsd.org/cgi/man.cgi?query=ng_netflow&amp;sektion=4&amp;format=html">ng_netflow(4)</a>, I recognized the need for IPv6 implementation within the <code>ng_ksocket</code> module.</p>
+</div>
+<div class="paragraph">
+<p>There was a previous attempt to add IPv6 support to the <code>ng_ksocket</code> module (see Phabricator review <a href="https://reviews.freebsd.org/D23788">D23788</a>).</p>
+</div>
+<div class="paragraph">
+<p>After looking into those changes, I decided to complete the efforts and also add validation to comply with standards.</p>
+</div>
+<div class="paragraph">
+<p>The result is now available as an <a href="https://reviews.freebsd.org/D48204">updated review on Phabricator</a>.</p>
+</div>
+<div class="paragraph">
+<p>Now, we can create IPv6 sockets using the ksocket module directly within the <code>netgraph</code> framework.
+After my changes, I was able to export my traffic flows directly using <code>netgraph</code> without the need to enable IPv4 on my network links.</p>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: April 8, 2025 by <a href="https://cgit.freebsd.org/doc/commit/?id=811fbc2e25" target="_blank">Pouria Mousavizadeh Tehrani</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

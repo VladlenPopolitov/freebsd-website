@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/releases/12.2R/relnotes/">
+
+  <title>
+    FreeBSD 12.2-RELEASE Release Notes |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD 12.2-RELEASE Release Notes " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/releases/12.2R/relnotes/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/releases\/12.2R\/relnotes\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/where></a></li>
+  <li>
+    <a href=/releases>Release Information</a>
+    <ul>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Legacy Release: <a href=ZgotmplZ></a></li>
+    </ul>
+  </li>
+  <li>
+    <a href=/snapshots>Snapshot Releases</a>
+      <ul>
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+      </ul>
+  </li>
+  <li><a href=/ports>Ported Applications</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD 12.2-RELEASE Release Notes</h1><div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph abstract-title">
+<p>The release notes for FreeBSD 12.2-RELEASE contain a summary of the changes made to the FreeBSD base system on the 12-STABLE development line. This document lists applicable security advisories that were issued since the last release, as well as significant changes to the FreeBSD kernel and userland. Some brief remarks on upgrading are also presented.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="intro">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document contains the release notes for FreeBSD 12.2-RELEASE. It describes recently added, changed, or deleted features of FreeBSD. It also provides some notes on upgrading from previous versions of FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>The release distribution to which these release notes apply represents the latest point along the 12-STABLE development branch since 12-STABLE was created. Information regarding pre-built, binary release distributions along this branch can be found at <a href="https://www.FreeBSD.org/releases/">https://www.FreeBSD.org/releases/</a>.</p>
+</div>
+<div class="paragraph">
+<p>The release distribution to which these release notes apply represents a point along the 12-STABLE development branch between 12.1-RELEASE and the future 12.3-RELEASE. Information regarding pre-built, binary release distributions along this branch can be found at <a href="https://www.FreeBSD.org/releases/">https://www.FreeBSD.org/releases/</a>.</p>
+</div>
+<div class="paragraph">
+<p>This distribution of FreeBSD 12.2-RELEASE is a release distribution. It can be found at <a href="https://www.FreeBSD.org/releases/">https://www.FreeBSD.org/releases/</a> or any of its mirrors. More information on obtaining this (or other) release distributions of FreeBSD can be found in the <a href="https://docs.freebsd.org/en/books/handbook//mirrors">Obtaining FreeBSD appendix</a> to the <a href="https://docs.freebsd.org/en/books/handbook//">FreeBSD Handbook</a>.</p>
+</div>
+<div class="paragraph">
+<p>All users are encouraged to consult the release errata before installing FreeBSD. The errata document is updated with &#34;late-breaking&#34; information discovered late in the release cycle or after the release. Typically, it contains information on known bugs, security advisories, and corrections to documentation. An up-to-date copy of the errata for FreeBSD 12.2-RELEASE can be found on the FreeBSD Web site.</p>
+</div>
+<div class="paragraph">
+<p>This document describes the most user-visible new or changed features in FreeBSD since 12.1-RELEASE. In general, changes described here are unique to the 12-STABLE branch unless specifically marked as MERGED features.</p>
+</div>
+<div class="paragraph">
+<p>Typical release note items document recent security advisories issued after 12.1-RELEASE, new drivers or hardware support, new commands or options, major bug fixes, or contributed software upgrades. They may also list changes to major ports/packages or release engineering practices. Clearly the release notes cannot list every single change made to FreeBSD between releases; this document focuses primarily on security advisories, user-visible changes, and major architectural improvements.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade">Upgrading from Previous Releases of FreeBSD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Binary upgrades between RELEASE versions (and snapshots of the various security branches) are supported using the <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> utility. The binary upgrade procedure will update unmodified userland utilities, as well as unmodified GENERIC kernels distributed as a part of an official FreeBSD release. The <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> utility requires that the host being upgraded have Internet connectivity.</p>
+</div>
+<div class="paragraph">
+<p>Source-based upgrades (those based on recompiling the FreeBSD base system from source code) from previous versions are supported, according to the instructions in <span class="filename">/usr/src/UPDATING</span>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Upgrading FreeBSD should only be attempted after backing up <em>all</em> data and configuration files.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="security-errata">Security and Errata</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section lists the various Security Advisories and Errata Notices since 12.1-RELEASE.</p>
+</div>
+<div class="sect2">
+<h3 id="security">Security Advisories</h3>
+<table class="tableblock frame-none grid-all stretch informaltable">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Advisory</th>
+<th class="tableblock halign-left valign-top">Date</th>
+<th class="tableblock halign-left valign-top">Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-19:25.mcepsc.asc">FreeBSD-SA-19:25.mcepce</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 November 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Machine Check Exception on Page Size Change</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-19:26.mcu.asc">FreeBSD-SA-19:26.mcu</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 November 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel CPU Microcode Update</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:01.libfetch.asc">FreeBSD-SA-20:01.libfetch</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 January 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://man.freebsd.org/cgi/man.cgi?query=fetch&amp;sektion=3&amp;format=html">fetch(3)</a> buffer overflow</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:03.thrmisc.asc">FreeBSD-SA-20:03.thrmisc</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 January 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kernel stack data disclosure</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:04.tcp.asc">FreeBSD-SA-20:04.tcp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 March 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP IPv6 SYN cache kernel information disclosure</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:05.if_oce_ioctl.asc">FreeBSD-SA-20:05.if_oce_ioctl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 March 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insufficient <a href="https://man.freebsd.org/cgi/man.cgi?query=ioctl&amp;sektion=2&amp;format=html">ioctl(2)</a> privilege checking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:06.if_ixl_ioctl.asc">FreeBSD-SA-20:06.if_ixl_ioctl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 March 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insufficient <a href="https://man.freebsd.org/cgi/man.cgi?query=ioctl&amp;sektion=2&amp;format=html">ioctl(2)</a> privilege checking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:07.epair.asc">FreeBSD-SA-20:07.epair</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 March 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Incorrect user-controlled pointer use</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:08.jail.asc">FreeBSD-SA-20:08.jail</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 March 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kernel memory disclosure with nested jails</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:09.ntp.asc">FreeBSD-SA-20:09.ntp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 March 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiple denial of service</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:10.ipfw.asc">FreeBSD-SA-20:10.ipfw</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21 April 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid <a href="https://man.freebsd.org/cgi/man.cgi?query=mbuf&amp;sektion=9&amp;format=html">mbuf(9)</a> handling</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:11.openssl.asc">FreeBSD-SA-20:11.openssl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21 April 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remote denial of service</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:12.libalias.asc">FreeBSD-SA-20:12.libalias</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 May 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insufficient packet length validation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:13.libalias.asc">FreeBSD-SA-20:13.libalias</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 May 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Memory disclosure vulnerability</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:15.cryptodev.asc">FreeBSD-SA-20:15.cryptodev</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 May 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use-after-free condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:16.cryptodev.asc">FreeBSD-SA-20:16.cryptodev</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 May 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insufficient MAC key length check</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:17.usb.asc">FreeBSD-SA-20:17.usb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9 June 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HID descriptor parsing error</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:19.unbound.asc">FreeBSD-SA-20:19.unbound</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 July 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiple vulnerabilities</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:20.ipv6.asc">FreeBSD-SA-20:20.ipv6</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 July 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Race condition and use-after-free</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:21.usb_net.asc">FreeBSD-SA-20:21.usb_net</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 August 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Memory corruption</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:22.sqlite.asc">FreeBSD-SA-20:22.sqlite</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 August 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiple vulnerabilities</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:23.sendmsg.asc">FreeBSD-SA-20:23.sendmsg</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 August 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Privilege escalation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:25.sctp.asc">FreeBSD-SA-20:25.sctp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 September 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use-after-free bug</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:26.dhclient.asc">FreeBSD-SA-20:26.dhclient</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 September 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heap overflow</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:27.ure.asc">FreeBSD-SA-20:27.ure</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 September 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Packet-in-packet attack</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:28.bhyve_vmcs.asc">FreeBSD-SA-20:28.bhyve_vmcs</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 September 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Privilege escalation via VMCS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:29.bhyve_svm.asc">FreeBSD-SA-20:29.bhyve_svm</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 September 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SVM guest escape</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-20:30.ftpd.asc">FreeBSD-SA-20:30.ftpd</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 September 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Privilege escalation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="errata">Errata Notices</h3>
+<table class="tableblock frame-none grid-all stretch informaltable">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Errata</th>
+<th class="tableblock halign-left valign-top">Date</th>
+<th class="tableblock halign-left valign-top">Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-19:19.loader.asc">FreeBSD-EN-19:19.loader</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 November 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UEFI Loader Memory Fragmentation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:01.ssp.asc">FreeBSD-EN-20:01.ssp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 January 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Imprecise orderring of canary initialization</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:03.sshd.asc">FreeBSD-EN-20:03.sshd</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 March 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Misleading log messages upon successful login</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:05.mlx5en.asc">FreeBSD-EN-20:05.mlx5en</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 March 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fix packet forwarding performance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:06.ipv6.asc">FreeBSD-EN-20:06.ipv6</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 March 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Incorrect checksum calculations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:07.quotad.asc">FreeBSD-EN-20:07.quotad</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21 April 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Regression with certain NFS servers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:08.tzdata.asc">FreeBSD-EN-20:08.tzdata</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 May 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timezone database update</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:09.igb.asc">FreeBSD-EN-20:09.igb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 May 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fix failure to switch to inactive state</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:10.build.asc">FreeBSD-EN-20:10.build</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 May 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Incorrect build host clang version detection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:11.ena.asc">FreeBSD-EN-20:11.ena</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9 June 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stability issues in <a href="https://man.freebsd.org/cgi/man.cgi?query=ena&amp;sektion=4&amp;format=html">ena(4)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:12.iflib.asc">FreeBSD-EN-20:12.iflib</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9 June 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Watchdog timeout resetting idle queues</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:13.bhyve.asc">FreeBSD-EN-20:13.bhyve</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 July 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crash with PCI device passthrough</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:14.linuxkpi.asc">FreeBSD-EN-20:14.linuxkpi</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 July 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kernel panic</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:15.mps.asc">FreeBSD-EN-20:15.mps</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 July 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kernel panic</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:16.vmx.asc">FreeBSD-EN-20:16.vmx</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 August 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Packet loss and degraded performance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-20:17.linuxthread.asc">FreeBSD-EN-20:17.linuxthread</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 September 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kernel panic</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="userland">Userland</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section covers changes and additions to userland applications, contributed software, and system utilities.</p>
+</div>
+<div class="sect2">
+<h3 id="userland-config">Userland Configuration Changes</h3>
+<div class="paragraph">
+<p>A new <a href="https://man.freebsd.org/cgi/man.cgi?query=rc.conf&amp;sektion=5&amp;format=html">rc.conf(5)</a> variable has been added, <code>linux_mounts_enable</code>, which controls if Linux®-specific filesystems are mounted in <span class="filename">/compat/linux</span> if <code>linux_enable</code> is set to <code>YES</code>. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=364883">[r364883]</a>
+ (Sponsored by The FreeBSD Foundation)</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=devd&amp;sektion=8&amp;format=html">devd(8)</a> utility has been updated to change the default <a href="https://man.freebsd.org/cgi/man.cgi?query=syslogd&amp;sektion=8&amp;format=html">syslogd(8)</a> notification for resume from <code>kern</code> to <code>kernel</code>. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=365540">[r365540]</a>
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="userland-programs">Userland Application Changes</h3>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=cron&amp;sektion=8&amp;format=html">cron(8)</a> utility has been updated to support two new flags in <a href="https://man.freebsd.org/cgi/man.cgi?query=crontab&amp;sektion=5&amp;format=html">crontab(5)</a>, <code>-n</code> and <code>-q</code>, which suppress mail on successful runs and suppress logging of command execution, respectively. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=353134">[r353134]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=dd&amp;sektion=1&amp;format=html">dd(1)</a> utility has been updated to include new operands: <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=355520">[r355520]</a>
+</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>conv=fsync</code></p>
+</li>
+<li>
+<p><code>conf=fdatasync</code></p>
+</li>
+<li>
+<p><code>oflag=fsync</code></p>
+</li>
+<li>
+<p><code>oflag=sync</code></p>
+</li>
+<li>
+<p><code>iflag=fullblock</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See <a href="https://man.freebsd.org/cgi/man.cgi?query=dd&amp;sektion=1&amp;format=html">dd(1)</a> for usage details.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=fsck_msdosfs&amp;sektion=8&amp;format=html">fsck_msdosfs(8)</a> utility has been updated to include a variety of enhancements, including reducing the memory footprint, a new flag, <code>-M</code>, which disables the use of <a href="https://man.freebsd.org/cgi/man.cgi?query=mmap&amp;sektion=2&amp;format=html">mmap(2)</a>, and others. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=357568">[r357568]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=showmount&amp;sektion=8&amp;format=html">showmount(8)</a> utility has been updated to implement support for long options. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=357078">[r357078]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The man:certctl.8; utility has been added. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=357082">[r357082]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=syslogd&amp;sektion=8&amp;format=html">syslogd(8)</a> utility has been updated to add property-based filters. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=359739">[r359739]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=mountd&amp;sektion=8&amp;format=html">mountd(8)</a> utility has been updated to fix incorrect group listing under certain conditions when <code>-maproot</code> or <code>-mapall</code> is used for exports. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=362602">[r362602]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=sed&amp;sektion=1&amp;format=html">sed(1)</a> utility has been updated to read commands from <a href="https://man.freebsd.org/cgi/man.cgi?query=stdin&amp;sektion=4&amp;format=html">stdin(4)</a> when “-f -” is specified. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=362687">[r362687]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=hostapd&amp;sektion=8&amp;format=html">hostapd(8)</a> and <a href="https://man.freebsd.org/cgi/man.cgi?query=wpa_supplicant&amp;sektion=8&amp;format=html">wpa_supplicant(8)</a> utilities have been updated to support 802.11n, 802.11w, 802.11ac, and 802.11ax. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=363441">[r363441]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=sesutil&amp;sektion=8&amp;format=html">sesutil(8)</a> utility has been updated to include a <code>show</code> subcommand to print output in a user-friendly way. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=364115">[r364115]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> utility has been updated to support setting additional AHCI controller parameters. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=364334">[r364334]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a> utility has been updated to allow running Linux® in a jailed environment.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="userland-contrib">Contributed Software</h3>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=tcsh&amp;sektion=1&amp;format=html">tcsh(1)</a> utility has been updated to version 6.21.00. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=354191">[r354191]</a>
+ (Sponsored by DARPA, AFRL)</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=less&amp;sektion=1&amp;format=html">less(1)</a> utility has been updated to version v551. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=355503">[r355503]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=libbsdxml&amp;sektion=3&amp;format=html">libbsdxml(3)</a> library has been updated to version 2.2.9. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=355603">[r355603]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=resolvconf&amp;sektion=8&amp;format=html">resolvconf(8)</a> utility has been updated to version 3.9.2. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=355745">[r355745]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=pcap&amp;sektion=3&amp;format=html">pcap(3)</a> library has been updated to version 1.9.1. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=356340">[r356340]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=tcpdump&amp;sektion=1&amp;format=html">tcpdump(1)</a> utility has been updated to version 4.9.3. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=356340">[r356340]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=mtree&amp;sektion=8&amp;format=html">mtree(8)</a> utility has been updated to address an issue with <code>-f</code> not considering type changes, fix username logic with <code>-c</code> when <a href="https://man.freebsd.org/cgi/man.cgi?query=getlogin&amp;sektion=2&amp;format=html">getlogin(2)</a> fails, and to fix <code>-O</code> not descending when a hash collision occurs. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=356532">[r356532]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The Elf Tool Chain has been updated to upstream revision r3769. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=358779">[r358779]</a>
+ (Sponsored by The FreeBSD Foundation)</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=xz&amp;sektion=1&amp;format=html">xz(1)</a> utility has been updated to version 5.2.5. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=359635">[r359635]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>OpenSSH has been updated to version 7.9p1. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=360313">[r360313]</a>
+ (Sponsored by The FreeBSD Foundation)</p>
+</div>
+<div class="paragraph">
+<p>The timezone database files have been updated to version 2020a. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=360361">[r360361]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=unbound&amp;sektion=8&amp;format=html">unbound(8)</a> utility has been updated to version 1.10.1. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=361435">[r361435]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=libarchive&amp;sektion=3&amp;format=html">libarchive(3)</a> library has been updated to version 3.4.3. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=362132">[r362132]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The private apr library has been updated to version 1.7.0. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=362180">[r362180]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The svn{,lite} utility has been updated to version 1.14.0 LTS. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=362180">[r362180]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ntpd&amp;sektion=8&amp;format=html">ntpd(8)</a> suite of utilities have been updated to version 4.2.8p15. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=362716">[r362716]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=file&amp;sektion=1&amp;format=html">file(1)</a> utility has been updated to version 5.39. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=362842">[r362842]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=bc&amp;sektion=1&amp;format=html">bc(1)</a> utility has been updated to version 3.1.1. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=362987">[r362987]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The private sqlite3 utility has been updated to version 3.32.3. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=363179">[r363179]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The BSD <a href="https://man.freebsd.org/cgi/man.cgi?query=make&amp;sektion=1&amp;format=html">make(1)</a> utility has been updated to version 20200719. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=363352">[r363352]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The Sendmail utility has been updated to version 8.16.1. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=363465">[r363465]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=nc&amp;sektion=1&amp;format=html">nc(1)</a> utility has been updated to include a new <code>--sctp</code> flag. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=363474">[r363474]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The clang, llvm, lld, lldb, compiler-rt utilities and libc++ have been updated to version 10.0.1. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=363494">[r363494]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>OpenSSL has been updated to version 1.1.1h. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=366177">[r366177]</a>
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="userland-deprecated-programs">Deprecated Applications</h3>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=amd&amp;sektion=8&amp;format=html">amd(8)</a> utility has been marked as deprecated, and targeted for removal in FreeBSD 13.0. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=355075">[r355075]</a>
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="userland-libraries">Runtime Libraries and API</h3>
+<div class="paragraph">
+<p>The <code>ifconfig</code> library has been updated to report the status of a <a href="https://man.freebsd.org/cgi/man.cgi?query=bridge&amp;sektion=4&amp;format=html">bridge(4)</a> interface, similarly to <a href="https://man.freebsd.org/cgi/man.cgi?query=lagg&amp;sektion=4&amp;format=html">lagg(4)</a>. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=363037">[r363037]</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="kernel">Kernel</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section covers changes to kernel configurations, system tuning, and system control parameters that are not otherwise categorized.</p>
+</div>
+<div class="sect2">
+<h3 id="kernel-general">General Kernel Changes</h3>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=read&amp;sektion=2&amp;format=html">read(2)</a> system call has been changed to disable <code>read()</code> calls on directories by default. A new <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> has been added, <code>security.bsd.allow_read_dir</code>, which when set to <code>1</code> will restore the previous behavior. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=363017">[r363017]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ixl&amp;sektion=4&amp;format=html">ixl(4)</a> driver has now been enabled by default for FreeBSD/powerpc64. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=363712">[r363712]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <code>machdep.kdb_on_nmi</code> <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> has been removed. The <code>machdep.panic_on_nmi</code> <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> tunable has changed to directly enter the debugger. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=364002">[r364002]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>Support for APEI (ACPI Platform Error Interfaces) has been added. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=364003">[r364003]</a>
+ (Sponsored by iXsystems)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="drivers">Devices and Drivers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section covers changes and additions to devices and device drivers since 12.1-RELEASE.</p>
+</div>
+<div class="sect2">
+<h3 id="drivers-device">Device Drivers</h3>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ubsec&amp;sektion=4&amp;format=html">ubsec(4)</a> driver has been marked as deprecated, and will be removed in FreeBSD 13.0. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=361044">[r361044]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ufm&amp;sektion=4&amp;format=html">ufm(4)</a> driver has been marked as deprecated, and will be removed in FreeBSD 13.0. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=364431">[r364431]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=apm&amp;sektion=4&amp;format=html">apm(4)</a> driver has been marked as deprecated, and will be removed in FreeBSD 13.0. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=365542">[r365542]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ctau&amp;sektion=4&amp;format=html">ctau(4)</a> and <a href="https://man.freebsd.org/cgi/man.cgi?query=cx&amp;sektion=4&amp;format=html">cx(4)</a> drivers have been marked as deprecated, and will be removed in FreeBSD 13.0. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=365542">[r365542]</a>
+ (Sponsored by The FreeBSD Foundation)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="storage">Storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section covers changes and additions to file systems and other storage subsystems, both local and networked.</p>
+</div>
+<div class="sect2">
+<h3 id="storage-general">General Storage</h3>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=mps&amp;sektion=4&amp;format=html">mps(4)</a> driver has been removed from the 32-bit <span class="filename">GENERIC</span> kernel configuration. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=352741">[r352741]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=virtio_blk&amp;sektion=4&amp;format=html">virtio_blk(4)</a> driver has been updated to support TRIM. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=365702">[r365702]</a>
+ (Sponsored by Klara Systems)</p>
+</div>
+<div class="paragraph">
+<p>The ZFS file system has been updated to include read/write <code>kstat</code> output per dataset. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=365917">[r365917]</a>
+ (Sponsored by Klara Systems)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="boot">Boot Loader Changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section covers the boot loader, boot menu, and other boot-related changes.</p>
+</div>
+<div class="sect2">
+<h3 id="boot-loader">Boot Loader Changes</h3>
+<div class="paragraph">
+<p>The console is now displayed within the boot loader, allowing to toggle between available console devices. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=366691">[r366691]</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="network">Networking</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes changes that affect networking in FreeBSD.</p>
+</div>
+<div class="sect2">
+<h3 id="network-general">General Network</h3>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=tap&amp;sektion=4&amp;format=html">tap(4)</a> and <a href="https://man.freebsd.org/cgi/man.cgi?query=tun&amp;sektion=4&amp;format=html">tun(4)</a> devices have been updated to create <span class="filename">/dev</span> aliases when they are renamed. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=354060">[r354060]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ipfw&amp;sektion=4&amp;format=html">ipfw(4)</a> driver has been updated to support RFC6598/Carrier Grade NAT subnets. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=359694">[r359694]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ng_nat&amp;sektion=4&amp;format=html">ng_nat(4)</a> driver has been updated to allow attaching to an ethernet interface. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=359697">[r359697]</a>
+</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ixl&amp;sektion=4&amp;format=html">ixl(4)</a> driver has been updated to version 1.11.29. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=363876">[r363876]</a>
+ (Sponsored by Intel Corporation)</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ena&amp;sektion=4&amp;format=html">ena(4)</a> driver has been updated to version 2.2.0. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=365381">[r365381]</a>
+ (Sponsored by Amazon, Inc.)</p>
+</div>
+<div class="paragraph">
+<p>Updates to the wireless networking stack and various drivers have been introduced to provide better 802.11n and 802.11ac support. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=365670">[r365670]</a>
+ (Sponsored by Rubicon Communications, LLC (Netgate))</p>
+</div>
+<div class="paragraph">
+<p>The <code>ice(4)</code> driver has been added, supporting Intel® 100Gb ethernet cards. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=365733">[r365733]</a>
+ (Sponsored by Intel Corporation)</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=cxgbe&amp;sektion=4&amp;format=html">cxgbe(4)</a> driver has been updated to version 1.25.0.0. <a href="http://svn.freebsd.org/viewvc/base?view=revision&revision=365961">[r365961]</a>
+ (Sponsored by Chelsio Communications)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ports">Ports Collection and Package Infrastructure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section covers changes to the FreeBSD Ports Collection, package infrastructure, and package maintenance and installation tools.</p>
+</div>
+<div class="sect2">
+<h3 id="ports-packages">Packaging Changes</h3>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=pkg&amp;sektion=8&amp;format=html">pkg(8)</a> utility has been updated to version 1.15.10.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="future-releases">General Notes Regarding Future FreeBSD Releases</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="future-releases-cputype">Default <code>CPUTYPE</code> Change</h3>
+<div class="paragraph">
+<p>Starting with FreeBSD-13.0, the default <code>CPUTYPE</code> for the i386 architecture will change from <code>486</code> to <code>686</code>.</p>
+</div>
+<div class="paragraph">
+<p>This means that, by default, binaries produced will require a 686-class CPU, including but not limited to binaries provided by the FreeBSD Release Engineering team. FreeBSD 13.0 will continue to support older CPUs, however users needing this functionality will need to build their own releases for official support.</p>
+</div>
+<div class="paragraph">
+<p>As the primary use for i486 and i586 CPUs is generally in the embedded market, the general end-user impact is expected to be minimal, as new hardware with these CPU types has long faded, and much of the deployed base of such systems is nearing retirement age, statistically.</p>
+</div>
+<div class="paragraph">
+<p>There were several factors taken into account for this change. For example, i486 does not have 64-bit atomics, and while they can be emulated in the kernel, they cannot be emulated in the userland. Additionally, the 32-bit amd64 libraries have been i686 since their inception.</p>
+</div>
+<div class="paragraph">
+<p>As the majority of 32-bit testing is done by developers using the lib32 libraries on 64-bit hardware with the <code>COMPAT_FREEBSD32</code> option in the kernel, this change ensures better coverage and user experience. This also aligns with what the majority of Linux® distributions have been doing for quite some time.</p>
+</div>
+<div class="paragraph">
+<p>This is expected to be the final bump of the default <code>CPUTYPE</code> in i386.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This change does not affect the FreeBSD 12.x or 11.x series of releases.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: June 19, 2021 by <a href="https://cgit.freebsd.org/doc/commit/?id=8e22e76d94" target="_blank">Danilo G. Baio</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

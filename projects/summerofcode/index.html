@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/projects/summerofcode/">
+
+  <title>
+    FreeBSD and Google Summer of Code |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD and Google Summer of Code " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/projects/summerofcode/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/projects\/summerofcode\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+            <li>
+              <a href="/ru/projects/summerofcode/" lang="ru">Russian</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/projects></a></li>
+  <li><a href=https://www.freebsd.msk.ru/doc/en/books/developers-handbook/></a></li>
+  <li><a href=https://www.freebsd.msk.ru/doc/en/articles/committers-guide></a></li>
+  <li><a href=https://www.freebsd.msk.ru/doc/en/books/porters-handbook/></a></li>
+  <li><a href=/releng>Release Engineering</a></li>
+  <li><a href=/platforms>Platforms</a></li>
+  <li><a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a></li>
+  <li><a href=https://www.freebsd.msk.ru/doc/en/articles/contributing/>Contributing</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD and Google Summer of Code</h1><div class="paragraph">
+<p>Google Summer of Code or GSoC is an annual event sponsored by Google, Inc.
+It enables contributors to spend from 8 to 22 weeks over the summer &#34;interning&#34; with open source software projects.
+The work is done under the guidance of one or more mentors and the effort is rewarded with <a href="https://developers.google.com/open-source/gsoc/help/student-stipends">a stipend</a>.
+FreeBSD has participated as a mentoring organization every year since GSoC began in 2005, and we are applying again in 2026.</p>
+</div>
+<div class="paragraph">
+<p>If you are interested in operating system development, &#34;interning&#34; with a longstanding and successful open source operating system like FreeBSD is an excellent opportunity.
+Founded in 1993, FreeBSD is an advanced operating system for server, desktop, and embedded computer platforms.
+It offers advanced networking, impressive security features, and high performance.
+It is the foundation for many commercial products, including Sony’s Playstation, Nintendo’s Switch, NetApp’s OnTap/GX, Juniper’s Junos operating system, and was the starting point for the core of Apple’s OS X.
+The project consists of hundreds of &#34;committers&#34; and many more contributors who have experience in different parts of the operating system.
+Many of our past GSoC students have gone on to become FreeBSD developers.
+After the summer ends, contributors may be sponsored by Google or the FreeBSD Foundation to present on their work at conferences.
+This can be a great job networking opportunity!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#steps">Important Steps</a></p>
+</li>
+<li>
+<p><a href="#project">Finding a Project and a Mentor</a></p>
+</li>
+<li>
+<p><a href="#proposals">Proposal Guidelines</a></p>
+</li>
+<li>
+<p><a href="#communication">Communication and Openness</a></p>
+</li>
+<li>
+<p><a href="#llm">LLM Policy</a></p>
+</li>
+<li>
+<p><a href="#faq">Frequently Asked Questions</a></p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="steps">Important Steps</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Determine whether you <a href="https://summerofcode.withgoogle.com/get-started">qualify to participate in GSoC</a>.</p>
+</li>
+<li>
+<p>Stay on top of <a href="https://developers.google.com/open-source/gsoc/timeline">the timeline</a>.</p>
+</li>
+<li>
+<p>Find a project and a mentor.</p>
+</li>
+<li>
+<p>Submit a proposal to Google.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project">Finding a Project and a Mentor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A crucial step is to choose an appropriate project and mentor.
+If you want to be successful, start your search early.
+The <a href="https://wiki.FreeBSD.org/SummerOfCodeIdeas">list of project ideas</a> is a helpful starting point, but don’t feel limited by those projects.
+You can try mailing one of the technical contacts listed on a project and/or mailing the <a href="mailto:hackers@FreeBSD.org">hackers@FreeBSD.org</a> list.
+Introduce yourself and describe your interests and experience.
+This may pique the interest of one or more developers who could suggest a project and mentor.</p>
+</div>
+<div class="paragraph">
+<p>We also maintain a more generic <a href="https://wiki.FreeBSD.org/IdeasPage">Ideas Page</a>.
+These projects are less suitable as Summer of Code projects as they may be scoped larger or smaller than a summer, or might not have such a clear mentor.
+We suggest e-mailing our <a href="mailto:hackers@FreeBSD.org">hackers@FreeBSD.org</a> for help if you do decide to propose one of them.
+These pages exist to help provide inspiration.
+Another place to look for project ideas about upcoming development projects in FreeBSD is the <a href="../../status/">FreeBSD Status Reports</a>.
+Contributors are also welcome, and are indeed encouraged, to propose your own ideas, and if the proposal is strong, we’ll try to match you with a mentor!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_past_projects">Past Projects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For inspiration, here are the projects wiki pages from previous years:
+<a href="https://wiki.FreeBSD.org/SummerOfCode2025Projects">2025</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2024Projects">2024</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2023Projects">2023</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2022Projects">2022</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2021Projects">2021</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2020Projects">2020</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2019Projects">2019</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2018Projects">2018</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2017Projects">2017</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2016Projects">2016</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2015Projects">2015</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2014Projects">2014</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2013Projects">2013</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2012Projects">2012</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2011Projects">2011</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2010Projects">2010</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2009Projects">2009</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2008">2008</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2007">2007</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2006">2006</a>,
+<a href="https://wiki.FreeBSD.org/SummerOfCode2005">2005</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="proposals">Proposal Guidelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Contributors are responsible for writing a proposal and submitting it to Google before the application deadline.
+The following outline was adapted from the Perl Foundation.
+The objective of the proposal is to identify what is to be done, explain why this needs to be done, and convince us that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You are qualified to do this project. This means both having the necessary background and demonstrating a general understanding of the problem.</p>
+</li>
+<li>
+<p>You have the resources (especially time!) needed to complete the project within the working period of the Summer of Code.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A strong proposal will include (at least):</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_general_information">General Information</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong></p>
+</li>
+<li>
+<p><strong>Email</strong></p>
+</li>
+<li>
+<p><strong>Phone</strong></p>
+</li>
+<li>
+<p><strong>IM/IRC</strong></p>
+</li>
+<li>
+<p><strong>Availability</strong></p>
+<div class="paragraph">
+<p>How many hours per week will you spend working on this? How many on other things?
+What other obligations (work, school, vacation, weddings, etc.) do you have this summer?
+Be as specific as possible: when will the project begin and end?
+You should be ready to produce a day by day schedule before the program starts.)</p>
+</div>
+<div class="paragraph">
+<p><strong>Please note</strong>: participating in Google Summer of Code is a significant time commitment, and you should not apply if you already have another full-time job planned for the summer.</p>
+</div>
+</li>
+<li>
+<p><strong>Biography</strong></p>
+<div class="paragraph">
+<p>Who are you?
+What skills do you bring to this project?
+What is your past involvement with The FreeBSD Project? (Past involvement is not required, but ideally you will have at least installed FreeBSD and perhaps fixed a bug or two)
+If your project includes programming in a particular language, such as C, or in a specific environment, such as the kernel or an embedded platform, what experience do you have working in that area?
+Are you familiar with or a user of revision control systems?
+Have you completed courses that will be relevant to your project idea? What do you think you will need to learn to complete this project?</p>
+</div>
+</li>
+<li>
+<p><strong>Possible Mentor</strong></p>
+<div class="paragraph">
+<p>Optional, but highly recommended.
+Do not put a name here if you have not contacted them.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_project_information">Project Information</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Project Title</strong></p>
+<div class="paragraph">
+<p>In forty characters or less, what you propose to do.</p>
+</div>
+</li>
+<li>
+<p><strong>Project Description</strong></p>
+<div class="paragraph">
+<p>A few paragraphs describing your project.
+Direct copies from the ideas page will be rejected - proposals should reveal that you have done some research into the problem and its solutions.
+Include both what you will be doing and why it is a good thing for The FreeBSD Project.</p>
+</div>
+</li>
+<li>
+<p><strong>Deliverables</strong></p>
+<div class="paragraph">
+<p>A list quantifiable results and related code milestones.
+We suggest at least two milestones before the mid-term evaluations and two after.
+Where appropriate, this schedule should include multiple committable or releasable points so people can benefit from and/or test your work as early as possible.</p>
+</div>
+</li>
+<li>
+<p><strong>Test Plan</strong></p>
+<div class="paragraph">
+<p>What parts of your code need testing and how do you plan to test them?
+This might include both functionality and performance tests.</p>
+</div>
+</li>
+<li>
+<p><strong>Project Schedule</strong></p>
+<div class="paragraph">
+<p>How long will the project take? When can you begin work?</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="communication">Communication and Openness</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We expect project work to be completed in git and require that work to be regularly pushed to a public repository.
+Providing public access facilitates collaboration, allows project archiving, and helps mentors and the community support and monitor ongoing work.
+Contributors will also be asked to maintain and update wiki pages of their work.
+E-mail (including mailing lists), IRC, instant messaging (Matrix, Slack, etc.), and video conferencing have been some of ways contributors and mentors have communicated in the past.
+Contributors are also encouraged to use these and other methods to engage with the wider FreeBSD community.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="llm">LLM Policy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We recognize that Large Language Models (LLMs) can be powerful productivity aids.
+However, these tools can produce incorrect, misleading, or poorly understood output.
+To uphold submission quality and to ensure that GSoC remains a learning-focused program, we have established the following policy on LLM usage.</p>
+</div>
+<div class="sect2">
+<h3 id="_no_regurgitation">No &#34;Regurgitation&#34;</h3>
+<div class="paragraph">
+<p>We will not accept project proposals, code, or documentation primarily generated by an LLM.
+All submissions must reflect the contributor’s own original work.
+Submissions that do not meet these standards may result in the rejection of a proposal or failure of a project at evaluation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_discretionary_and_limited_use">Discretionary and Limited Use</h3>
+<div class="paragraph">
+<p>LLM usage may be permitted only with the explicit prior agreement of your mentor(s).
+If permitted, an LLM may be used to assist with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>debugging self-authored code</p>
+</li>
+<li>
+<p>improving, proofreading, or translating text</p>
+</li>
+<li>
+<p>researching background information about a problem.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All results must be critically evaluated and fact-checked by the contributor.
+Mentors may prohibit LLM usage entirely for specific projects if it interferes with learning objectives.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_full_disclosure">Full Disclosure</h3>
+<div class="paragraph">
+<p>If your mentor permits LLM usage within the bounds described here, any usage must be clearly disclosed by the contributor.
+Disclosure must include descriptions of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the tool(s) used</p>
+</li>
+<li>
+<p>the type of assistance provided</p>
+</li>
+<li>
+<p>any code or documents created with LLM assistance.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Failure to disclose LLM usage will be treated as a policy violation.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq">Frequently Asked Questions</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Where can I find the list of deadlines?</strong></p>
+<div class="paragraph">
+<p>The <a href="https://developers.google.com/open-source/gsoc/timeline/">GSoC Timeline</a> is the authoritative source of detailed schedule information.</p>
+</div>
+</li>
+<li>
+<p><strong>Where do I register?</strong></p>
+<div class="paragraph">
+<p>All contributors must register with, and submit applications via, <a href="https://summerofcode.withgoogle.com/">the Google Summer of Code Home Page</a>.</p>
+</div>
+</li>
+<li>
+<p><strong>What advice do you have for a contributor who might want to submit a proposal?</strong></p>
+<div class="paragraph">
+<p>Experience suggests that the strongest proposals come from contributors who contact FreeBSD developers and potential mentors well in advance of submitting their proposal, seek feedback on their proposal ideas, and write proposals that reflect time spent exploring and understanding the problem area to be addressed.
+Even if the FreeBSD developer(s) you contact aren’t the eventual mentor of the project, their feedback can be invaluable.<br/></p>
+</div>
+</li>
+<li>
+<p><strong>Can I submit multiple project proposals to the FreeBSD Project?</strong></p>
+<div class="paragraph">
+<p>Yes, but do make sure you invest adequate time in each proposal.
+We are not able to accept more than one project per contributor, so you may do better spending more time on one or two detailed proposals than by submitting lots of less-detailed ones.</p>
+</div>
+</li>
+<li>
+<p><strong>Will the FreeBSD Project accept more than one contributor for the same idea?</strong></p>
+<div class="paragraph">
+<p>In general, we will accept only one contributor for any given proposal idea, as most proposal ideas in our ideas list are sized with a single contributor summer project in mind.
+This is a good reason to consider coming up with your own idea, or at least, making sure that your proposal for one of our project ideas reflects your unique contribution and viewpoint.
+If you plan to submit multiple proposals, you might consider doing one with an idea from the list, and another with an original idea.</p>
+</div>
+</li>
+<li>
+<p><strong>What if my proposal is not selected in the application process? Can I still participate?</strong></p>
+<div class="paragraph">
+<p>We always have more good applications than contributor places, but that doesn’t mean you can’t do the project anyway.
+The FreeBSD Project always welcomes new volunteers to work on projects, and is generally happy to provide mentoring and support for contributors whose proposals could not be selected in order to allow them to work on their project anyway.
+You will need to work with the FreeBSD Project GSoC administrators to identify a possible mentor.
+However, Google will not fund that participation.</p>
+</div>
+</li>
+<li>
+<p><strong>How can I learn more about FreeBSD?</strong></p>
+<div class="paragraph">
+<p>The <a href="//www.FreeBSD.org/">FreeBSD Project Home Page</a> is the best way to learn more about the project - from there you can reach the FreeBSD Handbook, FreeBSD Developer’s Handbook, project mailing list archives, regular project status reports, and more.
+If you have questions about specific project ideas, e-mail the technical contacts for those ideas.
+If you have general GSoC questions relating to FreeBSD, such as if you are unable to reach a project technical contact, need help finding documentation, or want to know who might be a good person to talk to about your idea, send them to <a href="mailto:soc-admins@FreeBSD.org">soc-admins@FreeBSD.org</a>.</p>
+</div>
+</li>
+<li>
+<p><strong>Where can I contact people to discuss proposal ideas or other topics related to FreeBSD and GSoc?</strong></p>
+<div class="paragraph">
+<p>You can contact us in the <a href="https://wiki.freebsd.org/SummerOfCode/IRC">FreeBSD Summer of Code IRC Channel</a>, post to the hackers mailing list, or mail <a href="mailto:soc-admins@FreeBSD.org">soc-admins@FreeBSD.org</a>.</p>
+</div>
+</li>
+<li>
+<p><strong>Where can I find more information from Google?</strong></p>
+<div class="paragraph">
+<p><a href="https://summerofcode.withgoogle.com/">Google Summer Of Code Homepage</a><br/>
+<a href="https://developers.google.com/open-source/gsoc/resources/manual">GSoC Guide for Contributors and Mentors</a><br/>
+<a href="https://developers.google.com/open-source/gsoc/faq">GSoC FAQs</a><br/>
+<a href="https://developers.google.com/open-source/gsoc/videos">Videos</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: January 24, 2026 by <a href="https://cgit.freebsd.org/doc/commit/?id=6cee84f9e4" target="_blank">Joseph Mingrone</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

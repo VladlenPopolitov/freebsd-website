@@ -1,0 +1,2822 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/ru/releases/15.0R/relnotes/">
+
+  <title>
+    Информация о релизе FreeBSD 15.0-RELEASE |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" Информация о релизе FreeBSD 15.0-RELEASE " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="ru" >
+  <meta property="og:url" content="https://www.freebsd.org/ru/releases/15.0R/relnotes/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/ru\/releases\/15.0R\/relnotes\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/ru/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              О проекте
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/about">О проекте</a>
+            </li>
+            <li>
+              <a href="/ru/projects/newbies">Введение</a>
+            </li>
+            <li>
+              <a href="/ru/features">Возможности</a>
+            </li>
+            <li>
+              <a href="/ru/privacy">Политика конфиденциальности</a>
+            </li>
+            <li>
+              <a href="/ru/projects">Проекты</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Порты</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Получить FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/where">Получить FreeBSD</a>
+            </li>
+            <li>
+              <a href="/ru/releases">Информация о релизах</a>
+            </li>
+            <li>
+              <a href="/ru/releng">Разработка релизов</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Документация
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/ru/">Документация</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/handbook/">Руководство FreeBSD</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/porters-handbook/">Руководство портировщика</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/fdp-primer">Руководство проекта документации</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Страницы Справочника</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Презентации и статьи</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books">Книги</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/articles">Статьи</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Сообщество
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/community">Сообщество</a>
+            </li>
+            <li>
+              <a href="/ru/community/mailinglists">Списки рассылки</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Форумы</a>
+            </li>
+            <li>
+              <a href="/ru/usergroups">Группы пользователей</a>
+            </li>
+            <li>
+              <a href="/ru/events">События</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">Журнал FreeBSD</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Разработчики
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/projects">Разработчики</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Идеи проектов</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git-репозиторий</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">Зеркало GitHub</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Проверка кода (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Сервис непрерывной интеграции</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Поддержка
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/support">Поддержка</a>
+            </li>
+            <li>
+              <a href="/ru/commercial">Поставщики</a>
+            </li>
+            <li>
+              <a href="/ru/security">Информация о безопасности</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Сообщения об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support">Отправка сообщений об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support/webresources">Веб-ресурсы</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="ru">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/ru/" class="current-lang" aria-current="page">Russian</a>
+          </li>
+          
+            <li>
+              <a href="/releases/15.0R/relnotes/" lang="en">English</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Пожертвовать
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/ru/where></a></li>
+  <li>
+    <a href=/ru/releases>Ин­фор­ма­ция о ре­ли­зах</a>
+    <ul>
+      <li>Про­дук­тив­ный ре­лиз: <a href=ZgotmplZ></a></li>
+      <li>Про­дук­тив­ный ре­лиз: <a href=ZgotmplZ></a></li>
+      <li>Ста­рый про­дук­тив­ный ре­лиз: <a href=ZgotmplZ></a></li>
+    </ul>
+  </li>
+  <li>
+    <a href=/ru/snapshots>Про­ме­жу­точ­ные сбор­ки</a>
+      <ul>
+        
+        
+        <li>Пред­сто­я­щий ре­лиз: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Пред­сто­я­щий ре­лиз: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Пред­сто­я­щий ре­лиз: <a href=ZgotmplZ></a></li>
+        
+      </ul>
+  </li>
+  <li><a href=/ru/ports>Пор­ти­ро­ван­ные при­ло­же­ния</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>Информация о релизе FreeBSD 15.0-RELEASE</h1><div class="sect1">
+<h2 id="_аннотация">Аннотация</h2>
+<div class="sectionbody">
+<div class="paragraph abstract-title">
+<p>Информация о релизе FreeBSD 15.0-RELEASE содержит сводку изменений, внесённых в базовую систему FreeBSD на линии разработки 15-STABLE.
+Этот документ перечисляет применимые рекомендации по безопасности, выпущенные с момента последнего релиза, а также значительные изменения в ядре FreeBSD и пользовательском пространстве.
+Также представлены некоторые краткие замечания по обновлению.</p>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_аннотация">Аннотация</a></li>
+<li><a href="#intro">Введение</a></li>
+<li><a href="#upgrade">Обновление с предыдущих выпусков FreeBSD</a>
+<ul class="sectlevel2">
+<li><a href="#upgrade-fu">Обновление из дистрибутивных наборов</a></li>
+</ul>
+</li>
+<li><a href="#upgrade-rc">Обновление из пакетов</a>
+<ul class="sectlevel2">
+<li><a href="#upgrade-mk">Обновление из исходного кода</a></li>
+</ul>
+</li>
+<li><a href="#security-errata">Включенные исправления безопасности и патчи</a>
+<ul class="sectlevel2">
+<li><a href="#security">Бюллетени безопасности (ошибки исправлены)</a></li>
+<li><a href="#errata">Уведомления об ошибках (ошибки исправлены)</a></li>
+</ul>
+</li>
+<li><a href="#architectures">Архитектуры</a></li>
+<li><a href="#userland">Пользовательское окружение</a>
+<ul class="sectlevel2">
+<li><a href="#userland-config">Изменения конфигурации пользовательского окружения</a></li>
+<li><a href="#userland-programs">Изменения в пользовательских приложениях</a></li>
+<li><a href="#userland-contrib">Предоставленное программное обеспечение</a></li>
+<li><a href="#userland-libraries">Библиотеки времени выполнения и API</a></li>
+<li><a href="#userland-misc">Разное</a></li>
+<li><a href="#userland-deprecated-programs">Устаревшие приложения</a></li>
+</ul>
+</li>
+<li><a href="#cloud">Поддержка облачных сред</a></li>
+<li><a href="#kernel">Ядро</a>
+<ul class="sectlevel2">
+<li><a href="#kernel-general">Общие изменения в ядре</a></li>
+<li><a href="#kernel-architecture-specific">Архитектурно-зависимые изменения</a></li>
+</ul>
+</li>
+<li><a href="#drivers">Устройства и драйверы</a>
+<ul class="sectlevel2">
+<li><a href="#drivers-device">Драйверы устройств</a></li>
+<li><a href="#drivers-removals">Устаревшие и удаленные драйверы</a></li>
+</ul>
+</li>
+<li><a href="#storage">Подсистема хранения данных</a>
+<ul class="sectlevel2">
+<li><a href="#storage-general">Общие изменения в системах хранения</a></li>
+<li><a href="#storage-nfs">NFS</a></li>
+<li><a href="#storage-ufs">UFS</a></li>
+<li><a href="#storage-zfs">ZFS</a></li>
+<li><a href="#storage-geom">GEOM</a></li>
+</ul>
+</li>
+<li><a href="#boot-loader">Изменения в загрузчике</a></li>
+<li><a href="#network">Сеть</a>
+<ul class="sectlevel2">
+<li><a href="#network-general">Общие сетевые изменения</a></li>
+<li><a href="#network-protocols">Сетевые протоколы</a></li>
+<li><a href="#wireless-networking">Беспроводные сети</a></li>
+</ul>
+</li>
+<li><a href="#hardware">Поддержка оборудования</a>
+<ul class="sectlevel2">
+<li><a href="#hardware-virtualization">Поддержка виртуализации</a></li>
+<li><a href="#linuxulator">Совместимость с Linux-бинарниками (Linuxulator)</a></li>
+</ul>
+</li>
+<li><a href="#multimedia">Мультимедиа</a></li>
+<li><a href="#documentation">Документация</a>
+<ul class="sectlevel2">
+<li><a href="#man-pages">Страницы Справочника</a></li>
+</ul>
+</li>
+<li><a href="#ports">Коллекция портов и инфраструктура пакетов</a>
+<ul class="sectlevel2">
+<li><a href="#Installer">Установщик</a></li>
+<li><a href="#ports-packages">Изменения в упаковке</a></li>
+</ul>
+</li>
+<li><a href="#future-releases">Общие замечания относительно будущих выпусков FreeBSD</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="intro">Введение</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Этот документ содержит информацию о релизе FreeBSD 15.0-RELEASE.
+В нем описаны недавно добавленные, измененные или удаленные функции FreeBSD.
+Также представлены некоторые замечания по обновлению с предыдущих версий FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>Дистрибутив &#34;release&#34;, к которому относится эта информация о релизе, представляет собой последнюю точку на ветке разработки 15-STABLE между 14.0-RELEASE и будущим 15.1-RELEASE.
+Информацию о предварительно собранных, бинарных дистрибутивах &#34;release&#34; на этой ветке можно найти на <a href="https://www.FreeBSD.org/releases/" class="bare">https://www.FreeBSD.org/releases/</a>.
+Дополнительную информацию о получении этого (или другого) дистрибутива &#34;release&#34; FreeBSD можно найти в <a href="https://docs.freebsd.org/ru/books/handbook/mirrors">приложении по получению FreeBSD</a> к <a href="https://docs.freebsd.org/ru/books/handbook/">руководству FreeBSD</a>.</p>
+</div>
+<div class="paragraph">
+<p>Всем пользователям рекомендуется ознакомиться с исправлениями и дополнениями релиза перед установкой FreeBSD.
+Документ с исправлениями и дополнениями обновляется «последней информацией», обнаруженной в конце цикла выпуска или после выпуска.
+Обычно он содержит информацию об известных ошибках, уведомлениях о безопасности и исправлениях в документации.
+Актуальную копию исправлений и дополнений для FreeBSD 15.0-RELEASE можно найти на веб-сайте FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>В этом документе описаны наиболее заметные для пользователя новые или измененные функции в FreeBSD после 14.0-RELEASE.
+Как правило, описанные здесь изменения уникальны для ветки 15-STABLE, если они не отмечены специально как функции MERGED.</p>
+</div>
+<div class="paragraph">
+<p>Обычные пункты информации о релизе документируют недавние уведомления о безопасности, выпущенные после 14.0-RELEASE, новые драйверы или поддержку оборудования, новые команды или опции, основные исправления ошибок или обновления предоставленного программного обеспечения.
+Также могут перечисляться изменения в основных портах/пакетах или практиках инженерии выпуска.
+Очевидно, что информация о релизе не может перечислить каждое изменение, внесенное в FreeBSD между выпусками; этот документ в основном фокусируется на уведомлениях о безопасности, изменениях, заметных для пользователя, и основных архитектурных улучшениях.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade">Обновление с предыдущих выпусков FreeBSD</h2>
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Попытку обновления FreeBSD следует предпринимать только после резервного копирования <em>всех</em> данных и конфигурационных файлов.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="sect2">
+<h3 id="upgrade-fu">Обновление из дистрибутивных наборов</h3>
+<div class="paragraph">
+<p>Бинарные обновления между промежуточными сборками и релизными версиями поддерживаются с помощью утилиты <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a>.
+Ознакомьтесь с процедурой обновления конкретного релиза, с <a href="../installation/#upgrade-binary">Информацией об обновлении FreeBSD 15.0-RELEASE</a> и с более подробной информацией в разделе Руководства FreeBSD о <a href="https://docs.freebsd.org/ru/books/handbook/cutting-edge/#freebsdupdate-upgrade">процедуре бинарного обновления</a>.
+При этом будут обновлены неизменённые пользовательские утилиты, а также неизменённые ядра GENERIC, распространяемые как часть официального релиза FreeBSD.
+Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> требует, чтобы обновляемая система имела подключение к сети Интернет.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade-rc">Обновление из пакетов</h2>
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Для пользователей FreeBSD 15.0 сборок PRERELEASE, ALPHA и BETA прямое обновление с помощью утилиты <a href="https://man.freebsd.org/cgi/man.cgi?query=pkg&amp;sektion=8&amp;format=html">pkg(8)</a> выполнить невозможно ввиду последних изменений в инфраструктуре FreeBSD.org.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Для систем, установка которых выполнена из пакетов, требуется либо ручное копирование необходимых файлов из копии дерева исходного кода с тегом <code>15.0-RELEASE</code>, либо использование альтернативного варианта в виде принудительной установки пакета <code>FreeBSD-pkg-bootstrap</code> из набора пакетов базовой системы официального релиза.</p>
+</div>
+<div class="paragraph">
+<p>Рекомендуемым и наиболее безопасным методом является использование копии дерева исходного кода любой из веток head, stable/15 или releng/15.0 после 2025-11-27 22:00 UTC.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># cp /usr/src/usr.sbin/pkg/FreeBSD.conf.quarterly-release \
+       /etc/pkg/FreeBSD.conf
+# cp -R /usr/src/share/keys/pkgbase-15 /usr/share/keys/pkgbase-15</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Пользователи, у которых не установлен актуальный исходный код, могут использовать менее безопасный, но более простой подход, включающий проверку контрольных сумм после установки. Поскольку эти файлы не зависят от архитектуры, соответствующие контрольные суммы будут совпадать на всех платформах. Перед обновлением через <a href="https://man.freebsd.org/cgi/man.cgi?query=pkg&amp;sektion=8&amp;format=html">pkg(8)</a> будет необходима активация репозитория пакетов FreeBSD-base:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># pkg add -f https://pkg.freebsd.org/FreeBSD:15:$(uname -p)/base_release_0/FreeBSD-pkg-bootstrap-15.0.pkg
+# sha256 -r /etc/pkg/FreeBSD.conf /usr/share/keys/pkg/trusted/pkg.freebsd.org.2013102301 \
+  /usr/share/keys/pkgbase-15/trusted/awskms-15 /usr/share/keys/pkgbase-15/trusted/backup-signing-15
+ab261a3b84ffc11654ac0bafbb7d6b3f1b6afc30bfabab3bcff64259678eac26 /etc/pkg/FreeBSD.conf
+036ae4f9c441a3febb41734bbb37227ec3374edd3c6c687e5cb70d580efbea30 /usr/share/keys/pkg/trusted/pkg.freebsd.org.2013102301
+529c79e85a6ca152faa9d57ead85fe0111ffada8d0a0fa2f11fc510999fa50df /usr/share/keys/pkgbase-15/trusted/awskms-15
+c368ec8d05654bdaad34742c1d75b9b150bfc3892838cef32f6e5b036b0c0605 /usr/share/keys/pkgbase-15/trusted/backup-signing-15
+# mkdir -p /usr/local/etc/pkg/repos
+# echo &#34;FreeBSD-base: { enabled: yes }&#34; &gt; /usr/local/etc/pkg/repos/FreeBSD.conf</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrade-mk">Обновление из исходного кода</h3>
+<div class="paragraph">
+<p>Обновления с предыдущих версий из исходного кода поддерживаются через компиляцию ветки releng/15.0.
+Обратитесь к соответствующим инструкциям в <span class="filename">/usr/src/UPDATING</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="security-errata">Включенные исправления безопасности и патчи</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>В этом разделе перечислены различные уведомления о безопасности и исправления, выпущенные после 14.0-RELEASE, которые были устранены в 15.0-RELEASE.</p>
+</div>
+<div class="sect2">
+<h3 id="security">Бюллетени безопасности (ошибки исправлены)</h3>
+<table class="tableblock frame-none grid-all stretch informaltable">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Бюллетень</th>
+<th class="tableblock halign-left valign-top">Дата</th>
+<th class="tableblock halign-left valign-top">Тема</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-23:17.pf.asc">FreeBSD-SA-23:17.pf</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 декабря 2023 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Уязвимость подмены TCP в <a href="https://man.freebsd.org/cgi/man.cgi?query=pf&amp;sektion=4&amp;format=html">pf(4)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-23:18.nfsclient.asc">FreeBSD-SA-23:18.nfsclient</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 декабря 2023 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Повреждение данных клиента NFS и раскрытие памяти ядра</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-23:19.openssh.asc">FreeBSD-SA-23:19.openssh</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 декабря 2023 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Атака усечения префикса в протоколе SSH</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:01.bhyveload.asc">FreeBSD-SA-24:01.bhyveload</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14 февраля 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Доступ <a href="https://man.freebsd.org/cgi/man.cgi?query=bhyveload&amp;sektion=8&amp;format=html">bhyveload(8)</a> к файлам хоста</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:02.tty.asc">FreeBSD-SA-24:02.tty</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14 февраля 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Утечка информации <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=2&amp;format=html">jail(2)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:03.unbound.asc">FreeBSD-SA-24:03.unbound</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 марта 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Множественные уязвимости в unbound</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:04.openssh.asc">FreeBSD-SA-24:04.openssh</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 июля 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Удаленное выполнение кода в OpenSSH до аутентификации</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:05.pf.asc">FreeBSD-SA-24:05.pf</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7 августа 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pf некорректно сопоставляет различные состояния ICMPv6 в таблице состояний</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:06.ktrace.asc">FreeBSD-SA-24:06.ktrace</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7 августа 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://man.freebsd.org/cgi/man.cgi?query=ktrace&amp;sektion=2&amp;format=html">ktrace(2)</a> не отключается при выполнении setuid-бинарника</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:07.nfsclient.asc">FreeBSD-SA-24:07.nfsclient</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7 августа 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Клиент NFS принимает имена файлов, содержащие разделители пути</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:08.openssh.asc">FreeBSD-SA-24:08.openssh</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7 августа 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Проблема безопасности асинхронных сигналов в OpenSSH до аутентификации</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:09.libnv.asc">FreeBSD-SA-24:09.libnv</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 сентября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Множественные уязвимости в libnv</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:10.bhyve.asc">FreeBSD-SA-24:10.bhyve</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 сентября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Привилегированный выход гостя из <a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> через проброс устройства TPM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:11.ctl.asc">FreeBSD-SA-24:11.ctl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 сентября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Множественные проблемы в <a href="https://man.freebsd.org/cgi/man.cgi?query=ctl&amp;sektion=4&amp;format=html">ctl(4)</a> CAM Target Layer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:12.bhyve.asc">FreeBSD-SA-24:12.bhyve</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 сентября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Привилегированный выход гостя из <a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> через контроллер USB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:13.openssl.asc">FreeBSD-SA-24:13.openssl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 сентября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Возможная DoS при проверке имен X.509 в OpenSSL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:14.umtx.asc">FreeBSD-SA-24:14.umtx</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 сентября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Паника ядра или Use-After-Free в umtx</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:15.bhyve.asc">FreeBSD-SA-24:15.bhyve</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 сентября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Чтение за пределами допустимого диапазона в <a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> через эмуляцию XHCI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:16.libnv.asc">FreeBSD-SA-24:16.libnv</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 сентября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Переполнение целого числа в libnv</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:17.bhyve.asc">FreeBSD-SA-24:17.bhyve</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 октября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Множественные проблемы в гипервизоре bhyve</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:18.ctl.asc">FreeBSD-SA-24:18.ctl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 октября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Неограниченное выделение памяти в <a href="https://man.freebsd.org/cgi/man.cgi?query=ctl&amp;sektion=4&amp;format=html">ctl(4)</a> CAM Target Layer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-24:19.fetch.asc">FreeBSD-SA-24:19.fetch</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 октября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Опция <a href="https://man.freebsd.org/cgi/man.cgi?query=fetch&amp;sektion=1&amp;format=html">fetch(1)</a> для списка отзыва сертификатов не работает</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-25:01.openssh.asc">FreeBSD-SA-25:01.openssh</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 января 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Обход маскировки нажатий клавиш в OpenSSH</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-25:02.fs.asc">FreeBSD-SA-25:02.fs</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 января 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Переполнение буфера в некоторых файловых системах через NFS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-25:03.etcupdate.asc">FreeBSD-SA-25:03.etcupdate</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 января 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Непривилегированный доступ к системным файлам</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-25:04.ktrace.asc">FreeBSD-SA-25:04.ktrace</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 января 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Раскрытие неинициализированной памяти ядра через <a href="https://man.freebsd.org/cgi/man.cgi?query=ktrace&amp;sektion=2&amp;format=html">ktrace(2)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-25:05.openssh.asc">FreeBSD-SA-25:05.openssh</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21 февраля 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Множественные уязвимости в OpenSSH</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-25:06.xz.asc">FreeBSD-SA-25:06.xz</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 июля 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Использование после освобождения в многопоточном декодере xz</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-25:07.libarchive.asc">FreeBSD-SA-25:07.libarchive</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 августа 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Переполнение целого числа в libarchive, приводящее к двойному освобождению памяти</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-25:08.openssl.asc">FreeBSD-SA-25:08.openssl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30 сентября 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Множественные уязвимости в OpenSSL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-25:09.netinet.asc">FreeBSD-SA-25:09.netinet</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 октября 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SO_REUSEPORT_LB</code> нарушает работу <a href="https://man.freebsd.org/cgi/man.cgi?query=connect&amp;sektion=2&amp;format=html">connect(2)</a> для UDP-сокетов</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-25:10.unbound.asc">FreeBSD-SA-25:10.unbound</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26 ноября 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Отравление кэша в службе local-unbound</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="errata">Уведомления об ошибках (ошибки исправлены)</h3>
+<table class="tableblock frame-none grid-all stretch informaltable">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Исправление</th>
+<th class="tableblock halign-left valign-top">Дата</th>
+<th class="tableblock halign-left valign-top">Тема</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-23:15.sanitizer.asc">FreeBSD-EN-23:15:sanitizer</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 декабря 2023 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Сбой санитайзера Clang при включенном ASLR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-23:16.openzfs.asc">FreeBSD-EN-23:16:openzfs</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 декабря 2023 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Повреждение данных OpenZFS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-23:17.ossl.asc">FreeBSD-EN-23:17:ossl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 декабря 2023 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Реализация AES-GCM в <a href="https://man.freebsd.org/cgi/man.cgi?query=ossl&amp;sektion=4&amp;format=html">ossl(4)</a> может давать некорректные результаты</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-23:18.openzfs.asc">FreeBSD-EN-23:18:openzfs</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 декабря 2023 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Высокая загрузка ЦП потоками ядра ZFS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-23:19.pkgbase.asc">FreeBSD-EN-23:19:pkgbase</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 декабря 2023 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Некорректный номер версии pkgbase для FreeBSD 14.0-RELEASE.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-23:20.vm.asc">FreeBSD-EN-23:20:vm</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 декабря 2023 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Некорректные результаты от распределителя физической памяти ядра</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-23:21.tty.asc">FreeBSD-EN-23:21:tty</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24 ноября 2023 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://man.freebsd.org/cgi/man.cgi?query=tty&amp;sektion=4&amp;format=html">tty(4)</a> IUTF8 вызывает панику ядра</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-23:22.vfs.asc">FreeBSD-EN-23:22:vfs</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 декабря 2023 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Каталоги снимков ZFS недоступны по NFS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:01.tzdata.asc">FreeBSD-EN-24:01:tzdata</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14 февраля 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Обновление информации базы данных часовых поясов</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:02.libutil.asc">FreeBSD-EN-24:02:libutil</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14 февраля 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Обход ограничений ресурсов класса входа и маски ЦП</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:03.kqueue.asc">FreeBSD-EN-24:03:kqueue</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14 февраля 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ошибка страницы в <a href="https://man.freebsd.org/cgi/man.cgi?query=kqueue_close&amp;sektion=2&amp;format=html">kqueue_close(2)</a> при выходе с использованием <a href="https://man.freebsd.org/cgi/man.cgi?query=rfork&amp;sektion=2&amp;format=html">rfork(2)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:04.ip.asc">FreeBSD-EN-24:04:ip</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14 февраля 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Паника ядра, вызванная <a href="https://man.freebsd.org/cgi/man.cgi?query=bind&amp;sektion=2&amp;format=html">bind(2)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:05.tty.asc">FreeBSD-EN-24:05:tty</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 марта 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Паника ядра TTY</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:06.wireguard.asc">FreeBSD-EN-24:06:wireguard</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 марта 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Недостаточные барьеры в WireGuard <a href="https://man.freebsd.org/cgi/man.cgi?query=if_wg&amp;sektion=4&amp;format=html">if_wg(4)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:07.clang.asc">FreeBSD-EN-24:07:clang</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 марта 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Аварийное завершение Clang при включении определенной оптимизации</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:08.kerberos.asc">FreeBSD-EN-24:08:kerberos</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 марта 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Segfault в Kerberos при использовании слабой криптографии</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:09.zfs.asc">FreeBSD-EN-24:09:zfs</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24 апреля 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Высокая загрузка ЦП потоками ядра, связанными с ZFS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:10.zfs.asc">FreeBSD-EN-24:10:zfs</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 июня 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Утечка памяти ядра в ZFS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:11.ldns.asc">FreeBSD-EN-24:11:ldns</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 июня 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LDNS использует серверы имен, закомментированные в resolv.conf</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:12.killpg.asc">FreeBSD-EN-24:12:killpg</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 июня 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Инверсия порядка блокировок в killpg, вызывающая взаимную блокировку</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:13.libc%2B%2B.asc">FreeBSD-EN-24:13:libc++</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 июня 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Некорректный размер, передаваемый при удалении std::string, выделенного в куче</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:14.ifconfig.asc">FreeBSD-EN-24:14:ifconfig</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7 августа 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Некорректное назначение маски сети в ifconfig</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:15.calendar.asc">FreeBSD-EN-24:15:calendar</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 сентября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Вход в сеанс <a href="https://man.freebsd.org/cgi/man.cgi?query=cron&amp;sektion=8&amp;format=html">cron(8)</a> / <a href="https://man.freebsd.org/cgi/man.cgi?query=periodic&amp;sektion=8&amp;format=html">periodic(8)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:16.pf.asc">FreeBSD-EN-24:16:pf</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 сентября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Некорректная обработка состояния ICMPv6 в pf</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-24:17.pam_xdg.asc">FreeBSD-EN-24:17:pam_xdg</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 октября 2024 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Утечка файлового дескриптора в каталоге выполнения XDG при входе в систему</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:01.rpc.asc">FreeBSD-EN-25:01.rpc</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 января 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Разыменование нулевого указателя в клиенте NFSv4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:02.audit.asc">FreeBSD-EN-25:02.audit</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 января 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Аудит системных вызовов отключен DTrace</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:03.tzdata.asc">FreeBSD-EN-25:03.tzdata</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 января 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Обновление информации базы данных часовых поясов</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:04.tzdata.asc">FreeBSD-EN-25:04.tzdata</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 апреля 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Обновление информации базы данных часовых поясов</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:05.expat.asc">FreeBSD-EN-25:05.expat</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 апреля 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Обновление expat до версии 2.7.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:06.daemon.asc">FreeBSD-EN-25:06.daemon</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 апреля 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Отсутствующие сигналы в <a href="https://man.freebsd.org/cgi/man.cgi?query=daemon&amp;sektion=8&amp;format=html">daemon(8)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:07.openssl.asc">FreeBSD-EN-25:07.openssl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 апреля 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Обновление OpenSSL до версии 3.0.16</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:08.caroot.asc">FreeBSD-EN-25:08.caroot</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 апреля 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Обновление набора корневых сертификатов</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:09.libc.asc">FreeBSD-EN-25:09:libc</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 июля 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Аварийное завершение динамически загружаемых библиотек C++ при выходе</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:10.zfs.asc">FreeBSD-EN-25:10:zfs</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 июля 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Повреждение в потоках репликации ZFS из зашифрованных наборов данных</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:11.ena.asc">FreeBSD-EN-25:11:ena</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 июля 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Сбросы <code>ena</code> и паника ядра на экземплярах Nitro v4 или новее</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:12.efi.asc">FreeBSD-EN-25:12:efi</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 августа 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://man.freebsd.org/cgi/man.cgi?query=bsdinstall&amp;sektion=8&amp;format=html">bsdinstall(8)</a> не копирует правильный загрузчик на системах с прошивкой IA32 UEFI.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:13.wlan_tkip.asc">FreeBSD-EN-25:13:wlan_tkip</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 августа 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Поддержка криптографии TKIP в net80211 не работает для некоторых драйверов</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:14.route.asc">FreeBSD-EN-25:14:route</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 августа 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://man.freebsd.org/cgi/man.cgi?query=route&amp;sektion=8&amp;format=html">route(8)</a> monitor буферизирует слишком много данных при перенаправлении в файл</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:15.arm64.asc">FreeBSD-EN-25:15:arm64</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16 сентября 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">arm64 <a href="https://man.freebsd.org/cgi/man.cgi?query=syscall&amp;sektion=2&amp;format=html">syscall(2)</a> позволяет непривилегированному пользователю вызвать панику ядра</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:16.vfs.asc">FreeBSD-EN-25:16:vfs</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16 сентября 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://man.freebsd.org/cgi/man.cgi?query=copy_file_range&amp;sektion=2&amp;format=html">copy_file_range(2)</a> не устанавливает выходные параметры</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:17.bnxt.asc">FreeBSD-EN-25:17:bnxt</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16 сентября 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://man.freebsd.org/cgi/man.cgi?query=bnxt&amp;sektion=4&amp;format=html">bnxt(4)</a> не устанавливает тип среды в некоторых случаях</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.freebsd.org/security/advisories/FreeBSD-EN-25:18.freebsd-update.asc">FreeBSD-EN-25:18:freebsd-update</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30 сентября 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> устанавливает библиотеки в неверном порядке</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="architectures">Архитектуры</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Почтенные 32-разрядные аппаратные платформы i386, armv6 и 32-разрядная powerpc ушли на пенсию.
+Поддержка 32-разрядных приложений сохраняется через режим совместимости 32-разрядных приложений на соответствующих 64-разрядных платформах.
+Платформа armv7 остается последней поддерживаемой 32-разрядной платформой.
+Мы благодарим их за службу.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="userland">Пользовательское окружение</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Этот раздел охватывает изменения и дополнения в пользовательских приложениях, предоставленном программном обеспечении и системных утилитах.</p>
+</div>
+<div class="sect2">
+<h3 id="userland-config">Изменения конфигурации пользовательского окружения</h3>
+<div class="paragraph">
+<p>Службе аутентификации Kerberos v5, <a href="https://man.freebsd.org/cgi/man.cgi?query=krb5kdc&amp;sektion=8&amp;format=html">krb5kdc(8)</a>, добавлена новая переменная <code>kdc_restart</code> в <a href="https://man.freebsd.org/cgi/man.cgi?query=daemon&amp;sektion=8&amp;format=html">daemon(8)</a>.
+Установите <code>kdc_restart=&#34;YES&#34;</code> в <a href="https://man.freebsd.org/cgi/man.cgi?query=rc.conf&amp;sektion=5&amp;format=html">rc.conf(5)</a> для автоматического перезапуска kdc при аномальном завершении.
+Установите <code>kdc_restart_delay=&#34;N&#34;</code> на количество секунд задержки перед перезапуском kdc.
+<a href="https://cgit.freebsd.org/src/commit/?id=abc4b3088941">abc4b3088941</a></p>
+</div>
+<div class="paragraph">
+<p>Скрипты <code>daily</code> <a href="https://man.freebsd.org/cgi/man.cgi?query=periodic&amp;sektion=8&amp;format=html">periodic(8)</a> теперь по умолчанию показывают меньше контекста в письмах для уменьшения размера вывода.
+Поведение можно контролировать с помощью переменной <code>daily_diff_flags</code> в <a href="https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&amp;sektion=5&amp;format=html">periodic.conf(5)</a>.
+Аналогично, изменения, показываемые скриптами безопасности, показывают меньше контекста, чем раньше, что контролируется переменной <code>security_status_diff_flags</code> в <a href="https://man.freebsd.org/cgi/man.cgi?query=periodic.conf&amp;sektion=5&amp;format=html">periodic.conf(5)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=538994626b9f">538994626b9f</a>, <a href="https://cgit.freebsd.org/src/commit/?id=37dc394170a5">37dc394170a5</a>, <a href="https://cgit.freebsd.org/src/commit/?id=128e78ffb084">128e78ffb084</a></p>
+</div>
+<div class="paragraph">
+<p>Демон <a href="https://man.freebsd.org/cgi/man.cgi?query=bsnmpd&amp;sektion=1&amp;format=html">bsnmpd(1)</a> больше не поддерживает устаревший транспорт UDP.
+Пользователям, которые не обновляли свой <code>/etc/snmpd.config</code> с 12.0-RELEASE или старше, потребуется обновить конфигурацию.
+В частности, определение транспорта должно быть изменено с OID <code>begemotSnmpdPortStatus</code> на <code>begemotSnmpdTransInetStatus</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=9ba51cce8bbd">9ba51cce8bbd</a></p>
+</div>
+<div class="paragraph">
+<p>Репозиторий <code>FreeBSD-base</code> теперь определен в <code>/etc/pkg/FreeBSD.conf</code> и отключен по умолчанию.
+Системам, которые были установлены с pkgbase до 15.0-RC1 (если используется <code>releng/15.0</code>) или 15 ноября (если используются снимки <code>stable</code>/<code>main</code>), потребуется удалить определение репозитория <code>FreeBSD-base</code> из <code>/usr/local/etc/pkg/repos/</code> и заменить его одной строкой <code>FreeBSD-base: { enabled: yes }</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=5d832135a971">5d832135a971</a></p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=powerd&amp;sektion=8&amp;format=html">powerd(8)</a> теперь включена по умолчанию в <code>/etc/rc.conf</code> на образах
+для Raspberry Pi на arm64 (файлы <code>arm64-aarch64-RPI</code>).
+Это предотвращает постоянную работу тактовой частоты ЦП на низкой скорости.
+<a href="https://cgit.freebsd.org/src/commit/?id=4347ef60501f">4347ef60501f</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="userland-programs">Изменения в пользовательских приложениях</h3>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=adduser&amp;sektion=8&amp;format=html">adduser(8)</a>, используемая <a href="https://man.freebsd.org/cgi/man.cgi?query=bsdinstall&amp;sektion=8&amp;format=html">bsdinstall(8)</a>, теперь создает набор данных ZFS для домашнего каталога нового пользователя, если родительский каталог находится на наборе данных ZFS.
+Доступна опция командной строки для отключения использования отдельного набора данных.
+Также доступно шифрование ZFS.
+<a href="https://cgit.freebsd.org/src/commit/?id=516009ce8d38">516009ce8d38</a></p>
+</div>
+<div class="paragraph">
+<p>Программа <a href="https://man.freebsd.org/cgi/man.cgi?query=date&amp;sektion=1&amp;format=html">date(1)</a> теперь поддерживает наносекунды.
+Например: <code>date -Ins</code> выводит &#34;2024-04-22T12:20:28,763742224+02:00&#34;, а <code>date +%N</code> выводит &#34;415050400&#34;.
+<a href="https://cgit.freebsd.org/src/commit/?id=eeb04a736cb9">eeb04a736cb9</a>
+<span class="contrib">(Sponsored by Klara, Inc.)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=dtrace&amp;sektion=1&amp;format=html">dtrace(1)</a> теперь может генерировать машинно-читаемый вывод в форматах JSON, XML и HTML с использованием <a href="https://man.freebsd.org/cgi/man.cgi?query=libxo&amp;sektion=3&amp;format=html">libxo(3)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=aef4504139a4">aef4504139a4</a> <span class="contrib">(Sponsored by Innovate UK)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=lastcomm&amp;sektion=1&amp;format=html">lastcomm(1)</a> теперь отображает временные метки с точностью до секунд.
+<a href="https://cgit.freebsd.org/src/commit/?id=692c0a2e80c1">692c0a2e80c1</a> <span class="contrib">(Sponsored by DSS Gmbh)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=ldconfig&amp;sektion=8&amp;format=html">ldconfig(8)</a> теперь поддерживает файлы подсказок с любым порядком байт.
+Формат по умолчанию — собственный порядок байт хоста.
+<a href="https://cgit.freebsd.org/src/commit/?id=fa7b31166ddb">fa7b31166ddb</a></p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=usbconfig&amp;sektion=8&amp;format=html">usbconfig(8)</a> теперь читает описания производителей и продуктов USB из <span class="filename">/usr/share/misc/usb_vendors</span>, когда они доступны, аналогично тому, как это делает <a href="https://man.freebsd.org/cgi/man.cgi?query=pciconf&amp;sektion=8&amp;format=html">pciconf(8)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=7b9a772f9f64">7b9a772f9f64</a></p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=env&amp;sektion=1&amp;format=html">env(1)</a> получила опцию для изменения каталога, которая очень похожа на функцию в версии env от GNU, хотя и не поддерживает длинные опции.
+<a href="https://cgit.freebsd.org/src/commit/?id=08e8554c4a39">08e8554c4a39</a> <span class="contrib">(Sponsored by Klara, Inc.)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=ps&amp;sektion=1&amp;format=html">ps(1)</a> теперь автоматически удаляет столбцы из готовых представлений, которые содержат те же данные, что и некоторые явно запрошенные столбцы.
+До этого изменения, если пользователь запрашивал добавление какого-либо «готового представления» (опции <code>-j</code>, <code>-l</code>, <code>-u</code> или <code>-v</code>), столбцы в нем, которые были дубликатами явно запрошенных ранее в командной строке, опускались, но это не работало в обратную сторону, когда готовое представление появлялось перед явно запрошенными столбцами.
+Кроме того, столбцы с разными ключевыми словами, которые являются псевдонимами одного и того же ключевого слова, теперь также считаются содержащими одни и те же данные,
+в дополнение к столбцам с одинаковыми ключевыми словами.
+<a href="https://cgit.freebsd.org/src/commit/?id=cd768a840644">cd768a840644</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Опция <code>-O</code> утилиты <a href="https://man.freebsd.org/cgi/man.cgi?query=ps&amp;sektion=1&amp;format=html">ps(1)</a> стала более универсальной и предсказуемой.
+Список столбцов для отображения <a href="https://man.freebsd.org/cgi/man.cgi?query=ps&amp;sektion=1&amp;format=html">ps(1)</a> теперь сначала строится без учета опций <code>-O</code>.
+На втором шаге все столбцы, переданные через <code>-O</code>, наконец вставляются после первого столбца PID (если он существует, иначе в начало) в уже построенном отображении, в порядке их появления в качестве аргументов для опций <code>-O</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=5dad61d9b949">5dad61d9b949</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Опции <code>-a</code> и <code>-A</code> утилиты <a href="https://man.freebsd.org/cgi/man.cgi?query=ps&amp;sektion=1&amp;format=html">ps(1)</a> теперь всегда показывают все процессы.
+При комбинировании с другими опциями, влияющими на выбор процессов, кроме <code>-X</code> и <code>-x</code>, опция <code>-a</code> не имела бы эффекта (а <code>-A</code> сводилась бы просто к <code>-x</code>).
+Это противоречило правилу, применяемому ко всем другим опциям выбора, которое гласит, что процесс отображается, как только любая из этих опций была указана и выбирает его, что требуется POSIX и, вероятно, является естественным ожиданием.
+В качестве практического следствия, указание <code>-a</code> или <code>-A</code> теперь приводит к отображению всех процессов независимо от других опций выбора, таких как <code>-U</code>, <code>-p</code>, <code>-G</code> и т.д., кроме опций фильтрации <code>-X</code> и <code>-x</code>, которые продолжают применяться.
+В частности, чтобы отображать только процессы из определенных клеток, нельзя использовать <code>-a</code> вместе с <code>-J</code>.
+Опция <code>-J</code>, вопреки своему кажущемуся первоначальному назначению, на практике никогда не работала как фильтр, кроме как случайно с только <code>-a</code> из-за ошибки.
+<a href="https://cgit.freebsd.org/src/commit/?id=93a94ce731a8">93a94ce731a8</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=ps&amp;sektion=1&amp;format=html">ps(1)</a> теперь сопоставляет процессы текущего пользователя, используя эффективный идентификатор пользователя (EUID).
+Ранее сопоставление производилось по реальному идентификатору пользователя (RUID).
+Это приводит <a href="https://man.freebsd.org/cgi/man.cgi?query=ps&amp;sektion=1&amp;format=html">ps(1)</a> в соответствие с POSIX по этой теме.
+<a href="https://cgit.freebsd.org/src/commit/?id=1aabbb25c9f9c4372">1aabbb25c9f9</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Флаг <code>-U</code> утилиты <a href="https://man.freebsd.org/cgi/man.cgi?query=ps&amp;sektion=1&amp;format=html">ps(1)</a> теперь выбирает процессы по реальным идентификаторам пользователей.
+Это то, что требует POSIX для опции <code>-U</code> и, вероятно, поведение, которое большинству пользователей действительно нужно в большинстве случаев.
+Раньше <code>-U</code> выбирало процессы по их эффективным идентификаторам пользователей (что является поведением, требуемым POSIX для опции <code>-u</code>).
+<a href="https://cgit.freebsd.org/src/commit/?id=995b690d1398">995b690d1398</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> получила флаги для фильтрации переменных jail, prison и vnet, так что пользователям не нужно обращаться к исходному коду,
+чтобы определить, является ли переменная jail, prison / vnet или нет.
+<a href="https://cgit.freebsd.org/src/commit/?id=615c9ce250ee">615c9ce250ee</a></p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=grep&amp;sektion=1&amp;format=html">grep(1)</a> больше не следует символическим ссылкам по умолчанию при рекурсивном поиске.
+Это соответствует задокументированному поведению на странице руководства.
+<a href="https://cgit.freebsd.org/src/commit/?id=fc12c191c087">fc12c191c087</a></p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=mdo&amp;sektion=1&amp;format=html">mdo(1)</a> теперь поддерживает полное указание всех пользователей и групп в учетных данных цели.
+Для удобства, в дополнение к полному явному указанию, она позволяет начинать с базового набора, предоставляющего значения по умолчанию для всех атрибутов, который представляет собой либо учетные данные входа какого-либо пользователя из базы данных паролей, либо текущие учетные данные, а затем выборочно изменять эти атрибуты.
+Страница руководства была обновлена для описания новых опций и их взаимодействия.
+<a href="https://cgit.freebsd.org/src/commit/?id=4ffcb1a4a99c">4ffcb1a4a99c</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+
+<span class="contrib">(Sponsored by Google LLC (GSoC 2025))</span>
+</p>
+</div>
+<div class="paragraph">
+<p>При загрузке в однопользовательском режиме <a href="https://man.freebsd.org/cgi/man.cgi?query=init&amp;sektion=8&amp;format=html">init(8)</a> теперь изменяет рабочий каталог на <code>/root</code>, используя <code>/</code> только как запасной вариант.
+Ссылка <code>/.profile</code> на <code>/root/.profile</code> больше не устанавливается.
+<a href="https://cgit.freebsd.org/src/commit/?id=b4b91207ab6f">b4b91207ab6f</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=ca771d7ae527">ca771d7ae527</a></p>
+</div>
+<div class="paragraph">
+<p>Устаревший <a href="https://man.freebsd.org/cgi/man.cgi?query=ftpd&amp;sektion=8&amp;format=html">ftpd(8)</a> был удален из базовой системы.
+Пользователям, которым он еще нужен, можно установить порт <code>ftp/freebsd-ftpd</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=259bb93b80c0">259bb93b80c0</a></p>
+</div>
+<div class="paragraph">
+<p>Программа администрирования базы данных Kerberos v5 научилась выгружать базу данных Heimdal KDC в формате, который можно загрузить в MIT KDC.
+См. <a href="https://wiki.freebsd.org/Kerberos/Heimdal2MIT_KDC_Migration" class="bare">https://wiki.freebsd.org/Kerberos/Heimdal2MIT_KDC_Migration</a>, как использовать <code>kadmin -l dump -f</code> для переноса/конвертации базы данных KDC.
+<a href="https://cgit.freebsd.org/src/commit/?id=9fd3b28d4e0d">9fd3b28d4e0d</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=23fbea8cf2f3">23fbea8cf2f3</a></p>
+</div>
+<div class="paragraph">
+<p>Утилиты <a href="https://man.freebsd.org/cgi/man.cgi?query=bsdconfig&amp;sektion=8&amp;format=html">bsdconfig(8)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=bsdinstall&amp;sektion=8&amp;format=html">bsdinstall(8)</a> теперь используют <a href="https://man.freebsd.org/cgi/man.cgi?query=bsddialog&amp;sektion=1&amp;format=html">bsddialog(1)</a> вместо GNU dialog.
+<a href="https://cgit.freebsd.org/src/commit/?id=c36b3dbc99d1">c36b3dbc99d1</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=04b465777a09">04b465777a09</a></p>
+</div>
+<div class="paragraph">
+<p>Команда <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a> теперь поддерживает параметр <code>zfs.dataset</code> для присоединения списка наборов данных ZFS к клетке.
+<a href="https://cgit.freebsd.org/src/commit/?id=e0dfe185cbca">e0dfe185cbca</a></p>
+</div>
+<div class="paragraph">
+<p>Команда <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a> теперь поддерживает параметры meta и env, которые представляют собой произвольные строки, связанные с клеткой. Эти параметры можно использовать для пометки клетки определенными метаданными или для безопасной передачи информации, к которой можно будет получить доступ внутри клетки. Их можно добавить при создании клетки или изменить позже с помощью <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=30e6e008bc06">30e6e008bc06</a>
+<span class="contrib">(Sponsored by SkunkWerks, GmbH)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Скрипт запуска <code>rc.d/jail</code> теперь поддерживает устаревшую переменную <code>jail_${jailname}_zfs_dataset</code>, чтобы позволить неподдерживаемым менеджерам клеток, таким как <code>ezjail</code>, использовать новую функцию <code>zfs.dataset</code> (см. выше).
+<a href="https://cgit.freebsd.org/src/commit/?id=0b49e504a32d">0b49e504a32d</a></p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=newsyslog&amp;sektion=8&amp;format=html">newsyslog(8)</a> теперь поддерживает указание глобального метода сжатия непосредственно в начале файла <code>newsyslog.conf</code>.
+Все исторические флаги сжатия (<code>J</code>, <code>X</code>, <code>Y</code>, <code>Z</code>) тогда ведут себя как указание «считать файл сжимаемым» вместо «сжать файл этим конкретным методом».
+Доступны следующие методы:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>none</code>: Никогда не сжимать.</p>
+</li>
+<li>
+<p><code>legacy</code>: Историческое поведение (<code>J</code>=bzip2, <code>X</code>=xz, <code>Y</code>=zstd, <code>Z</code>=gzip).</p>
+</li>
+<li>
+<p><code>bzip2</code>, <code>xz</code>, <code>zstd</code>, <code>gzip</code>: Применить указанный метод сжатия.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://cgit.freebsd.org/src/commit/?id=61174ad88e33">61174ad88e33</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=906748d208d3">906748d208d3</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=39d668f1e09e">39d668f1e09e</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="userland-contrib">Предоставленное программное обеспечение</h3>
+<div class="paragraph">
+<p>One True Awk (<a href="https://man.freebsd.org/cgi/man.cgi?query=awk&amp;sektion=1&amp;format=html">awk(1)</a>) обновлен до 2-го издания с новой поддержкой -csv и поддержкой UTF-8.
+Использован снимок 20250804.
+<a href="https://cgit.freebsd.org/src/commit/?id=b45a181a74c8">b45a181a74c8</a>
+<span class="contrib">(Sponsored by Netflix)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Инструментальная цепочка справочных руководств системы, <a href="https://man.freebsd.org/cgi/man.cgi?query=mandoc&amp;sektion=1&amp;format=html">mandoc(1)</a>, обновлена до версии 1.14.6, снимок 2025-09-26. Эта версия включает улучшенную совместимость с groff и DocBook, улучшенный вывод в html и markdown, а также устаревание раздела LIBRARY.
+<a href="https://cgit.freebsd.org/src/commit/?id=c1c95add8c80">c1c95add8c80</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=80c12959679a">80c12959679a</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=4c07abdbacf4">4c07abdbacf4</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=06410c1b5163">06410c1b5163</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=59fc2b0166f7">59fc2b0166f7</a></p>
+</div>
+<div class="paragraph">
+<p>Библиотека <a href="https://man.freebsd.org/cgi/man.cgi?query=jemalloc&amp;sektion=3&amp;format=html">jemalloc(3)</a> обновлена до версии 5.3.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=c43cad871720">c43cad871720</a></p>
+</div>
+<div class="paragraph">
+<p>Система сборки <a href="https://man.freebsd.org/cgi/man.cgi?query=bmake&amp;sektion=1&amp;format=html">bmake(1)</a> обновлена до 20250804, предоставляя множество улучшений отладки,
+исправлений ошибок, таких как обнаружение и отклонение синтаксиса <code>gmake</code>, и улучшений функций,
+таких как использование аргумента с плавающей запятой для <code>-j</code> в качестве множителя количества
+доступных процессоров.</p>
+</div>
+<div class="paragraph">
+<p>Комплекс <a href="https://man.freebsd.org/cgi/man.cgi?query=sendmail&amp;sektion=8&amp;format=html">sendmail(8)</a> обновлен до версии 8.18.1, устраняя CVE-2023-51765.
+<a href="https://cgit.freebsd.org/src/commit/?id=58ae50f31e95">58ae50f31e95</a></p>
+</div>
+<div class="paragraph">
+<p>Калькулятор <a href="https://man.freebsd.org/cgi/man.cgi?query=bc&amp;sektion=1&amp;format=html">bc(1)</a> обновлен до версии 7.1.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=fdc4a7c8012b">fdc4a7c8012b</a></p>
+</div>
+<div class="paragraph">
+<p>Комплекс <code>blacklist</code> переименован вышестоящими разработчиками в <code>blocklist</code>.
+Существующие настройки продолжат работать с выдачей предупреждения.
+Использован снимок 20251026.
+<a href="https://cgit.freebsd.org/src/commit/?id=4afb96fdd272">4afb96fdd272</a></p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=bsddialog&amp;sektion=1&amp;format=html">bsddialog(1)</a> обновлена до версии 1.0.5.
+<a href="https://cgit.freebsd.org/src/commit/?id=0595e10ec773">0595e10ec773</a></p>
+</div>
+<div class="paragraph">
+<p>Генератор парсеров <a href="https://man.freebsd.org/cgi/man.cgi?query=byacc&amp;sektion=1&amp;format=html">byacc(1)</a> обновлен до версии 20240109.
+<a href="https://cgit.freebsd.org/src/commit/?id=822ca3276345">822ca3276345</a></p>
+</div>
+<div class="paragraph">
+<p>Библиотека <code>libarchive</code> обновлена до версии 3.8.2.
+<a href="https://cgit.freebsd.org/src/commit/?id=8a0b57ba54f0">8a0b57ba54f0</a></p>
+</div>
+<div class="paragraph">
+<p>Библиотека <code>libcbor</code> обновлена до версии 0.11.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=1755b9daa693">1755b9daa693</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Библиотека <code>libcxxrt</code> обновлена до снимка поставщика 6f2fdfebcd62.
+<a href="https://cgit.freebsd.org/src/commit/?id=d0dcee46d971">d0dcee46d971</a></p>
+</div>
+<div class="paragraph">
+<p>Библиотека <code>libfido2</code> обновлена до версии 1.14.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=128bace5102e">128bace5102e</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Библиотека <code>libpcap</code> обновлена до версии 1.10.5.
+<a href="https://cgit.freebsd.org/src/commit/?id=26f21a6494b4">26f21a6494b4</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Библиотека <a href="https://man.freebsd.org/cgi/man.cgi?query=ncurses&amp;sektion=3&amp;format=html">ncurses(3)</a> обновлена до версии 6.5.
+<a href="https://cgit.freebsd.org/src/commit/?id=21817992b331">21817992b331</a></p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=tcpdump&amp;sektion=1&amp;format=html">tcpdump(1)</a> обновлена до версии 4.99.5.
+<a href="https://cgit.freebsd.org/src/commit/?id=ec3da16d8bc1">ec3da16d8bc1</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Проверяющий DNS-резолвер <code>unbound</code> обновлен до версии 1.24.1.
+<a href="https://cgit.freebsd.org/src/commit/?id=a988846174e0">a988846174e0</a></p>
+</div>
+<div class="paragraph">
+<p>Инфраструктура компилятора <code>llvm</code> обновлена до 19.1.7-0-gcd708029e0b2.
+<a href="https://cgit.freebsd.org/src/commit/?id=dc3f24ea8a25">dc3f24ea8a25</a></p>
+</div>
+<div class="paragraph">
+<p>Файловая система OpenZFS обновлена до zfs-2.4.0-rc4.
+<a href="https://cgit.freebsd.org/src/commit/?id=7b5b0f43eb06">7b5b0f43eb06</a></p>
+</div>
+<div class="paragraph">
+<p>Компрессоры данных <a href="https://man.freebsd.org/cgi/man.cgi?query=xz&amp;sektion=1&amp;format=html">xz(1)</a> обновлены до версии 5.8.1.
+<a href="https://cgit.freebsd.org/src/commit/?id=128836d304d9">128836d304d9</a></p>
+</div>
+<div class="paragraph">
+<p>Программа просмотра <a href="https://man.freebsd.org/cgi/man.cgi?query=less&amp;sektion=1&amp;format=html">less(1)</a> обновлена до версии v679.
+<a href="https://cgit.freebsd.org/src/commit/?id=76bafc906926">76bafc906926</a></p>
+</div>
+<div class="paragraph">
+<p>Идентификатор файлов <a href="https://man.freebsd.org/cgi/man.cgi?query=file&amp;sektion=1&amp;format=html">file(1)</a> обновлен до версии 5.46.
+<a href="https://cgit.freebsd.org/src/commit/?id=ae316d1d1cff">ae316d1d1cff</a></p>
+</div>
+<div class="paragraph">
+<p>Библиотека сжатия данных <a href="https://man.freebsd.org/cgi/man.cgi?query=zlib&amp;sektion=3&amp;format=html">zlib(3)</a> обновлена до версии 1.3.1.
+<a href="https://cgit.freebsd.org/src/commit/?id=6255c67c3d1a">6255c67c3d1a</a></p>
+</div>
+<div class="paragraph">
+<p>База данных часовых поясов, <code>tzdata</code>, обновлена до версии 2025b.
+<a href="https://cgit.freebsd.org/src/commit/?id=475082194ac8">475082194ac8</a></p>
+</div>
+<div class="paragraph">
+<p>OpenSSH обновлен до версии 10.0p2.
+<a href="https://cgit.freebsd.org/src/commit/?id=8e28d84935f2">8e28d84935f2</a> <span class="contrib">(Sponsored by Фонд FreeBSD)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>OpenSSL обновлен до версии 3.5.4.
+<a href="https://cgit.freebsd.org/src/commit/?id=c0366f908ff4">c0366f908ff4</a></p>
+</div>
+<div class="paragraph">
+<p>Lua обновлена до версии 5.4.8.
+<a href="https://cgit.freebsd.org/src/commit/?id=3068d706eabe">3068d706eabe</a>
+<span class="contrib">(Sponsored by Netflix)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Среда тестирования Google Test C++ обновлена до версии 1.15.2.
+Одним из заметных изменений является то, что GoogleTest 1.15.x теперь официально требует C++-14 (1.14.x требовала C++-11).
+<a href="https://cgit.freebsd.org/src/commit/?id=1d67cec52542">1d67cec52542</a></p>
+</div>
+<div class="paragraph">
+<p>Шрифт консоли <code>spleen</code> для <a href="https://man.freebsd.org/cgi/man.cgi?query=vt&amp;sektion=4&amp;format=html">vt(4)</a> обновлен до версии 2.1.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=26336203d32c">26336203d32c</a></p>
+</div>
+<div class="paragraph">
+<p>MIT KRB5 1.22.1 Kerberos заменяет Heimdal 1.5.2 по умолчанию.
+Heimdal 1.5.2 все еще можно собрать, используя флаг <code>WITHOUT_MITKRB5</code>.
+Heimdal Kerberos будет полностью удален в FreeBSD 16.
+См. также примечание о флаге <code>-f</code> для <code>kadmin -l dump</code> в разделе <a href="#userland-programs">Изменения в пользовательских приложениях</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=ee3960cba106">ee3960cba106</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=0b9a631e0724">0b9a631e0724</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=60f970b85e44">60f970b85e44</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=0d1496f0f1e7">0d1496f0f1e7</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=cbb6e747af98">cbb6e747af98</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=0559f30a882d">0559f30a882d</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=ae07a5805b19">ae07a5805b19</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=f58febc4cefa">f58febc4cefa</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=805498e49ae4">805498e49ae4</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=4cb1baa7d85c">4cb1baa7d85c</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=188138106b9f">188138106b9f</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=4680e7fcc70a">4680e7fcc70a</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=e447c252d0ec">e447c252d0ec</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=5f8493bbf479">5f8493bbf479</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=110111a6cca1">110111a6cca1</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=2a454b05f2c1">2a454b05f2c1</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=98d46e05ab08">98d46e05ab08</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=6b28571cb6ba">6b28571cb6ba</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=ca9ccf0ce9ad">ca9ccf0ce9ad</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=b98d0566b2bd">b98d0566b2bd</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=fb1ccc04adfe">fb1ccc04adfe</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=dd0ec030f8fd">dd0ec030f8fd</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=6c4771c73470">6c4771c73470</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=7b68893ffa9b">7b68893ffa9b</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=624b7beed5ac">624b7beed5ac</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=04764f21855a">04764f21855a</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=73ed0c7992fd">73ed0c7992fd</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=40a5abfc3f66">40a5abfc3f66</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=543b875a8ee4">543b875a8ee4</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=c791ea80b5f7">c791ea80b5f7</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=383e7290c0b5">383e7290c0b5</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=9a726ef24134">9a726ef24134</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=a245dc5d68c7">a245dc5d68c7</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=e26259f48afe">e26259f48afe</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=7d2cfb27d62f">7d2cfb27d62f</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=619feb9dd00e">619feb9dd00e</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=10eecc467f32">10eecc467f32</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=0c13e9c3c464">0c13e9c3c464</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=89c82750da1a">89c82750da1a</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=18a870751b03">18a870751b03</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=ce9c325a2e92">ce9c325a2e92</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=cb3eac927b5d">cb3eac927b5d</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=5105e1ebecc7">5105e1ebecc7</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=b9b0e105c357">b9b0e105c357</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=929f5966a9fd">929f5966a9fd</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=rtw88&amp;sektion=4&amp;format=html">rtw88(4)</a> обновлен до Linux v6.17.
+Возможная проблема с тем, что устройства не могут пройти аутентификацию, все еще исследуется.
+<a href="https://cgit.freebsd.org/src/commit/?id=c1d365f39e08">c1d365f39e08</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=rtw89&amp;sektion=4&amp;format=html">rtw89(4)</a> обновлен до Linux v6.17.
+Драйвер недостаточно протестирован и все еще может иметь проблемы.
+<a href="https://cgit.freebsd.org/src/commit/?id=b35044b38f74">b35044b38f74</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&amp;sektion=4&amp;format=html">iwlwifi(4)</a> обновлен до Linux v6.17.
+Для наборов микросхем на основе BE200 потребуется более новая прошивка, требующая дальнейших исправлений драйвера, которых нет в этом выпуске.
+<a href="https://cgit.freebsd.org/src/commit/?id=69caa1cf3ce5">69caa1cf3ce5</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="userland-libraries">Библиотеки времени выполнения и API</h3>
+<div class="paragraph">
+<p>Функция <a href="https://man.freebsd.org/cgi/man.cgi?query=setusercontext&amp;sektion=3&amp;format=html">setusercontext(3)</a> в <code>libutil</code> теперь будет устанавливать приоритет процесса (nice) из файла <span class="filename">.login.conf</span> в домашнем каталоге при соответствующих условиях, а также из системного <a href="https://man.freebsd.org/cgi/man.cgi?query=login.conf&amp;sektion=5&amp;format=html">login.conf(5)</a>.
+Приоритет теперь может иметь значение <code>inherit</code>, указывающее, что приоритет должен быть неизменным от родительского процесса.
+Аналогично, umask может иметь значение <code>inherit</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=c328e6c6ccaa">c328e6c6ccaa</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=d162d7e2ad32">d162d7e2ad32</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=f2a0277d3e51">f2a0277d3e51</a>
+<span class="contrib">(Sponsored by Kumacom SAS)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Многие операции со строками и памятью в библиотеке C теперь используют расширения SIMD (single instruction multiple data) для повышения производительности, когда они доступны на системах amd64; см. <a href="https://man.freebsd.org/cgi/man.cgi?query=simd&amp;sektion=7&amp;format=html">simd(7)</a>.
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Теперь в математической библиотеке <a href="https://man.freebsd.org/cgi/man.cgi?query=math&amp;sektion=3&amp;format=html">math(3)</a> на поддерживающих платформах появилась гораздо лучшая реализация 128-разрядной функции <code>tgammal</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=8df6c930c151">8df6c930c151</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=fma&amp;sektion=3&amp;format=html">fma(3)</a> теперь возвращает правильно знаковый ноль при определенных малых входных данных (как замечено в тестовом наборе Python).
+<a href="https://cgit.freebsd.org/src/commit/?id=dc39004bc670">dc39004bc670</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлена функция <code>cap_rights_is_empty</code>.
+Она сообщает, установлены ли какие-либо права в <code>cap_rights_t</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=e77813f7e4a3">e77813f7e4a3</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><code>libcxxrt</code> обновлен до вышестоящего 6f2fdfebcd62.
+<a href="https://cgit.freebsd.org/src/commit/?id=d9901a23bd2f">d9901a23bd2f</a></p>
+</div>
+<div class="paragraph">
+<p>Улучшена точность <a href="https://man.freebsd.org/cgi/man.cgi?query=asinf&amp;sektion=3&amp;format=html">asinf(3)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=acosf&amp;sektion=3&amp;format=html">acosf(3)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=33c82f11c267">33c82f11c267</a></p>
+</div>
+<div class="paragraph">
+<p>Системные вызовы <a href="https://man.freebsd.org/cgi/man.cgi?query=setgroups&amp;sektion=2&amp;format=html">setgroups(2)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=getgroups&amp;sektion=2&amp;format=html">getgroups(2)</a> и библиотечная функция <a href="https://man.freebsd.org/cgi/man.cgi?query=initgroups&amp;sektion=3&amp;format=html">initgroups(3)</a> были изменены, чтобы избежать установки или отображения эффективного идентификатора группы (GID), теперь они касаются только дополнительных групп.
+Основная цель этого изменения — избежать проблем с безопасностью в будущем, став совместимыми с Linux/glibc, OpenBSD, NetBSD и системами на основе illumos.
+Следовательно, почти все переносимые приложения уже должны соответствовать этому новому поведению и будут продолжать работать правильно или даже исправятся в процессе (см., например, <a href="https://cgit.freebsd.org/src/commit/?id=239e8c98636a">239e8c98636a</a> для примера, затрагивающего OpenSSH).
+Однако, из предосторожности, портерам, системным администраторам и пользователям рекомендуется проверить свои приложения, использующие <a href="https://man.freebsd.org/cgi/man.cgi?query=setgroups&amp;sektion=2&amp;format=html">setgroups(2)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=getgroups&amp;sektion=2&amp;format=html">getgroups(2)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=initgroups&amp;sektion=3&amp;format=html">initgroups(3)</a>, обратив внимание на следующие моменты.
+Приложения должны использовать <a href="https://man.freebsd.org/cgi/man.cgi?query=setgid&amp;sektion=2&amp;format=html">setgid(2)</a> или <a href="https://man.freebsd.org/cgi/man.cgi?query=setegid&amp;sektion=2&amp;format=html">setegid(2)</a> в дополнение к <a href="https://man.freebsd.org/cgi/man.cgi?query=setgroups&amp;sektion=2&amp;format=html">setgroups(2)</a> или <a href="https://man.freebsd.org/cgi/man.cgi?query=initgroups&amp;sektion=3&amp;format=html">initgroups(3)</a> для установки эффективного идентификатора группы.
+Они не должны специально обрабатывать первый элемент массива, возвращаемого <a href="https://man.freebsd.org/cgi/man.cgi?query=getgroups&amp;sektion=2&amp;format=html">getgroups(2)</a>, а рассматривать его как любой другой дополнительной группы.
+Для получения дополнительной информации обратитесь к разделам SECURITY CONSIDERATIONS, которые были добавлены на страницы руководств <a href="https://man.freebsd.org/cgi/man.cgi?query=setgroups&amp;sektion=2&amp;format=html">setgroups(2)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=getgroups&amp;sektion=2&amp;format=html">getgroups(2)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=initgroups&amp;sektion=3&amp;format=html">initgroups(3)</a>.
+Предоставлены совместимые системные вызовы и библиотечные функции, чтобы двоичные файлы и библиотеки, скомпилированные на системах FreeBSD 14 или более ранних, продолжали работать точно так же, как и раньше.
+<a href="https://cgit.freebsd.org/src/commit/?id=9da2fe96ff2e">9da2fe96ff2e</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=8878569103a3">8878569103a3</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=7132fb5edbc9">7132fb5edbc9</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=2932e6f59bff">2932e6f59bff</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=8878569103a3">8878569103a3</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><code>libc</code> содержит функции совместимости, позволяющие запускать исполняемые файлы/библиотеки, скомпилированные для старых версий FreeBSD.
+Те из них, которые сами используют совместимые системные вызовы, не ссылались на них правильно, что вызывало некорректное поведение во время выполнения.
+Это было исправлено.
+<a href="https://cgit.freebsd.org/src/commit/?id=47f5f89dbd27">47f5f89dbd27</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Функция <a href="https://man.freebsd.org/cgi/man.cgi?query=readdir_r&amp;sektion=3&amp;format=html">readdir_r(3)</a> устарела и может быть удалена в будущих выпусках.
+Ее использование в программе приведет к предупреждениям во время компиляции и компоновки.
+<a href="https://cgit.freebsd.org/src/commit/?id=2bd157bc732a">2bd157bc732a</a>
+<span class="contrib">(Sponsored by Klara, Inc.)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Динамический компоновщик <a href="https://man.freebsd.org/cgi/man.cgi?query=rtld&amp;sektion=1&amp;format=html">rtld(1)</a> получил поддержку флага статического компоновщика, задаваемого параметром <code>-z initfirst</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=78aaab9f1cf359f">78aaab9f1cf3</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="userland-misc">Разное</h3>
+<div class="paragraph">
+<p>Шрифт Gallant для <a href="https://man.freebsd.org/cgi/man.cgi?query=vt&amp;sektion=4&amp;format=html">vt(4)</a> обновлен более чем 4300 новыми глифами, включая поддержку греческого, кириллицы, расширений Международного фонетического алфавита, расширенных латинских символов, Zapf Dingbats, множества стрелок, множества математических символов, буквоподобных символов и обрамленных буквенно-цифровых символов, идеального рисования рамок пиксель к пикселю, символов валют, дополнительных знаков пунктуации, достаточного количества катаканы, чтобы сказать コンニチハ («добрый день», японский), глифов Powerline в области частного использования (Private Use Area) по адресу U+e0a0.
+<a href="https://cgit.freebsd.org/src/commit/?id=9e8c1ab0976c">9e8c1ab0976c</a></p>
+</div>
+<div class="paragraph">
+<p>Поддержка Unicode обновлена до 16.0.0, а CLDR — до 45.0.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=ddfc6f84f242">ddfc6f84f242</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="userland-deprecated-programs">Устаревшие приложения</h3>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=fdisk&amp;sektion=8&amp;format=html">fdisk(8)</a> давно устарел в пользу <a href="https://man.freebsd.org/cgi/man.cgi?query=gpart&amp;sektion=8&amp;format=html">gpart(8)</a>, но не был удален; запуск этого приложения будет показывать предупреждение о переходе на <a href="https://man.freebsd.org/cgi/man.cgi?query=gpart&amp;sektion=8&amp;format=html">gpart(8)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=3958be5c29da">3958be5c29da</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлено уведомление об устаревании <a href="https://man.freebsd.org/cgi/man.cgi?query=syscons&amp;sektion=4&amp;format=html">syscons(4)</a>.
+<a href="https://man.freebsd.org/cgi/man.cgi?query=syscons&amp;sektion=4&amp;format=html">syscons(4)</a> несовместим с UEFI, не поддерживает UTF-8 и блокируется глобальным мьютексом Giant.
+Конкретных сроков его удаления еще нет, но поддержка блокировки Giant, как ожидается, исчезнет через один или два основных цикла выпуска.
+<a href="https://cgit.freebsd.org/src/commit/?id=8c922db4f3d9">8c922db4f3d9</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Утилита <code>shar</code> была удалена.
+Она продолжает существовать как порт <a class="package" href="https://cgit.freebsd.org/ports/tree/sysutils/freebsd-shar/">sysutils/freebsd-shar</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=3fde39073c72">3fde39073c72</a></p>
+</div>
+<div class="paragraph">
+<p>Криптографически слабый алгоритм подписи DSA был удален из OpenSSH, следуя за вышестоящими разработчиками.</p>
+</div>
+<div class="paragraph">
+<p>База данных <a href="https://man.freebsd.org/cgi/man.cgi?query=publickey&amp;sektion=5&amp;format=html">publickey(5)</a> была удалена.
+Она использует DES, и мы надеемся, что никто не использует это в 2025 году.
+<a href="https://cgit.freebsd.org/src/commit/?id=9197c04a251b">9197c04a251b</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud">Поддержка облачных сред</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Этот раздел охватывает изменения в поддержке облачных сред.</p>
+</div>
+<div class="paragraph">
+<p>15.0-RELEASE поддерживает cloudinit, включая скрипт запуска <code>nuageinit</code> и поддержку раздела <code>config-drive</code>.
+Он совместим с OpenStack и многими хостинг-провайдерами.
+См. веб-сайт <a href="https://cloud-init.io">cloud-init</a> и сообщения коммитов,
+<a href="https://cgit.freebsd.org/src/commit/?id=16a6da44e28d">16a6da44e28d</a> <a href="https://cgit.freebsd.org/src/commit/?id=227e7a205edf">227e7a205edf</a> <span class="contrib">(Sponsored by OVHcloud)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Базовые образы Cloudinit больше не генерируют RSA-ключи хоста по умолчанию для SSH.
+Генерацию RSA-ключа хоста можно повторно включить, установив <code>sshd_rsa_enable=&#34;YES&#34;</code> в <code>/etc/rc.conf</code>, если необходимо поддерживать очень старые SSH-клиенты.
+<a href="https://cgit.freebsd.org/src/commit/?id=b22be3bbb2de">b22be3bbb2de</a></p>
+</div>
+<div class="paragraph">
+<p>Проект FreeBSD теперь публикует образы контейнеров, совместимые с OCI.
+<a href="https://cgit.freebsd.org/src/commit/?id=8a688fcc242e">8a688fcc242e</a></p>
+</div>
+<div class="paragraph">
+<p>Проект FreeBSD теперь публикует образы для Oracle Cloud Infrastructure.
+См.
+<a href="https://cloudmarketplace.oracle.com/marketplace/app/freebsd-release">список FreeBSD в Oracle Cloud Infrastructure</a>
+для получения дополнительной информации.
+<a href="https://cgit.freebsd.org/src/commit/?id=77b296a2582b">77b296a2582b</a></p>
+</div>
+<div class="paragraph">
+<p>API &#34;shutdown&#34; и &#34;reboot&#34; в облаке Amazon EC2 теперь работают для экземпляров arm64 (&#34;Graviton&#34;).
+<a href="https://cgit.freebsd.org/src/commit/?id=28b881840df7">28b881840df7</a> <span class="contrib">(Sponsored by Amazon)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Несколько исправлений ошибок и изменений конфигурации в совокупности позволяют осуществлять горячее подключение устройств как на x86, так и на экземплярах EC2 arm64 (&#34;Graviton&#34;).
+<a href="https://cgit.freebsd.org/src/commit/?id=ce9a34b1614e">ce9a34b1614e</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=55c3348ed78f">55c3348ed78f</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=d70bac252d30">d70bac252d30</a>
+<span class="contrib">(Sponsored by Amazon)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Пользователям, обновляющим экземпляры EC2 с более ранних выпусков FreeBSD, следует установить <code>hw.pci.intx_reroute=0</code> и <code>debug.acpi.quirks=&#34;56&#34;</code> в <code>/boot/loader.conf</code>.</p>
+</div>
+<div class="paragraph">
+<p>Проект FreeBSD теперь публикует &#34;маленькие&#34; (&#34;small&#34;) образы EC2; это образы &#34;base&#34; без отладочных символов, тестов, 32-разрядных библиотек, отладчика LLDB, агента Amazon SSM и AWS CLI.
+<a href="https://cgit.freebsd.org/src/commit/?id=953142d6baf3">953142d6baf3</a> <span class="contrib">(Sponsored by Amazon)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Проект FreeBSD теперь публикует &#34;сборочные&#34; (&#34;builder&#34;) образы EC2; они загружаются в диск в памяти и извлекают чистый образ &#34;base&#34; на корневой диск (смонтированный в <code>/mnt</code>) для настройки перед созданием AMI.
+<a href="https://cgit.freebsd.org/src/commit/?id=584265890303">584265890303</a> <span class="contrib">(Sponsored by Amazon)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Образы EC2 &#34;base&#34; FreeBSD теперь загружаются до 76% быстрее, чем соответствующие образы 14.0-RELEASE, причем наибольшие улучшения наблюдаются на экземплярах arm64 (&#34;Graviton&#34;).</p>
+</div>
+<div class="paragraph">
+<p>AMI EC2 больше не генерируют RSA-ключи хоста по умолчанию для SSH.
+Генерацию RSA-ключа хоста можно повторно включить, установив <code>sshd_rsa_enable=&#34;YES&#34;</code>
+в <code>/etc/rc.conf</code>, если необходимо поддерживать очень старые SSH-клиенты.
+<a href="https://cgit.freebsd.org/src/commit/?id=0aabcd75dbc2">0aabcd75dbc2</a>
+<span class="contrib">(Sponsored by Amazon)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>FreeBSD 15.0-RELEASE теперь поддерживает машины Google Cloud Compute Engine C4.
+<a href="https://cgit.freebsd.org/src/commit/?id=7b32f4f0a7fe">7b32f4f0a7fe</a> <span class="contrib">(Sponsored by Google)</span>
+</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="kernel">Ядро</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>В этом разделе рассматриваются изменения в конфигурациях ядра, настройке системы и параметрах системного управления, которые не отнесены к другим категориям.</p>
+</div>
+<div class="sect2">
+<h3 id="kernel-general">Общие изменения в ядре</h3>
+<div class="paragraph">
+<p>ktrace(2) теперь будет записывать подробную информацию
+о нарушениях режима возможностей (capability mode).
+Утилита kdump(1) была обновлена для отображения
+такой информации.
+<a href="https://cgit.freebsd.org/src/commit/?id=9bec84131215">9bec84131215</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=96c8b3e50988">96c8b3e50988</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=05296a0ff616">05296a0ff616</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=6a4616a529c1">6a4616a529c1</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=0cd9cde767c3">0cd9cde767c3</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=aa32d7cbc92c">aa32d7cbc92c</a></p>
+</div>
+<div class="paragraph">
+<p>FreeBSD теперь нативно реализует интерфейс <a href="https://man.freebsd.org/cgi/man.cgi?query=inotify&amp;sektion=2&amp;format=html">inotify(2)</a> из Linux.
+Сами системные вызовы не являются API-совместимыми, но libc предоставляет API-совместимый интерфейс, поэтому программное обеспечение, зависящее от inotify, может работать без изменений.
+<a href="https://cgit.freebsd.org/src/commit/?id=f1f230439fa4">f1f230439fa4</a>
+<span class="contrib">(Sponsored by Klara, Inc.)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Реализованы процедуры <code>fpu_kern_enter</code> и <code>fpu_kern_leave</code> для powerpc, позволяющие использовать криптографические функции <a href="https://man.freebsd.org/cgi/man.cgi?query=ossl&amp;sektion=4&amp;format=html">ossl(4)</a> в ядре, которые используют регистры с плавающей запятой и векторные регистры.
+<a href="https://cgit.freebsd.org/src/commit/?id=91e53779b4fc">91e53779b4fc</a></p>
+</div>
+<div class="paragraph">
+<p>Добавлена поддержка устаревшего горячего подключения PCI на arm64.
+<a href="https://cgit.freebsd.org/src/commit/?id=355f02cddbf0">355f02cddbf0</a>
+<span class="contrib">(Sponsored by Arm Ltd)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Теперь к клетке можно обращаться через дескрипторы клеток в <a href="https://man.freebsd.org/cgi/man.cgi?query=jail_set&amp;sektion=2&amp;format=html">jail_set(2)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=jail_get&amp;sektion=2&amp;format=html">jail_get(2)</a>, а также с помощью новых системных вызовов <code>jail_attach_jd(2)</code> и <code>jail_remove_jd(2)</code>. Они позволяют манипулировать клетками через интерфейс файловых дескрипторов без состояний гонки, присущих идентификаторам клетки, а также могут дополнительно контролировать время жизни клетки.
+<a href="https://cgit.freebsd.org/src/commit/?id=851dc7f859c2">851dc7f859c2</a></p>
+</div>
+<div class="paragraph">
+<p>Клетки и дескрипторы клетки теперь имеют связанные фильтры <a href="https://man.freebsd.org/cgi/man.cgi?query=kevent&amp;sektion=2&amp;format=html">kevent(2)</a>, которые позволяют отслеживать создание, изменение, присоединение и удаление клеток.
+<a href="https://cgit.freebsd.org/src/commit/?id=1bd74d201a53">1bd74d201a53</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=9d7f89ef2607">9d7f89ef2607</a></p>
+</div>
+<div class="paragraph">
+<p>Создан новый общий узел &#39;mac&#39; для параметров клетки модулей MAC.
+Все будущие параметры клетки модулей MAC будут появляться под этим узлом.
+См. <a href="https://man.freebsd.org/cgi/man.cgi?query=mac&amp;sektion=4&amp;format=html">mac(4)</a> для введения в MAC.
+Первым потребителем является <a href="https://man.freebsd.org/cgi/man.cgi?query=mac_do&amp;sektion=4&amp;format=html">mac_do(4)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=5041b20503db">5041b20503db</a>, <a href="https://cgit.freebsd.org/src/commit/?id=f3a06ced2568">f3a06ced2568</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=mac_do&amp;sektion=4&amp;format=html">mac_do(4)</a> теперь считается готовым к производственному использованию после ряда важных исправлений.
+<a href="https://cgit.freebsd.org/src/commit/?id=bbf8af664dc9">bbf8af664dc9</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=292c814931d9">292c814931d9</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=53d2e0d48549">53d2e0d48549</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=add521c1a5d2">add521c1a5d2</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=2a20ce91dc29">2a20ce91dc29</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=fa4352b74580">fa4352b74580</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=3d8d91a5b32c">3d8d91a5b32c</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=8f7e8726e3f5">8f7e8726e3f5</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=89958992b618">89958992b618</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=mac_do&amp;sektion=4&amp;format=html">mac_do(4)</a> теперь поддерживает изменение правил внутри клетки с помощью параметра <code>security.mac.do.rules</code> в <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=b3f93680e39b">b3f93680e39b</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Представлен системный вызов <a href="https://man.freebsd.org/cgi/man.cgi?query=setcred&amp;sektion=2&amp;format=html">setcred(2)</a> и связанные с ним хуки MAC.
+Этот новый системный вызов позволяет установить все необходимые учетные данные процесса за один раз: эффективный, реальный и сохраненный идентификаторы пользователя, эффективный, реальный и сохраненный идентификаторы группы, дополнительные группы и метку MAC.
+Помимо обеспечения атомарности, его преимущество перед стандартными системными вызовами установки учетных данных, такими как <code>setuid()</code>, <code>seteuid()</code> и т.д., заключается в том, что он позволяет модулям MAC, таким как <a href="https://man.freebsd.org/cgi/man.cgi?query=mac_do&amp;sektion=4&amp;format=html">mac_do(4)</a>, ограничивать набор учетных данных, которые может получить некоторый процесс, точным образом, поскольку теперь они могут видеть конечное желаемое состояние и сравнивать его с исходным.
+<a href="https://cgit.freebsd.org/src/commit/?id=ddb3eb4efe55">ddb3eb4efe55</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлена поддержка нескольких пользователей и групп в качестве целей одного правила в <a href="https://man.freebsd.org/cgi/man.cgi?query=mac_do&amp;sektion=4&amp;format=html">mac_do(4)</a>.
+Поддержка целей-групп необходима для того, чтобы <a href="https://man.freebsd.org/cgi/man.cgi?query=mac_do&amp;sektion=4&amp;format=html">mac_do(4)</a> мог применять ограниченный набор допустимых новых групп в целевых учетных данных и разрешать переходы учетных данных только между группами.
+Разрешенные группы привязаны к одному или нескольким идентификаторам пользователя.
+Несколько пользователей и групп в целевой части правила рассматриваются как альтернативы (инклюзивная дизъюнкция), за исключением условий, выражающих обязательное наличие или отсутствие дополнительной группы.
+Синтаксис правил был изменен несовместимым образом, но миграция существующих правил — это просто вопрос добавления <code>uid=</code> перед целевой частью, замены запятых (<code>,</code>) на точку с запятой (<code>;</code>) и двоеточий (<code>:</code>) на знак «больше» (<code>&gt;</code>).
+Пожалуйста, обратитесь к странице руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=mac_do&amp;sektion=4&amp;format=html">mac_do(4)</a> для получения дополнительной информации.
+<a href="https://cgit.freebsd.org/src/commit/?id=83ffc412b2e9">83ffc412b2e9</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=8f7e8726e3f5">8f7e8726e3f5</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=f01d26dec67f">f01d26dec67f</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлена возможность <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> присоединяться и запускаться в клетке.
+Это позволяет родительской клетке получать или устанавливать состояние ядра, когда в дочерней клетке не установлен <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> (например, в легковесных контейнерах OCI или slim-клетках).
+Это особенно полезно при манипуляции с jail, prison или vnet sysctl.
+Например, <code>sysctl -j foo -Ja</code> или <code>sysctl -j foo net.fibs=2</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=8d5d7e2ba3a6">8d5d7e2ba3a6</a>.</p>
+</div>
+<div class="paragraph">
+<p>Включена возможность настройки vnet <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=9&amp;format=html">sysctl(9)</a> переменных через loader tunable.
+В <a href="https://cgit.freebsd.org/src/commit/?id=3da1cf1e88f8">3da1cf1e88f8</a> значение флага <code>CTLFLAG_TUN</code> расширено для автоматической проверки наличия переменной среды ядра, которая должна инициализировать <code>SYSCTL</code> во время ранней загрузки.
+Это работает для всех типов <code>SYSCTL</code>, как статических, так и динамически созданных, за исключением <code>SYSCTL</code>, принадлежащих VNET.
+Обратите внимание, что реализация имеет ограничение.
+Она ведет себя так же, как и non-vnet loader tunables.
+То есть после инициализации ядра или модулей любые изменения (например, через <code>kenv</code>) переменной среды ядра не повлияют на соответствующую vnet переменную последующих создаваемых VNET.
+Чтобы преодолеть это, можно использовать <code>TUNABLE_XXX_FETCH</code> для получения переменной среды ядра в эти vnet переменные во время создания vnet.
+<a href="https://cgit.freebsd.org/src/commit/?id=894efae09de4">894efae09de4</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=sound&amp;sektion=4&amp;format=html">sound(4)</a>: Выделение vchans по требованию.
+Рефакторинг <code>pcm_chnalloc()</code> и объединение с частями <code>vchan_setnew()</code> (теперь удалена) и создания каналов <code>dsp_open()</code> в новую функцию <code>dsp_chn_alloc()</code>.
+Функция отвечает за использование свободного HW-канала (если <code>vchans</code> отключены) или выделение нового vchan.
+<code>hw.snd.vchans_enable</code> (ранее <code>hw.snd.maxautovchans</code>) и <code>dev.pcm.X.{play|rec}.vchans</code> теперь работают как tunables только для включения/отключения <code>vchans</code>, в отличие от установки их количества и/или (де-)выделения vchans.
+Поскольку эти sysctl больше не запускают никаких (де-)выделений, их эффект мгновенен, тогда как раньше это могло привести к зависанию машины (при попытке выделить новые vchans) при установке <code>dev.pcm.X.{play|rec}.vchans</code> в очень большое значение.
+<a href="https://cgit.freebsd.org/src/commit/?id=960ee8094913">960ee8094913</a>
+<span class="contrib">(Sponsored by Фонд FreeBSD)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Удален параметр <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> <code>hw.snd.version</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=7398d1ece5cf">7398d1ece5cf</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Код <code>unit.*</code> в <a href="https://man.freebsd.org/cgi/man.cgi?query=sound&amp;sektion=4&amp;format=html">sound(4)</a> был удален, и в рамках этого удален tunable <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> <code>hw.snd.maxunit</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=25723d66369f">25723d66369f</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Исправлены постепенные замедления и зависания, с которыми сталкивались владельцы некоторых видеокарт AMD, использующих драйвер DRM amdgpu из портов <code>drm-kmod</code>, начиная с v5.15 (порт <code>graphics/drm-515-kmod</code>).
+В частности, известно, что затрагивались владельцы видеокарт с чипами Green Sardine, Polaris 10 и 20, а также Vega.
+Последние видеокарты на базе Intel (gen 13+) также могли быть затронуты.
+<a href="https://cgit.freebsd.org/src/commit/?id=718d1928f874">718d1928f874</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=4ca9190251bb">4ca9190251bb</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=986edb19a49c">986edb19a49c</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=9d1f3ce79d85">9d1f3ce79d85</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=da257e519bc0">da257e519bc0</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Код, выполняющий итерацию по доменам памяти (NUMA), был улучшен и исправлен несколькими способами, что, в частности, привело к снижению задержки для некоторых графических операций с драйверами DRM.
+<a href="https://cgit.freebsd.org/src/commit/?id=da257e519bc0">da257e519bc0</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=83ad6d8d8eee">83ad6d8d8eee</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=b15ff7214020">b15ff7214020</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Эффективный идентификатор группы теперь хранится в новом поле <code>cr_gid</code> структуры <code>struct cred</code> и удален как первый элемент <code>cr_groups[]</code>, который теперь содержит только дополнительные группы.
+Все нижестоящие и сторонние модули, использующие <code>cr_groups[0]</code>, должны быть исправлены для использования <code>cr_gid</code> вместо него, а окружающий код, который перебирает элементы <code>cr_groups[]</code>, исключая <code>cr_groups[0]</code> (т.е. который предназначен для работы только с дополнительными группами), также необходимо скорректировать, поскольку теперь дополнительные группы начинаются с <code>&amp;cr_groups[0]</code> вместо <code>&amp;cr_groups[1]</code>.
+Коду, который должен быть переносимым как на 15.0, так и на более ранние версии, можно использовать <code>cr_gid</code>, который существовал и ранее как макрос, и можно проверить истинность выражения <code>&amp;cr_groups[0] != &amp;cr_gid</code>, чтобы знать, как адекватно просматривать дополнительные группы.
+<a href="https://cgit.freebsd.org/src/commit/?id=be1f7435ef218b1df35">be1f7435ef21</a>
+<span class="contrib">(Sponsored by the FreeBSD Foundation)</span>
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kernel-architecture-specific">Архитектурно-зависимые изменения</h3>
+<div class="paragraph">
+<p>В amd64 FreeBSD теперь поддерживает более 4 ТБ оперативной памяти на современных машинах, имеющих функцию CPU LA57.
+<a href="https://cgit.freebsd.org/src/commit/?id=d390633cf8cf">d390633cf8cf</a>
+<span class="contrib">(Sponsored by the FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>В amd64 обработка регистров <code>%fsbase</code>/<code>%gsbase</code> и базового адреса TLS была переработана, что делает их более полезными для приложений, напрямую манипулирующих контекстом CPU.
+<a href="https://cgit.freebsd.org/src/commit/?id=68ba38dad3">68ba38dad3</a>
+<span class="contrib">(Sponsored by the FreeBSD Foundation)</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="drivers">Устройства и драйверы</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>В этом разделе рассматриваются изменения и дополнения в устройствах и драйверах устройств, появившиеся после 14.0-RELEASE.</p>
+</div>
+<div class="sect2">
+<h3 id="drivers-device">Драйверы устройств</h3>
+<div class="paragraph">
+<p>Интерфейс терминала <a href="https://man.freebsd.org/cgi/man.cgi?query=tty&amp;sektion=4&amp;format=html">tty(4)</a> теперь имеет флаг <code>IUTF8</code>, который включает правильную обработку удаления символов UTF-8 (backspacing), установлен по умолчанию, что соответствует локали UTF-8 по умолчанию.
+<a href="https://cgit.freebsd.org/src/commit/?id=bb830e346bd5">bb830e346bd5</a></p>
+</div>
+<div class="paragraph">
+<p>Доступен драйвер для контроллеров Ethernet серии Intel E800 <a href="https://man.freebsd.org/cgi/man.cgi?query=ice&amp;sektion=4&amp;format=html">ice(4)</a>, поддерживающих работу на скорости 100 Гбит/с.
+Он был обновлен до версии 1.43.2-k.
+<a href="https://cgit.freebsd.org/src/commit/?id=38a1655adcb3">38a1655adcb3</a> <span class="contrib">(Sponsored by Intel Corporation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>В драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&amp;sektion=4&amp;format=html">iwlwifi(4)</a> для устройств Wi-Fi от Intel внесены многочисленные улучшения стабильности.
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Теперь в amd64 поддерживаются несколько регионов PCI MCFG, что обеспечивает доступ к пространству конфигурации PCI для доменов (сегментов), отличных от 0.
+<a href="https://cgit.freebsd.org/src/commit/?id=4b5f64408804">4b5f64408804</a></p>
+</div>
+<div class="paragraph">
+<p>Драйвер Ethernet <a href="https://man.freebsd.org/cgi/man.cgi?query=smsc&amp;sektion=4&amp;format=html">smsc(4)</a> теперь может получать значение <code>smsc95xx.macaddr</code>, передаваемое некоторыми моделями Raspberry Pi, и использовать его для MAC-адреса.
+Он всегда использует стабильный MAC-адрес, даже если в EEPROM нет адреса.
+<a href="https://cgit.freebsd.org/src/commit/?id=028e4c6548e4">028e4c6548e4</a></p>
+</div>
+<div class="paragraph">
+<p>Фреймворк <code>snd_clone</code> был удален из звуковой подсистемы, включая связанные sysctl, упрощая систему.
+Узлы на канал (<span class="filename">/dev/dspX.Y</span>) больше не создаются, только основное устройство (<span class="filename">/dev/dspX</span>).
+<a href="https://cgit.freebsd.org/src/commit/?id=e6c51f6db8d7">e6c51f6db8d7</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Теперь звук поддерживает асинхронное отключение устройств.
+Это значительно упрощает горячее подключение и отключение таких устройств, как USB-гарнитуры, и облегчает использование PulseAudio в случаях, требующих перехода операционной системы в режим сна и пробуждения (suspend и resume).
+<a href="https://cgit.freebsd.org/src/commit/?id=d692c314d29a">d692c314d29a</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><code>ice_ddp</code> обновлен до версии 1.3.41.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=a9d78bb714e3">a9d78bb714e3</a> <span class="contrib">(Sponsored by Intel Corporation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлена поддержка Tiger Lake-H в драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=hda&amp;sektion=4&amp;format=html">hda(4)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=dbb6f488df6e">dbb6f488df6e</a></p>
+</div>
+<div class="paragraph">
+<p>Добавлена поддержка Meteor Lake в драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=ichsmb&amp;sektion=4&amp;format=html">ichsmb(4)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=14c22e28e4ee">14c22e28e4ee</a>
+<span class="contrib">(Sponsored by Framework Computer Inc)</span>
+
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлена поддержка Meteor Lake в драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=ig4&amp;sektion=4&amp;format=html">ig4(4)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=56f0fc0011c2">56f0fc0011c2</a></p>
+</div>
+<div class="paragraph">
+<p>Поддержка Realtek 8156/8156B перенесена из <a href="https://man.freebsd.org/cgi/man.cgi?query=cdce&amp;sektion=4&amp;format=html">cdce(4)</a> в <a href="https://man.freebsd.org/cgi/man.cgi?query=ure&amp;sektion=4&amp;format=html">ure(4)</a> для повышения производительности и надежности.
+<a href="https://cgit.freebsd.org/src/commit/?id=630077a84186">630077a84186</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлена поддержка объектов ACPI GPIO _AEI.
+<a href="https://cgit.freebsd.org/src/commit/?id=1db6ffb2a482">1db6ffb2a482</a> <span class="contrib">(Sponsored by Amazon)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=nvme&amp;sektion=4&amp;format=html">nvme(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=nvmecontrol&amp;sektion=8&amp;format=html">nvmecontrol(8)</a> включены для всех архитектур.
+<a href="https://cgit.freebsd.org/src/commit/?id=24687a65dd7f">24687a65dd7f</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=aba2d7f89dcf">aba2d7f89dcf</a>
+<span class="contrib">(Sponsored by Chelsio Communications and Netflix)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Версия драйвера <a href="https://man.freebsd.org/cgi/man.cgi?query=mpi3mr&amp;sektion=4&amp;format=html">mpi3mr(4)</a> обновлена до 8.14.0.2.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=e6d4b221ba7c">e6d4b221ba7c</a></p>
+</div>
+<div class="paragraph">
+<p>Заголовок MPI для <a href="https://man.freebsd.org/cgi/man.cgi?query=mpi3mr&amp;sektion=4&amp;format=html">mpi3mr(4)</a> обновлен до версии 36.
+Это соответствует последней спецификации MPI.
+Это включает обновленные структуры, определения полей и константы, необходимые для совместимости с обновленной прошивкой.
+<a href="https://cgit.freebsd.org/src/commit/?id=60cf1576501d">60cf1576501d</a></p>
+</div>
+<div class="paragraph">
+<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=mpi3mr&amp;sektion=4&amp;format=html">mpi3mr(4)</a> теперь включен в GENERIC.
+<a href="https://cgit.freebsd.org/src/commit/?id=e2b8fb2202c2">e2b8fb2202c2</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=iwmbtfw&amp;sektion=4&amp;format=html">iwmbtfw(4)</a>: Добавлена поддержка адаптеров Bluetooth 9260/9560.
+Необходимые файлы прошивки уже включены в порт <a class="package" href="https://cgit.freebsd.org/ports/tree/comms/iwmbt-firmware/">comms/iwmbt-firmware</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=8e62ae9693bd">8e62ae9693bd</a></p>
+</div>
+<div class="paragraph">
+<p>Версия драйвера <a href="https://man.freebsd.org/cgi/man.cgi?query=ena&amp;sektion=4&amp;format=html">ena(4)</a> обновлена до v2.8.1.
+<a href="https://cgit.freebsd.org/src/commit/?id=a1685d25601e">a1685d25601e</a> <span class="contrib">(Sponsored by Amazon, Inc.)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=bnxt&amp;sektion=4&amp;format=html">bnxt(4)</a>: Включена поддержка NPAR на сетевых картах BCM57504 10/25GbE.
+<a href="https://cgit.freebsd.org/src/commit/?id=54f842ed8897">54f842ed8897</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=bnxt&amp;sektion=4&amp;format=html">bnxt(4)</a>: Добавлена поддержка идентификаторов PCI для 5760X (Thor2).
+Добавлены идентификаторы PCI для Thor2.
+<a href="https://cgit.freebsd.org/src/commit/?id=45e161020c2d">45e161020c2d</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=bnxt&amp;sektion=4&amp;format=html">bnxt(4)</a>: Добавлена поддержка модулей скорости 400G.
+<a href="https://cgit.freebsd.org/src/commit/?id=32fdad17f060">32fdad17f060</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=ix&amp;sektion=4&amp;format=html">ix(4)</a>: Добавлена поддержка SFP-модулей 1000BASE-BX.
+Добавлена поддержка BiDi-модулей на 1 Гбит/с.
+Добавлена поддержка Intel Ethernet Network Adapter E610.
+<a href="https://cgit.freebsd.org/src/commit/?id=89d4096950c4">89d4096950c4</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=dea5f973d0c8">dea5f973d0c8</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=igc&amp;sektion=4&amp;format=html">igc(4)</a>: Исправлено присоединение для устройств I226-K и LMVP.
+Идентификаторы этих устройств были в списке PCI ID драйвера для присоединения, но <code>igc_set_mac_type()</code> никогда не был настроен для установки правильного типа MAC для этих устройств.
+Исправлено добавлением этих ID в блок switch, чтобы они распознавались драйвером вместо возврата ошибки.
+Это исправляет присоединение <a href="https://man.freebsd.org/cgi/man.cgi?query=igc&amp;sektion=4&amp;format=html">igc(4)</a> для встроенного сетевого адаптера I226-K на материнской плате ASRock Z790 PG-ITX/TB4, позволяя его распознать и использовать.
+<a href="https://cgit.freebsd.org/src/commit/?id=f034ddd2fa38">f034ddd2fa38</a>.</p>
+</div>
+<div class="paragraph">
+<p>Удален старый обработчик sysctl itr из <a href="https://man.freebsd.org/cgi/man.cgi?query=em&amp;sektion=4&amp;format=html">em(4)</a>.
+Эта реализация имела различные ошибки. Преобразование/масштабирование единиц измерения было неверным, и она также неправильно обрабатывала устройства 82574L или <a href="https://man.freebsd.org/cgi/man.cgi?query=igb&amp;sektion=4&amp;format=html">igb(4)</a>.
+С новым кодом AIM ожидается, что большинству пользователей не потребуется вручную настраивать этот параметр.
+<a href="https://cgit.freebsd.org/src/commit/?id=edf50670e215">edf50670e215</a>
+<span class="contrib">(Sponsored by BBOX.io)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлена поддержка адаптеров USB-to-Serial от Brainboxes в <a href="https://man.freebsd.org/cgi/man.cgi?query=uftdi&amp;sektion=4&amp;format=html">uftdi(4)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=47db906375b5">47db906375b5</a></p>
+</div>
+<div class="paragraph">
+<p>Добавлен драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=iwx&amp;sektion=4&amp;format=html">iwx(4)</a>, поддерживающий серию беспроводных сетевых адаптеров M.2 Intel Wi-Fi 6.
+<a href="https://cgit.freebsd.org/src/commit/?id=2ad0f7e91582">2ad0f7e91582</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Новый драйвер сотовых модемов поддерживает USB-сетевые устройства, реализующие Mobile Broadband Interface Model (MBIM): <a href="https://man.freebsd.org/cgi/man.cgi?query=umb&amp;sektion=4&amp;format=html">umb(4)</a>.
+Сопутствующий инструмент <a href="https://man.freebsd.org/cgi/man.cgi?query=umbctl&amp;sektion=8&amp;format=html">umbctl(8)</a> используется для отображения или установки параметров интерфейса сотового модема MBIM (4G/LTE).
+<a href="https://cgit.freebsd.org/src/commit/?id=0f1bf1c22a0c">0f1bf1c22a0c</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=smbios&amp;sektion=4&amp;format=html">smbios(4)</a> теперь сначала ищет точку входа SMBIOS v3 (64-разрядную), даже если загрузка произведена из BIOS.
+Это позволяет обнаруживать и сообщать правильную версию SMBIOS с BIOS, которые предоставляют только таблицу v3, как это происходит на виртуальных машинах Hetzner.
+Для машин, предоставляющих обе таблицы, использовать таблицу v3 в приоритете, согласованно со случаем загрузки EFI.
+<a href="https://cgit.freebsd.org/src/commit/?id=bc7f6508363c">bc7f6508363c</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=usbhid&amp;sektion=4&amp;format=html">usbhid(4)</a> теперь включен по умолчанию и используется в приоритете перед другими USB HID драйверами, такими как <a href="https://man.freebsd.org/cgi/man.cgi?query=ukbd&amp;sektion=4&amp;format=html">ukbd(4)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=ums&amp;sektion=4&amp;format=html">ums(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=uhid&amp;sektion=4&amp;format=html">uhid(4)</a>.
+Поддерживаемые классы устройств теперь включают:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Мыши с абсолютным позиционированием в виртуализированных средах через <a href="https://man.freebsd.org/cgi/man.cgi?query=hms&amp;sektion=4&amp;format=html">hms(4)</a></p>
+</li>
+<li>
+<p>Дигитайзеры и устройства-стилусы через <a href="https://man.freebsd.org/cgi/man.cgi?query=hpen&amp;sektion=4&amp;format=html">hpen(4)</a></p>
+</li>
+<li>
+<p>Составные HID-устройства, такие как клавиатуры и мыши,
+совместно использующие один USB-интерфейс</p>
+</li>
+<li>
+<p>Специальные функциональные клавиши клавиатуры (громкость, яркость и т.д.)
+через <a href="https://man.freebsd.org/cgi/man.cgi?query=hcons&amp;sektion=4&amp;format=html">hcons(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=hsctrl&amp;sektion=4&amp;format=html">hsctrl(4)</a></p>
+</li>
+<li>
+<p>Игровые контроллеры, включая геймпады Xbox 360 и PS4 через <a href="https://man.freebsd.org/cgi/man.cgi?query=xb360gp&amp;sektion=4&amp;format=html">xb360gp(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=ps4dshock&amp;sektion=4&amp;format=html">ps4dshock(4)</a>,
+а также универсальные контроллеры через <a href="https://man.freebsd.org/cgi/man.cgi?query=hgame&amp;sektion=4&amp;format=html">hgame(4)</a></p>
+</li>
+<li>
+<p>Сырые HID-устройства через <a href="https://man.freebsd.org/cgi/man.cgi?query=hidraw&amp;sektion=4&amp;format=html">hidraw(4)</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ключи безопасности FIDO/U2F продолжают поддерживаться через автоматически
+загружаемый драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=u2f&amp;sektion=4&amp;format=html">u2f(4)</a>. Имена устройств и обработка протокола для
+этих устройств не изменились.
+<a href="https://cgit.freebsd.org/src/commit/?id=74072e9f16c1">74072e9f16c1</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлен драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=udbc&amp;sektion=4&amp;format=html">udbc(4)</a>, обеспечивающий отладку на стороне хоста для целей с использованием xHC debug.
+<a href="https://cgit.freebsd.org/src/commit/?id=d566b6a70bcb">d566b6a70bcb</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлен драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=ufshci&amp;sektion=4&amp;format=html">ufshci(4)</a>, поддерживающий контроллеры Universal Flash Storage (UFS).
+<a href="https://cgit.freebsd.org/src/commit/?id=1349a733cf28">1349a733cf28</a>  <span class="contrib">(Sponsored by Samsung Electronics)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=mlx5&amp;sektion=4&amp;format=html">mlx5(4)</a> теперь поддерживает встроенную разгрузку IPSEC на сетевых картах Nvidia ConnectX-6+, используя новую инфраструктуру разгрузки IPSEC в ядре.
+<a href="https://cgit.freebsd.org/src/commit/?id=e23731db48ef">e23731db48ef</a>
+<span class="contrib">(Sponsored by NVIDIA networking)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Поддержка таймера watchdog в концентраторе ввода-вывода Intel 6300ESB добавлена в драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=ichwd&amp;sektion=4&amp;format=html">ichwd(4)</a>.
+Это предназначено в первую очередь для пользователей QEMU, где этот таймер watchdog служит таймером по умолчанию и единственным для виртуальных машин x86.
+<a href="https://cgit.freebsd.org/src/commit/?id=2b74ff5fceb6623f6">2b74ff5fceb6</a></p>
+</div>
+<div class="paragraph">
+<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=qat&amp;sektion=4&amp;format=html">qat(4)</a> получил поддержку устройства 402xx с ID 0x4944/0x4945.
+<a href="https://cgit.freebsd.org/src/commit/?id=138e36514fe8">138e36514fe8</a>
+<span class="contrib">(Sponsored by Intel Corporation)</span>
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="drivers-removals">Устаревшие и удаленные драйверы</h3>
+<div class="paragraph">
+<p>Драйвер шины <a href="https://man.freebsd.org/cgi/man.cgi?query=agp&amp;sektion=4&amp;format=html">agp(4)</a> устарел и планируется к удалению во FreeBSD 16.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=92af7c97e197">92af7c97e197</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=cadadd1a0398">cadadd1a0398</a></p>
+</div>
+<div class="paragraph">
+<p>Контроллер гибких дисков IBM PC, <a href="https://man.freebsd.org/cgi/man.cgi?query=fdc&amp;sektion=4&amp;format=html">fdc(4)</a>, и связанные утилиты устарели и планируются к удалению в FreeBSD 16.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=4c736cfc69a7">4c736cfc69a7</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Шина <a href="https://man.freebsd.org/cgi/man.cgi?query=firewire&amp;sektion=4&amp;format=html">firewire(4)</a> и связанные драйверы устарели и планируются к удалению в FreeBSD 16.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=fc889167c319">fc889167c319</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Драйвер Ethernet <a href="https://man.freebsd.org/cgi/man.cgi?query=le&amp;sektion=4&amp;format=html">le(4)</a> устарел и планируется к удалению в FreeBSD 16.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=e4d6433e9c03">e4d6433e9c03</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=syscons&amp;sektion=4&amp;format=html">syscons(4)</a> запланирован к удалению в будущих выпусках, и в руководствах добавлено уведомление об устаревании, чтобы пользователи перешли на <a href="https://man.freebsd.org/cgi/man.cgi?query=vt&amp;sektion=4&amp;format=html">vt(4)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=2bc5b1d60512">2bc5b1d60512</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>USB-драйвер 802.11g <a href="https://man.freebsd.org/cgi/man.cgi?query=upgt&amp;sektion=4&amp;format=html">upgt(4)</a> устарел и планируется к удалению в FreeBSD 16.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=7f8a5c5a1585">7f8a5c5a1585</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="storage">Подсистема хранения данных</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>В этом разделе рассматриваются изменения и дополнения в файловых системах и других подсистемах хранения данных, как локальных, так и сетевых.</p>
+</div>
+<div class="sect2">
+<h3 id="storage-general">Общие изменения в системах хранения</h3>
+<div class="paragraph">
+<p>Добавлены расширенные атрибуты в стиле Solaris (называемые именованными атрибутами в NFSv4).
+На данный момент их поддерживают только ZFS, а именно наборы данных файловой системы, у которых свойство <code>xattr</code> установлено в <code>dir</code>, а также NFSv4.
+Атрибуты представлены в каталоге как обычные файлы.
+См. <a href="https://man.freebsd.org/cgi/man.cgi?query=named_attribute&amp;sektion=7&amp;format=html">named_attribute(7)</a> для получения дополнительной информации.
+<a href="https://cgit.freebsd.org/src/commit/?id=2ec2ba7e232d">2ec2ba7e232d</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=df58e8b1506f">df58e8b1506f</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=f61844833ee8">f61844833ee8</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=b1b607bd200f">b1b607bd200f</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=ee95e4d02dbd">ee95e4d02dbd</a></p>
+</div>
+<div class="paragraph">
+<p>Добавлена поддержка доступа к удаленным контроллерам NVMe over Fabrics через транспорт TCP.
+В <a href="https://man.freebsd.org/cgi/man.cgi?query=nvmecontrol&amp;sektion=8&amp;format=html">nvmecontrol(8)</a> добавлены новые команды для установления соединений с удаленными контроллерами.
+После установления соединения они передаются модулю ядра <a href="https://man.freebsd.org/cgi/man.cgi?query=nvmf&amp;sektion=4&amp;format=html">nvmf(4)</a>, который создает устройства <code>nvme<em>X</em></code> и экспортирует удаленные пространства имен как диски <a href="https://man.freebsd.org/cgi/man.cgi?query=nda&amp;sektion=4&amp;format=html">nda(4)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=a1eda74167b5">a1eda74167b5</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=1058c12197ab">1058c12197ab</a>
+<span class="contrib">(Sponsored by Chelsio Communications)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлена поддержка экспорта пространств имен удаленным хостам NVMe over Fabrics через транспорт TCP.
+Модуль ядра <a href="https://man.freebsd.org/cgi/man.cgi?query=nvmft&amp;sektion=4&amp;format=html">nvmft(4)</a> добавляет новый интерфейс в целевой слой CAM, который экспортирует LUN <a href="https://man.freebsd.org/cgi/man.cgi?query=ctl&amp;sektion=4&amp;format=html">ctl(4)</a> как пространства имен NVMe удаленным хостам.
+Демон <a href="https://man.freebsd.org/cgi/man.cgi?query=ctld&amp;sektion=8&amp;format=html">ctld(8)</a> теперь поддерживает контроллеры NVMe в дополнение к целям iSCSI и отвечает за прием входящих запросов на подключение и передачу подключенных пар очередей в <a href="https://man.freebsd.org/cgi/man.cgi?query=nvmft&amp;sektion=4&amp;format=html">nvmft(4)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=a15f7c96a276">a15f7c96a276</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=66b5296f1b29">66b5296f1b29</a>
+<span class="contrib">(Sponsored by Chelsio Communications)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлена поддержка динамического изменения размера пространств имен NVMe.
+Драйверы <a href="https://man.freebsd.org/cgi/man.cgi?query=nvd&amp;sektion=4&amp;format=html">nvd(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=nda&amp;sektion=4&amp;format=html">nda(4)</a> теперь уведомляют geom об изменениях размеров в реальном времени.
+<a href="https://cgit.freebsd.org/src/commit/?id=86d3ec359a56">86d3ec359a56</a>
+<span class="contrib">(Sponsored by Netflix)</span>
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="storage-nfs">NFS</h3>
+<div class="paragraph">
+<p>Значение по умолчанию настройки <code>nfs_reserved_port_only</code>
+в <a href="https://man.freebsd.org/cgi/man.cgi?query=rc.conf&amp;sektion=5&amp;format=html">rc.conf(5)</a> изменилось.
+Сервер NFS FreeBSD теперь требует, чтобы исходный порт
+запросов находился в диапазоне привилегированных портов (т.е. ≤ 1023), что, как правило,
+требует наличия у клиента повышенных привилегий в его локальной системе.
+Предыдущее поведение можно восстановить, установив <code>nfs_reserved_port_only=NO</code>
+в <a href="https://man.freebsd.org/cgi/man.cgi?query=rc.conf&amp;sektion=5&amp;format=html">rc.conf(5)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=6d5ce2bb6344">6d5ce2bb6344</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Определена новая опция командной строки <code>-a</code> для <a href="https://man.freebsd.org/cgi/man.cgi?query=mountd&amp;sektion=8&amp;format=html">mountd(8)</a>, которая предотвращает экспорт файловой системы с флагом <code>-alldirs</code>, если путь к каталогу не является точкой монтирования файловой системы сервера.
+<a href="https://cgit.freebsd.org/src/commit/?id=07cd69e272da">07cd69e272da</a></p>
+</div>
+<div class="paragraph">
+<p>Структура NFS-дескрипторов файлов для файловых систем <a href="https://man.freebsd.org/cgi/man.cgi?query=tarfs&amp;sektion=4&amp;format=html">tarfs(4)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=tmpfs&amp;sektion=4&amp;format=html">tmpfs(4)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=cd9660&amp;sektion=4&amp;format=html">cd9660(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=ext2fs&amp;sektion=4&amp;format=html">ext2fs(4)</a> изменилась.
+Серверу NFS, экспортирующему любую из этих файловых систем, потребуется, чтобы его клиенты отмонтировали и снова смонтировали экспорты.
+<a href="https://cgit.freebsd.org/src/commit/?id=4db1b113b151">4db1b113b151</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=1ccbdf561f41">1ccbdf561f41</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=205659c43d87">205659c43d87</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=cf0ede720391">cf0ede720391</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=8ae6247aa966">8ae6247aa966</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Сервер <a href="https://man.freebsd.org/cgi/man.cgi?query=mountd&amp;sektion=8&amp;format=html">mountd(8)</a> был изменен для использования <a href="https://man.freebsd.org/cgi/man.cgi?query=strunvis&amp;sektion=3&amp;format=html">strunvis(3)</a> для декодирования имен каталогов в файле(ах) <a href="https://man.freebsd.org/cgi/man.cgi?query=exports&amp;sektion=5&amp;format=html">exports(5)</a>.
+Это позволяет встраивать специальные символы, такие как пробелы, в имя каталога.
+Для кодирования таких имен каталогов можно использовать <code>vis -M</code>; см. <a href="https://man.freebsd.org/cgi/man.cgi?query=vis&amp;sektion=1&amp;format=html">vis(1)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=2c83f1ada435">2c83f1ada435</a></p>
+</div>
+<div class="paragraph">
+<p>Разрешено указывать столько групп в опциях <code>-maproot</code> или <code>-mapall</code> в <a href="https://man.freebsd.org/cgi/man.cgi?query=exports&amp;sektion=5&amp;format=html">exports(5)</a>, сколько поддерживается системой.
+Ранее ограничение было <code>NGROUPS_MAX + 1</code>, где <code>NGROUPS_MAX</code> — это всего лишь минимальный максимум разрешенного количества дополнительных групп.
+Теперь используется правильное значение <code>{NGROUPS_MAX} + 1</code>, где <code>{NGROUPS_MAX}</code> получается во время выполнения через <a href="https://man.freebsd.org/cgi/man.cgi?query=sysconf&amp;sektion=3&amp;format=html">sysconf(3)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=e87848a8150e">e87848a8150e</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлены новые переменные <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> под <code>kern.rpc.unenc</code> и <code>kern.rpc.tls</code>, которые позволяют администратору сервера NFS определить, насколько активно используется NFS-over-TLS.
+Большое количество неудачных рукопожатий может указывать на проблему конфигурации NFS.
+<a href="https://cgit.freebsd.org/src/commit/?id=b8e137d8d32d">b8e137d8d32d</a></p>
+</div>
+<div class="paragraph">
+<p>Использование делегирований NFSv4.1/4.2 было улучшено при использовании опции монтирования <code>nocto</code>.
+Для этого требуется актуальный сервер NFSv4.1/4.2 с включенными делегированиями.
+Например, при сборке ядра FreeBSD с смонтированными через NFSv4 каталогами <code>src</code> и <code>obj</code> общее количество RPC-запросов снижается с 5461286 до 945643, а затраченное время уменьшается на 20%.
+<a href="https://cgit.freebsd.org/src/commit/?id=171f66b0c2ca">171f66b0c2ca</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=50e733f19b37">50e733f19b37</a></p>
+</div>
+<div class="paragraph">
+<p>Новая поддержка операции NFSv4.2 Clone, которая использует клонирование блоков для «копирования при записи» файлов на сервере NFS.
+Пока это работает только для экспортируемых файловых систем ZFS, у которых включено клонирование блоков.
+<a href="https://cgit.freebsd.org/src/commit/?id=cce64f2e6851">cce64f2e6851</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="storage-ufs">UFS</h3>
+<div class="paragraph">
+<p>Программные обновления (soft updates) теперь включены по умолчанию при создании новой файловой системы UFS с помощью <a href="https://man.freebsd.org/cgi/man.cgi?query=newfs&amp;sektion=8&amp;format=html">newfs(8)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=6b2af2d88ffd">6b2af2d88ffd</a></p>
+</div>
+<div class="paragraph">
+<p>Надежность UFS на томах с более чем 2 ГБ inodes значительно улучшена.
+Основная проблема заключалась в некорректной интерпретации 32-разрядного номера inode как знакового, который расширялся знаковым битом в <code>ino_t</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=c069ca085bd1">c069ca085bd1</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=e36f069ecb47">e36f069ecb47</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Отложить лимит даты 19 января 2038 года в файловых системах UFS1 до 7 февраля 2106 года.
+Это затрагивает только файловые системы со старым форматом UFS1.
+Подробности см. в сообщении коммита.
+<a href="https://cgit.freebsd.org/src/commit/?id=1111a44301da">1111a44301da</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="storage-zfs">ZFS</h3>
+<div class="paragraph">
+<p>Добавлена поддержка <code>VOP_COPY_FILE_RANGE()</code> для клонирования блоков.
+В настоящее время ZFS — единственная локальная файловая система, которая поддерживает это, и только если включено клонирование блоков.
+NFSv4.2 также поддерживает это.
+См. <code>pathconf(2)</code> и <code>copy_file_range(2)</code> для получения дополнительной информации.
+<a href="https://cgit.freebsd.org/src/commit/?id=37b2cb5ecb0f">37b2cb5ecb0f</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="storage-geom">GEOM</h3>
+<div class="paragraph">
+<p>Поддержка томов vinum была удалена.
+<a href="https://cgit.freebsd.org/src/commit/?id=f87bb5967670">f87bb5967670</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=e51036fbf3f8">e51036fbf3f8</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="boot-loader">Изменения в загрузчике</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Этот раздел охватывает загрузчик, загрузочное меню и другие изменения, связанные с загрузкой.</p>
+</div>
+<div class="paragraph">
+<p>ASCII-арт <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> снова может быть включен на графических системах с помощью необязательной переменной <code>loader_gfx</code> в <a href="https://man.freebsd.org/cgi/man.cgi?query=loader.conf&amp;sektion=5&amp;format=html">loader.conf(5)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=bef6d85b6de5">bef6d85b6de5</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> теперь читает локальные конфигурационные файлы, перечисленные в переменной <code>local_loader_conf_files</code>, после других конфигурационных файлов, по умолчанию это <span class="filename">/boot/loader.conf.local</span>.
+<a href="https://cgit.freebsd.org/src/commit/?id=a25531db0fc2">a25531db0fc2</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> теперь можно настроить на чтение определенных конфигурационных файлов на основе переменных производителя платы (planar maker), продукта платы (planar product), продукта системы (system product) и uboot m_product из SMBIOS.
+На данный момент лучшей документацией является сообщение коммита git,
+<a href="https://cgit.freebsd.org/src/commit/?id=3eb3a802a31b">3eb3a802a31b</a>.</p>
+</div>
+<div class="paragraph">
+<p>Определение консоли в <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> было улучшено на системах EFI.
+Если переменная ConOut отсутствует, проверяется ConIn.
+Если найдено несколько устройств, предпочтение отдается последовательному порту.
+<a href="https://cgit.freebsd.org/src/commit/?id=20a6f4779ac6">20a6f4779ac6</a> <span class="contrib">(Sponsored by Netflix)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Поддержка кадрового буфера в <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> теперь может использовать только текстовый видео-драйвер, что приводит к экономии места.
+<a href="https://cgit.freebsd.org/src/commit/?id=57ca2848c0aa">57ca2848c0aa</a> <span class="contrib">(Sponsored by Netflix)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Обнаружение ACPI теперь выполняется раньше в <a href="https://man.freebsd.org/cgi/man.cgi?query=loader.efi&amp;sektion=8&amp;format=html">loader.efi(8)</a> на системах arm64.
+Копию <span class="filename">loader.efi</span> на разделе EFI следует обновить на системах arm64, использующих ACPI.
+<a href="https://cgit.freebsd.org/src/commit/?id=05cf4dda599a">05cf4dda599a</a> <a href="https://cgit.freebsd.org/src/commit/?id=16c09de80135">16c09de80135</a></p>
+</div>
+<div class="paragraph">
+<p>Загрузчик LinuxBoot можно использовать для загрузки FreeBSD из Linux на aarch64 и amd64.
+<a href="https://cgit.freebsd.org/src/commit/?id=46010641267">46010641267</a> <span class="contrib">(Sponsored by Netflix)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>В загрузчик BIOS добавлена обратно поддержка gzip и bzip2, но удалена поддержка графического режима (по умолчанию) для решения проблем с размером.
+(Загрузчик EFI не изменился, поддерживая все эти функции.)
+<a href="https://cgit.freebsd.org/src/commit/?id=4d3b05a8530e">4d3b05a8530e</a> <span class="contrib">(Sponsored by Netflix)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Загрузчик BIOS теперь может использовать точку входа SMBIOS v3 (64-разрядную), если ее таблица находится ниже 4 ГБ.
+Загрузчик BIOS компилируется как 32-разрядный клиент BTX даже на amd64, поэтому не может обращаться к адресам за пределами 4 ГБ.
+Однако 64-разрядная точка входа может ссылаться на таблицу структур ниже 4 ГБ, которую можно использовать, если BIOS не предоставляет 32-разрядную точку входа, как это происходит на виртуальных машинах Hetzner.
+<a href="https://cgit.freebsd.org/src/commit/?id=7f005c6699f4">7f005c6699f4</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Загрузчик BIOS теперь отдает предпочтение точке входа SMBIOS v3 (64-разрядной).
+Когда присутствуют и 32-разрядная, и 64-разрядная точки входа, спецификация SMBIOS гласит, что 64-разрядная точка входа всегда содержит как минимум все структуры, на которые ссылается 32-разрядная точка входа.
+Другими словами, 32-разрядная точка входа предоставляется для совместимости, поэтому предполагается, что у 64-разрядной точки входа больше шансов быть заполненной адекватными значениями.
+<a href="https://cgit.freebsd.org/src/commit/?id=3f744fb8b2c5">3f744fb8b2c5</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Загрузчик EFI теперь отдает предпочтение точке входа SMBIOS v3 (64-разрядной), согласованно с тем, что делается при загрузке BIOS.
+Однако есть разница: поскольку загрузчик EFI работает в 64-разрядном режиме на 64-разрядных платформах, нет ограничения, чтобы таблица структур точки входа v3 находилась ниже 4 ГБ.
+<a href="https://cgit.freebsd.org/src/commit/?id=96f77576e9ea">96f77576e9ea</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="network">Сеть</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Этот раздел описывает изменения, влияющие на сеть в FreeBSD.</p>
+</div>
+<div class="sect2">
+<h3 id="network-general">Общие сетевые изменения</h3>
+<div class="paragraph">
+<p>FreeBSD теперь реализует интерфейс <code>SO_SPLICE</code>, первоначально из OpenBSD.
+Эта функция позволяет пользовательским приложениям «сращивать» два соединенных TCP-сокета вместе, после чего данные, поступающие на один сокет, автоматически перенаправляются через сокет, к которому они сращены, вместо доставки приложению.
+<a href="https://cgit.freebsd.org/src/commit/?id=a1da7dc1cdad">a1da7dc1cdad</a>
+<span class="contrib">(Sponsored by Klara, Inc.)</span>
+
+<span class="contrib">(Sponsored by Stormshield)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Поддержка ARP (<a href="https://man.freebsd.org/cgi/man.cgi?query=arp&amp;sektion=4&amp;format=html">arp(4)</a>) для сетей стандарта 802 восстановлена; она была случайно удалена вместе с поддержкой FDDI.
+(Это отличается от стандартной инкапсуляции Ethernet.)
+<a href="https://cgit.freebsd.org/src/commit/?id=d776dd5fbd48">d776dd5fbd48</a></p>
+</div>
+<div class="paragraph">
+<p>Теперь можно собрать ядро с поддержкой IPv6 (INET6) без IPv4 (INET).
+<a href="https://cgit.freebsd.org/src/commit/?id=6df9fa1c6b83">6df9fa1c6b83</a> и другие</p>
+</div>
+<div class="paragraph">
+<p>Модуль netgraph <a href="https://man.freebsd.org/cgi/man.cgi?query=ng_ipfw&amp;sektion=4&amp;format=html">ng_ipfw(4)</a> больше не обрезает cookie до 16 бит, позволяя использовать полные 32 бита.
+<a href="https://cgit.freebsd.org/src/commit/?id=dadf64c5586e">dadf64c5586e</a></p>
+</div>
+<div class="paragraph">
+<p>Добавлена поддержка AIM (Adaptive Interrupt Moderation) в драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=igc&amp;sektion=4&amp;format=html">igc(4)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=472a0ccf847a">472a0ccf847a</a> <span class="contrib">(Sponsored by Rubicon Communications, LLC (&#34;Netgate&#34;) and BBOX.io)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Эта функция также добавлена в драйверы <a href="https://man.freebsd.org/cgi/man.cgi?query=lem&amp;sektion=4&amp;format=html">lem(4)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=em&amp;sektion=4&amp;format=html">em(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=igb&amp;sektion=4&amp;format=html">igb(4)</a>.
+Считается, что серьезный регресс производительности UDP, появившийся в FreeBSD 12.0, включая NFS поверх UDP, исправлен этим изменением.
+<a href="https://cgit.freebsd.org/src/commit/?id=49f12d5b38f6">49f12d5b38f6</a> <span class="contrib">(Sponsored by Rubicon Communications, LLC (&#34;Netgate&#34;) and BBOX.io)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлена возможность <a href="https://man.freebsd.org/cgi/man.cgi?query=ip6addrctl&amp;sektion=8&amp;format=html">ip6addrctl(8)</a> присоединяться и запускаться в клетке.
+Это упростит управление политиками выбора адресов для vnet клетки, особенно для легковесных контейнеров OCI или slim-клетки.
+<a href="https://cgit.freebsd.org/src/commit/?id=b709f7b38cc4">b709f7b38cc4</a></p>
+</div>
+<div class="paragraph">
+<p>Пакетный фильтр <a href="https://man.freebsd.org/cgi/man.cgi?query=pf&amp;sektion=4&amp;format=html">pf(4)</a> получил новый параметр времени выполнения <a href="https://man.freebsd.org/cgi/man.cgi?query=loader.conf&amp;sektion=5&amp;format=html">loader.conf(5)</a> &#39;net.pf.default_to_drop&#39;, а также опцию времени компиляции <code>PF_DEFAULT_TO_DROP</code>, делая правило по умолчанию — «отбрасывать».
+<a href="https://cgit.freebsd.org/src/commit/?id=7f7ef494f11d">7f7ef494f11d</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=3965be101c43">3965be101c43</a></p>
+</div>
+<div class="paragraph">
+<p>Новая опция пула route-to &#34;prefer-ipv6-nexthop&#34; в <a href="https://man.freebsd.org/cgi/man.cgi?query=pf&amp;sektion=4&amp;format=html">pf(4)</a> позволяет маршрутизировать IPv4-пакеты через IPv6-шлюзы.
+<a href="https://cgit.freebsd.org/src/commit/?id=65c318630123">65c318630123</a> <a href="https://cgit.freebsd.org/src/commit/?id=d2761422eb0a">d2761422eb0a</a> <span class="contrib">(Sponsored by InnoGames GmbH)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=pf&amp;sektion=4&amp;format=html">pf(4)</a> теперь поддерживает синтаксис NAT в стиле OpenBSD.
+Можно использовать &#34;nat-to&#34;, &#34;rdr-to&#34; и &#34;binat-to&#34; в правилах &#34;pass&#34; и &#34;match&#34;. Старый синтаксис &#34;nat on …​&#34; по-прежнему можно использовать.
+<a href="https://cgit.freebsd.org/src/commit/?id=e0fe26691fc9">e0fe26691fc9</a> <span class="contrib">(Sponsored by InnoGames GmbH)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Протокол <a href="https://man.freebsd.org/cgi/man.cgi?query=pfsync&amp;sektion=4&amp;format=html">pfsync(4)</a> обновлен для синхронизации нескольких отсутствующих атрибутов.
+Это исправляет синхронизацию состояний с опциями route-to, af-to, rtable, dummynet, tags и scrub.
+Если требуется синхронизация с более старой версией FreeBSD, версию протокола можно настроить с помощью <code>ifconfig pfsync0 version $VERSION</code>, где $VERSION — 1301 для релизов 13.X или 1400 для 14.X.
+По умолчанию используется 1500 для синхронизации между хостами под управлением FreeBSD 15.0.
+<a href="https://cgit.freebsd.org/src/commit/?id=99475087d63b">99475087d63b</a> <span class="contrib">(Sponsored by InnoGames GmbH)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Поддержка Kernel TLS теперь включена по умолчанию в ядрах <code>GENERIC</code> (по умолчанию) для aarch64, amd64, powerpc64 и powerpc64le.
+<a href="https://cgit.freebsd.org/src/commit/?id=b2f7c53430c3">b2f7c53430c3</a>
+<span class="contrib">(Sponsored by Chelsio Communications)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлены настраиваемые параметры <code>net.inet.{tcp,udp,raw}.bind_all_fibs</code>.
+По умолчанию они установлены в 1 для обратной совместимости.
+Установка их в 0 изменяет поведение сокета соответствующего протокола таким образом, что игнорируются пакеты, поступающие не с интерфейса в том же FIB, что и сокет.
+В этом случае TCP- и UDP-сокеты, принадлежащие разным FIB, также могут быть привязаны к одному адресу.
+Поведение по умолчанию не изменено.
+<a href="https://cgit.freebsd.org/src/commit/?id=5dc99e9bb985">5dc99e9bb985</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=08e638c089ab">08e638c089ab</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=4009a98fe80b">4009a98fe80b</a>
+<span class="contrib">(Sponsored by Klara, Inc.)</span>
+
+<span class="contrib">(Sponsored by Stormshield)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Подключение к <code>INADDR_ANY</code>, т.е. использование его в качестве псевдонима для <code>localhost</code>, теперь отключено по умолчанию.
+Эту функциональность можно повторно включить, установив sysctl <code>net.inet.ip.connect_inaddr_wild</code> в 1.
+<a href="https://cgit.freebsd.org/src/commit/?id=cd240957d7ba">cd240957d7ba</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Новая встроенная инфраструктура разгрузки IPSEC в ядре.
+См. также примечание о поддержке этого в драйвере <a href="https://man.freebsd.org/cgi/man.cgi?query=mlx5&amp;sektion=4&amp;format=html">mlx5(4)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=ef2a572bf6">ef2a572bf6</a>
+<span class="contrib">(Sponsored by NVIDIA networking)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Новый флаг <a href="https://man.freebsd.org/cgi/man.cgi?query=ngctl&amp;sektion=8&amp;format=html">ngctl(8)</a>, <code>-j</code>, позволяет ему присоединяться и работать внутри клетки, что дает возможность управлять узлами netgraph в клетке, даже если <a href="https://man.freebsd.org/cgi/man.cgi?query=ngctl&amp;sektion=8&amp;format=html">ngctl(8)</a> не установлен внутри него.
+<a href="https://cgit.freebsd.org/src/commit/?id=72d01e62b082">72d01e62b082</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=sockstat&amp;sektion=1&amp;format=html">sockstat(1)</a> теперь по умолчанию будет отображать конечные точки UDP-Lite.
+<a href="https://cgit.freebsd.org/src/commit/?id=978615d7bf7c">978615d7bf7c</a></p>
+</div>
+<div class="paragraph">
+<p>Код совместимости ядра, поддерживающий бинарники <a href="https://man.freebsd.org/cgi/man.cgi?query=ipfw&amp;sektion=8&amp;format=html">ipfw(8)</a> из FreeBSD 7 и 8, был удален.
+<a href="https://cgit.freebsd.org/src/commit/?id=660255be1ed9">660255be1ed9</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="network-protocols">Сетевые протоколы</h3>
+<div class="paragraph">
+<p>Множество улучшений сетевого стека, включая улучшения производительности и исправления ошибок для стека <a href="https://man.freebsd.org/cgi/man.cgi?query=sctp&amp;sektion=4&amp;format=html">sctp(4)</a>.</p>
+</div>
+<div class="paragraph">
+<p>Дескрипторы, возвращаемые <a href="https://man.freebsd.org/cgi/man.cgi?query=sctp_peeloff&amp;sektion=2&amp;format=html">sctp_peeloff(2)</a>, теперь наследуют права доступа Capsicum <a href="https://man.freebsd.org/cgi/man.cgi?query=rights&amp;sektion=4&amp;format=html">rights(4)</a> от родительского сокета.
+<a href="https://cgit.freebsd.org/src/commit/?id=ae3d7e27abc9">ae3d7e27abc9</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Значение по умолчанию переменной sysctl <code>net.inet.tcp.nolocaltimewait</code> изменилось с 1 на 0.
+Это означает, что FreeBSD больше не пропускает состояние <code>TIME_WAIT</code> для конечных точек, удаленный адрес которых является локальным.
+Новая переменная sysctl <code>net.inet.tcp.msl_local</code> может использоваться для контроля времени пребывания этих конечных точек в состоянии <code>TIME_WAIT</code>.
+Переменная sysctl <code>net.inet.tcp.nolocaltimewait</code> устарела и планируется к удалению в FreeBSD 16.
+<a href="https://cgit.freebsd.org/src/commit/?id=c3fc0db3bc50">c3fc0db3bc50</a>
+<span class="contrib">(Sponsored by Netflix)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Локальные потоковые сокеты (AF_UNIX/SOCK_STREAM) и сокеты последовательного потока пакетов (AF_UNIX/SOCK_SEQPACKET) были улучшены для лучшей передачи больших объемов данных и времени цикла (round trip).
+Сокет SOCK_SEQPACKET был доведен до соответствия спецификации и теперь ведет себя как настоящий потоковый сокет, тогда как в предыдущих выпусках FreeBSD он мог
+проявлять особенности датаграммного сокета.
+Приложения, которые использовали SOCK_SEQPACKET некорректно и полагались на старые ошибки реализации, возможно, потребуется скорректировать.
+<a href="https://cgit.freebsd.org/src/commit/?id=d15792780760">d15792780760</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="wireless-networking">Беспроводные сети</h3>
+<div class="paragraph">
+<p>Слой совместимости LinuxKPI 802.11 <a href="https://man.freebsd.org/cgi/man.cgi?query=linuxkpi_wlan&amp;sektion=4&amp;format=html">linuxkpi_wlan(4)</a> получил поддержку протокола Galois/Counter Mode Protocol (GCMP) из <a href="https://man.freebsd.org/cgi/man.cgi?query=wlan_gcmp&amp;sektion=4&amp;format=html">wlan_gcmp(4)</a>. <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Вслед за другими драйверами прошивка <a href="https://man.freebsd.org/cgi/man.cgi?query=iwlwififw&amp;sektion=4&amp;format=html">iwlwififw(4)</a> была удалена из базовой системы в пользу решения на основе портов и поддержки <a href="https://man.freebsd.org/cgi/man.cgi?query=fwget&amp;sektion=8&amp;format=html">fwget(8)</a>. В случае обновления с более ранних выпусков пользователи должны предварительно установить пакеты прошивки. <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Беспроводной драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&amp;sektion=4&amp;format=html">iwlwifi(4)</a> поддерживает 802.11ac (VHT) для некоторого оборудования Intel Wi-Fi 5 и для всего оборудования Intel Wi-Fi 6 и Wi-Fi 7. <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+
+Беспроводной драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=iwx&amp;sektion=4&amp;format=html">iwx(4)</a> поддерживает 802.11ac (VHT) для оборудования Intel Wi-Fi 6. <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+
+Беспроводной драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=rtwn&amp;sektion=4&amp;format=html">rtwn(4)</a> поддерживает 802.11ac (VHT) для чипсетов RTL8812A и RTL8821A.
+Беспроводной драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=rtw89&amp;sektion=4&amp;format=html">rtw89(4)</a> поддерживает 802.11g для некоторого оборудования Realtek Wi-Fi 6 и Wi-Fi 7.
+<a href="https://cgit.freebsd.org/src/commit/?id=a2d1e07f6451">a2d1e07f6451</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hardware">Поддержка оборудования</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Этот раздел охватывает общую поддержку оборудования для физических машин, гипервизоров и сред виртуализации, а также изменения и обновления оборудования, которые не подходят в другие разделы этого документа.</p>
+</div>
+<div class="paragraph">
+<p>Пожалуйста, ознакомьтесь со <a href="https://www.freebsd.org/releases/15.0R/hardware">списком оборудования</a>, поддерживаемым 15.0-RELEASE, а также с <a href="https://www.freebsd.org/platforms/">страницей платформ</a> для полного списка поддерживаемых архитектур процессоров.</p>
+</div>
+<div class="sect2">
+<h3 id="hardware-virtualization">Поддержка виртуализации</h3>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=4&amp;format=html">bhyve(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=vmm&amp;sektion=4&amp;format=html">vmm(4)</a> теперь поддерживают платформы arm64 и riscv.
+Порты <code>sysutils/u-boot-bhyve-arm64</code> и <code>sysutils/u-boot-bhyve-riscv</code> предоставляют загрузчики для использования на этих платформах.
+<a href="https://cgit.freebsd.org/src/commit/?id=47e073941f4e">47e073941f4e</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=d3916eace506">d3916eace506</a>
+<span class="contrib">(Sponsored by Arm Ltd)</span>
+
+<span class="contrib">(Sponsored by Innovate UK)</span>
+
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+
+<span class="contrib">(Sponsored by University Politehnica of Bucharest)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> теперь поддерживает сетевой бэкенд «slirp», который обеспечивает непривилегированную пользовательскую сеть.
+В настоящее время поддерживаются только входящие подключения к гостевой системе, исходящие подключения от гостевой системы — нет.
+Для этой функции требуется порт <code>net/libslirp</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=c5359e2af5ab">c5359e2af5ab</a> <span class="contrib">(Sponsored by Innovate UK)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> теперь может настраивать топологию NUMA для памяти гостевой системы.
+Кроме того, можно определить политику <a href="https://man.freebsd.org/cgi/man.cgi?query=domainset&amp;sektion=9&amp;format=html">domainset(9)</a> для каждого гостевого домена NUMA, в которой можно указать память хоста, используемую для поддержки физической памяти каждого гостевого домена NUMA, аналогично опции <code>-n</code> в <a href="https://man.freebsd.org/cgi/man.cgi?query=cpuset&amp;sektion=1&amp;format=html">cpuset(1)</a>.
+Пока это поддерживается только для гостевых систем amd64.
+<a href="https://cgit.freebsd.org/src/commit/?id=f1d705d4f431">f1d705d4f431</a></p>
+</div>
+<div class="paragraph">
+<p>Сервер VNC в <a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> теперь будет показывать правильные цвета при использовании клиента <a class="package" href="https://cgit.freebsd.org/ports/tree/www/novnc/">www/novnc</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=f9e09dc5b1d5">f9e09dc5b1d5</a></p>
+</div>
+<div class="paragraph">
+<p>При работе гостевых систем <a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> с загрузочным ПЗУ, то есть когда <a href="https://man.freebsd.org/cgi/man.cgi?query=bhyveload&amp;sektion=8&amp;format=html">bhyveload(8)</a> не используется, bhyve теперь будет исходить из того, что загрузочное ПЗУ активирует декодирование PCI BAR.
+Это несовместимо с некоторыми загрузочными ПЗУ, особенно устаревшими сборками <code>edk2-bhyve</code>.
+Чтобы восстановить старое поведение, добавьте <code>pci.enable_bars=&#39;true&#39;</code> в вашу конфигурацию bhyve.
+Примечание: пакет <code>uefi-edk2-bhyve</code> был переименован в <code>edk2-bhyve</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=e962b37bf0ff">e962b37bf0ff</a>
+<span class="contrib">(Sponsored by Innovate UK)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Опции <code>lpc.bootrom</code> и <code>lpc.bootvars</code> для amd64 <a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> устарели.
+Вместо них используйте опции верхнего уровня <code>bootrom</code> и <code>bootvars</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=43caa2e805c2">43caa2e805c2</a>
+<span class="contrib">(Sponsored by Innovate UK)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Теперь обнаруживается гипервизор NVMM.
+<a href="https://cgit.freebsd.org/src/commit/?id=34f40baca641">34f40baca641</a></p>
+</div>
+<div class="paragraph">
+<p>В Hyper-V очистка TLB теперь выполняется с использованием гипервызовов, а не IPI, что обеспечивает улучшение производительности TBL до 40%.
+<a href="https://cgit.freebsd.org/src/commit/?id=7ece5993b787">7ece5993b787</a> <span class="contrib">(Sponsored by Microsoft)</span>
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="linuxulator">Совместимость с Linux-бинарниками (Linuxulator)</h3>
+<div class="paragraph">
+<p>Флаг <code>AT_NO_AUTOMOUNT</code> теперь игнорируется для всех вариантов stat() в Linuxulator (поскольку поведение, задаваемое флагом, уже соответствует поведению FreeBSD), что улучшает совместимость с Linux-приложениями.
+<a href="https://cgit.freebsd.org/src/commit/?id=99d3ce80ba07">99d3ce80ba07</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Системные вызовы <a href="https://man.freebsd.org/cgi/man.cgi?query=inotify&amp;sektion=2&amp;format=html">inotify(2)</a> для Linux теперь реализованы в Linuxulator.
+<span class="contrib">(Sponsored by Klara, Inc.)</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="multimedia">Мультимедиа</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Многочисленные улучшения звукового стека, включая поддержку горячей замены в <a href="https://man.freebsd.org/cgi/man.cgi?query=mixer&amp;sektion=8&amp;format=html">mixer(8)</a> и добавление <a href="https://man.freebsd.org/cgi/man.cgi?query=mididump&amp;sektion=1&amp;format=html">mididump(1)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=cf9d2fb18433">cf9d2fb18433</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+
+<a href="https://cgit.freebsd.org/src/commit/?id=7224e9f2d4af">7224e9f2d4af</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Добавлена новая утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=sndctl&amp;sektion=8&amp;format=html">sndctl(8)</a>, которая объединяет различные интерфейсы для просмотра и управления настройками аудиоустройств (sysctls, <code>/dev/sndstat</code>) в одной утилите с интерфейсом, управляемым элементами управления, аналогичным интерфейсу <code>mixer(8)</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=44e5a0150835">44e5a0150835</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=9a37f1024ceb">9a37f1024ceb</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p><code>virtual_oss</code> импортирован в базовую систему.
+Начиная с FreeBSD 15.0, порт <code>audio/virtual_oss</code> перестанет собираться.
+Что касается изменений для пользователей, единственное практическое отличие — это процесс установки.
+Всё предоставляется базовой системой, за исключением следующих опциональных компонентов, которые можно установить из портов:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Поддержка бэкенда sndio: <code>audio/virtual_oss_sndio</code></p>
+</li>
+<li>
+<p>Поддержка бэкенда bluetooth: <code>audio/virtual_oss_bluetooth</code></p>
+</li>
+<li>
+<p><code>virtual_equalizer(8)</code>: <code>audio/virtual_oss_equalizer</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Помимо этого, <code>virtual_oss</code> должен работать как ожидается.
+Пользователи <code>virtual_oss</code> могут удалить <code>audio/virtual_oss</code> и с этого момента использовать версию из базовой системы.
+<a href="https://cgit.freebsd.org/src/commit/?id=5a31c623143f">5a31c623143f</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="documentation">Документация</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>В этом разделе рассматриваются изменения на страницах Справочника (<a href="https://man.freebsd.org/cgi/man.cgi?query=man&amp;sektion=1&amp;format=html">man(1)</a>) и другой документации, поставляемой в составе базовой системы.</p>
+</div>
+<div class="sect2">
+<h3 id="man-pages">Страницы Справочника</h3>
+<div class="paragraph">
+<p>Новое руководство <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-base&amp;sektion=7&amp;format=html">freebsd-base(7)</a> предоставляет подробности о структуре пакетов базовой системы и о том, как обновлять систему с их помощью.
+<a href="https://cgit.freebsd.org/src/commit/?id=e1632b827b1a">e1632b827b1a</a></p>
+</div>
+<div class="paragraph">
+<p>Руководства по файловым системам были перемещены в раздел четыре, Руководство по интерфейсам ядра.
+<a href="https://cgit.freebsd.org/src/commit/?id=1687d77197c0">1687d77197c0</a></p>
+</div>
+<div class="paragraph">
+<p>Руководство <a href="https://man.freebsd.org/cgi/man.cgi?query=builtin&amp;sektion=1&amp;format=html">builtin(1)</a> было переписано, содержит оптимизированную информацию и новый раздел о сочетаниях клавиш, встроенных в интерфейс командной строки FreeBSD.
+<a href="https://cgit.freebsd.org/src/commit/?id=42df4faf7004">42df4faf7004</a></p>
+</div>
+<div class="paragraph">
+<p>Новая страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=networking&amp;sektion=7&amp;format=html">networking(7)</a> предоставляет краткое руководство по подключению системы к сетям, включая Wi-Fi, и содержит ссылки на другие страницы руководств и справочник.
+<a href="https://cgit.freebsd.org/src/commit/?id=39f92a4c4c49">39f92a4c4c49</a></p>
+</div>
+<div class="paragraph">
+<p>Руководство <a href="https://man.freebsd.org/cgi/man.cgi?query=build&amp;sektion=7&amp;format=html">build(7)</a> было пересмотрено, включив инструкции по сборке системы из исходного кода.
+<a href="https://cgit.freebsd.org/src/commit/?id=275f61111f435">275f61111f43</a></p>
+</div>
+<div class="paragraph">
+<p>В <a href="https://man.freebsd.org/cgi/man.cgi?query=ccdconfig&amp;sektion=8&amp;format=html">ccdconfig(8)</a> теперь указаны ссылки на <a href="https://man.freebsd.org/cgi/man.cgi?query=graid&amp;sektion=8&amp;format=html">graid(8)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=zfs&amp;sektion=8&amp;format=html">zfs(8)</a> вместо <a href="https://man.freebsd.org/cgi/man.cgi?query=gvinum&amp;sektion=8&amp;format=html">gvinum(8)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=55cb3a33d920">55cb3a33d920</a></p>
+</div>
+<div class="paragraph">
+<p>Страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=ps&amp;sektion=1&amp;format=html">ps(1)</a> была переработана, чтобы объяснить общие принципы, и описания в ней были обновлены в соответствии с реальностью.
+Введение было переработано, чтобы дать полный обзор различных аспектов команды <a href="https://man.freebsd.org/cgi/man.cgi?query=ps&amp;sektion=1&amp;format=html">ps(1)</a>.
+Описания нескольких опций и некоторых ключевых слов были исправлены в соответствии с их фактическим поведением и/или расширены.
+Разделы STANDARDS и BUGS были расширены.
+<a href="https://cgit.freebsd.org/src/commit/?id=ddf144a04b53">ddf144a04b53</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=mac_do&amp;sektion=4&amp;format=html">mac_do(4)</a> была переработана в рамках добавления поддержки нескольких пользователей и групп в качестве целей для одного правила, что привело к изменению синтаксиса правил.
+В частности, были добавлены разделы JAIL SUPPORT и SECURITY CONSIDERATIONS.
+<a href="https://cgit.freebsd.org/src/commit/?id=bc201841d139">bc201841d139</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Существующее содержание страницы руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=mdo&amp;sektion=1&amp;format=html">mdo(1)</a> было расширено в рамках документирования новой поддержки полного указания всех пользователей и групп в учетных данных цели.
+Теперь оно содержит более длинное введение и новый раздел SECURITY CONSIDERATIONS.
+<a href="https://cgit.freebsd.org/src/commit/?id=20ebb6ec5ac0">20ebb6ec5ac0</a>
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+
+<span class="contrib">(Sponsored by Google LLC (GSoC 2025))</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Контроллеры коммутаторов Ethernet <a href="https://man.freebsd.org/cgi/man.cgi?query=mtkswitch&amp;sektion=4&amp;format=html">mtkswitch(4)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=ip17x&amp;sektion=4&amp;format=html">ip17x(4)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=ar40xx&amp;sektion=4&amp;format=html">ar40xx(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=e6000sw&amp;sektion=4&amp;format=html">e6000sw(4)</a> получили начальные страницы руководств.
+<a href="https://cgit.freebsd.org/src/commit/?id=37f00bc257d">37f00bc257d</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=f750a114d2c">f750a114d2c</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=91c975c3913">91c975c3913</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=6da793a8caa">6da793a8caa</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=mount&amp;sektion=8&amp;format=html">mount(8)</a> получил пример повторного монтирования всех файловых систем в режиме чтения/записи в однопользовательском режиме.
+<a href="https://cgit.freebsd.org/src/commit/?id=c3e06b23b417">c3e06b23b417</a></p>
+</div>
+<div class="paragraph">
+<p>Описания на страницах руководств для модулей lua <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> были переформулированы для оптимизации результатов <a href="https://man.freebsd.org/cgi/man.cgi?query=apropos&amp;sektion=1&amp;format=html">apropos(1)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=5d59c1b4f14e">5d59c1b4f14e</a></p>
+</div>
+<div class="paragraph">
+<p>Руководство по стилю для страниц руководств, <a href="https://man.freebsd.org/cgi/man.cgi?query=style.mdoc&amp;sektion=5&amp;format=html">style.mdoc(5)</a>, получило раздел для перечисления поддерживаемого оборудования.
+При таком перечислении поддерживаемое оборудование будет указано в <a href="https://www.freebsd.org/releases/15.0R/hardware">информации о поддерживаемом оборудовании</a>.
+В этом выпуске этот раздел был добавлен или переформулирован во многих руководствах.</p>
+</div>
+<div class="paragraph">
+<p>Проделана большая работа по добавлению <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> и переменных окружения в Справочник.
+Попробуйте искать их с помощью <code>apropos Va=here.is.the.sysctl</code> или <code>apropos Ev=here_is_the_environment_variable</code>.</p>
+</div>
+<div class="paragraph">
+<p>Руководство <a href="https://man.freebsd.org/cgi/man.cgi?query=intro&amp;sektion=1&amp;format=html">intro(1)</a> по общим командам было пересмотрено, включив утверждение об установке дополнительных команд и список канонических каталогов команд.
+<a href="https://cgit.freebsd.org/src/commit/?id=cc0af6d5a6c2">cc0af6d5a6c2</a></p>
+</div>
+<div class="paragraph">
+<p>Руководство <a href="https://man.freebsd.org/cgi/man.cgi?query=intro&amp;sektion=2&amp;format=html">intro(2)</a> по системным вызовам было пересмотрено, включив ссылки и раздел HISTORY из OpenBSD.
+<a href="https://cgit.freebsd.org/src/commit/?id=9a62cdc01327">9a62cdc01327</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=69ff2d754c1c">69ff2d754c1c</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=6dfbe695c322">6dfbe695c322</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=de525c502a3a">de525c502a3a</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=d846f33bb6d4">d846f33bb6d4</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=4696ca7baf2f">4696ca7baf2f</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=9e8df7900f52">9e8df7900f52</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=bcc57e971597">bcc57e971597</a></p>
+</div>
+<div class="paragraph">
+<p>Раздел <a href="https://man.freebsd.org/cgi/man.cgi?query=intro&amp;sektion=5&amp;format=html">intro(5)</a> Справочника по форматам файлов был пересмотрен с включением улучшений из OpenBSD.
+<a href="https://cgit.freebsd.org/src/commit/?id=8d65152cbfc8">8d65152cbfc8</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=26ec37653662">26ec37653662</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=37508388d066">37508388d066</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=a6175f28da70">a6175f28da70</a></p>
+</div>
+<div class="paragraph">
+<p>Индексное руководство по иерархии файловой системы, <a href="https://man.freebsd.org/cgi/man.cgi?query=hier&amp;sektion=7&amp;format=html">hier(7)</a>, было пересмотрено, включив множество перекрестных ссылок и более подробную информацию о <code>/usr/local</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ports">Коллекция портов и инфраструктура пакетов</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>В этом разделе рассматриваются изменения в Коллекции портов FreeBSD, инфраструктуре пакетов, а также в инструментах обслуживания и установки пакетов.</p>
+</div>
+<div class="paragraph">
+<p>Новый репозиторий <code>FreeBSD-kmods</code> включен в конфигурационный файл <a href="https://man.freebsd.org/cgi/man.cgi?query=pkg&amp;sektion=8&amp;format=html">pkg(8)</a> по умолчанию <code>/etc/pkg/FreeBSD.conf</code>.
+Этот репозиторий содержит модули ядра, скомпилированные специально для 15.0-RELEASE, а не для ветки 15-STABLE.
+Установка модулей ядра из этого репозитория позволяет драйверам с нестабильными интерфейсами ядра, в частности графическим драйверам, работать даже тогда, когда основной репозиторий 15-STABLE содержит пакеты, собранные на предыдущем выпуске.
+(<a href="https://cgit.freebsd.org/src/commit/?id=a47542f71511">a47542f71511</a>).</p>
+</div>
+<div class="paragraph">
+<p>Репозитории <code>FreeBSD</code> и <code>FreeBSD-kmods</code>, определенные в <code>/etc/pkg/FreeBSD.conf</code>, были переименованы в <code>FreeBSD-ports</code> и <code>FreeBSD-ports-kmods</code> соответственно.
+Пользователям, которые переопределяют их в <code>/usr/local/etc/pkg/repos</code>, необходимо скорректировать свою конфигурацию в соответствии с новыми именами.</p>
+</div>
+<div class="sect2">
+<h3 id="Installer">Установщик</h3>
+<div class="paragraph">
+<p>Установщик FreeBSD, <a href="https://man.freebsd.org/cgi/man.cgi?query=bsdinstall&amp;sektion=8&amp;format=html">bsdinstall(8)</a>, теперь поддерживает загрузку и установку пакетов с прошивками после завершения установки базовой системы FreeBSD.
+<a href="https://cgit.freebsd.org/src/commit/?id=03c07bdc8b31">03c07bdc8b31</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ports-packages">Изменения в упаковке</h3>
+<div class="paragraph">
+<p>The bootonly ISO and mini-memstick image now include the <a class="package" href="https://cgit.freebsd.org/ports/tree/net/wifi-firmware-iwlwifi-kmod/">net/wifi-firmware-iwlwifi-kmod</a> and <a class="package" href="https://cgit.freebsd.org/ports/tree/net/wifi-firmware-rtw88-kmod/">net/wifi-firmware-rtw88-kmod</a> packages, making installations possible over a wireless connection (on systems supported by these firmware packages).
+<a href="https://cgit.freebsd.org/src/commit/?id=655fcdde1aff">655fcdde1aff</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Пакет <a class="package" href="https://cgit.freebsd.org/ports/tree/net/wifi-firmware-kmod/">net/wifi-firmware-kmod@release</a> был добавлен в набор пакетов на DVD для предоставления необходимых прошивок для большего количества Wi-Fi драйверов.
+<a href="https://cgit.freebsd.org/src/commit/?id=8c6df7ead19c">8c6df7ead19c</a> <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="future-releases">Общие замечания относительно будущих выпусков FreeBSD</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Последнее изменение</strong>: 26 апреля 2026 г. от <a href="https://cgit.freebsd.org/doc/commit/?id=8d40edecc4" target="_blank">Vladlen Popolitov</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">О проекте</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/ru/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">Фонд FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/ru/where" class="column-element">Получить FreeBSD</a>
+          </li>
+          <li>
+            <a href="/ru/internal/code-of-conduct" class="column-element">Кодекс поведения</a>
+          </li>
+          <li>
+            <a href="/ru/security" class="column-element">Бюллетени безопасности</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Документация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Портал документации</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Страницы Справочника</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Презентации и статьи</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Предыдущие версии</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">Документы 4.4BSD</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Сообщество</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/ru/articles/contributing" class="column-element">Присоединиться</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Форум сообщества</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Списки рассылки</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC-каналы</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Баг-трекер</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Правовая информация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Пожертвования</a>
+          </li>
+          <li>
+            <a href="/ru/copyright/freebsd-license" class="column-element">Лицензирование</a>
+          </li>
+          <li>
+            <a href="/ru/privacy" class="column-element">Политика конфиденциальности</a>
+          </li>
+          <li>
+            <a href="/ru/copyright" class="column-element">Юридические уведомления</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p>
+        <span>Сделано <span class="heart">❤️</span> сообществом FreeBSD</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

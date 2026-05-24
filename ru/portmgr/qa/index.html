@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/ru/portmgr/qa/">
+
+  <title>
+    Задачи контроля качества для Группы управления портами |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" Задачи контроля качества для Группы управления портами " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="ru" >
+  <meta property="og:url" content="https://www.freebsd.org/ru/portmgr/qa/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/ru\/portmgr\/qa\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/ru/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              О проекте
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/about">О проекте</a>
+            </li>
+            <li>
+              <a href="/ru/projects/newbies">Введение</a>
+            </li>
+            <li>
+              <a href="/ru/features">Возможности</a>
+            </li>
+            <li>
+              <a href="/ru/privacy">Политика конфиденциальности</a>
+            </li>
+            <li>
+              <a href="/ru/projects">Проекты</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Порты</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Получить FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/where">Получить FreeBSD</a>
+            </li>
+            <li>
+              <a href="/ru/releases">Информация о релизах</a>
+            </li>
+            <li>
+              <a href="/ru/releng">Разработка релизов</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Документация
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/ru/">Документация</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/handbook/">Руководство FreeBSD</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/porters-handbook/">Руководство портировщика</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/fdp-primer">Руководство проекта документации</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Страницы Справочника</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Презентации и статьи</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books">Книги</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/articles">Статьи</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Сообщество
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/community">Сообщество</a>
+            </li>
+            <li>
+              <a href="/ru/community/mailinglists">Списки рассылки</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Форумы</a>
+            </li>
+            <li>
+              <a href="/ru/usergroups">Группы пользователей</a>
+            </li>
+            <li>
+              <a href="/ru/events">События</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">Журнал FreeBSD</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Разработчики
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/projects">Разработчики</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Идеи проектов</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git-репозиторий</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">Зеркало GitHub</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Проверка кода (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Сервис непрерывной интеграции</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Поддержка
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/support">Поддержка</a>
+            </li>
+            <li>
+              <a href="/ru/commercial">Поставщики</a>
+            </li>
+            <li>
+              <a href="/ru/security">Информация о безопасности</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Сообщения об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support">Отправка сообщений об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support/webresources">Веб-ресурсы</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="ru">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/ru/" class="current-lang" aria-current="page">Russian</a>
+          </li>
+          
+            <li>
+              <a href="/portmgr/qa/" lang="en">English</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Пожертвовать
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/ru/about/></a></li>
+  <li><a href=/ru/features/></a></li>
+  <li><a href=/ru/applications/>При­ло­же­ния</a></li>
+  <li><a href=/ru/administration/>Ад­ми­ни­стра­ция</a></li>
+  <li><a href=/ru/news/>Но­во­сти</a></li>
+  <li><a href=/ru/events></a></li>
+  <li><a href=/ru/press>Прес­са</a></li>
+  <li><a href=/ru/art>Ил­люс­тра­ции</a></li>
+  <li><a href=/ru/donations>По­жертво­ва­ния</a></li>
+  <li><a href=/ru/copyright></a></li>
+  <li><a href=/ru/privacy>Политика кон­фи­ден­ци­аль­нос­ти</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>Задачи контроля качества для Группы управления портами</h1><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Имеется ряд задач, которые выполняет Группа управления портами в целях улучшения качества Коллекции Портов. Они делятся на две большие категории: <a href="#qa-before-release">мероприятия во время цикла подготовки релиза</a> и <a href="#qa-between-releases">мероприятия между циклами подготовки релизов</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="qa-before-release">Мероприятия во время цикла подготовки релиза</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Работа с <a href="{releng}">Группой подготовки релизов</a> по координации графика выпуска релиза.</p>
+</li>
+<li>
+<p>Работа с группой RE по определению того, какие предварительной построенные пакеты могут быть по умолчанию размещены на установочные ISO-образы.</p>
+</li>
+<li>
+<p>Управление коммитами в дерево CVS в целях построения пакетов, что подразумевает выполнение следующих шагов:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Объявление о приостановке работ и генерации пакетов для всех соответствующих архитектур. Часто этот процесс повторяется, потому что либо в разных портах обнаруживаются ошибки, либо изменения в дереве исходных текстов системы создают определённые риски, которые могут привести к тому, что уже построенные пакеты не будут работать после внесения этих изменений.</p>
+<div class="paragraph">
+<p>Для обеспечения целостности и корректности сборки пакетов <em>все</em> коммиты должны быть согласованы с группой управления портами. Обычно разрешаются следующие изменения:
+<strong> исправления, влияющие на успешность построения пакета;
+</strong> исправления, касающиеся информационной безопасности критических для работы пакетов;
+** обнаруженные проблемы с лицензионными соглашениями.
+К сожалению, из-за невероятного размера Коллекции Портов и скорости разработки приложений, к моменту выпуска релиза исправить все ошибки невозможно.</p>
+</div>
+</li>
+<li>
+<p>После этого дерево блокируется для любых изменений и помечается CVS-меткой.</p>
+</li>
+<li>
+<p>Затем дерево разблокировывается и объявляется о <code>полировке</code>. Это состояние нужно для того, чтобы вносить в Коллекцию Портов обычные изменения, но с тем, что они не появятся на ISO с релизом. В коммитах необходимо избегать следующих вещей:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>обновления портов со многими зависимостями, в частности, серверы X11, KDE и GNOME;</p>
+</li>
+<li>
+<p>прямые копирования в хранилище многих портов;</p>
+</li>
+<li>
+<p>и так далее.</p>
+<div class="paragraph">
+<p>Причина, по которой мы хотим избежать таких коммитов, заключается в том, что если будет найдена какая-то настолько серьёзная проблема (связанная с безопасностью или вопросами лицензирования), что нам придётся делать изменения, которую могут быть перенесены на ISO c релизом, то ко всему прочему нам будет нужно проставлять CVS-метку на эти изменённые файлы. Если мы разрешим абсолютно все виды изменений, то высок риск, что любое такое изменение приведёт к необходимости повторного построения пакетов снова и снова, и в результате процесс подготовки релиза будет бесконечным.</p>
+</div>
+<div class="paragraph">
+<p>Как только команда RE и portmgr останутся довольными итоговым состоянием ISO с релизом, дерево портов будет снова полностью доступно для коммитов.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="qa-between-releases">Мероприятия между циклами подготовки релизов</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Управление машинами <a href="http://pointyhat.FreeBSD.org">кластера построения портов</a>. Они постоянно строят пакеты для всех возможных комбинаций релизов ОС и архитектур ЦП (по нашей терминологии <code>сред построения</code>.)</p>
+<div class="paragraph">
+<p>В процессе этих построений также генерируются протоколы ошибок для пакетов, которые строятся некорректно (обратитесь по URL-адресу выше). Периодически группа помечает эти порты как нерабочие (BROKEN), чтобы это могли увидеть сопровождающие. (Смотрите далее.)</p>
+</div>
+<div class="paragraph">
+<p>Успешно построенные пакеты (по крайней мере, те, что распространяются свободно) также копируются на главный FTP-сервер и таким образом становятся по умолчанию &#34;самыми последними пакетами&#34; для выполнения установки при помощи пакетов, а не портов.</p>
+</div>
+</li>
+<li>
+<p>Оповещение сообщества FreeBSD о проблемах в Коллекции Портов, чтобы они не были пропущены. Для этого существует некоторое количество отчётов, отправляемых по электронной почте. Те, что отмечены как <code>общедоступные</code>, публикуются во freebsd-ports.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>общедоступный перечень портов, удалённых из-за проблем с безопасностью, ошибок построения или общей устарелости, если до этого ситуация не будут исправлена.</p>
+</li>
+<li>
+<p>частные письма всем сопровождающим затронутых портов (включая порты, зависящие от указанных выше).</p>
+</li>
+<li>
+<p>частные письма всем сопровождающим портов, которые уже помечены как нерабочие (BROKEN) и/или запрещённые (FORBIDDEN).</p>
+</li>
+<li>
+<p>частные письма сопровождающим, не являющимся коммиттерами, которые направили PR о собственных портах (для отметки PR, которые могли не направляться им через Cc:).</p>
+</li>
+<li>
+<p>сообщение всем о коммитах портов, которые нарушают построение файла INDEX.</p>
+</li>
+<li>
+<p>оповещение всех о коммитах портов, в которых мета-данные о версиях меняются в обратную сторону (и таким образом вводят в заблуждение такие инструменты, как portupgrade).</p>
+</li>
+<li>
+<p>общедоступный перечень всех портов, которые имеют по крайней мере один файл, который невозможно сгрузить с любого главного сайта, не относящегося к FreeBSD. Полный список результатов проверки доступности всех файлов со всех своих главный сайтов можно найти в <a href="http://people.FreeBSD.org/~fenner/portsurvey/">тесте портов Билла Феннера</a>.</p>
+</li>
+<li>
+<p>частные письма сопровождающим затронутых портов, если порт будет помечаться как нерабочий (BROKEN), копия через Cc: направляется последнему коммиттеру порта. (Эта почта не автоматизируется, но она должна посылаться как жест вежливости.)</p>
+</li>
+<li>
+<p>список портов, которые не устанавливают NO_LATEST_LINK. (Порты, у которых есть и стабильная версия, и версия в процессе разработки, обычно устанавливают номер версии в разработки на большее значение. Если желательно, чтобы из пакетов пользователи устанавливали стабильную версию, а не версию в разработке, то нужно задать этот параметр; в противном случае по умолчанию пользователи получат последнюю версию.)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Удаление устаревших портов. Порты, которые уже помечены как BROKEN какой-то период времени, помечаются как DEPRECATED (с установкой EXPIRATION_DATE), а затем удаляются, если за истекшее время никто их не исправил. Целью такого порядка является обеспечение того, что если пользователь установил порт, то он должен иметь максимальные шансы на восстановление работоспособность.</p>
+<div class="paragraph">
+<p>В других случаях порты помечаются как DEPRECATED, если они заменяются на более современные версии, а старые больше автором не поддерживаются. Обычно при этом должна задаваться EXPIRATION_DATE не менее чем в два будущих месяца, что даёт достаточно времени, чтобы произвести обновление.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Последнее изменение</strong>: 26 апреля 2026 г. от <a href="https://cgit.freebsd.org/doc/commit/?id=8d40edecc4" target="_blank">Vladlen Popolitov</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">О проекте</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/ru/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">Фонд FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/ru/where" class="column-element">Получить FreeBSD</a>
+          </li>
+          <li>
+            <a href="/ru/internal/code-of-conduct" class="column-element">Кодекс поведения</a>
+          </li>
+          <li>
+            <a href="/ru/security" class="column-element">Бюллетени безопасности</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Документация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Портал документации</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Страницы Справочника</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Презентации и статьи</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Предыдущие версии</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">Документы 4.4BSD</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Сообщество</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/ru/articles/contributing" class="column-element">Присоединиться</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Форум сообщества</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Списки рассылки</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC-каналы</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Баг-трекер</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Правовая информация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Пожертвования</a>
+          </li>
+          <li>
+            <a href="/ru/copyright/freebsd-license" class="column-element">Лицензирование</a>
+          </li>
+          <li>
+            <a href="/ru/privacy" class="column-element">Политика конфиденциальности</a>
+          </li>
+          <li>
+            <a href="/ru/copyright" class="column-element">Юридические уведомления</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p>
+        <span>Сделано <span class="heart">❤️</span> сообществом FreeBSD</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

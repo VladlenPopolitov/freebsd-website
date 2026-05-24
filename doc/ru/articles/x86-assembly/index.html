@@ -1,0 +1,2154 @@
+<!doctype html><html class=theme-light lang=ru><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Программирование на ассемблере x86"><meta name=keywords content="assembly,guide,ia32,ld,llvm-as,nasm,programming,x86"><meta name=copyright content="1995-2026 The FreeBSD Foundation"><link rel=canonical href=https://docs.freebsd.org/ru/articles/x86-assembly/><title>Программирование на языке ассемблера для x86 | FreeBSD Documentation Portal</title><meta name=theme-color content="#790000"><meta name=color-scheme content="system light dark high-contrast"><link rel="shortcut icon" href=https://docs.freebsd.org/favicon.ico><link rel=stylesheet href=https://docs.freebsd.org/styles/main.min.css><link rel=stylesheet href=https://docs.freebsd.org/css/font-awesome-min.css><script defer src=/js/theme-chooser.min.js></script><script defer src=/js/copy-clipboard.min.js></script><script defer src=/js/search.min.js></script><meta name=twitter:card content="summary"><meta name=twitter:domain content="www.freebsd.msk.ru/doc"><meta name=twitter:site content="@freebsd"><meta name=twitter:url content="https://twitter.com/freebsd"><meta property="og:title" content="Программирование на языке ассемблера для x86"><meta property="og:description" content="Программирование на ассемблере x86"><meta property="og:type" content="website"><meta property="og:image" content="https://docs.freebsd.org/favicon.ico"><meta property="og:image:alt" content="FreeBSD Logo"><meta property="og:locale" content="ru"><meta property="og:url" content="https://docs.freebsd.org/ru/articles/x86-assembly/"><meta property="og:site_name" content="FreeBSD Documentation Portal"><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","url":"https:\/\/docs.freebsd.org\/ru\/articles\/x86-assembly\/","name":"FreeBSD Documentation Portal","headline":"FreeBSD Documentation Portal","description":"FreeBSD Documentation Portal"}</script><script defer data-domain=freebsd.org src=https://plausible.io/js/script.outbound-links.js></script></head><body><header><div class=header-container><div class=logo-menu-bars-container><a href=https://www.FreeBSD.org class=logo><img src=https://docs.freebsd.org/images/FreeBSD-monochromatic.svg width=160 height=50 alt="FreeBSD logo">
+</a><label class=menu-bars for=menu-bars><i class="fa fa-bars" aria-hidden=true></i></label></div><input id=menu-bars type=checkbox><nav><ul class=menu><li class=menu-item><input id=about type=checkbox>
+<a href=# aria-label="Navigate to About section"><label class=menu-item-description for=about>О нас
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=https://www.freebsd.msk.ru/ru/about/ target=_blank>О нас</a></li><li><a href=https://www.freebsd.msk.ru/ru/about/ target=_blank>FreeBSD</a></li><li><a href=https://freebsdfoundation.org/about-us/about-the-foundation/ target=_blank>Фонд FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/internal/code-of-conduct/ target=_blank>Кодекс Этики</a></li></ul></li><li class=menu-item><input id=download type=checkbox>
+<a href=# aria-label="Navigate to get FreeBSD section"><label class=menu-item-description for=download>Получить FreeBSD
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=https://www.freebsd.msk.ru/ru/where/ target=_blank>Получить FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/releases/ target=_blank>Информация о релизах</a></li><li><a href=https://www.freebsd.msk.ru/ru/releng/ target=_blank>Подготовка релизов</a></li><li><a href=https://www.freebsd.msk.ru/ru/security/ target=_blank>Бюллетени Безопасности</a></li></ul></li><li class=menu-item><input id=documentation type=checkbox>
+<a href=# aria-label="Navigate to get Documentation section"><label class=menu-item-description for=documentation>Документация
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=/ru>Портал документации</a></li><li><a href=https://docs.freebsd.org/ru/books/handbook>Руководство</a></li><li><a href=https://docs.freebsd.org/ru/books/porters-handbook>Руководство по созданию портов</a></li><li><a href=https://www.freebsd.msk.ru/doc/en/books/fdp-primer>Учебник Проекта Документирования</a></li><li><a href=https://man.FreeBSD.org target=_blank>Страницы Справочника</a></li><li><a href=https://papers.FreeBSD.org target=_blank>Презентации и публикации</a></li><li><a href=https://wiki.FreeBSD.org target=_blank>Wiki</a></li><li><a href=https://docs.freebsd.org/ru/books>Книги</a></li><li><a href=https://docs.freebsd.org/ru/articles>Статьи</a></li></ul></li><li class=menu-item><input id=community type=checkbox>
+<a href=# aria-label="Navigate to get Community section"><label class=menu-item-description for=community>Сообщество
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=https://www.freebsd.msk.ru/ru/community/>Сообщество</a></li><li><a href=https://docs.freebsd.org/ru/articles/contributing>Стать участником</a></li><li><a href=https://forums.freebsd.org/ target=_blank>Форум</a></li><li><a href=https://lists.freebsd.org/ target=_blank>Списки рассылки</a></li><li><a href=https://wiki.freebsd.org/IRC/Channels target=_blank>Каналы IRC</a></li><li><a href=https://bugs.freebsd.org/bugzilla/ target=_blank>Трекер ошибок</a></li><li><a href=https://www.freebsd.msk.ru/ru/support/ target=_blank>Поддержка</a></li></ul></li></ul></nav><div class=search-donate-container><form class=search method=get id=search-header-form action=https://www.freebsd.msk.ru/doc/search name=search-header-form><input type=hidden name=DB value=ru>
+<input id=words name=P type=text size=20 maxlength=255>
+<button>
+<i class="fa fa-search" aria-hidden=true></i></button></form><div class=donate><a href=https://freebsdfoundation.org/donate/ target=_blank><span class=heart>♥</span>
+Пожертвования</a></div></div></div></header><main class=main-wrapper-article><div class=article><h1 class=title>Программирование на языке ассемблера для x86</h1><div class="admonitionblock note"><p><i class="fa fa-exclamation-circle" aria-hidden=true></i>
+Этот перевод может быть устаревшим. Для того, чтобы помочь с переводом, пожалуйста, обратитесь к <a href=https://translate-dev.freebsd.org/ target=_blank>Сервер переводов FreeBSD</a>.</p></div><div class=toc-mobile><h3>Содержание</h3><nav id=TableOfContents><ul><li><a href=#x86-intro>1. Обзор</a></li><li><a href=#x86-the-tools>2. Инструменты</a></li><li><a href=#x86-system-calls>3. Системные вызовы</a></li><li><a href=#x86-return-values>4. Возвращаемые значения</a></li><li><a href=#x86-portable-code>5. Создание переносимого кода</a></li><li><a href=#x86-first-program>6. Наша первая программа</a></li><li><a href=#x86-unix-filters>7. Написание фильтров UNIX®</a></li><li><a href=#x86-buffered-io>8. Буферизованный ввод и вывод</a></li><li><a href=#x86-command-line>9. Аргументы командной строки</a></li><li><a href=#x86-environment>10. Окружение UNIX®</a></li><li><a href=#x86-files>11. Работа с файлами</a></li><li><a href=#x86-one-pointed-mind>12. Спокойствие ума</a></li><li><a href=#x86-fpu>13. Использование FPU</a></li><li><a href=#x86-caveats>14. Предостережения</a></li><li><a href=#x86-acknowledgements>15. Благодарности</a></li></ul></nav></div><div id=preamble><div class=sectionbody><div class=paragraph><p><em>Эта глава была написана G. Adam Stanislav &lt;<a href=mailto:adam@redprince.net>adam@redprince.net</a>>.</em></p></div></div></div><div class=sect1><h2 id=x86-intro>1. Обзор<a class=anchor href=#x86-intro></a></h2><div class=sectionbody><div class=paragraph><p>Программирование на ассемблере в UNIX® крайне плохо документировано. Обычно предполагается, что никто не захочет его использовать, поскольку различные системы UNIX® работают на разных микропроцессорах, и поэтому всё должно быть написано на C для обеспечения переносимости.</p></div><div class=paragraph><p>В действительности переносимость программ на C — это скорее миф. Даже программы на C требуют изменений при переносе с одной UNIX®-системы на другую, независимо от процессора, на котором они работают. Обычно такая программа содержит множество условных операторов, зависящих от системы, для которой она компилируется.</p></div><div class=paragraph><p>Даже если мы считаем, что всё программное обеспечение UNIX® должно быть написано на C или другом языке высокого уровня, нам всё равно нужны программисты на ассемблере: кто же ещё напишет часть библиотеки C, которая обращается к ядру?</p></div><div class=paragraph><p>В этой главе я попытаюсь показать вам, как можно использовать язык ассемблера для написания программ под UNIX®, в частности под FreeBSD.</p></div><div class=paragraph><p>В этой главе не объясняются основы языка ассемблера. Существует достаточно ресурсов на эту тему (например, полный онлайн-курс по языку ассемблера можно найти в <a href=http://webster.cs.ucr.edu/>Искусстве языка ассемблера</a> Рэндалла Хайда; если вы предпочитаете печатные книги, обратите внимание на «Язык ассемблера шаг за шагом» Джеффа Дантемана (ISBN: 0471375233)). Однако после прочтения этой главы любой программист на языке ассемблера сможет писать программы для FreeBSD быстро и эффективно.</p></div><div class=paragraph><p>Copyright ® 2000-2001 G. Adam Stanislav. All rights reserved.</p></div></div></div><div class=sect1><h2 id=x86-the-tools>2. Инструменты<a class=anchor href=#x86-the-tools></a></h2><div class=sectionbody><div class=sect2><h3 id=x86-the-assembler>2.1. Ассемблер<a class=anchor href=#x86-the-assembler></a></h3><div class=paragraph><p>Важнейшим инструментом для программирования на языке ассемблера является ассемблер — программа, преобразующая код на языке ассемблера в машинный код.</p></div><div class=paragraph><p>Три очень разных ассемблера доступны для FreeBSD. И <a href="https://man.freebsd.org/cgi/man.cgi?query=llvm-as&amp;sektion=1&amp;format=html">llvm-as(1)</a> (включён в <a class=package href=https://cgit.freebsd.org/ports/tree/devel/llvm/>devel/llvm</a>), и <a href="https://man.freebsd.org/cgi/man.cgi?query=as&amp;sektion=1&amp;format=html">as(1)</a> (включён в <a class=package href=https://cgit.freebsd.org/ports/tree/devel/binutils/>devel/binutils</a>) используют традиционный синтаксис ассемблера UNIX®.</p></div><div class=paragraph><p>С другой стороны, <a href="https://man.freebsd.org/cgi/man.cgi?query=nasm&amp;sektion=1&amp;format=html">nasm(1)</a> (устанавливаемый через <a class=package href=https://cgit.freebsd.org/ports/tree/devel/nasm/>devel/nasm</a>) использует синтаксис Intel. Его основное преимущество в том, что он может ассемблировать код для многих операционных систем.</p></div><div class=paragraph><p>В этой главе используется синтаксис nasm, потому что большинство программистов на ассемблере, приходящих в FreeBSD из других операционных систем, найдут его более понятным. Кроме того, если честно, это то, к чему я привык.</p></div></div><div class=sect2><h3 id=x86-the-linker>2.2. Компоновщик<a class=anchor href=#x86-the-linker></a></h3><div class=paragraph><p>Результат работы ассемблера, как и любого компилятора, необходимо связать, чтобы получить исполняемый файл.</p></div><div class=paragraph><p>Стандартный компоновщик <a href="https://man.freebsd.org/cgi/man.cgi?query=ld&amp;sektion=1&amp;format=html">ld(1)</a> поставляется с FreeBSD. Он работает с кодом, собранным любым из ассемблеров.</p></div></div></div></div><div class=sect1><h2 id=x86-system-calls>3. Системные вызовы<a class=anchor href=#x86-system-calls></a></h2><div class=sectionbody><div class=sect2><h3 id=x86-default-calling-convention>3.1. Стандартное соглашение о вызовах<a class=anchor href=#x86-default-calling-convention></a></h3><div class=paragraph><p>По умолчанию ядро FreeBSD использует соглашение о вызовах C. Кроме того, хотя доступ к ядру осуществляется с помощью <code>int 80h</code>, предполагается, что программа вызовет функцию, которая выполняет <code>int 80h</code>, а не будет выполнять <code>int 80h</code> напрямую.</p></div><div class=paragraph><p>Эта традиция очень удобна и значительно превосходит соглашение Microsoft®, используемое в MS-DOS®. Почему? Потому что соглашение UNIX® позволяет любой программе, написанной на любом языке, обращаться к ядру.</p></div><div class=paragraph><p>Программа на ассемблере также может это сделать. Например, мы могли бы открыть файл:</p></div><div class="literalblock programlisting"><div class=content><pre>kernel:
+	int	80h	; Call kernel
+	ret
+
+open:
+	push	dword mode
+	push	dword flags
+	push	dword path
+	mov	eax, 5
+	call	kernel
+	add	esp, byte 12
+	ret</pre></div></div><div class=paragraph><p>Это очень понятный и переносимый способ написания кода. Если вам нужно перенести код на UNIX®-систему, которая использует другое прерывание или другой способ передачи параметров, все, что вам нужно изменить, это процедуру kernel.</p></div><div class=paragraph><p>Но программисты на ассемблере любят экономить такты. Приведённый выше пример требует комбинации <code>call/ret</code>. Мы можем исключить её, сделав <code>push</code> дополнительного двойного слова:</p></div><div class="literalblock programlisting"><div class=content><pre>open:
+	push	dword mode
+	push	dword flags
+	push	dword path
+	mov	eax, 5
+	push	eax		; Or any other dword
+	int	80h
+	add	esp, byte 16</pre></div></div><div class=paragraph><p>Помещённое в <code>EAX</code> значение <code>5</code> идентифицирует функцию ядра, в данном случае <code>open</code>.</p></div></div><div class=sect2><h3 id=x86-alternate-calling-convention>3.2. Альтернативное соглашение о вызовах<a class=anchor href=#x86-alternate-calling-convention></a></h3><div class=paragraph><p>FreeBSD — это чрезвычайно гибкая система. Она предлагает другие способы вызова ядра. Однако для работы необходимо, чтобы в системе была установлена эмуляция Linux.</p></div><div class=paragraph><p>Linux — это система, подобная UNIX®. Однако её ядро использует то же соглашение о системных вызовов для передачи параметров в регистрах, что и MS-DOS®. Как и в соглашении UNIX®, номер функции помещается в <code>EAX</code>. Однако параметры передаются не в стеке, а в регистрах <code>EBX, ECX, EDX, ESI, EDI, EBP</code>:</p></div><div class="literalblock programlisting"><div class=content><pre>open:
+	mov	eax, 5
+	mov	ebx, path
+	mov	ecx, flags
+	mov	edx, mode
+	int	80h</pre></div></div><div class=paragraph><p>Этот подход имеет значительный недостаток по сравнению с UNIX®, по крайней мере, в контексте программирования на ассемблере: каждый раз при вызове ядра необходимо сохранять регистры с помощью <code>push</code>, а затем восстанавливать их с помощью <code>pop</code>. Это делает ваш код более громоздким и медленным. Тем не менее, FreeBSD предоставляет вам выбор.</p></div><div class=paragraph><p>Если вы решите использовать соглашение Linux, вы должны сообщить об этом системе. После того как ваша программа будет ассемблирована и слинкована, вам нужно пометить исполняемый файл:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% brandelf <span class=nt>-t</span> Linux filename</code></pre></div></div></div><div class=sect2><h3 id=x86-use-geneva>3.3. Какое соглашение следует использовать?<a class=anchor href=#x86-use-geneva></a></h3><div class=paragraph><p>Если вы разрабатываете код специально для FreeBSD, всегда следует использовать соглашение UNIX®: это быстрее, вы можете хранить глобальные переменные в регистрах, вам не нужно маркировать исполняемый файл, и вы не требуете установки пакета эмуляции Linux на целевой системе.</p></div><div class=paragraph><p>Хотя вы можете хотеть создать переносимый код, который также работает на Linux, вам, вероятно, по-прежнему будет нужен максимально эффективный код для пользователей FreeBSD. Я покажу вам, как этого добиться, после того как объясню основы.</p></div></div><div class=sect2><h3 id=x86-call-numbers>3.4. Номера вызовов<a class=anchor href=#x86-call-numbers></a></h3><div class=paragraph><p>Чтобы сообщить ядру, какую системную службу вы вызываете, поместите её номер в <code>EAX</code>. Разумеется, вам необходимо знать, что это за номер.</p></div><div class=sect3><h4 id=x86-the-syscalls-file>3.4.1. Файл <span class=filename>syscalls</span><a class=anchor href=#x86-the-syscalls-file></a></h4><div class=paragraph><p>Номера перечислены в <span class=filename>syscalls</span>. Команда <code>locate syscalls</code> находит этот файл в нескольких различных форматах, все они создаются автоматически из <span class=filename>syscalls.master</span>.</p></div><div class=paragraph><p>Основной файл для стандартного соглашения о вызовах UNIX® можно найти в <span class=filename>/usr/src/sys/kern/syscalls.master</span>. Если вам необходимо использовать другое соглашение, реализованное в режиме эмуляции Linux, обратитесь к <span class=filename>/usr/src/sys/i386/linux/syscalls.master</span>.</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Не только FreeBSD и Linux используют разные соглашения о вызовах, но иногда они используют разные номера для одних и тех же функций.</p></div></td></tr></tbody></table></div><div class=paragraph><p><span class=filename>syscalls.master</span> описывает, как должен быть выполнен вызов:</p></div><div class="literalblock programlisting"><div class=content><pre>0	STD	NOHIDE	{ int nosys(void); } syscall nosys_args int
+1	STD	NOHIDE	{ void exit(int rval); } exit rexit_args void
+2	STD	POSIX	{ int fork(void); }
+3	STD	POSIX	{ ssize_t read(int fd, void *buf, size_t nbyte); }
+4	STD	POSIX	{ ssize_t write(int fd, const void *buf, size_t nbyte); }
+5	STD	POSIX	{ int open(char *path, int flags, int mode); }
+6	STD	POSIX	{ int close(int fd); }
+etc...</pre></div></div><div class=paragraph><p>Это крайний левый столбец, который указывает число, которое нужно поместить в <code>EAX</code>.</p></div><div class=paragraph><p>Самый правый столбец указывает, какие параметры нужно <code>втолкнуть</code> в стек командой push. Они <code>вталкиваются</code> <em>справа налево</em>.</p></div><div class=paragraph><p>Например, чтобы <code>открыть</code> файл, нам сначала нужно сделать <code>push</code> для <code>mode</code>, затем <code>flags</code>, а затем адрес, по которому хранится <code>path</code>.</p></div></div></div></div></div><div class=sect1><h2 id=x86-return-values>4. Возвращаемые значения<a class=anchor href=#x86-return-values></a></h2><div class=sectionbody><div class=paragraph><p>От системных вызовов не было бы никакой пользы, если бы они не возвращали какое-либо значение: дескриптор открытого файла, количество байтов, прочитанных в буфер, системное время и т.д.</p></div><div class=paragraph><p>Кроме того, система должна уведомлять нас, если возникает ошибка: файл не существует, системные ресурсы исчерпаны, передан недопустимый параметр и т. д.</p></div><div class=sect2><h3 id=x86-man-pages>4.1. Страницы Справочника<a class=anchor href=#x86-man-pages></a></h3><div class=paragraph><p>Традиционным источником информации о различных системных вызовах в UNIX®-системах являются страницы Справочника. В FreeBSD системные вызовы описаны в разделе 2, иногда в разделе 3.</p></div><div class=paragraph><p>Например, <a href="https://man.freebsd.org/cgi/man.cgi?query=open&amp;sektion=2&amp;format=html">open(2)</a> говорит:</p></div><div class="paragraph blockquote"><p>В случае успеха <code>open()</code> возвращает неотрицательное целое число, называемое файловым дескриптором. В случае ошибки возвращается <code>-1</code>, а переменной <code>errno</code> присваивается код ошибки.</p></div><div class=paragraph><p>Программист на ассемблере, впервые столкнувшийся с UNIX® и FreeBSD, сразу же задастся вопросом: где находится <code>errno</code> и как к ней обратиться?</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Информация, представленная в руководствах, применима к программам на языке C. Программистам на языке ассемблера требуется дополнительная информация.</p></div></td></tr></tbody></table></div></div><div class=sect2><h3 id=x86-where-return-values>4.2. Где возвращаемые значения?<a class=anchor href=#x86-where-return-values></a></h3><div class=paragraph><p>К сожалению, это зависит от ситуации…​ Для большинства системных вызовов возвращаемое значение находится в <code>EAX</code>, но не для всех. Хорошее правило при первой работе с системным вызовом — искать возвращаемое значение в <code>EAX</code>. Если его там нет, потребуется дополнительное исследование.</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Я знаю о одном системном вызове, который возвращает значение в <code>EDX</code>: <code>SYS_fork</code>. Все остальные, с которыми я работал, используют <code>EAX</code>. Но я ещё не работал со всеми из них.</p></div></td></tr></tbody></table></div><div class="admonitionblock tip"><table><tbody><tr><td class=icon><i class="fa icon-tip" title=Tip></i></td><td class=content><div class=paragraph><p>Если вы не можете найти ответ здесь или где-либо ещё, изучите исходный код libc и посмотрите, как он взаимодействует с ядром.</p></div></td></tr></tbody></table></div></div><div class=sect2><h3 id=x86-where-errno>4.3. Где находится <code>errno</code>?<a class=anchor href=#x86-where-errno></a></h3><div class=paragraph><p>Фактически, нигде…​</p></div><div class=paragraph><p><code>errno</code> является частью языка C, а не ядра UNIX®. При прямом доступе к сервисам ядра код ошибки возвращается в регистре <code>EAX</code> — том же регистре, в котором обычно оказывается корректное возвращаемое значение.</p></div><div class=paragraph><p>Это совершенно логично. Если нет ошибки, то нет и кода ошибки. Если есть ошибка, то нет возвращаемого значения. Один регистр может содержать либо то, либо другое.</p></div></div><div class=sect2><h3 id=x86-how-to-know-error>4.4. Определение возникновения ошибки<a class=anchor href=#x86-how-to-know-error></a></h3><div class=paragraph><p>При использовании стандартного соглашения о вызовах FreeBSD флаг <code>carry flag</code> сбрасывается при успехе и устанавливается при неудаче.</p></div><div class=paragraph><p>При использовании режима эмуляции Linux знаковое значение в <code>EAX</code> неотрицательно в случае успеха и содержит возвращаемое значение. В случае ошибки значение отрицательное, т.е. <code>-errno</code>.</p></div></div></div></div><div class=sect1><h2 id=x86-portable-code>5. Создание переносимого кода<a class=anchor href=#x86-portable-code></a></h2><div class=sectionbody><div class=paragraph><p>Портативность обычно не является сильной стороной языка ассемблера. Тем не менее, написание программ на ассемблере для разных платформ возможно, особенно с использованием nasm. Я создавал библиотеки на ассемблере, которые можно было собрать для таких разных операционных систем, как Windows® и FreeBSD.</p></div><div class=paragraph><p>Это становится ещё более возможным, когда вы хотите, чтобы ваш код работал на двух платформах, которые, хотя и различны, основаны на схожих архитектурах.</p></div><div class=paragraph><p>Например, FreeBSD — это UNIX®, а Linux — UNIX®-подобная система. Я упомянул лишь три различия между ними (с точки зрения программиста на ассемблере): соглашение о вызовах, номера функций и способ возврата значений.</p></div><div class=sect2><h3 id=x86-deal-with-function-numbers>5.1. Работа с номерами функций<a class=anchor href=#x86-deal-with-function-numbers></a></h3><div class=paragraph><p>Во многих случаях номера функций совпадают. Однако, даже если это не так, проблему легко решить: вместо использования чисел в коде применяйте константы, объявленные по-разному в зависимости от целевой архитектуры:</p></div><div class="literalblock programlisting"><div class=content><pre>%ifdef	LINUX
+%define	SYS_execve	11
+%else
+%define	SYS_execve	59
+%endif</pre></div></div></div><div class=sect2><h3 id=x86-deal-with-geneva>5.2. Работа с соглашениями<a class=anchor href=#x86-deal-with-geneva></a></h3><div class=paragraph><p>Оба, соглашение о вызовах и возвращаемое значение (проблема <code>errno</code>) могут быть решены с помощью макросов:</p></div><div class="literalblock programlisting"><div class=content><pre>%ifdef	LINUX
+
+%macro	system	0
+	call	kernel
+%endmacro
+
+align 4
+kernel:
+	push	ebx
+	push	ecx
+	push	edx
+	push	esi
+	push	edi
+	push	ebp
+
+	mov	ebx, [esp+32]
+	mov	ecx, [esp+36]
+	mov	edx, [esp+40]
+	mov	esi, [esp+44]
+	mov	ebp, [esp+48]
+	int	80h
+
+	pop	ebp
+	pop	edi
+	pop	esi
+	pop	edx
+	pop	ecx
+	pop	ebx
+
+	or	eax, eax
+	js	.errno
+	clc
+	ret
+
+.errno:
+	neg	eax
+	stc
+	ret
+
+%else
+
+%macro	system	0
+	int	80h
+%endmacro
+
+%endif</pre></div></div></div><div class=sect2><h3 id=x86-deal-with-other-portability>5.3. Устранение прочих проблем с переносимостью<a class=anchor href=#x86-deal-with-other-portability></a></h3><div class=paragraph><p>Приведённые выше решения могут помочь в большинстве случаев написания кода, переносимого между FreeBSD и Linux. Тем не менее, с некоторыми сервисами ядра различия более глубокие.</p></div><div class=paragraph><p>В таком случае необходимо написать два разных обработчика для этих конкретных системных вызовов и использовать условную компиляцию. К счастью, большая часть вашего кода выполняет действия, отличные от вызовов ядра, поэтому обычно потребуется лишь несколько таких условных секций в коде.</p></div></div><div class=sect2><h3 id=x86-portable-library>5.4. Использование библиотеки<a class=anchor href=#x86-portable-library></a></h3><div class=paragraph><p>Вы можете полностью избежать проблем с переносимостью в основном коде, написав библиотеку системных вызовов. Создайте отдельную библиотеку для FreeBSD, другую для Linux и ещё другие библиотеки для дополнительных операционных систем.</p></div><div class=paragraph><p>В вашей библиотеке напишите отдельную функцию (или процедуру, если вы предпочитаете традиционную терминологию ассемблера) для каждого системного вызова. Используйте соглашение о вызовах C для передачи параметров. Однако по-прежнему передавайте номер вызова через <code>EAX</code>. В таком случае ваша библиотека FreeBSD может быть очень простой, так как множество внешне различных функций могут быть просто метками одного и того же кода:</p></div><div class="literalblock programlisting"><div class=content><pre>sys.open:
+sys.close:
+[etc...]
+	int	80h
+	ret</pre></div></div><div class=paragraph><p>Ваша библиотека Linux потребует больше различных функций. Но даже здесь вы можете группировать системные вызовы, используя одинаковое количество параметров:</p></div><div class="literalblock programlisting"><div class=content><pre>sys.exit:
+sys.close:
+[etc... one-parameter functions]
+	push	ebx
+	mov	ebx, [esp+12]
+	int	80h
+	pop	ebx
+	jmp	sys.return
+
+...
+
+sys.return:
+	or	eax, eax
+	js	sys.err
+	clc
+	ret
+
+sys.err:
+	neg	eax
+	stc
+	ret</pre></div></div><div class=paragraph><p>Подход с использованием библиотек может показаться неудобным на первый взгляд, так как требует создания отдельного файла, от которого зависит ваш код. Однако у него есть множество преимуществ: во-первых, вам нужно написать его лишь один раз, и затем вы можете использовать его во всех своих программах. Вы даже можете позволить другим программистам на ассемблере использовать его или, возможно, воспользоваться библиотекой, написанной кем-то другим. Но, пожалуй, самое большое преимущество библиотеки заключается в том, что ваш код может быть перенесён на другие системы, даже другими программистами, просто путём написания новой библиотеки без каких-либо изменений в вашем коде.</p></div><div class=paragraph><p>Если вам не нравится идея использования библиотеки, вы можете хотя бы разместить все системные вызовы в отдельном файле на ассемблере и скомпоновать его с основной программой. Здесь, опять же, все, что нужно сделать переносчикам, — это создать новый объектный файл для компоновки с основной программой.</p></div></div><div class=sect2><h3 id=x86-portable-include>5.5. Использование включаемого файла<a class=anchor href=#x86-portable-include></a></h3><div class=paragraph><p>Если вы выпускаете своё программное обеспечение в виде исходного кода (или вместе с ним), вы можете использовать макросы и размещать их в отдельном файле, который включается в ваш код.</p></div><div class=paragraph><p>Портеры вашего программного обеспечения просто напишут новый include-файл. Никакая библиотека или внешний объектный файл не требуются, и ваш код остаётся переносимым без необходимости редактирования.</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Это подход, который мы будем использовать на протяжении всей главы. Мы назовем наш включаемый файл <span class=filename>system.inc</span> и будем добавлять в него новые системные вызовы по мере их рассмотрения.</p></div></td></tr></tbody></table></div><div class=paragraph><p>Мы можем начать наш <span class=filename>system.inc</span> с объявления стандартных файловых дескрипторов:</p></div><div class="literalblock programlisting"><div class=content><pre>%define	stdin	0
+%define	stdout	1
+%define	stderr	2</pre></div></div><div class=paragraph><p>Далее мы создаем символическое имя для каждого системного вызова:</p></div><div class="literalblock programlisting"><div class=content><pre>%define	SYS_nosys	0
+%define	SYS_exit	1
+%define	SYS_fork	2
+%define	SYS_read	3
+%define	SYS_write	4
+; [etc...]</pre></div></div><div class=paragraph><p>Добавляем короткую, неглобальную процедуру с длинным именем, чтобы случайно не использовать это имя в нашем коде:</p></div><div class="literalblock programlisting"><div class=content><pre>section	.text
+align 4
+access.the.bsd.kernel:
+	int	80h
+	ret</pre></div></div><div class=paragraph><p>Мы создаем макрос, который принимает один аргумент — номер системного вызова:</p></div><div class="literalblock programlisting"><div class=content><pre>%macro	system	1
+	mov	eax, %1
+	call	access.the.bsd.kernel
+%endmacro</pre></div></div><div class=paragraph><p>Наконец, мы создаем макросы для каждого системного вызова. Эти макросы не принимают аргументов.</p></div><div class="literalblock programlisting"><div class=content><pre>%macro	sys.exit	0
+	system	SYS_exit
+%endmacro
+
+%macro	sys.fork	0
+	system	SYS_fork
+%endmacro
+
+%macro	sys.read	0
+	system	SYS_read
+%endmacro
+
+%macro	sys.write	0
+	system	SYS_write
+%endmacro
+
+; [etc...]</pre></div></div><div class=paragraph><p>Продолжайте, введите это в ваш редактор и сохраните как <span class=filename>system.inc</span>. Мы добавим больше по мере обсуждения дополнительных системных вызовов.</p></div></div></div></div><div class=sect1><h2 id=x86-first-program>6. Наша первая программа<a class=anchor href=#x86-first-program></a></h2><div class=sectionbody><div class=paragraph><p>Мы готовы к нашей первой обязательной программе — Hello, World!</p></div><div class="literalblock programlisting"><div class=content><pre>	%include	&#39;system.inc&#39;
+
+	section	.data
+	hello	db	&#39;Hello, World!&#39;, 0Ah
+	hbytes	equ	$-hello
+
+	section	.text
+	global	_start
+_start:
+	push	dword hbytes
+	push	dword hello
+	push	dword stdout
+	sys.write
+
+	push	dword 0
+	sys.exit</pre></div></div><div class=paragraph><p>Вот что он делает: Строка 1 включает определения, макросы и код из файла <span class=filename>system.inc</span>.</p></div><div class=paragraph><p>Строки 3-5 содержат данные: строка 3 начинает раздел/сегмент данных. Строка 4 содержит строку "Hello, World!", за которой следует новая строка (<code>0Ah</code>). Строка 5 создаёт константу, содержащую длину строки из строки 4 в байтах.</p></div><div class=paragraph><p>Строки 7-16 содержат код. Обратите внимание, что FreeBSD использует формат файлов <em>elf</em> для исполняемых файлов, который требует, чтобы каждая программа запускается с адреса, помеченного как <code>_start</code> (или, точнее, компоновщик ожидает этого). Эта метка должна быть глобальной.</p></div><div class=paragraph><p>Строки 10-13 указывают системе записать <code>hbytes</code> байтов строки <code>hello</code> в <code>stdout</code>.</p></div><div class=paragraph><p>Строки 15-16 указывают системе завершить программу с возвращаемым значением <code>0</code>. Системный вызов <code>SYS_exit</code> никогда не возвращает управление, поэтому код завершается в этой точке.</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Если вы перешли на UNIX® с опытом программирования на ассемблере для MS-DOS®, вы, возможно, привыкли писать напрямую в видеопамять. В FreeBSD или любой другой разновидности UNIX® вам не придётся об этом беспокоиться. С вашей точки зрения, вы записываете данные в файл под названием <span class=filename>stdout</span>. Это может быть экран, терминал telnet, обычный файл или даже входные данные другой программы. Определять, что именно это будет, — задача системы.</p></div></td></tr></tbody></table></div><div class=sect2><h3 id=x86-assemble-1>6.1. Ассемблирование кода<a class=anchor href=#x86-assemble-1></a></h3><div class=paragraph><p>Наберите код в редакторе и сохраните его в файле с именем <span class=filename>hello.asm</span>. Для сборки вам понадобится nasm.</p></div><div class=sect3><h4 id=x86-get-nasm>6.1.1. Установка nasm<a class=anchor href=#x86-get-nasm></a></h4><div class=paragraph><p>Если у вас нет nasm, введите:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% su
+Password:your root password
+<span class=c># cd /usr/ports/devel/nasm</span>
+<span class=c># make install</span>
+<span class=c># exit</span>
+%</code></pre></div></div><div class=paragraph><p>Вы можете ввести <code>make install clean</code> вместо просто <code>make install</code>, если не хотите сохранять исходный код nasm.</p></div><div class=paragraph><p>В любом случае FreeBSD автоматически загрузит nasm из интернета, скомпилирует его и установит в вашу систему.</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Если ваша система не FreeBSD, вам нужно получить nasm с его <a href=https://sourceforge.net/projects/nasm>домашней страницы</a>. Вы по-прежнему можете использовать его для ассемблирования кода FreeBSD.</p></div></td></tr></tbody></table></div><div class=paragraph><p>Теперь вы можете собрать, скомпоновать и запустить код:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% nasm <span class=nt>-f</span> elf hello.asm
+% ld <span class=nt>-s</span> <span class=nt>-o</span> hello hello.o
+% ./hello
+Hello, World!
+%</code></pre></div></div></div></div></div></div><div class=sect1><h2 id=x86-unix-filters>7. Написание фильтров UNIX®<a class=anchor href=#x86-unix-filters></a></h2><div class=sectionbody><div class=paragraph><p>Распространённым типом приложений в UNIX® являются фильтры — программы, которые читают данные из <span class=filename>stdin</span>, обрабатывают их определённым образом, а затем записывают результат в <span class=filename>stdout</span>.</p></div><div class=paragraph><p>В этой главе мы разработаем простой фильтр и научимся читать из <span class=filename>stdin</span> и писать в <span class=filename>stdout</span>. Этот фильтр будет преобразовывать каждый байт входных данных в шестнадцатеричное число, за которым следует пробел.</p></div><div class="literalblock programlisting"><div class=content><pre>%include	&#39;system.inc&#39;
+
+section	.data
+hex	db	&#39;0123456789ABCDEF&#39;
+buffer	db	0, 0, &#39; &#39;
+
+section	.text
+global	_start
+_start:
+	; read a byte from stdin
+	push	dword 1
+	push	dword buffer
+	push	dword stdin
+	sys.read
+	add	esp, byte 12
+	or	eax, eax
+	je	.done
+
+	; convert it to hex
+	movzx	eax, byte [buffer]
+	mov	edx, eax
+	shr	dl, 4
+	mov	dl, [hex+edx]
+	mov	[buffer], dl
+	and	al, 0Fh
+	mov	al, [hex+eax]
+	mov	[buffer+1], al
+
+	; print it
+	push	dword 3
+	push	dword buffer
+	push	dword stdout
+	sys.write
+	add	esp, byte 12
+	jmp	short _start
+
+.done:
+	push	dword 0
+	sys.exit</pre></div></div><div class=paragraph><p>В разделе данных мы создаем массив с именем <code>hex</code>. Он содержит 16 шестнадцатеричных цифр в порядке возрастания. За массивом следует буфер, который мы будем использовать как для ввода, так и для вывода. Первые два байта буфера изначально установлены в <code>0</code>. Именно сюда мы будем записывать две шестнадцатеричные цифры (первый байт также является местом, откуда мы будем считывать ввод). Третий байт — это пробел.</p></div><div class=paragraph><p>Фрагмент кода состоит из четырёх частей: чтение байта, преобразование его в шестнадцатеричное число, запись результата и завершение программы.</p></div><div class=paragraph><p>Для чтения байта мы просим систему прочитать один байт из <span class=filename>stdin</span> и сохранить его в первом байте <code>buffer</code>. Система возвращает количество прочитанных байтов в <code>EAX</code>. Это значение будет <code>1</code>, пока поступают данные, или <code>0</code>, если больше нет доступных входных данных. Поэтому мы проверяем значение <code>EAX</code>. Если оно равно <code>0</code>, мы переходим к метке <code>.done</code>, в противном случае продолжаем выполнение.</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Для простоты мы пока игнорируем возможность возникновения ошибки.</p></div></td></tr></tbody></table></div><div class=paragraph><p>Шестнадцатеричное преобразование считывает байт из <code>buffer</code> в <code>EAX</code>, а точнее только в <code>AL</code>, обнуляя остальные биты <code>EAX</code>. Мы также копируем байт в <code>EDX</code>, потому что нам нужно преобразовать верхние четыре бита (ниббл) отдельно от нижних четырёх битов. Результат сохраняется в первых двух байтах буфера.</p></div><div class=paragraph><p>Далее мы просим систему записать три байта буфера, то есть две шестнадцатеричные цифры и пробел, в <span class=filename>stdout</span>. Затем мы возвращаемся к началу программы и обрабатываем следующий байт.</p></div><div class=paragraph><p>Когда ввод больше не остаётся, мы просим систему завершить нашу программу, возвращая ноль, что традиционно означает успешное выполнение программы.</p></div><div class=paragraph><p>Продолжайте и сохраните код в файле с именем <span class=filename>hex.asm</span>, затем введите следующее (символ <code>^D</code> означает, что нужно нажать клавишу управления и, удерживая её, ввести <code>D</code>):</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% nasm <span class=nt>-f</span> elf hex.asm
+% ld <span class=nt>-s</span> <span class=nt>-o</span> hex hex.o
+% ./hex
+Hello, World!
+48 65 6C 6C 6F 2C 20 57 6F 72 6C 64 21 0A Here I come!
+48 65 72 65 20 49 20 63 6F 6D 65 21 0A ^D %</code></pre></div></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Если вы переходите на UNIX® с MS-DOS®, вам может быть интересно, почему каждая строка заканчивается на <code>0A</code> вместо <code>0D 0A</code>. Это связано с тем, что UNIX® не использует соглашение cr/lf, а использует соглашение "новая строка", которое в шестнадцатеричном виде представлено как <code>0A</code>.</p></div></td></tr></tbody></table></div><div class=paragraph><p>Можем ли мы это улучшить? Что ж, во-первых, это немного запутанно, потому что после преобразования строки текста наш ввод больше не начинается с начала строки. Мы можем изменить это, чтобы после каждого <code>0A</code> выводилась новая строка вместо пробела:</p></div><div class="literalblock programlisting"><div class=content><pre>%include	&#39;system.inc&#39;
+
+section	.data
+hex	db	&#39;0123456789ABCDEF&#39;
+buffer	db	0, 0, &#39; &#39;
+
+section	.text
+global	_start
+_start:
+	mov	cl, &#39; &#39;
+
+.loop:
+	; read a byte from stdin
+	push	dword 1
+	push	dword buffer
+	push	dword stdin
+	sys.read
+	add	esp, byte 12
+	or	eax, eax
+	je	.done
+
+	; convert it to hex
+	movzx	eax, byte [buffer]
+	mov	[buffer+2], cl
+	cmp	al, 0Ah
+	jne	.hex
+	mov	[buffer+2], al
+
+.hex:
+	mov	edx, eax
+	shr	dl, 4
+	mov	dl, [hex+edx]
+	mov	[buffer], dl
+	and	al, 0Fh
+	mov	al, [hex+eax]
+	mov	[buffer+1], al
+
+	; print it
+	push	dword 3
+	push	dword buffer
+	push	dword stdout
+	sys.write
+	add	esp, byte 12
+	jmp	short .loop
+
+.done:
+	push	dword 0
+	sys.exit</pre></div></div><div class=paragraph><p>Мы сохранили пробел в регистре <code>CL</code>. Это безопасно, потому что, в отличие от Microsoft® Windows®, вызовы системы UNIX® не изменяют значение регистров, которые не используются для возврата значения.</p></div><div class=paragraph><p>Это означает, что нам нужно установить <code>CL</code> только один раз. Поэтому мы добавили новую метку <code>.loop</code> и переходим к ней для следующего байта вместо перехода к <code>_start</code>. Мы также добавили метку <code>.hex</code>, чтобы третий байт <code>buffer</code> мог быть либо пробелом, либо новой строкой.</p></div><div class=paragraph><p>После внесения изменений в файл <span class=filename>hex.asm</span> введите:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% nasm <span class=nt>-f</span> elf hex.asm
+% ld <span class=nt>-s</span> <span class=nt>-o</span> hex hex.o
+% ./hex
+Hello, World!
+48 65 6C 6C 6F 2C 20 57 6F 72 6C 64 21 0A
+Here I come!
+48 65 72 65 20 49 20 63 6F 6D 65 21 0A
+^D %</code></pre></div></div><div class=paragraph><p>Выглядит лучше. Но этот код довольно неэффективен! Мы выполняем системный вызов для каждого отдельного байта дважды (один раз для чтения и ещё один для записи вывода).</p></div></div></div><div class=sect1><h2 id=x86-buffered-io>8. Буферизованный ввод и вывод<a class=anchor href=#x86-buffered-io></a></h2><div class=sectionbody><div class=paragraph><p>Мы можем повысить эффективность нашего кода, буферизуя ввод и вывод. Мы создаём входной буфер и читаем сразу целую последовательность байтов. Затем мы извлекаем их по одному из буфера.</p></div><div class=paragraph><p>Мы также создаем выходной буфер. Мы сохраняем наш вывод в нём, пока он не заполнится. В этот момент мы просим ядро записать содержимое буфера в <span class=filename>stdout</span>.</p></div><div class=paragraph><p>Программа завершается, когда больше нет входных данных. Но нам всё ещё нужно попросить ядро записать содержимое нашего выходного буфера в <span class=filename>stdout</span> в последний раз, иначе часть нашего вывода попадёт в буфер, но так и не будет отправлена. Не забудьте об этом, иначе будете недоумевать, куда пропала часть вывода.</p></div><div class="literalblock programlisting"><div class=content><pre>%include	&#39;system.inc&#39;
+
+%define	BUFSIZE	2048
+
+section	.data
+hex	db	&#39;0123456789ABCDEF&#39;
+
+section .bss
+ibuffer	resb	BUFSIZE
+obuffer	resb	BUFSIZE
+
+section	.text
+global	_start
+_start:
+	sub	eax, eax
+	sub	ebx, ebx
+	sub	ecx, ecx
+	mov	edi, obuffer
+
+.loop:
+	; read a byte from stdin
+	call	getchar
+
+	; convert it to hex
+	mov	dl, al
+	shr	al, 4
+	mov	al, [hex+eax]
+	call	putchar
+
+	mov	al, dl
+	and	al, 0Fh
+	mov	al, [hex+eax]
+	call	putchar
+
+	mov	al, &#39; &#39;
+	cmp	dl, 0Ah
+	jne	.put
+	mov	al, dl
+
+.put:
+	call	putchar
+	jmp	short .loop
+
+align 4
+getchar:
+	or	ebx, ebx
+	jne	.fetch
+
+	call	read
+
+.fetch:
+	lodsb
+	dec	ebx
+	ret
+
+read:
+	push	dword BUFSIZE
+	mov	esi, ibuffer
+	push	esi
+	push	dword stdin
+	sys.read
+	add	esp, byte 12
+	mov	ebx, eax
+	or	eax, eax
+	je	.done
+	sub	eax, eax
+	ret
+
+align 4
+.done:
+	call	write		; flush output buffer
+	push	dword 0
+	sys.exit
+
+align 4
+putchar:
+	stosb
+	inc	ecx
+	cmp	ecx, BUFSIZE
+	je	write
+	ret
+
+align 4
+write:
+	sub	edi, ecx	; start of buffer
+	push	ecx
+	push	edi
+	push	dword stdout
+	sys.write
+	add	esp, byte 12
+	sub	eax, eax
+	sub	ecx, ecx	; buffer is empty now
+	ret</pre></div></div><div class=paragraph><p>Теперь у нас есть третий раздел в исходном коде с именем <code>.bss</code>. Этот раздел не включается в исполняемый файл и, следовательно, не может быть инициализирован. Мы используем <code>resb</code> вместо <code>db</code>. Это просто резервирует запрошенный размер неинициализированной памяти для нашего использования.</p></div><div class=paragraph><p>Мы используем тот факт, что система не изменяет регистры: мы используем регистры для того, что в противном случае пришлось бы хранить в глобальных переменных в секции <code>.data</code>. Именно поэтому соглашение UNIX® о передаче параметров системных вызовов через стек превосходит соглашение Microsoft о передаче их в регистрах: мы можем оставить регистры для собственного использования.</p></div><div class=paragraph><p>Мы используем <code>EDI</code> и <code>ESI</code> как указатели на следующий байт для чтения или записи. Мы используем <code>EBX</code> и <code>ECX</code> для отслеживания количества байтов в двух буферах, чтобы знать, когда нужно вывести данные в систему или считать новые данные из системы.</p></div><div class=paragraph><p>Давайте посмотрим, как это работает сейчас:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% nasm <span class=nt>-f</span> elf hex.asm
+% ld <span class=nt>-s</span> <span class=nt>-o</span> hex hex.o
+% ./hex
+Hello, World!
+Here I come!
+48 65 6C 6C 6F 2C 20 57 6F 72 6C 64 21 0A
+48 65 72 65 20 49 20 63 6F 6D 65 21 0A
+^D %</code></pre></div></div><div class=paragraph><p>Не то, что вы ожидали? Программа не выводила результат, пока мы не нажали <code>^D</code>. Это легко исправить, добавив три строки кода для вывода результата каждый раз, когда мы преобразуем новую строку в <code>0A</code>. Я пометил эти три строки символом > (не копируйте > в ваш <span class=filename>hex.asm</span>).</p></div><div class="literalblock programlisting"><div class=content><pre>%include	&#39;system.inc&#39;
+
+%define	BUFSIZE	2048
+
+section	.data
+hex	db	&#39;0123456789ABCDEF&#39;
+
+section .bss
+ibuffer	resb	BUFSIZE
+obuffer	resb	BUFSIZE
+
+section	.text
+global	_start
+_start:
+	sub	eax, eax
+	sub	ebx, ebx
+	sub	ecx, ecx
+	mov	edi, obuffer
+
+.loop:
+	; read a byte from stdin
+	call	getchar
+
+	; convert it to hex
+	mov	dl, al
+	shr	al, 4
+	mov	al, [hex+eax]
+	call	putchar
+
+	mov	al, dl
+	and	al, 0Fh
+	mov	al, [hex+eax]
+	call	putchar
+
+	mov	al, &#39; &#39;
+	cmp	dl, 0Ah
+	jne	.put
+	mov	al, dl
+
+.put:
+	call	putchar
+&gt;	cmp	al, 0Ah
+&gt;	jne	.loop
+&gt;	call	write
+	jmp	short .loop
+
+align 4
+getchar:
+	or	ebx, ebx
+	jne	.fetch
+
+	call	read
+
+.fetch:
+	lodsb
+	dec	ebx
+	ret
+
+read:
+	push	dword BUFSIZE
+	mov	esi, ibuffer
+	push	esi
+	push	dword stdin
+	sys.read
+	add	esp, byte 12
+	mov	ebx, eax
+	or	eax, eax
+	je	.done
+	sub	eax, eax
+	ret
+
+align 4
+.done:
+	call	write		; flush output buffer
+	push	dword 0
+	sys.exit
+
+align 4
+putchar:
+	stosb
+	inc	ecx
+	cmp	ecx, BUFSIZE
+	je	write
+	ret
+
+align 4
+write:
+	sub	edi, ecx	; start of buffer
+	push	ecx
+	push	edi
+	push	dword stdout
+	sys.write
+	add	esp, byte 12
+	sub	eax, eax
+	sub	ecx, ecx	; buffer is empty now
+	ret</pre></div></div><div class=paragraph><p>Теперь давайте посмотрим, как это работает:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% nasm <span class=nt>-f</span> elf hex.asm
+% ld <span class=nt>-s</span> <span class=nt>-o</span> hex hex.o
+% ./hex
+Hello, World!
+48 65 6C 6C 6F 2C 20 57 6F 72 6C 64 21 0A
+Here I come!
+48 65 72 65 20 49 20 63 6F 6D 65 21 0A
+^D %</code></pre></div></div><div class=paragraph><p>Неплохо для исполняемого файла размером 644 байта, не так ли!</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Такой подход к буферизированному вводу/выводу всё ещё содержит скрытую опасность. Я расскажу об этом и исправлю её позже, когда речь пойдёт о <a href=../x86/#x86-buffered-dark-side>тёмной стороне буферизации</a>.</p></div></td></tr></tbody></table></div><div class=sect2><h3 id=x86-ungetc>8.1. Как отменить чтение символа<a class=anchor href=#x86-ungetc></a></h3><div class="admonitionblock warning"><table><tbody><tr><td class=icon><i class="fa icon-warning" title=Warning></i></td><td class=content><div class=paragraph><p>Это может быть несколько сложной темой, в основном представляющей интерес для программистов, знакомых с теорией компиляторов. Если хотите, вы можете <a href=../x86/#x86-command-line>перейти к следующему разделу</a>, и, возможно, прочитаете это позже.</p></div></td></tr></tbody></table></div><div class=paragraph><p>Хотя наш пример программы не требует этого, более сложные фильтры часто нуждаются в предварительном просмотре. Другими словами, им может потребоваться узнать, какой следующий символ (или даже несколько символов). Если следующий символ имеет определённое значение, он является частью текущего обрабатываемого токена. В противном случае — нет.</p></div><div class=paragraph><p>Например, вы можете анализировать входной поток на наличие текстовой строки (например, при реализации компилятора языка): если символ следует за другим символом или, возможно, цифрой, он является частью обрабатываемой лексемы. Если за ним следует пробел или другое значение, то он не является частью текущей лексемы.</p></div><div class=paragraph><p>Это представляет интересную проблему: как вернуть следующий символ обратно во входной поток, чтобы его можно было прочитать позже?</p></div><div class=paragraph><p>Одно из возможных решений — сохранить его в символьной переменной, а затем установить флаг. Мы можем изменить <code>getchar</code>, чтобы он проверял флаг, и если он установлен, извлекал байт из этой переменной вместо буфера ввода, а затем сбрасывал флаг. Но, конечно, это замедляет работу.</p></div><div class=paragraph><p>В языке C есть функция <code>ungetc()</code>, как раз для этой цели. Есть ли быстрый способ реализовать её в нашем коде? Я хочу, чтобы вы пролистали назад и взглянули на процедуру <code>getchar</code>, и попробовали найти красивое и быстрое решение, прежде чем читать следующий абзац. Затем вернитесь сюда и посмотрите моё собственное решение.</p></div><div class=paragraph><p>Ключом к возвращению символа обратно в поток является то, как мы получаем символы изначально:</p></div><div class=paragraph><p>Сначала проверяем, пуст ли буфер, проверяя значение <code>EBX</code>. Если оно равно нулю, вызываем процедуру <code>read</code>.</p></div><div class=paragraph><p>Если у нас есть доступный символ, мы используем <code>lodsb</code>, затем уменьшаем значение <code>EBX</code>. Инструкция <code>lodsb</code> фактически идентична:</p></div><div class="literalblock programlisting"><div class=content><pre>mov	al, [esi]
+	inc	esi</pre></div></div><div class=paragraph><p>Байт, который мы извлекли, остаётся в буфере до следующего вызова <code>read</code>. Мы не знаем, когда это произойдет, но знаем, что этого не случится до следующего вызова <code>getchar</code>. Следовательно, чтобы "вернуть" последний прочитанный байт обратно в поток, нам достаточно уменьшить значение <code>ESI</code> и увеличить значение <code>EBX</code>:</p></div><div class="literalblock programlisting"><div class=content><pre>ungetc:
+	dec	esi
+	inc	ebx
+	ret</pre></div></div><div class=paragraph><p>Но будьте осторожны! Мы в полной безопасности, если заглядываем вперёд только на один символ за раз. Если же мы проверяем несколько следующих символов и вызываем <code>ungetc</code> несколько раз подряд, это будет работать в большинстве случаев, но не всегда (и ошибки будет сложно отладить). Почему?</p></div><div class=paragraph><p>Потому что пока <code>getchar</code> не вызывает <code>read</code>, все предварительно прочитанные байты остаются в буфере, и наш <code>ungetc</code> работает без сбоев. Но как только <code>getchar</code> вызывает <code>read</code>, содержимое буфера изменяется.</p></div><div class=paragraph><p>Мы всегда можем рассчитывать на корректную работу <code>ungetc</code> с последним символом, прочитанным через <code>getchar</code>, но не с любым символом, прочитанным до этого.</p></div><div class=paragraph><p>Если ваша программа читает более одного байта вперёд, у вас есть как минимум два варианта:</p></div><div class=paragraph><p>Если возможно, измените программу так, чтобы она читала только один байт вперёд. Это самое простое решение.</p></div><div class=paragraph><p>Если эта опция недоступна, сначала определите максимальное количество символов, которое вашей программе может потребоваться вернуть во входной поток за один раз. Увеличьте это число немного, чтобы быть уверенным, предпочтительно до кратного 16 — так оно будет лучше выровнено. Затем измените секцию <code>.bss</code> в вашем коде и создайте небольшой "запасной" буфер прямо перед вашим входным буфером, примерно так:</p></div><div class="literalblock programlisting"><div class=content><pre>section	.bss
+	resb	16	; or whatever the value you came up with
+ibuffer	resb	BUFSIZE
+obuffer	resb	BUFSIZE</pre></div></div><div class=paragraph><p>Вам также необходимо изменить ваш <code>ungetc</code>, чтобы передать значение байта для возврата в <code>AL</code>:</p></div><div class="literalblock programlisting"><div class=content><pre>ungetc:
+	dec	esi
+	inc	ebx
+	mov	[esi], al
+	ret</pre></div></div><div class=paragraph><p>С этим изменением вы можете безопасно вызывать <code>ungetc</code> до 17 раз подряд (первый вызов всё ещё будет в пределах буфера, остальные 16 могут быть либо в пределах буфера, либо в пределах "запасного" пространства).</p></div></div></div></div><div class=sect1><h2 id=x86-command-line>9. Аргументы командной строки<a class=anchor href=#x86-command-line></a></h2><div class=sectionbody><div class=paragraph><p>Наша программа hex будет полезнее, если она сможет читать имена входного и выходного файлов из командной строки, т.е. если она сможет обрабатывать аргументы командной строки. Но…​ Где они?</p></div><div class=paragraph><p>Прежде чем UNIX® система запустит программу, она делает <code>push</code> для некоторых данных, помещая их в стек, затем переходит к метке <code>_start</code> программы. Да, я сказал "переходит", а не "вызывает". Это означает, что данные можно прочитать с помощью <code>[esp+offset]</code> или просто сделать <code>pop</code> для них.</p></div><div class=paragraph><p>Значение на вершине стека содержит количество аргументов командной строки. Оно традиционно называется <code>argc</code>, что означает "argument count".</p></div><div class=paragraph><p>Далее следуют аргументы командной строки, все <code>argc</code> штук. Обычно их называют <code>argv</code>, что означает "значение(я) аргумента". То есть мы получаем <code>argv[0]</code>, <code>argv[1]</code>, <code>…​</code>, <code>argv[argc-1]</code>. Это не сами аргументы, а указатели на аргументы, то есть адреса памяти, где находятся реальные аргументы. Сами аргументы представляют собой строки символов, завершающиеся нулевым символом ('\0').</p></div><div class=paragraph><p>Список <code>argv</code> завершается указателем NULL, который представляет собой просто <code>0</code>. Есть и другие детали, но пока этого достаточно для наших целей.</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Если вы перешли из среды программирования MS-DOS®, основное различие заключается в том, что каждый аргумент находится в отдельной строке. Второе различие состоит в том, что нет практического ограничения на количество аргументов.</p></div></td></tr></tbody></table></div><div class=paragraph><p>Вооружившись этими знаниями, мы почти готовы к следующей версии <span class=filename>hex.asm</span>. Однако сначала нам нужно добавить несколько строк в <span class=filename>system.inc</span>:</p></div><div class=paragraph><p>Сначала нам нужно добавить две новые записи в наш список номеров системных вызовов:</p></div><div class="literalblock programlisting"><div class=content><pre>%define	SYS_open	5
+%define	SYS_close	6</pre></div></div><div class=paragraph><p>Затем мы добавляем два новых макроса в конце файла:</p></div><div class="literalblock programlisting"><div class=content><pre>%macro	sys.open	0
+	system	SYS_open
+%endmacro
+
+%macro	sys.close	0
+	system	SYS_close
+%endmacro</pre></div></div><div class=paragraph><p>Вот наш измененный исходный код:</p></div><div class="literalblock programlisting"><div class=content><pre>%include	&#39;system.inc&#39;
+
+%define	BUFSIZE	2048
+
+section	.data
+fd.in	dd	stdin
+fd.out	dd	stdout
+hex	db	&#39;0123456789ABCDEF&#39;
+
+section .bss
+ibuffer	resb	BUFSIZE
+obuffer	resb	BUFSIZE
+
+section	.text
+align 4
+err:
+	push	dword 1		; return failure
+	sys.exit
+
+align 4
+global	_start
+_start:
+	add	esp, byte 8	; discard argc and argv[0]
+
+	pop	ecx
+	jecxz	.init		; no more arguments
+
+	; ECX contains the path to input file
+	push	dword 0		; O_RDONLY
+	push	ecx
+	sys.open
+	jc	err		; open failed
+
+	add	esp, byte 8
+	mov	[fd.in], eax
+
+	pop	ecx
+	jecxz	.init		; no more arguments
+
+	; ECX contains the path to output file
+	push	dword 420	; file mode (644 octal)
+	push	dword 0200h | 0400h | 01h
+	; O_CREAT | O_TRUNC | O_WRONLY
+	push	ecx
+	sys.open
+	jc	err
+
+	add	esp, byte 12
+	mov	[fd.out], eax
+
+.init:
+	sub	eax, eax
+	sub	ebx, ebx
+	sub	ecx, ecx
+	mov	edi, obuffer
+
+.loop:
+	; read a byte from input file or stdin
+	call	getchar
+
+	; convert it to hex
+	mov	dl, al
+	shr	al, 4
+	mov	al, [hex+eax]
+	call	putchar
+
+	mov	al, dl
+	and	al, 0Fh
+	mov	al, [hex+eax]
+	call	putchar
+
+	mov	al, &#39; &#39;
+	cmp	dl, 0Ah
+	jne	.put
+	mov	al, dl
+
+.put:
+	call	putchar
+	cmp	al, dl
+	jne	.loop
+	call	write
+	jmp	short .loop
+
+align 4
+getchar:
+	or	ebx, ebx
+	jne	.fetch
+
+	call	read
+
+.fetch:
+	lodsb
+	dec	ebx
+	ret
+
+read:
+	push	dword BUFSIZE
+	mov	esi, ibuffer
+	push	esi
+	push	dword [fd.in]
+	sys.read
+	add	esp, byte 12
+	mov	ebx, eax
+	or	eax, eax
+	je	.done
+	sub	eax, eax
+	ret
+
+align 4
+.done:
+	call	write		; flush output buffer
+
+	; close files
+	push	dword [fd.in]
+	sys.close
+
+	push	dword [fd.out]
+	sys.close
+
+	; return success
+	push	dword 0
+	sys.exit
+
+align 4
+putchar:
+	stosb
+	inc	ecx
+	cmp	ecx, BUFSIZE
+	je	write
+	ret
+
+align 4
+write:
+	sub	edi, ecx	; start of buffer
+	push	ecx
+	push	edi
+	push	dword [fd.out]
+	sys.write
+	add	esp, byte 12
+	sub	eax, eax
+	sub	ecx, ecx	; buffer is empty now
+	ret</pre></div></div><div class=paragraph><p>В нашем разделе <code>.data</code> теперь есть две новые переменные, <code>fd.in</code> и <code>fd.out</code>. Здесь мы сохраняем дескрипторы файлов для ввода и вывода.</p></div><div class=paragraph><p>В разделе <code>.text</code> мы заменили ссылки с <code>stdin</code> и <code>stdout</code> на <code>[fd.in]</code> и <code>[fd.out]</code>.</p></div><div class=paragraph><p>Раздел <code>.text</code> теперь начинается с простого обработчика ошибок, который просто завершает программу с кодом возврата <code>1</code>. Обработчик ошибок расположен перед <code>_start</code>, чтобы находиться вблизи от места возникновения ошибок.</p></div><div class=paragraph><p>Естественно, выполнение программы по-прежнему начинается с <code>_start</code>. Сначала мы удаляем <code>argc</code> и <code>argv[0]</code> из стека: они не представляют для нас интереса (по крайней мере, в этой программе).</p></div><div class=paragraph><p>Мы помещаем <code>argv[1]</code> в <code>ECX</code>. Этот регистр особенно подходит для указателей, так как мы можем обрабатывать NULL-указатели с помощью <code>jecxz</code>. Если <code>argv[1]</code> не равен NULL, мы пытаемся открыть файл с именем, указанным в первом аргументе. В противном случае продолжаем программу как раньше: чтение из <code>stdin</code>, запись в <code>stdout</code>. Если нам не удаётся открыть входной файл (например, он не существует), мы переходим к обработчику ошибок и завершаем работу.</p></div><div class=paragraph><p>Если всё прошло успешно, мы проверяем второй аргумент. Если он присутствует, мы открываем выходной файл. В противном случае, мы отправляем вывод в <code>stdout</code>. Если нам не удаётся открыть выходной файл (например, он существует и у нас нет прав на запись), мы снова переходим к обработчику ошибок.</p></div><div class=paragraph><p>Остальная часть кода остаётся прежней, за исключением того, что мы закрываем входной и выходной файлы перед завершением, и, как упоминалось, используем <code>[fd.in]</code> и <code>[fd.out]</code>.</p></div><div class=paragraph><p>Наш исполняемый файл теперь имеет внушительный размер в 768 байт.</p></div><div class=paragraph><p>Можем ли мы улучшить его ещё? Конечно! Каждую программу можно улучшить. Вот несколько идей, что мы могли бы сделать:</p></div><div class=ulist><ul><li><p>Сделать наш обработчик ошибок, выводящий сообщение в <code>stderr</code>.</p></li><li><p>Добавить обработчики ошибок в функции <code>read</code> и <code>write</code>.</p></li><li><p>Закрывать <code>stdin</code> при открытии входного файла, <code>stdout</code> при открытии выходного файла.</p></li><li><p>Добавить параметры командной строки, такие как <code>-i</code> и <code>-o</code>, чтобы можно было перечислять входные и выходные файлы в любом порядке или, возможно, читать из <code>stdin</code> и записывать в файл.</p></li><li><p>Выводить сообщение с подсказкой об использовании программы, если аргументы командной строки указаны неверно.</p></li></ul></div><div class=paragraph><p>Я оставлю эти улучшения в качестве упражнения для читателя: вы уже знаете всё необходимое для их реализации.</p></div></div></div><div class=sect1><h2 id=x86-environment>10. Окружение UNIX®<a class=anchor href=#x86-environment></a></h2><div class=sectionbody><div class=paragraph><p>Важным концептом UNIX® является окружение, которое определяется <em>переменными окружения</em>. Некоторые из них устанавливаются системой, другие — пользователем, третьи — оболочкой или любой программой, которая загружает другую программу.</p></div><div class=sect2><h3 id=x86-find-environment>10.1. Как найти переменные окружения<a class=anchor href=#x86-find-environment></a></h3><div class=paragraph><p>Я говорил ранее, что когда программа начинает выполняться, в стеке находятся <code>argc</code>, за которым следует массив <code>argv</code>, завершающийся NULL, а затем что-то ещё. Это "что-то ещё" — это <em>окружение</em>, или, если быть точнее, массив указателей на <em>переменные окружения</em>, завершающийся NULL. Это часто называют <code>env</code>.</p></div><div class=paragraph><p>Структура <code>env</code> такая же, как у <code>argv</code> — список адресов памяти, заканчивающийся NULL (<code>0</code>). В данном случае нет <code>"envc"</code> — конец массива определяется поиском последнего NULL.</p></div><div class=paragraph><p>Переменные обычно имеют формат <code>name=value</code>, но иногда часть <code>=value</code> может отсутствовать. Необходимо учитывать эту вероятность.</p></div></div><div class=sect2><h3 id=x86-webvar>10.2. webvars<a class=anchor href=#x86-webvar></a></h3><div class=paragraph><p>Я мог бы просто показать вам код, который выводит окружение так же, как команда UNIX® env. Но я подумал, что будет интереснее написать простую CGI-утилиту на ассемблере.</p></div><div class=sect3><h4 id=x86-cgi>10.2.1. CGI: краткий обзор<a class=anchor href=#x86-cgi></a></h4><div class=paragraph><p>У меня есть <a href=http://www.whizkidtech.redprince.net/cgi-bin/tutorial>подробное руководство по CGI</a> на моем веб-сайте, но вот очень краткий обзор CGI:</p></div><div class=ulist><ul><li><p>Веб-сервер взаимодействует с CGI-программой, устанавливая <em>переменные окружения</em>.</p></li><li><p>Программа CGI отправляет свой вывод в <span class=filename>stdout</span>. Веб-сервер считывает его оттуда.</p></li><li><p>Он должен начинаться с HTTP-заголовка, за которым следуют две пустые строки.</p></li><li><p>Затем он выводит HTML-код или любые другие данные, которые он генерирует.</p></li></ul></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>В то время как некоторые <em>переменные окружения</em> используют стандартные имена, другие различаются в зависимости от веб-сервера. Это делает программу webvars весьма полезным инструментом для диагностики.</p></div></td></tr></tbody></table></div></div><div class=sect3><h4 id=x86-webvars-the-code>10.2.2. Код<a class=anchor href=#x86-webvars-the-code></a></h4><div class=paragraph><p>Наша программа webvars, таким образом, должна отправить HTTP-заголовок, за которым следует HTML-разметка. Затем она должна прочитать <em>переменные окружения</em> одну за другой и отправить их как часть HTML-страницы.</p></div><div class=paragraph><p>Код приведен ниже. Я разместил комментарии и пояснения прямо в коде:</p></div><div class="literalblock programlisting"><div class=content><pre>;;;;;;; webvars.asm ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Copyright (c) 2000 G. Adam Stanislav
+; All rights reserved.
+;
+; Redistribution and use in source and binary forms, with or without
+; modification, are permitted provided that the following conditions
+; are met:
+; 1. Redistributions of source code must retain the above copyright
+;    notice, this list of conditions and the following disclaimer.
+; 2. Redistributions in binary form must reproduce the above copyright
+;    notice, this list of conditions and the following disclaimer in the
+;    documentation and/or other materials provided with the distribution.
+;
+; THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS&#39;&#39; AND
+; ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+; IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+; ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+; FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+; DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+; OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+; HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+; OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+; SUCH DAMAGE.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Version 1.0
+;
+; Started:	 8-Dec-2000
+; Updated:	 8-Dec-2000
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+%include	&#39;system.inc&#39;
+
+section	.data
+http	db	&#39;Content-type: text/html&#39;, 0Ah, 0Ah
+	db	&#39;&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;&#39;, 0Ah
+	db	&#39;&lt;!DOCTYPE html PUBLIC &#34;-//W3C/DTD XHTML Strict//EN&#34; &#39;
+	db	&#39;&#34;DTD/xhtml1-strict.dtd&#34;&gt;&#39;, 0Ah
+	db	&#39;&lt;html xmlns=&#34;http://www.w3.org/1999/xhtml&#34; &#39;
+	db	&#39;xml.lang=&#34;en&#34; lang=&#34;en&#34;&gt;&#39;, 0Ah
+	db	&#39;&lt;head&gt;&#39;, 0Ah
+	db	&#39;&lt;title&gt;Web Environment&lt;/title&gt;&#39;, 0Ah
+	db	&#39;&lt;meta name=&#34;author&#34; content=&#34;G. Adam Stanislav&#34; /&gt;&#39;, 0Ah
+	db	&#39;&lt;/head&gt;&#39;, 0Ah, 0Ah
+	db	&#39;&lt;body bgcolor=&#34;#ffffff&#34; text=&#34;#000000&#34; link=&#34;#0000ff&#34; &#39;
+	db	&#39;vlink=&#34;#840084&#34; alink=&#34;#0000ff&#34;&gt;&#39;, 0Ah
+	db	&#39;&lt;div class=&#34;webvars&#34;&gt;&#39;, 0Ah
+	db	&#39;&lt;h1&gt;Web Environment&lt;/h1&gt;&#39;, 0Ah
+	db	&#39;&lt;p&gt;The following &lt;b&gt;environment variables&lt;/b&gt; are defined &#39;
+	db	&#39;on this web server:&lt;/p&gt;&#39;, 0Ah, 0Ah
+	db	&#39;&lt;table align=&#34;center&#34; width=&#34;80&#34; border=&#34;0&#34; cellpadding=&#34;10&#34; &#39;
+	db	&#39;cellspacing=&#34;0&#34; class=&#34;webvars&#34;&gt;&#39;, 0Ah
+httplen	equ	$-http
+left	db	&#39;&lt;tr&gt;&#39;, 0Ah
+	db	&#39;&lt;td class=&#34;name&#34;&gt;&lt;tt&gt;&#39;
+leftlen	equ	$-left
+middle	db	&#39;&lt;/tt&gt;&lt;/td&gt;&#39;, 0Ah
+	db	&#39;&lt;td class=&#34;value&#34;&gt;&lt;tt&gt;&lt;b&gt;&#39;
+midlen	equ	$-middle
+undef	db	&#39;&lt;i&gt;(undefined)&lt;/i&gt;&#39;
+undeflen	equ	$-undef
+right	db	&#39;&lt;/b&gt;&lt;/tt&gt;&lt;/td&gt;&#39;, 0Ah
+	db	&#39;&lt;/tr&gt;&#39;, 0Ah
+rightlen	equ	$-right
+wrap	db	&#39;&lt;/table&gt;&#39;, 0Ah
+	db	&#39;&lt;/div&gt;&#39;, 0Ah
+	db	&#39;&lt;/body&gt;&#39;, 0Ah
+	db	&#39;&lt;/html&gt;&#39;, 0Ah, 0Ah
+wraplen	equ	$-wrap
+
+section	.text
+global	_start
+_start:
+	; First, send out all the http and xhtml stuff that is
+	; needed before we start showing the environment
+	push	dword httplen
+	push	dword http
+	push	dword stdout
+	sys.write
+
+	; Now find how far on the stack the environment pointers
+	; are. We have 12 bytes we have pushed before &#34;argc&#34;
+	mov	eax, [esp+12]
+
+	; We need to remove the following from the stack:
+	;
+	;	The 12 bytes we pushed for sys.write
+	;	The  4 bytes of argc
+	;	The EAX*4 bytes of argv
+	;	The  4 bytes of the NULL after argv
+	;
+	; Total:
+	;	20 + eax * 4
+	;
+	; Because stack grows down, we need to ADD that many bytes
+	; to ESP.
+	lea	esp, [esp+20+eax*4]
+	cld		; This should already be the case, but let&#39;s be sure.
+
+	; Loop through the environment, printing it out
+.loop:
+	pop	edi
+	or	edi, edi	; Done yet?
+	je	near .wrap
+
+	; Print the left part of HTML
+	push	dword leftlen
+	push	dword left
+	push	dword stdout
+	sys.write
+
+	; It may be tempting to search for the &#39;=&#39; in the env string next.
+	; But it is possible there is no &#39;=&#39;, so we search for the
+	; terminating NUL first.
+	mov	esi, edi	; Save start of string
+	sub	ecx, ecx
+	not	ecx		; ECX = FFFFFFFF
+	sub	eax, eax
+repne	scasb
+	not	ecx		; ECX = string length + 1
+	mov	ebx, ecx	; Save it in EBX
+
+	; Now is the time to find &#39;=&#39;
+	mov	edi, esi	; Start of string
+	mov	al, &#39;=&#39;
+repne	scasb
+	not	ecx
+	add	ecx, ebx	; Length of name
+
+	push	ecx
+	push	esi
+	push	dword stdout
+	sys.write
+
+	; Print the middle part of HTML table code
+	push	dword midlen
+	push	dword middle
+	push	dword stdout
+	sys.write
+
+	; Find the length of the value
+	not	ecx
+	lea	ebx, [ebx+ecx-1]
+
+	; Print &#34;undefined&#34; if 0
+	or	ebx, ebx
+	jne	.value
+
+	mov	ebx, undeflen
+	mov	edi, undef
+
+.value:
+	push	ebx
+	push	edi
+	push	dword stdout
+	sys.write
+
+	; Print the right part of the table row
+	push	dword rightlen
+	push	dword right
+	push	dword stdout
+	sys.write
+
+	; Get rid of the 60 bytes we have pushed
+	add	esp, byte 60
+
+	; Get the next variable
+	jmp	.loop
+
+.wrap:
+	; Print the rest of HTML
+	push	dword wraplen
+	push	dword wrap
+	push	dword stdout
+	sys.write
+
+	; Return success
+	push	dword 0
+	sys.exit</pre></div></div><div class=paragraph><p>Этот код создаёт исполняемый файл размером 1 396 байт. Большая его часть — это данные, а именно HTML-разметка, которую нам нужно отправить.</p></div><div class=paragraph><p>Запустите ассемблер и слинкуйте как обычно:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% nasm <span class=nt>-f</span> elf webvars.asm
+% ld <span class=nt>-s</span> <span class=nt>-o</span> webvars webvars.o</code></pre></div></div><div class=paragraph><p>Для использования необходимо загрузить <span class=filename>webvars</span> на ваш веб-сервер. В зависимости от настроек веб-сервера, возможно, потребуется разместить его в специальном каталоге <span class=filename>cgi-bin</span> или переименовать с расширением <span class=filename>.cgi</span>.</p></div><div class=paragraph><p>Затем вам нужно использовать браузер для просмотра вывода. Чтобы увидеть вывод на моем веб-сервере, перейдите по ссылке <a href=http://www.int80h.org/webvars/>http://www.int80h.org/webvars/</a>. Если вам интересно узнать о дополнительных переменных окружения в защищенном паролем веб-каталоге, перейдите по адресу <a href=http://www.int80h.org/private/>http://www.int80h.org/private/</a>, используя имя <code>asm</code> и пароль <code>programmer</code>.</p></div></div></div></div></div><div class=sect1><h2 id=x86-files>11. Работа с файлами<a class=anchor href=#x86-files></a></h2><div class=sectionbody><div class=paragraph><p>Мы уже выполнили некоторые базовые операции с файлами: мы знаем, как их открывать и закрывать, как читать и записывать их с использованием буферов. Однако UNIX® предлагает гораздо больше возможностей при работе с файлами. В этом разделе мы рассмотрим некоторые из них и в итоге создадим удобную утилиту для преобразования файлов.</p></div><div class=paragraph><p>В самом деле, начнем с конца, то есть с утилиты преобразования файлов. Всегда легче программировать, когда с самого начала известно, каким должен быть конечный продукт.</p></div><div class=paragraph><p>Одной из первых программ, которые я написал для UNIX®, была <a href=ftp://ftp.int80h.org/unix/tuc/>tuc</a> — конвертер текста в файл UNIX®. Она преобразует текстовый файл из других операционных систем в текстовый файл UNIX®. Другими словами, она изменяет различные виды окончаний строк на стандартные для UNIX®. Результат сохраняется в другом файле. По желанию, она может преобразовать текстовый файл UNIX® в текстовый файл DOS.</p></div><div class=paragraph><p>Я широко использовал <code>tuc</code>, но всегда только для преобразования из какой-либо другой ОС в UNIX®, никогда наоборот. Мне всегда хотелось, чтобы он просто перезаписывал файл, вместо того чтобы мне приходилось отправлять вывод в другой файл. В большинстве случаев я в итоге использую его так:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% tuc myfile tempfile
+% <span class=nb>mv </span>tempfile myfile</code></pre></div></div><div class=paragraph><p>Было бы здорово иметь ftuc, т.е., <em>быстрый tuc</em>, и использовать его вот так:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% ftuc myfile</code></pre></div></div><div class=paragraph><p>В этой главе мы напишем ftuc на языке ассемблера (оригинальный tuc написан на C) и в процессе изучим различные файловые сервисы ядра.</p></div><div class=paragraph><p>На первый взгляд, такое преобразование файла кажется очень простым: нужно всего лишь удалить символы возврата каретки, верно?</p></div><div class=paragraph><p>Если вы ответили «да», подумайте ещё раз: такой подход будет работать в большинстве случаев (по крайней мере, с текстовыми файлами MS DOS), но иногда он будет давать сбой.</p></div><div class=paragraph><p>Проблема в том, что не все текстовые файлы, не относящиеся к UNIX®, завершают строки последовательностью возврата каретки / перевода строки. Некоторые используют возврат каретки без перевода строки. Другие объединяют несколько пустых строк в один возврат каретки, за которым следует несколько переводов строки. И так далее.</p></div><div class=paragraph><p>Конвертер текстовых файлов, следовательно, должен уметь обрабатывать любые возможные окончания строк:</p></div><div class=ulist><ul><li><p>возврат каретки (carriage return) / перевод строки (line feed)</p></li><li><p>возврат каретки</p></li><li><p>перевод строки / возврат каретки</p></li><li><p>перевод строки</p></li></ul></div><div class=paragraph><p>Это также должно обрабатывать файлы, использующие комбинации вышеуказанного (например, возврат каретки с последующими несколькими переводами строки).</p></div><div class=sect2><h3 id=x86-finite-state-machine>11.1. Конечный автомат<a class=anchor href=#x86-finite-state-machine></a></h3><div class=paragraph><p>Проблема легко решается с использованием техники, называемой <em>конечный автомат</em>, изначально разработанной создателями цифровых электронных схем. <em>Конечный автомат</em> — это цифровая схема, выход которой зависит не только от входа, но и от предыдущего входа, то есть от её состояния. Микропроцессор является примером <em>конечного автомата</em>: наш код на языке ассемблера транслируется в машинный язык, где одни инструкции ассемблера превращаются в один байт машинного кода, а другие — в несколько байтов. Когда микропроцессор извлекает байты из памяти один за другим, некоторые из них просто изменяют его состояние, а не производят какой-либо выходной сигнал. После извлечения всех байтов кода операции микропроцессор выдаёт выходной сигнал, изменяет значение регистра и т. д.</p></div><div class=paragraph><p>Из-за этого всё программное обеспечение по сути представляет собой последовательность инструкций состояния для микропроцессора. Тем не менее, концепция <em>конечного автомата</em> также полезна при проектировании программного обеспечения.</p></div><div class=paragraph><p>Наш конвертер текстовых файлов можно представить в виде <em>конечного автомата</em> с тремя возможными состояниями. Мы могли бы назвать их состояниями 0-2, но будет проще, если дадим им символические имена:</p></div><div class=ulist><ul><li><p>ordinary</p></li><li><p>cr</p></li><li><p>lf</p></li></ul></div><div class=paragraph><p>Наша программа начнёт работу в обычном состоянии. В этом состоянии действие программы зависит от её входных данных следующим образом:</p></div><div class=ulist><ul><li><p>Если ввод представляет собой что-либо, кроме возврата каретки или перевода строки, ввод просто передаётся на вывод. Состояние остаётся неизменным.</p></li><li><p>Если входной символ — возврат каретки, состояние изменяется на cr. Затем входной символ отбрасывается, т.е. вывод не производится.</p></li><li><p>Если входной символ является переводом строки, состояние изменяется на lf. Затем входной символ отбрасывается.</p></li></ul></div><div class=paragraph><p>Всякий раз, когда мы находимся в состоянии <code>cr</code>, это означает, что последним вводом был символ возврата каретки, который не был обработан. Действия нашего программного обеспечения в этом состоянии снова зависят от текущего ввода:</p></div><div class=ulist><ul><li><p>Если ввод отличается от возврата каретки или перевода строки, вывести перевод строки, затем вывести ввод, а затем изменить состояние на обычное.</p></li><li><p>Если входной символ — возврат каретки, значит, мы получили два (или более) возврата каретки подряд. Мы отбрасываем ввод, выводим перевод строки и оставляем состояние неизменным.</p></li><li><p>Если входной символ — это перевод строки, мы выводим перевод строки и меняем состояние на обычное. Обратите внимание, что это не то же самое, что в первом случае выше — если бы мы попытались объединить их, мы бы выводили два перевода строки вместо одного.</p></li></ul></div><div class=paragraph><p>Наконец, мы находимся в состоянии <code>lf</code> после получения перевода строки, которому не предшествовал возврат каретки. Это произойдет, если наш файл уже в формате UNIX®, или когда несколько строк подряд выражены одним возвратом каретки, за которым следуют несколько переводов строк, или когда строка заканчивается последовательностью перевода строки / возврата каретки. Вот как нам нужно обрабатывать ввод в этом состоянии:</p></div><div class=ulist><ul><li><p>Если ввод отличается от возврата каретки или перевода строки, мы выводим перевод строки, затем выводим ввод и изменяем состояние на обычное. Это действие полностью совпадает с действием в состоянии <code>cr</code> при получении аналогичного ввода.</p></li><li><p>Если ввод представляет собой символ возврата каретки, мы отбрасываем ввод, выводим символ перевода строки, затем изменяем состояние на обычное.</p></li><li><p>Если входной символ — перевод строки, мы выводим перевод строки и оставляем состояние неизменным.</p></li></ul></div><div class=sect3><h4 id=x86-final-state>11.1.1. Конечное состояние<a class=anchor href=#x86-final-state></a></h4><div class=paragraph><p>Приведённый выше <em>конечный автомат</em> работает для всего файла, но оставляет возможность, что последний конец строки будет проигнорирован. Это произойдёт, если файл заканчивается одиночным возвратом каретки или одиночным переводом строки. Я не подумал об этом, когда писал tuc, и лишь позже обнаружил, что иногда он удаляет последний конец строки.</p></div><div class=paragraph><p>Эта проблема легко решается проверкой состояния после обработки всего файла. Если состояние не является обычным, нам просто нужно вывести последний перевод строки.</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Теперь, когда мы выразили наш алгоритм в виде <em>конечного автомата</em>, мы могли бы легко разработать специализированную цифровую электронную схему («чип») для выполнения преобразования. Конечно, это было бы значительно дороже, чем написание программы на языке ассемблера.</p></div></td></tr></tbody></table></div></div><div class=sect3><h4 id=x86-tuc-counter>11.1.2. Счетчик вывода<a class=anchor href=#x86-tuc-counter></a></h4><div class=paragraph><p>Поскольку наша программа преобразования файлов может объединять два символа в один, нам необходимо использовать счётчик вывода. Мы инициализируем его значением <code>0</code> и увеличиваем каждый раз, когда отправляем символ на выход. В конце программы счётчик укажет, какой размер необходимо установить для файла.</p></div></div></div><div class=sect2><h3 id=x86-software-fsm>11.2. Реализация конечного автомата в программном обеспечении<a class=anchor href=#x86-software-fsm></a></h3><div class=paragraph><p>Самая сложная часть работы с <em>конечным автоматом</em> — это анализ задачи и её представление в виде <em>конечного автомата</em>. После этого программное обеспечение практически пишется само.</p></div><div class=paragraph><p>На языке высокого уровня, таком как C, существует несколько основных подходов. Один из них — использование оператора <code>switch</code>, который выбирает, какую функцию следует выполнить. Например,</p></div><div class="literalblock programlisting"><div class=content><pre>switch (state) {
+	default:
+	case REGULAR:
+		regular(inputchar);
+		break;
+	case CR:
+		cr(inputchar);
+		break;
+	case LF:
+		lf(inputchar);
+		break;
+	}</pre></div></div><div class=paragraph><p>Еще один подход заключается в использовании массива указателей на функции, например:</p></div><div class="literalblock programlisting"><div class=content><pre>(output[state])(inputchar);</pre></div></div><div class=paragraph><p>Еще один вариант — сделать <code>state</code> указателем на функцию, установив его на соответствующую функцию:</p></div><div class="literalblock programlisting"><div class=content><pre>(*state)(inputchar);</pre></div></div><div class=paragraph><p>Это подход, который мы будем использовать в нашей программе, потому что его очень легко реализовать на языке ассемблера, и он также очень быстрый. Мы просто будем хранить адрес нужной процедуры в <code>EBX</code>, а затем выполним:</p></div><div class="literalblock programlisting"><div class=content><pre>call	ebx</pre></div></div><div class=paragraph><p>Это возможно быстрее, чем жёстко задавать адрес в коде, потому что микропроцессору не нужно извлекать адрес из памяти — он уже хранится в одном из его регистров. Я сказал <em>возможно</em>, потому что с учётом кэширования, которое выполняют современные микропроцессоры, оба варианта могут быть одинаково быстрыми.</p></div></div><div class=sect2><h3 id=memory-mapped-files>11.3. Отображенные в память файлы<a class=anchor href=#memory-mapped-files></a></h3><div class=paragraph><p>Поскольку наша программа работает с одним файлом, мы не можем использовать подход, который работал ранее, то есть чтение из входного файла и запись в выходной файл.</p></div><div class=paragraph><p>UNIX® позволяет нам отображать файл или его часть в память. Для этого сначала необходимо открыть файл с соответствующими флагами чтения/записи. Затем мы используем системный вызов <code>mmap</code>, чтобы отобразить его в память. Одно из преимуществ <code>mmap</code> заключается в том, что он автоматически работает с виртуальной памятью: мы можем отобразить в память больше файла, чем имеется физической памяти, и при этом обращаться к нему с помощью обычных команд работы с памятью, таких как <code>mov</code>, <code>lods</code> и <code>stos</code>. Все изменения, внесённые в память, отображённую из файла, будут записаны в файл системой. Нам даже не нужно держать файл открытым: пока он остаётся отображённым, мы можем читать из него и записывать в него.</p></div><div class=paragraph><p>32-разрядные микропроцессоры Intel могут адресовать до четырёх гигабайт памяти — физической или виртуальной. Система FreeBSD позволяет использовать до половины этого объёма для отображения файлов.</p></div><div class=paragraph><p>Для упрощения в этом руководстве мы будем преобразовывать только файлы, которые могут быть полностью отображены в памяти. Вероятно, не так много текстовых файлов превышают размер в два гигабайта. Если наша программа встретит такой файл, она просто выведет сообщение с предложением использовать оригинальный tuc.</p></div><div class=paragraph><p>Если вы изучите свою копию файла <span class=filename>syscalls.master</span>, вы найдёте два отдельных системных вызова с именем <code>mmap</code>. Это связано с эволюцией UNIX®: существовал традиционный BSD <code>mmap</code>, системный вызов 71. Он был заменён на POSIX® <code>mmap</code>, системный вызов 197. Система FreeBSD поддерживает оба, поскольку старые программы были написаны с использованием оригинальной BSD-версии. Но новое программное обеспечение использует версию POSIX®, которую мы и будем применять.</p></div><div class=paragraph><p>В <span class=filename>syscalls.master</span> POSIX® версия указана следующим образом:</p></div><div class="literalblock programlisting"><div class=content><pre>197	STD	BSD	{ caddr_t mmap(caddr_t addr, size_t len, int prot, \
+			    int flags, int fd, long pad, off_t pos); }</pre></div></div><div class=paragraph><p>Это немного отличается от того, что указано в <a href="https://man.freebsd.org/cgi/man.cgi?query=mmap&amp;sektion=2&amp;format=html">mmap(2)</a>. Это связано с тем, что <a href="https://man.freebsd.org/cgi/man.cgi?query=mmap&amp;sektion=2&amp;format=html">mmap(2)</a> описывает версию на языке C.</p></div><div class=paragraph><p>Разница заключается в аргументе <code>long pad</code>, который отсутствует в версии на C. Однако системные вызовы FreeBSD добавляют 32-битный заполнитель после <code>push</code> 64-битного аргумента. В данном случае <code>off_t</code> является 64-битным значением.</p></div><div class=paragraph><p>Когда мы завершаем работу с файлом, отображённым в память, мы освобождаем его с помощью системного вызова <code>munmap</code>:</p></div><div class="admonitionblock tip"><table><tbody><tr><td class=icon><i class="fa icon-tip" title=Tip></i></td><td class=content><div class=paragraph><p>Для подробного изучения <code>mmap</code> см. <a href="http://www.int80h.org/cgi-bin/isbn?isbn=0130810819">Unix Network Programming, Volume 2, Chapter 12</a> У. Ричарда Стивенса.</p></div></td></tr></tbody></table></div></div><div class=sect2><h3 id=x86-file-size>11.4. Определение размера файла<a class=anchor href=#x86-file-size></a></h3><div class=paragraph><p>Поскольку нам нужно указать <code>mmap</code>, сколько байт файла отобразить в памяти, и поскольку мы хотим отобразить весь файл, нам необходимо определить его размер.</p></div><div class=paragraph><p>Мы можем использовать системный вызов <code>fstat</code> для получения всей информации об открытом файле, которую система может нам предоставить. Это включает в себя размер файла.</p></div><div class=paragraph><p>Вновь, в <span class=filename>syscalls.master</span> указаны две версии <code>fstat</code>: традиционная (системный вызов 62) и POSIX® (системный вызов 189). Естественно, мы будем использовать версию POSIX®:</p></div><div class="literalblock programlisting"><div class=content><pre>189	STD	POSIX	{ int fstat(int fd, struct stat *sb); }</pre></div></div><div class=paragraph><p>Это очень простой вызов: мы передаем ему адрес структуры <code>stat</code> и дескриптор открытого файла. Он заполнит содержимое структуры <code>stat</code>.</p></div><div class=paragraph><p>Однако должен сказать, что я пытался объявить структуру <code>stat</code> в секции <code>.bss</code>, и <code>fstat</code> это не понравилось: был установлен флаг переноса, указывающий на ошибку. После того как я изменил код, чтобы разместить структуру в стеке, всё заработало как надо.</p></div></div><div class=sect2><h3 id=x86-ftruncate>11.5. Изменение размера файла<a class=anchor href=#x86-ftruncate></a></h3><div class=paragraph><p>Поскольку наша программа может объединять последовательности возврата каретки / перевода строки в простые переводы строк, наш вывод может быть меньше, чем ввод. Однако, так как мы помещаем вывод в тот же файл, из которого читаем ввод, нам может потребоваться изменить размер файла.</p></div><div class=paragraph><p>Системный вызов <code>ftruncate</code> позволяет нам сделать именно это. Несмотря на название , несколько вводящее в заблуждение, системный вызов <code>ftruncate</code> может использоваться как для усечения файла (уменьшения его размера), так и для его увеличения.</p></div><div class=paragraph><p>И да, мы найдем две версии <code>ftruncate</code> в <span class=filename>syscalls.master</span>, старую (130) и новую (201). Мы будем использовать новую:</p></div><div class="literalblock programlisting"><div class=content><pre>201	STD	BSD	{ int ftruncate(int fd, int pad, off_t length); }</pre></div></div><div class=paragraph><p>Обратите внимание, что здесь снова присутствует <code>int pad</code>.</p></div></div><div class=sect2><h3 id=x86-ftuc>11.6. ftuc<a class=anchor href=#x86-ftuc></a></h3><div class=paragraph><p>Теперь мы знаем всё, что нужно для написания ftuc. Начнём с добавления нескольких новых строк в <span class=filename>system.inc</span>. Сначала определим некоторые константы и структуры, где-нибудь в начале или около начала файла:</p></div><div class="literalblock programlisting"><div class=content><pre>;;;;;;; open flags
+%define	O_RDONLY	0
+%define	O_WRONLY	1
+%define	O_RDWR	2
+
+;;;;;;; mmap flags
+%define	PROT_NONE	0
+%define	PROT_READ	1
+%define	PROT_WRITE	2
+%define	PROT_EXEC	4
+;;
+%define	MAP_SHARED	0001h
+%define	MAP_PRIVATE	0002h
+
+;;;;;;; stat structure
+struc	stat
+st_dev		resd	1	; = 0
+st_ino		resd	1	; = 4
+st_mode		resw	1	; = 8, size is 16 bits
+st_nlink	resw	1	; = 10, ditto
+st_uid		resd	1	; = 12
+st_gid		resd	1	; = 16
+st_rdev		resd	1	; = 20
+st_atime	resd	1	; = 24
+st_atimensec	resd	1	; = 28
+st_mtime	resd	1	; = 32
+st_mtimensec	resd	1	; = 36
+st_ctime	resd	1	; = 40
+st_ctimensec	resd	1	; = 44
+st_size		resd	2	; = 48, size is 64 bits
+st_blocks	resd	2	; = 56, ditto
+st_blksize	resd	1	; = 64
+st_flags	resd	1	; = 68
+st_gen		resd	1	; = 72
+st_lspare	resd	1	; = 76
+st_qspare	resd	4	; = 80
+endstruc</pre></div></div><div class=paragraph><p>Мы определяем новые системные вызовы:</p></div><div class="literalblock programlisting"><div class=content><pre>%define	SYS_mmap	197
+%define	SYS_munmap	73
+%define	SYS_fstat	189
+%define	SYS_ftruncate	201</pre></div></div><div class=paragraph><p>Добавляем макросы для их использования:</p></div><div class="literalblock programlisting"><div class=content><pre>%macro	sys.mmap	0
+	system	SYS_mmap
+%endmacro
+
+%macro	sys.munmap	0
+	system	SYS_munmap
+%endmacro
+
+%macro	sys.ftruncate	0
+	system	SYS_ftruncate
+%endmacro
+
+%macro	sys.fstat	0
+	system	SYS_fstat
+%endmacro</pre></div></div><div class=paragraph><p>И вот наш код:</p></div><div class="literalblock programlisting"><div class=content><pre>;;;;;;; Fast Text-to-Unix Conversion (ftuc.asm) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Started:	21-Dec-2000
+;; Updated:	22-Dec-2000
+;;
+;; Copyright 2000 G. Adam Stanislav.
+;; All rights reserved.
+;;
+;;;;;;; v.1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+%include	&#39;system.inc&#39;
+
+section	.data
+	db	&#39;Copyright 2000 G. Adam Stanislav.&#39;, 0Ah
+	db	&#39;All rights reserved.&#39;, 0Ah
+usg	db	&#39;Usage: ftuc filename&#39;, 0Ah
+usglen	equ	$-usg
+co	db	&#34;ftuc: Can&#39;t open file.&#34;, 0Ah
+colen	equ	$-co
+fae	db	&#39;ftuc: File access error.&#39;, 0Ah
+faelen	equ	$-fae
+ftl	db	&#39;ftuc: File too long, use regular tuc instead.&#39;, 0Ah
+ftllen	equ	$-ftl
+mae	db	&#39;ftuc: Memory allocation error.&#39;, 0Ah
+maelen	equ	$-mae
+
+section	.text
+
+align 4
+memerr:
+	push	dword maelen
+	push	dword mae
+	jmp	short error
+
+align 4
+toolong:
+	push	dword ftllen
+	push	dword ftl
+	jmp	short error
+
+align 4
+facerr:
+	push	dword faelen
+	push	dword fae
+	jmp	short error
+
+align 4
+cantopen:
+	push	dword colen
+	push	dword co
+	jmp	short error
+
+align 4
+usage:
+	push	dword usglen
+	push	dword usg
+
+error:
+	push	dword stderr
+	sys.write
+
+	push	dword 1
+	sys.exit
+
+align 4
+global	_start
+_start:
+	pop	eax		; argc
+	pop	eax		; program name
+	pop	ecx		; file to convert
+	jecxz	usage
+
+	pop	eax
+	or	eax, eax	; Too many arguments?
+	jne	usage
+
+	; Open the file
+	push	dword O_RDWR
+	push	ecx
+	sys.open
+	jc	cantopen
+
+	mov	ebp, eax	; Save fd
+
+	sub	esp, byte stat_size
+	mov	ebx, esp
+
+	; Find file size
+	push	ebx
+	push	ebp		; fd
+	sys.fstat
+	jc	facerr
+
+	mov	edx, [ebx + st_size + 4]
+
+	; File is too long if EDX != 0 ...
+	or	edx, edx
+	jne	near toolong
+	mov	ecx, [ebx + st_size]
+	; ... or if it is above 2 GB
+	or	ecx, ecx
+	js	near toolong
+
+	; Do nothing if the file is 0 bytes in size
+	jecxz	.quit
+
+	; Map the entire file in memory
+	push	edx
+	push	edx		; starting at offset 0
+	push	edx		; pad
+	push	ebp		; fd
+	push	dword MAP_SHARED
+	push	dword PROT_READ | PROT_WRITE
+	push	ecx		; entire file size
+	push	edx		; let system decide on the address
+	sys.mmap
+	jc	near memerr
+
+	mov	edi, eax
+	mov	esi, eax
+	push	ecx		; for SYS_munmap
+	push	edi
+
+	; Use EBX for state machine
+	mov	ebx, ordinary
+	mov	ah, 0Ah
+	cld
+
+.loop:
+	lodsb
+	call	ebx
+	loop	.loop
+
+	cmp	ebx, ordinary
+	je	.filesize
+
+	; Output final lf
+	mov	al, ah
+	stosb
+	inc	edx
+
+.filesize:
+	; truncate file to new size
+	push	dword 0		; high dword
+	push	edx		; low dword
+	push	eax		; pad
+	push	ebp
+	sys.ftruncate
+
+	; close it (ebp still pushed)
+	sys.close
+
+	add	esp, byte 16
+	sys.munmap
+
+.quit:
+	push	dword 0
+	sys.exit
+
+align 4
+ordinary:
+	cmp	al, 0Dh
+	je	.cr
+
+	cmp	al, ah
+	je	.lf
+
+	stosb
+	inc	edx
+	ret
+
+align 4
+.cr:
+	mov	ebx, cr
+	ret
+
+align 4
+.lf:
+	mov	ebx, lf
+	ret
+
+align 4
+cr:
+	cmp	al, 0Dh
+	je	.cr
+
+	cmp	al, ah
+	je	.lf
+
+	xchg	al, ah
+	stosb
+	inc	edx
+
+	xchg	al, ah
+	; fall through
+
+.lf:
+	stosb
+	inc	edx
+	mov	ebx, ordinary
+	ret
+
+align 4
+.cr:
+	mov	al, ah
+	stosb
+	inc	edx
+	ret
+
+align 4
+lf:
+	cmp	al, ah
+	je	.lf
+
+	cmp	al, 0Dh
+	je	.cr
+
+	xchg	al, ah
+	stosb
+	inc	edx
+
+	xchg	al, ah
+	stosb
+	inc	edx
+	mov	ebx, ordinary
+	ret
+
+align 4
+.cr:
+	mov	ebx, ordinary
+	mov	al, ah
+	; fall through
+
+.lf:
+	stosb
+	inc	edx
+	ret</pre></div></div><div class="admonitionblock warning"><table><tbody><tr><td class=icon><i class="fa icon-warning" title=Warning></i></td><td class=content><div class=paragraph><p>Не используйте эту программу для файлов, хранящихся на диске, отформатированном в MS-DOS® или Windows®. В коде FreeBSD присутствует неочевидная ошибка при использовании <code>mmap</code> на таких дисках, смонтированных в FreeBSD: если размер файла превышает определённое значение, <code>mmap</code> заполнит память нулями, а затем запишет их в файл, перезаписав его содержимое.</p></div></td></tr></tbody></table></div></div></div></div><div class=sect1><h2 id=x86-one-pointed-mind>12. Спокойствие ума<a class=anchor href=#x86-one-pointed-mind></a></h2><div class=sectionbody><div class=paragraph><p>Как ученик дзэн, мне нравится идея спокойствия ума (экаггата): делай одно дело за раз и делай его хорошо.</p></div><div class=paragraph><p>Вот именно так, в большинстве случаев, работает и UNIX®. В то время как типичное приложение Windows® пытается сделать всё, что только можно (и поэтому кишит ошибками), типичная программа UNIX® делает только одну вещь, но делает её хорошо.</p></div><div class=paragraph><p>Типичный пользователь UNIX® по сути собирает свои собственные приложения, написав shell-скрипт, который объединяет различные существующие программы, передавая вывод одной программы на вход другой.</p></div><div class=paragraph><p>При написании собственного программного обеспечения для UNIX® обычно рекомендуется определить, какие части решаемой задачи могут быть обработаны существующими программами, и создавать собственные программы только для той части задачи, для которой нет готового решения.</p></div><div class=sect2><h3 id=x86-csv>12.1. CSV<a class=anchor href=#x86-csv></a></h3><div class=paragraph><p>Я проиллюстрирую этот принцип конкретным примером из реальной жизни, с которым недавно столкнулся:</p></div><div class=paragraph><p>Мне нужно было извлечь 11-е поле каждой записи из базы данных, которую я загрузил с веб-сайта. База данных представляла собой CSV-файл, то есть список <em>значений, разделённых запятыми</em>. Это довольно стандартный формат для обмена данными между людьми, которые могут использовать разное программное обеспечение для работы с базами данных.</p></div><div class=paragraph><p>Первая строка файла содержит список различных полей, разделенных запятыми. Остальная часть файла содержит данные, перечисленные построчно, со значениями, разделенными запятыми.</p></div><div class=paragraph><p>Я попробовал awk, используя запятую в качестве разделителя. Но поскольку несколько строк содержали запятую в кавычках, awk извлекал неправильное поле из этих строк.</p></div><div class=paragraph><p>Следовательно, мне нужно было написать собственное программное обеспечение для извлечения 11-го поля из CSV-файла. Однако, следуя духу UNIX®, мне нужно было лишь создать простой фильтр, выполняющий следующие действия:</p></div><div class=ulist><ul><li><p>Удалить первую строку из файла;</p></li><li><p>Заменить все не заключённые в кавычки запятые на другой символ;</p></li><li><p>Удалить все кавычки.</p></li></ul></div><div class=paragraph><p>Строго говоря, я мог бы использовать sed для удаления первой строки из файла, но сделать это в моей собственной программе было очень просто, поэтому я решил так поступить и уменьшить размер конвейера.</p></div><div class=paragraph><p>В любом случае, написание подобной программы заняло у меня около 20 минут. Написание программы, которая извлекает 11-е поле из CSV-файла, заняло бы гораздо больше времени, и я не смог бы повторно использовать её для извлечения другого поля из другой базы данных.</p></div><div class=paragraph><p>На этот раз я решил позволить ей выполнить немного больше работы, чем обычная учебная программа:</p></div><div class=ulist><ul><li><p>Она анализирует свою командную строку на наличие опций;</p></li><li><p>Она отображает подсказку, если обнаруживает неверные аргументы;</p></li><li><p>Она выдаёт понятные сообщения об ошибках.</p></li></ul></div><div class=paragraph><p>Вот какое сообщение она выводит о том, как её использовать:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>Usage: csv <span class=o>[</span><span class=nt>-t</span>&lt;delim&gt;] <span class=o>[</span><span class=nt>-c</span>&lt;comma&gt;] <span class=o>[</span><span class=nt>-p</span><span class=o>]</span> <span class=o>[</span><span class=nt>-o</span> &lt;outfile&gt;] <span class=o>[</span><span class=nt>-i</span> &lt;infile&gt;]</code></pre></div></div><div class=paragraph><p>Все параметры необязательны и могут располагаться в любом порядке.</p></div><div class=paragraph><p>Параметр <code>-t</code> указывает, на что заменить запятые. По умолчанию используется <code>tab</code>. Например, <code>-t;</code> заменит все незакавыченные запятые на точку с запятой.</p></div><div class=paragraph><p>Мне не понадобилась опция <code>-c</code>, но в будущем она может пригодиться. Она позволяет указать, что я хочу заменить символ, отличный от запятой, на что-то другое. Например, <code>-c@</code> заменит все знаки @ (полезно, если нужно разделить список email-адресов на имена пользователей и домены).</p></div><div class=paragraph><p>Опция <code>-p</code> сохраняет первую строку, т.е. не удаляет её. По умолчанию мы удаляем первую строку, потому что в CSV-файле она содержит названия полей, а не данные.</p></div><div class=paragraph><p>Опции <code>-i</code> и <code>-o</code> позволяют указать входной и выходной файлы. По умолчанию используются <span class=filename>stdin</span> и <span class=filename>stdout</span>, как обычно работает стандартный фильтр UNIX®.</p></div><div class=paragraph><p>Я убедился, что принимаются как <code>-i filename</code>, так и <code>-ifilename</code>. Также я убедился, что может быть указан только один входной и один выходной файл.</p></div><div class=paragraph><p>Чтобы получить 11-е поле каждой записи, теперь я могу сделать:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% csv <span class=s1>&#39;-t;&#39;</span> data.csv | <span class=nb>awk</span> <span class=s1>&#39;-F;&#39;</span> <span class=s1>&#39;{print $11}&#39;</span></code></pre></div></div><div class=paragraph><p>Код сохраняет параметры (за исключением файловых дескрипторов) в <code>EDX</code>: запятая в <code>DH</code>, новый разделитель в <code>DL</code>, а флаг параметра <code>-p</code> в старшем бите <code>EDX</code>, поэтому проверка его знака даст нам быстрое решение о дальнейших действиях.</p></div><div class=paragraph><p>Вот код:</p></div><div class="literalblock programlisting"><div class=content><pre>;;;;;;; csv.asm ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Convert a comma-separated file to a something-else separated file.
+;
+; Started:	31-May-2001
+; Updated:	 1-Jun-2001
+;
+; Copyright (c) 2001 G. Adam Stanislav
+; All rights reserved.
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+%include	&#39;system.inc&#39;
+
+%define	BUFSIZE	2048
+
+section	.data
+fd.in	dd	stdin
+fd.out	dd	stdout
+usg	db	&#39;Usage: csv [-t&lt;delim&gt;] [-c&lt;comma&gt;] [-p] [-o &lt;outfile&gt;] [-i &lt;infile&gt;]&#39;, 0Ah
+usglen	equ	$-usg
+iemsg	db	&#34;csv: Can&#39;t open input file&#34;, 0Ah
+iemlen	equ	$-iemsg
+oemsg	db	&#34;csv: Can&#39;t create output file&#34;, 0Ah
+oemlen	equ	$-oemsg
+
+section .bss
+ibuffer	resb	BUFSIZE
+obuffer	resb	BUFSIZE
+
+section	.text
+align 4
+ierr:
+	push	dword iemlen
+	push	dword iemsg
+	push	dword stderr
+	sys.write
+	push	dword 1		; return failure
+	sys.exit
+
+align 4
+oerr:
+	push	dword oemlen
+	push	dword oemsg
+	push	dword stderr
+	sys.write
+	push	dword 2
+	sys.exit
+
+align 4
+usage:
+	push	dword usglen
+	push	dword usg
+	push	dword stderr
+	sys.write
+	push	dword 3
+	sys.exit
+
+align 4
+global	_start
+_start:
+	add	esp, byte 8	; discard argc and argv[0]
+	mov	edx, (&#39;,&#39; &lt;&lt; 8) | 9
+
+.arg:
+	pop	ecx
+	or	ecx, ecx
+	je	near .init		; no more arguments
+
+	; ECX contains the pointer to an argument
+	cmp	byte [ecx], &#39;-&#39;
+	jne	usage
+
+	inc	ecx
+	mov	ax, [ecx]
+
+.o:
+	cmp	al, &#39;o&#39;
+	jne	.i
+
+	; Make sure we are not asked for the output file twice
+	cmp	dword [fd.out], stdout
+	jne	usage
+
+	; Find the path to output file - it is either at [ECX+1],
+	; i.e., -ofile --
+	; or in the next argument,
+	; i.e., -o file
+
+	inc	ecx
+	or	ah, ah
+	jne	.openoutput
+	pop	ecx
+	jecxz	usage
+
+.openoutput:
+	push	dword 420	; file mode (644 octal)
+	push	dword 0200h | 0400h | 01h
+	; O_CREAT | O_TRUNC | O_WRONLY
+	push	ecx
+	sys.open
+	jc	near oerr
+
+	add	esp, byte 12
+	mov	[fd.out], eax
+	jmp	short .arg
+
+.i:
+	cmp	al, &#39;i&#39;
+	jne	.p
+
+	; Make sure we are not asked twice
+	cmp	dword [fd.in], stdin
+	jne	near usage
+
+	; Find the path to the input file
+	inc	ecx
+	or	ah, ah
+	jne	.openinput
+	pop	ecx
+	or	ecx, ecx
+	je near usage
+
+.openinput:
+	push	dword 0		; O_RDONLY
+	push	ecx
+	sys.open
+	jc	near ierr		; open failed
+
+	add	esp, byte 8
+	mov	[fd.in], eax
+	jmp	.arg
+
+.p:
+	cmp	al, &#39;p&#39;
+	jne	.t
+	or	ah, ah
+	jne	near usage
+	or	edx, 1 &lt;&lt; 31
+	jmp	.arg
+
+.t:
+	cmp	al, &#39;t&#39;		; redefine output delimiter
+	jne	.c
+	or	ah, ah
+	je	near usage
+	mov	dl, ah
+	jmp	.arg
+
+.c:
+	cmp	al, &#39;c&#39;
+	jne	near usage
+	or	ah, ah
+	je	near usage
+	mov	dh, ah
+	jmp	.arg
+
+align 4
+.init:
+	sub	eax, eax
+	sub	ebx, ebx
+	sub	ecx, ecx
+	mov	edi, obuffer
+
+	; See if we are to preserve the first line
+	or	edx, edx
+	js	.loop
+
+.firstline:
+	; get rid of the first line
+	call	getchar
+	cmp	al, 0Ah
+	jne	.firstline
+
+.loop:
+	; read a byte from stdin
+	call	getchar
+
+	; is it a comma (or whatever the user asked for)?
+	cmp	al, dh
+	jne	.quote
+
+	; Replace the comma with a tab (or whatever the user wants)
+	mov	al, dl
+
+.put:
+	call	putchar
+	jmp	short .loop
+
+.quote:
+	cmp	al, &#39;&#34;&#39;
+	jne	.put
+
+	; Print everything until you get another quote or EOL. If it
+	; is a quote, skip it. If it is EOL, print it.
+.qloop:
+	call	getchar
+	cmp	al, &#39;&#34;&#39;
+	je	.loop
+
+	cmp	al, 0Ah
+	je	.put
+
+	call	putchar
+	jmp	short .qloop
+
+align 4
+getchar:
+	or	ebx, ebx
+	jne	.fetch
+
+	call	read
+
+.fetch:
+	lodsb
+	dec	ebx
+	ret
+
+read:
+	jecxz	.read
+	call	write
+
+.read:
+	push	dword BUFSIZE
+	mov	esi, ibuffer
+	push	esi
+	push	dword [fd.in]
+	sys.read
+	add	esp, byte 12
+	mov	ebx, eax
+	or	eax, eax
+	je	.done
+	sub	eax, eax
+	ret
+
+align 4
+.done:
+	call	write		; flush output buffer
+
+	; close files
+	push	dword [fd.in]
+	sys.close
+
+	push	dword [fd.out]
+	sys.close
+
+	; return success
+	push	dword 0
+	sys.exit
+
+align 4
+putchar:
+	stosb
+	inc	ecx
+	cmp	ecx, BUFSIZE
+	je	write
+	ret
+
+align 4
+write:
+	jecxz	.ret	; nothing to write
+	sub	edi, ecx	; start of buffer
+	push	ecx
+	push	edi
+	push	dword [fd.out]
+	sys.write
+	add	esp, byte 12
+	sub	eax, eax
+	sub	ecx, ecx	; buffer is empty now
+.ret:
+	ret</pre></div></div><div class=paragraph><p>Большая часть взята из <span class=filename>hex.asm</span> выше. Однако есть одно важное отличие: я больше не вызываю <code>write</code> каждый раз при выводе перевода строки. Тем не менее, код можно использовать интерактивно.</p></div><div class=paragraph><p>Я нашел лучшее решение для интерактивной проблемы с тех пор, как начал писать эту главу. Я хотел убедиться, что каждая строка выводится отдельно только при необходимости. В конце концов, нет необходимости выводить каждую строку при неинтерактивном использовании.</p></div><div class=paragraph><p>Новое решение, которое я использую сейчас, заключается в вызове <code>write</code> каждый раз, когда обнаруживаю, что входной буфер пуст. Таким образом, при работе в интерактивном режиме программа считывает одну строку с клавиатуры пользователя, обрабатывает её и видит, что входной буфер пуст. Она сбрасывает свой вывод и читает следующую строку.</p></div><div class=sect3><h4 id=x86-buffered-dark-side>12.1.1. Темная сторона буферизации<a class=anchor href=#x86-buffered-dark-side></a></h4><div class=paragraph><p>Это изменение предотвращает загадочную блокировку в очень специфическом случае. Я называю это <em>тёмной стороной буферизации</em>, в основном потому, что это представляет опасность, которая не совсем очевидна.</p></div><div class=paragraph><p>Маловероятно, что это произойдет с такой программой, как csv выше, поэтому рассмотрим ещё один фильтр: в этом случае мы ожидаем, что наши входные данные будут представлять собой необработанные данные, описывающие значения цветов, такие как интенсивности <em>красного</em>, <em>зеленого</em> и <em>синего</em> для пикселя. На выходе мы получим негатив входных данных.</p></div><div class=paragraph><p>Такой фильтр было бы очень просто написать. Большая его часть выглядела бы так же, как и все другие фильтры, которые мы уже писали, поэтому я покажу только его внутренний цикл:</p></div><div class="literalblock programlisting"><div class=content><pre>.loop:
+	call	getchar
+	not	al		; Create a negative
+	call	putchar
+	jmp	short .loop</pre></div></div><div class=paragraph><p>Поскольку этот фильтр работает с необработанными данными, он вряд ли будет использоваться интерактивно.</p></div><div class=paragraph><p>Но он может вызываться программным обеспечением для обработки изображений. И, если он не вызывает <code>write</code> перед каждым вызовом <code>read</code>, высока вероятность, что он зависнет.</p></div><div class=paragraph><p>Вот что может произойти:</p></div><div class="olist arabic procedure"><ol class=arabic><li><p>Редактор изображений загрузит наш фильтр, используя функцию <code>popen()</code> на языке C.</p></li><li><p>Он прочитает первый ряд пикселей из битовой карты или пиксельной карты.</p></li><li><p>Он запишет первую строку пикселей в <em>канал</em>, ведущий к <code>fd.in</code> нашего фильтра.</p></li><li><p>Наш фильтр будет читать каждый пиксель из входных данных, преобразовывать его в негатив и записывать в выходной буфер.</p></li><li><p>Наш фильтр будет вызывать <code>getchar</code> для получения следующего пикселя.</p></li><li><p><code>getchar</code> обнаружит пустой входной буфер, поэтому вызовет <code>read</code>.</p></li><li><p><code>read</code> вызовет системный вызов <code>SYS_read</code>.</p></li><li><p><em>Ядро</em> приостановит работу нашего фильтра до тех пор, пока редактор изображений не отправит больше данных в канал.</p></li><li><p>Редактор изображений будет читать из другого канала, подключенного к <code>fd.out</code> нашего фильтра, чтобы он мог установить первую строку выходного изображения <em>до</em> того, как отправит нам вторую строку входного.</p></li><li><p><em>Ядро</em> приостанавливает работу графического редактора до тех пор, пока не получит какие-либо данные от нашего фильтра, чтобы передать их редактору.</p></li></ol></div><div class=paragraph><p>На этом этапе наш фильтр ожидает, что редактор изображений отправит ему больше данных для обработки, в то время как редактор изображений ожидает, что наш фильтр отправит ему результат обработки первой строки. Однако результат находится в нашем выходном буфере.</p></div><div class=paragraph><p>Фильтр и редактор изображений будут продолжать ждать друг друга вечно (или, по крайней мере, пока их не завершат командой kill). Наше программное обеспечение только что вошло в <a href=../secure/#secure-race-conditions>состояние гонки</a>.</p></div><div class=paragraph><p>Эта проблема не возникает, если наш фильтр очищает свой выходной буфер <em>перед</em> запросом к <em>ядру</em> для получения дополнительных входных данных.</p></div></div></div></div></div><div class=sect1><h2 id=x86-fpu>13. Использование FPU<a class=anchor href=#x86-fpu></a></h2><div class=sectionbody><div class=paragraph><p>Как ни странно, большая часть литературы по ассемблеру даже не упоминает о существовании FPU, или <em>блока обработки чисел с плавающей запятой</em>, не говоря уже о программировании для него.</p></div><div class=paragraph><p>Тем не менее, язык ассемблера проявляет себя наилучшим образом, когда мы создаем высокооптимизированный код для FPU, выполняя вещи, которые можно сделать <em>только</em> на языке ассемблера.</p></div><div class=sect2><h3 id=x86-fpu-organization>13.1. Организация FPU<a class=anchor href=#x86-fpu-organization></a></h3><div class=paragraph><p>FPU состоит из 8 80-битных регистров с плавающей запятой. Они организованы в виде стека — вы можете <code>push</code> (поместить) значение на TOS (<em>вершина стека</em>) и <code>pop</code> (извлечь) его.</p></div><div class=paragraph><p>Как бы то ни было, мнемоники ассемблера — не <code>push</code> и <code>pop</code>, потому что они уже заняты.</p></div><div class=paragraph><p>Вы можете <code>push</code> (положить) значение на вершину стека (TOS), используя <code>fld</code>, <code>fild</code> и <code>fbld</code>. Несколько других кодов операций позволяют вам <code>push</code> (положить) многие распространённые <em>константы</em> — например, <em>pi</em> — на вершину стека (TOS).</p></div><div class=paragraph><p>Аналогично, вы можете <code>извлечь</code> значение с помощью <code>fst</code>, <code>fstp</code>, <code>fist</code>, <code>fistp</code> и <code>fbstp</code>. На самом деле только коды операций, оканчивающиеся на <em>p</em>, буквально <code>извлекают</code> значение, остальные же <code>сохраняют</code> его в другом месте, не удаляя с вершины стека (TOS).</p></div><div class=paragraph><p>Мы можем передавать данные между TOS и памятью компьютера либо как 32-битное, 64-битное или 80-битное <em>вещественное</em> число, 16-битное, 32-битное или 64-битное <em>целое</em> число, либо как 80-битное <em>упакованное десятичное</em> число.</p></div><div class=paragraph><p>80-битный <em>упакованный десятичный</em> формат является особым случаем <em>двоично-десятичного кодирования</em>, который очень удобен при преобразовании между ASCII-представлением данных и внутренними данными FPU. Он позволяет использовать до 18 значащих цифр.</p></div><div class=paragraph><p>Независимо от того, как мы представляем данные в памяти, FPU всегда хранит их в 80-битном формате <em>real</em> в своих регистрах.</p></div><div class=paragraph><p>Его внутренняя точность составляет не менее 19 десятичных цифр, поэтому даже если мы решим отображать результаты в формате ASCII с полной 18-значной точностью, мы всё равно будем показывать корректные результаты.</p></div><div class=paragraph><p>Мы можем выполнять математические операции над TOS: вычислять его <em>синус</em>, <em>масштабировать</em> (то есть умножать или делить на степень двойки), вычислять его <em>логарифм</em> по основанию 2 и многое другое.</p></div><div class=paragraph><p>Мы также можем <em>умножить</em> или <em>разделить</em> его, <em>прибавить</em> к нему или <em>вычесть</em> его из любого из регистров FPU (включая его самого).</p></div><div class=paragraph><p>Официальный код операции Intel для TOS — <code>st</code>, а для <em>регистров</em> — <code>st(0)</code>-<code>st(7)</code>. Таким образом, <code>st</code> и <code>st(0)</code> ссылаются на один и тот же регистр.</p></div><div class=paragraph><p>По каким-то причинам оригинальный автор nasm решил использовать другие коды операций, а именно <code>st0</code>-<code>st7</code>. Другими словами, скобки отсутствуют, а вершина стека всегда <code>st0</code>, но никогда просто <code>st</code>.</p></div><div class=sect3><h4 id=x86-fpu-packed-decimal>13.1.1. Формат упакованного десятичного числа<a class=anchor href=#x86-fpu-packed-decimal></a></h4><div class=paragraph><p>Формат <em>упакованного десятичного числа</em> использует 10 байт (80 бит) памяти для представления 18 цифр. Представленное число всегда является <em>целым</em>.</p></div><div class="admonitionblock tip"><table><tbody><tr><td class=icon><i class="fa icon-tip" title=Tip></i></td><td class=content><div class=paragraph><p>Вы можете использовать это для получения десятичных знаков, предварительно умножив TOS на степень 10.</p></div></td></tr></tbody></table></div><div class=paragraph><p>Старший бит старшего байта (байт 9) является <em>знаковым битом</em>: если он установлен, число <em>отрицательное</em>, в противном случае — <em>положительное</em>. Остальные биты этого байта не используются/игнорируются.</p></div><div class=paragraph><p>Оставшиеся 9 байт хранят 18 цифр числа: 2 цифры на байт.</p></div><div class=paragraph><p><em>Старший разряд</em> хранится в старшем <em>полубайте</em> (4 бита), <em>младший разряд</em> — в младшем <em>полубайте</em>.</p></div><div class=paragraph><p>Как бы то ни было, вы можете подумать, что <code>-1234567</code> будет храниться в памяти следующим образом (в шестнадцатеричной записи):</p></div><div class="literalblock programlisting"><div class=content><pre>80 00 00 00 00 00 01 23 45 67</pre></div></div><div class=paragraph><p>Увы, это не так! Как и все остальное, созданное Intel, даже <em>упакованное десятичное число</em> имеет порядок <em>от младшего к старшему</em>.</p></div><div class=paragraph><p>Это означает, что наш <code>-1234567</code> хранится следующим образом:</p></div><div class="literalblock programlisting"><div class=content><pre>67 45 23 01 00 00 00 00 00 80</pre></div></div><div class=paragraph><p>Помните об этом, иначе вы будете рвать на себе волосы в отчаянии!</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Книга, которую стоит прочитать — если сможете её найти — это книга Ричарда Старца <a href=http://www.amazon.com/exec/obidos/ASIN/013246604X/whizkidtechnomag>8087/80287/80387 для IBM PC и совместимых</a>. Хотя в ней, кажется, факт о little-endian хранении <em>упакованного десятичного числа</em> принимается как данность. Я не шучу насчёт отчаяния, которое испытывал, пытаясь понять, что не так с фильтром, который я привожу ниже, <em>прежде</em> чем мне пришло в голову попробовать little-endian порядок даже для этого типа данных.</p></div></td></tr></tbody></table></div></div></div><div class=sect2><h3 id=x86-pinhole-photography>13.2. Экскурсия в фотографию с помощью камеры-обскуры<a class=anchor href=#x86-pinhole-photography></a></h3><div class=paragraph><p>Чтобы создавать полезное программное обеспечение, мы должны понимать не только наши инструменты программирования, но и область, для которой разрабатываем ПО.</p></div><div class=paragraph><p>Наш следующий фильтр поможет нам, когда мы захотим создать <em>камеру-обскуру</em>, поэтому нам понадобятся некоторые знания о <em>фотографии с помощью обскуры</em>, прежде чем мы сможем продолжить.</p></div><div class=sect3><h4 id=x86-camera>13.2.1. Камера<a class=anchor href=#x86-camera></a></h4><div class=paragraph><p>Самый простой способ описать любую когда-либо созданную камеру — это некоторое пустое пространство, заключённое в светонепроницаемый материал, с небольшим отверстием в корпусе.</p></div><div class=paragraph><p>Корпус обычно прочный (например, коробка), хотя иногда он гибкий (гофрированная часть). Внутри камеры довольно темно. Однако отверстие пропускает световые лучи через одну точку (хотя в некоторых случаях их может быть несколько). Эти световые лучи формируют изображение — представление того, что находится снаружи камеры, перед отверстием.</p></div><div class=paragraph><p>Если внутрь камеры поместить светочувствительный материал (например, плёнку), он может зафиксировать изображение.</p></div><div class=paragraph><p>Отверстие часто содержит <em>линзу</em> или сборку линз, которую часто называют <em>объективом</em>.</p></div></div><div class=sect3><h4 id=x86-the-pinhole>13.2.2. Игольное ушко<a class=anchor href=#x86-the-pinhole></a></h4><div class=paragraph><p>Но, строго говоря, линза не обязательна: первые камеры использовали не линзу, а <em>маленькое отверстие</em> размером с игольное ушко. Даже сегодня <em>маленькие отверстия</em> применяются как инструмент для изучения принципов работы камер и для создания особого вида изображений.</p></div><div class=paragraph><p>Изображение, создаваемое <em>маленьким отверстием</em>, одинаково резкое. Или <em>размытое</em>. Существует идеальный размер для маленького отверстия: если оно больше или меньше, изображение теряет резкость.</p></div></div><div class=sect3><h4 id=x86-focal-length>13.2.3. Фокусное расстояние<a class=anchor href=#x86-focal-length></a></h4><div class=paragraph><p>Идеальный диаметр отверстия является функцией квадратного корня из <em>фокусного расстояния</em>, которое представляет собой расстояние от отверстия до плёнки.</p></div><div class="literalblock programlisting"><div class=content><pre>D = PC * sqrt(FL)</pre></div></div><div class=paragraph><p>Здесь <code>D</code> — идеальный диаметр отверстия, <code>FL</code> — фокусное расстояние, а <code>PC</code> — константа отверстия. По данным Джейя Бендера, её значение равно <code>0,04</code>, тогда как Кеннет Коннорс определил его как <code>0,037</code>. Другие исследователи предложили иные значения. Кроме того, это значение справедливо только для дневного света: другие типы освещения потребуют иной константы, значение которой можно определить только экспериментальным путём.</p></div></div><div class=sect3><h4 id=x86-f-number>13.2.4. Число f (диафрагменное число)<a class=anchor href=#x86-f-number></a></h4><div class=paragraph><p>Число f — это очень полезный показатель того, сколько света попадает на плёнку. Экспонометр может определить, что, например, для экспонирования плёнки определённой чувствительности при f/5.6 может потребоваться выдержка 1/1000 сек.</p></div><div class=paragraph><p>Не имеет значения, 35-мм это камера или камера 6x9 см и т.д. Достаточно знать диафрагменное число, чтобы определить правильную экспозицию.</p></div><div class=paragraph><p>Число f легко вычислить:</p></div><div class="literalblock programlisting"><div class=content><pre>F = FL / D</pre></div></div><div class=paragraph><p>Другими словами, число f равно фокусному расстоянию, деленному на диаметр отверстия. Это также означает, что большее f-число подразумевает либо меньшее отверстие, либо большее фокусное расстояние, либо и то, и другое. В свою очередь, это означает, что чем больше число f, тем дольше должна быть выдержка.</p></div><div class=paragraph><p>Кроме того, хотя диаметр отверстия и фокусное расстояние являются одномерными величинами, и плёнка, и отверстие — двумерны. Это означает, что если вы измерили экспозицию при диафрагменном числе <code>A</code> как <code>t</code>, то экспозиция при диафрагменном числе <code>B</code> будет:</p></div><div class="literalblock programlisting"><div class=content><pre>t * (B / A)²</pre></div></div></div><div class=sect3><h4 id=x86-normalized-f-number>13.2.5. Нормализованное число f<a class=anchor href=#x86-normalized-f-number></a></h4><div class=paragraph><p>Хотя многие современные камеры могут изменять диаметр своего отверстия, а следовательно и свое число f, довольно плавно и постепенно, так было не всегда.</p></div><div class=paragraph><p>Для обеспечения различных значений диафрагмы в камерах обычно использовалась металлическая пластина с несколькими отверстиями разного размера.</p></div><div class=paragraph><p>Их размеры были выбраны в соответствии с приведённой выше формулой таким образом, чтобы результирующее f-число было одним из стандартных f-чисел, используемых на всех фотоаппаратах. Например, у моего очень старого фотоаппарата Kodak Duaflex IV есть три таких отверстия для чисел f — 8, 11 и 16.</p></div><div class=paragraph><p>Более современные камеры могут предлагать значения диафрагменного числа 2.8, 4, 5.6, 8, 11, 16, 22 и 32 (а также другие). Эти числа выбраны не произвольно: все они являются степенями квадратного корня из 2, хотя могут быть немного округлены.</p></div></div><div class=sect3><h4 id=x86-f-stop>13.2.6. Ступени числа f<a class=anchor href=#x86-f-stop></a></h4><div class=paragraph><p>Типичная камера устроена так, что установка любого из нормализованных чисел f изменяет ощущение от регулятора. Он естественным образом <em>останавливается</em> в этом положении. Из-за этого такие положения регулятора называются f-ступенями.</p></div><div class=paragraph><p>Поскольку значения диафрагмы на каждой ступени являются степенями квадратного корня из 2, поворот диска на 1 ступень удваивает количество света, необходимое для правильной экспозиции. Поворот на 2 ступени увеличивает требуемую экспозицию вчетверо. Поворот диска на 3 ступени требует увеличения экспозиции в 8 раз и так далее.</p></div></div></div><div class=sect2><h3 id=x86-pinhole-software>13.3. Проектирование программного обеспечения камеры-обскуры<a class=anchor href=#x86-pinhole-software></a></h3><div class=paragraph><p>Мы готовы решить, что именно должно делать наше программное обеспечение для камер-обскур.</p></div><div class=sect3><h4 id=xpinhole-processing-input>13.3.1. Обработка ввода программы<a class=anchor href=#xpinhole-processing-input></a></h4><div class=paragraph><p>Поскольку основная цель — помочь нам разработать работающую камеру-обскуру, мы будем использовать <em>фокусное расстояние</em> в качестве входных данных для программы. Это можно определить без программного обеспечения: правильное фокусное расстояние зависит от размера плёнки и необходимости съёмки «обычных» изображений, широкоугольных или телефото.</p></div><div class=paragraph><p>Большинство написанных нами до сих пор программ работали с отдельными символами или байтами в качестве входных данных: программа hex преобразовывала отдельные байты в шестнадцатеричное число, программа csv либо пропускала символ, либо удаляла его, либо заменяла на другой символ и т.д.</p></div><div class=paragraph><p>Одна программа, <code>ftuc</code>, использовала конечный автомат для обработки не более двух входных байтов за раз.</p></div><div class=paragraph><p>Но наша программа для камеры-обскуры не может работать только с отдельными символами, ей приходится иметь дело с более крупными синтаксическими единицами.</p></div><div class=paragraph><p>Например, если мы хотим, чтобы программа рассчитала диаметр отверстия (и другие значения, которые мы обсудим позже) для фокусных расстояний <code>100 мм</code>, <code>150 мм</code> и <code>210 мм</code>, мы можем ввести что-то вроде этого:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell> 100, 150, 210</code></pre></div></div><div class=paragraph><p>Наша программа должна учитывать более одного байта входных данных за раз. Когда она видит первую <code>1</code>, она должна понимать, что это первая цифра десятичного числа. Когда она видит <code>0</code> и другой <code>0</code>, она должна знать, что это следующие цифры того же числа.</p></div><div class=paragraph><p>Когда он встречает первую запятую, он должен понять, что больше не получает цифры первого числа. Он должен уметь преобразовать цифры первого числа в значение <code>100</code>. И цифры второго числа в значение <code>150</code>. И, конечно же, цифры третьего числа в числовое значение <code>210</code>.</p></div><div class=paragraph><p>Нам нужно определиться с допустимыми разделителями: должны ли входные числа разделяться запятой? Если да, то как обрабатывать два числа, разделённые чем-то другим?</p></div><div class=paragraph><p>Лично я предпочитаю простоту. Либо что-то является числом — и тогда я его обрабатываю. Либо не является числом — и тогда я это отбрасываю. Мне не нравится, когда компьютер жалуется на лишний символ, если <em>очевидно</em>, что он лишний. Да ладно!</p></div><div class=paragraph><p>Плюс, это позволяет мне разбавить монотонность вычислений и ввести запрос вместо просто числа:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>What is the best pinhole diameter <span class=k>for </span>the
+	    focal length of 150?</code></pre></div></div><div class=paragraph><p>Нет причины, чтобы компьютер выводил множество жалоб:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>Syntax error: What
+Syntax error: is
+Syntax error: the
+Syntax error: best</code></pre></div></div><div class=paragraph><p>И так далее, и так далее, и так далее.</p></div><div class=paragraph><p>Во-вторых, мне нравится символ <code>#</code> для обозначения начала комментария, который продолжается до конца строки. Это не требует больших усилий для реализации и позволяет мне рассматривать входные файлы для моего программного обеспечения как исполняемые скрипты.</p></div><div class=paragraph><p>В нашем случае также необходимо определиться с единицами измерения входных данных: мы выбираем <em>миллиметры</em>, так как большинство фотографов измеряют фокусное расстояние именно в них.</p></div><div class=paragraph><p>Наконец, нам нужно решить, разрешать ли использование десятичной точки (в этом случае мы также должны учитывать тот факт, что во многих странах используется десятичная <em>запятая</em>).</p></div><div class=paragraph><p>В нашем случае разрешение десятичной точки/запятой создало бы ложное ощущение точности: разница между фокусными расстояниями <code>50</code> и <code>51</code> практически незаметна, поэтому разрешать пользователю вводить что-то вроде <code>50.5</code> — не лучшая идея. Это моё мнение, конечно, но программу пишу я. В своей программе вы можете сделать другие выбор, разумеется.</p></div></div><div class=sect3><h4 id=x86-pinhole-options>13.3.2. Передача параметров программе<a class=anchor href=#x86-pinhole-options></a></h4><div class=paragraph><p>Самое важное, что нам нужно знать при создании камеры-обскуры — это диаметр отверстия. Поскольку мы хотим получать чёткие изображения, мы будем использовать приведённую выше формулу для расчёта диаметра отверстия от фокусного расстояния. Поскольку эксперты предлагают несколько различных значений для константы <code>PC</code>, нам нужно будет иметь выбор.</p></div><div class=paragraph><p>В традициях программирования в UNIX® предусмотрены два основных способа выбора параметров программы, а также значение по умолчанию на случай, если пользователь не сделает выбор.</p></div><div class=paragraph><p>Почему есть два способа выбора?</p></div><div class=paragraph><p>Один из способов — это позволить (относительно) <em>постоянный</em> выбор, который применяется автоматически каждый раз при запуске программы, без необходимости каждый раз указывать, что мы хотим, чтобы она сделала.</p></div><div class=paragraph><p>Постоянные настройки могут быть сохранены в конфигурационном файле, обычно расположенном в домашнем каталоге пользователя. Файл обычно имеет то же имя, что и приложение, но начинается с точки. Часто к имени файла добавляется <em>"rc"</em>. Таким образом, наш файл может называться <span class=filename>~/.pinhole</span> или <span class=filename>~/.pinholerc</span>. (Обозначение <span class=filename>~/</span> означает домашний каталог текущего пользователя.)</p></div><div class=paragraph><p>Файл конфигурации в основном используется программами, у которых много настраиваемых параметров. Те, у которых он один (или несколько), часто используют другой метод: они ожидают найти параметр в <em>переменной окружения</em>. В нашем случае, мы можем посмотреть на переменную окружения с именем <code>PINHOLE</code>.</p></div><div class=paragraph><p>Обычно программа использует один из вышеуказанных методов. В противном случае, если в конфигурационном файле указано одно, а в переменной окружения — другое, программа может запутаться (или стать слишком сложной).</p></div><div class=paragraph><p>Поскольку нам нужно выбрать только <em>один</em> такой параметр, мы воспользуемся вторым методом и поищем в окружении переменную с именем <code>PINHOLE</code>.</p></div><div class=paragraph><p>Другой способ позволяет нам принимать <em>ad hoc</em> решения: <em>"Хотя обычно я хочу, чтобы ты использовал 0.039, на этот раз мне нужно 0.03872."</em> Другими словами, он позволяет нам <em>переопределить</em> постоянный выбор.</p></div><div class=paragraph><p>Такой выбор обычно осуществляется с помощью параметров командной строки.</p></div><div class=paragraph><p>Наконец, программе <em>всегда</em> необходим <em>значение по умолчанию</em>. Пользователь может не делать никакого выбора. Возможно, он не знает, что выбрать. Возможно, он «просто просматривает». Предпочтительно, чтобы значением по умолчанию было то, что выбрало бы большинство пользователей. Таким образом, им не нужно выбирать. Или, точнее, они могут выбрать значение по умолчанию без дополнительных усилий.</p></div><div class=paragraph><p>Учитывая эту систему, программа может обнаружить конфликтующие параметры и обработать их следующим образом:</p></div><div class="olist arabic procedure"><ol class=arabic><li><p>Если она находит <em>специальный</em> выбор (например, параметр командной строки), она должна принять этот выбор. Она должна игнорировать любой постоянный выбор и значения по умолчанию.</p></li><li><p><em>В противном случае</em>, если будет найден постоянный параметр (например, переменная окружения), он должен быть принят, а значение по умолчанию — проигнорировано.</p></li><li><p><em>В противном случае</em>, следует использовать значение по умолчанию.</p></li></ol></div><div class=paragraph><p>Нам также необходимо решить, в каком <em>формате</em> должна быть наша опция <code>PC</code>.</p></div><div class=paragraph><p>На первый взгляд кажется очевидным использовать формат <code>PINHOLE=0.04</code> для переменной окружения и <code>-p0.04</code> для командной строки.</p></div><div class=paragraph><p>Разрешение этого на самом деле представляет угрозу безопасности. Константа <code>PC</code> — это очень маленькое число. Естественно, мы протестируем наше программное обеспечение, используя различные небольшие значения <code>PC</code>. Но что произойдёт, если кто-то запустит программу, выбрав огромное значение?</p></div><div class=paragraph><p>Это может привести к сбою программы, так как мы не разрабатывали её для обработки огромных чисел.</p></div><div class=paragraph><p>Или мы можем потратить больше времени на программу, чтобы она могла обрабатывать огромные числа. Мы могли бы сделать это, если бы писали коммерческое программное обеспечение для аудитории, не знакомой с компьютерами.</p></div><div class=paragraph><p>Или можно сказать: <em>"Пусть терпит! Пользователь сам должен был разобраться."</em></p></div><div class=paragraph><p>Или мы можем просто сделать невозможным ввод пользователем слишком большого числа. Это подход, который мы выберем: мы будем использовать <em>подразумеваемый префикс 0.</em>.</p></div><div class=paragraph><p>Другими словами, если пользователь хочет <code>0.04</code>, мы ожидаем, что он введёт <code>-p04</code> или установит <code>PINHOLE=04</code> в своём окружении. Таким образом, если он укажет <code>-p9999999</code>, мы интерпретируем это как <code>0.9999999</code> — всё ещё нелепо, но по крайней мере безопаснее.</p></div><div class=paragraph><p>Во-вторых, многие пользователи просто захотят использовать либо константу Бендера, либо константу Коннорса. Чтобы облегчить им задачу, мы будем интерпретировать <code>-b</code> как идентичное <code>-p04</code>, а <code>-c</code> как идентичное <code>-p037</code>.</p></div></div><div class=sect3><h4 id=x86-pinhole-output>13.3.3. Вывод результата<a class=anchor href=#x86-pinhole-output></a></h4><div class=paragraph><p>Нам нужно решить, что наше программное обеспечение должно отправлять на вывод и в каком формате.</p></div><div class=paragraph><p>Поскольку наши входные данные допускают неограниченное количество значений фокусного расстояния, имеет смысл использовать традиционный вывод в стиле базы данных, показывая результат вычислений для каждого фокусного расстояния на отдельной строке, разделяя все значения в строке символом табуляции.</p></div><div class=paragraph><p>Опционально, мы также должны разрешить пользователю указать использование формата CSV, который мы изучили ранее. В этом случае мы выведем строку с разделёнными запятыми названиями, описывающими каждое поле каждой строки, а затем отобразим результаты как прежде, но заменив <code>табуляцию</code> на <code>запятую</code>.</p></div><div class=paragraph><p>Нам нужна опция командной строки для формата CSV. Мы не можем использовать <code>-c</code>, потому что это уже означает <em>использовать константу Коннорса</em>. По какой-то странной причине многие веб-сайты называют CSV-файлы <em>"электронными таблицами Excel"</em> (хотя формат CSV появился раньше Excel). Поэтому мы будем использовать переключатель <code>-e</code>, чтобы указать нашему программному обеспечению, что мы хотим получить вывод в формате CSV.</p></div><div class=paragraph><p>Мы начнем каждую строку вывода с фокусного расстояния. Это может показаться избыточным сначала, особенно в интерактивном режиме: пользователь вводит фокусное расстояние, а мы его повторяем.</p></div><div class=paragraph><p>Но пользователь может ввести несколько фокусных расстояний в одной строке. Ввод также может поступать из файла или вывода другой программы. В этом случае пользователь вообще не видит вводимые данные.</p></div><div class=paragraph><p>Таким же образом, вывод может быть направлен в файл, который мы захотим изучить позже, или на принтер, или стать входными данными для другой программы.</p></div><div class=paragraph><p>Итак, имеет полный смысл начинать каждую строку с фокусного расстояния, введённого пользователем.</p></div><div class=paragraph><p>Нет, подождите! Не так, как ввел пользователь. Что, если пользователь введет что-то вроде этого:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell> 00000000150</code></pre></div></div><div class=paragraph><p>Очевидно, нам нужно удалить ведущие нули.</p></div><div class=paragraph><p>Итак, можно рассмотреть вариант чтения пользовательского ввода как есть, преобразования его в бинарный вид внутри FPU и последующего вывода оттуда.</p></div><div class=paragraph><p>Но…​</p></div><div class=paragraph><p>Что делать, если пользователь введёт что-то вроде этого:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell> 17459765723452353453534535353530530534563507309676764423</code></pre></div></div><div class=paragraph><p>Ха! Упакованный десятичный формат FPU позволяет нам вводить 18-значные числа. Но пользователь ввёл больше 18 цифр. Как нам обработать это?</p></div><div class=paragraph><p>Хорошо, мы <em>могли бы</em> изменить наш код, чтобы он читал первые 18 цифр, передавал их в FPU, затем читал ещё, умножал уже имеющееся на вершине стека (TOS) на 10 в степени количества дополнительных цифр, а затем выполнял <code>сложение</code> с этим значением.</p></div><div class=paragraph><p>Да, мы могли бы так поступить. Но в <em>этой</em> программе это было бы нелепо (в другой это могло бы быть как раз тем, что нужно): даже длина окружности Земли, выраженная в миллиметрах, занимает всего 11 цифр. Очевидно, мы не можем построить камеру такого размера (по крайней мере, пока).</p></div><div class=paragraph><p>Итак, если пользователь вводит такое огромное число, он либо скучает, либо проверяет нас, либо пытается взломать систему, либо играет — делает что угодно, кроме проектирования камеры-обскуры.</p></div><div class=paragraph><p>Что мы будем делать?</p></div><div class=paragraph><p>Мы ударим его по лицу, образно говоря:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>17459765723452353453534535353530530534563507309676764423	???	???	???	???	???</code></pre></div></div><div class=paragraph><p>Для этого мы просто проигнорируем все ведущие нули. Как только мы найдем ненулевую цифру, мы инициализируем счетчик значением <code>0</code> и начнем выполнять три шага:</p></div><div class="olist arabic procedure"><ol class=arabic><li><p>Отправить цифру на выход.</p></li><li><p>Добавить цифру в буфер, который мы позже используем для создания упакованного десятичного числа, которое можно отправить в FPU.</p></li><li><p>Увеличить счетчик.</p></li></ol></div><div class=paragraph><p>Теперь, пока мы выполняем эти три шага, нам также необходимо следить за одним из двух условий:</p></div><div class=ulist><ul><li><p>Если счётчик превышает 18, мы прекращаем добавление в буфер. Мы продолжаем читать цифры и отправлять их на вывод.</p></li><li><p>Если, или скорее <em>когда</em>, следующий вводимый символ не является цифрой, мы завершаем ввод на данный момент.</p><div class=paragraph><p>Между прочим, мы можем просто отбросить нецифровой символ, если это не <code>#</code>, который необходимо вернуть во входной поток. Он начинает комментарий, поэтому мы должны увидеть его после завершения вывода и начала поиска следующего ввода.</p></div></li></ul></div><div class=paragraph><p>Остается одна непокрытая возможность: если пользователь вводит только ноль (или несколько нулей), мы никогда не найдем ненулевое значение для отображения.</p></div><div class=paragraph><p>Мы можем определить, что это произошло, когда наш счетчик остаётся на <code>0</code>. В этом случае нам нужно отправить <code>0</code> на выход и выполнить ещё один "удар по лицу":</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>0	???	???	???	???	???</code></pre></div></div><div class=paragraph><p>Как только мы определили фокусное расстояние и убедились, что оно корректно (больше <code>0</code>, но не превышает 18 цифр), можно рассчитать диаметр отверстия.</p></div><div class=paragraph><p>Не случайно слово <em>булавочное ушко</em> содержит слово <em>булавка</em>. Действительно, многие малые отверстия буквально являются <em>дырками от булавки</em> — отверстиями, аккуратно проделанными остриём булавки.</p></div><div class=paragraph><p>Вот потому что типичное отверстие очень маленькое. Наша формула даёт результат в миллиметрах. Мы умножим его на <code>1000</code>, чтобы вывести результат в <em>микронах</em>.</p></div><div class=paragraph><p>На этом этапе нас ожидает ещё одна ловушка: <em>Излишняя точность.</em></p></div><div class=paragraph><p>Да, FPU был разработан для вычислений с высокой точностью. Но мы имеем дело не с вычислениями высокой точности. Мы имеем дело с физикой (конкретно, с оптикой).</p></div><div class=paragraph><p>Предположим, мы хотим превратить грузовик в камеру-обскуру (мы будем не первыми, кто это сделал!). Допустим, его кузов имеет длину <code>12</code> метров, значит, фокусное расстояние равно <code>12000</code>. Используя константу Бендера, получаем квадратный корень из <code>12000</code>, умноженный на <code>0.04</code>, что составляет <code>4.381780460</code> миллиметра или <code>4381.780460</code> микрона.</p></div><div class=paragraph><p>Как ни посмотри, результат абсурдно точен. Наш грузовик не имеет <em>точно</em> <code>12000</code> миллиметров в длину. Мы не измеряли его длину с такой точностью, поэтому утверждение, что нам нужна отверстие диаметром <code>4,381780460</code> миллиметра, мягко говоря, вводит в заблуждение. <code>4,4</code> миллиметра будет вполне достаточно.</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Я "всего лишь" использовал десять цифр в приведённом выше примере. Представьте абсурдность попытки использовать все 18!</p></div></td></tr></tbody></table></div><div class=paragraph><p>Нам нужно ограничить количество значащих цифр в нашем результате. Один из способов сделать это — использовать целое число, представляющее микроны. Таким образом, нашему грузовику потребуется отверстие диаметром <code>4382</code> микрона. Глядя на это число, мы всё же решаем, что <code>4400</code> микрон, или <code>4.4</code> миллиметра, достаточно близко.</p></div><div class=paragraph><p>Кроме того, мы можем решить, что независимо от размера результата, мы хотим отображать только четыре значащих цифры (или любое другое их количество, конечно). Увы, FPU не поддерживает округление до определённого количества цифр (в конце концов, он воспринимает числа не как десятичные, а как двоичные).</p></div><div class=paragraph><p>Следовательно, мы должны разработать алгоритм для уменьшения количества значащих цифр.</p></div><div class=paragraph><p>Вот мой (я думаю, он неуклюжий — если у вас есть вариант лучше, <em>пожалуйста</em>, дайте мне знать):</p></div><div class="olist arabic procedure"><ol class=arabic><li><p>Инициализировать счетчик значением <code>0</code>.</p></li><li><p>Пока число больше или равно <code>10000</code>, делим его на <code>10</code> и увеличиваем счётчик.</p></li><li><p>Вывести результат.</p></li><li><p>Пока счетчик больше <code>0</code>, выводить <code>0</code> и уменьшать счетчик.</p></li></ol></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p><code>10000</code> подходит только если вам нужно <em>четыре</em> значащих цифры. Для любого другого количества значащих цифр замените <code>10000</code> на <code>10</code> в степени, равной количеству значащих цифр.</p></div></td></tr></tbody></table></div><div class=paragraph><p>Мы затем выведем диаметр отверстия в микронах, округлённый до четырёх значащих цифр.</p></div><div class=paragraph><p>На этом этапе нам известны <em>фокусное расстояние</em> и <em>диаметр отверстия</em>. Это означает, что у нас достаточно информации для расчёта <em>диафрагменного числа</em>.</p></div><div class=paragraph><p>Мы отобразим число f, округлённое до четырёх значащих цифр. Скорее всего, само число f мало что нам скажет. Чтобы придать ему больше смысла, мы можем найти ближайшее <em>нормализованное число f</em>, то есть ближайшую степень квадратного корня из 2.</p></div><div class=paragraph><p>Мы делаем это, умножая фактическое значение диафрагмы на само себя, что, конечно же, даст нам его <code>квадрат</code>. Затем мы вычислим его логарифм по основанию 2, что намного проще, чем вычисление логарифма по основанию квадратного корня из 2! Мы округлим результат до ближайшего целого числа. Далее мы возведём 2 в полученную степень. На самом деле, FPU предоставляет нам удобный способ сделать это: мы можем использовать код операции <code>fscale</code> для "масштабирования" 1, что аналогично <code>сдвигу</code> целого числа влево. Наконец, мы вычисляем квадратный корень из всего этого и получаем ближайшее нормализованное значение диафрагмы.</p></div><div class=paragraph><p>Если всё это звучит ошеломляюще — или, возможно, слишком сложно — всё может стать гораздо понятнее, если увидеть код. Вместе это занимает всего 9 инструкций процессора:</p></div><div class="literalblock programlisting"><div class=content><pre>fmul	st0, st0
+	fld1
+	fld	st1
+	fyl2x
+	frndint
+	fld1
+	fscale
+	fsqrt
+	fstp	st1</pre></div></div><div class=paragraph><p>Первая строка, <code>fmul st0, st0</code>, возводит в квадрат содержимое TOS (вершина стека, то же что <code>st</code>, называется <code>st0</code> в nasm). Команда <code>fld1</code> помещает <code>1</code> на вершину стека.</p></div><div class=paragraph><p>Следующая строка, <code>fld st1</code>, помещает квадрат обратно в TOS. На этом этапе квадрат находится и в <code>st</code>, и в <code>st(2)</code> (скоро станет ясно, зачем мы оставляем вторую копию в стеке). В <code>st(1)</code> содержится <code>1</code>.</p></div><div class=paragraph><p>Далее, <code>fyl2x</code> вычисляет логарифм по основанию 2 от <code>st</code>, умноженный на <code>st(1)</code>. Именно поэтому мы ранее поместили <code>1</code> в <code>st(1)</code>.</p></div><div class=paragraph><p>На этом этапе <code>st</code> содержит логарифм, который мы только что вычислили, а <code>st(1)</code> содержит квадрат фактического значения диафрагменного числа, который мы сохранили для последующего использования.</p></div><div class=paragraph><p><code>frndint</code> округляет TOS до ближайшего целого числа. <code>fld1</code> помещает <code>1</code> в стек. <code>fscale</code> сдвигает <code>1</code>, находящееся на TOS, на значение в <code>st(1)</code>, фактически возводя 2 в степень <code>st(1)</code>.</p></div><div class=paragraph><p>Наконец, <code>fsqrt</code> вычисляет квадратный корень из результата, т.е. ближайшее нормализованное число f.</p></div><div class=paragraph><p>У нас теперь есть ближайшее нормализованное число f на вершине стека (TOS), округлённый до ближайшего целого двоичный логарифм в <code>st(1)</code> и квадрат фактического число f в <code>st(2)</code>. Мы сохраняем значение в <code>st(2)</code> для последующего использования.</p></div><div class=paragraph><p>Но нам больше не нужно содержимое <code>st(1)</code>. Последняя строка, <code>fstp st1</code>, помещает содержимое <code>st</code> в <code>st(1)</code> и выполняет извлечение. В результате, то, что было <code>st(1)</code>, теперь становится <code>st</code>, то, что было <code>st(2)</code>, теперь становится <code>st(1)</code>, и так далее. Новый <code>st</code> содержит нормализованное число f. Новый <code>st(1)</code> содержит квадрат фактического число f, который мы сохранили для потомков.</p></div><div class=paragraph><p>На этом этапе мы готовы вывести нормализованное число f. Поскольку оно нормализовано, мы не будем округлять его до четырёх значащих цифр, а отправим его с полной точностью.</p></div><div class=paragraph><p>Нормализованное диафрагменное число полезно, пока оно достаточно мало и может быть найдено на нашем экспонометре. В противном случае нам нужен другой метод определения правильной экспозиции.</p></div><div class=paragraph><p>Ранее мы вывели формулу для расчёта правильной экспозиции при произвольной диафрагме на основе измерений, сделанных при другой диафрагме.</p></div><div class=paragraph><p>Каждый экспонометр, который я когда-либо видел, может определить правильную экспозицию при f5.6. Поэтому мы рассчитаем <em>"множитель f5.6"</em>, то есть насколько нужно умножить экспозицию, измеренную при f5.6, чтобы определить правильную экспозицию для нашей камеры-обскуры.</p></div><div class=paragraph><p>Из приведённой формулы мы знаем, что этот коэффициент можно вычислить, разделив наше число f (фактическое, а не нормализованное) на <code>5.6</code> и возведя результат в квадрат.</p></div><div class=paragraph><p>Математически, деление квадрата нашего числа f на квадрат <code>5.6</code> даст нам тот же результат.</p></div><div class=paragraph><p>С вычислительной точки зрения, нам не нужно возводить в квадрат два числа, когда можно возвести только одно. Таким образом, первое решение на первый взгляд кажется лучше.</p></div><div class=paragraph><p>Но…​</p></div><div class=paragraph><p><code>5.6</code> — это <em>константа</em>. Нам не нужно заставлять наш FPU тратить драгоценные циклы. Мы можем просто указать ему разделить квадрат f-числа на то, чему равно <code>5.6²</code>. Или мы можем разделить f-число на <code>5.6</code>, а затем возвести результат в квадрат. Теперь оба способа кажутся равнозначными.</p></div><div class=paragraph><p>Но они не такие!</p></div><div class=paragraph><p>Изучив принципы фотографии выше, мы помним, что <code>5.6</code> — это квадратный корень из 2, возведённый в пятую степень. Это <em>иррациональное</em> число. Квадрат этого числа <em>ровно</em> <code>32</code>.</p></div><div class=paragraph><p><code>32</code> — это не просто целое число, это степень двойки. Нам не нужно делить квадрат числа f на <code>32</code>. Достаточно использовать <code>fscale</code> для сдвига вправо на пять позиций. В терминологии FPU это означает, что мы применим <code>fscale</code> со значением <code>st(1)</code> равным <code>-5</code>. Это <em>гораздо быстрее</em>, чем деление.</p></div><div class=paragraph><p>Итак, теперь стало ясно, зачем мы сохранили квадрат числа f на вершине стека FPU. Расчёт множителя для f5.6 — это самое простое вычисление во всей программе! Мы выведем его, округлив до четырёх значащих цифр.</p></div><div class=paragraph><p>Есть ещё одно полезное число, которое мы можем вычислить: количество ступеней, на которые наше значение диафрагмы отличается от f5.6. Это может помочь, если наше значение диафрагмы находится чуть за пределами диапазона нашего экспонометра, но у нас есть затвор, который позволяет устанавливать различные выдержки, и этот затвор использует ступени.</p></div><div class=paragraph><p>Предположим, наше число диафрагмы на 5 ступеней отличается от f5.6, а экспонометр показывает, что нужно использовать выдержку 1/1000 сек. Тогда мы можем сначала установить выдержку на 1/1000, а затем повернуть диск на 5 ступеней.</p></div><div class=paragraph><p>Этот расчет также довольно прост. Все, что нам нужно сделать, это вычислить логарифм по основанию 2 от множителя f5.6, который мы только что рассчитали (хотя нам нужно его значение до округления). Затем мы выводим результат, округленный до ближайшего целого числа. Нам не нужно беспокоиться о наличии более четырёх значащих цифр в этом случае: скорее всего, результат будет содержать только одну или две цифры.</p></div></div></div><div class=sect2><h3 id=x86-fpu-optimizations>13.4. Оптимизации FPU<a class=anchor href=#x86-fpu-optimizations></a></h3><div class=paragraph><p>В ассемблерном коде мы можем оптимизировать инструкции FPU способами, невозможными в языках высокого уровня, включая C.</p></div><div class=paragraph><p>Всякий раз, когда функции на языке C требуется вычислить значение с плавающей запятой, она загружает все необходимые переменные и константы в регистры FPU. Затем выполняются все необходимые вычисления для получения правильного результата. Хорошие компиляторы C могут очень эффективно оптимизировать эту часть кода.</p></div><div class=paragraph><p>Он "возвращает" значение, оставляя результат на вершине стека (TOS). Однако перед возвратом он выполняет очистку. Все переменные и константы, использованные в вычислениях, теперь удалены из FPU.</p></div><div class=paragraph><p>Он не может сделать то, что мы только что сделали выше: мы вычислили квадрат числа f и оставили его в стеке для последующего использования другой функцией.</p></div><div class=paragraph><p>Мы <em>знали</em>, что это значение понадобится позже. Мы также знали, что у нас достаточно места в стеке (в котором помещается только 8 чисел), чтобы сохранить его там.</p></div><div class=paragraph><p>Компилятор C не может знать, что значение, находящееся в стеке, потребуется снова в ближайшем будущем.</p></div><div class=paragraph><p>Конечно, программист на C может это знать. Но единственное средство, которое у него есть, — это сохранить значение в переменной памяти.</p></div><div class=paragraph><p>Это означает, что значение будет изменено с 80-битной точности, используемой внутри FPU, на тип <em>double</em> (64 бита) или даже <em>single</em> (32 бита) в C.</p></div><div class=paragraph><p>Это также означает, что значение должно быть перемещено из TOS в память, а затем обратно. Увы, среди всех операций с FPU, доступ к памяти компьютера является самым медленным.</p></div><div class=paragraph><p>Итак, при программировании FPU на языке ассемблера ищите способы хранения промежуточных результатов в стеке FPU.</p></div><div class=paragraph><p>Мы можем развить эту идею ещё дальше! В нашей программе мы используем <em>константу</em> (ту, которую назвали <code>PC</code>).</p></div><div class=paragraph><p>Не имеет значения, сколько диаметров отверстий мы рассчитываем: 1, 10, 20, 1000, мы всегда используем одну и ту же константу. Следовательно, мы можем оптимизировать нашу программу, сохраняя константу в стеке всё время.</p></div><div class=paragraph><p>В начале нашей программы мы вычисляем значение указанной константы. Нам нужно разделить наш вход на <code>10</code> для каждой цифры в константе.</p></div><div class=paragraph><p>Гораздо быстрее умножать, чем делить. Поэтому в начале нашей программы мы делим <code>1</code> на <code>10</code>, чтобы получить <code>0.1</code>, который затем сохраняем в стеке: вместо того чтобы делить ввод на <code>10</code> для каждой цифры, мы умножаем его на <code>0.1</code>.</p></div><div class=paragraph><p>Кстати, мы не вводим <code>0.1</code> напрямую, хотя могли бы. У нас есть причина для этого: хотя <code>0.1</code> можно выразить всего одним десятичным знаком, мы не знаем, сколько <em>двоичных</em> разрядов для этого потребуется. Поэтому мы позволяем FPU вычислить его двоичное значение с собственной высокой точностью.</p></div><div class=paragraph><p>Мы используем другие константы: умножаем диаметр отверстия на <code>1000</code>, чтобы перевести его из миллиметров в микроны. Мы сравниваем числа с <code>10000</code>, когда округляем их до четырёх значащих цифр. Таким образом, мы оставляем и <code>1000</code>, и <code>10000</code> в стеке. И, конечно же, мы повторно используем <code>0.1</code> при округлении чисел до четырёх цифр.</p></div><div class=paragraph><p>И последнее, но не менее важное: мы оставляем <code>-5</code> в стеке. Он нам нужен для масштабирования квадрата числа f вместо деления его на <code>32</code>. Не случайно мы загружаем эту константу последней. Это делает её вершиной стека, когда в нём находятся только константы. Таким образом, при масштабировании квадрата число f <code>-5</code> находится в <code>st(1)</code>, именно там, где <code>fscale</code> ожидает его увидеть.</p></div><div class=paragraph><p>Это обычная ситуация, когда некоторые константы создаются с нуля, вместо загрузки их из памяти. Именно это мы делаем с <code>-5</code>:</p></div><div class="literalblock programlisting"><div class=content><pre>	fld1			; TOS =  1
+	fadd	st0, st0	; TOS =  2
+	fadd	st0, st0	; TOS =  4
+	fld1			; TOS =  1
+	faddp	st1, st0	; TOS =  5
+	fchs			; TOS = -5</pre></div></div><div class=paragraph><p>Мы можем обобщить все эти оптимизации в одном правиле: <em>Держите повторяющиеся значения в стеке!</em></p></div><div class="admonitionblock tip"><table><tbody><tr><td class=icon><i class="fa icon-tip" title=Tip></i></td><td class=content><div class=paragraph><p><em>PostScript®</em> — это стековая язык программирования. Существует гораздо больше книг о PostScript®, чем о языке ассемблера FPU: освоение PostScript® поможет вам овладеть FPU.</p></div></td></tr></tbody></table></div></div><div class=sect2><h3 id=x86-pinhole-the-code>13.5. Код pinhole<a class=anchor href=#x86-pinhole-the-code></a></h3><div class="literalblock programlisting"><div class=content><pre>;;;;;;; pinhole.asm ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Find various parameters of a pinhole camera construction and use
+;
+; Started:	 9-Jun-2001
+; Updated:	10-Jun-2001
+;
+; Copyright (c) 2001 G. Adam Stanislav
+; All rights reserved.
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+%include	&#39;system.inc&#39;
+
+%define	BUFSIZE	2048
+
+section	.data
+align 4
+ten	dd	10
+thousand	dd	1000
+tthou	dd	10000
+fd.in	dd	stdin
+fd.out	dd	stdout
+envar	db	&#39;PINHOLE=&#39;	; Exactly 8 bytes, or 2 dwords long
+pinhole	db	&#39;04,&#39;, 		; Bender&#39;s constant (0.04)
+connors	db	&#39;037&#39;, 0Ah	; Connors&#39; constant
+usg	db	&#39;Usage: pinhole [-b] [-c] [-e] [-p &lt;value&gt;] [-o &lt;outfile&gt;] [-i &lt;infile&gt;]&#39;, 0Ah
+usglen	equ	$-usg
+iemsg	db	&#34;pinhole: Can&#39;t open input file&#34;, 0Ah
+iemlen	equ	$-iemsg
+oemsg	db	&#34;pinhole: Can&#39;t create output file&#34;, 0Ah
+oemlen	equ	$-oemsg
+pinmsg	db	&#34;pinhole: The PINHOLE constant must not be 0&#34;, 0Ah
+pinlen	equ	$-pinmsg
+toobig	db	&#34;pinhole: The PINHOLE constant may not exceed 18 decimal places&#34;, 0Ah
+biglen	equ	$-toobig
+huhmsg	db	9, &#39;???&#39;
+separ	db	9, &#39;???&#39;
+sep2	db	9, &#39;???&#39;
+sep3	db	9, &#39;???&#39;
+sep4	db	9, &#39;???&#39;, 0Ah
+huhlen	equ	$-huhmsg
+header	db	&#39;focal length in millimeters,pinhole diameter in microns,&#39;
+	db	&#39;F-number,normalized F-number,F-5.6 multiplier,stops &#39;
+	db	&#39;from F-5.6&#39;, 0Ah
+headlen	equ	$-header
+
+section .bss
+ibuffer	resb	BUFSIZE
+obuffer	resb	BUFSIZE
+dbuffer	resb	20		; decimal input buffer
+bbuffer	resb	10		; BCD buffer
+
+section	.text
+align 4
+huh:
+	call	write
+	push	dword huhlen
+	push	dword huhmsg
+	push	dword [fd.out]
+	sys.write
+	add	esp, byte 12
+	ret
+
+align 4
+perr:
+	push	dword pinlen
+	push	dword pinmsg
+	push	dword stderr
+	sys.write
+	push	dword 4		; return failure
+	sys.exit
+
+align 4
+consttoobig:
+	push	dword biglen
+	push	dword toobig
+	push	dword stderr
+	sys.write
+	push	dword 5		; return failure
+	sys.exit
+
+align 4
+ierr:
+	push	dword iemlen
+	push	dword iemsg
+	push	dword stderr
+	sys.write
+	push	dword 1		; return failure
+	sys.exit
+
+align 4
+oerr:
+	push	dword oemlen
+	push	dword oemsg
+	push	dword stderr
+	sys.write
+	push	dword 2
+	sys.exit
+
+align 4
+usage:
+	push	dword usglen
+	push	dword usg
+	push	dword stderr
+	sys.write
+	push	dword 3
+	sys.exit
+
+align 4
+global	_start
+_start:
+	add	esp, byte 8	; discard argc and argv[0]
+	sub	esi, esi
+
+.arg:
+	pop	ecx
+	or	ecx, ecx
+	je	near .getenv		; no more arguments
+
+	; ECX contains the pointer to an argument
+	cmp	byte [ecx], &#39;-&#39;
+	jne	usage
+
+	inc	ecx
+	mov	ax, [ecx]
+	inc	ecx
+
+.o:
+	cmp	al, &#39;o&#39;
+	jne	.i
+
+	; Make sure we are not asked for the output file twice
+	cmp	dword [fd.out], stdout
+	jne	usage
+
+	; Find the path to output file - it is either at [ECX+1],
+	; i.e., -ofile --
+	; or in the next argument,
+	; i.e., -o file
+
+	or	ah, ah
+	jne	.openoutput
+	pop	ecx
+	jecxz	usage
+
+.openoutput:
+	push	dword 420	; file mode (644 octal)
+	push	dword 0200h | 0400h | 01h
+	; O_CREAT | O_TRUNC | O_WRONLY
+	push	ecx
+	sys.open
+	jc	near oerr
+
+	add	esp, byte 12
+	mov	[fd.out], eax
+	jmp	short .arg
+
+.i:
+	cmp	al, &#39;i&#39;
+	jne	.p
+
+	; Make sure we are not asked twice
+	cmp	dword [fd.in], stdin
+	jne	near usage
+
+	; Find the path to the input file
+	or	ah, ah
+	jne	.openinput
+	pop	ecx
+	or	ecx, ecx
+	je near usage
+
+.openinput:
+	push	dword 0		; O_RDONLY
+	push	ecx
+	sys.open
+	jc	near ierr		; open failed
+
+	add	esp, byte 8
+	mov	[fd.in], eax
+	jmp	.arg
+
+.p:
+	cmp	al, &#39;p&#39;
+	jne	.c
+	or	ah, ah
+	jne	.pcheck
+
+	pop	ecx
+	or	ecx, ecx
+	je	near usage
+
+	mov	ah, [ecx]
+
+.pcheck:
+	cmp	ah, &#39;0&#39;
+	jl	near usage
+	cmp	ah, &#39;9&#39;
+	ja	near usage
+	mov	esi, ecx
+	jmp	.arg
+
+.c:
+	cmp	al, &#39;c&#39;
+	jne	.b
+	or	ah, ah
+	jne	near usage
+	mov	esi, connors
+	jmp	.arg
+
+.b:
+	cmp	al, &#39;b&#39;
+	jne	.e
+	or	ah, ah
+	jne	near usage
+	mov	esi, pinhole
+	jmp	.arg
+
+.e:
+	cmp	al, &#39;e&#39;
+	jne	near usage
+	or	ah, ah
+	jne	near usage
+	mov	al, &#39;,&#39;
+	mov	[huhmsg], al
+	mov	[separ], al
+	mov	[sep2], al
+	mov	[sep3], al
+	mov	[sep4], al
+	jmp	.arg
+
+align 4
+.getenv:
+	; If ESI = 0, we did not have a -p argument,
+	; and need to check the environment for &#34;PINHOLE=&#34;
+	or	esi, esi
+	jne	.init
+
+	sub	ecx, ecx
+
+.nextenv:
+	pop	esi
+	or	esi, esi
+	je	.default	; no PINHOLE envar found
+
+	; check if this envar starts with &#39;PINHOLE=&#39;
+	mov	edi, envar
+	mov	cl, 2		; &#39;PINHOLE=&#39; is 2 dwords long
+rep	cmpsd
+	jne	.nextenv
+
+	; Check if it is followed by a digit
+	mov	al, [esi]
+	cmp	al, &#39;0&#39;
+	jl	.default
+	cmp	al, &#39;9&#39;
+	jbe	.init
+	; fall through
+
+align 4
+.default:
+	; We got here because we had no -p argument,
+	; and did not find the PINHOLE envar.
+	mov	esi, pinhole
+	; fall through
+
+align 4
+.init:
+	sub	eax, eax
+	sub	ebx, ebx
+	sub	ecx, ecx
+	sub	edx, edx
+	mov	edi, dbuffer+1
+	mov	byte [dbuffer], &#39;0&#39;
+
+	; Convert the pinhole constant to real
+.constloop:
+	lodsb
+	cmp	al, &#39;9&#39;
+	ja	.setconst
+	cmp	al, &#39;0&#39;
+	je	.processconst
+	jb	.setconst
+
+	inc	dl
+
+.processconst:
+	inc	cl
+	cmp	cl, 18
+	ja	near consttoobig
+	stosb
+	jmp	short .constloop
+
+align 4
+.setconst:
+	or	dl, dl
+	je	near perr
+
+	finit
+	fild	dword [tthou]
+
+	fld1
+	fild	dword [ten]
+	fdivp	st1, st0
+
+	fild	dword [thousand]
+	mov	edi, obuffer
+
+	mov	ebp, ecx
+	call	bcdload
+
+.constdiv:
+	fmul	st0, st2
+	loop	.constdiv
+
+	fld1
+	fadd	st0, st0
+	fadd	st0, st0
+	fld1
+	faddp	st1, st0
+	fchs
+
+	; If we are creating a CSV file,
+	; print header
+	cmp	byte [separ], &#39;,&#39;
+	jne	.bigloop
+
+	push	dword headlen
+	push	dword header
+	push	dword [fd.out]
+	sys.write
+
+.bigloop:
+	call	getchar
+	jc	near done
+
+	; Skip to the end of the line if you got &#39;#&#39;
+	cmp	al, &#39;#&#39;
+	jne	.num
+	call	skiptoeol
+	jmp	short .bigloop
+
+.num:
+	; See if you got a number
+	cmp	al, &#39;0&#39;
+	jl	.bigloop
+	cmp	al, &#39;9&#39;
+	ja	.bigloop
+
+	; Yes, we have a number
+	sub	ebp, ebp
+	sub	edx, edx
+
+.number:
+	cmp	al, &#39;0&#39;
+	je	.number0
+	mov	dl, 1
+
+.number0:
+	or	dl, dl		; Skip leading 0&#39;s
+	je	.nextnumber
+	push	eax
+	call	putchar
+	pop	eax
+	inc	ebp
+	cmp	ebp, 19
+	jae	.nextnumber
+	mov	[dbuffer+ebp], al
+
+.nextnumber:
+	call	getchar
+	jc	.work
+	cmp	al, &#39;#&#39;
+	je	.ungetc
+	cmp	al, &#39;0&#39;
+	jl	.work
+	cmp	al, &#39;9&#39;
+	ja	.work
+	jmp	short .number
+
+.ungetc:
+	dec	esi
+	inc	ebx
+
+.work:
+	; Now, do all the work
+	or	dl, dl
+	je	near .work0
+
+	cmp	ebp, 19
+	jae	near .toobig
+
+	call	bcdload
+
+	; Calculate pinhole diameter
+
+	fld	st0	; save it
+	fsqrt
+	fmul	st0, st3
+	fld	st0
+	fmul	st5
+	sub	ebp, ebp
+
+	; Round off to 4 significant digits
+.diameter:
+	fcom	st0, st7
+	fstsw	ax
+	sahf
+	jb	.printdiameter
+	fmul	st0, st6
+	inc	ebp
+	jmp	short .diameter
+
+.printdiameter:
+	call	printnumber	; pinhole diameter
+
+	; Calculate F-number
+
+	fdivp	st1, st0
+	fld	st0
+
+	sub	ebp, ebp
+
+.fnumber:
+	fcom	st0, st6
+	fstsw	ax
+	sahf
+	jb	.printfnumber
+	fmul	st0, st5
+	inc	ebp
+	jmp	short .fnumber
+
+.printfnumber:
+	call	printnumber	; F number
+
+	; Calculate normalized F-number
+	fmul	st0, st0
+	fld1
+	fld	st1
+	fyl2x
+	frndint
+	fld1
+	fscale
+	fsqrt
+	fstp	st1
+
+	sub	ebp, ebp
+	call	printnumber
+
+	; Calculate time multiplier from F-5.6
+
+	fscale
+	fld	st0
+
+	; Round off to 4 significant digits
+.fmul:
+	fcom	st0, st6
+	fstsw	ax
+	sahf
+
+	jb	.printfmul
+	inc	ebp
+	fmul	st0, st5
+	jmp	short .fmul
+
+.printfmul:
+	call	printnumber	; F multiplier
+
+	; Calculate F-stops from 5.6
+
+	fld1
+	fxch	st1
+	fyl2x
+
+	sub	ebp, ebp
+	call	printnumber
+
+	mov	al, 0Ah
+	call	putchar
+	jmp	.bigloop
+
+.work0:
+	mov	al, &#39;0&#39;
+	call	putchar
+
+align 4
+.toobig:
+	call	huh
+	jmp	.bigloop
+
+align 4
+done:
+	call	write		; flush output buffer
+
+	; close files
+	push	dword [fd.in]
+	sys.close
+
+	push	dword [fd.out]
+	sys.close
+
+	finit
+
+	; return success
+	push	dword 0
+	sys.exit
+
+align 4
+skiptoeol:
+	; Keep reading until you come to cr, lf, or eof
+	call	getchar
+	jc	done
+	cmp	al, 0Ah
+	jne	.cr
+	ret
+
+.cr:
+	cmp	al, 0Dh
+	jne	skiptoeol
+	ret
+
+align 4
+getchar:
+	or	ebx, ebx
+	jne	.fetch
+
+	call	read
+
+.fetch:
+	lodsb
+	dec	ebx
+	clc
+	ret
+
+read:
+	jecxz	.read
+	call	write
+
+.read:
+	push	dword BUFSIZE
+	mov	esi, ibuffer
+	push	esi
+	push	dword [fd.in]
+	sys.read
+	add	esp, byte 12
+	mov	ebx, eax
+	or	eax, eax
+	je	.empty
+	sub	eax, eax
+	ret
+
+align 4
+.empty:
+	add	esp, byte 4
+	stc
+	ret
+
+align 4
+putchar:
+	stosb
+	inc	ecx
+	cmp	ecx, BUFSIZE
+	je	write
+	ret
+
+align 4
+write:
+	jecxz	.ret	; nothing to write
+	sub	edi, ecx	; start of buffer
+	push	ecx
+	push	edi
+	push	dword [fd.out]
+	sys.write
+	add	esp, byte 12
+	sub	eax, eax
+	sub	ecx, ecx	; buffer is empty now
+.ret:
+	ret
+
+align 4
+bcdload:
+	; EBP contains the number of chars in dbuffer
+	push	ecx
+	push	esi
+	push	edi
+
+	lea	ecx, [ebp+1]
+	lea	esi, [dbuffer+ebp-1]
+	shr	ecx, 1
+
+	std
+
+	mov	edi, bbuffer
+	sub	eax, eax
+	mov	[edi], eax
+	mov	[edi+4], eax
+	mov	[edi+2], ax
+
+.loop:
+	lodsw
+	sub	ax, 3030h
+	shl	al, 4
+	or	al, ah
+	mov	[edi], al
+	inc	edi
+	loop	.loop
+
+	fbld	[bbuffer]
+
+	cld
+	pop	edi
+	pop	esi
+	pop	ecx
+	sub	eax, eax
+	ret
+
+align 4
+printnumber:
+	push	ebp
+	mov	al, [separ]
+	call	putchar
+
+	; Print the integer at the TOS
+	mov	ebp, bbuffer+9
+	fbstp	[bbuffer]
+
+	; Check the sign
+	mov	al, [ebp]
+	dec	ebp
+	or	al, al
+	jns	.leading
+
+	; We got a negative number (should never happen)
+	mov	al, &#39;-&#39;
+	call	putchar
+
+.leading:
+	; Skip leading zeros
+	mov	al, [ebp]
+	dec	ebp
+	or	al, al
+	jne	.first
+	cmp	ebp, bbuffer
+	jae	.leading
+
+	; We are here because the result was 0.
+	; Print &#39;0&#39; and return
+	mov	al, &#39;0&#39;
+	jmp	putchar
+
+.first:
+	; We have found the first non-zero.
+	; But it is still packed
+	test	al, 0F0h
+	jz	.second
+	push	eax
+	shr	al, 4
+	add	al, &#39;0&#39;
+	call	putchar
+	pop	eax
+	and	al, 0Fh
+
+.second:
+	add	al, &#39;0&#39;
+	call	putchar
+
+.next:
+	cmp	ebp, bbuffer
+	jb	.done
+
+	mov	al, [ebp]
+	push	eax
+	shr	al, 4
+	add	al, &#39;0&#39;
+	call	putchar
+	pop	eax
+	and	al, 0Fh
+	add	al, &#39;0&#39;
+	call	putchar
+
+	dec	ebp
+	jmp	short .next
+
+.done:
+	pop	ebp
+	or	ebp, ebp
+	je	.ret
+
+.zeros:
+	mov	al, &#39;0&#39;
+	call	putchar
+	dec	ebp
+	jne	.zeros
+
+.ret:
+	ret</pre></div></div><div class=paragraph><p>Код следует тому же формату, что и все остальные фильтры, которые мы видели ранее, с одним небольшим исключением:</p></div><div class=quoteblock><blockquote><div class=paragraph><p>Мы больше не предполагаем, что конец ввода означает конец задач, как мы привыкли в фильтрах, <em>ориентированных на символы</em>.</p></div><div class=paragraph><p>Этот фильтр не обрабатывает символы. Он обрабатывает <em>язык</em> (хотя и очень простой, состоящий только из чисел).</p></div><div class=paragraph><p>Когда у нас больше нет входных данных, это может означать одно из двух:</p></div><div class=ulist><ul><li><p>Мы закончили и можем выйти. Это то же самое, что и раньше.</p></li><li><p>Последний прочитанный символ был цифрой. Мы сохранили его в конце буфера преобразования ASCII в число с плавающей точкой. Теперь нам нужно преобразовать содержимое этого буфера в число и записать последнюю строку нашего вывода.</p></li></ul></div><div class=paragraph><p>По этой причине мы изменили наши подпрограммы <code>getchar</code> и <code>read</code>, чтобы они возвращались с <em>сброшенным</em> флагом <code>carry</code>, когда получают очередной символ из ввода, или с <em>установленным</em> флагом <code>carry</code>, когда ввода больше нет.</p></div><div class=paragraph><p>Конечно, мы по-прежнему используем магию ассемблера для этого! Внимательно посмотрите на <code>getchar</code>. Он <em>всегда</em> возвращает <em>очищенный</em> <code>флаг переноса</code>.</p></div><div class=paragraph><p>Тем не менее, наш основной код использует <code>флаг переноса</code> для определения момента завершения — и это работает.</p></div><div class=paragraph><p>Волшебство кроется в <code>read</code>. Каждый раз, когда он получает больше входных данных от системы, он просто возвращается к <code>getchar</code>, который извлекает символ из входного буфера, <em>сбрасывает</em> флаг переноса (<code>carry flag</code>) и возвращает управление.</p></div><div class=paragraph><p>Но когда <code>read</code> больше не получает входных данных от системы, он <em>не</em> возвращается к <code>getchar</code> вообще. Вместо этого, инструкция <code>add esp, byte 4</code> добавляет <code>4</code> к <code>ESP</code>, <em>устанавливает</em> флаг переноса (<code>carry flag</code>) и возвращает управление.</p></div><div class=paragraph><p>Итак, куда же она возвращается? Каждый раз, когда программа использует операцию <code>call</code>, микропроцессор делает <code>push</code> для адрес возврата, то есть сохраняет его на вершине стека (не стека FPU, а системного стека, который находится в памяти). Когда программа использует операцию <code>ret</code>, микропроцессор делает <code>pop</code> для значения возврата из стека и переходит по адресу, который там был сохранён.</p></div><div class=paragraph><p>Но поскольку мы добавили <code>4</code> к <code>ESP</code> (который является регистром указателя стека), мы фактически вызвали у микропроцессора лёгкий случай <em>амнезии</em>: он больше не помнит, что именно <code>getchar</code> <code>вызвал</code> <code>read</code>.</p></div><div class=paragraph><p>И поскольку <code>getchar</code> не делал <code>push</code> ни для чего перед вызовом <code>read</code>, верхушка стека теперь содержит адрес возврата к тому, что или кто вызывал <code>getchar</code>. С точки зрения этого вызывающего, он вызывал <code>getchar</code>, который вызвал <code>ret</code> с установленным <code>флагом переноса</code>!</p></div></blockquote></div><div class=paragraph><p>Помимо этого, процедура <code>bcdload</code> оказывается втянута в лилипутский конфликт между Биг-Эндианцами и Литл-Эндианцами.</p></div><div class=paragraph><p>Он преобразует текстовое представление числа в само число: текст хранится в порядке big-endian, но <em>упакованный десятичный</em> формат имеет порядок little-endian.</p></div><div class=paragraph><p>Для разрешения конфликта мы используем инструкцию процессора <code>std</code> в самом начале. Позже мы отменяем его с помощью <code>cld</code>: очень важно не вызывать ничего, что может зависеть от стандартного значения <em>флага направления</em>, пока активен <code>std</code>.</p></div><div class=paragraph><p>Всё остальное в этом коде должно быть достаточно понятным, при условии, что вы прочитали всю предшествующую главу.</p></div><div class=paragraph><p>Это классический пример поговорки о том, что программирование требует много размышлений и лишь немного кодирования. Как только мы продумаем каждую мельчайшую деталь, код практически напишется сам.</p></div></div><div class=sect2><h3 id=x86-pinhole-using>13.6. Использование программы pinhole<a class=anchor href=#x86-pinhole-using></a></h3><div class=paragraph><p>Поскольку мы решили сделать так, чтобы программа <em>игнорировала</em> любой ввод, кроме чисел (и даже их внутри комментария), мы можем выполнять <em>текстовые запросы</em>. Мы не <em>обязаны</em> этого делать, но <em>можем</em>.</p></div><div class=paragraph><p>По моему скромному мнению, формирование текстового запроса вместо необходимости следовать очень строгому синтаксису делает программное обеспечение гораздо более дружелюбным к пользователю.</p></div><div class=paragraph><p>Предположим, мы хотим построить камеру-обскуру для использования плёнки размером 4x5 дюймов. Стандартное фокусное расстояние для такой плёнки составляет около 150 мм. Мы хотим <em>точно настроить</em> фокусное расстояние, чтобы диаметр отверстия был как можно более круглым числом. Допустим также, что мы хорошо разбираемся в фотоаппаратах, но немного боимся компьютеров. Вместо того чтобы просто вводить кучу цифр, мы хотим <em>задать</em> пару вопросов.</p></div><div class=paragraph><p>Наша сессия может выглядеть так:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% pinhole
+
+Computer,
+
+What size pinhole <span class=k>do </span>I need <span class=k>for </span>the focal length of 150?
+150	490	306	362	2930	12
+Hmmm... How about 160?
+160	506	316	362	3125	12
+Let<span class=s1>&#39;s make it 155, please.
+155	498	311	362	3027	12
+Ah, let&#39;</span>s try 157...
+157	501	313	362	3066	12
+156?
+156	500	312	362	3047	12
+That<span class=s1>&#39;s it! Perfect! Thank you very much!
+^D</span></code></pre></div></div><div class=paragraph><p>Мы выяснили, что при фокусном расстоянии 150 мм диаметр отверстия должен составлять 490 микрон, или 0,49 мм, но если взять почти идентичное фокусное расстояние 156 мм, можно использовать отверстие диаметром ровно половину миллиметра.</p></div></div><div class=sect2><h3 id=x86-pinhole-scripting>13.7. Скриптинг<a class=anchor href=#x86-pinhole-scripting></a></h3><div class=paragraph><p>Поскольку мы выбрали символ <code>#</code> для обозначения начала комментария, мы можем рассматривать наше программное обеспечение pinhole как <em>скриптовый язык</em>.</p></div><div class=paragraph><p>Вы, вероятно, видели <em>сценарии</em> оболочки, которые начинаются с:</p></div><div class="literalblock programlisting"><div class=content><pre>#! /bin/sh</pre></div></div><div class=paragraph><p>…​или…​</p></div><div class="literalblock programlisting"><div class=content><pre>#!/bin/sh</pre></div></div><div class=paragraph><p>…​потому что пробел после <code>#!</code> необязателен.</p></div><div class=paragraph><p>Когда UNIX® получает запрос на выполнение исполняемого файла, который начинается с <code>#!</code>, он предполагает, что это скрипт. Он добавляет команду к остальной части первой строки скрипта и пытается выполнить её.</p></div><div class=paragraph><p>Предположим, что мы установили pinhole в /usr/local/bin/, теперь мы можем написать скрипт для расчёта различных диаметров отверстий, подходящих для различных фокусных расстояний, обычно используемых с плёнкой 120.</p></div><div class=paragraph><p>Скрипт может выглядеть примерно так:</p></div><div class="literalblock programlisting"><div class=content><pre>#! /usr/local/bin/pinhole -b -i
+# Find the best pinhole diameter
+# for the 120 film
+
+### Standard
+80
+
+### Wide angle
+30, 40, 50, 60, 70
+
+### Telephoto
+100, 120, 140</pre></div></div><div class=paragraph><p>Поскольку 120 — это плёнка среднего размера, мы можем назвать этот файл <code>medium</code>.</p></div><div class=paragraph><p>Мы можем установить права на выполнение и запустить его, как если бы это была программа:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% <span class=nb>chmod </span>755 medium
+% ./medium</code></pre></div></div><div class=paragraph><p>UNIX® интерпретирует последнюю команду следующим образом:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% /usr/local/bin/pinhole <span class=nt>-b</span> <span class=nt>-i</span> ./medium</code></pre></div></div><div class=paragraph><p>Он выполнит эту команду и отобразит:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>80	358	224	256	1562	11
+30	219	137	128	586	9
+40	253	158	181	781	10
+50	283	177	181	977	10
+60	310	194	181	1172	10
+70	335	209	181	1367	10
+100	400	250	256	1953	11
+120	438	274	256	2344	11
+140	473	296	256	2734	11</code></pre></div></div><div class=paragraph><p>Теперь введем:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% ./medium <span class=nt>-c</span></code></pre></div></div><div class=paragraph><p>UNIX® интерпретирует это следующим образом:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% /usr/local/bin/pinhole <span class=nt>-b</span> <span class=nt>-i</span> ./medium <span class=nt>-c</span></code></pre></div></div><div class=paragraph><p>Это даёт ему два конфликтующих параметра: <code>-b</code> и <code>-c</code> (Использовать константу Бендера и использовать константу Коннорса). Мы запрограммировали его так, что более поздние параметры переопределяют ранние — наша программа будет вычислять все, используя константу Коннорса:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>80	331	242	256	1826	11
+30	203	148	128	685	9
+40	234	171	181	913	10
+50	262	191	181	1141	10
+60	287	209	181	1370	10
+70	310	226	256	1598	11
+100	370	270	256	2283	11
+120	405	296	256	2739	11
+140	438	320	362	3196	12</code></pre></div></div><div class=paragraph><p>Мы решаем, что всё же выбираем константу Бендера. Мы хотим сохранить её значения в виде файла с разделителями-запятыми:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% ./medium <span class=nt>-b</span> <span class=nt>-e</span> <span class=o>&gt;</span> bender
+% <span class=nb>cat </span>bender
+focal length <span class=k>in </span>millimeters,pinhole diameter <span class=k>in </span>microns,F-number,normalized F-number,F-5.6 multiplier,stops from F-5.6
+80,358,224,256,1562,11
+30,219,137,128,586,9
+40,253,158,181,781,10
+50,283,177,181,977,10
+60,310,194,181,1172,10
+70,335,209,181,1367,10
+100,400,250,256,1953,11
+120,438,274,256,2344,11
+140,473,296,256,2734,11
+%</code></pre></div></div></div></div></div><div class=sect1><h2 id=x86-caveats>14. Предостережения<a class=anchor href=#x86-caveats></a></h2><div class=sectionbody><div class=paragraph><p>Программисты на ассемблере, которые "выросли" на MS-DOS® и Windows®, часто склонны искать короткие пути. Чтение скан-кодов клавиатуры и запись напрямую в видеопамять — это два классических примера подходов, которые в MS-DOS® не только не порицаются, но и считаются правильными.</p></div><div class=paragraph><p>Причина? И BIOS ПК, и MS-DOS® печально известны своей медленной работой при выполнении этих операций.</p></div><div class=paragraph><p>Вас может возникнуть соблазн продолжить подобные практики в среде UNIX®. Например, я видел веб-сайт, который объясняет, как получить доступ к скан-кодам клавиатуры на популярном клоне UNIX®.</p></div><div class=paragraph><p>Это, как правило, <strong>очень плохая идея</strong> в среде UNIX®! Позвольте объяснить почему.</p></div><div class=sect2><h3 id=x86-protected>14.1. UNIX® защищен<a class=anchor href=#x86-protected></a></h3><div class=paragraph><p>Прежде всего, это может быть просто невозможно. UNIX® работает в защищённом режиме. Только ядро и драйверы устройств имеют прямой доступ к аппаратному обеспечению. Возможно, какой-то конкретный клон UNIX® позволит вам читать скан-коды клавиатуры, но скорее всего настоящая операционная система UNIX® этого не допустит. И даже если одна версия разрешает это, следующая может запретить, так что ваше тщательно разработанное программное обеспечение может в одночасье устареть.</p></div></div><div class=sect2><h3 id=x86-abstraction>14.2. UNIX® — это работа с абстракциями<a class=anchor href=#x86-abstraction></a></h3><div class=paragraph><p>Но существует гораздо более важная причина не пытаться обращаться к оборудованию напрямую (если, конечно, вы не пишете драйвер устройства), даже в UNIX®-подобных системах, которые позволяют это делать:</p></div><div class=paragraph><p><em>UNIX® — это работа с абстракциями!</em></p></div><div class=paragraph><p>Существует фундаментальное различие в философии проектирования между MS-DOS® и UNIX®. MS-DOS® разрабатывалась как однопользовательская система. Она работает на компьютере, к которому напрямую подключены клавиатура и монитор. Ввод пользователя практически гарантированно поступает с этой клавиатуры. Вывод вашей программы почти всегда отображается на этом экране.</p></div><div class=paragraph><p>Это НИКОГДА не гарантируется в UNIX®. Довольно часто пользователь UNIX® перенаправляет ввод и вывод программы с помощью конвейеров и перенаправлений:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% program1 | program2 | program3 <span class=o>&gt;</span> file1</code></pre></div></div><div class=paragraph><p>Если вы написали program2, ваш ввод поступает не с клавиатуры, а из вывода program1. Аналогично, ваш вывод не выводится на экран, а становится вводом для program3, чей вывод, в свою очередь, отправляется в <span class=filename>file1</span>.</p></div><div class=paragraph><p>Но это ещё не все! Даже если вы убедились, что ваш ввод поступает с терминала, а вывод отправляется на терминал, нет гарантии, что терминал является ПК: его видеопамять может находиться не там, где вы ожидаете, а клавиатура может генерировать не PC-совместимые скан-коды. Это может быть Macintosh® или любой другой компьютер.</p></div><div class=paragraph><p>Вот вы, возможно, покачаете головой: мое программное обеспечение написано на языке ассемблера для ПК, как оно может работать на Macintosh®? Но я не говорил, что ваше программное обеспечение будет работать на Macintosh®, а лишь что его терминалом может быть Macintosh®.</p></div><div class=paragraph><p>В UNIX® терминал не обязательно должен быть напрямую подключён к компьютеру, на котором работает ваше программное обеспечение — он может находиться даже на другом континенте или, например, на другой планете. Вполне возможно, что пользователь Macintosh® в Австралии подключается к системе UNIX® в Северной Америке (или где-либо ещё) через telnet. Программное обеспечение работает на одном компьютере, а терминал находится на другом: если попытаться считать скан-коды, будут получены неверные данные!</p></div><div class=paragraph><p>То же самое относится и к любому другому оборудованию: файл, который вы читаете, может находиться на диске, к которому у вас нет прямого доступа. Камера, с которой вы считываете изображения, может находиться на космическом корабле, соединённом с вами через спутники.</p></div><div class=paragraph><p>Вот почему в UNIX® никогда нельзя делать никаких предположений о том, откуда поступают ваши данные и куда они направляются. Всегда позволяйте системе управлять физическим доступом к оборудованию.</p></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Это предостережения, а не абсолютные правила. Возможны исключения. Например, если текстовый редактор определил, что работает на локальной машине, он может захотеть читать скан-коды напрямую для улучшенного управления. Я упоминаю эти предостережения не для того, чтобы сказать вам, что делать или чего не делать, а просто чтобы вы осознавали определённые подводные камни, которые ждут вас, если вы только что перешли с MS-DOS® на UNIX®. Конечно, творческие люди часто нарушают правила, и это нормально, пока они осознают, что нарушают их, и понимают почему.</p></div></td></tr></tbody></table></div></div></div></div><div class=sect1><h2 id=x86-acknowledgements>15. Благодарности<a class=anchor href=#x86-acknowledgements></a></h2><div class=sectionbody><div class=paragraph><p>Это руководство никогда бы не было создано без помощи многих опытных программистов FreeBSD из <a href=https://lists.FreeBSD.org/subscription/freebsd-hackers>Список рассылки FreeBSD, посвящённый техническим обсуждениям</a>, которые терпеливо отвечали на мои вопросы и направляли меня в моих попытках изучить внутренние механизмы программирования в системе UNIX® в целом и в FreeBSD в частности.</p></div><div class=paragraph><p>Томас М. Соммерс открыл дверь для меня. Его <a href=https://web.archive.org/web/20090914064615/http://www.codebreakers-journal.com/content/view/262/27>Как написать "Hello, world" на ассемблере в FreeBSD?</a> веб-страница стала моей первой встречей с примером программирования на ассемблере под FreeBSD.</p></div><div class=paragraph><p>Джейк Буркхолдер держал дверь открытой, охотно отвечая на все мои вопросы и предоставляя примеры исходного кода на языке ассемблера.</p></div><div class=paragraph><p>Copyright ® 2000-2001 G. Adam Stanislav. All rights reserved.</p></div></div></div><hr><div class=last-modified><p><strong>Изменено</strong>: 19 мая 2026 г. by <a href="https://cgit.freebsd.org/doc/commit/?id=204da0afff" target=_blank>Mitchell Horne</a></p></div></div><aside class=toc><div class=toc-content><h3>Содержание</h3><nav id=TableOfContents><ul><li><a href=#x86-intro>1. Обзор</a></li><li><a href=#x86-the-tools>2. Инструменты</a></li><li><a href=#x86-system-calls>3. Системные вызовы</a></li><li><a href=#x86-return-values>4. Возвращаемые значения</a></li><li><a href=#x86-portable-code>5. Создание переносимого кода</a></li><li><a href=#x86-first-program>6. Наша первая программа</a></li><li><a href=#x86-unix-filters>7. Написание фильтров UNIX®</a></li><li><a href=#x86-buffered-io>8. Буферизованный ввод и вывод</a></li><li><a href=#x86-command-line>9. Аргументы командной строки</a></li><li><a href=#x86-environment>10. Окружение UNIX®</a></li><li><a href=#x86-files>11. Работа с файлами</a></li><li><a href=#x86-one-pointed-mind>12. Спокойствие ума</a></li><li><a href=#x86-fpu>13. Использование FPU</a></li><li><a href=#x86-caveats>14. Предостережения</a></li><li><a href=#x86-acknowledgements>15. Благодарности</a></li></ul></nav><hr><div class=resources><h3>Материалы</h3><ul class=contents><li><i class="fa fa-file-pdf-o" aria-hidden=true title="Скачать PDF"></i><a href=https://download.freebsd.org/doc/ru/articles/x86-assembly/x86-assembly_ru.pdf>Скачать PDF</a></li><li><i class="fa fa-pencil-square-o" aria-hidden=true title="Редактировать эту страницу"></i><a href=https://github.com/freebsd/freebsd-doc/blob/main/documentation/content/ru/articles/x86-assembly/_index.adoc target=_blank>Редактировать эту страницу</a></li></ul></div></div></aside></main><footer><div class=footer-container><section class=logo-column><img src=https://docs.freebsd.org/images/FreeBSD-colors.svg width=160 height=50 alt="FreeBSD logo"><div class=options-container><div class=language-container><a id=languages href=https://docs.freebsd.org/ru/languages><img src=https://docs.freebsd.org/images/language.png class=language-image alt="Выберите язык">
+<span>Русский</span></a></div><div class=theme-container><select id=theme-chooser><option value=theme-system>Система</option><option value=theme-light>Светлый</option><option value=theme-dark>Тёмный</option><option value=theme-high-contrast>Высокая контрастность</option></select></div></div></section><section class=about-column><h3 class=column-title>О нас</h3><ul class=column-elements-container><li><a href=https://www.freebsd.msk.ru/ru/about/ target=_blank class=column-element>FreeBSD</a></li><li><a href=https://freebsdfoundation.org/ target=_blank class=column-element>Фонд FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/where/ target=_blank class=column-element>Получить FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/internal/code-of-conduct target=_blank class=column-element>Кодекс Этики</a></li><li><a href=https://www.freebsd.msk.ru/ru/security/ target=_blank class=column-element>Бюллетени Безопасности</a></li></ul></section><section class=documentation-column><h3 class=column-title>Документация</h3><ul class=column-elements-container><li><a href=/ru class=column-element>Портал документации</a></li><li><a href=https://man.FreeBSD.org target=_blank class=column-element>Страницы Справочника</a></li><li><a href=https://papers.FreeBSD.org target=_blank class=column-element>Презентации и публикации</a></li><li><a href=https://docs-archive.freebsd.org/doc/ target=_blank class=column-element>Предыдущие версии</a></li><li><a href=https://docs-archive.freebsd.org/44doc/ target=_blank class=column-element>Документы 4.4BSD</a></li><li><a href=https://wiki.freebsd.org/ target=_blank class=column-element>Wiki</a></li></ul></section><section class=community-column><h3 class=column-title>Сообщество</h3><ul class=column-elements-container><li><a href=https://docs.freebsd.org/ru/articles/contributing class=column-element>Принять участие</a></li><li><a href=https://forums.freebsd.org/ target=_blank class=column-element>Форум Сообщества</a></li><li><a href=https://lists.freebsd.org/ target=_blank class=column-element>Списки рассылки</a></li><li><a href=https://wiki.freebsd.org/IRC/Channels target=_blank class=column-element>Каналы IRC</a></li><li><a href=https://bugs.freebsd.org/bugzilla/ target=_blank class=column-element>Трекер ошибок</a></li></ul></section><section class=legal-column><h3 class=column-title>Юридическая информация</h3><ul class=column-elements-container><li><a href=https://freebsdfoundation.org/donate/ target=_blank class=column-element>Пожертвования</a></li><li><a href=https://www.freebsd.msk.ru/ru/copyright/freebsd-license/ target=_blank class=column-element>Лицензирование</a></li><li><a href=https://www.freebsd.msk.ru/ru/privacy/ target=_blank class=column-element>Политика Конфиденциальности</a></li><li><a href=https://www.freebsd.msk.ru/ru/copyright/ target=_blank class=column-element>Юридические оговорки</a></li></ul></section><section class=copyright-column><p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p><span>Сделано с помощью <span class=heart>♥</span> Сообществом FreeBSD</span></section></div></footer></body></html>

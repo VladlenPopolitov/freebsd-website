@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/ru/status/report-2026-01-2026-03/lkpi-wireless/">
+
+  <title>
+    
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content="  " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="ru" >
+  <meta property="og:url" content="https://www.freebsd.org/ru/status/report-2026-01-2026-03/lkpi-wireless/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/ru\/status\/report-2026-01-2026-03\/lkpi-wireless\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/ru/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              О проекте
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/about">О проекте</a>
+            </li>
+            <li>
+              <a href="/ru/projects/newbies">Введение</a>
+            </li>
+            <li>
+              <a href="/ru/features">Возможности</a>
+            </li>
+            <li>
+              <a href="/ru/privacy">Политика конфиденциальности</a>
+            </li>
+            <li>
+              <a href="/ru/projects">Проекты</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Порты</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Получить FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/where">Получить FreeBSD</a>
+            </li>
+            <li>
+              <a href="/ru/releases">Информация о релизах</a>
+            </li>
+            <li>
+              <a href="/ru/releng">Разработка релизов</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Документация
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/ru/">Документация</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/handbook/">Руководство FreeBSD</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/porters-handbook/">Руководство портировщика</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/fdp-primer">Руководство проекта документации</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Страницы Справочника</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Презентации и статьи</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books">Книги</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/articles">Статьи</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Сообщество
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/community">Сообщество</a>
+            </li>
+            <li>
+              <a href="/ru/community/mailinglists">Списки рассылки</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Форумы</a>
+            </li>
+            <li>
+              <a href="/ru/usergroups">Группы пользователей</a>
+            </li>
+            <li>
+              <a href="/ru/events">События</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">Журнал FreeBSD</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Разработчики
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/projects">Разработчики</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Идеи проектов</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git-репозиторий</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">Зеркало GitHub</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Проверка кода (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Сервис непрерывной интеграции</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Поддержка
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/support">Поддержка</a>
+            </li>
+            <li>
+              <a href="/ru/commercial">Поставщики</a>
+            </li>
+            <li>
+              <a href="/ru/security">Информация о безопасности</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Сообщения об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support">Отправка сообщений об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support/webresources">Веб-ресурсы</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="ru">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/ru/" class="current-lang" aria-current="page">Russian</a>
+          </li>
+          
+            <li>
+              <a href="/status/report-2026-01-2026-03/lkpi-wireless/" lang="en">English</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Пожертвовать
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/ru/about/></a></li>
+  <li><a href=/ru/features/></a></li>
+  <li><a href=/ru/applications/>При­ло­же­ния</a></li>
+  <li><a href=/ru/administration/>Ад­ми­ни­стра­ция</a></li>
+  <li><a href=/ru/news/newsflash/>Но­во­сти</a></li>
+  <li><a href=/ru/events></a></li>
+  <li><a href=/ru/press>Прес­са</a></li>
+  <li><a href=/ru/art>Ил­люс­тра­ции</a></li>
+  <li><a href=/ru/donations>По­жертво­ва­ния</a></li>
+  <li><a href=/ru/copyright></a></li>
+  <li><a href=/ru/privacy>Политика кон­фи­ден­ци­аль­нос­ти</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1></h1><div class="sect2">
+<h3 id="_обновление_linuxkpi_802_11_и_нативного_беспроводного_стека_native_wireless">Обновление LinuxKPI 802.11 и нативного беспроводного стека (Native Wireless)</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://github.com/FreeBSDFoundation/proj-laptop/issues/66">Поддержка беспроводных карт MediaTek</a> URL: <a href="https://github.com/FreeBSDFoundation/proj-laptop/issues/66" class="bare">https://github.com/FreeBSDFoundation/proj-laptop/issues/66</a><br/>
+<a href="https://github.com/FreeBSDFoundation/proj-laptop/issues/99">Поддержка беспроводных карт Realtek</a> URL: <a href="https://github.com/FreeBSDFoundation/proj-laptop/issues/99" class="bare">https://github.com/FreeBSDFoundation/proj-laptop/issues/99</a></p>
+</div>
+<div class="paragraph">
+<p>Контакт: Bjoern A. Zeeb &lt;<a href="mailto:bz@FreeBSD.org">bz@FreeBSD.org</a>&gt;<br/>
+Контакт: Список рассылки беспроводных технологий FreeBSD &lt;<a href="mailto:wireless@FreeBSD.org">wireless@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Этот отчёт посвящён усилиям по использованию драйверов беспроводных устройств Linux с пермиссивными лицензиями, в основном без изменений, во FreeBSD, а также подготовке нативного стека net80211 к поддержке более новых стандартов.</p>
+</div>
+<div class="sect3">
+<h4 id="_обновления_драйверов">Обновления драйверов</h4>
+<div class="paragraph">
+<p>Все драйверы беспроводных устройств на основе LinuxKPI были обновлены до версии ядра Linux v6.19 в main и stable/15.</p>
+</div>
+<div class="paragraph">
+<p>Это включает:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>поставляемые драйверы Intel <a href="https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&amp;sektion=4&amp;format=html">iwlwifi(4)</a> mvm/mld, Realtek <a href="https://man.freebsd.org/cgi/man.cgi?query=rtw88&amp;sektion=4&amp;format=html">rtw88(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=rtw89&amp;sektion=4&amp;format=html">rtw89(4)</a>,</p>
+</li>
+<li>
+<p>драйвер Mediatek mt76, который находится в стадии разработки,</p>
+</li>
+<li>
+<p>три драйвера Qualcomm Atheros: ath10k, ath11k и ath12k, которые требуют доработки, а также</p>
+</li>
+<li>
+<p>драйвер Broadcom brcmfmac, который компилируется и загружает прошивку, но ему не хватает совместимой прослойки cfg80211 и некоторой работы над netdev.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_поддержка_intel_iwlwifi">Поддержка Intel iwlwifi</h4>
+<div class="paragraph">
+<p>Для того чтобы обновление драйвера <a href="https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&amp;sektion=4&amp;format=html">iwlwifi(4)</a> было применено, были сделаны несколько специфичных для FreeBSD изменений, чтобы позволить поддрайверу mld правильно загружаться.
+Также было исправлено несколько ошибок.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_поддержка_realtek_rtw88_и_rtw89">Поддержка Realtek rtw88 и rtw89</h4>
+<div class="paragraph">
+<p>После обновления драйверов выяснилось, что наша эмуляция chandef должна быть более детальной.
+Впоследствии были обнаружены дальнейшие проблемы, связанные с тем, что некоторые драйверы rtw88 могут не выполнять аппаратное сканирование, требуя отката к программному сканированию.
+Наконец, два чипсета rtw88 — 8821c и 8822b — похоже, часто имеют задержку в 6 секунд при подготовке к аутентификации.
+Неясно, почему прошивка не работает в этих случаях, но в итоге я решил оставить эту проблему в покое и попытаться добавить обновления для 802.11n и 802.11ac в следующем (надеюсь, до 15.1-R), и только затем вернуться к этим чипсетам и посмотреть, что можно сделать.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_поддержка_mediatek_mt76">Поддержка Mediatek mt76</h4>
+<div class="paragraph">
+<p>В настоящее время основные чипсеты для работы — MT7921/7922 и MT7925.
+После обновления драйвера были решены некоторые проблемы с DMA32 и page_pools.
+Изменения в drm-kmod, подготовленные для перехода с нативного vm_page на структуру struct page из Linux, к счастью, были зафиксированы.
+Это позволит мне проще распространять тестовую версию среди людей.
+MT7925 также выявил недостаточность нашей реализации IDR в LinuxKPI, которая более или менее была задокументирована с первого дня.
+Это потребует полной переработки, чтобы избежать проблем с доступом к уже уничтоженным записям, что может происходить в Linux.
+Я также начал накапливать другие чипсеты для тестирования.
+Поддержка 802.11n и 802.11ac в основном будет реализована вместе с работой над Realtek.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_broadcom_brcmfmac">Broadcom brcmfmac</h4>
+<div class="paragraph">
+<p>Драйвер Broadcom brcmfmac компилируется для PCIe и загружает прошивку (с небольшим обходным решением для arm64).
+Теперь нам не хватает некоторой совместимой работы по cfg80211 и netdev LinuxKPI для создания интерфейса и управления беспроводной связью.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_поддержка_qca">Поддержка QCA</h4>
+<div class="paragraph">
+<p>В то время как ath10k в основном исправлен для режима станции, ath11k и ath12k требуют больше работы для повторной компиляции и реализации MHI и других необходимых компонентов.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_поддержка_usb_в_linuxkpi">Поддержка USB в LinuxKPI</h4>
+<div class="paragraph">
+<p>Реализация USB в LinuxKPI существует уже более десяти лет.
+Я уже обращался к пользователям в прошлом году и снова в этом, но не получил ответа.
+У меня есть переработанная версия, которая позволяет компилировать USB-чипсеты Realtek, Mediatek, QCA ath10k и Broadcom brcmfmac.
+Последние два в основном неактуальны из-за старых и редких USB-адаптеров.
+Realtek и Mediatek подключаются и передают пакеты, но требуют ещё немного работы по стабильности и корректному отключению.</p>
+</div>
+<div class="paragraph">
+<p>Есть одно препятствие: (старая и новая) реализация USB в LinuxKPI переплетена с нашим нативным стеком USB, что приводит к конфликтам.
+Ведётся работа по решению этой проблемы, и определены два возможных пути, но сначала необходимо понять и очистить изменение, которому 15 лет.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_поддержка_sdio_в_linuxkpi">Поддержка SDIO в LinuxKPI</h4>
+<div class="paragraph">
+<p>Поддержка SDIO в LinuxKPI находится в моём дереве разработки уже около года и была сделана в основном для Realtek rtw88.
+Broadcom потребует заполнения ещё нескольких мест-заполнителей, но это не должно быть слишком сложно.
+Прерывания необходимо доработать, а поддержку повышения скорости следует взять из чужой незавершённой работы.
+Я планирую включить её в дерево как есть, как только USB будет готов, чтобы люди могли помочь с тестированием и завершением.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_нативный_net80211">Нативный net80211</h4>
+<div class="paragraph">
+<p>Спасибо Команде по управлению портами (Ports Management Team) за проведение exp-run (экспериментальной тестовой сборки).
+Я подготовил патч для выявления всех портов, использующих интерфейс ioctl net80211.
+Это необходимо для того, чтобы заранее минимизировать поломки, связанные с предстоящими изменениями интерфейса ioctl.</p>
+</div>
+<div class="paragraph">
+<p>Подробности смотрите в <a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=293016">PR 293016</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_прочее">Прочее</h4>
+<div class="paragraph">
+<p>Я представил обновление по большей части этого материала во время мартовского звонка LDWG (Laptop Desktop Working Group).
+Для получения дополнительной информации смотрите <a href="https://wiki.freebsd.org/LaptopDesktopWorkingGroup">страницу LDWG в Wiki</a>.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: Фонд FreeBSD</p>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Последнее изменение</strong>: 27 апреля 2026 г. от <a href="https://cgit.freebsd.org/doc/commit/?id=994b6ec60a" target="_blank">Vladlen Popolitov</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">О проекте</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/ru/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">Фонд FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/ru/where" class="column-element">Получить FreeBSD</a>
+          </li>
+          <li>
+            <a href="/ru/internal/code-of-conduct" class="column-element">Кодекс поведения</a>
+          </li>
+          <li>
+            <a href="/ru/security" class="column-element">Бюллетени безопасности</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Документация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Портал документации</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Страницы Справочника</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Презентации и статьи</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Предыдущие версии</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">Документы 4.4BSD</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Сообщество</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/ru/articles/contributing" class="column-element">Присоединиться</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Форум сообщества</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Списки рассылки</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC-каналы</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Баг-трекер</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Правовая информация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Пожертвования</a>
+          </li>
+          <li>
+            <a href="/ru/copyright/freebsd-license" class="column-element">Лицензирование</a>
+          </li>
+          <li>
+            <a href="/ru/privacy" class="column-element">Политика конфиденциальности</a>
+          </li>
+          <li>
+            <a href="/ru/copyright" class="column-element">Юридические уведомления</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p>
+        <span>Сделано <span class="heart">❤️</span> сообществом FreeBSD</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

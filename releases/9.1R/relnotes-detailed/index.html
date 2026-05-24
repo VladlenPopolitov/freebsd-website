@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/releases/9.1R/relnotes-detailed/">
+
+  <title>
+    FreeBSD 9.1-RELEASE Release Notes |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD 9.1-RELEASE Release Notes " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/releases/9.1R/relnotes-detailed/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/releases\/9.1R\/relnotes-detailed\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/where></a></li>
+  <li>
+    <a href=/releases>Release Information</a>
+    <ul>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Legacy Release: <a href=ZgotmplZ></a></li>
+    </ul>
+  </li>
+  <li>
+    <a href=/snapshots>Snapshot Releases</a>
+      <ul>
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+      </ul>
+  </li>
+  <li><a href=/ports>Ported Applications</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD 9.1-RELEASE Release Notes</h1><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The release notes for FreeBSD 9.1-RELEASE contain a summary of the changes made to the FreeBSD base system on the 9.1-STABLE development line. This document lists applicable security advisories that were issued since the last release, as well as significant changes to the FreeBSD kernel and userland. Some brief remarks on upgrading are also presented.</p>
+</div>
+<hr/>
+<div class="paragraph">
+<p><strong>Table of Contents</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#intro">Introduction</a></p>
+</li>
+<li>
+<p><a href="#new">What’s New</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="#security">Security Advisories</a></p>
+</li>
+<li>
+<p><a href="#kernel">Kernel Changes</a></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><a href="#boot">Boot Loader Changes</a></p>
+</li>
+<li>
+<p><a href="#proc">Hardware Support</a></p>
+</li>
+<li>
+<p><a href="#net-proto">Network Protocols</a></p>
+</li>
+<li>
+<p><a href="#disks">Disks and Storage</a></p>
+</li>
+<li>
+<p><a href="#fs">File Systems</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><a href="#userland">Userland Changes</a></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><a href="#periodic-scripts"></a><a href="https://man.freebsd.org/cgi/man.cgi?query=periodic&amp;sektion=8&amp;format=html">periodic(8)</a> Scripts</p>
+</li>
+<li>
+<p><a href="#rc-scripts"></a><a href="https://man.freebsd.org/cgi/man.cgi?query=rc&amp;sektion=8&amp;format=html">rc(8)</a> Scripts</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><a href="#contrib">Contributed Software</a></p>
+</li>
+<li>
+<p><a href="#releng">Release Engineering and Integration</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><a href="#upgrade">Upgrading from previous releases of FreeBSD</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="#AEN1113">Upgrading using </a><a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> or a source-based procedure</p>
+</li>
+<li>
+<p><a href="#AEN1133">User-visible incompatibilities</a></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="intro">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document contains the release notes for FreeBSD 9.1-RELEASE. It describes recently added, changed, or deleted features of FreeBSD. It also provides some notes on upgrading from previous versions of FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>This distribution of FreeBSD 9.1-RELEASE is a release distribution. It can be found at <a href="http://www.FreeBSD.org/releases/" class="bare">http://www.FreeBSD.org/releases/</a> or any of its mirrors. More information on obtaining this (or other) release distributions of FreeBSD can be found in the <a href="https://docs.freebsd.org/en/books/handbook/#mirrors/">&#34;Obtaining FreeBSD&#34; appendix</a> to the <a href="https://docs.freebsd.org/en/books/handbook/">FreeBSD Handbook</a>.</p>
+</div>
+<div class="paragraph">
+<p>All users are encouraged to consult the release errata before installing FreeBSD. The errata document is updated with “late-breaking” information discovered late in the release cycle or after the release. Typically, it contains information on known bugs, security advisories, and corrections to documentation. An up-to-date copy of the errata for FreeBSD 9.1-RELEASE can be found on the FreeBSD Web site.</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new">What’s New</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes the most user-visible new or changed features in FreeBSD since 9.0-RELEASE.</p>
+</div>
+<div class="paragraph">
+<p>Typical release note items document recent security advisories issued after 9.0-RELEASE, new drivers or hardware support, new commands or options, major bug fixes, or contributed software upgrades. They may also list changes to major ports/packages or release engineering practices. Clearly the release notes cannot list every single change made to FreeBSD between releases; this document focuses primarily on security advisories, user-visible changes, and major architectural improvements.</p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="security">Security Advisories</h3>
+<div class="paragraph">
+<p>Problems described in the following security advisories have been fixed. For more information, consult the individual advisories available from <a href="http://security.FreeBSD.org/" class="bare">http://security.FreeBSD.org/</a>.</p>
+</div>
+<table id="AEN38" class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 60%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Advisory</th>
+<th class="tableblock halign-left valign-top">Date</th>
+<th class="tableblock halign-left valign-top">Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://security.freebsd.org/advisories/FreeBSD-SA-12:01.openssl.asc">SA-12:01.openssl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 May 2012</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenSSL multiple vulnerabilities</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://security.freebsd.org/advisories/FreeBSD-SA-12:02.crypt.asc">SA-12:02.crypt</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30 May 2012</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Incorrect <code>crypt()</code> hashing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://security.freebsd.org/advisories/FreeBSD-SA-12:03.bind.asc">SA-12:03.bind</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 June 2012</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Incorrect handling of zero-length RDATA fields in <a href="https://man.freebsd.org/cgi/man.cgi?query=named&amp;sektion=8&amp;format=html">named(8)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://security.freebsd.org/advisories/FreeBSD-SA-12:04.sysret.asc">SA-12:04.sysret</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 June 2012</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Privilege escalation when returning from kernel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://security.freebsd.org/advisories/FreeBSD-SA-12:05.bind.asc">SA-12:05.bind</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6 August 2012</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://man.freebsd.org/cgi/man.cgi?query=named&amp;sektion=8&amp;format=html">named(8)</a> DNSSEC validation Denial of Service</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://security.freebsd.org/advisories/FreeBSD-SA-12:06.bind.asc">SA-12:06.bind</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 November 2012</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiple Denial of Service vulnerabilities with <a href="https://man.freebsd.org/cgi/man.cgi?query=named&amp;sektion=8&amp;format=html">named(8)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://security.freebsd.org/advisories/FreeBSD-SA-12:07.hostapd.asc">SA-12:07.hostapd</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 November 2012</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insufficient message length validation for EAP-TLS messages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://security.freebsd.org/advisories/FreeBSD-SA-12:08.linux.asc">SA-12:08.linux</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 November 2012</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Linux compatibility layer input validation error</p></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="kernel">Kernel Changes</h3>
+<div class="paragraph">
+<p>The FreeBSD Jail subsystem now supports mounting <a href="https://man.freebsd.org/cgi/man.cgi?query=devfs&amp;sektion=5&amp;format=html">devfs(5)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=nullfs&amp;sektion=5&amp;format=html">nullfs(5)</a>, and ZFS filesystem inside a jail. New <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a> parameters <code>allow.mount.devfs</code>, <code>allow.mount.nullfs</code>, and <code>allow.mount.zfs</code> to control the per-jail capabilities have been added. All of them are disabled by default.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=232728">r232728</a></p>
+</div>
+<div class="paragraph">
+<p>A new <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> tunable <code>kern.eventtimer.activetick</code> has been added. This tunable specifies whether each hardclock tick should be run on every active CPU or only one. By setting it to <code>0</code>, the total number of interrupts can be reduced on SMP machines. The default value is <code>1</code>.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234167">r234167</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=posix_fadvise&amp;sektion=2&amp;format=html">posix_fadvise(2)</a> system call has been implemented. This is a function similar to <a href="https://man.freebsd.org/cgi/man.cgi?query=madvise&amp;sektion=2&amp;format=html">madvise(2)</a> except that it operates on a file descriptor instead of a memory region.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229723">r229723</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=filemon&amp;sektion=4&amp;format=html">filemon(4)</a> pseudo-device has been added. This allows a process to collect file operations data of its children.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=237795">r237795</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variable <code>kern.stop_scheduler_on_panic</code> is now set to <code>1</code> by default.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235413">r235413</a></p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD Linux ABI compatibility layer now supports the <code>linux_fadvise64()</code> and <code>linux_fadvise64_64()</code> system calls.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231145">r231145</a></p>
+</div>
+<div class="paragraph">
+<p>The default value of the <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> tunable <code>hw.memtest.tests</code> is now automatically set to <code>0</code> when FreeBSD is running on a virtual machine.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230266">r230266</a></p>
+</div>
+<div class="paragraph">
+<p>A new <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> tunable <code>kern.msgbuf_show_timestamp</code> has been added. When it is enabled, a timestamp is added to each line of the system message buffer. The default value is <code>0</code> (disabled).[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234075">r234075</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=null&amp;sektion=4&amp;format=html">null(4)</a> and <a href="https://man.freebsd.org/cgi/man.cgi?query=zero&amp;sektion=4&amp;format=html">zero(4)</a> pseudo device driver now supports non-blocking mode via the <a href="https://man.freebsd.org/cgi/man.cgi?query=fcntl&amp;sektion=2&amp;format=html">fcntl(2)</a> system call.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230320">r230320</a></p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD <a href="https://man.freebsd.org/cgi/man.cgi?query=sched_ule&amp;sektion=4&amp;format=html">sched_ule(4)</a> scheduler has been improved for CPU load balancing on SMT (Simultaneous MultiThreading) CPUs. It gives a 10-15% performance improvement when the number of threads is lesser than the number of logical CPUs.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=233599">r233599</a></p>
+</div>
+<div class="paragraph">
+<p>A new <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variable <code>security.bsd.unprivileged_idprio</code> has been added. This variable controls whether non-root users can set an idle priority or not. This is disabled by default.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230039">r230039</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=splash&amp;sektion=4&amp;format=html">splash(4)</a> screen interface now supports ASCII art in <strong>TheDraw</strong> format.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=228445">r228445</a></p>
+</div>
+<hr/>
+<div class="sect3">
+<h4 id="boot">Boot Loader Changes</h4>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=boot0cfg&amp;sektion=8&amp;format=html">boot0cfg(8)</a> utility now supports configuration of PXE boot via the <code>boot0</code> boot block temporarily on the next boot. The slice number <code>6</code> or a keyword <code>PXE</code> can be specified to enable PXE boot using the <code>-s</code> option.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230065">r230065</a></p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD <a href="https://man.freebsd.org/cgi/man.cgi?query=boot&amp;sektion=8&amp;format=html">boot(8)</a> block now supports <code>/boot/config</code> in addition to <code>/boot.config</code> as the boot block parameter file. When both of them exist, the former will be used.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231287">r231287</a></p>
+</div>
+<div class="paragraph">
+<p>The <code>gptboot</code> boot block now reads the backup GPT header from the last LBA only when the primary GPT header and tables are invalid. This mitigates interoperability issues with some <a href="https://man.freebsd.org/cgi/man.cgi?query=geom&amp;sektion=4&amp;format=html">geom(4)</a> providers like <code>MIRROR</code> which use the last LBA for the metadata.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234693">r234693</a></p>
+</div>
+<div class="paragraph">
+<p>The <code>zfsboot</code> boot block and <code>zfsloader</code> support filesystems within a ZFS storage pool. In <code>zfsloader</code>, the ZFS device name format is now <code>zfs:pool</code>/<code>fs</code> and the fully qualified file path format is <code>zfs:pool</code>/<code>fs</code>:/<code>path/to/file</code>. The <code>zfsboot</code> boot block accepts the kernel/loader name in the format <code>pool</code>:`fs`:`path/to/file` or, as before, <code>pool</code>:`path/to/file`. In the latter case a default filesystem is used (the pool root or a filesystem with the <code>bootfs</code> property). The <code>zfsboot</code> boot block passes the GUIDs of the selected storage pool and dataset to <code>zfsloader</code> to be used as its defaults.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=237766">r237766</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-screen" data-lang="screen"># gpart create -s vtoc8 da0
+# gpart add -t freebsd-zfs -s 10g da0
+# gpart add -t freebsd-swap -s 10g da0
+# gpart add -t freebsd-zfs -s 10g da0
+# zpool create rpool mirror da0a da0b
+# zpool set bootfs=rpool rpool
+# zpool export rpool
+# gpart bootcode -p /boot/zfsboot da0
+# sysctl kern.geom.debugflags=0x10
+# dd if=/boot/zfsloader of=/dev/da0a bs=512 oseek=1024 conv=notrunc
+# dd if=/boot/zfsloader of=/dev/da0b bs=512 oseek=1024 conv=notrunc
+# zpool import rpool
+# cp -p /boot/zfs/zpool.cache /rpool/boot/zfs/zpool.cache
+# zfs set mountpoint=/ rpool</code></pre>
+</div>
+</div>
+<hr/>
+</div>
+<div class="sect3">
+<h4 id="proc">Hardware Support</h4>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=acpi_wmi&amp;sektion=4&amp;format=html">acpi_wmi(4)</a> driver now supports attaching multiple instances.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229858">r229858</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=hwpmc&amp;sektion=4&amp;format=html">hwpmc(4)</a> driver now supports software events. Simultaneous usage of software PMC and hardware PMC is allowed.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236238">r236238</a></p>
+</div>
+<div class="paragraph">
+<p>The pcf8563(4) driver for the NXP (Philips) PCF8563 RTC has been added.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236078">r236078</a></p>
+</div>
+<div class="paragraph">
+<p>The following <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variables have been added: <code>kern.proc.env</code> for environment strings, <code>kern.proc.auxv</code> for ELF auxiliary vectors from a process’s stack, <code>kern.proc.groups</code> for process groups, <code>kern.proc.rlimit</code> for process resource limits, <code>kern.proc.ps_strings</code> for the ps_strings location, and <code>kern.proc.osrel</code> for the osreldate of the process’s binary.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230754">r230754</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=233950">r233950</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=usb&amp;sektion=4&amp;format=html">usb(4)</a> driver now handles suspend and resume correctly with no need to reload the kernel module.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229100">r229100</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229369">r229369</a></p>
+</div>
+<div class="paragraph">
+<p>A bug in the <a href="https://man.freebsd.org/cgi/man.cgi?query=xhci&amp;sektion=4&amp;format=html">xhci(4)</a> (USB 3.0) driver has been fixed. It did not work with USB 3.0 hubs.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230302">r230302</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=viawd&amp;sektion=4&amp;format=html">viawd(4)</a> driver, which supports the watchdog timer found in VIA south bridges (VT8251, CX700, VX800, VX855, VX900), has been added.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229927">r229927</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=wbwd&amp;sektion=4&amp;format=html">wbwd(4)</a> driver, which supports the watchdog timer found in Winbond Super I/O chips, has been added.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235926">r235926</a></p>
+</div>
+<hr/>
+<div class="sect4">
+<h5 id="mm">Multimedia Support</h5>
+<div class="paragraph">
+<p>The drm2(4) Intel GPU driver, which supports GEM and KMS and works with new generations of GPUs such as IronLake, SandyBridge, and IvyBridge, has been added. The <a href="https://man.freebsd.org/cgi/man.cgi?query=agp&amp;sektion=4&amp;format=html">agp(4)</a> driver now supports SandyBridge and IvyBridge CPU northbridges.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236926">r236926</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236927">r236927</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=239965">r239965</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=snd_hda&amp;sektion=4&amp;format=html">snd_hda(4)</a> driver has been updated. It now supports and provides HDMI, new volume control, automatic recording source selection, runtime reconfiguration, more then 4 PCM devices on a controller, multichannel recording, additional playback/record streams, higher bandwidth, and more informative device names.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=232798">r232798</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=snd_hdspe&amp;sektion=4&amp;format=html">snd_hdspe(4)</a> driver has been added. This supports RME HDSPe AIO and RayDAT sound cards.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=233165">r233165</a></p>
+</div>
+<div class="paragraph">
+<p>GPL-licensed headers in the <a href="https://man.freebsd.org/cgi/man.cgi?query=snd_emu10kx&amp;sektion=4&amp;format=html">snd_emu10kx(4)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=snd_maestro3&amp;sektion=4&amp;format=html">snd_maestro3(4)</a>, and <a href="https://man.freebsd.org/cgi/man.cgi?query=snd_csa&amp;sektion=4&amp;format=html">snd_csa(4)</a> drivers have been replaced with BSD-licensed one. These drivers are now fully BSD-licensed and included in the <code>GENERIC</code> kernel on FreeBSD/amd64 and FreeBSD/i386.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230964">r230964</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230985">r230985</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231047">r231047</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235769">r235769</a></p>
+</div>
+<hr/>
+</div>
+<div class="sect4">
+<h5 id="net-if">Network Interface Support</h5>
+<div class="paragraph">
+<p>A bug in the <a href="https://man.freebsd.org/cgi/man.cgi?query=ae&amp;sektion=4&amp;format=html">ae(4)</a> driver which could prevent it from working under certain conditions has been fixed.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229520">r229520</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=axe&amp;sektion=4&amp;format=html">axe(4)</a> driver now supports TX/RX checksum offloading support for the ASIX AX88772B controller.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229106">r229106</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=bce&amp;sektion=4&amp;format=html">bce(4)</a> driver has been improved:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Unnecessary link up/down has been eliminated.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229864">r229864</a></p>
+</li>
+<li>
+<p>A bug has been fixed which could prevent IPMI from working when the interface was marked as down.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236216">r236216</a></p>
+</li>
+<li>
+<p>It now supports remote PHYs, which allow the controller to perform MDIO type accesses to a remote transceiver by using message pages defined through MRBE (MultiRate Backplane Ethernet). This is found on machines such as the Dell PowerEdge M610 Blade.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235818">r235818</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=bge&amp;sektion=4&amp;format=html">bge(4)</a> and brgphy(4) drivers have been improved:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A bug which could prevent DMA functionality from working correctly has been fixed.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229350">r229350</a></p>
+</li>
+<li>
+<p>It now works with a PCI-X BCM 5704 controller that is connected to AMD-8131 PCI-X bridge.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=233495">r233495</a></p>
+</li>
+<li>
+<p>It now supports the BCM 5720 and BCM 5720C PHY, and the BCM 57780 1000BASE-T media interface.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229357">r229357</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229867">r229867</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=232134">r232134</a></p>
+</li>
+<li>
+<p>It now supports a <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> tunable <code>dev.bge.N.msi</code> to control the use of MSI. The default value is <code>1</code> (enabled).[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231734">r231734</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=cxgbe&amp;sektion=4&amp;format=html">cxgbe(4)</a> and <a href="https://man.freebsd.org/cgi/man.cgi?query=cxgb&amp;sektion=4&amp;format=html">cxgb(4)</a> drivers have been updated to firmware version 1.5.2.0. They now support device configuration via a plain text configuration file, IPv6 hardware checksumming, IPv6 TSO and LRO, a <code>loadfw</code> command in the cxgbetool(8) utility which allows installing a firmware to the card, and <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variables under <code>dev.t4nex.N.misc</code> for various information.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231093">r231093</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=237925">r237925</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=dc&amp;sektion=4&amp;format=html">dc(4)</a> driver now supports NVIDIA (ULi) M5261/M5263 PCI FastEthernet controllers, which are found on the ULi M1563 South Bridge and M1689 Bridge.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229334">r229334</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=et&amp;sektion=4&amp;format=html">et(4)</a> driver now works on all platforms. A bug which could prevent <a href="https://man.freebsd.org/cgi/man.cgi?query=altq&amp;sektion=4&amp;format=html">altq(4)</a> support from working has been fixed. A new <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variable under <code>dev.et.N.stats</code> has been added for hardware MAC statistics.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229711">r229711</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229717">r229717</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229720">r229720</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=igb&amp;sektion=4&amp;format=html">igb(4)</a> driver has been updated to version 2.3.4. It now supports newer i210/i211 devices.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=238262">r238262</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=iwn&amp;sektion=4&amp;format=html">iwn(4)</a> driver now supports Intel Centrino Wireless-N + WiMAX 6150 and Wireless-N 100/130 series.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=233838">r233838</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235843">r235843</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=miibus&amp;sektion=4&amp;format=html">miibus(4)</a> bus driver now supports device hints <code>hint.miibus.N.phymask</code> for PHY addresses being probed. This is useful to manually probe PHYs which do not implement basic the register set of IEEE 802.3. Also, the <a href="https://man.freebsd.org/cgi/man.cgi?query=miibus&amp;sektion=4&amp;format=html">miibus(4)</a> driver has been changed to a hinted bus, allowing to add child devices via hints and to set their attach arguments in addition to automatically-probed PHYs.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230709">r230709</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=msk&amp;sektion=4&amp;format=html">msk(4)</a> driver now uses 64-bit DMA addressing on 64-bit platforms.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229524">r229524</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=mxge&amp;sektion=4&amp;format=html">mxge(4)</a> driver has been updated to firmware version 1.4.55 from Myricom.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236413">r236413</a></p>
+</div>
+<div class="paragraph">
+<p>The nsphyter(4) driver now supports National DP83849.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=232137">r232137</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=oce&amp;sektion=4&amp;format=html">oce(4)</a> driver, which supports Emulex OneConnect 10Gbit Ethernet cards, has been added.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231663">r231663</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ral&amp;sektion=4&amp;format=html">ral(4)</a> driver now supports Ralink RT2800 and RT3000 chipsets.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236004">r236004</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=re&amp;sektion=4&amp;format=html">re(4)</a> driver now supports the RTL8411 PCIe Gigabit Ethernet controller. A bug which could prevent WoL (Wake-on-LAN) from working on RTL8168E has been fixed.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229529">r229529</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231731">r231731</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=runfw&amp;sektion=4&amp;format=html">runfw(4)</a> firmware has been updated to version 0.236.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234028">r234028</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=sfxge&amp;sektion=4&amp;format=html">sfxge(4)</a> driver, which supports 10Gb Ethernet adapters based on Solarflare SFC9000 family controllers, has been added.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=228100">r228100</a></p>
+</div>
+<div class="paragraph">
+<p>The smcphy(4) driver now supports the Seeq Technology 80220 PHY. This is found on Adaptec AIC-6915 Starfire Ethernet controllers supported by the <a href="https://man.freebsd.org/cgi/man.cgi?query=sf&amp;sektion=4&amp;format=html">sf(4)</a> driver.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=233485">r233485</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ti&amp;sektion=4&amp;format=html">ti(4)</a> driver now supports the <a href="https://man.freebsd.org/cgi/man.cgi?query=altq&amp;sektion=4&amp;format=html">altq(4)</a> framework, reporting link-state changes, and <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variables under <code>dev.ti.N</code> for interrupt moderation parameters.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229417">r229417</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229438">r229438</a></p>
+</div>
+<div class="paragraph">
+<p>A bug in the <a href="https://man.freebsd.org/cgi/man.cgi?query=ti&amp;sektion=4&amp;format=html">ti(4)</a> driver which could prevent it from working correctly with the <code>PAE</code> kernel option has been fixed.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229441">r229441</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=vge&amp;sektion=4&amp;format=html">vge(4)</a> driver has been updated to improve its link establishment and link-state detection.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229540">r229540</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=vr&amp;sektion=4&amp;format=html">vr(4)</a> driver now enables flow control capability in the PHY drivers.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229641">r229641</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=xnb&amp;sektion=4&amp;format=html">xnb(4)</a> Xen Paravirtualized Backend Ethernet Driver (netback) has been updated. This is attached via the newbus framework and works properly in both HVM and PVM mode.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231697">r231697</a></p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect3">
+<h4 id="net-proto">Network Protocols</h4>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=if_bridge&amp;sektion=4&amp;format=html">if_bridge(4)</a> pseudo-interface now supports reporting link-state changes depending on the status of the member interfaces.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236051">r236051</a></p>
+</div>
+<div class="paragraph">
+<p>The <code>table</code> argument in the <a href="https://man.freebsd.org/cgi/man.cgi?query=ipfw&amp;sektion=4&amp;format=html">ipfw(4)</a> packet filter rule syntax now supports IP address, interface name, port number, and jail ID. The following syntax is valid:[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234597">r234597</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-programlisting" data-lang="programlisting">skipto tablearg ip from any to any via table(42) in</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The FreeBSD <a href="https://man.freebsd.org/cgi/man.cgi?query=ip6&amp;sektion=4&amp;format=html">ip6(4)</a> protocol stack has been improved in terms of its performance. Benchmarking can be found at <a href="http://people.freebsd.org/~bz/bench/" class="bare">http://people.freebsd.org/~bz/bench/</a>.</p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD <a href="https://man.freebsd.org/cgi/man.cgi?query=ip6&amp;sektion=4&amp;format=html">ip6(4)</a> protocol stack now supports multiple FIBs.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=232292">r232292</a></p>
+</div>
+<div class="paragraph">
+<p>An IPv6 default route configured via Router Advertisement messages is now reinstalled correctly when the default route is manually removed and then another RA message is received for the same route.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230604">r230604</a></p>
+</div>
+<div class="paragraph">
+<p>A bug which could return an incorrect value for the <code>IPV6_MULTICASE_HOPS</code> socket option has been fixed.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=227885">r227885</a></p>
+</div>
+<div class="paragraph">
+<p>A new <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=3&amp;format=html">sysctl(3)</a> name <code>NET_RT_IFLISTL</code> has been added. This queries the address list and works on extended and extensible structures <code>if_msghdrl</code> and <code>ifa_msghdrl</code> without breaking the ABI.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231768">r231768</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=netmap&amp;sektion=4&amp;format=html">netmap(4)</a> fast packet I/O framework has been added. The <a href="https://man.freebsd.org/cgi/man.cgi?query=em&amp;sektion=4&amp;format=html">em(4)</a>, man:lem(4), <a href="https://man.freebsd.org/cgi/man.cgi?query=igb&amp;sektion=4&amp;format=html">igb(4)</a>, and <a href="https://man.freebsd.org/cgi/man.cgi?query=re&amp;sektion=4&amp;format=html">re(4)</a> drivers now support this framework. The technical details can be found at <a href="http://info.iet.unipi.it/~luigi/netmap/.">http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231650[r231650</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235527">r235527</a></p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD <a href="https://man.freebsd.org/cgi/man.cgi?query=sctp&amp;sektion=4&amp;format=html">sctp(4)</a> protocol stack now supports a new <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variable <code>net.inet.sctp.blackhole</code>. If this is set to <code>1</code>, no <code>ABORT</code> is sent back in response to an incoming <code>INIT</code>. If this is set to <code>2</code>, no <code>ABORT</code> is sent back in response to an out-of-the-blue packet. If set to <code>0</code> (the default), `ABORT`s are sent.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231045">r231045</a></p>
+</div>
+<div class="paragraph">
+<p>A bug which could cause a system panic when <code>SCTP_RECVINFO</code> or <code>SCTP_NXTINFO</code> is specified to the <a href="https://man.freebsd.org/cgi/man.cgi?query=getsockopt&amp;sektion=2&amp;format=html">getsockopt(2)</a> system call has been fixed.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231049">r231049</a></p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD <a href="https://man.freebsd.org/cgi/man.cgi?query=sctp&amp;sektion=4&amp;format=html">sctp(4)</a> protocol stack now supports the <code>SCTP_REMOTE_UDP_ENCAPS_PORT</code> socket option.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231070">r231070</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231140">r231140</a></p>
+</div>
+<div class="paragraph">
+<p>The <code>SO_PROTOCOL</code> and <code>SO_PROTOTYPE</code> socket options have been added. These return the socket protocol number.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=232805">r232805</a></p>
+</div>
+<div class="paragraph">
+<p>The <code>TCP_KEEPINIT</code>, <code>TCP_KEEPIDLE</code>, <code>TCP_KEEPINTVL</code>, and <code>TCP_KEEPCNT</code> socket options have been added. These allow controlling initial timeout, idle time, idle resend interval, and idle send count on a per-socket basis.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=232945">r232945</a></p>
+</div>
+<hr/>
+</div>
+<div class="sect3">
+<h4 id="disks">Disks and Storage</h4>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=arcmsr&amp;sektion=4&amp;format=html">arcmsr(4)</a> driver has been updated to version 1.20.00.25.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=240758">r240758</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ahci&amp;sektion=4&amp;format=html">ahci(4)</a> driver now supports a new <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> tunable <code>hw.ahci.force</code>. This controls whether it attempts to attach an AHCI-capable device even if it is configured to use legacy emulation. This is enabled by default.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229291">r229291</a></p>
+</div>
+<div class="paragraph">
+<p>The new <a href="https://man.freebsd.org/cgi/man.cgi?query=cam&amp;sektion=4&amp;format=html">cam(4)</a>-based <a href="https://man.freebsd.org/cgi/man.cgi?query=ata&amp;sektion=4&amp;format=html">ata(4)</a> driver now supports old <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> tunables <code>hw.ata.ata_dma</code> and <code>hw.ata.atapi_dma</code>, for backward compatibility.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231251">r231251</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=cam&amp;sektion=4&amp;format=html">cam(4)</a> driver now supports SEMB (SATA Enclosure Management Bridge) devices, which are equivalent to the SCSI SES/SAF-TE devices.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236778">r236778</a></p>
+</div>
+<div class="paragraph">
+<p>A new <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variable <code>kern.cam.pmp.hide_special</code> has been added. This controls whether special PMP ports such as PMP (Port MultiPlier) configuration or SEMB (SATA Enclosure Management Bridge) will be exposed or hidden. The default value is <code>1</code> (hidden).[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236765">r236765</a></p>
+</div>
+<div class="paragraph">
+<p>The ctl(4) driver, which supports <a href="https://man.freebsd.org/cgi/man.cgi?query=cam&amp;sektion=4&amp;format=html">cam(4)</a> Target Layer and <a href="https://man.freebsd.org/cgi/man.cgi?query=ctladm&amp;sektion=8&amp;format=html">ctladm(8)</a>, a userland control utility, have been added. ctl(4) is a disk and processor device emulation subsystem supporting tagged queuing, SCSI task attribute, SCSI implicit command ordering, full task management, multiple ports, multiple simultaneous initiators, multiple simultaneous backing stores, mode sense/select, and error injection support.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231772">r231772</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=cd&amp;sektion=4&amp;format=html">cd(4)</a> driver now supports Audio CDs in the same way as <a href="https://man.freebsd.org/cgi/man.cgi?query=acd&amp;sektion=4&amp;format=html">acd(4)</a> did. It will report a 2352-byte sector size to the <a href="https://man.freebsd.org/cgi/man.cgi?query=geom&amp;sektion=4&amp;format=html">geom(4)</a> subsystem and use the <code>READ CD</code> command for reading the data. This fixes an interoperability issue with <a href="http://svnweb.FreeBSD.org/ports/head/multimedia/vlc/pkg-descr?revision=HEAD"><code>multimedia/vlc</code></a>.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230014">r230014</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=da&amp;sektion=4&amp;format=html">da(4)</a> driver now supports <code>BIO_DELETE</code>. To select the method, a new <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variable <code>kern.cam.da.N.delete_method</code> has been added for each device instance. The following values are supported:[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236677">r236677</a></p>
+</div>
+<table id="AEN632" class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NONE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no provisioning support reported by the device</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DISABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">provisioning support was disabled because of errors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ZERO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WRITE SAME (10) command to write zeroes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WS10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WRITE SAME (10) command with UNMAP bit set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WS16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use WRITE SAME (16) command with UNMAP bit set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNMAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use UNMAP command (equivalent of the ATA DSM TRIM command)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>When it was <code>NONE</code>, the device did not report logical block provisioning support via respective VPD pages. One can set a specific method for testing and it will be disabled automatically when not supported on the device.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>MIRROR</strong> <a href="https://man.freebsd.org/cgi/man.cgi?query=geom&amp;sektion=4&amp;format=html">geom(4)</a> class now supports <code>BIO_DELETE</code>. This means the <code>TRIM</code> command will be issued on supported devices when deleting data.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=238500">r238500</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>MULTIPATH</strong> <a href="https://man.freebsd.org/cgi/man.cgi?query=geom&amp;sektion=4&amp;format=html">geom(4)</a> class has been updated. It now supports Active/Active mode, Active/Read mode as hybrid of Active/Active and Active/Passive, keeping a failed path without removing the geom provider, manual configuration without on-disk metadata, and <code>add</code>, <code>remove</code>, <code>fail</code>, <code>restore</code>, <code>configure</code> subcommands in the <a href="https://man.freebsd.org/cgi/man.cgi?query=gmultipath&amp;sektion=8&amp;format=html">gmultipath(8)</a> utility to manage the configured paths.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229303">r229303</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234916">r234916</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>PART_LDM</strong> <a href="https://man.freebsd.org/cgi/man.cgi?query=geom&amp;sektion=4&amp;format=html">geom(4)</a> class has been added. This partition scheme has support for Logical Disk Manager, which is also known as dynamic volumes in Microsoft Windows NT. Note that JBOD, RAID0, and RAID5 volumes are not supported yet.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234406">r234406</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>PART_MBR</strong> <a href="https://man.freebsd.org/cgi/man.cgi?query=geom&amp;sektion=4&amp;format=html">geom(4)</a> class now allows a primary or extended Linux swap partition to be used as the system dump device.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230763">r230763</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>RAID</strong> <a href="https://man.freebsd.org/cgi/man.cgi?query=geom&amp;sektion=4&amp;format=html">geom(4)</a> class now supports disks with over 2TB capacity for the Intel metadata format.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230244">r230244</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>RAID</strong> <a href="https://man.freebsd.org/cgi/man.cgi?query=geom&amp;sektion=4&amp;format=html">geom(4)</a> class now supports the DDF metadata format, which is defined in the SNIA Common RAID Disk Data Format Specification v2.0.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235874">r235874</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>UNCOMPRESS</strong> <a href="https://man.freebsd.org/cgi/man.cgi?query=geom&amp;sektion=4&amp;format=html">geom(4)</a> class and the <a href="https://man.freebsd.org/cgi/man.cgi?query=mkulzma&amp;sektion=8&amp;format=html">mkulzma(8)</a> utility have been added. This class supports lzma compressed images like the <strong>UZIP</strong> <a href="https://man.freebsd.org/cgi/man.cgi?query=geom&amp;sektion=4&amp;format=html">geom(4)</a> class and the <a href="https://man.freebsd.org/cgi/man.cgi?query=mkuzip&amp;sektion=8&amp;format=html">mkuzip(8)</a> utility.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235483">r235483</a></p>
+</div>
+<div class="paragraph">
+<p>Bugs in <a href="https://man.freebsd.org/cgi/man.cgi?query=isp&amp;sektion=4&amp;format=html">isp(4)</a> target mode have been fixed.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230019">r230019</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ixgbe&amp;sektion=4&amp;format=html">ixgbe(4)</a> driver now supports the Intel X540 adapter.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230775">r230775</a></p>
+</div>
+<div class="paragraph">
+<p>A bug in the <a href="https://man.freebsd.org/cgi/man.cgi?query=mfi&amp;sektion=4&amp;format=html">mfi(4)</a> driver has been fixed. It could cause some inconsistencies due to missed interrupt acknowledgements and output the following log message:[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=227533">r227533</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-screen" data-lang="screen">mfi0: COMMAND 0xffffffXXXXXXXXXX TIMEOUT AFTER XX SECONDS</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=mfi&amp;sektion=4&amp;format=html">mfi(4)</a> driver now supports single-message MSI, and Drake Skinny and Thunderbolt cards. The <a href="https://man.freebsd.org/cgi/man.cgi?query=loader&amp;sektion=8&amp;format=html">loader(8)</a> tunable <code>hw.mfi.msi</code> has been added and it is enabled by default.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229611">r229611</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234429">r234429</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=mps&amp;sektion=4&amp;format=html">mps(4)</a> driver has been updated to version 14.00.00.01-fbsd. This now supports Integrated RAID, WarpDrive controllers, WRITE12 and READ12 for direct I/O, SCSI protection information (EEDP), Transport Level Retries (TLR) for tape drives, and LSI’s userland utility.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230920">r230920</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231679">r231679</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=237876">r237876</a></p>
+</div>
+<div class="paragraph">
+<p>A bug in the <a href="https://man.freebsd.org/cgi/man.cgi?query=mpt&amp;sektion=4&amp;format=html">mpt(4)</a> driver has been fixed. It could attempt to attach MegaRAID cards which should be handled by the <a href="https://man.freebsd.org/cgi/man.cgi?query=mfi&amp;sektion=4&amp;format=html">mfi(4)</a> driver.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=232562">r232562</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=usb&amp;sektion=4&amp;format=html">usb(4)</a> storage device driver now enables power save mode by default.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229107">r229107</a></p>
+</div>
+<hr/>
+</div>
+<div class="sect3">
+<h4 id="fs">File Systems</h4>
+<div class="paragraph">
+<p>The FreeBSD NFS filesystem has been improved:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It now supports a timeout on positive name cache entries on the client side. A new mount option <code>nametimeo</code> has been added and set to <code>60</code> (in seconds) by default.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=233326">r233326</a></p>
+</li>
+<li>
+<p>A memory leak when a ZFS volume is exported via the FreeBSD NFS server has been fixed.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234740">r234740</a></p>
+</li>
+<li>
+<p>A bug has been fixed. When a process writes to an mmap-backed file on an NFS filesystem, flushing changes to the data could fail under some circumstances such as errors due to permission mismatch, and this failure could not be detected as an error. A new <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variable <code>vfs.nfs.nfs_keep_dirty_on_error</code> has been added to control the behavior on the client side related to this issue. When this is set to <code>1</code>, the pages where a write operation failed are kept dirty. The default value is set to <code>0</code>.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=233730">r233730</a></p>
+</li>
+<li>
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=nfsv4&amp;sektion=4&amp;format=html">nfsv4(4)</a> filesystem now supports a <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variable <code>vfs.nfsd.disable_checkutf8</code>. This disables the check for UTF-8 compliance in filenames. This is disabled by default. Note that enabling this may help wht some interoperability issues but results in an NFSv4 server that is not RFC 3530 compliant.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229799">r229799</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=tmpfs&amp;sektion=5&amp;format=html">tmpfs(5)</a> filesystem is not an experimental implementation anymore.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234511">r234511</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=tmpfs&amp;sektion=5&amp;format=html">tmpfs(5)</a> filesystem now supports a <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variable <code>vfs.tmpfs.memory_reserved</code> to set the amount of required free pages when <a href="https://man.freebsd.org/cgi/man.cgi?query=tmpfs&amp;sektion=5&amp;format=html">tmpfs(5)</a> attempts to allocate a new node.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234849">r234849</a></p>
+</div>
+<div class="paragraph">
+<p>FreeBSD’s ZFS filesystem has been updated by merging improvements from the illumos project. The following changes are made:[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229578">r229578</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=232328">r232328</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>New properties, <code>clones</code> and <code>written</code>, have been added.</p>
+</li>
+<li>
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=zfs&amp;sektion=8&amp;format=html">zfs(8)</a> <code>send</code> command now reports an estimated size of the stream.</p>
+</li>
+<li>
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=zfs&amp;sektion=8&amp;format=html">zfs(8)</a> <code>destroy</code> command now reports an estimate of the space which would be reclaimed, when <code>-n</code> is specified.</p>
+</li>
+<li>
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=zfs&amp;sektion=8&amp;format=html">zfs(8)</a> <code>get</code> command now supports the <code>-t type</code> flag to specify the data type.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A simple script <code>zfsboottest.sh</code> has been added to the source tree. This checks if the system is configured correctly when using ZFS as the root filesystem. The script is located at <code>/usr/src/tools/tools/zfsboottest.sh</code> and it uses the <code>zfsboottest</code> binary program in the same directory.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=227705">r227705</a></p>
+</div>
+<div class="paragraph">
+<p>The binary program can be built and installed by the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-screen" data-lang="screen"># cd /usr/src/tools/tools/zfsboottest
+# make
+# make install</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After that, the following command can be used to check the system. <code>poolname</code> is the ZFS storage pool name to boot:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-screen" data-lang="screen"># sh /usr/src/tools/tools/zfsboottest/zfsboottest.sh poolname</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variable <code>vfs.zfs.txg.timeout</code> has been changed from read-only to writable.</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="userland">Userland Changes</h3>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=auth.conf&amp;sektion=5&amp;format=html">auth.conf(5)</a> has been removed because it was deprecated years ago.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=238481">r238481</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=camcontrol&amp;sektion=8&amp;format=html">camcontrol(8)</a> utility now supports a <code>fwdownload</code> subcommand for firmware update on SCSI devices from Hitachi, HP, IBM, Plextor, Quantum, and Seagate. This subcommand will reprogram the firmware on devices connected over an ATA/SATA transport.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=237740">r237740</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=dhclient&amp;sektion=8&amp;format=html">dhclient(8)</a> utility now supports <code>domain-search</code> (option number 119, described in RFC 3397). This allows a DHCP server to publish a list of implicit domain suffixes used during name lookup. If this option is specified, a <code>search</code> keyword will be added to <code>/etc/resolv.conf</code>.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230597">r230597</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=dump&amp;sektion=8&amp;format=html">dump(8)</a> utility now uses 53 characters for the device names in <code>/etc/dumpdates</code>. This was previously limited to 32 characters.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230047">r230047</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=fetch&amp;sektion=1&amp;format=html">fetch(1)</a> utility now correctly supports a percent-encoded user and password part in a URL.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235253">r235253</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=fdlopen&amp;sektion=3&amp;format=html">fdlopen(3)</a> function has been implemented. This is an interface for <a href="https://man.freebsd.org/cgi/man.cgi?query=rtld&amp;sektion=1&amp;format=html">rtld(1)</a> to load a shared object by file descriptor.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230410">r230410</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=fopen&amp;sektion=3&amp;format=html">fopen(3)</a> function now supports the <code>x</code> (an exclusive create-and-open mode) option in the ISO/IEC 9899:2011 and C11 standards.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229845">r229845</a></p>
+</div>
+<div class="paragraph">
+<p>A bug in the <a href="https://man.freebsd.org/cgi/man.cgi?query=gcc&amp;sektion=1&amp;format=html">gcc(1)</a> compiler has been fixed. It could lead to incorrect calculations when <code>-ffast-math</code> is specified.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234023">r234023</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=hastd&amp;sektion=8&amp;format=html">hastd(8)</a> daemon now supports specifying the filename of its process ID file in <a href="&lt;a href=" https:="" man.freebsd.org="" cgi="" man.cgi?query="hast.conf&amp;sektion=5&amp;format=html&#34;">hast.conf(5)</a>.&#34;&gt;http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229509[r229509</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ifconfig&amp;sektion=8&amp;format=html">ifconfig(8)</a> utility now supports a <code>vlanhwcsum</code> parameter to set or reset checksum offloading capability on VLANs.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231221">r231221</a></p>
+</div>
+<div class="paragraph">
+<p>A bug in the <a href="https://man.freebsd.org/cgi/man.cgi?query=ifconfig&amp;sektion=8&amp;format=html">ifconfig(8)</a> utility which could display an error message in a jail with no IPv6 support has been fixed.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=238872">r238872</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ifconfig&amp;sektion=8&amp;format=html">ifconfig(8)</a> utility now supports a <code>carp state state</code> parameter to set the state to <code>backup</code> or <code>master</code> forcibly.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=232486">r232486</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a> utility now supports a configuration file (<a href="https://man.freebsd.org/cgi/man.cgi?query=jail.conf&amp;sektion=5&amp;format=html">jail.conf(5)</a>) for complex configurations.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235839">r235839</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=kdump&amp;sektion=1&amp;format=html">kdump(1)</a> utility now supports a <code>-p pid</code> option to accept either a process ID or a thread ID.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=237789">r237789</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=kenv&amp;sektion=1&amp;format=html">kenv(1)</a> utility now supports a <code>-v</code> flag to display an entry in <code>name=value</code> format, and a <code>-N</code> flag to display only the name.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236118">r236118</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=kldload&amp;sektion=8&amp;format=html">kldload(8)</a> utility now supports a <code>-n</code> flag to ignore the error status when the specified module is already loaded.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=233560">r233560</a></p>
+</div>
+<div class="paragraph">
+<p><strong>libedit</strong> has been updated to a NetBSD snapshot as of 28 December, 2009.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=237738">r237738</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=libmap.conf&amp;sektion=5&amp;format=html">libmap.conf(5)</a> now supports <code>include</code> and <code>includedir</code> directives. They allow to include specified files for the configuration.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236523">r236523</a></p>
+</div>
+<div class="paragraph">
+<p>Lock handling performance in the <strong>libthr</strong> pthread library has been improved. It now works 10 times faster especially under the condition that a mutex is heavily contested.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234372">r234372</a></p>
+</div>
+<div class="paragraph">
+<p>A new C++ stack has been imported. This consists of <strong>libcxxrt</strong>, originally developed by a FreeBSD developer under contract by PathScale and open sourced by the FreeBSD and NetBSD foundations, and <strong>libc* from the LLVM project. *libcxxrt* is a drop-in replacement for GNU *libsupc</strong>, which implements the C++ runtime support for features such as run-time type information, dynamic casting, thread-safe static initializer, and exceptions. <strong>libc* implements the {cpp}11 standard library, and will replace GNU *libstdc</strong> in a future release. In 9.1-RELEASE, <strong>libstdc* is still installed as standard and now dynamically links against *libsupc</strong>. This allows libraries linking <strong>libstdc* and *libc</strong> to both be used in the same program, to aid migration.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235798">r235798</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=limits&amp;sektion=1&amp;format=html">limits(1)</a> utility now supports a <code>-P pid</code> option to control limits for the specified process.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230919">r230919</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=pciconf&amp;sektion=8&amp;format=html">pciconf(8)</a> utility now supports a <code>-e</code> flag to display PCI error details in listing mode. When this is specified, the status of any error bits in the PCI status register and PCI-express device status register will be displayed. It also lists any errors indicated by version 1 of PCI-express Advanced Error Reporting (AER).[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=237731">r237731</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=procstat&amp;sektion=1&amp;format=html">procstat(1)</a> utility now shows the superpage mapping flag when displaying process virtual memory mappings.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229710">r229710</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=procstat&amp;sektion=1&amp;format=html">procstat(1)</a> utility now supports an <code>-e</code> flag to display process environment variables, an <code>-x</code> flag to display ELF auxiliary vectors, and an <code>-l</code> flag to display resource limits.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230917">r230917</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230918">r230918</a></p>
+</div>
+<div class="paragraph">
+<p>A bug in the <a href="https://man.freebsd.org/cgi/man.cgi?query=remquo&amp;sektion=3&amp;format=html">remquo(3)</a> functions where the quotient did not always have the correct sign when the remainder was <code>0</code>, and another bug that the remainder and quotient were both off by a bit in certain cases involving subnormal remainders, have been fixed. Note that these bugs affected all platforms except amd64 and i386.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234535">r234535</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=rtld&amp;sektion=1&amp;format=html">rtld(1)</a> run-time linker now supports GCC’s RELRO (RElocation Read-Only). This prevents the GOT (Global Offset Table) from being overwritten.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231579">r231579</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=rtld&amp;sektion=1&amp;format=html">rtld(1)</a> run-time linker now supports a GNU hash section (<code>DT_GNU_HASH</code>), which is a replacement of optional ELF hash section.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235396">r235396</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=setbuf&amp;sektion=1&amp;format=html">setbuf(1)</a> utility and <strong>libstdbuf</strong> library have been added. This controls the default buffering behavior of standard stdio streams.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235139">r235139</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=top&amp;sektion=1&amp;format=html">top(1)</a> utility now correctly supports per-thread I/O statistics of ZFS in the <code>-m 	io</code> option.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=227702">r227702</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=unzip&amp;sektion=1&amp;format=html">unzip(1)</a> utility now supports a <code>-Z</code> option for zipinfo.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=234330">r234330</a></p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=xlocale&amp;sektion=3&amp;format=html">xlocale(3)</a> API has been implemented. This consists of <code>_l</code>-suffixed versions of various standard library functions that use the global locale, making them take an explicit locale parameter and allowing thread-safe extended locale support. Most of these APIs are required for IEEE Std 1003.1-2008 (POSIX.1-2008 or ISO/IEC 9945:2009) compatibility, and are required by <strong>libc++</strong> and recent versions of <strong>GNOME</strong>. This implementation also supports several extensions for compatibility with Apple <strong>Darwin</strong>.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235785">r235785</a></p>
+</div>
+<hr/>
+<div class="sect3">
+<h4 id="periodic-scripts"><a href="https://man.freebsd.org/cgi/man.cgi?query=periodic&amp;sektion=8&amp;format=html">periodic(8)</a> Scripts</h4>
+<div class="paragraph">
+<p>A new variable <code>daily_status_zfs_zpool_list_enable</code> has been added. It controls whether or not to list all of the ZFS pools in <code>periodic/daily/404.status-zfs</code>. The default value is <code>YES</code>.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=231721">r231721</a></p>
+</div>
+<div class="paragraph">
+<p>The default value of <code>daily_scrub_zfs_default_threshold</code> used in <code>periodic/daily/800.scrub-zfs</code> is now set to 35 days.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229381">r229381</a></p>
+</div>
+<hr/>
+</div>
+<div class="sect3">
+<h4 id="rc-scripts"><a href="https://man.freebsd.org/cgi/man.cgi?query=rc&amp;sektion=8&amp;format=html">rc(8)</a> Scripts</h4>
+<div class="paragraph">
+<p>The <code>rc.d/nfsd</code> script now sets the <code>vfs.nfsd.server_max_nfsvers</code> <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a> variable to <code>4</code> when <code>nfsv4_server_enable</code> is set to <code>YES</code>.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=227607">r227607</a></p>
+</div>
+<div class="paragraph">
+<p>A backwards compatibility issue when both <code>ipv6_enable=YES</code> and <code>ipv6_gateway_enable=YES</code> are defined at the same time has been fixed.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=242189">r242189</a></p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contrib">Contributed Software</h3>
+<div class="paragraph">
+<p><strong>ISC BIND</strong> has been updated to version 9.8.3-P4.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=241417">r241417</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>compiler-rt</strong> library, which provides low-level target-specific interfaces such as functions in <strong>libgcc</strong>, has been updated to revision 147467.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236018">r236018</a></p>
+</div>
+<div class="paragraph">
+<p><strong>file</strong> ( <a href="https://man.freebsd.org/cgi/man.cgi?query=file&amp;sektion=1&amp;format=html">file(1)</a>) has been updated to version 5.11.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=237983">r237983</a></p>
+</div>
+<div class="paragraph">
+<p>GNU <a href="https://man.freebsd.org/cgi/man.cgi?query=gperf&amp;sektion=1&amp;format=html">gperf(1)</a> has been updated to version 3.0.3 (the latest GPLv2-licensed version).[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=230237">r230237</a></p>
+</div>
+<div class="paragraph">
+<p><strong>libarchive</strong>, <a href="https://man.freebsd.org/cgi/man.cgi?query=bsdtar&amp;sektion=1&amp;format=html">bsdtar(1)</a>, and <a href="https://man.freebsd.org/cgi/man.cgi?query=cpio&amp;sektion=1&amp;format=html">cpio(1)</a> have been updated to version 2.8.5.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229588">r229588</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>libpcap</strong> library has been updated to 1.2.1.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236167">r236167</a></p>
+</div>
+<div class="paragraph">
+<p><strong>libstdc++</strong> has been updated to revision 135556 of the <code>gcc-4_2-branch</code> (the last LGPLv2-licensed version).[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=229551">r229551</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>LLVM</strong> compiler infrastructure and <strong>clang</strong>, a C language family front-end, version 3.1 have been imported. Note that it is not used for building the FreeBSD base system by default.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236144">r236144</a></p>
+</div>
+<div class="paragraph">
+<p>The <code>netcat</code> utility has been updated to version 5.1.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=235971">r235971</a></p>
+</div>
+<div class="paragraph">
+<p><strong>OpenSSL</strong> has been updated to version 0.9.8x.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=237998">r237998</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>tcpdump</strong> (<a href="https://man.freebsd.org/cgi/man.cgi?query=tcpdump&amp;sektion=1&amp;format=html">tcpdump(1)</a>) utility has been updated to version 4.2.1.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=236192">r236192</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>TENEX C shell</strong> (<a href="https://man.freebsd.org/cgi/man.cgi?query=tcsh&amp;sektion=1&amp;format=html">tcsh(1)</a>) has been updated to version 6.18.01.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=232633">r232633</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>timezone</strong> database has been updated to the <strong>tzdata2012a</strong> release.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=233447">r233447</a></p>
+</div>
+<div class="paragraph">
+<p>The <strong>zlib</strong> library has been updated to version 1.2.7.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=237691">r237691</a></p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_2_5_release_engineering_and_integration"><span id="releng">2.5 Release Engineering and Integration</span></h3>
+<div class="paragraph">
+<p>The supported version of the <strong>KDE</strong> desktop environment (<a href="http://svnweb.FreeBSD.org/ports/head/x11/kde4/pkg-descr?revision=HEAD"><code>x11/kde4</code></a>) has been updated to 4.8.4.</p>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade">Upgrading from previous releases of FreeBSD</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="AEN1113">Upgrading using <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> or a source-based procedure</h3>
+<div class="paragraph">
+<p>[amd64, i386] Beginning with FreeBSD 6.2-RELEASE, binary upgrades between RELEASE versions (and snapshots of the various security branches) are supported using the <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> utility. The binary upgrade procedure will update unmodified userland utilities, as well as an unmodified <code>GENERIC</code> kernel, distributed as a part of an official FreeBSD release. The <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> utility requires that the host being upgraded have Internet connectivity.</p>
+</div>
+<div class="paragraph">
+<p>Source-based upgrades (those based on recompiling the FreeBSD base system from source code) from previous versions are supported using to the instructions in <code>/usr/src/UPDATING</code>.</p>
+</div>
+<div class="paragraph">
+<p>For more specific information about upgrading instructions, see <a href="http://www.FreeBSD.org/releases/9.1R/installation/" class="bare">http://www.FreeBSD.org/releases/9.1R/installation/</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Important:</strong> Upgrading FreeBSD should, of course, only be attempted after backing up <em>all</em> data and configuration files.</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="AEN1133">User-visible incompatibilities</h3>
+<div class="paragraph">
+<p>FreeBSD 9.0 and later have several incompatibilities in system configuration which you might want to know before upgrading your system. <em>Please read this section and the <a href="http://www.freebsd.org/releases/9.0R/relnotes-detailed/#UPGRADE">Upgrading Section in 9.0-RELEASE Release Notes</a> carefully before submitting a problem report and/or posting a question to the FreeBSD mailing lists.</em></p>
+</div>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: June 19, 2021 by <a href="https://cgit.freebsd.org/doc/commit/?id=8e22e76d94" target="_blank">Danilo G. Baio</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

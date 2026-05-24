@@ -1,0 +1,289 @@
+<!doctype html><html class=theme-light lang=ru><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Создание собственного сервера freebsd-update позволяет системному администратору выполнять быстрые обновления для множества машин из локального зеркала"><meta name=keywords content="FreeBSD,Update,Server,internal"><meta name=copyright content="1995-2026 The FreeBSD Foundation"><link rel=canonical href=https://docs.freebsd.org/ru/articles/freebsd-update-server/><title>Создайте свой собственный сервер обновлений FreeBSD | FreeBSD Documentation Portal</title><meta name=theme-color content="#790000"><meta name=color-scheme content="system light dark high-contrast"><link rel="shortcut icon" href=https://docs.freebsd.org/favicon.ico><link rel=stylesheet href=https://docs.freebsd.org/styles/main.min.css><link rel=stylesheet href=https://docs.freebsd.org/css/font-awesome-min.css><script defer src=/js/theme-chooser.min.js></script><script defer src=/js/copy-clipboard.min.js></script><script defer src=/js/search.min.js></script><meta name=twitter:card content="summary"><meta name=twitter:domain content="www.freebsd.msk.ru/doc"><meta name=twitter:site content="@freebsd"><meta name=twitter:url content="https://twitter.com/freebsd"><meta property="og:title" content="Создайте свой собственный сервер обновлений FreeBSD"><meta property="og:description" content="Создание собственного сервера freebsd-update позволяет системному администратору выполнять быстрые обновления для множества машин из локального зеркала"><meta property="og:type" content="website"><meta property="og:image" content="https://docs.freebsd.org/favicon.ico"><meta property="og:image:alt" content="FreeBSD Logo"><meta property="og:locale" content="ru"><meta property="og:url" content="https://docs.freebsd.org/ru/articles/freebsd-update-server/"><meta property="og:site_name" content="FreeBSD Documentation Portal"><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","url":"https:\/\/docs.freebsd.org\/ru\/articles\/freebsd-update-server\/","name":"FreeBSD Documentation Portal","headline":"FreeBSD Documentation Portal","description":"FreeBSD Documentation Portal"}</script><script defer data-domain=freebsd.org src=https://plausible.io/js/script.outbound-links.js></script></head><body><header><div class=header-container><div class=logo-menu-bars-container><a href=https://www.FreeBSD.org class=logo><img src=https://docs.freebsd.org/images/FreeBSD-monochromatic.svg width=160 height=50 alt="FreeBSD logo">
+</a><label class=menu-bars for=menu-bars><i class="fa fa-bars" aria-hidden=true></i></label></div><input id=menu-bars type=checkbox><nav><ul class=menu><li class=menu-item><input id=about type=checkbox>
+<a href=# aria-label="Navigate to About section"><label class=menu-item-description for=about>О нас
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=https://www.freebsd.msk.ru/ru/about/ target=_blank>О нас</a></li><li><a href=https://www.freebsd.msk.ru/ru/about/ target=_blank>FreeBSD</a></li><li><a href=https://freebsdfoundation.org/about-us/about-the-foundation/ target=_blank>Фонд FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/internal/code-of-conduct/ target=_blank>Кодекс Этики</a></li></ul></li><li class=menu-item><input id=download type=checkbox>
+<a href=# aria-label="Navigate to get FreeBSD section"><label class=menu-item-description for=download>Получить FreeBSD
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=https://www.freebsd.msk.ru/ru/where/ target=_blank>Получить FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/releases/ target=_blank>Информация о релизах</a></li><li><a href=https://www.freebsd.msk.ru/ru/releng/ target=_blank>Подготовка релизов</a></li><li><a href=https://www.freebsd.msk.ru/ru/security/ target=_blank>Бюллетени Безопасности</a></li></ul></li><li class=menu-item><input id=documentation type=checkbox>
+<a href=# aria-label="Navigate to get Documentation section"><label class=menu-item-description for=documentation>Документация
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=/ru>Портал документации</a></li><li><a href=https://docs.freebsd.org/ru/books/handbook>Руководство</a></li><li><a href=https://docs.freebsd.org/ru/books/porters-handbook>Руководство по созданию портов</a></li><li><a href=https://www.freebsd.msk.ru/doc/en/books/fdp-primer>Учебник Проекта Документирования</a></li><li><a href=https://man.FreeBSD.org target=_blank>Страницы Справочника</a></li><li><a href=https://papers.FreeBSD.org target=_blank>Презентации и публикации</a></li><li><a href=https://wiki.FreeBSD.org target=_blank>Wiki</a></li><li><a href=https://docs.freebsd.org/ru/books>Книги</a></li><li><a href=https://docs.freebsd.org/ru/articles>Статьи</a></li></ul></li><li class=menu-item><input id=community type=checkbox>
+<a href=# aria-label="Navigate to get Community section"><label class=menu-item-description for=community>Сообщество
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=https://www.freebsd.msk.ru/ru/community/>Сообщество</a></li><li><a href=https://docs.freebsd.org/ru/articles/contributing>Стать участником</a></li><li><a href=https://forums.freebsd.org/ target=_blank>Форум</a></li><li><a href=https://lists.freebsd.org/ target=_blank>Списки рассылки</a></li><li><a href=https://wiki.freebsd.org/IRC/Channels target=_blank>Каналы IRC</a></li><li><a href=https://bugs.freebsd.org/bugzilla/ target=_blank>Трекер ошибок</a></li><li><a href=https://www.freebsd.msk.ru/ru/support/ target=_blank>Поддержка</a></li></ul></li></ul></nav><div class=search-donate-container><form class=search method=get id=search-header-form action=https://www.freebsd.msk.ru/doc/search name=search-header-form><input type=hidden name=DB value=ru>
+<input id=words name=P type=text size=20 maxlength=255>
+<button>
+<i class="fa fa-search" aria-hidden=true></i></button></form><div class=donate><a href=https://freebsdfoundation.org/donate/ target=_blank><span class=heart>♥</span>
+Пожертвования</a></div></div></div></header><main class=main-wrapper-article><div class=article><h1 class=title>Создайте свой собственный сервер обновлений FreeBSD</h1><div class="admonitionblock note"><p><i class="fa fa-exclamation-circle" aria-hidden=true></i>
+Этот перевод может быть устаревшим. Для того, чтобы помочь с переводом, пожалуйста, обратитесь к <a href=https://translate-dev.freebsd.org/ target=_blank>Сервер переводов FreeBSD</a>.</p></div><div class=copyright>Copyright © 2009-2011, 2013 Jason Helfman</div><div class=legalnotice><a id=trademarks></a><details><summary>товарные знаки</summary><p>FreeBSD является зарегистрированным товарным знаком Фонда FreeBSD.</p><p>AMD, AMD Athlon, AMD Opteron, Athlon, &amp;Eacute;lan, и PCnet это торговые марки Advanced Micro Devices, Inc.</p><p>Intel, Celeron, EtherExpress, i386, i486, Itanium, Pentium и Xeon это торговые марки или зарегистрированные торговые марки Intel Corporation или ее дочерних компаний в Соединенных Штатах и других странах.</p><p>Многие из обозначений, используемые производителями и продавцами для обозначения своих продуктов, заявляются в качестве товарных знаков. Когда такие обозначения появляются в этом документе, и Проекту FreeBSD известно о товарном знаке, к обозначению добавляется знак “™” или “®”.</p></details></div><div class=toc-mobile><h3>Содержание</h3><nav id=TableOfContents><ul><li><a href=#acknowledgments>1. Благодарности</a></li><li><a href=#introduction>2. Введение</a></li><li><a href=#prerequisites>3. Предварительные требования</a></li><li><a href=#Configuration>4. Конфигурация: установка и настройка</a></li><li><a href=#build>5. Сборка кода обновления</a></li><li><a href=#patch>6. Построение патча</a></li><li><a href=#tips>7. Советы</a></li></ul></nav></div><div id=preamble><div class=sectionbody><div class="admonitionblock warning"><table><tbody><tr><td class=icon><i class="fa icon-warning" title=Warning></i></td><td class=content><div class=paragraph><p>Инструкции в этой статье относятся к более старой версии FreeBSD и могут не работать корректно в последних версиях ОС. В связи с появлением pkgbase, утилита freebsd-update планируется к удалению из FreeBSD в будущем. Когда это произойдет, статья будет либо обновлена с учётом новых процедур, либо полностью удалена.</p></div></td></tr></tbody></table></div><div class="paragraph abstract-title"><p>Аннотация</p></div><div class=paragraph><p>В этой статье описывается создание внутреннего сервера обновлений FreeBSD. <a href=https://github.com/freebsd/freebsd-update-build/>freebsd-update-server</a> написан <code>Colin Percival &lt;<a href=mailto:cperciva@FreeBSD.org>cperciva@FreeBSD.org</a>></code>, почетным руководителем безопасности FreeBSD. Для пользователей, которым удобно обновлять свои системы через официальный сервер обновлений, создание собственного сервера обновлений FreeBSD может помочь расширить его функциональность, поддерживая вручную модифицированные выпуски FreeBSD или предоставляя локальное зеркало, которое позволит ускорить обновления для множества машин.</p></div><hr></div></div><div class=sect1><h2 id=acknowledgments>1. Благодарности<a class=anchor href=#acknowledgments></a></h2><div class=sectionbody><div class=paragraph><p>Эта статья была впоследствии опубликована в онлайн издании <a href=https://people.freebsd.org/~jgh/files/fus/BSD_03_2010_EN.pdf>BSD Magazine</a>.</p></div></div></div><div class=sect1><h2 id=introduction>2. Введение<a class=anchor href=#introduction></a></h2><div class=sectionbody><div class=paragraph><p>Опытные пользователи или администраторы часто отвечают за несколько машин или окружений. Они понимают сложные требования и вызовы, связанные с поддержанием такой инфраструктуры. Запуск сервера обновлений FreeBSD упрощает развёртывание исправлений безопасности и программного обеспечения на выбранных тестовых машинах перед их внедрением в рабочую среду. Это также означает, что множество систем могут быть обновлены из локальной сети, а не через потенциально медленное интернет-соединение. В этой статье описаны шаги, необходимые для создания внутреннего сервера обновлений FreeBSD.</p></div></div></div><div class=sect1><h2 id=prerequisites>3. Предварительные требования<a class=anchor href=#prerequisites></a></h2><div class=sectionbody><div class=paragraph><p>Для создания внутреннего сервера обновлений FreeBSD необходимо выполнить некоторые требования.</p></div><div class=ulist><ul><li><p>Работающая система FreeBSD.</p><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Минимальное требование для обновлений — сборка на версии FreeBSD, которая не меньше целевой версии для распространения.</p></div></td></tr></tbody></table></div></li><li><p>Пользовательская учётная запись с как минимум 4 ГБ свободного места. Это позволит создавать обновления для версий 7.1 и 7.2, но точные требования к месту могут меняться от версии к версии.</p></li><li><p>Учётная запись <a href="https://man.freebsd.org/cgi/man.cgi?query=ssh&amp;sektion=1&amp;format=html">ssh(1)</a> на удалённой машине для загрузки распределенных обновлений.</p></li><li><p>Веб-сервер, например <a href=https://docs.freebsd.org/ru/books/handbook/network-servers#network-apache>Apache</a>, с более чем половиной пространства, необходимого для сборки. Например, тестовые сборки для версий 7.1 и 7.2 занимают в общей сложности 4 ГБ, а пространство веб-сервера, необходимое для распространения этих обновлений, составляет 2.6 ГБ.</p></li><li><p>Базовые знания написания скриптов для оболочки POSIX® shell, <a href="https://man.freebsd.org/cgi/man.cgi?query=sh&amp;sektion=1&amp;format=html">sh(1)</a>.</p></li></ul></div></div></div><div class=sect1><h2 id=Configuration>4. Конфигурация: установка и настройка<a class=anchor href=#Configuration></a></h2><div class=sectionbody><div class=paragraph><p>Загрузите программное обеспечение <a href=https://github.com/freebsd/freebsd-update-build/>freebsd-update-server</a>, установив пакеты <a class=package href=https://cgit.freebsd.org/ports/tree/devel/git/>devel/git</a> и <a class=package href=https://cgit.freebsd.org/ports/tree/security/ca_root_nss/>security/ca_root_nss</a>, и выполните:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% git clone https://github.com/freebsd/freebsd-update-build.git freebsd-update-server</code></pre></div></div><div class=paragraph><p>Обновите соответствующим образом файл <span class=filename>scripts/build.conf</span>. Он используется во всех операциях сборки.</p></div><div class=paragraph><p>Вот стандартный <span class=filename>build.conf</span>, который следует изменить в соответствии с вашим окружением.</p></div><div class="literalblock programlisting"><div class=content><pre># Main configuration file for FreeBSD Update builds.  The
+# release-specific configuration data is lower down in
+# the scripts tree.
+
+# Location from which to fetch releases
+export FTP=ftp://ftp2.freebsd.org/pub/FreeBSD/releases <i class=conum data-value=1></i><b>(1)</b>
+
+# Host platform
+export HOSTPLATFORM=`uname -m`
+
+# Host name to use inside jails
+export BUILDHOSTNAME=${HOSTPLATFORM}-builder.daemonology.net <i class=conum data-value=2></i><b>(2)</b>
+
+# Location of SSH key
+export SSHKEY=/root/.ssh/id_dsa <i class=conum data-value=3></i><b>(3)</b>
+
+# SSH account into which files are uploaded
+MASTERACCT=builder@wadham.daemonology.net <i class=conum data-value=4></i><b>(4)</b>
+
+# Directory into which files are uploaded
+MASTERDIR=update-master.freebsd.org <i class=conum data-value=5></i><b>(5)</b></pre></div></div><div class=paragraph><p>Учтите возможные варианты следующих настроек:</p></div><div class="colist arabic"><table><tbody><tr><td><i class=conum data-value=1></i><b>1</b></td><td>Это место, откуда загружаются образы ISO (с помощью подпрограммы <code>fetchiso()</code> из файла <span class=filename>scripts/build.subr</span>). Настроенное расположение не ограничивается URI FTP. Должны работать любые схемы URI, поддерживаемые стандартной утилитой <a href="https://man.freebsd.org/cgi/man.cgi?query=fetch&amp;sektion=1&amp;format=html">fetch(1)</a>. Пользовательские изменения кода <code>fetchiso()</code> можно установить, скопировав скрипт <span class=filename>build.subr</span> по умолчанию в область, специфичную для соответствующего релиза и архитектуры, по пути <span class=filename>scripts/РЕЛИЗ/АРХИТЕКТУРА/build.subr</span>, и применив локальные изменения.</td></tr><tr><td><i class=conum data-value=2></i><b>2</b></td><td>Имя хоста для сборки. Эта информация будет отображаться на обновлённых системах при выполнении команды:<div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% <span class=nb>uname</span> <span class=nt>-v</span></code></pre></div></div></td></tr><tr><td><i class=conum data-value=3></i><b>3</b></td><td>Ключ SSH для загрузки файлов на сервер обновлений. Пару ключей можно создать, выполнив команду <code>ssh-keygen -t dsa</code>. Этот параметр необязателен; стандартная аутентификация по паролю будет использоваться в качестве резервного метода, если <code>SSHKEY</code> не определён. Более подробную информацию о SSH и соответствующих шагах по созданию и использованию ключей можно найти на <a href="https://man.freebsd.org/cgi/man.cgi?query=ssh-keygen&amp;sektion=1&amp;format=html">ssh-keygen(1)</a>.</td></tr><tr><td><i class=conum data-value=4></i><b>4</b></td><td>Учётная запись для загрузки файлов на сервер обновлений.</td></tr><tr><td><i class=conum data-value=5></i><b>5</b></td><td>Каталог на сервере обновлений, в который загружаются файлы.</td></tr></tbody></table></div><div class=paragraph><p>В стандартном файле <span class=filename>build.conf</span>, поставляемом с исходниками freebsd-update-server, задана сборка релизов FreeBSD для архитектуры i386. В качестве примера настройки сервера обновлений для других архитектур ниже приведены шаги с необходимыми изменениями конфигурации для amd64:</p></div><div class="exampleblock procedure"><div class=content><div class="olist arabic"><ol class=arabic><li><p>Создайте среду сборки для amd64:</p><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% <span class=nb>mkdir</span> <span class=nt>-p</span> /usr/local/freebsd-update-server/scripts/7.2-RELEASE/amd64</code></pre></div></div></li><li><p>Установите файл <span class=filename>build.conf</span> в только что созданный каталог сборки. Параметры конфигурации сборки для FreeBSD 7.2-RELEASE на amd64 должны быть примерно такими:</p><div class="literalblock programlisting"><div class=content><pre># SHA256 hash of RELEASE disc1.iso image.
+export RELH=1ea1f6f652d7c5f5eab7ef9f8edbed50cb664b08ed761850f95f48e86cc71ef5 <i class=conum data-value=1></i><b>(1)</b>
+# Components of the world, source, and kernels
+export WORLDPARTS=&#34;base catpages dict doc games info manpages proflibs lib32&#34;
+export SOURCEPARTS=&#34;base bin contrib crypto etc games gnu include krb5  \
+                lib libexec release rescue sbin secure share sys tools  \
+                ubin usbin cddl&#34;
+export KERNELPARTS=&#34;generic&#34;
+
+# EOL date
+export EOL=1275289200 <i class=conum data-value=2></i><b>(2)</b></pre></div></div><div class="colist arabic"><table><tbody><tr><td><i class=conum data-value=1></i><b>1</b></td><td>Хеш-ключ <a href="https://man.freebsd.org/cgi/man.cgi?query=sha256&amp;sektion=1&amp;format=html">sha256(1)</a> для желаемого выпуска опубликован в соответствующем <a href=https://www.FreeBSD.org/releases/>анонсе выпуска</a>.</td></tr><tr><td><i class=conum data-value=2></i><b>2</b></td><td>Для получения номера "End of Life" для файла <span class=filename>build.conf</span> обратитесь к "Estimated EOL" на сайте <a href=https://www.FreeBSD.org/security/security/>FreeBSD Security Website</a>. Значение <code>EOL</code> можно вывести из даты, указанной на веб-сайте, используя утилиту <a href="https://man.freebsd.org/cgi/man.cgi?query=date&amp;sektion=1&amp;format=html">date(1)</a>, например:<div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% <span class=nb>date</span> <span class=nt>-j</span> <span class=nt>-f</span> <span class=s1>&#39;%Y%m%d-%H%M%S&#39;</span> <span class=s1>&#39;20090401-000000&#39;</span> <span class=s1>&#39;+%s&#39;</span></code></pre></div></div></td></tr></tbody></table></div></li></ol></div></div></div></div></div><div class=sect1><h2 id=build>5. Сборка кода обновления<a class=anchor href=#build></a></h2><div class=sectionbody><div class=paragraph><p>Первым шагом является запуск <span class=filename>scripts/make.sh</span>. Это приведёт к сборке некоторых бинарных файлов, созданию каталогов и генерации RSA-ключа подписи, используемого для подтверждения сборок. На этом этапе потребуется ввести парольную фразу для окончательного создания ключа подписи.</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell><span class=c># sh scripts/make.sh</span>
+cc <span class=nt>-O2</span> <span class=nt>-fno-strict-aliasing</span> <span class=nt>-pipe</span>   findstamps.c  <span class=nt>-o</span> findstamps
+findstamps.c: In <span class=k>function</span> <span class=s1>&#39;usage&#39;</span>:
+findstamps.c:45: warning: incompatible implicit declaration of built-in <span class=k>function</span> <span class=s1>&#39;exit&#39;</span>
+cc <span class=nt>-O2</span> <span class=nt>-fno-strict-aliasing</span> <span class=nt>-pipe</span>   unstamp.c  <span class=nt>-o</span> unstamp
+<span class=nb>install </span>findstamps ../bin
+<span class=nb>install </span>unstamp ../bin
+<span class=nb>rm</span> <span class=nt>-f</span> findstamps unstamp
+Generating RSA private key, 4096 bit long modulus
+................................................................................++
+...................++
+e is 65537 <span class=o>(</span>0x10001<span class=o>)</span>
+
+Public key fingerprint:
+27ef53e48dc869eea6c3136091cc6ab8589f967559824779e855d58a2294de9e
+
+Encrypting signing key <span class=k>for </span>root
+enter aes-256-cbc encryption password:
+Verifying - enter aes-256-cbc encryption password:</code></pre></div></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>Сохраните сгенерированный отпечаток ключа. Это значение требуется в <span class=filename>/etc/freebsd-update.conf</span> для бинарных обновлений.</p></div></td></tr></tbody></table></div><div class=paragraph><p>На этом этапе мы готовы к подготовке сборки.</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell><span class=c># cd /usr/local/freebsd-update-server</span>
+<span class=c># sh scripts/init.sh amd64 7.2-RELEASE</span></code></pre></div></div><div class=paragraph><p>Ниже приведён пример <em>первоначальной</em> сборки.</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell><span class=c># sh scripts/init.sh amd64 7.2-RELEASE</span>
+Mon Aug 24 16:04:36 PDT 2009 Starting fetch <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+/usr/local/freebsd-update-server/work/7.2-RELE100 of  588 MB  359 kBps 00m00s
+Mon Aug 24 16:32:38 PDT 2009 Verifying disc1 <span class=nb>hash </span><span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 16:32:44 PDT 2009 Extracting components <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 16:34:05 PDT 2009 Constructing world+src image <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 16:35:57 PDT 2009 Extracting world+src <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 23:36:24 UTC 2009 Building world <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Tue Aug 25 00:31:29 UTC 2009 Distributing world <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Tue Aug 25 00:32:36 UTC 2009 Building and distributing kernels <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Tue Aug 25 00:44:44 UTC 2009 Constructing world components <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Tue Aug 25 00:44:56 UTC 2009 Distributing <span class=nb>source </span><span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 17:46:18 PDT 2009 Moving components into staging area <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 17:46:33 PDT 2009 Identifying extra documentation <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 17:47:13 PDT 2009 Extracting extra docs <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 17:47:18 PDT 2009 Indexing release <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 17:50:44 PDT 2009 Indexing world0 <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+
+Files built but not released:
+Files released but not built:
+Files which differ by more than contents:
+Files which differ between release and build:
+kernel|generic|/GENERIC/hptrr.ko
+kernel|generic|/GENERIC/kernel
+src|sys|/sys/conf/newvers.sh
+world|base|/boot/loader
+world|base|/boot/pxeboot
+world|base|/etc/mail/freebsd.cf
+world|base|/etc/mail/freebsd.submit.cf
+world|base|/etc/mail/sendmail.cf
+world|base|/etc/mail/submit.cf
+world|base|/lib/libcrypto.so.5
+world|base|/usr/bin/ntpq
+world|base|/usr/lib/libalias.a
+world|base|/usr/lib/libalias_cuseeme.a
+world|base|/usr/lib/libalias_dummy.a
+world|base|/usr/lib/libalias_ftp.a
+...</code></pre></div></div><div class=paragraph><p>Затем выполняется сборка world с применением патчей world. Более подробное объяснение можно найти в <span class=filename>scripts/build.subr</span>.</p></div><div class="admonitionblock warning"><table><tbody><tr><td class=icon><i class="fa icon-warning" title=Warning></i></td><td class=content><div class=paragraph><p>В течение этого второго цикла сборки демон протокола сетевого времени, <a href="https://man.freebsd.org/cgi/man.cgi?query=ntpd&amp;sektion=8&amp;format=html">ntpd(8)</a>, отключен. По словам <code>Colin Percival &lt;<a href=mailto:cperciva@FreeBSD.org>cperciva@FreeBSD.org</a>></code>, почётного офицера безопасности FreeBSD, "код сборки <a href=https://github.com/freebsd/freebsd-update-build/>freebsd-update-server</a> должен идентифицировать временные метки, хранящиеся в файлах, чтобы их можно было игнорировать при сравнении сборок для определения того, какие файлы нуждаются в обновлении. Этот поиск временных меток работает путем выполнения двух сборок с интервалом в 400 дней и сравнения результатов."</p></div></td></tr></tbody></table></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>Mon Aug 24 17:54:07 PDT 2009 Extracting world+src <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Wed Sep 29 00:54:34 UTC 2010 Building world <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Wed Sep 29 01:49:42 UTC 2010 Distributing world <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Wed Sep 29 01:50:50 UTC 2010 Building and distributing kernels <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Wed Sep 29 02:02:56 UTC 2010 Constructing world components <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Wed Sep 29 02:03:08 UTC 2010 Distributing <span class=nb>source </span><span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Tue Sep 28 19:04:31 PDT 2010 Moving components into staging area <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 19:04:46 PDT 2009 Extracting extra docs <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 19:04:51 PDT 2009 Indexing world1 <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 19:08:04 PDT 2009 Locating build stamps <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 19:10:19 PDT 2009 Cleaning staging area <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 19:10:19 PDT 2009 Preparing to copy files into staging area <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 19:10:20 PDT 2009 Copying data files into staging area <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 12:16:57 PDT 2009 Copying metadata files into staging area <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Mon Aug 24 12:16:59 PDT 2009 Constructing metadata index and tag <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+
+Files found which include build stamps:
+kernel|generic|/GENERIC/hptrr.ko
+kernel|generic|/GENERIC/kernel
+world|base|/boot/loader
+world|base|/boot/pxeboot
+world|base|/etc/mail/freebsd.cf
+world|base|/etc/mail/freebsd.submit.cf
+world|base|/etc/mail/sendmail.cf
+world|base|/etc/mail/submit.cf
+world|base|/lib/libcrypto.so.5
+world|base|/usr/bin/ntpq
+world|base|/usr/include/osreldate.h
+world|base|/usr/lib/libalias.a
+world|base|/usr/lib/libalias_cuseeme.a
+world|base|/usr/lib/libalias_dummy.a
+world|base|/usr/lib/libalias_ftp.a
+...</code></pre></div></div><div class=paragraph><p>Наконец, сборка завершена.</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>Values of build stamps, excluding library archive headers:
+v1.2 <span class=o>(</span>Aug 25 2009 00:40:36<span class=o>)</span>
+v1.2 <span class=o>(</span>Aug 25 2009 00:38:22<span class=o>)</span>
+@<span class=o>()</span>FreeBSD 7.2-RELEASE 0: Tue Aug 25 00:38:29 UTC 2009
+FreeBSD 7.2-RELEASE 0: Tue Aug 25 00:38:29 UTC 2009
+    root@server.myhost.com:/usr/obj/usr/src/sys/GENERIC
+7.2-RELEASE
+Mon Aug 24 23:55:25 UTC 2009
+Mon Aug 24 23:55:25 UTC 2009
+ built by root@server.myhost.com on Tue Aug 25 00:16:15 UTC 2009
+ built by root@server.myhost.com on Tue Aug 25 00:16:15 UTC 2009
+ built by root@server.myhost.com on Tue Aug 25 00:16:15 UTC 2009
+ built by root@server.myhost.com on Tue Aug 25 00:16:15 UTC 2009
+Mon Aug 24 23:46:47 UTC 2009
+ntpq 4.2.4p5-a Mon Aug 24 23:55:53 UTC 2009 <span class=o>(</span>1<span class=o>)</span>
+ <span class=k>*</span> Copyright <span class=o>(</span>c<span class=o>)</span> 1992-2009 The FreeBSD Project.
+Mon Aug 24 23:46:47 UTC 2009
+Mon Aug 24 23:55:40 UTC 2009
+Aug 25 2009
+ntpd 4.2.4p5-a Mon Aug 24 23:55:52 UTC 2009 <span class=o>(</span>1<span class=o>)</span>
+ntpdate 4.2.4p5-a Mon Aug 24 23:55:53 UTC 2009 <span class=o>(</span>1<span class=o>)</span>
+ntpdc 4.2.4p5-a Mon Aug 24 23:55:53 UTC 2009 <span class=o>(</span>1<span class=o>)</span>
+Tue Aug 25 00:21:21 UTC 2009
+Tue Aug 25 00:21:21 UTC 2009
+Tue Aug 25 00:21:21 UTC 2009
+Mon Aug 24 23:46:47 UTC 2009
+
+FreeBSD/amd64 7.2-RELEASE initialization build complete.  Please
+review the list of build stamps printed above to confirm that
+they look sensible, <span class=k>then </span>run
+ sh <span class=nt>-e</span> approve.sh amd64 7.2-RELEASE
+to sign the release.</code></pre></div></div><div class=paragraph><p>Одобрите сборку, если всё правильно. Дополнительную информацию о том, как это определить, можно найти в распределённом исходном файле с именем <span class=filename>USAGE</span>. Выполните <span class=filename>scripts/approve.sh</span>, как указано. Это подпишет релиз и переместит компоненты в промежуточную область, подходящую для загрузки.</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell><span class=c># cd /usr/local/freebsd-update-server</span>
+<span class=c># sh scripts/mountkey.sh</span></code></pre></div></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell><span class=c># sh -e scripts/approve.sh amd64 7.2-RELEASE</span>
+Wed Aug 26 12:50:06 PDT 2009 Signing build <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Wed Aug 26 12:50:06 PDT 2009 Copying files to patch <span class=nb>source </span>directories <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Wed Aug 26 12:50:06 PDT 2009 Copying files to upload staging area <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Wed Aug 26 12:50:07 PDT 2009 Updating databases <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE
+Wed Aug 26 12:50:07 PDT 2009 Cleaning staging area <span class=k>for </span>FreeBSD/amd64 7.2-RELEASE</code></pre></div></div><div class=paragraph><p>После завершения процесса утверждения можно начать процедуру загрузки.</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell><span class=c># cd /usr/local/freebsd-update-server</span>
+<span class=c># sh scripts/upload.sh amd64 7.2-RELEASE</span></code></pre></div></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>В случае необходимости повторной загрузки кода обновления, это можно сделать, перейдя в публичный каталог дистрибутивов для целевого выпуска и обновив атрибуты файла <em>uploaded</em>.</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell><span class=c># cd /usr/local/freebsd-update-server/pub/7.2-RELEASE/amd64</span>
+<span class=c># touch -t 200801010101.01 uploaded</span></code></pre></div></div></td></tr></tbody></table></div><div class=paragraph><p>Загруженные файлы должны находиться в корневом каталоге веб-сервера, чтобы обновления могли распространяться. Точная конфигурация будет зависеть от используемого веб-сервера. Для веб-сервера Apache обратитесь к разделу <a href=https://docs.freebsd.org/ru/books/handbook/network-servers#network-apache>Настройка серверов Apache</a> в Руководстве.</p></div><div class=paragraph><p>Обновите <code>KeyPrint</code> и <code>ServerName</code> клиента в <span class=filename>/etc/freebsd-update.conf</span> и выполните обновления, как указано в разделе <a href=https://docs.freebsd.org/ru/books/handbook/cutting-edge#updating-upgrading-freebsdupdate>Обновление FreeBSD</a> Руководства.</p></div><div class="admonitionblock important"><table><tbody><tr><td class=icon><i class="fa icon-important" title=Important></i></td><td class=content><div class=paragraph><p>Для корректной работы сервера обновлений FreeBSD Update необходимо собирать обновления как для текущего релиза, так и для релиза, <em>на который планируется обновление</em>. Это необходимо для определения различий в файлах между релизами. Например, при обновлении системы FreeBSD с 7.1-RELEASE до 7.2-RELEASE потребуется собрать и загрузить на сервер распространения обновления для обеих версий.</p></div></td></tr></tbody></table></div><div class=paragraph><p>Для справки, полный текст выполнения <a href=../../source/articles/freebsd-update-server/init.txt>init.sh</a> прилагается.</p></div></div></div><div class=sect1><h2 id=patch>6. Построение патча<a class=anchor href=#patch></a></h2><div class=sectionbody><div class=paragraph><p>Каждый раз, когда объявляется <a href=https://www.FreeBSD.org/security/advisories/>консультативный документ по безопасности</a> или <a href=https://www.FreeBSD.org/security/notices/>уведомление о безопасности</a>, можно собрать обновление с исправлением.</p></div><div class=paragraph><p>Для этого примера будет использоваться версия 7.1-RELEASE.</p></div><div class=paragraph><p>Несколько предположений сделано для другой сборки выпуска:</p></div><div class=ulist><ul><li><p>Настройка правильной структуры каталогов для первоначальной сборки.</p></li><li><p>Выполните первоначальную сборку для 7.1-RELEASE.</p></li></ul></div><div class=paragraph><p>Создайте каталог с патчами соответствующего выпуска в <span class=filename>/usr/local/freebsd-update-server/patches/</span>.</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% <span class=nb>mkdir</span> <span class=nt>-p</span> /usr/local/freebsd-update-server/patches/7.1-RELEASE/
+% <span class=nb>cd</span> /usr/local/freebsd-update-server/patches/7.1-RELEASE</code></pre></div></div><div class=paragraph><p>В качестве примера возьмем патч для <a href="https://man.freebsd.org/cgi/man.cgi?query=named&amp;sektion=8&amp;format=html">named(8)</a>. Прочтите рекомендации и загрузите необходимый файл с <a href=https://www.FreeBSD.org/security/advisories/>FreeBSD Security Advisories</a>. Дополнительную информацию о том, как интерпретировать рекомендации, можно найти в <a href=https://docs.freebsd.org/ru/books/handbook/security#security-advisories>Руководства FreeBSD</a>.</p></div><div class=paragraph><p>В <a href=https://security.freebsd.org/advisories/FreeBSD-SA-09:12.bind.asc>кратком обзоре безопасности</a> этот совет называется <code>SA-09:12.bind</code>. После загрузки файла необходимо переименовать его в соответствии с уровнем исправления. Рекомендуется сохранять это в соответствии с официальными уровнями исправлений FreeBSD, но имя может быть выбрано свободно. Для данной сборки давайте последуем текущей установленной практике FreeBSD и назовем его <code>p7</code>. Переименуйте файл:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>% <span class=nb>cd</span> /usr/local/freebsd-update-server/patches/7.1-RELEASE/<span class=p>;</span> <span class=nb>mv </span>bind.patch 7-SA-09:12.bind</code></pre></div></div><div class="admonitionblock note"><table><tbody><tr><td class=icon><i class="fa icon-note" title=Note></i></td><td class=content><div class=paragraph><p>При выполнении сборки уровня патча предполагается, что предыдущие патчи уже установлены. При запуске сборки патча будут выполнены все патчи, содержащиеся в каталоге патчей.</p></div><div class=paragraph><p>В сборку могут быть добавлены пользовательские патчи. Используйте ноль или любое другое число.</p></div></td></tr></tbody></table></div><div class="admonitionblock warning"><table><tbody><tr><td class=icon><i class="fa icon-warning" title=Warning></i></td><td class=content><div class=paragraph><p>Задача администратора сервера FreeBSD Update — принимать соответствующие меры для проверки подлинности каждого патча.</p></div></td></tr></tbody></table></div><div class=paragraph><p>На этом этапе <em>diff</em> готов к сборке. Программное обеспечение сначала проверяет, был ли запущен <span class=filename>scripts/init.sh</span> для соответствующего выпуска перед выполнением сборки diff.</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell><span class=c># cd /usr/local/freebsd-update-server</span>
+<span class=c># sh scripts/diff.sh amd64 7.1-RELEASE 7</span></code></pre></div></div><div class=paragraph><p>Вот пример выполнения <em>дифференциальной</em> сборки.</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell><span class=c># sh -e scripts/diff.sh amd64 7.1-RELEASE 7</span>
+Wed Aug 26 10:09:59 PDT 2009 Extracting world+src <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 17:10:25 UTC 2009 Building world <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 18:05:11 UTC 2009 Distributing world <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 18:06:16 UTC 2009 Building and distributing kernels <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 18:17:50 UTC 2009 Constructing world components <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 18:18:02 UTC 2009 Distributing <span class=nb>source </span><span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 11:19:23 PDT 2009 Moving components into staging area <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 11:19:37 PDT 2009 Extracting extra docs <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 11:19:42 PDT 2009 Indexing world0 <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 11:23:02 PDT 2009 Extracting world+src <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Thu Sep 30 18:23:29 UTC 2010 Building world <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Thu Sep 30 19:18:15 UTC 2010 Distributing world <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Thu Sep 30 19:19:18 UTC 2010 Building and distributing kernels <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Thu Sep 30 19:30:52 UTC 2010 Constructing world components <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Thu Sep 30 19:31:03 UTC 2010 Distributing <span class=nb>source </span><span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Thu Sep 30 12:32:25 PDT 2010 Moving components into staging area <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 12:32:39 PDT 2009 Extracting extra docs <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 12:32:43 PDT 2009 Indexing world1 <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 12:35:54 PDT 2009 Locating build stamps <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 12:36:58 PDT 2009 Reverting changes due to build stamps <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 12:37:14 PDT 2009 Cleaning staging area <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 12:37:14 PDT 2009 Preparing to copy files into staging area <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 12:37:15 PDT 2009 Copying data files into staging area <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 12:43:23 PDT 2009 Copying metadata files into staging area <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+Wed Aug 26 12:43:25 PDT 2009 Constructing metadata index and tag <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE-p7
+...
+Files found which include build stamps:
+kernel|generic|/GENERIC/hptrr.ko
+kernel|generic|/GENERIC/kernel
+world|base|/boot/loader
+world|base|/boot/pxeboot
+world|base|/etc/mail/freebsd.cf
+world|base|/etc/mail/freebsd.submit.cf
+world|base|/etc/mail/sendmail.cf
+world|base|/etc/mail/submit.cf
+world|base|/lib/libcrypto.so.5
+world|base|/usr/bin/ntpq
+world|base|/usr/include/osreldate.h
+world|base|/usr/lib/libalias.a
+world|base|/usr/lib/libalias_cuseeme.a
+world|base|/usr/lib/libalias_dummy.a
+world|base|/usr/lib/libalias_ftp.a
+...
+Values of build stamps, excluding library archive headers:
+v1.2 <span class=o>(</span>Aug 26 2009 18:13:46<span class=o>)</span>
+v1.2 <span class=o>(</span>Aug 26 2009 18:11:44<span class=o>)</span>
+@<span class=o>()</span>FreeBSD 7.1-RELEASE-p7 0: Wed Aug 26 18:11:50 UTC 2009
+FreeBSD 7.1-RELEASE-p7 0: Wed Aug 26 18:11:50 UTC 2009
+    root@server.myhost.com:/usr/obj/usr/src/sys/GENERIC
+7.1-RELEASE-p7
+Wed Aug 26 17:29:15 UTC 2009
+Wed Aug 26 17:29:15 UTC 2009
+ built by root@server.myhost.com on Wed Aug 26 17:49:58 UTC 2009
+ built by root@server.myhost.com on Wed Aug 26 17:49:58 UTC 2009
+ built by root@server.myhost.com on Wed Aug 26 17:49:58 UTC 2009
+ built by root@server.myhost.com on Wed Aug 26 17:49:58 UTC 2009
+Wed Aug 26 17:20:39 UTC 2009
+ntpq 4.2.4p5-a Wed Aug 26 17:29:42 UTC 2009 <span class=o>(</span>1<span class=o>)</span>
+ <span class=k>*</span> Copyright <span class=o>(</span>c<span class=o>)</span> 1992-2009 The FreeBSD Project.
+Wed Aug 26 17:20:39 UTC 2009
+Wed Aug 26 17:29:30 UTC 2009
+Aug 26 2009
+ntpd 4.2.4p5-a Wed Aug 26 17:29:41 UTC 2009 <span class=o>(</span>1<span class=o>)</span>
+ntpdate 4.2.4p5-a Wed Aug 26 17:29:42 UTC 2009 <span class=o>(</span>1<span class=o>)</span>
+ntpdc 4.2.4p5-a Wed Aug 26 17:29:42 UTC 2009 <span class=o>(</span>1<span class=o>)</span>
+Wed Aug 26 17:55:02 UTC 2009
+Wed Aug 26 17:55:02 UTC 2009
+Wed Aug 26 17:55:02 UTC 2009
+Wed Aug 26 17:20:39 UTC 2009
+...</code></pre></div></div><div class=paragraph><p>Обновления выводятся на экран, и запрашивается подтверждение.</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell>New updates:
+kernel|generic|/GENERIC/kernel.symbols|f|0|0|0555|0|7c8dc176763f96ced0a57fc04e7c1b8d793f27e006dd13e0b499e1474ac47e10|
+kernel|generic|/GENERIC/kernel|f|0|0|0555|0|33197e8cf15bbbac263d17f39c153c9d489348c2c534f7ca1120a1183dec67b1|
+kernel|generic|/|d|0|0|0755|0||
+src|base|/|d|0|0|0755|0||
+src|bin|/|d|0|0|0755|0||
+src|cddl|/|d|0|0|0755|0||
+src|contrib|/contrib/bind9/bin/named/update.c|f|0|10000|0644|0|4d434abf0983df9bc47435670d307fa882ef4b348ed8ca90928d250f42ea0757|
+src|contrib|/contrib/bind9/lib/dns/openssldsa_link.c|f|0|10000|0644|0|c6805c39f3da2a06dd3f163f26c314a4692d4cd9a2d929c0acc88d736324f550|
+src|contrib|/contrib/bind9/lib/dns/opensslrsa_link.c|f|0|10000|0644|0|fa0f7417ee9da42cc8d0fd96ad24e7a34125e05b5ae075bd6e3238f1c022a712|
+...
+FreeBSD/amd64 7.1-RELEASE update build complete.  Please review
+the list of build stamps printed above and the list of updated
+files to confirm that they look sensible, <span class=k>then </span>run
+ sh <span class=nt>-e</span> approve.sh amd64 7.1-RELEASE
+to sign the build.</code></pre></div></div><div class=paragraph><p>Следуйте той же процедуре, что и ранее, для подтверждения сборки:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell><span class=c># sh -e scripts/approve.sh amd64 7.1-RELEASE</span>
+Wed Aug 26 12:50:06 PDT 2009 Signing build <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE
+Wed Aug 26 12:50:06 PDT 2009 Copying files to patch <span class=nb>source </span>directories <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE
+Wed Aug 26 12:50:06 PDT 2009 Copying files to upload staging area <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE
+Wed Aug 26 12:50:07 PDT 2009 Updating databases <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE
+Wed Aug 26 12:50:07 PDT 2009 Cleaning staging area <span class=k>for </span>FreeBSD/amd64 7.1-RELEASE
+
+The FreeBSD/amd64 7.1-RELEASE update build has been signed and is
+ready to be uploaded.  Remember to run
+ sh <span class=nt>-e</span> umountkey.sh
+to unmount the decrypted key once you have finished signing all
+the new builds.</code></pre></div></div><div class=paragraph><p>После утверждения сборки загрузите программное обеспечение:</p></div><div class=listingblock><div class=content><pre class="rouge highlight"><code data-lang=shell><span class=c># cd /usr/local/freebsd-update-server</span>
+<span class=c># sh scripts/upload.sh amd64 7.1-RELEASE</span></code></pre></div></div><div class=paragraph><p>Для справки, полный запуск скрипта <a href=../../source/articles/freebsd-update-server/diff.txt>diff.sh</a> прилагается.</p></div></div></div><div class=sect1><h2 id=tips>7. Советы<a class=anchor href=#tips></a></h2><div class=sectionbody><div class=ulist><ul><li><p>Если пользовательская сборка создана с использованием стандартной процедуры <code>make release</code> <a href=https://docs.freebsd.org/ru/articles/releng/#release-build>procedure</a>, код freebsd-update-server будет работать с вашей сборкой. Например, сборка без портов или документации может быть создана путем отключения функциональности, относящейся к подпрограммам документации <code>findextradocs ()</code>, <code>addextradocs ()</code>, и изменения места загрузки в <code>fetchiso ()</code> соответственно в файле <span class=filename>scripts/build.subr</span>. В завершение измените хеш <a href="https://man.freebsd.org/cgi/man.cgi?query=sha256&amp;sektion=1&amp;format=html">sha256(1)</a> в файле <span class=filename>build.conf</span> для соответствующей сборки и архитектуры, после чего можно приступать к сборке вашей пользовательской версии.</p><div class="literalblock programlisting"><div class=content><pre># Compare ${WORKDIR}/release and ${WORKDIR}/$1, identify which parts
+# of the world|doc subcomponent are missing from the latter, and
+# build a tarball out of them.
+findextradocs () {
+}
+# Add extra docs to ${WORKDIR}/$1
+addextradocs () {
+}</pre></div></div></li><li><p>Добавление флагов <code>-j <em>ЧИСЛО</em></code> к целям <code>buildworld</code> и <code>obj</code> в скрипте <span class=filename>scripts/build.subr</span> может ускорить обработку в зависимости от используемого оборудования, однако это не обязательно. Использование этих флагов в других целях не рекомендуется, так как это может привести к ненадёжности сборки.</p><div class="literalblock programlisting"><div class=content><pre>              # Build the world
+		   log &#34;Building world&#34;
+		   cd /usr/src &amp;&amp;
+		   make -j 2 ${COMPATFLAGS} buildworld 2&gt;&amp;1
+		# Distribute the world
+		   log &#34;Distributing world&#34;
+		   cd /usr/src/release &amp;&amp;
+		   make -j 2 obj &amp;&amp;
+		   make ${COMPATFLAGS} release.1 release.2 2&gt;&amp;1</pre></div></div></li><li><p>Создайте соответствующую <a href=https://docs.freebsd.org/ru/books/handbook/network-servers#network-dns>DNS</a> SRV-запись для сервера обновлений и разместите остальные за ним с переменными весами. Использование этой возможности обеспечит зеркала для обновлений, однако данный совет не обязателен, если вы не хотите предоставлять избыточный сервис.</p><div class="literalblock programlisting"><div class=content><pre>_http._tcp.update.myserver.com.		IN SRV   0 2 80   host1.myserver.com.
+					IN SRV   0 1 80   host2.myserver.com.
+					IN SRV   0 0 80   host3.myserver.com.</pre></div></div></li></ul></div></div></div><hr><div class=last-modified><p><strong>Изменено</strong>: 17 мая 2026 г. by <a href="https://cgit.freebsd.org/doc/commit/?id=e612452e3c" target=_blank>Vladlen Popolitov</a></p></div></div><aside class=toc><div class=toc-content><h3>Содержание</h3><nav id=TableOfContents><ul><li><a href=#acknowledgments>1. Благодарности</a></li><li><a href=#introduction>2. Введение</a></li><li><a href=#prerequisites>3. Предварительные требования</a></li><li><a href=#Configuration>4. Конфигурация: установка и настройка</a></li><li><a href=#build>5. Сборка кода обновления</a></li><li><a href=#patch>6. Построение патча</a></li><li><a href=#tips>7. Советы</a></li></ul></nav><hr><div class=resources><h3>Материалы</h3><ul class=contents><li><i class="fa fa-file-pdf-o" aria-hidden=true title="Скачать PDF"></i><a href=https://download.freebsd.org/doc/ru/articles/freebsd-update-server/freebsd-update-server_ru.pdf>Скачать PDF</a></li><li><i class="fa fa-pencil-square-o" aria-hidden=true title="Редактировать эту страницу"></i><a href=https://github.com/freebsd/freebsd-doc/blob/main/documentation/content/ru/articles/freebsd-update-server/_index.adoc target=_blank>Редактировать эту страницу</a></li></ul></div></div></aside></main><footer><div class=footer-container><section class=logo-column><img src=https://docs.freebsd.org/images/FreeBSD-colors.svg width=160 height=50 alt="FreeBSD logo"><div class=options-container><div class=language-container><a id=languages href=https://docs.freebsd.org/ru/languages><img src=https://docs.freebsd.org/images/language.png class=language-image alt="Выберите язык">
+<span>Русский</span></a></div><div class=theme-container><select id=theme-chooser><option value=theme-system>Система</option><option value=theme-light>Светлый</option><option value=theme-dark>Тёмный</option><option value=theme-high-contrast>Высокая контрастность</option></select></div></div></section><section class=about-column><h3 class=column-title>О нас</h3><ul class=column-elements-container><li><a href=https://www.freebsd.msk.ru/ru/about/ target=_blank class=column-element>FreeBSD</a></li><li><a href=https://freebsdfoundation.org/ target=_blank class=column-element>Фонд FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/where/ target=_blank class=column-element>Получить FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/internal/code-of-conduct target=_blank class=column-element>Кодекс Этики</a></li><li><a href=https://www.freebsd.msk.ru/ru/security/ target=_blank class=column-element>Бюллетени Безопасности</a></li></ul></section><section class=documentation-column><h3 class=column-title>Документация</h3><ul class=column-elements-container><li><a href=/ru class=column-element>Портал документации</a></li><li><a href=https://man.FreeBSD.org target=_blank class=column-element>Страницы Справочника</a></li><li><a href=https://papers.FreeBSD.org target=_blank class=column-element>Презентации и публикации</a></li><li><a href=https://docs-archive.freebsd.org/doc/ target=_blank class=column-element>Предыдущие версии</a></li><li><a href=https://docs-archive.freebsd.org/44doc/ target=_blank class=column-element>Документы 4.4BSD</a></li><li><a href=https://wiki.freebsd.org/ target=_blank class=column-element>Wiki</a></li></ul></section><section class=community-column><h3 class=column-title>Сообщество</h3><ul class=column-elements-container><li><a href=https://docs.freebsd.org/ru/articles/contributing class=column-element>Принять участие</a></li><li><a href=https://forums.freebsd.org/ target=_blank class=column-element>Форум Сообщества</a></li><li><a href=https://lists.freebsd.org/ target=_blank class=column-element>Списки рассылки</a></li><li><a href=https://wiki.freebsd.org/IRC/Channels target=_blank class=column-element>Каналы IRC</a></li><li><a href=https://bugs.freebsd.org/bugzilla/ target=_blank class=column-element>Трекер ошибок</a></li></ul></section><section class=legal-column><h3 class=column-title>Юридическая информация</h3><ul class=column-elements-container><li><a href=https://freebsdfoundation.org/donate/ target=_blank class=column-element>Пожертвования</a></li><li><a href=https://www.freebsd.msk.ru/ru/copyright/freebsd-license/ target=_blank class=column-element>Лицензирование</a></li><li><a href=https://www.freebsd.msk.ru/ru/privacy/ target=_blank class=column-element>Политика Конфиденциальности</a></li><li><a href=https://www.freebsd.msk.ru/ru/copyright/ target=_blank class=column-element>Юридические оговорки</a></li></ul></section><section class=copyright-column><p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p><span>Сделано с помощью <span class=heart>♥</span> Сообществом FreeBSD</span></section></div></footer></body></html>

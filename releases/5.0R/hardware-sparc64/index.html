@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/releases/5.0R/hardware-sparc64/">
+
+  <title>
+    FreeBSD/sparc64 5.0-RELEASE Hardware Notes |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD/sparc64 5.0-RELEASE Hardware Notes " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/releases/5.0R/hardware-sparc64/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/releases\/5.0R\/hardware-sparc64\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/where></a></li>
+  <li>
+    <a href=/releases>Release Information</a>
+    <ul>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Legacy Release: <a href=ZgotmplZ></a></li>
+    </ul>
+  </li>
+  <li>
+    <a href=/snapshots>Snapshot Releases</a>
+      <ul>
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+      </ul>
+  </li>
+  <li><a href=/ports>Ported Applications</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD/sparc64 5.0-RELEASE Hardware Notes</h1><h3 class="CORPAUTHOR">The FreeBSD Documentation
+        Project</h3>
+
+        <p class="COPYRIGHT">Copyright © 2000, 2001, 2002,
+        2003 by The FreeBSD Documentation Project</p>
+        <hr/>
+      
+
+      <div class="TOC">
+        <dl>
+          <dt><b>Table of Contents</b></dt>
+
+          <dt>1 <a href="#INTRO">Introduction</a></dt>
+
+          <dt>2 <a href="#SUPPORT-SYS">Supported Systems</a></dt>
+
+          <dd>
+            <dl>
+              <dt>2.1 <a href="#AEN19">Overview</a></dt>
+
+              <dt>2.2 <a href="#AEN30">In general, what do you need
+              to run FreeBSD on a sparc64</a></dt>
+
+              <dt>2.3 <a href="#AEN57">System-specific
+              information</a></dt>
+
+              <dd>
+                <dl>
+                  <dt>2.3.1 <a href="#AEN61">Ultra 1</a></dt>
+
+                  <dt>2.3.2 <a href="#AEN65">Ultra 2</a></dt>
+
+                  <dt>2.3.3 <a href="#AEN82">Ultra 5/10</a></dt>
+
+                  <dt>2.3.4 <a href="#AEN110">Ultra 60</a></dt>
+
+                  <dt>2.3.5 <a href="#AEN134">Blade 100</a></dt>
+                </dl>
+              </dd>
+
+              <dt>2.4 <a href="#AEN173">Supported Hardware
+              Overview</a></dt>
+            </dl>
+          </dd>
+
+          <dt>3 <a href="#SUPPORT-DEV">Supported Devices</a></dt>
+
+          <dd>
+            <dl>
+              <dt>3.1 <a href="#AEN202">PCI Hardware</a></dt>
+
+              <dt>3.2 <a href="#AEN240">SBus Hardware</a></dt>
+
+              <dt>3.3 <a href="#AEN250">ISA Hardware</a></dt>
+
+              <dt>3.4 <a href="#AEN260">EBus Hardware</a></dt>
+
+              <dt>3.5 <a href="#AEN273">Unsupported
+              Hardware</a></dt>
+            </dl>
+          </dd>
+
+          <dt>4 <a href="#ACKNOWLEDGEMENTS">Acknowledgments</a></dt>
+        </dl>
+      </div>
+
+      <div class="SECT1">
+        <hr/>
+
+        <h1 class="SECT1"><a id="INTRO" name="INTRO">1
+        Introduction</a></h1>
+
+        <p>This document contains the hardware compatibility notes
+        for FreeBSD 5.0-RELEASE on the UltraSPARC hardware platform
+        (also referred to as FreeBSD/sparc64 5.0-RELEASE). It lists
+        devices known to work on this platform, as well as some
+        notes on boot-time kernel customization that may be useful
+        when attempting to configure support for new devices.</p>
+
+        <div class="NOTE">
+          <blockquote class="NOTE">
+            <p><b>Note:</b> This document includes information
+            specific to the UltraSPARC hardware platform. Versions
+            of the hardware compatibility notes for other
+            architectures will differ in some details.</p>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="SECT1">
+        <hr/>
+
+        <h1 class="SECT1"><a id="SUPPORT-SYS" name="SUPPORT-SYS">2
+        Supported Systems</a></h1>
+
+        <p>Additions, corrections and constructive criticism are
+        invited. In particular, information on system quirks is
+        more than welcome.</p>
+
+        <div class="SECT2">
+          <hr/>
+
+          <h2 class="SECT2"><a id="AEN19" name="AEN19">2.1
+          Overview</a></h2>
+
+          <p>This document tries to provide a starting point for
+          those who want to run FreeBSD on an UltraSPARC-based
+          machine. It is aimed at providing background information
+          on the various hardware designs. It is not a replacement
+          for the systems manuals.</p>
+
+          <p>The information is structured as follows:</p>
+
+          <ul>
+            <li>
+              <p>General hardware requirements to run FreeBSD on
+              sparc64.</p>
+            </li>
+
+            <li>
+              <p>System specific information for each of the
+              systems/boards supported by FreeBSD.</p>
+            </li>
+
+            <li>
+              <p>Information on expansion boards for FreeBSD,
+              including things that differ from what is in the
+              generic supported hardware list.</p>
+            </li>
+          </ul>
+          <br/>
+          <br/>
+        </div>
+
+        <div class="SECT2">
+          <hr/>
+
+          <h2 class="SECT2"><a id="AEN30" name="AEN30">2.2 In
+          general, what do you need to run FreeBSD on a
+          sparc64</a></h2>
+
+          <p>FreeBSD/sparc64 requires an UltraSPARC system.
+          Currently, the newer PCI-based systems are supported
+          better than the older SBus based systems. The following
+          systems are known to work to varying degrees:</p>
+
+          <ul>
+            <li>
+              <p>Sun Ultra 1 workstations</p>
+            </li>
+
+            <li>
+              <p>Sun Ultra 2 workstations</p>
+            </li>
+
+            <li>
+              <p>Sun Ultra 5 workstations</p>
+            </li>
+
+            <li>
+              <p>Sun Ultra 10 workstations</p>
+            </li>
+
+            <li>
+              <p>Sun Ultra 30 workstations</p>
+            </li>
+
+            <li>
+              <p>Sun Ultra 60 workstations</p>
+            </li>
+
+            <li>
+              <p>Sun Blade 100 workstations</p>
+            </li>
+
+            <li>
+              <p>Sun Netra t1 series servers</p>
+            </li>
+
+            <li>
+              <p>Sun Enterprise 220R servers</p>
+            </li>
+
+            <li>
+              <p>Sun Enterprise 250 servers</p>
+            </li>
+
+            <li>
+              <p>Sun Enterprise 420R servers</p>
+            </li>
+          </ul>
+
+          <p>Ultra 80 and Blade 1000 are expected to work, maybe
+          with minor modifications. SMP is supported on Ultra 2 and
+          60 workstations and Enterprise 220R, 250 and 420R
+          servers.</p>
+        </div>
+
+        <div class="SECT2">
+          <hr/>
+
+          <h2 class="SECT2"><a id="AEN57" name="AEN57">2.3
+          System-specific information</a></h2>
+
+          <p>Below is an overview of the UltraSPARC hardware that
+          FreeBSD runs on. The GENERIC kernel configuration file in
+          <tt class="FILENAME">/sys/sparc64/conf/GENERIC</tt> may
+          contain additional information about supported
+          devices.</p>
+
+          <div class="SECT3">
+            <hr/>
+
+            <h3 class="SECT3"><a id="AEN61" name="AEN61">2.3.1
+            Ultra 1</a></h3>
+
+            <p>UltraSPARC Ultra1-family systems have not been
+            thoroughly tested with FreeBSD. These systems are not
+            very well supported, but it is possible to install
+            FreeBSD onto an Ultra-1e with a <tt class="DEVICENAME">hme</tt> Ethernet interface.</p>
+          </div>
+
+          <div class="SECT3">
+            <hr/>
+
+            <h3 class="SECT3"><a id="AEN65" name="AEN65">2.3.2
+            Ultra 2</a></h3>
+
+            <p>UltraSPARC Ultra2-family systems include the
+            following hardware:</p>
+
+            <ul>
+              <li>
+                <p>1 or 2 UltraSPARC II CPUs</p>
+              </li>
+
+              <li>
+                <p>Built-in Ethernet (<tt class="DEVICENAME">hme</tt> compatible)
+                interface</p>
+              </li>
+
+              <li>
+                <p>4 SBus slots</p>
+              </li>
+
+              <li>
+                <p>1 UPA Slot</p>
+              </li>
+
+              <li>
+                <p>Serial and Parallel ports</p>
+              </li>
+
+              <li>
+                <p>16-bit audio</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="SECT3">
+            <hr/>
+
+            <h3 class="SECT3"><a id="AEN82" name="AEN82">2.3.3
+            Ultra 5/10</a></h3>
+
+            <p>UltraSPARC Ultra5/10-family systems include the
+            following hardware:</p>
+
+            <ul>
+              <li>
+                <p>UltraSPARC IIi CPU</p>
+              </li>
+
+              <li>
+                <p>Three PCI busses</p>
+              </li>
+
+              <li>
+                <p>Built-in Ethernet (<tt class="DEVICENAME">hme</tt> compatible)
+                interface</p>
+              </li>
+
+              <li>
+                <p>Built-in PCI-IDE controller <span class="emphasis"><i class="EMPHASIS">(not yet
+                committed - in Perforce tree)</i></span></p>
+              </li>
+
+              <li>
+                <p>Two PC-AT style `com&#39; ports for the mouse and
+                keyboard</p>
+              </li>
+
+              <li>
+                <p>Floppy driver controller</p>
+              </li>
+
+              <li>
+                <p>Siemens SAB82532 dual-channel serial ports for
+                ttya and ttyb</p>
+              </li>
+
+              <li>
+                <p>One CS4231 audio device</p>
+              </li>
+
+              <li>
+                <p>One PC-AT style parallel port</p>
+              </li>
+
+              <li>
+                <p>Sun `ffb&#39; frame buffer (Ultra10 only)</p>
+              </li>
+
+              <li>
+                <p>EBus (Sun proprietary bus for slow devices)</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="SECT3">
+            <hr/>
+
+            <h3 class="SECT3"><a id="AEN110" name="AEN110">2.3.4
+            Ultra 60</a></h3>
+
+            <p>Sun Ultra 60 workstations include the following
+            hardware:</p>
+
+            <ul>
+              <li>
+                <p>1 or 2 UltraSPARC II CPUs</p>
+              </li>
+
+              <li>
+                <p>4 PCI slots</p>
+              </li>
+
+              <li>
+                <p>2 UPA slots</p>
+              </li>
+
+              <li>
+                <p><a href="http://www.FreeBSD.org/cgi/man.cgi?query=sym&amp;sektion=4&amp;manpath=FreeBSD+5.0-RELEASE">
+                <span class="CITEREFENTRY"><span class="REFENTRYTITLE">sym</span>(4)</span></a>-based
+                UltraSCSI controller</p>
+              </li>
+
+              <li>
+                <p>Built-in Ethernet (<tt class="DEVICENAME">hme</tt> compatible)
+                interface</p>
+              </li>
+
+              <li>
+                <p>Serial and Parallel ports</p>
+              </li>
+
+              <li>
+                <p>16-bit audio</p>
+              </li>
+
+              <li>
+                <p>EBus (Sun proprietary bus for slow devices)</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="SECT3">
+            <hr/>
+
+            <h3 class="SECT3"><a id="AEN134" name="AEN134">2.3.5
+            Blade 100</a></h3>
+
+            <p>Sun Blade 100 workstations include the following
+            hardware:</p>
+
+            <ul>
+              <li>
+                <p>UltraSPARC IIe CPU</p>
+              </li>
+
+              <li>
+                <p>Three PCI busses</p>
+              </li>
+
+              <li>
+                <p>Built-in Ethernet (<tt class="DEVICENAME">gem</tt> compatible)
+                interface</p>
+              </li>
+
+              <li>
+                <p>Two USB ports <span class="emphasis"><i class="EMPHASIS">(unsupported)</i></span></p>
+              </li>
+
+              <li>
+                <p>Two Firewire ports <span class="emphasis"><i class="EMPHASIS">(unsupported)</i></span></p>
+              </li>
+
+              <li>
+                <p>Built-in PCI-IDE controller <span class="emphasis"><i class="EMPHASIS">(not yet
+                committed - in Perforce tree)</i></span></p>
+              </li>
+
+              <li>
+                <p>Two PC-AT style `com&#39; ports for the mouse and
+                keyboard</p>
+              </li>
+
+              <li>
+                <p>Floppy driver controller</p>
+              </li>
+
+              <li>
+                <p><a href="http://www.FreeBSD.org/cgi/man.cgi?query=sio&amp;sektion=4&amp;manpath=FreeBSD+5.0-RELEASE">
+                <span class="CITEREFENTRY"><span class="REFENTRYTITLE">sio</span>(4)</span></a>
+                supported serial ports for ttya and ttyb</p>
+              </li>
+
+              <li>
+                <p>One CS4231 audio device</p>
+              </li>
+
+              <li>
+                <p>One PC-AT style parallel port</p>
+              </li>
+
+              <li>
+                <p>Built-in PGX64 (ATI) graphics</p>
+              </li>
+
+              <li>
+                <p>EBus (Sun proprietary bus for slow devices)</p>
+              </li>
+
+              <li>
+                <p>ISA bus</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="SECT2">
+          <hr/>
+
+          <h2 class="SECT2"><a id="AEN173" name="AEN173">2.4
+          Supported Hardware Overview</a></h2>
+
+          <p>A word of caution: the installed base for
+          FreeBSD/sparc64 is not nearly as large as for
+          FreeBSD/Intel. This means that the enormous variation of
+          PCI/ISA expansion cards out there has much less chance of
+          having been tested on sparc64 than on Intel. This is not
+          to imply they are doomed to fail, just that the chance of
+          running into something never tested before is much
+          higher. <tt class="FILENAME">GENERIC</tt> contains things
+          that are known to work on sparc64 only.</p>
+
+          <p>The PCI bus is fully supported. SBus support is
+          limited, but is reported to work well enough to netboot
+          an SBus-based Ultra 2 workstation.</p>
+
+          <p>1.44 Mbyte floppy drives are <span class="emphasis"><i class="EMPHASIS">not</i></span> yet supported.</p>
+
+          <p>ATA and ATAPI (IDE) devices are supported via the <a href="http://www.FreeBSD.org/cgi/man.cgi?query=ata&amp;sektion=4&amp;manpath=FreeBSD+5.0-RELEASE">
+          <span class="CITEREFENTRY"><span class="REFENTRYTITLE">ata</span>(4)</span></a> driver
+          framework. <span class="emphasis"><i class="EMPHASIS">(not yet committed - in Perforce
+          tree)</i></span></p>
+
+          <p>There is full SCSI support via the CAM layer. However,
+          only NCR/Symbios cards are currently working. Adaptec
+          2940x (AIC 7xxx chip-based) and <a href="http://www.FreeBSD.org/cgi/man.cgi?query=isp&amp;sektion=4&amp;manpath=FreeBSD+5.0-RELEASE">
+          <span class="CITEREFENTRY"><span class="REFENTRYTITLE">isp</span>(4)</span></a> cards
+          should be supported soon. Be aware that SCSI cards must
+          contain Sun FCODE in order to use them as a boot device
+          from OpenBoot.</p>
+
+          <p>If you want to boot your sparc64 over the Ethernet you
+          will obviously need an Ethernet card that the OpenBoot
+          console recognizes.</p>
+
+          <p><tt class="DEVICENAME">hme</tt>, <tt class="DEVICENAME">gem</tt>, and <tt class="DEVICENAME">eri</tt> based network devices.</p>
+
+          <p>The ``PC standard&#39;&#39; serial ports found on most newer
+          Sun workstations are supported.</p>
+        </div>
+      </div>
+
+      <div class="SECT1">
+        <hr/>
+
+        <h1 class="SECT1"><a id="SUPPORT-DEV" name="SUPPORT-DEV">3
+        Supported Devices</a></h1>
+        $FreeBSD:
+        src/release/doc/en_US.ISO8859-1/hardware/sparc64/dev-sparc64.sgml,v
+        1.1.2.1 2003/01/14 18:12:51 roam Exp $
+
+        <p>This section describes the devices currently known to be
+        supported by with FreeBSD on the UltraSPARC platform. Other
+        configurations may also work, but simply have not been
+        tested yet. Feedback, updates, and corrections to this list
+        are encouraged.</p>
+
+        <p>Where possible, the drivers applicable to each device or
+        class of devices is listed. If the driver in question has a
+        manual page in the FreeBSD base distribution (most should),
+        it is referenced here.</p>
+
+        <div class="SECT2">
+          <hr/>
+
+          <h2 class="SECT2"><a id="AEN202" name="AEN202">3.1 PCI
+          Hardware</a></h2>
+
+          <p>In general, any device for which there is a driver can
+          be made to work on sparc64. Some drivers might just work,
+          others might require some changes (because this is the
+          first big-endian architecture to be supported by
+          FreeBSD).</p>
+
+          <p>The following drivers are known to work:</p>
+
+          <ul>
+            <li>
+              <p><tt class="LITERAL">apb</tt> (Sun PCI-PCI
+              bridge)</p>
+            </li>
+
+            <li>
+              <p>generic PCI-PCI bridges</p>
+            </li>
+
+            <li>
+              <p><a href="http://www.FreeBSD.org/cgi/man.cgi?query=ahc&amp;sektion=4&amp;manpath=FreeBSD+5.0-RELEASE">
+              <span class="CITEREFENTRY"><span class="REFENTRYTITLE">ahc</span>(4)</span></a>
+              (coming real soon).</p>
+            </li>
+
+            <li>
+              <p><a href="http://www.FreeBSD.org/cgi/man.cgi?query=ata&amp;sektion=4&amp;manpath=FreeBSD+5.0-RELEASE">
+              <span class="CITEREFENTRY"><span class="REFENTRYTITLE">ata</span>(4)</span></a>, <tt class="DEVICENAME">atadisk</tt>, <tt class="DEVICENAME">atapicd</tt> (but not atapifd,
+              atapist)</p>
+            </li>
+
+            <li>
+              <p><tt class="DEVICENAME">gem</tt> (Sun GEM/ERI
+              ethernet, on-board on Blade 100)</p>
+            </li>
+
+            <li>
+              <p><tt class="LITERAL">hme</tt> (Sun HME ethernet,
+              on-board on Ultra 5, 10)</p>
+            </li>
+
+            <li>
+              <p><a href="http://www.FreeBSD.org/cgi/man.cgi?query=sio&amp;sektion=4&amp;manpath=FreeBSD+5.0-RELEASE">
+              <span class="CITEREFENTRY"><span class="REFENTRYTITLE">sio</span>(4)</span></a></p>
+            </li>
+
+            <li>
+              <p><a href="http://www.FreeBSD.org/cgi/man.cgi?query=sym&amp;sektion=4&amp;manpath=FreeBSD+5.0-RELEASE">
+              <span class="CITEREFENTRY"><span class="REFENTRYTITLE">sym</span>(4)</span></a></p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="SECT2">
+          <hr/>
+
+          <h2 class="SECT2"><a id="AEN240" name="AEN240">3.2 SBus
+          Hardware</a></h2>
+
+          <p>The following drivers have SBus front ends:</p>
+
+          <ul>
+            <li>
+              <p><tt class="LITERAL">hme</tt> Ethernet</p>
+            </li>
+
+            <li>
+              <p><tt class="LITERAL">mk48txx</tt> (&#39;eeprom&#39; device;
+              time-of-day clock)</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="SECT2">
+          <hr/>
+
+          <h2 class="SECT2"><a id="AEN250" name="AEN250">3.3 ISA
+          Hardware</a></h2>
+
+          <p>The paragraph about PCI drivers apply to ISA drivers
+          as well, but with the notable exception that ISA DMA is
+          not yet supported. This are generally on-board devices;
+          there are no UltraSPARC boxes with ISA slots that the
+          authors are aware of.</p>
+
+          <p>The following drivers are known to work:</p>
+
+          <ul>
+            <li>
+              <p><a href="http://www.FreeBSD.org/cgi/man.cgi?query=sio&amp;sektion=4&amp;manpath=FreeBSD+5.0-RELEASE">
+              <span class="CITEREFENTRY"><span class="REFENTRYTITLE">sio</span>(4)</span></a></p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="SECT2">
+          <hr/>
+
+          <h2 class="SECT2"><a id="AEN260" name="AEN260">3.4 EBus
+          Hardware</a></h2>
+
+          <p>The EBus is specific to Sun hardware, so drivers need
+          to have support added to work with these devices. It is
+          quite similar to ISA, so that ISA drivers can usually be
+          easily ported, provided that they use the bus space
+          interface, and not in[bwl]/out[bwl] and related
+          functions. DMA is not yet supported.</p>
+
+          <p>The following drivers are known to work:</p>
+
+          <ul>
+            <li>
+              <p><a href="http://www.FreeBSD.org/cgi/man.cgi?query=sio&amp;sektion=4&amp;manpath=FreeBSD+5.0-RELEASE">
+              <span class="CITEREFENTRY"><span class="REFENTRYTITLE">sio</span>(4)</span></a></p>
+            </li>
+
+            <li>
+              <p><tt class="LITERAL">mk48txx</tt> (&#39;eeprom&#39; device;
+              time-of-day clock)</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="SECT2">
+          <hr/>
+
+          <h2 class="SECT2"><a id="AEN273" name="AEN273">3.5
+          Unsupported Hardware</a></h2>
+
+          <p>The following hardware, which is built-in in Sun
+          UltraSPARC boxes, is not currently supported:</p>
+
+          <ul>
+            <li>
+              <p>graphics/frame buffer devices, keyboards (except
+              indirectly in text mode using the <tt class="DEVICENAME">ofw_console</tt> device)</p>
+            </li>
+
+            <li>
+              <p>Siemens sab82532 serial ports (Ultra 5/10; the
+              keyboard/mouse ports are also RS232 ones and
+              supported by the sio driver though; a driver, &#39;se&#39;,
+              is being worked on).</p>
+            </li>
+
+            <li>
+              <p>serial keyboards (except indirectly using the <tt class="DEVICENAME">ofw_console</tt> device)</p>
+            </li>
+
+            <li>
+              <p>Zilog z8530 serial ports (keyboard/mouse, ttya and
+              ttyb in Ultra 1 and Ultra 2 boxen)</p>
+            </li>
+
+            <li>
+              <p>fas (Fast SCSI controller builtin in most Ultra 1
+              and Ultra 2 boxen)</p>
+            </li>
+
+            <li>
+              <p>USB ports (have issues, should be easy to get to
+              work though)</p>
+            </li>
+
+            <li>
+              <p>all floppy drives/controllers</p>
+            </li>
+
+            <li>
+              <p>smart card readers (the Blade 100 has one, don&#39;t
+              know much about it)</p>
+            </li>
+
+            <li>
+              <p>FireWire/IEEE1394</p>
+            </li>
+
+            <li>
+              <p>sound cards</p>
+            </li>
+
+            <li>
+              <p>parallel ports</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="SECT1">
+        <hr/>
+
+        <h1 class="SECT1"><a id="ACKNOWLEDGEMENTS" name="ACKNOWLEDGEMENTS">4 Acknowledgments</a></h1>
+
+        <p>This document is based in part on the FreeBSD/Alpha and
+        NetBSD/sparc64 release documentation. Information about
+        specific system models was obtained from <a href="http://www.sun.com" target="_top">Sun</a>.</p>
+      </div>
+    
+    <hr/>
+
+    <p align="center"><small>This file, and other release-related
+    documents, can be downloaded from <a href="ftp://ftp.FreeBSD.org/">ftp://ftp.FreeBSD.org/</a>.</small></p>
+
+    <p align="center"><small>For questions about FreeBSD, read the
+    <a href="http://www.FreeBSD.org/docs.html">documentation</a>
+    before contacting &lt;<a href="mailto:questions@FreeBSD.org">questions@FreeBSD.org</a>&gt;.</small></p>
+
+    <p align="center"><small>For questions about this
+    documentation, e-mail &lt;<a href="mailto:doc@FreeBSD.org">doc@FreeBSD.org</a>&gt;.</small></p>
+    <br/>
+    <br/>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: May 15, 2021 by <a href="https://cgit.freebsd.org/doc/commit/?id=b334e69268" target="_blank">Allan Jude</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

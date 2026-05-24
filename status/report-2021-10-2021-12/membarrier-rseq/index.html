@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/status/report-2021-10-2021-12/membarrier-rseq/">
+
+  <title>
+    
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content="  " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/status/report-2021-10-2021-12/membarrier-rseq/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/status\/report-2021-10-2021-12\/membarrier-rseq\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/about/></a></li>
+  <li><a href=/features/></a></li>
+  <li><a href=/applications/>Applications</a></li>
+  <li><a href=/administration/>Administration</a></li>
+  <li><a href=/news/newsflash/>News</a></li>
+  <li><a href=/events></a></li>
+  <li><a href=/press>Press</a></li>
+  <li><a href=/art>Artwork</a></li>
+  <li><a href=/donations>Donations</a></li>
+  <li><a href=/copyright></a></li>
+  <li><a href=/privacy>Privacy Policy</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1></h1><div class="sect2">
+<h3 id="_sched_getcpu2_membarrier2_and_rseq2_syscalls">sched_getcpu(2), membarrier(2), and rseq(2) syscalls</h3>
+<div class="paragraph">
+<p>Contact: Konstantin Belousov &lt;<a href="mailto:kib@FreeBSD.org">kib@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://kib.kiev.ua/kib/membarrier.pdf">Linux manpage for membarrier(2)</a> URL: <a href="https://kib.kiev.ua/kib/membarrier.pdf">https://kib.kiev.ua/kib/membarrier.pdf</a><br/>
+<a href="https://reviews.freebsd.org/D32360">membarrier(2) implementation</a> URL: <a href="https://reviews.freebsd.org/D32360">https://reviews.freebsd.org/D32360</a><br/>
+<a href="https://kib.kiev.ua/kib/rseq.pdf">Linux manpage for rseq(2)</a> URL: <a href="https://kib.kiev.ua/kib/rseq.pdf">https://kib.kiev.ua/kib/rseq.pdf</a><br/>
+<a href="https://reviews.freebsd.org/D32505">rseq(2) and userspace bindings implementation</a> URL: <a href="https://reviews.freebsd.org/D32505">https://reviews.freebsd.org/D32505</a></p>
+</div>
+<div class="paragraph">
+<p>Linux provides a set of syscalls that allow to develop mostly
+syscall-less scalable algorithms in userspace.  The mechanisms are
+based on optimistic execution using CPU-local data with the assumption that
+rare events like context switches or signal delivery do not occur
+for the given calculation, and if they do occur, rollback and restart
+is performed.  This very high-level approach is used, as I understand,
+for implementation of tools like URCU, fast malloc allocators
+(tcmalloc) and other userspace infrastructure projects aimed at
+large partitioned machines.</p>
+</div>
+<div class="paragraph">
+<p>For instance, sched_getcpu(2) syscall returns the CPU id of the CPU
+where the current thread is currently executing.  On amd64, if
+available, we use a RDTSCP or RDPID instruction to query the CPU id without
+changing CPU mode, otherwise this is a light-weight syscall.  Of
+course, the answer provided is obsolete the moment it is created,
+even before it is returned to userspace.  But it allows seeding values
+in some structures that are valid for a long time (at the
+CPU speed scale) and are automatically corrected on exceptional
+control flow events like context switches, and userspace can either detect
+and rollback or sync and rollback with the exceptions.</p>
+</div>
+<div class="paragraph">
+<p>There are two cornerstone syscalls that allow userspace to implement
+these efficient algorithms: membarrier(2) and rseq(2).</p>
+</div>
+<div class="paragraph">
+<p>Membarrier is a facility that helps implementing fast CPU ordering
+barriers, typically used for asymmetric/biased locking.  In these lock
+implementation schemes, the owner of the object often assumes that there
+are contenders/parallel threads that need coordinating with.  If some
+thread starts accessing the same resource, then it is its duty to
+ensure correctness.  Examples of &#39;traps&#39; that fast code path
+utilize are reads from a dedicated page that is unmapped by contenders,
+to switch the fast path to the slow one.  Or we could send a signal to all
+threads that potentially have access to that object, to insert a
+barrier.  Or we can use the membarrier(2) facility, which incurs
+significantly less overhead than signalling all threads.</p>
+</div>
+<div class="paragraph">
+<p>Membarrier(2) inserts a barrier, which is the typical underlying
+hardware operation to ensure ordering, into the specified set of CPUs,
+if these CPUs are executing the specified thread.  If these CPUs are not executing
+the targeted threads, it is assumed that sequential consistency guarantees
+from the context switch are enough to fulfill the requirement of
+membarrier(2).  Overall, the fast path can be implemented without slow
+instructions, and the slow path injects required fences into the fast path at
+the cost of IPI.</p>
+</div>
+<div class="paragraph">
+<p>The facility to detect exceptional conditions in the userspace thread
+execution was developed in Linux and called rseq(2).  It is a feature
+often called Restartable Atomic Sequences, which explains the acronym.
+The ability to cheaply do that allows code longer than a single
+instruction to execute atomically, without the need to propose and
+implement unsafe operations like disabling preemption, which is not
+feasible for userspace.  For instance, code might use CPU-local
+resources, which otherwise does not cope well with context switches.
+There cannot be an analog of critical_enter(9) in userspace.  (A
+facility to cheaply block signal delivery exists in FreeBSD, see
+sigfastblock(2), but correctly using it is provably too hard to
+implement in general-purpose code, esp. because it requires
+version-dependent coordination with rtdl and libthr.)</p>
+</div>
+<div class="paragraph">
+<p>rseq(2) takes per-thread block of memory, where the thread writes the
+current CPU id (see sched_getcpu(2)) and specifies the block of
+critical code that must be unwound if an exceptional situation like a
+context switch occurred while the block was executing.  The fast code
+path uses per-cpu data and typically does not need any corrections,
+but would a context switch occur, transfer of control to the abort
+handler informs userspace about the event.  So instead of disabling
+context switches, code can cheaply check for one after the calculation
+and retry if needed.</p>
+</div>
+<div class="paragraph">
+<p>An interesting rseq(2) implementation detail is that it is
+impossible (and not needed) to access/update rseq structures from
+kernel during the actual context switch, because we cannot access
+userspace from under a spinlock.  In other words,
+threads using rseq do not incur any performance cost from
+system-global context switches.  Instead, if the process registered for
+rseq(2), on any return to user mode we check if any exceptional
+events happened while the thread was in the kernel (context switches may happen
+only while the thread is in kernel mode), and if a context switch indeed
+occurred, we fire an ast to check whether the program counter is inside the
+critical section and jump to the abort handler if it is.</p>
+</div>
+<div class="paragraph">
+<p>The implementations of membarrier(2) and rseq(2) are clean-room: I used
+Linux manual pages as the reference and public discussions of the
+features for clarifying corner cases.  On Linux/glibc, there was no
+stable glibc interface to the rseq facility.  One proposed integration was
+committed then reverted from glibc.  It might be prudent to wait
+some more for the rseq(2) interface to stabilize in glibc before providing
+it in our libc or to rely on tight integration between kernel
+and userspace in our base system, and use ABI tricks like symbol
+versioning to evolve the interface.  There is no goal to be 100%
+compatible with Linux anyway.</p>
+</div>
+<div class="paragraph">
+<p>Sponsor: The FreeBSD Foundation</p>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: September 4, 2022 by <a href="https://cgit.freebsd.org/doc/commit/?id=c2284083a9" target="_blank">Gordon Bergling</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

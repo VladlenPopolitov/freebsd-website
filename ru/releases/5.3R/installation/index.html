@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/ru/releases/5.3R/installation/">
+
+  <title>
+    
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content="  " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="ru" >
+  <meta property="og:url" content="https://www.freebsd.org/ru/releases/5.3R/installation/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/ru\/releases\/5.3R\/installation\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/ru/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              п· п©я─п╬п╣п╨я┌п╣
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/about">п· п©я─п╬п╣п╨я┌п╣</a>
+            </li>
+            <li>
+              <a href="/ru/projects/newbies">п▓п╡п╣п╢п╣п╫п╦п╣</a>
+            </li>
+            <li>
+              <a href="/ru/features">п▓п╬п╥п╪п╬п╤п╫п╬я│я┌п╦</a>
+            </li>
+            <li>
+              <a href="/ru/privacy">п÷п╬п╩п╦я┌п╦п╨п╟ п╨п╬п╫я└п╦п╢п╣п╫я├п╦п╟п╩я▄п╫п╬я│я┌п╦</a>
+            </li>
+            <li>
+              <a href="/ru/projects">п÷я─п╬п╣п╨я┌я▀</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>п÷п╬я─я┌я▀</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              п÷п╬п╩я┐я┤п╦я┌я▄ FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/where">п÷п╬п╩я┐я┤п╦я┌я▄ FreeBSD</a>
+            </li>
+            <li>
+              <a href="/ru/releases">п≤п╫я└п╬я─п╪п╟я├п╦я▐ п╬ я─п╣п╩п╦п╥п╟я┘</a>
+            </li>
+            <li>
+              <a href="/ru/releng">п═п╟п╥я─п╟п╠п╬я┌п╨п╟ я─п╣п╩п╦п╥п╬п╡</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              п■п╬п╨я┐п╪п╣п╫я┌п╟я├п╦я▐
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/ru/">п■п╬п╨я┐п╪п╣п╫я┌п╟я├п╦я▐</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/handbook/">п═я┐п╨п╬п╡п╬п╢я│я┌п╡п╬ FreeBSD</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/porters-handbook/">п═я┐п╨п╬п╡п╬п╢я│я┌п╡п╬ п©п╬я─я┌п╦я─п╬п╡я┴п╦п╨п╟</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/fdp-primer">п═я┐п╨п╬п╡п╬п╢я│я┌п╡п╬ п©я─п╬п╣п╨я┌п╟ п╢п╬п╨я┐п╪п╣п╫я┌п╟я├п╦п╦</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">п║я┌я─п╟п╫п╦я├я▀ п║п©я─п╟п╡п╬я┤п╫п╦п╨п╟</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">п÷я─п╣п╥п╣п╫я┌п╟я├п╦п╦ п╦ я│я┌п╟я┌я▄п╦</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books">п п╫п╦пЁп╦</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/articles">п║я┌п╟я┌я▄п╦</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              п║п╬п╬п╠я┴п╣я│я┌п╡п╬
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/community">п║п╬п╬п╠я┴п╣я│я┌п╡п╬</a>
+            </li>
+            <li>
+              <a href="/ru/community/mailinglists">п║п©п╦я│п╨п╦ я─п╟я│я│я▀п╩п╨п╦</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">п╓п╬я─я┐п╪я▀</a>
+            </li>
+            <li>
+              <a href="/ru/usergroups">п⌠я─я┐п©п©я▀ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩п╣п╧</a>
+            </li>
+            <li>
+              <a href="/ru/events">п║п╬п╠я▀я┌п╦я▐</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">п√я┐я─п╫п╟п╩ FreeBSD</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              п═п╟п╥я─п╟п╠п╬я┌я┤п╦п╨п╦
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/projects">п═п╟п╥я─п╟п╠п╬я┌я┤п╦п╨п╦</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">п≤п╢п╣п╦ п©я─п╬п╣п╨я┌п╬п╡</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git-я─п╣п©п╬п╥п╦я┌п╬я─п╦п╧</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">п≈п╣я─п╨п╟п╩п╬ GitHub</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">п÷я─п╬п╡п╣я─п╨п╟ п╨п╬п╢п╟ (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">п║п╣я─п╡п╦я│ п╫п╣п©я─п╣я─я▀п╡п╫п╬п╧ п╦п╫я┌п╣пЁя─п╟я├п╦п╦</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              п÷п╬п╢п╢п╣я─п╤п╨п╟
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/support">п÷п╬п╢п╢п╣я─п╤п╨п╟</a>
+            </li>
+            <li>
+              <a href="/ru/commercial">п÷п╬я│я┌п╟п╡я┴п╦п╨п╦</a>
+            </li>
+            <li>
+              <a href="/ru/security">п≤п╫я└п╬я─п╪п╟я├п╦я▐ п╬ п╠п╣п╥п╬п©п╟я│п╫п╬я│я┌п╦</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">п║п╬п╬п╠я┴п╣п╫п╦я▐ п╬п╠ п╬я┬п╦п╠п╨п╟я┘</a>
+            </li>
+            <li>
+              <a href="/ru/support">п·я┌п©я─п╟п╡п╨п╟ я│п╬п╬п╠я┴п╣п╫п╦п╧ п╬п╠ п╬я┬п╦п╠п╨п╟я┘</a>
+            </li>
+            <li>
+              <a href="/ru/support/webresources">п▓п╣п╠-я─п╣я│я┐я─я│я▀</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="ru">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/ru/" class="current-lang" aria-current="page">Russian</a>
+          </li>
+          
+            <li>
+              <a href="/releases/5.3R/installation/" lang="en">English</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">Б²╓О╦▐</span>
+          п÷п╬п╤п╣я─я┌п╡п╬п╡п╟я┌я▄
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/ru/about/></a></li>
+  <li><a href=/ru/features/></a></li>
+  <li><a href=/ru/applications/>п÷я─п╦б╜п╩п╬б╜п╤п╣б╜п╫п╦я▐</a></li>
+  <li><a href=/ru/administration/>п░п╢б╜п╪п╦б╜п╫п╦б╜я│я┌я─п╟б╜я├п╦я▐</a></li>
+  <li><a href=/ru/news/newsflash/>п²п╬б╜п╡п╬б╜я│я┌п╦</a></li>
+  <li><a href=/ru/events></a></li>
+  <li><a href=/ru/press>п÷я─п╣я│б╜я│п╟</a></li>
+  <li><a href=/ru/art>п≤п╩б╜п╩я▌я│б╜я┌я─п╟б╜я├п╦п╦</a></li>
+  <li><a href=/ru/donations>п÷п╬б╜п╤п╣я─я┌п╡п╬б╜п╡п╟б╜п╫п╦я▐</a></li>
+  <li><a href=/ru/copyright></a></li>
+  <li><a href=/ru/privacy>п÷п╬п╩п╦я┌п╦п╨п╟ п╨п╬п╫б╜я└п╦б╜п╢п╣п╫б╜я├п╦б╜п╟п╩я▄б╜п╫п╬я│б╜я┌п╦</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1></h1><?xml version="1.0" encoding="koi8-r"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:db="http://docbook.org/ns/docbook">
+  <head>
+    <title>Инструкции по установке FreeBSD 5.3-RELEASE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=koi8-r" />
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" media="screen,print" href="../../../layout/css/fixed.css?20130112" type="text/css" />
+
+  </head>
+  <body>
+    <div id="containerwrap">
+      <div id="container">
+        <span class="txtoffscreen"><a href="#content" title="Skip site navigation" accesskey="1">Skip site navigation</a> (1)
+  <a href="#contentwrap" title="Skip section navigation" accesskey="2">Skip section navigation</a> (2)
+</span>
+        <div id="headercontainer">
+          <div id="header">
+            <h2 class="blockhide">Header And Logo</h2>
+            <div id="headerlogoleft">
+              <a href="../.." title="FreeBSD">
+                <img src="../../../layout/images/logo-red.png" width="457" height="75" alt="FreeBSD" />
+              </a>
+            </div>
+            <div id="headerlogoright">
+              <div class="frontdonateroundbox">
+                <div class="frontdonatetop">
+                  <div>
+                    <b style="display: none;">.</b>
+                  </div>
+                </div>
+                <div class="frontdonatecontent">
+                  <a href="https://www.FreeBSDFoundation.org/donate/">Donate to FreeBSD</a>
+                </div>
+                <div class="frontdonatebot">
+                  <div>
+                    <b style="display: none;">.</b>
+                  </div>
+                </div>
+              </div>
+              <h2 class="blockhide">Peripheral Links</h2>
+              <div id="searchnav">
+                <ul id="searchnavlist"></ul>
+              </div>
+              <div id="search">
+                <form method="get" id="search-form" action="https://duckduckgo.com/" onsubmit="document.getElementById('words').value+=' (site:www.FreeBSD.org OR site:docs.FreeBSD.org OR site:lists.FreeBSD.org OR site:wiki.FreeBSD.org OR site:forums.FreeBSD.org)'">
+                  <h2 class="blockhide">
+                    <label for="words">Поиск</label>
+                  </h2>
+                  <input type="hidden" name="ka" value="v" />
+                  <input type="hidden" name="kt" value="v" />
+                  <input type="hidden" name="kh" value="1" />
+                  <input type="hidden" name="kj" value="r2" />
+                  <input id="words" name="q" type="text" size="20" maxlength="255" onfocus="if( this.value==this.defaultValue ) this.value='';" value="Поиск" />
+                  <span> </span>
+                  <input id="submit" name="submit" type="submit" value="Поиск" />
+                </form>
+              </div>
+            </div>
+          </div>
+          <h2 class="blockhide">Site Navigation</h2>
+          <div id="menu">
+            <ul class="first">
+              <li>
+                <a href="../../">На главную</a>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a href="../../about.html">О FreeBSD</a>
+                <ul>
+                  <li>
+                    <a href="../../projects/newbies.html">Введение</a>
+                  </li>
+                  <li>
+                    <a href="../../features.html">Возможности</a>
+                  </li>
+                  <li>
+                    <a href="../../../advocacy/">Адвокатура</a>
+                  </li>
+                  <li>
+                    <a href="../../../marketing/">Маркетинг</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a href="../../where.html">Получение FreeBSD</a>
+                <ul>
+                  <li>
+                    <a href="../../releases/">Информация о релизах</a>
+                  </li>
+                  <li>
+                    <a href="../../releng/">Информация о подготовке релизов</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a href="../../docs.html">Документация</a>
+                <ul>
+                  <li>
+                    <a href="../../../doc/ru_RU.KOI8-R/books/faq/">Часто задаваемые вопросы</a>
+                  </li>
+                  <li>
+                    <a href="../../../doc/ru_RU.KOI8-R/books/handbook/">Руководство пользователя</a>
+                  </li>
+                  <li>
+                    <a href="../../../doc/ru_RU.KOI8-R/books/porters-handbook">Руководство портера</a>
+                  </li>
+                  <li>
+                    <a href="../../../doc/en_US.ISO8859-1/books/developers-handbook">Руководство разработчика</a>
+                  </li>
+                  <li>
+                    <a href="//www.FreeBSD.org/cgi/man.cgi">Страницы справочника</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a href="../../community.html">Сообщество</a>
+                <ul>
+                  <li>
+                    <a href="../../community/mailinglists.html">Списки рассылки</a>
+                  </li>
+                  <li>
+                    <a href="http://forums.freebsd.org">Форумы</a>
+                  </li>
+                  <li>
+                    <a href="../../usergroups.html">Группы пользователей</a>
+                  </li>
+                  <li>
+                    <a href="../../events/events.html">События</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a href="../../projects/index.html">Разработка</a>
+                <ul>
+                  <li>
+                    <a href="http://wiki.FreeBSD.org/IdeasPage">Идеи для проекта</a>
+                  </li>
+                  <li>
+                    <a href="http://svn.FreeBSD.org/viewvc/base/">SVN репозиторий</a>
+                  </li>
+                  <li>
+                    <a href="http://cvsweb.FreeBSD.org">CVS репозиторий</a>
+                  </li>
+                  <li>
+                    <a href="http://p4web.FreeBSD.org">Perforce репозиторий</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a href="../../support.html">Поддержка</a>
+                <ul>
+                  <li>
+                    <a href="../../commercial/commercial.html">Коммерческие предложения</a>
+                  </li>
+                  <li>
+                    <a href="../../security/">Информация о безопасности</a>
+                  </li>
+                  <li>
+                    <a href="//www.FreeBSD.org/cgi/query-pr-summary.cgi">Сообщения об ошибках</a>
+                  </li>
+                  <li>
+                    <a href="../../send-pr.html">Отправить сообщение об ошибке</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a href="http://www.freebsdfoundation.org/">Фонд</a>
+                <ul>
+                  <li>
+                    <a href="http://www.freebsdfoundation.org/donate/">Пожертвования</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="content">
+          <div id="sidewrap">
+            <div id="sidenav">
+              <h2 class="blockhide">Навигация по разделу</h2>
+              <ul>
+                <li>
+                  <a href="../../where.html">Получить FreeBSD</a>
+                </li>
+                <li>
+                  <a href="../../releases/">Информация о релизах</a>
+                  <ul>
+                    <li>Продуктивный релиз: <a href="../../../releases/12.0R/announce.html">12.0</a><a href="../../../releases/11.2R/announce.html">11.2</a></li>
+                    <li>(Старый) Продуктивный релиз: <a href="../../../releases/10.2R/announce.html">10.2</a></li>
+                    <li>
+                      <a href="../../snapshots/">Снэпшот-релизы</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="../../ports/">Портированные приложения</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="contentwrap"><h1>Инструкции по установке FreeBSD 5.3-RELEASE</h1>
+
+  <p>Инструкции по установке FreeBSD публикуются отдельно для каждой
+    платформы, поскольку процедуры установки FreeBSD сильно зависят
+    от аппаратной платформы.</p>
+
+  <p>Инструкции по установке FreeBSD 5.3-RELEASE доступны для следующих
+    платформ:</p>
+
+  <ul>
+    <li><a href="installation-alpha.html" shape="rect">alpha</a></li>
+    <li><a href="installation-amd64.html" shape="rect">amd64</a></li>
+    <li><a href="installation-i386.html" shape="rect">i386</a></li>
+    <li><a href="installation-ia64.html" shape="rect">ia64</a></li>
+    <li><a href="installation-pc98.html" shape="rect">pc98</a></li>
+    <li><a href="installation-sparc64.html" shape="rect">sparc64</a></li>
+  </ul>
+
+  <p>Список всех платформ, находящихся в разработке, опубликован
+    на странице <a href="../../platforms/index.html" shape="rect">Поддерживаемых
+    платформ</a>.</p>
+
+  </div>
+          <br class="clearboth" />
+        </div>
+        <div id="footer"><span><a href="../../search/index-site.html">Карта сайта</a> |
+  <a href="../../copyright/">Условия использования</a> | © 1995-2014
+  Проект FreeBSD. Все права защищены.</span><br />
+      Last modified:  2013-11-13</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+    <hr />
+    <div>
+      <p><strong>п÷п╬я│п╩п╣п╢п╫п╣п╣ п╦п╥п╪п╣п╫п╣п╫п╦п╣</strong>: 6 п╬п╨я┌я▐п╠я─я▐ 2025Б─╞пЁ. п╬я┌ <a href="https://cgit.freebsd.org/doc/commit/?id=f27178d4eb" target="_blank">Andrey Zakhvatov</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">п· п©я─п╬п╣п╨я┌п╣</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/ru/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">п╓п╬п╫п╢ FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/ru/where" class="column-element">п÷п╬п╩я┐я┤п╦я┌я▄ FreeBSD</a>
+          </li>
+          <li>
+            <a href="/ru/internal/code-of-conduct" class="column-element">п п╬п╢п╣п╨я│ п©п╬п╡п╣п╢п╣п╫п╦я▐</a>
+          </li>
+          <li>
+            <a href="/ru/security" class="column-element">п▒я▌п╩п╩п╣я┌п╣п╫п╦ п╠п╣п╥п╬п©п╟я│п╫п╬я│я┌п╦</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">п■п╬п╨я┐п╪п╣п╫я┌п╟я├п╦я▐</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">п÷п╬я─я┌п╟п╩ п╢п╬п╨я┐п╪п╣п╫я┌п╟я├п╦п╦</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">п║я┌я─п╟п╫п╦я├я▀ п║п©я─п╟п╡п╬я┤п╫п╦п╨п╟</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">п÷я─п╣п╥п╣п╫я┌п╟я├п╦п╦ п╦ я│я┌п╟я┌я▄п╦</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">п÷я─п╣п╢я▀п╢я┐я┴п╦п╣ п╡п╣я─я│п╦п╦</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">п■п╬п╨я┐п╪п╣п╫я┌я▀ 4.4BSD</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">п║п╬п╬п╠я┴п╣я│я┌п╡п╬</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/ru/articles/contributing" class="column-element">п÷я─п╦я│п╬п╣п╢п╦п╫п╦я┌я▄я│я▐</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">п╓п╬я─я┐п╪ я│п╬п╬п╠я┴п╣я│я┌п╡п╟</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">п║п©п╦я│п╨п╦ я─п╟я│я│я▀п╩п╨п╦</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC-п╨п╟п╫п╟п╩я▀</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">п▒п╟пЁ-я┌я─п╣п╨п╣я─</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">п÷я─п╟п╡п╬п╡п╟я▐ п╦п╫я└п╬я─п╪п╟я├п╦я▐</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">п÷п╬п╤п╣я─я┌п╡п╬п╡п╟п╫п╦я▐</a>
+          </li>
+          <li>
+            <a href="/ru/copyright/freebsd-license" class="column-element">п⌡п╦я├п╣п╫п╥п╦я─п╬п╡п╟п╫п╦п╣</a>
+          </li>
+          <li>
+            <a href="/ru/privacy" class="column-element">п÷п╬п╩п╦я┌п╦п╨п╟ п╨п╬п╫я└п╦п╢п╣п╫я├п╦п╟п╩я▄п╫п╬я│я┌п╦</a>
+          </li>
+          <li>
+            <a href="/ru/copyright" class="column-element">п╝я─п╦п╢п╦я┤п╣я│п╨п╦п╣ я┐п╡п╣п╢п╬п╪п╩п╣п╫п╦я▐</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 п÷я─п╬п╣п╨я┌ FreeBSD. п▓я│п╣ п©я─п╟п╡п╟ п╥п╟я┴п╦я┴п╣п╫я▀</p>
+        <span>п║п╢п╣п╩п╟п╫п╬ <span class="heart">Б²╓О╦▐</span> я│п╬п╬п╠я┴п╣я│я┌п╡п╬п╪ FreeBSD</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

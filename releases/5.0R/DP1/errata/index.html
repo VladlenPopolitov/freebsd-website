@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/releases/5.0R/DP1/errata/">
+
+  <title>
+    
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content="  " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/releases/5.0R/DP1/errata/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/releases\/5.0R\/DP1\/errata\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/about/></a></li>
+  <li><a href=/features/></a></li>
+  <li><a href=/applications/>Applications</a></li>
+  <li><a href=/administration/>Administration</a></li>
+  <li><a href=/news/newsflash/>News</a></li>
+  <li><a href=/events></a></li>
+  <li><a href=/press>Press</a></li>
+  <li><a href=/art>Artwork</a></li>
+  <li><a href=/donations>Donations</a></li>
+  <li><a href=/copyright></a></li>
+  <li><a href=/privacy>Privacy Policy</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1></h1><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta name="generator" content="HTML Tidy, see www.w3.org">
+    <title>FreeBSD 5.0-DP1 Errata</title>
+    <meta name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.73 ">
+    <link rel="STYLESHEET" type="text/css" href="docbook.css">
+  </head>
+
+  <body class="ARTICLE" bgcolor="#FFFFFF" text="#000000" link=
+  "#0000FF" vlink="#840084" alink="#0000FF">
+    <div class="ARTICLE">
+      <div class="TITLEPAGE">
+        <h1 class="TITLE"><a name="AEN2">FreeBSD 5.0-DP1
+        Errata</a></h1>
+
+        <h3 class="CORPAUTHOR">The FreeBSD Project</h3>
+
+        <p class="COPYRIGHT">Copyright &copy; 2002 by The FreeBSD
+        Documentation Project</p>
+
+        <p class="PUBDATE">$FreeBSD:
+        src/release/doc/en_US.ISO8859-1/errata/article.sgml,v 1.9
+        2002/03/14 21:52:01 bmah Exp $<br>
+        </p>
+        <hr>
+      </div>
+
+      <blockquote class="ABSTRACT">
+        <div class="ABSTRACT">
+          <a name="AEN9"></a>
+
+          <p>This document lists known issues for FreeBSD 5.0-DP1.
+          This information includes information relating to the
+          software or documentation that could affect its operation
+          or usability. Also included is a list of areas of the
+          base system that could benefit from some extra
+          testing.</p>
+
+          <p>Please note that FreeBSD 5.0-DP1 is not an officially
+          supported release of FreeBSD. Unlike supported releases,
+          this errata file will not be updated. Testers of FreeBSD
+          5.0-DP1 should subscribe to the FreeBSD-current mailing
+          list <tt class="EMAIL">&#60;<a href=
+          "mailto:freebsd-current@FreeBSD.org">freebsd-current@FreeBSD.org</a>&#62;</tt>
+          to stay informed about late-breaking issues and
+          developments.</p>
+        </div>
+      </blockquote>
+
+      <div class="SECT1">
+        <hr>
+
+        <h1 class="SECT1"><a name="AEN13">1 Known Problems</a></h1>
+
+        <ul>
+          <li>
+            <p>Serial GDB is broken.</p>
+          </li>
+
+          <li>
+            <p>LOMAC doesn't protect against a certain class of
+            inter-process activities such as signaling, since the
+            MAC hooks those checks rely on aren't in the base tree
+            yet.</p>
+          </li>
+
+          <li>
+            <p><tt class="COMMAND">gcc -O</tt> is known to be
+            broken.</p>
+          </li>
+
+          <li>
+            <p>There are two different PCCARD implementations,
+            OLDCARD and NEWCARD. NEWCARD has support for Cardbus,
+            but has PCCARD problems.</p>
+          </li>
+
+          <li>
+            <p>Kernels may have to be built with <tt class=
+            "LITERAL">-DNO_WERROR=yes</tt> due to warning handling
+            in the build infrastructure.</p>
+          </li>
+
+          <li>
+            <p>The system documentation indicates that there is
+            support for POSIX.1e capabilities, but the kernel
+            infrastructure is not merged; the documentation and
+            library may be removed before 5.0 depending on strategy
+            decisions not yet made.</p>
+          </li>
+
+          <li>
+            <p>NFS client locking does not interact well with <a
+            href=
+            "http://www.FreeBSD.org/cgi/man.cgi?query=chroot&sektion=2&manpath=FreeBSD+5.0-current">
+            <span class="CITEREFENTRY"><span class=
+            "REFENTRYTITLE">chroot</span>(2)</span></a>
+            environments; locking only works for processes sharing
+            the same root as the locking daemon.</p>
+          </li>
+
+          <li>
+            <p><b class="APPLICATION">Binutils</b> appears to have
+            some problems compiling software from the ports
+            collection (specifically, <a href=
+            "http://www.FreeBSD.org/cgi/man.cgi?query=ld&sektion=1&manpath=FreeBSD+5.0-current">
+            <span class="CITEREFENTRY"><span class=
+            "REFENTRYTITLE">ld</span>(1)</span></a> is known to
+            have a problem with multiple references to some
+            symbols).</p>
+          </li>
+
+          <li>
+            <p>The hardware timecounter code has recently been
+            changed. Some systems may emit warning messages to the
+            console such as ``<tt class="ERRORNAME">calcru:
+            negative time of -48 usec for pid 155 (csh)</tt>''.
+            Please read the FreeBSD-current mailing list <tt class=
+            "EMAIL">&#60;<a href=
+            "mailto:freebsd-current@FreeBSD.org">freebsd-current@FreeBSD.org</a>&#62;</tt>
+            for information about what these messages mean, and how
+            to get rid of them.</p>
+          </li>
+
+          <li>
+            <p><b class="APPLICATION">XFree86</b> 4.2.0 was
+            recently made the default version of XFree86 installed
+            by <a href=
+            "http://www.FreeBSD.org/cgi/man.cgi?query=sysinstall&sektion=8&manpath=FreeBSD+5.0-current">
+            <span class="CITEREFENTRY"><span class=
+            "REFENTRYTITLE">sysinstall</span>(8)</span></a>. By
+            default, X tries to access <tt class=
+            "DEVICENAME">/dev/mouse</tt> during initial
+            configuration, but that should be changed to <tt class=
+            "DEVICENAME">/dev/sysmouse</tt>.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="SECT1">
+        <hr>
+
+        <h1 class="SECT1"><a name="AEN53">2 Unfinished
+        Features</a></h1>
+
+        <p>A number of very significant changes to the system will
+        be made for FreeBSD 5.0-RELEASE. These features, and their
+        approximate status, are noted here.</p>
+
+        <ul>
+          <li>
+            <p>The lock-pushdown for fine-grained kernel threading
+            is in-process, and not complete in this snapshot. As a
+            result, the full benefits are not yet realized.</p>
+          </li>
+
+          <li>
+            <p>Scheduler activation support exists only in the
+            kernel, not in the userland thread library, and in this
+            snapshot, threads from the same process using KSE can
+            execute on only one processor at a time.</p>
+          </li>
+
+          <li>
+            <p>Mandatory access control support from the TrustedBSD
+            branch is not yet merged.</p>
+          </li>
+
+          <li>
+            <p>UFS2 (essentially, UFS with extended attributes in
+            inodes) is not yet ready for inclusion in the
+            snapshot.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="SECT1">
+        <hr>
+
+        <h1 class="SECT1"><a name="AEN65">3 Known Pitfalls</a></h1>
+
+        <ul>
+          <li>
+            <p>FreeBSD 5.0-DP1 has a number of debugging features
+            enabled. These generally have a negative impact on
+            performance. One notable example is that the user-level
+            <a href=
+            "http://www.FreeBSD.org/cgi/man.cgi?query=malloc&sektion=3&manpath=FreeBSD+5.0-current">
+            <span class="CITEREFENTRY"><span class=
+            "REFENTRYTITLE">malloc</span>(3)</span></a> functions
+            behave, by default, as though the <tt class=
+            "LITERAL">AJ</tt> debugging flags were set. Those
+            benchmarking the system should be sure to run without
+            debugging features enabled.</p>
+          </li>
+
+          <li>
+            <p>Interrupt latency is high due to on-going SMP work,
+            this will be fixed prior to the final release.</p>
+          </li>
+
+          <li>
+            <p>Tighter enforcement of <tt class=
+            "LITERAL">#include</tt> file deprecation results in a
+            number of common applications failing to build. In
+            particular, if you <tt class="LITERAL">#include
+            &lt;malloc.h&#62;</tt>, you now get a <tt class=
+            "LITERAL">#error</tt> instead of a <tt class=
+            "LITERAL">#warning</tt>.</p>
+          </li>
+
+          <li>
+            <p>The kernel is no longer installed as <tt class=
+            "FILENAME">/kernel</tt> and <tt class=
+            "FILENAME">/modules</tt>, these have moved to <tt
+            class="FILENAME">/boot/kernel</tt>.</p>
+          </li>
+
+          <li>
+            <p>When upgrading a system, make sure to pay attention
+            to the change from an <tt class=
+            "FILENAME">/etc/pam.conf</tt> configure file to
+            multiple files in <tt class=
+            "FILENAME">/etc/pam.d/</tt>. Likewise, <b class=
+            "APPLICATION">OpenPAM</b> has replaced <b class=
+            "APPLICATION">LinuxPAM</b>, and new PAM modules have
+            been introduced; this may result in warnings from older
+            authentication-related applications compiled under <tt
+            class="LITERAL">RELENG_4</tt>, such as <b class=
+            "APPLICATION">xdm</b>, <b class="APPLICATION">kdm</b>,
+            and <b class="APPLICATION">gdm</b>.</p>
+          </li>
+
+          <li>
+            <p>The <b class="APPLICATION">sendmail</b> startup code
+            in <tt class="FILENAME">/etc/rc</tt> has been changed
+            to support the new requirements of <b class=
+            "APPLICATION">sendmail</b> 8.12. The new setup may
+            cause problems for users running MTAs other than <b
+            class="APPLICATION">sendmail</b>. You can prevent any
+            <b class="APPLICATION">sendmail</b> daemons from
+            starting at boot time by adding the following to <tt
+            class="FILENAME">/etc/rc.conf</tt>:</p>
+<pre class="PROGRAMLISTING">
+    sendmail_enable="NO"
+    sendmail_outbound_enable="NO"
+    sendmail_msp_queue_enable="NO"
+    sendmail_submit_enable="NO"
+</pre>
+
+            <p>Note that 5.0-DP2 (as well as 5.0-RELEASE) will
+            support a <tt class=
+            "LITERAL">sendmail_enable="NONE"</tt> setting to
+            disable all <b class="APPLICATION">sendmail</b> daemons
+            with a single variable. This functionality was <span
+            class="emphasis"><i class="EMPHASIS">not</i></span>
+            merged to the 5.0-DP1 snapshot.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="SECT1">
+        <hr>
+
+        <h1 class="SECT1"><a name="AEN110">4 Testing Guide</a></h1>
+
+        <p>While testing reports of all aspects of FreeBSD 5.0-DP1
+        are welcomed, there are several areas which could benefit
+        from some extra testing:</p>
+
+        <ul>
+          <li>
+            <p>Basic kernel functionality. The changes for SMPng
+            are still in progress, and have some far-reaching
+            effects throughout many parts of the kernel. Testing
+            the kernel's stability on both UP and SMP machines will
+            help find any regressions that may have come about.</p>
+          </li>
+
+          <li>
+            <p>The PAM infrastructure has undergone significant
+            changes, including a replacement of <b class=
+            "APPLICATION">Linux PAM</b> with <b class=
+            "APPLICATION">OpenPAM</b>.</p>
+          </li>
+
+          <li>
+            <p>FFS snapshots and background <a href=
+            "http://www.FreeBSD.org/cgi/man.cgi?query=fsck&sektion=8&manpath=FreeBSD+5.0-current">
+            <span class="CITEREFENTRY"><span class=
+            "REFENTRYTITLE">fsck</span>(8)</span></a>. The latter
+            feature is enabled by default; a reasonable test for
+            snapshots is to do backups by creating a snapshot using
+            the instructions in <tt class=
+            "FILENAME">src/sys/ufs/ffs/README.snapshot</tt> and
+            performing a <a href=
+            "http://www.FreeBSD.org/cgi/man.cgi?query=dump&sektion=8&manpath=FreeBSD+5.0-current">
+            <span class="CITEREFENTRY"><span class=
+            "REFENTRYTITLE">dump</span>(8)</span></a> of the
+            snapshot.</p>
+          </li>
+
+          <li>
+            <p>Because of API changes, a number of ports in the
+            FreeBSD Ports Collection are broken under FreeBSD
+            5-CURRENT. Frequently, there are straightforward fixes
+            for these ports; submitting these fixes will improve
+            the state of buildable ports and packages that can be
+            shipped with FreeBSD 5.0-RELEASE.</p>
+          </li>
+
+          <li>
+            <p>NFS has undergone some significant code
+            reorganization, although it is believed to be fairly
+            stable. NFS client locking is a new feature.</p>
+          </li>
+
+          <li>
+            <p>The sparc64 platform support is new, and could use
+            testing on a wider variety of hardware.</p>
+          </li>
+
+          <li>
+            <p><b class="APPLICATION">XFree86</b> 4.2.0 was
+            recently made the default version of XFree86 installed
+            by <a href=
+            "http://www.FreeBSD.org/cgi/man.cgi?query=sysinstall&sektion=8&manpath=FreeBSD+5.0-current">
+            <span class="CITEREFENTRY"><span class=
+            "REFENTRYTITLE">sysinstall</span>(8)</span></a>.
+            Testing with as many different video cards as possible
+            will help determine if this should be merged to the
+            FreeBSD -STABLE branch.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+
+    <p align="center"><small>This file, and other release-related
+    documents, can be downloaded from <a href=
+    "ftp://current.FreeBSD.org/pub/FreeBSD/">ftp://current.FreeBSD.org/pub/FreeBSD/</a>.</small></p>
+
+    <p align="center"><small>For questions about FreeBSD, read the
+    <a href="http://www.FreeBSD.org/docs.html">documentation</a>
+    before contacting &#60;<a href=
+    "mailto:questions@FreeBSD.org">questions@FreeBSD.org</a>&#62;.</small></p>
+
+    <p align="center"><small><small>All users of FreeBSD 5-CURRENT
+    should subscribe to the &#60;<a href=
+    "mailto:current@FreeBSD.org">current@FreeBSD.org</a>&#62;
+    mailing list.</small></small></p>
+
+    <p align="center">For questions about this documentation,
+    e-mail &#60;<a href=
+    "mailto:doc@FreeBSD.org">doc@FreeBSD.org</a>&#62;.</p>
+    <br>
+    <br>
+  </body>
+</html>
+
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: January 26, 2021 by <a href="https://cgit.freebsd.org/doc/commit/?id=989d921f5d" target="_blank">Sergio Carlavilla Delgado</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/platforms/sparc/">
+
+  <title>
+    FreeBSD/sparc64 Project |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD/sparc64 Project " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/platforms/sparc/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/platforms\/sparc\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+            <li>
+              <a href="/ru/platforms/sparc/" lang="ru">Russian</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/projects></a></li>
+  <li><a href=https://www.freebsd.msk.ru/doc/en/books/developers-handbook/></a></li>
+  <li><a href=https://www.freebsd.msk.ru/doc/en/articles/committers-guide></a></li>
+  <li><a href=https://www.freebsd.msk.ru/doc/en/books/porters-handbook/></a></li>
+  <li><a href=/releng>Release Engineering</a></li>
+  <li><a href=/platforms>Platforms</a></li>
+  <li><a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a></li>
+  <li><a href=https://www.freebsd.msk.ru/doc/en/articles/contributing/>Contributing</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD/sparc64 Project</h1><div class="sect1">
+<h2 id="intro">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This page contains information about the FreeBSD port to Fujitsu’s SPARC64® and Oracle’s UltraSPARC® architectures. Discussion of this port takes place on the <a href="https://lists.freebsd.org/subscription/freebsd-sparc64">freebsd-sparc</a> mailing list.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_table_of_contents">Table Of Contents</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#status">Status</a></p>
+</li>
+<li>
+<p><a href="#hw">Hardware List</a></p>
+</li>
+<li>
+<p><a href="#list">FreeBSD/sparc64 mailing list</a></p>
+</li>
+<li>
+<p><a href="#links">FreeBSD/Points of Interest</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="status">Status</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>UltraSPARC is a <a href="https://docs.freebsd.org/en/articles/committers-guide/#archs">Tier 2</a> architecture through FreeBSD 12.x. It is no longer supported in FreeBSD 13.0 and later.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hw">Hardware List</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A summary of supported systems follows. SMP is supported on all supported systems that contain more than 1 processor. For full details, please see the <a href="../../releases/12.0r/hardware/">hardware notes</a> of the <a href="../../releases/">release</a> you are using.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Naturetech GENIALstation 777S</p>
+</li>
+<li>
+<p>Sun Blade 100</p>
+</li>
+<li>
+<p>Sun Blade 150</p>
+</li>
+<li>
+<p>Sun Enterprise 150</p>
+</li>
+<li>
+<p>Sun Enterprise 220R</p>
+</li>
+<li>
+<p>Sun Enterprise 250</p>
+</li>
+<li>
+<p>Sun Enterprise 420R</p>
+</li>
+<li>
+<p>Sun Enterprise 450</p>
+</li>
+<li>
+<p>Sun Fire B100s (support for the on-board NICs first appeared in 8.1-RELEASE)</p>
+</li>
+<li>
+<p>Sun Fire V100</p>
+</li>
+<li>
+<p>Sun Fire V120</p>
+</li>
+<li>
+<p>Sun Netra(T) T1 100/105</p>
+</li>
+<li>
+<p>Sun Netra T1 AC200/DC200</p>
+</li>
+<li>
+<p>Sun Netra t 1100</p>
+</li>
+<li>
+<p>Sun Netra t 1120</p>
+</li>
+<li>
+<p>Sun Netra t 1125</p>
+</li>
+<li>
+<p>Sun Netra t 1400/1405</p>
+</li>
+<li>
+<p>Sun Netra 120</p>
+</li>
+<li>
+<p>Sun Netra X1</p>
+</li>
+<li>
+<p>Sun SPARCEngine® Ultra AX1105</p>
+</li>
+<li>
+<p>Sun SPARCEngine Ultra AXe</p>
+</li>
+<li>
+<p>Sun SPARCEngine Ultra AXi</p>
+</li>
+<li>
+<p>Sun SPARCEngine Ultra AXmp</p>
+</li>
+<li>
+<p>Sun SPARCEngine CP1500</p>
+</li>
+<li>
+<p>Sun Ultra(T) 1</p>
+</li>
+<li>
+<p>Sun Ultra 1E</p>
+</li>
+<li>
+<p>Sun Ultra 2</p>
+</li>
+<li>
+<p>Sun Ultra 5</p>
+</li>
+<li>
+<p>Sun Ultra 10</p>
+</li>
+<li>
+<p>Sun Ultra 30</p>
+</li>
+<li>
+<p>Sun Ultra 60</p>
+</li>
+<li>
+<p>Sun Ultra 80</p>
+</li>
+<li>
+<p>Sun Ultra 450</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These systems are partially supported by FreeBSD. In particular, the fibre channel controllers in SBus-based systems are not supported. However, it is possible to use these with a SCSI controller supported by the esp(4) driver (Sun ESP SCSI, Sun FAS Fast-SCSI and Sun FAS366 Fast-Wide SCSI controllers).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sun Enterprise 3500</p>
+</li>
+<li>
+<p>Sun Enterprise 4500</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Starting with 7.2-RELEASE, sparc64 systems based on Sun UltraSPARC III and beyond are also supported by FreeBSD, which includes these known working systems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sun Blade 1000</p>
+</li>
+<li>
+<p>Sun Blade 1500</p>
+</li>
+<li>
+<p>Sun Blade 2000</p>
+</li>
+<li>
+<p>Sun Blade 2500</p>
+</li>
+<li>
+<p>Sun Fire 280R</p>
+</li>
+<li>
+<p>Sun Fire V210</p>
+</li>
+<li>
+<p>Sun Fire V215 (support first appeared in 7.3-RELEASE and 8.1-RELEASE)</p>
+</li>
+<li>
+<p>Sun Fire V240</p>
+</li>
+<li>
+<p>Sun Fire V245 (support first appeared in 7.3-RELEASE and 8.1-RELEASE)</p>
+</li>
+<li>
+<p>Sun Fire V250</p>
+</li>
+<li>
+<p>Sun Fire V440 (support for the on-board NICs first appeared in 7.3-RELEASE and 8.0-RELEASE)</p>
+</li>
+<li>
+<p>Sun Fire V480 (501-6780 and 501-6790 centerplanes only, for which support first appeared in 7.3-RELEASE and 8.1-RELEASE, other centerplanes might work beginning with 8.3-RELEASE and 9.0-RELEASE)</p>
+</li>
+<li>
+<p>Sun Fire V880</p>
+</li>
+<li>
+<p>Sun Fire V890 (support first appeared in 7.4-RELEASE and 8.1-RELEASE, non-mixed Ultrasparc IV/IV+ CPU-configurations only)</p>
+</li>
+<li>
+<p>Sun Netra 20/Netra T4</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These Sun UltraSPARC systems are not tested but are believed to also be supported by FreeBSD:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sun Fire V125</p>
+</li>
+<li>
+<p>Sun Fire V490 (support first appeared in 7.4-RELEASE and 8.1-RELEASE, non-mixed Ultrasparc IV/IV+ CPU-configurations only)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Starting with 7.4-RELEASE and 8.1-RELEASE, sparc64 systems based on Fujitsu SPARC64 V are also supported by FreeBSD, which includes these known working systems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Fujitsu PRIMEPOWER® 250</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These Fujitsu SPARC64 systems have not been tested but are believed to also be supported by FreeBSD:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Fujitsu PRIMEPOWER 450</p>
+</li>
+<li>
+<p>Fujitsu PRIMEPOWER 650</p>
+</li>
+<li>
+<p>Fujitsu PRIMEPOWER 850</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you have a system that is not listed here, please try it and let <a href="mailto:freebsd-sparc@FreeBSD.org">us</a> know about it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="list">FreeBSD/sparc64 mailing list</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To subscribe to this list, send an email to <code>&lt;<a href="mailto:freebsd-sparc64+subscribe@FreeBSD.org">freebsd-sparc64+subscribe@FreeBSD.org</a>&gt;</code> or visit the <a href="https://lists.FreeBSD.org/subscription/freebsd-sparc64">mlmmj interface</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="links">Points Of Interest</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.sparc.org/technical-documents-test-2/">SPARC Standards and technical documents</a></p>
+</li>
+<li>
+<p><a href="http://www.netbsd.org/Ports/sparc64/">NetBSD/sparc64</a></p>
+</li>
+<li>
+<p><a href="http://www.openbsd.org/sparc64.html">OpenBSD/sparc64</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: October 12, 2021 by <a href="https://cgit.freebsd.org/doc/commit/?id=26089c882b" target="_blank">Danilo G. Baio</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

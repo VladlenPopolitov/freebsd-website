@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/releases/8.2R/relnotes/">
+
+  <title>
+    FreeBSD 8.2-RELEASE Release Notes |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD 8.2-RELEASE Release Notes " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/releases/8.2R/relnotes/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/releases\/8.2R\/relnotes\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/where></a></li>
+  <li>
+    <a href=/releases>Release Information</a>
+    <ul>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Legacy Release: <a href=ZgotmplZ></a></li>
+    </ul>
+  </li>
+  <li>
+    <a href=/snapshots>Snapshot Releases</a>
+      <ul>
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+      </ul>
+  </li>
+  <li><a href=/ports>Ported Applications</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD 8.2-RELEASE Release Notes</h1><h2>Release Highlights</h2>
+
+  <p>The highlights in the 8.2-RELEASE are the following:</p>
+
+  <ul>
+    <li><p>[amd64] FreeBSD/amd64 now always sets the KVA space as
+	equal to or larger than physical memory size.  This change would help to
+	prevent a “kmem_map too small” panic which often occurs
+	when using ZFS.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=214620" target="_top" shape="rect">r214620</a>]</p></li>
+
+    <li><p>The FreeBSD <tt class="FILENAME">GENERIC</tt> kernel is now
+	compiled with <code class="OPTION">KDB</code> and <code class="OPTION">KDB_TRACE</code> options. From 8.2-RELEASE
+	the kernel supports displaying a stack trace on panic by
+	using <a href="http://www.FreeBSD.org/cgi/man.cgi?query=stack&amp;sektion=9&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">stack</span>(9)</span></a> facility
+	with no debugger backend like <a href="http://www.FreeBSD.org/cgi/man.cgi?query=ddb&amp;sektion=8&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">ddb</span>(8)</span></a>. Note that
+	this does not change the default behaviors of the <tt class="FILENAME">GENERIC</tt> kernel on panic.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=214326" target="_top" shape="rect">r214326</a>]</p></li>
+
+    <li><p>The FreeBSD <a href="http://www.FreeBSD.org/cgi/man.cgi?query=crypto&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">crypto</span>(4)</span></a> framework
+	(opencrypto) now supports XTS-AES (XEX-TCB-CTS, or XEX-based
+	Tweaked Code Book mode with CipherText Stealing), which is
+	defined in IEEE Std. 1619-2007.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=214254" target="_top" shape="rect">r214254</a>]</p></li>
+
+    <li><p>[amd64] Xen HVM support in FreeBSD/amd64 kernel has been improved. For more details,
+	see <a href="http://www.FreeBSD.org/cgi/man.cgi?query=xen&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">xen</span>(4)</span></a> manual
+	page.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=215788" target="_top" shape="rect">r215788</a>]</p></li>
+
+    <li><p>FreeBSD now fully supports GPT (GUID Partition Table). Checksums of primary header and
+	primary partition table are verified properly now.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=213994" target="_top" shape="rect">r213994</a>]</p></li>
+
+    <li><p>[amd64, i386] The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=aesni&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">aesni</span>(4)</span></a> driver
+	has been added. This supports AES accelerator on Intel CPUs and accelerates AES
+	operations for <a href="http://www.FreeBSD.org/cgi/man.cgi?query=crypto&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">crypto</span>(4)</span></a>.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=215633" target="_top" shape="rect">r215633</a>]</p></li>
+
+    <li><p>[amd64, i386] The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=aibs&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">aibs</span>(4)</span></a> driver
+	has been added. This supports the hardware sensors in ASUS motherboards and replaces the
+	<a href="http://www.FreeBSD.org/cgi/man.cgi?query=acpi_aiboost&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">acpi_aiboost</span>(4)</span></a>
+	driver.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=210476" target="_top" shape="rect">r210476</a>]</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=tpm&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">tpm</span>(4)</span></a> driver,
+	which supports Trusted Platform Module has been added.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=215036" target="_top" shape="rect">r215036</a>]</p></li>
+
+    <li><p>The xhci(4) driver, which supports Extensible Host Controller Interface (xHCI) and USB
+	3.0, has been added.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=215944" target="_top" shape="rect">r215944</a>]</p></li>
+
+    <li><p>The FreeBSD Linux emulation subsystem now supports the <b class="APPLICATION">video4linux</b> API. This requires native <b class="APPLICATION">video4linux</b> hardware drivers such as the ones provided by <tt class="FILENAME">multimedia/pwcbsd</tt> and <tt class="FILENAME">multimedia/webcamd</tt>.</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=miibus&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">miibus</span>(4)</span></a> has
+	been rewritten for the generic IEEE 802.3 annex 31B full duplex flow control support. The
+	<a href="http://www.FreeBSD.org/cgi/man.cgi?query=alc&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">alc</span>(4)</span></a>, <a href="http://www.FreeBSD.org/cgi/man.cgi?query=bge&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">bge</span>(4)</span></a>, <a href="http://www.FreeBSD.org/cgi/man.cgi?query=bce&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">bce</span>(4)</span></a>, <a href="http://www.FreeBSD.org/cgi/man.cgi?query=cas&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">cas</span>(4)</span></a>, <a href="http://www.FreeBSD.org/cgi/man.cgi?query=fxp&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">fxp</span>(4)</span></a>, <a href="http://www.FreeBSD.org/cgi/man.cgi?query=gem&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">gem</span>(4)</span></a>, <a href="http://www.FreeBSD.org/cgi/man.cgi?query=jme&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">jme</span>(4)</span></a>, <a href="http://www.FreeBSD.org/cgi/man.cgi?query=msk&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">msk</span>(4)</span></a>, <a href="http://www.FreeBSD.org/cgi/man.cgi?query=nfe&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">nfe</span>(4)</span></a>, <a href="http://www.FreeBSD.org/cgi/man.cgi?query=re&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">re</span>(4)</span></a>, <a href="http://www.FreeBSD.org/cgi/man.cgi?query=stge&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">stge</span>(4)</span></a>, and <a href="http://www.FreeBSD.org/cgi/man.cgi?query=xl&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">xl</span>(4)</span></a> drivers
+	along with atphy(4), bmtphy(4), brgphy(4), e1000phy(4), gentbi(4), inphy(4),
+	ip1000phy(4), jmphy(4), nsgphy(4), nsphyter(4), and <a href="http://www.FreeBSD.org/cgi/man.cgi?query=rgephy&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">rgephy</span>(4)</span></a> have
+	been updated to support flow control via this facility.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=211379" target="_top" shape="rect">r211379</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=215881" target="_top" shape="rect">r215881</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=215890" target="_top" shape="rect">r215890</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=2105894" target="_top" shape="rect">r2105894</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=216002" target="_top" shape="rect">r216002</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=216023" target="_top" shape="rect">r216023</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=216029" target="_top" shape="rect">r216029</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=216031" target="_top" shape="rect">r216031</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=216033" target="_top" shape="rect">r216033</a>]</p></li>
+
+    <li><p>A new <a href="http://www.FreeBSD.org/cgi/man.cgi?query=netgraph&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">netgraph</span>(4)</span></a> node
+	<a href="http://www.FreeBSD.org/cgi/man.cgi?query=ng_patch&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">ng_patch</span>(4)</span></a> has
+	been added. This performs data modification of packets passing through. Modifications are
+	restricted to a subset of C language operations on unsigned integers of 8, 16, 32 or
+	64-bit size.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=209843" target="_top" shape="rect">r209843</a>]</p></li>
+
+    <li><p>The FreeBSD TCP reassembly implementation has been improved. A long-standing
+	accounting bug affecting SMP systems has been fixed and the <code class="VARNAME">net.inet.tcp.reass.maxqlen</code> <a href="http://www.FreeBSD.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">sysctl</span>(8)</span></a>
+	variable has been retired in favor of a per-connection dynamic limit based on the receive
+	socket buffer size. FreeBSD receivers now handle packet loss (particularly losses caused
+	by queue overflows) significantly better than before which improves connection
+	throughput.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=214865" target="_top" shape="rect">r214865</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=214866" target="_top" shape="rect">r214866</a>]</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=siftr&amp;sektion=4&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">siftr</span>(4)</span></a>,
+	Statistical Information For TCP Research (SIFTR) kernel module has been added. This is a
+	facility that logs a range of statistics on active TCP connections to a log file. It
+	provides the ability to make highly granular measurements of TCP connection state, aimed
+	at system administrators, developers and researchers.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=214859" target="_top" shape="rect">r214859</a>]</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=geli&amp;sektion=8&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">geli</span>(8)</span></a> GEOM
+	class now uses XTS-AES mode by default.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=214405" target="_top" shape="rect">r214405</a>]</p></li>
+
+    <li><p>The ZFS on-disk format has been updated to version 15 and
+	various performance improvements for the ZFS have been imported
+	from OpenSolaris.</p></li>
+
+    <li><p>Userland support for the <a href="http://www.FreeBSD.org/cgi/man.cgi?query=dtrace&amp;sektion=1&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">dtrace</span>(1)</span></a>
+	subsystem has been added. This allows inspection of userland software itself and its
+	correlation with the kernel, thus allowing a much better picture of what exactly is going
+	on behind the scenes. The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=dtruss&amp;sektion=1&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">dtruss</span>(1)</span></a>
+	utility has been added and <tt class="FILENAME">libproc</tt> has been updated to support
+	the facility.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=214983" target="_top" shape="rect">r214983</a>]</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=gpart&amp;sektion=8&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">gpart</span>(8)</span></a> utility
+	now supports a <tt class="COMMAND">recover</tt> subcommand for GPT partition tables.</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=gpart&amp;sektion=8&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">gpart</span>(8)</span></a> utility
+	now supports <tt class="LITERAL">GPT_ENT_ATTR_BOOTME</tt>, <tt class="LITERAL">GPT_ENT_ATTR_BOOTONCE</tt>, and <tt class="LITERAL">GPT_ENT_ATTR_BOOTFAILED</tt> attributes in GPT. The attribute keywords in
+	the command line are <tt class="LITERAL">bootme</tt>, <tt class="LITERAL">bootonce</tt>,
+	and <tt class="LITERAL">bootfailed</tt> respectively.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=213994" target="_top" shape="rect">r213994</a>]</p></li>
+
+    <li><p>The <tt class="FILENAME">libarchive</tt> library and <a href="http://www.FreeBSD.org/cgi/man.cgi?query=tar&amp;sektion=1&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">tar</span>(1)</span></a> utility now
+	support LZMA (Lempel-Ziv-Markov chain-Algorithm) compression
+	  format.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=213667" target="_top" shape="rect">r213667</a>]</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=newsyslog&amp;sektion=8&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">newsyslog</span>(8)</span></a> utility now
+	supports an <code class="OPTION">-S <tt class="REPLACEABLE"><i>pidfile</i></tt></code> option to override the
+	default <a href="http://www.FreeBSD.org/cgi/man.cgi?query=syslogd&amp;sektion=8&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">syslogd</span>(8)</span></a> PID file.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=211699" target="_top" shape="rect">r211699</a>]</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=newsyslog&amp;sektion=8&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">newsyslog</span>(8)</span></a>
+	utility now supports a special log file name <tt class="LITERAL">&lt;include&gt;</tt> for
+	processing file inclusion. Globbing in the file name and circular dependency detection
+	are supported. For more details, see the <a href="http://www.FreeBSD.org/cgi/man.cgi?query=newsyslog.conf&amp;sektion=5&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">newsyslog.conf</span>(5)</span></a> manual page.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=215622" target="_top" shape="rect">r215622</a>]</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=pmcstat&amp;sektion=8&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">pmcstat</span>(8)</span></a> utility
+	  now supports a file and a network socket as a top source.
+	  This allows top monitoring over TCP on a system with no
+	  local symbols, for example.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=211098" target="_top" shape="rect">r211098</a>]</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=tftp&amp;sektion=1&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">tftp</span>(1)</span></a> and <a href="http://www.FreeBSD.org/cgi/man.cgi?query=tftpd&amp;sektion=8&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">tftpd</span>(8)</span></a>
+	utilities have been improved for better interoperability and they now support RFC 1350,
+	2347, 2348, 2349, and 3617.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=213036" target="_top" shape="rect">r213036</a>, <a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=213038" target="_top" shape="rect">r213038</a>]</p></li>
+
+    <li><p>A periodic script for <tt class="COMMAND">zfs scrub</tt> has been added. For more
+	details, see the <a href="http://www.FreeBSD.org/cgi/man.cgi?query=periodic.conf&amp;sektion=5&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">periodic.conf</span>(5)</span></a>
+	manual page.</p></li>
+
+    <li><p>A periodic script which can be used to find installed
+	ports&#39; files with mismatched checksum has been added. For more
+	details, see the <a href="http://www.FreeBSD.org/cgi/man.cgi?query=periodic.conf&amp;sektion=5&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	<span class="CITEREFENTRY"><span class="REFENTRYTITLE">periodic.conf</span>(5)</span></a>
+	manual page.</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=sysinstall&amp;sektion=8&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">sysinstall</span>(8)</span></a>
+	utility now uses the following numbers for default and minimum partition sizes: 1GB for
+	<tt class="FILENAME">/</tt>, 4GB for <tt class="FILENAME">/var</tt>, and 1GB for <tt class="FILENAME">/tmp</tt>.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=211007" target="_top" shape="rect">r211007</a>]</p></li>
+
+    <li><p>The <b class="APPLICATION">ACPI-CA</b> has been updated to 20101013.</p></li>
+
+    <li><p>The <a href="http://www.FreeBSD.org/cgi/man.cgi?query=ee&amp;sektion=1&amp;manpath=FreeBSD+8.2-RELEASE" shape="rect">
+	  <span class="CITEREFENTRY"><span class="REFENTRYTITLE">ee</span>(1)</span></a> program
+	has been updated to version 1.5.2.[<a href="http://svn.freebsd.org/viewvc/base?view=revision&amp;revision=214287" target="_top" shape="rect">r214287</a>]</p></li>
+
+    <li><p><b class="APPLICATION">ISC BIND</b> has been updated to version 9.6-ESV-R3.</p></li>
+
+    <li><p><b class="APPLICATION">netcat</b> has been updated to version 4.8.</p></li>
+
+    <li><p><b class="APPLICATION">OpenSSL</b> has been updated to version 0.9.8q.</p></li>
+
+    <li><p>The <b class="APPLICATION">timezone</b> database has been updated to the <b class="APPLICATION">tzdata2010o</b> release.</p></li>
+
+    <li><p>The <b class="APPLICATION">xz</b> has been updated from snapshot as of 12 April 2010
+	to 5.0.0 release</p></li>
+
+    <li><p>The supported version of the <b class="APPLICATION">GNOME</b> desktop environment (<a href="http://www.FreeBSD.org/cgi/url.cgi?ports/x11/gnome2/pkg-descr" shape="rect"><tt class="FILENAME">x11/gnome2</tt></a>) has been updated to 2.32.1.</p></li>
+
+    <li><p>The supported version of the <b class="APPLICATION">KDE</b> desktop environment (<a href="http://www.FreeBSD.org/cgi/url.cgi?ports/x11/kde4/pkg-descr" shape="rect"><tt class="FILENAME">x11/kde4</tt></a>) has been updated to 4.5.5.</p></li>
+  </ul>
+
+  <p>For more details, please see <a href="../relnotes-detailed/" shape="rect">the
+    Detailed Release Notes</a>.</p>
+
+  <p>A list of all platforms currently under development can be found
+    on the <a href="../../../platforms/index.html" shape="rect">Supported
+      Platforms</a> page.</p>
+
+  
+          <br class="clearboth"/>
+        
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: May 15, 2021 by <a href="https://cgit.freebsd.org/doc/commit/?id=ae8601460f" target="_blank">Allan Jude</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

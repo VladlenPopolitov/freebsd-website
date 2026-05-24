@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/releases/9.1R/announce/">
+
+  <title>
+    FreeBSD 9.1-RELEASE Announcement |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD 9.1-RELEASE Announcement " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/releases/9.1R/announce/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/releases\/9.1R\/announce\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/where></a></li>
+  <li>
+    <a href=/releases>Release Information</a>
+    <ul>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Legacy Release: <a href=ZgotmplZ></a></li>
+    </ul>
+  </li>
+  <li>
+    <a href=/snapshots>Snapshot Releases</a>
+      <ul>
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+      </ul>
+  </li>
+  <li><a href=/ports>Ported Applications</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD 9.1-RELEASE Announcement</h1><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Date: December 30, 2012</p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD Release Engineering Team is pleased to announce the availability of FreeBSD 9.1-RELEASE. This is the second release from the stable/9 branch, which improves on the stability of FreeBSD 9.0 and introduces some new features. Some of the highlights:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>New Intel GPU driver with GEM/KMS support</p>
+</li>
+<li>
+<p>netmap(4) fast userspace packet I/O framework</p>
+</li>
+<li>
+<p>ZFS improvements from illumos project</p>
+</li>
+<li>
+<p>CAM Target Layer, a disk and processor device emulation subsystem</p>
+</li>
+<li>
+<p>Optional new C++11 stack including LLVM libc++ and libcxxrt</p>
+</li>
+<li>
+<p>Jail devfs, nullfs, zfs mounting and configuration file support</p>
+</li>
+<li>
+<p>POSIX2008 extended locale support, including compatibility with Darwin extensions</p>
+</li>
+<li>
+<p>oce(4) driver for Emulex OneConnect 10Gbit Ethernet card</p>
+</li>
+<li>
+<p>sfxge(4) driver for 10Gb Ethernet adapters based on Solarflare SFC9000 controller</p>
+</li>
+<li>
+<p>Xen Paravirtualized Backend Ethernet Driver (netback) improvement</p>
+</li>
+<li>
+<p>hpt27xx(4) driver for HighPoint RocketRAID 27xx-based SAS 6Gb/s HBA</p>
+</li>
+<li>
+<p>GEOM multipath class improvement</p>
+</li>
+<li>
+<p>GEOM raid class is enabled by default supporting software RAID by deprecated ataraid(8)</p>
+</li>
+<li>
+<p>kernel support for the AVX FPU extension</p>
+</li>
+<li>
+<p>Numerous improvements in IPv6 hardware offload support</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Please note that precompiled third-party packages are not available for 9.1-RELEASE at the time of release. See the <a href="#availability">Availability section</a> below for further details.</strong></p>
+</div>
+<div class="paragraph">
+<p>For a complete list of new features and known problems, please see the online release notes and errata list available at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="http://www.FreeBSD.org/releases/9.1R/relnotes/" class="bare">http://www.FreeBSD.org/releases/9.1R/relnotes/</a></code></p>
+</li>
+<li>
+<p><code><a href="http://www.FreeBSD.org/releases/9.1R/errata/" class="bare">http://www.FreeBSD.org/releases/9.1R/errata/</a></code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more information about FreeBSD release engineering activities please see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="http://www.FreeBSD.org/releng/" class="bare">http://www.FreeBSD.org/releng/</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_availability">Availability</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>FreeBSD 9.1-RELEASE is now available for the amd64, i386, powerpc64, and sparc64 architectures.</p>
+</div>
+<div class="paragraph">
+<p>FreeBSD 9.1 can be installed from bootable ISO images or over the network. Some architectures also support installing from a USB memory stick. The required files can be downloaded via FTP or BitTorrent as described in the sections below. While some of the smaller FTP mirrors may not carry all architectures, they will all generally contain the more common ones such as amd64 and i386.</p>
+</div>
+<div class="paragraph">
+<p>MD5 and SHA256 hashes for the release ISO images are included at the bottom of this message.</p>
+</div>
+<div class="paragraph">
+<p>The purpose of the images provided as part of the release are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">dvd1</dt>
+<dd>
+<p>This contains everything necessary to install the base FreeBSD operating system, a collection of pre-built packages aimed at getting a graphical workstation up and running. It also supports booting into a &#34;livefs&#34; based rescue mode. This should be all you need if you can burn and use DVD-sized media.</p>
+</dd>
+<dt class="hdlist1">disc1</dt>
+<dd>
+<p>This contains the base FreeBSD operating system. It also supports booting into a &#34;livefs&#34; based rescue mode. There are no pre-built packages.</p>
+</dd>
+<dt class="hdlist1">bootonly</dt>
+<dd>
+<p>This supports booting a machine using the CDROM drive but does not contain the support for installing FreeBSD from the CD itself. You would need to perform a network based install (e.g. from an FTP server) after booting from the CD.</p>
+</dd>
+<dt class="hdlist1">memstick</dt>
+<dd>
+<p>This can be written to an USB memory stick (flash drive) and used to do an install on machines capable of booting off USB drives. It also supports booting into a &#34;livefs&#34; based rescue mode. There are no pre-built packages.</p>
+<div class="paragraph">
+<p>As one example of how to use the memstick image, assuming the USB drive appears as /dev/da0 on your machine something like this should work:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># dd if=FreeBSD-9.1-RELEASE-amd64-memstick.img of=/dev/da0 bs=10240 conv=sync</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Be careful to make sure you get the target (of=) correct.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Due to the security incident reported here:</p>
+</div>
+<div class="paragraph">
+<p><a href="http://www.FreeBSD.org/news/2012-compromise/" class="bare">http://www.FreeBSD.org/news/2012-compromise/</a></p>
+</div>
+<div class="paragraph">
+<p>only the small third-party package set on the DVD image is available at this time for users who require pre-built packages (just GNOME and KDE windowing systems). The FreeBSD Project’s package building infrastructure is undergoing a complete review and redesign. At this time we can not commit to a date the full release package set will become available. A separate announcement will be made when that becomes available. If you wish to install 9.1-RELEASE now you can build your own packages using portsnap(8) to obtain an up to date ports tree and then build the packages. If you require pre-built packages you should wait for the announcement of the full release package set becoming available.</p>
+</div>
+<div class="paragraph">
+<p>FreeBSD 9.1-RELEASE can also be purchased on CD-ROM or DVD from several vendors. One of the vendors that will be offering FreeBSD 9.1-based products is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>FreeBSD Mall, Inc. <code><a href="http://www.freebsdmall.com/" class="bare">http://www.freebsdmall.com/</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ftp">FTP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At the time of this announcement the following FTP sites have FreeBSD 9.1-RELEASE available.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="ftp://ftp.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp5.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp5.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp7.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp7.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp8.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp8.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp.au.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp.au.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp.cn.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp.cn.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp.cz.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp.cz.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp.dk.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp.dk.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp.fr.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp.fr.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp.jp.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp.jp.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp.ru.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp.ru.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp.tw.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp.tw.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp.uk.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp.uk.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp2.us.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp2.us.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp10.us.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp10.us.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+<li>
+<p><code><a href="ftp://ftp.za.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/" class="bare">ftp://ftp.za.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.1/</a></code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>However before trying these sites please check your regional mirror(s) first by going to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="ftp://ftp.&lt;yourdomain&gt;.FreeBSD.org/pub/FreeBSD" class="bare">ftp://ftp.&lt;yourdomain&gt;.FreeBSD.org/pub/FreeBSD</a></code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Any additional mirror sites will be labeled <strong>ftp2</strong>, <strong>ftp3</strong> and so on.</p>
+</div>
+<div class="paragraph">
+<p>More information about FreeBSD mirror sites can be found at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="http://www.FreeBSD.org/doc/en_US.ISO8859-1/books/handbook/mirrors-ftp.html" class="bare">http://www.FreeBSD.org/doc/en_US.ISO8859-1/books/handbook/mirrors-ftp.html</a></code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For instructions on installing FreeBSD or updating an existing machine to 9.1-RELEASE please see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="http://www.FreeBSD.org/releases/9.1R/installation.html" class="bare">http://www.FreeBSD.org/releases/9.1R/installation.html</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_support">Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>9.1-RELEASE is an extended support releases and will be supported by the FreeBSD Security Team until it’s End-of-Life (EoL) date of December 31st 2014. As 9.1-RELEASE got delayed, the EoL of 9.0-RELEASE has been pushed to March 31st 2013 to allow people sufficient time to upgrade. As always all EoL dates can be found at <a href="http://security.FreeBSD.org/" class="bare">http://security.FreeBSD.org/</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="http://www.FreeBSD.org/security/" class="bare">http://www.FreeBSD.org/security/</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_projects_based_on_freebsd">Other Projects Based on FreeBSD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are many &#34;third party&#34; Projects based on FreeBSD. The Projects range from re-packaging FreeBSD into a more &#34;novice friendly&#34; distribution to making FreeBSD available on Amazon’s EC2 infrastructure. For more information about these Third Party Projects see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="http://wiki.FreeBSD.org/3rdPartyProjects" class="bare">http://wiki.FreeBSD.org/3rdPartyProjects</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_acknowledgments">Acknowledgments</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Many companies donated equipment, network access, or man-hours to support the release engineering activities for FreeBSD 9.1 including The FreeBSD Foundation, Yahoo!, NetApp, Internet Systems Consortium, Sentex Communications, New York Internet, Juniper Networks, and iXsystems.</p>
+</div>
+<div class="paragraph">
+<p>The release engineering team for 9.1-RELEASE includes:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ken Smith &lt;<a href="mailto:kensmith@FreeBSD.org">kensmith@FreeBSD.org</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Release Engineering, amd64, i386, sparc64 Release Building, Mirror Site Coordination</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robert Watson &lt;<a href="mailto:rwatson@FreeBSD.org">rwatson@FreeBSD.org</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Release Engineering, Security</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Konstantin Belousov &lt;<a href="mailto:kib@FreeBSD.org">kib@FreeBSD.org</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Release Engineering</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marc Fonvieille &lt;<a href="mailto:blackend@FreeBSD.org">blackend@FreeBSD.org</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Release Engineering, Documentation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Josh Paetzel &lt;<a href="mailto:jpaetzel@FreeBSD.org">jpaetzel@FreeBSD.org</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Release Engineering</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hiroki Sato &lt;<a href="mailto:hrs@FreeBSD.org">hrs@FreeBSD.org</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Release Engineering, Documentation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bjoern Zeeb &lt;<a href="mailto:bz@FreeBSD.org">bz@FreeBSD.org</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Release Engineering, Package Building</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marcel Moolenaar &lt;<a href="mailto:marcel@FreeBSD.org">marcel@FreeBSD.org</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ia64, powerpc Release Building</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nathan Whitehorn &lt;<a href="mailto:nwhitehorn@FreeBSD.org">nwhitehorn@FreeBSD.org</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">powerpc64 Release Building</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Simon Nielsen &lt;<a href="mailto:simon@FreeBSD.org">simon@FreeBSD.org</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Security Officer</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_trademark">Trademark</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>FreeBSD is a registered trademark of The FreeBSD Foundation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_iso_image_checksums">ISO Image Checksums</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>MD5 (FreeBSD-9.1-RELEASE-amd64-bootonly.iso) = 03ec0d36578a5b2092c75ac8e3eb1979
+MD5 (FreeBSD-9.1-RELEASE-amd64-disc1.iso) = f0a320fd52383c42649d48ea545915a9
+MD5 (FreeBSD-9.1-RELEASE-amd64-dvd1.iso) = 5da132138da8360491eb0efa24760859
+MD5 (FreeBSD-9.1-RELEASE-amd64-memstick.img) = 9fb2d4ad338df42f5d86cd1ae3a427c4</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>MD5 (FreeBSD-9.1-RELEASE-i386-bootonly.iso) = 0c2338e03b9249c9806b8c2b10f36dec
+MD5 (FreeBSD-9.1-RELEASE-i386-disc1.iso) = e37d86ce83908bf4b667fdae7298bca5
+MD5 (FreeBSD-9.1-RELEASE-i386-dvd1.iso) = dd07dc30035806cabd136f99ccab7eac
+MD5 (FreeBSD-9.1-RELEASE-i386-memstick.img) = 149b98037944300927a21341aa9a455a</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>MD5 (FreeBSD-9.1-RELEASE-powerpc64-bootonly.iso) = f65cb227e049c48bbc369d79a72e2916
+MD5 (FreeBSD-9.1-RELEASE-powerpc64-memstick) = 4febdf7210882e8a9f8eee35315722ce
+MD5 (FreeBSD-9.1-RELEASE-powerpc64-release.iso) = a26c7c24a0497980ffc67e1f199a5bba</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>MD5 (FreeBSD-9.1-RELEASE-sparc64-bootonly.iso) = 3fb02e9998e6341fea7fa75073dcf5ea
+MD5 (FreeBSD-9.1-RELEASE-sparc64-disc1.iso) = 7fdec91c78799263d88f3918b71e219f</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SHA256 (FreeBSD-9.1-RELEASE-amd64-bootonly.iso) = a7e429071a409232f36024df2fc92eed15dc795445030b305fa242c88d6f4596
+SHA256 (FreeBSD-9.1-RELEASE-amd64-disc1.iso) = 776ba34df5ffb8b5f04b823aacea32210104204b5d3d1547334a22c86cf7090e
+SHA256 (FreeBSD-9.1-RELEASE-amd64-dvd1.iso) = 7955f97e25985915013c1568319752c4006e722539c65723685923e343c3b5dc
+SHA256 (FreeBSD-9.1-RELEASE-amd64-memstick.img) = d085657fc039f579a69598163de39cd0d5d09b3f5ba79ea93bb508e7958cdef4</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SHA256 (FreeBSD-9.1-RELEASE-i386-bootonly.iso) = 73361f5947a71465797979a99e9fdee40797c3fc5ebc9dd4d3d31262f4940985
+SHA256 (FreeBSD-9.1-RELEASE-i386-disc1.iso) = 211f9562e0c122598e03aa3fdb38dd8a5c79197a9d09e6ad32f9ee9ba4eb6e0e
+SHA256 (FreeBSD-9.1-RELEASE-i386-dvd1.iso) = 46a53f57e21a7a1c2d1c014bf2cfafae3848c749174777f3a04543f1da25b678
+SHA256 (FreeBSD-9.1-RELEASE-i386-memstick.img) = 9d037fbf6ac62350bf5d39be820f843c215befac94f8668a5d9935f6bec8e37d</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SHA256 (FreeBSD-9.1-RELEASE-powerpc64-bootonly.iso) = a2cd9f2d58571d3e9fbb5fadd13237622d4bf1a732d61acbe649e29153a16801
+SHA256 (FreeBSD-9.1-RELEASE-powerpc64-memstick) = 02d0bb7236335c6154683800a17c84eb810fbf7950da8c818a519bc09b7ef84e
+SHA256 (FreeBSD-9.1-RELEASE-powerpc64-release.iso) = b04fb13eab306424319bb8ecd280a655ca6df51dc1ff5dcd6adb6eaa3ff88dba</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SHA256 (FreeBSD-9.1-RELEASE-sparc64-bootonly.iso) = be55f9950e70e4da13c29c90bae0c2110e176939085d72b77e18e23307bbfaea
+SHA256 (FreeBSD-9.1-RELEASE-sparc64-disc1.iso) = aa57a02b2d7e46ad8ccca1adcef0ae9aad86b2f4fb5ee9d42e21a95ae2c29f47</pre>
+</div>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: June 19, 2021 by <a href="https://cgit.freebsd.org/doc/commit/?id=8e22e76d94" target="_blank">Danilo G. Baio</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

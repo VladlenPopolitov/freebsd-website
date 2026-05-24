@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Port on FreeBSD Documentation Portal</title><link>https://docs.freebsd.org/ru/tags/port/</link><description>Recent content in Port on FreeBSD Documentation Portal</description><generator>Hugo</generator><language>ru</language><copyright>BSD 2-clause 'Simplified' License</copyright><atom:link href="https://docs.freebsd.org/ru/tags/port/index.xml" rel="self" type="application/rss+xml"/><item><title>Глава 3. Быстрое портирование</title><link>https://docs.freebsd.org/ru/books/porters-handbook/quick-porting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/porters-handbook/quick-porting/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;В этом разделе описано, как быстро создать новый порт. Для случаев, когда этот быстрый метод не подходит, полный процесс &amp;#34;Медленного портирования&amp;#34; описан в разделе &lt;a href="../slow-porting/#slow-porting"&gt;Медленное портирование&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Во-первых, скачайте оригинальный tar-файл и поместите его в каталог &lt;code&gt;DISTDIR&lt;/code&gt;, который по умолчанию есть не что иное, как &lt;span class="filename"&gt;/usr/ports/distfiles&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;i class="fa icon-note" title="Note"&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Здесь предполагается, что программное обеспечение компилируется без проблем как есть, то есть для работы приложения на вашей системе FreeBSD не потребовалось абсолютно никаких изменений. Если требовалось что-то изменить, то вам придется обратиться также и к следующему разделу — &lt;a href="../slow-porting/#slow-porting"&gt;Медленное портирование&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Глава 10. Тестирование вашего порта</title><link>https://docs.freebsd.org/ru/books/porters-handbook/testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/porters-handbook/testing/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="make-describe"&gt;10.1. Запуск &lt;code&gt;make describe&lt;/code&gt;&lt;a class="anchor" href="#make-describe"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Некоторые утилиты FreeBSD для сопровождения портов, например, &lt;a href="https://man.freebsd.org/cgi/man.cgi?query=portupgrade&amp;amp;sektion=1&amp;amp;format=html"&gt;portupgrade(1)&lt;/a&gt;, опираются на базу данных с именем &lt;span class="filename"&gt;/usr/ports/INDEX&lt;/span&gt;, в которой отслеживаются такие характеристики портов, как их зависимости. Файл &lt;span class="filename"&gt;INDEX&lt;/span&gt; создаётся при помощи &lt;span class="filename"&gt;ports/Makefile&lt;/span&gt; верхнего уровня по команде &lt;code&gt;make index&lt;/code&gt;, спускающейся в подкаталог каждого порта и выполняющей в нём &lt;code&gt;make describe&lt;/code&gt;. Таким образом, если выполнение &lt;code&gt;make describe&lt;/code&gt; с каким-либо портом завершится неудачно, то никому не удастся создать &lt;span class="filename"&gt;INDEX&lt;/span&gt;, при этом много людей вскоре станут несчастны.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Глава 11. Обновление отдельного порта</title><link>https://docs.freebsd.org/ru/books/porters-handbook/upgrading/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/porters-handbook/upgrading/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Когда порт не является самой последней версией, доступной от авторов, обновите локальную рабочую копию &lt;span class="filename"&gt;/usr/ports&lt;/span&gt;. Возможно, порт уже был обновлён до новой версии.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;При работе с большим количеством портов, вероятно, будет проще использовать Git для поддержания всей коллекции портов в актуальном состоянии, как описано в &lt;a href="https://docs.freebsd.org/ru/books/handbook/ports#ports-using"&gt;Использование коллекции портов&lt;/a&gt;. Это также позволит отслеживать все зависимости портов.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Следующий шаг — проверить, есть ли уже ожидающее обновление. Для этого есть два варианта. Доступен поиск в &lt;a href="https://bugs.freebsd.org/search/"&gt;Сообщения о проблемах (PR) или база данных ошибок FreeBSD&lt;/a&gt;. Выберите &lt;code&gt;Ports &amp;amp; Packages&lt;/code&gt; в меню множественного выбора &lt;code&gt;Product&lt;/code&gt; и введите название порта в поле &lt;code&gt;Summary&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Руководство для наставников портов</title><link>https://docs.freebsd.org/ru/articles/port-mentor-guidelines/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/articles/port-mentor-guidelines/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="port-mentor.guidelines"&gt;1. Рекомендации по взаимоотношениям наставника и подопечного&lt;a class="anchor" href="#port-mentor.guidelines"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Этот раздел предназначен для того, чтобы помочь развеять таинственность процесса наставничества, а также открыто способствовать конструктивному обсуждению для адаптации и развития руководящих принципов. В нашей жизни слишком много правил; мы не государственная организация, навязывающая регулирование, а скорее коллектив единомышленников, работающих для достижения общей цели — поддержания гарантии качества продукта, который мы называем Деревом Портов.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="why.mentor"&gt;1.1. Почему наставник (mentor)?&lt;a class="anchor" href="#why.mentor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;У большинства из нас были наставники, и это наставничество в Проекте было важным и полезным, поэтому верните эти усилия, предложив стать наставником для кого-то другого.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;У вас есть непреодолимое желание делиться знаниями с другими.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;В наказание за это вы обрекаете себя на добровольную каторгу коммитить хорошую работу, сделанную другими!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</description></item></channel></rss>

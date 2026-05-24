@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/ru/security/">
+
+  <title>
+    Информационная безопасность FreeBSD |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" Информационная безопасность FreeBSD " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="ru" >
+  <meta property="og:url" content="https://www.freebsd.org/ru/security/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/ru\/security\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/ru/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              О проекте
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/about">О проекте</a>
+            </li>
+            <li>
+              <a href="/ru/projects/newbies">Введение</a>
+            </li>
+            <li>
+              <a href="/ru/features">Возможности</a>
+            </li>
+            <li>
+              <a href="/ru/privacy">Политика конфиденциальности</a>
+            </li>
+            <li>
+              <a href="/ru/projects">Проекты</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Порты</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Получить FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/where">Получить FreeBSD</a>
+            </li>
+            <li>
+              <a href="/ru/releases">Информация о релизах</a>
+            </li>
+            <li>
+              <a href="/ru/releng">Разработка релизов</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Документация
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/ru/">Документация</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/handbook/">Руководство FreeBSD</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/porters-handbook/">Руководство портировщика</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/fdp-primer">Руководство проекта документации</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Страницы Справочника</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Презентации и статьи</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books">Книги</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/articles">Статьи</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Сообщество
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/community">Сообщество</a>
+            </li>
+            <li>
+              <a href="/ru/community/mailinglists">Списки рассылки</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Форумы</a>
+            </li>
+            <li>
+              <a href="/ru/usergroups">Группы пользователей</a>
+            </li>
+            <li>
+              <a href="/ru/events">События</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">Журнал FreeBSD</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Разработчики
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/projects">Разработчики</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Идеи проектов</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git-репозиторий</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">Зеркало GitHub</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Проверка кода (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Сервис непрерывной интеграции</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Поддержка
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/support">Поддержка</a>
+            </li>
+            <li>
+              <a href="/ru/commercial">Поставщики</a>
+            </li>
+            <li>
+              <a href="/ru/security">Информация о безопасности</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Сообщения об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support">Отправка сообщений об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support/webresources">Веб-ресурсы</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="ru">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/ru/" class="current-lang" aria-current="page">Russian</a>
+          </li>
+          
+            <li>
+              <a href="/security/" lang="en">English</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Пожертвовать
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <div id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/ru/support></a></li>
+  <li>
+    <a href=/ru/commercial></a>
+    <ul>
+      <li><a href=/ru/commercial/software_bycat/>Программное обеспечение</a></li>
+      <li><a href=/ru/commercial/hardware/>Обо­ру­до­ва­ние</a></li>
+      <li><a href=/ru/commercial/consult_bycat/>Кон­сал­тин­го­вые ус­лу­ги</a></li>
+      <li><a href=/ru/commercial/isp/>Интернет-провайдеры</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href=/ru/security>О ин­фор­ма­ци­он­ной бе­зо­пас­нос­ти</a>
+    <ul>
+      <li><a href=/ru/security/advisories/>Бюллетени</a></li>
+      <li><a href=/ru/security/notices/>Ошибки</a></li>
+      <li><a href=/ru/security/#sup></a></li>
+      <li><a href=/ru/security/unsupported/>Не­под­дер­жи­ва­е­мые ре­ли­зы</a></li>
+      <li><a href=https://www.freebsd.msk.ru/doc/ru/books/handbook/#security-advisories>Как чи­тать Бюл­ле­те­ни бе­зо­пас­но­сти FreeBSD</a></li>
+      <li><a href=/ru/security/charter/>Ус­тав ди­рек­то­ра и ко­ман­ды по ин­фор­ма­ци­он­ной бе­зо­пас­но­сти</a></li>
+    </ul>
+  </li>
+  <li>
+    <li><a href="https://bugs.FreeBSD.org/submit/">Отправить сообщение о проблеме</a></li>
+  </li>
+  <li><a href=/ru/support/webresources/>Веб-ресурсы</a></li>
+</ul>
+
+
+    </div>
+  </div>
+  <div id="contentwrap">
+    <h1>Информационная безопасность FreeBSD</h1><div class="sect1">
+<h2 id="_введение">Введение</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>FreeBSD относится к безопасности очень серьёзно, и её разработчики постоянно работают над тем, чтобы сделать операционную систему максимально защищённой. На этой странице представлена информация о том, что делать в случае обнаружения уязвимости безопасности, затрагивающей вашу систему.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_содержание">Содержание</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#reporting">Сообщение об инцидентах безопасности FreeBSD</a></p>
+</li>
+<li>
+<p><a href="#recent">Недавние уязвимости безопасности FreeBSD</a></p>
+</li>
+<li>
+<p><a href="#advisories">Объяснение бюллетеней безопасности FreeBSD</a></p>
+</li>
+<li>
+<p><a href="#how">Как обновить вашу систему</a></p>
+</li>
+<li>
+<p><a href="#sup">Поддерживаемые релизы FreeBSD</a></p>
+</li>
+<li>
+<p><a href="#model">Модель поддержки FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reporting">Как и куда сообщать о проблеме в информационной безопасности FreeBSD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Все проблемы информационной безопасности FreeBSD следует направлять на адрес <a href="mailto:secteam@FreeBSD.org">службы информационной безопасности FreeBSD</a> или, если необходим более высокий уровень конфиденциальности, в зашифрованном при помощи PGP виде на адрес <a href="mailto:security-officer@FreeBSD.org">службы Директора по информационной безопасности</a>, используя <a href="../../security/so_public_key.asc">ключ PGP Офицера информационной безопасности</a>. Дополнительная информация доступна на странице <a href="reporting/">сообщения об инцидентах безопасности FreeBSD</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="when-reporting">Когда выпускается бюллетень безопасности (Security Advisory)?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>По каждому сообщённому вопросу создаётся внутренний номер для отслеживания, кроме случаев, когда он очевидно не является проблемой безопасности. Чтобы определить, требуется ли выпуск бюллетень безопасности, мы используем следующую схему:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Является ли это уязвимостью повышения привилегий?</p>
+</li>
+<li>
+<p>Является ли это уязвимостью внедрения кода?</p>
+</li>
+<li>
+<p>Является ли это уязвимостью раскрытия памяти или утечки данных?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Исходящей либо из ядра</p>
+</li>
+<li>
+<p>Из привилегированного процесса</p>
+</li>
+<li>
+<p>Из процесса, принадлежащего другому пользователю?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Является ли это уязвимостью отказа в обслуживании?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Только если она используется удалённо, где «удалённо» означает «из другого широковещательного домена», поэтому атаки на основе ARP и/или NDP не подпадают под эту категорию.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Является ли это уязвимостью обхода изоляции системы без дополнительной поддержки или использования других уязвимостей?</p>
+</li>
+<li>
+<p>Является ли это сбоем, который может привести к генерации небезопасных криптографических ключей, например, ошибкой PRNG?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Для пунктов, подпадающих под эти категории, выпуск бюллетеня безопасности весьма вероятен. Пункты, не входящие в этот список, рассматриваются индивидуально, и тогда определяется, будет ли по ним выпущен бюллетень безопасности или уведомление об ошибке (Errata Notice).</p>
+</div>
+<div class="paragraph">
+<p>После того как будет определено, что выпуск бюллетеня безопасности обоснован, отправитель предоставляет номер CVE, если он уже был запрошен, или мы используем номер из доступного пула FreeBSD.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="recent">Недавние уязвимости безопасности FreeBSD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Полный список всех уязвимостей безопасности, затрагивающих базовую систему, можно найти <a href="advisories">на этой странице</a>.</p>
+</div>
+<div class="paragraph">
+<p>Полный список всех других ошибок, затрагивающих базовую систему, можно найти <a href="notices">на этой странице</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="advisories">Объяснение бюллетеней безопасности FreeBSD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Бюллетени, затрагивающие базовую систему, рассылаются по следующим спискам рассылки:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="mailto:FreeBSD-security-notifications@FreeBSD.org">FreeBSD-security-notifications@FreeBSD.org</a></p>
+</li>
+<li>
+<p><a href="mailto:FreeBSD-security@FreeBSD.org">FreeBSD-security@FreeBSD.org</a></p>
+</li>
+<li>
+<p><a href="mailto:FreeBSD-announce@FreeBSD.org">FreeBSD-announce@FreeBSD.org</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Список выпущенных бюллетеней можно найти на странице <a href="advisories">Бюллетени безопасности FreeBSD</a>.</p>
+</div>
+<div class="paragraph">
+<p>Бюллетени всегда подписываются с использованием <a href="so_public_key.asc">PGP-ключа</a> Директора по информационной безопасности FreeBSD и архивируются вместе со связанными с ними патчами на веб-сервере <a href="https://security.FreeBSD.org" class="bare">https://security.FreeBSD.org</a> в подкаталогах <a href="https://security.FreeBSD.org/advisories/">advisories</a> и <a href="https://security.FreeBSD.org/patches/">patches</a>.</p>
+</div>
+<div class="paragraph">
+<p>Директор по информационной безопасности FreeBSD предоставляет Бюллетени безопасности для <em>-STABLE веток</em> и <em>веток безопасности</em>. (Бюллетени не выпускаются для ветки <em>-CURRENT</em>, которая в первую очередь ориентирована на разработчиков FreeBSD.)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Теги ветки -STABLE имеют имена вида <code>stable/13</code>. Соответствующие сборки имеют имена вида <code>FreeBSD 13.2-STABLE</code>.</p>
+</li>
+<li>
+<p>Каждый выпуск FreeBSD имеет связанную с ним ветку безопасности. Теги веток безопасности имеют имена вида <code>releng/13.2</code>. Соответствующие сборки имеют имена вида <code>FreeBSD 13.2-RELEASE-p1</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Проблемы, затрагивающие Коллекцию портов FreeBSD, рассматриваются отдельно в <a href="https://vuxml.FreeBSD.org/">документах VuXML для FreeBSD</a>.</p>
+</div>
+<div class="paragraph">
+<p>Ошибки, затрагивающие базовую систему, но не классифицированные как уязвимости безопасности, рассматриваются отдельно на странице <a href="notices">Уведомления об исправлениях FreeBSD</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how">Как обновить вашу систему</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Для пользователей, которые ранее установили бинарную версию FreeBSD (например, 13.1 или 12.3), команды:</p>
+</div>
+<div class="paragraph">
+<p><code># freebsd-update fetch</code></p>
+</div>
+<div class="paragraph">
+<p><code># freebsd-update install</code></p>
+</div>
+<div class="paragraph">
+<p>Если это не сработает, следуйте другим инструкциям в интересующем вас бюллетене безопасности.</p>
+</div>
+<div class="paragraph">
+<p>Обратите внимание, что приведённая выше процедура предназначена только для пользователей, которые ранее установили бинарный дистрибутив. Тем, кто собирал систему из исходных кодов, потребуется обновить своё дерево исходных кодов.</p>
+</div>
+<div class="paragraph">
+<p>Для получения более подробной информации обратитесь к разделу <a href="https://docs.freebsd.org/en/books/handbook/cutting-edge/#freebsdupdate-security-patches">как применять патчи безопасности</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sup">Поддерживаемые выпуски FreeBSD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Каждый релиз поддерживается Директором по информационной безопасности только в течение ограниченного времени.</p>
+</div>
+<div class="paragraph">
+<p>Обозначения и предполагаемый срок службы всех поддерживаемых в настоящее время веток и их соответствующих релизов приведены ниже. Столбец <em>Ожидаемый EoL (конец срока службы)</em> указывает самую раннюю дату, когда поддержка этой ветки или релиза будет прекращена. Обратите внимание, что эти даты могут быть перенесены, если того потребуют обстоятельства.</p>
+</div>
+<div class="paragraph">
+<p><a href="unsupported">Более старые выпуски</a> не поддерживаются, и пользователям настоятельно рекомендуется обновиться до одного из этих поддерживаемых релизов:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch tblbasic">
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Ветка</th>
+<th class="tableblock halign-left valign-top">Релиз</th>
+<th class="tableblock halign-left valign-top">Дата релиза</th>
+<th class="tableblock halign-left valign-top">Ожидаемый EoL (конец срока службы)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stable/15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">н/д</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">н/д</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">31 декабря 2029</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">releng/15.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15.0-RELEASE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 декабря 2025</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30 сентября 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stable/14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">н/д</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">н/д</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30 ноября 2028 г.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">releng/14.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.3-RELEASE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 июня 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30 июня 2026 г.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stable/13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">н/д</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">н/д</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30 апреля 2026 г.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">releng/13.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.5-RELEASE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11 марта 2025 г.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30 апреля 2026 г.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>В преддверии выпуска может быть опубликовано несколько версий -BETA и -RC для целей тестирования. Эти релизы поддерживаются всего несколько недель, по мере наличия ресурсов, и не будут перечислены на этой странице как поддерживаемые. Пользователям настоятельно не рекомендуется использовать эти релизы в системах промышленной эксплуатации.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="model">Модель поддержки FreeBSD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Каждый минорный выпуск поддерживается только три месяца после выхода следующего минорного релиза в рамках той же мажорной версии, либо (для финального минорного выпуска) до окончания поддержки стабильной ветки мажорной версии. Начиная с FreeBSD 15, каждая стабильная ветка явно поддерживается в течение 4 лет с момента выхода её релиза с нулевой минорной версией. Поддержка стабильной ветки FreeBSD 13 завершается 30 апреля 2026 года, а для FreeBSD 14 — 30 ноября 2028 года.</p>
+</div>
+<div class="paragraph">
+<p>Обоснование этой модели подробно описано в официальных объявлениях: <a href="https://lists.freebsd.org/archives/freebsd-announce/2024-July/000143.html">о 4-летнем периоде поддержки стабильных веток</a>, отправленном в июле 2024 года, и <a href="https://lists.freebsd.org/pipermail/freebsd-announce/2015-February/001624.html">о переходе на модель поддержки на основе веток</a>, отправленном в феврале 2015 года.</p>
+</div>
+</div>
+</div>
+
+    
+    <hr />
+    <div class="last-modified">
+      <p><strong>Последнее изменение</strong>: 30 декабря 2025 г. от <a href="https://cgit.freebsd.org/doc/commit/?id=06d0803991" target="_blank">Vladlen Popolitov</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">О проекте</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/ru/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">Фонд FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/ru/where" class="column-element">Получить FreeBSD</a>
+          </li>
+          <li>
+            <a href="/ru/internal/code-of-conduct" class="column-element">Кодекс поведения</a>
+          </li>
+          <li>
+            <a href="/ru/security" class="column-element">Бюллетени безопасности</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Документация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Портал документации</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Страницы Справочника</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Презентации и статьи</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Предыдущие версии</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">Документы 4.4BSD</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Сообщество</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/ru/articles/contributing" class="column-element">Присоединиться</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Форум сообщества</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Списки рассылки</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC-каналы</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Баг-трекер</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Правовая информация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Пожертвования</a>
+          </li>
+          <li>
+            <a href="/ru/copyright/freebsd-license" class="column-element">Лицензирование</a>
+          </li>
+          <li>
+            <a href="/ru/privacy" class="column-element">Политика конфиденциальности</a>
+          </li>
+          <li>
+            <a href="/ru/copyright" class="column-element">Юридические уведомления</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p>
+        <span>Сделано <span class="heart">❤️</span> сообществом FreeBSD</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/status/report-2026-01-2026-03/bhyve-cpuid/">
+
+  <title>
+    
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content="  " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/status/report-2026-01-2026-03/bhyve-cpuid/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/status\/report-2026-01-2026-03\/bhyve-cpuid\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+            <li>
+              <a href="/ru/status/report-2026-01-2026-03/bhyve-cpuid/" lang="ru">Russian</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/about/></a></li>
+  <li><a href=/features/></a></li>
+  <li><a href=/applications/>Applications</a></li>
+  <li><a href=/administration/>Administration</a></li>
+  <li><a href=/news/newsflash/>News</a></li>
+  <li><a href=/events></a></li>
+  <li><a href=/press>Press</a></li>
+  <li><a href=/art>Artwork</a></li>
+  <li><a href=/donations>Donations</a></li>
+  <li><a href=/copyright></a></li>
+  <li><a href=/privacy>Privacy Policy</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1></h1><div class="sect2">
+<h3 id="_full_cpuid_control_for_bhyve">Full CPUID Control for bhyve</h3>
+<div class="paragraph">
+<p>Contact: Hans Rosenfeld &lt;<a href="mailto:rosenfeld@grumpf.hope-2000.org">rosenfeld@grumpf.hope-2000.org</a>&gt;</p>
+</div>
+<div class="sect3">
+<h4 id="_project_overview">Project Overview</h4>
+<div class="paragraph">
+<p>Ongoing work on this project aims to integrate the existing proof-of-concept work into FreeBSD, and to add the following usability features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a user-friendly configuration method to override individual bits, parts or even whole CPUID functions as needed, while keeping the rest of the host CPUID information or a pre-defined CPUID configuration</p>
+</li>
+<li>
+<p>a user-friendly configuration method for the hypervisor signature reported by bhyve</p>
+</li>
+<li>
+<p>a set of predefined CPUID configurations based on common x86 architecture levels, perhaps also including a set of CPUID data for a few real CPU models, and a user-friendly configuration method to choose one for a VM</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_changes_during_the_last_quarter">Changes during the last quarter</h4>
+<div class="sect4">
+<h5 id="_extensions_to_bhyvectl">Extensions to bhyvectl</h5>
+<div class="paragraph">
+<p>The CPUID configuration prototype already implemented a new command for bhyvectl, <code>--get-cpuid-cfg</code>, to query the CPUID configuration of a vCPU.</p>
+</div>
+<div class="paragraph">
+<p>Another new command for bhyvectl has now been implemented, <code>--get-cpuid</code>, which fetches CPUID values emulated for a vCPU.</p>
+</div>
+<div class="paragraph">
+<p>There are several modes of operation of <code>--get-cpuid</code>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>bhyvectl --get-cpuid=&lt;leaf&gt;[,&lt;index&gt;]</code></dt>
+<dd>
+<p>This fetches the emulated CPUID value for an individual CPUID leaf and optionally index.</p>
+</dd>
+<dt class="hdlist1"><code>bhyvectl --get-cpuid[=all]</code></dt>
+<dd>
+<p>This fetches the complete set of emulated CPUID values, for all supported leaves and all supported indices.</p>
+</dd>
+<dt class="hdlist1"><code>bhyvectl --get-cpuid=all,p</code></dt>
+<dd>
+<p>Same as above, but the output is parsable as a set of CPUID configuration options for bhyve.</p>
+</dd>
+<dt class="hdlist1"><code>bhyvectl --get-cpuid=all,s</code></dt>
+<dd>
+<p>Same as above, but the output is &#34;sparse&#34;, meaning that only CPUID leaves and indices are printed if their values on the given vCPU (with the <code>--cpu</code> switch) differ from the same leaf and index on vCPU 0.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The latter two can be used to construct a baseline CPUID configuration based on the CPUID emulation of bhyve, which can then be modified as desired.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_more_flexible_cpuid_configuration">More flexible CPUID configuration</h5>
+<div class="paragraph">
+<p>The CPUID configuration mechanism implemented as part of the prototype has been reworked to allow a more flexible and fine-grained configuration that does not require the whole set of CPUID information to be specified.
+Here is an example configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cpuid.0x00000001=edx|=0x00040000
+cpuid.0x00000003=ecx=0x01234567,edx=0x89abcdef
+vcpu.1.cpuid.0x00000003=ecx|=0x10000000
+vcpu.2.cpuid.0x00000003=ecx|=0x20000000
+vcpu.3.cpuid.0x00000003=ecx|=0x30000000
+vcpu.4.cpuid.0x00000003=ecx|=0x40000000
+vcpu.5.cpuid.0x00000003=ecx|=0x50000000
+vcpu.6.cpuid.0x00000003=ecx|=0x60000000
+vcpu.7.cpuid.0x00000003=ecx|=0x70000000
+vcpu.8.cpuid.0x00000003=ecx|=0x80000000
+vcpu.9.cpuid.0x00000003=ecx|=0x90000000
+vcpu.10.cpuid.0x00000003=ecx|=0xa0000000
+vcpu.11.cpuid.0x00000003=ecx|=0xb0000000
+vcpu.12.cpuid.0x00000003=ecx|=0xc0000000
+vcpu.13.cpuid.0x00000003=ecx|=0xd0000000
+vcpu.14.cpuid.0x00000003=ecx|=0xe0000000
+vcpu.15.cpuid.0x00000003=ecx|=0xf0000000
+cpuid.0x0000000b,0=edx=0xffffffff
+cpuid.0x0000000b,1=edx=0xeeeeeeee
+cpuid.0x0000000b,2=edx=0xdddddddd</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above CPUID configuration enables the Processor Serial Number (0x00000001, EDX bit 18) feature on all vCPUs and sets a default serial of 0x01234567, 0x89abcef.</p>
+</div>
+<div class="paragraph">
+<p>On each vCPU other than vCPU 0, it overwrites one digit of the serial number
+with the vCPU ID so that each vCPU has a unique serial number.</p>
+</div>
+<div class="paragraph">
+<p>The last three assignments does not make any sense.
+Leaf 0x0000000b contains topology information in all indices, and register EDX always contains the x2APIC ID of the vCPU.
+Consequently, these last three assignments will be silently ignored.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_using_x86_architecture_levels">Using x86 architecture levels</h5>
+<div class="paragraph">
+<p>It is now possible to specify a x86 architecture level:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cpuid.archlevel=v1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will disable all features of x86 architecture level v2 to v3, restricting the CPU featureset to that of x86 architecture level v1.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_plans_for_next_quarter">Plans for next quarter</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>The x86 architecture level support should be more robust.
+While a direct configuration of CPUID information should allow to change almost everything, for x86 architecture levels we should check whether all the features defined in an architecture level are actually supported by the hardware.
+Setting an architecture level that is not supported by the CPU should be disallowed, or at least being warned about.</p>
+</li>
+<li>
+<p>Similar to setting a x86 architecture level, a mechanism will be implemented to override the hypervisor identification without requiring manually changing CPUID bits.</p>
+</li>
+<li>
+<p>Get the whole wad reviewed and committed into FreeBSD.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sponsor: The FreeBSD Foundation</p>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: April 7, 2026 by <a href="https://cgit.freebsd.org/doc/commit/?id=62f27e3f42" target="_blank">Hans Rosenfeld</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

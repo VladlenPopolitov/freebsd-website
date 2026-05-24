@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FreeBSD on FreeBSD Documentation Portal</title><link>https://docs.freebsd.org/en/tags/FreeBSD/</link><description>Recent content in FreeBSD on FreeBSD Documentation Portal</description><generator>Hugo</generator><language>en</language><copyright>BSD 2-clause 'Simplified' License</copyright><atom:link href="https://docs.freebsd.org/en/tags/FreeBSD/index.xml" rel="self" type="application/rss+xml"/><item><title>Chapter 1. Bootstrapping and Kernel Initialization</title><link>https://docs.freebsd.org/en/books/arch-handbook/boot/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/arch-handbook/boot/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="boot-synopsis"&gt;1.1. Synopsis&lt;a class="anchor" href="#boot-synopsis"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This chapter is an overview of the boot and system initialization processes, starting from the BIOS (firmware) POST, to the first user process creation.
+Since the initial steps of system startup are very architecture dependent, the IA-32 architecture is used as an example.
+But the AMD64 and ARM64 architectures are much more important and compelling examples and should be explained in the near future according to the topic of this document.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 3. Kernel Objects</title><link>https://docs.freebsd.org/en/books/arch-handbook/kobj/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/arch-handbook/kobj/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Kernel Objects, or &lt;em&gt;Kobj&lt;/em&gt; provides an object-oriented C programming system for the kernel.
+As such the data being operated on carries the description of how to operate on it.
+This allows operations to be added and removed from an interface at run time and without breaking binary compatibility.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="kernel-objects-term"&gt;3.1. Terminology&lt;a class="anchor" href="#kernel-objects-term"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="dlist"&gt;
+&lt;dl&gt;
+&lt;dt class="hdlist1"&gt;Object&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;A set of data - data structure - data allocation.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="hdlist1"&gt;Method&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;An operation - function.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="hdlist1"&gt;Class&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;One or more methods.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="hdlist1"&gt;Interface&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;A standard set of one or more methods.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 4. Localization and Internationalization - L10N and I18N</title><link>https://docs.freebsd.org/en/books/developers-handbook/l10n/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/developers-handbook/l10n/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="l10n-programming"&gt;4.1. Programming I18N Compliant Applications&lt;a class="anchor" href="#l10n-programming"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To make your application more useful for speakers of other languages, we hope that you will program I18N compliant.
+The GNU gcc compiler and GUI libraries like QT and GTK support I18N through special handling of strings.
+Making a program I18N compliant is very easy.
+It allows contributors to port your application to other languages quickly.
+Refer to the library specific I18N documentation for more details.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 8. IPv6 Internals</title><link>https://docs.freebsd.org/en/books/developers-handbook/ipv6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/developers-handbook/ipv6/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="ipv6-implementation"&gt;8.1. IPv6/IPsec Implementation&lt;a class="anchor" href="#ipv6-implementation"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This section should explain IPv6 and IPsec related implementation internals.
+These functionalities are derived from &lt;a href="http://www.kame.net/"&gt;KAME project&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="ipv6details"&gt;8.1.1. IPv6&lt;a class="anchor" href="#ipv6details"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="_conformance"&gt;8.1.1.1. Conformance&lt;a class="anchor" href="#_conformance"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The IPv6 related functions conforms, or tries to conform to the latest set of IPv6 specifications.
+For future reference we list some of the relevant documents below (&lt;em&gt;NOTE&lt;/em&gt;: this is not a complete list - this is too hard to maintain…​).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For details please refer to specific chapter in the document, RFCs, manual pages, or comments in the source code.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>FreeBSD Accessibility Handbook</title><link>https://docs.freebsd.org/en/books/accessibility/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/accessibility/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Welcome to the Accessibility Handbook.
+This book covers the assistive technologies available in FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Accessibility is an ongoing effort, not a fixed destination.
+As such, this handbook is a living document and continually evolving.
+Contributions, suggestions, and feedback are highly encouraged.
+If you are interested in contributing, please reach out to us via the &lt;a href="https://lists.freebsd.org/subscription/freebsd-accessibility"&gt;FreeBSD accessibility mailing list&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;You can download this book in various formats and compression options from the FreeBSD download server or one of its many mirror sites.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>FreeBSD Documentation Project Primer for New Contributors</title><link>https://docs.freebsd.org/en/books/fdp-primer/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/fdp-primer/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Thank you for becoming a part of the FreeBSD Documentation Project.
+Your contribution is extremely valuable, and we appreciate it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This primer covers details needed to start contributing to the FreeBSD Documentation Project, or FDP, including tools, software, and the philosophy behind the Documentation Project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This is a work in progress.
+Corrections and additions are always welcome.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 9. Writing FreeBSD Device Drivers</title><link>https://docs.freebsd.org/en/books/arch-handbook/driverbasics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/arch-handbook/driverbasics/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="driverbasics-intro"&gt;9.1. Introduction&lt;a class="anchor" href="#driverbasics-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This chapter provides a brief introduction to writing device drivers for FreeBSD. A device in this context is a term used mostly for hardware-related stuff that belongs to the system, like disks, printers, or a graphics display with its keyboard. A device driver is the software component of the operating system that controls a specific device. There are also so-called pseudo-devices where a device driver emulates the behavior of a device in software without any particular underlying hardware. Device drivers can be compiled into the system statically or loaded on demand through the dynamic kernel linker facility `kld&amp;#39;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 10. ISA Device Drivers</title><link>https://docs.freebsd.org/en/books/arch-handbook/isa/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/arch-handbook/isa/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="isa-driver-synopsis"&gt;10.1. Synopsis&lt;a class="anchor" href="#isa-driver-synopsis"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This chapter introduces the issues relevant to writing a driver for an ISA device. The pseudo-code presented here is rather detailed and reminiscent of the real code but is still only pseudo-code. It avoids the details irrelevant to the subject of the discussion. The real-life examples can be found in the source code of real drivers. In particular the drivers &lt;code&gt;ep&lt;/code&gt; and &lt;code&gt;aha&lt;/code&gt; are good sources of information.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 9. Building and Installing a FreeBSD Kernel</title><link>https://docs.freebsd.org/en/books/developers-handbook/kernelbuild/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/developers-handbook/kernelbuild/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Being a kernel developer requires understanding of the kernel build process.
+To debug the FreeBSD kernel it is required to be able to build one.
+There are two known ways to do so:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The supported procedure to build and install a kernel is documented in the &lt;a href="https://docs.freebsd.org/en/books/handbook/kernelconfig/#kernelconfig-building"&gt;Building and Installing a Custom Kernel&lt;/a&gt; chapter of the FreeBSD Handbook.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;i class="fa icon-note" title="Note"&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;It is supposed that the reader of this chapter is familiar with the information described in the &lt;a href="https://docs.freebsd.org/en/books/handbook/kernelconfig/#kernelconfig-building"&gt;Building and Installing a Custom Kernel&lt;/a&gt; chapter of the FreeBSD Handbook.
+If this is not the case, please read through the above mentioned chapter to understand how the build process works.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 13. Editor Configuration</title><link>https://docs.freebsd.org/en/books/fdp-primer/editor-config/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/fdp-primer/editor-config/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Adjusting your text editor configuration can make working on document files quicker and easier, and help documents conform to FDP guidelines.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="editor-config-vim"&gt;13.1. Vim&lt;a class="anchor" href="#editor-config-vim"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Install from &lt;a class="package" href="https://cgit.freebsd.org/ports/tree/editors/vim/"&gt;editors/vim&lt;/a&gt;, then follow the configuration instructions in &lt;a href="../editor-config/#editor-config-vim-config"&gt;Configuration&lt;/a&gt;.
+More advanced users can use a proper linter like &lt;a href="https://github.com/dense-analysis/ale"&gt;Ale&lt;/a&gt; which can also act as a Vim &lt;a href="https://langserver.org/"&gt;Language Server Protocol&lt;/a&gt; client.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="editor-config-vim-use"&gt;13.1.1. Use&lt;a class="anchor" href="#editor-config-vim-use"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Manual page writers can use the following keyboard shortcuts to reformat:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Press &lt;kbd&gt;P&lt;/kbd&gt; to reformat paragraphs or text that has been selected in Visual mode.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Press &lt;kbd&gt;T&lt;/kbd&gt; to replace groups of eight spaces with a tab.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</description></item><item><title>Contributing to FreeBSD</title><link>https://docs.freebsd.org/en/articles/contributing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/contributing/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;!-- vale FreeBSD.Pronouns = NO --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This article describes the different ways in which an individual or organization may contribute to the FreeBSD Project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;So you want to contribute to FreeBSD?
+That is great!
+FreeBSD &lt;em&gt;relies&lt;/em&gt; on the contributions of its user base to survive.
+Your contributions are not only appreciated, they are vital to FreeBSD’s continued growth.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A large and growing number of international contributors, of greatly varying ages and areas of technical expertise, develop FreeBSD.
+There is always more work to be done than there are people available to do it, and more help is always appreciated.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Bibliography</title><link>https://docs.freebsd.org/en/books/arch-handbook/bibliography/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/arch-handbook/bibliography/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;!-- toc disabled --&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;[1] &lt;em&gt;Marshall Kirk McKusick, Keith Bostic, Michael J Karels, and John S Quarterman.&lt;/em&gt; Copyright © 1996 Addison-Wesley Publishing Company, Inc.. 0-201-54979-4. Addison-Wesley Publishing Company, Inc.. The Design and Implementation of the 4.4 BSD Operating System. 1-2.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>A project model for the FreeBSD Project</title><link>https://docs.freebsd.org/en/books/dev-model/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/dev-model/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;hr/&gt;
+
+&lt;div id="foreword" class="paragraph abstract-title"&gt;
+&lt;p&gt;Foreword&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Up until now, the FreeBSD project has released a number of described techniques to do different parts of work.
+However, a project model summarising how the project is structured is needed because of the increasing amount of project members.
+&lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote."&gt;1&lt;/a&gt;]&lt;/sup&gt;
+This paper will provide such a project model and is donated to the FreeBSD Documentation project where it can evolve together with the project so that it can at any point in time reflect the way the project works.
+It is based on [&lt;a href="../dev-model/#thesis"&gt;Saers&lt;/a&gt;].&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Build Your Own FreeBSD Update Server</title><link>https://docs.freebsd.org/en/articles/freebsd-update-server/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/freebsd-update-server/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="admonitionblock warning"&gt;
+&lt;table&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;i class="fa icon-warning" title="Warning"&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The instructions in this article refer to an older version of FreeBSD and may
+not work properly on recent versions of the OS. With the availability of
+pkgbase, the freebsd-update utility is scheduled to be removed from FreeBSD in
+the future. When that happens, this article is either updated to reflect the
+new procedures or removed entirely.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This article describes building an internal FreeBSD Update Server.
+The &lt;a href="https://github.com/freebsd/freebsd-update-build/"&gt;freebsd-update-server&lt;/a&gt; is written by &lt;code&gt;Colin Percival &amp;lt;&lt;a href="mailto:cperciva@FreeBSD.org"&gt;cperciva@FreeBSD.org&lt;/a&gt;&amp;gt;&lt;/code&gt;, Security Officer Emeritus of FreeBSD.
+For users that think it is convenient to update their systems against an official update server, building their own FreeBSD Update Server may help to extend its functionality by supporting manually-tweaked FreeBSD releases or by providing a local mirror that will allow faster updates for a number of machines.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Building Products with FreeBSD</title><link>https://docs.freebsd.org/en/articles/building-products/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/building-products/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The FreeBSD project is a worldwide, volunteer based, and collaborative project, which develops a portable and high-quality operating system.
+The FreeBSD project distributes the source code for its product under a liberal license, with the intention of encouraging the use of its code.
+Collaborating with the FreeBSD project can help organizations reduce their time to market, reduce engineering costs and improve their product quality.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This article examines the issues in using FreeBSD code in appliances and software products.
+It highlights the characteristics of FreeBSD that make it an excellent substrate for product development.
+The article concludes by suggesting a few &amp;#34;best practices&amp;#34; for organizations collaborating with the FreeBSD project.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Contributors to FreeBSD</title><link>https://docs.freebsd.org/en/articles/contributors/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/contributors/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This article lists individuals and organizations who have made a contribution to FreeBSD.
+To see the current list of FreeBSD Committers you can take a look at the
+following &lt;a href="../contributors/#staff-committers"&gt;list&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="staff-committers"&gt;1. The FreeBSD Developers&lt;a class="anchor" href="#staff-committers"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This list, which includes all members of the Core Team, names everyone who has commit privileges for one or more of the three source trees (doc, ports and src).
+To see the current Core Team members you can take a look at the &lt;a href="https://www.freebsd.org/administration/#t-core"&gt;administration page&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>CUPS on FreeBSD</title><link>https://docs.freebsd.org/en/articles/cups/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/cups/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;An article about configuring CUPS on FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="printing-cups"&gt;1. An Introduction to the Common Unix Printing System (CUPS)&lt;a class="anchor" href="#printing-cups"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;CUPS, the Common UNIX Printing System, provides a portable printing layer for UNIX®-based operating systems.
+It has been developed by Easy Software Products to promote a standard printing solution for all UNIX® vendors and users.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;CUPS uses the Internet Printing Protocol (IPP) as the basis for managing print jobs and queues.
+The Line Printer Daemon (LPD), Server Message Block (SMB), and AppSocket (aka JetDirect) protocols are also supported with reduced functionality.
+CUPS adds network printer browsing and PostScript Printer Description (PPD) based printing options to support real-world printing under UNIX®.
+As a result, CUPS is ideally-suited for sharing and accessing printers in mixed environments of FreeBSD, Linux®, Mac OS® X, or Windows®.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Design elements of the FreeBSD VM system</title><link>https://docs.freebsd.org/en/articles/vm-design/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/vm-design/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;i class="fa icon-note" title="Note"&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document is outdated and some sections do not accurately describe the current state of the VM system.
+It is retained for historical purposes and may be updated over time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Matthew Dillon &amp;lt;&lt;a href="mailto:dillon@apollo.backplane.com"&gt;dillon@apollo.backplane.com&lt;/a&gt;&amp;gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The title is really just a fancy way of saying that I am going to attempt to describe the whole VM enchilada, hopefully in a way that everyone can follow.
+For the last year I have concentrated on a number of major kernel subsystems within FreeBSD, with the VM and Swap subsystems being the most interesting and NFS being &amp;#34;a necessary chore&amp;#34;.
+I rewrote only small portions of the code. In the VM arena the only major rewrite I have done is to the swap subsystem.
+Most of my work was cleanup and maintenance, with only moderate code rewriting and no major algorithmic adjustments within the VM subsystem.
+The bulk of the VM subsystem’s theoretical base remains unchanged and a lot of the credit for the modernization effort in the last few years belongs to John Dyson and David Greenman.
+Not being a historian like Kirk I will not attempt to tag all the various features with peoples names, since I will invariably get it wrong.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Explaining BSD</title><link>https://docs.freebsd.org/en/articles/explaining-bsd/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/explaining-bsd/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In the open source world, the word &amp;#34;Linux&amp;#34; is almost synonymous with &amp;#34;Operating System&amp;#34;, but it is not the only open source UNIX® operating system.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;So what is the secret? Why is BSD not better known? This white paper addresses these and other questions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Throughout this paper, differences between BSD and Linux will be noted &lt;em&gt;like this&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="what-is-bsd"&gt;1. What is BSD?&lt;a class="anchor" href="#what-is-bsd"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;BSD stands for &amp;#34;Berkeley Software Distribution&amp;#34;.
+It is the name of distributions of source code from the University of California, Berkeley, which were originally extensions to AT&amp;amp;T’s Research UNIX® operating system.
+Several open source operating system projects are based on a release of this source code known as 4.4BSD-Lite.
+In addition, they comprise a number of packages from other Open Source projects, including notably the GNU project.
+The overall operating system comprises:&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Filtering Bridges</title><link>https://docs.freebsd.org/en/articles/filtering-bridges/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/filtering-bridges/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Often it is useful to divide one physical network (like an Ethernet) into two separate segments without having to create subnets, and use a router to link them together.
+The device that connects the two networks in this way is called a bridge.
+A FreeBSD system with two network interfaces is enough to act as a bridge.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A bridge works by scanning the addresses of MAC level (Ethernet addresses) of the devices connected to each of its network interfaces and then forwarding the traffic between the two networks only if the source and the destination are on different segments.
+Under many points of view a bridge is similar to an Ethernet switch with only two ports.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Fonts and FreeBSD</title><link>https://docs.freebsd.org/en/articles/fonts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/fonts/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document contains a description of the various font files that may be used with FreeBSD and the syscons driver, X11, Ghostscript and Groff.
+Cookbook examples are provided for switching the syscons display to 80x60 mode, and for using type 1 fonts with the above application programs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Introduction&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;There are many sources of fonts available, and one might ask how they might be used with FreeBSD.
+The answer can be found by carefully searching the documentation for the component that one would like to use.
+This is very time consuming, so this tutorial is an attempt to provide a shortcut for others who might be interested.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>For People New to Both FreeBSD and UNIX®</title><link>https://docs.freebsd.org/en/articles/new-users/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/new-users/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Congratulations on installing FreeBSD! This introduction is for people new to both FreeBSD &lt;em&gt;and&lt;/em&gt; UNIX®-so it starts with basics.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="in-and-out"&gt;1. Logging in and Getting Out&lt;a class="anchor" href="#in-and-out"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Log in (when you see &lt;code&gt;login:&lt;/code&gt;) as a user you created during installation or as &lt;code&gt;root&lt;/code&gt;.
+(Your FreeBSD installation will already have an account for &lt;code&gt;root&lt;/code&gt;;
+who can go anywhere and do anything, including deleting essential files, so be careful!)
+The symbols % and # in the following stand for the prompt (yours may be different), with % indicating an ordinary user and # indicating &lt;code&gt;root&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>FreeBSD Accessibility Handbook</title><link>https://docs.freebsd.org/en/books/accessibility/book/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/accessibility/book/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Welcome to the Accessibility Handbook.
+This book covers the assistive technologies available in FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Accessibility is an ongoing effort, not a fixed destination.
+As such, this handbook is a living document and continually evolving.
+Contributions, suggestions, and feedback are highly encouraged.
+If you are interested in contributing, please reach out to us via the &lt;a href="https://lists.freebsd.org/subscription/freebsd-accessibility"&gt;FreeBSD accessibility mailing list&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;You can download this book in various formats and compression options from the FreeBSD download server or one of its many mirror sites.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>FreeBSD and Solid State Devices</title><link>https://docs.freebsd.org/en/articles/solid-state/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/solid-state/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This article covers the use of solid state disk devices in FreeBSD to create embedded systems.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Embedded systems have the advantage of increased stability due to the lack of integral moving parts (hard drives).
+Account must be taken, however, for the generally low disk space available in the system and the durability of the storage medium.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Specific topics to be covered include the types and attributes of solid state media suitable for disk use in FreeBSD, kernel options that are of interest in such an environment, the &lt;span class="filename"&gt;rc.initdiskless&lt;/span&gt; mechanisms that automate the initialization of such systems and the need for read-only filesystems, and building filesystems from scratch.
+The article will conclude with some general strategies for small and read-only FreeBSD environments.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>FreeBSD Architecture Handbook</title><link>https://docs.freebsd.org/en/books/arch-handbook/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/arch-handbook/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Welcome to the FreeBSD Architecture Handbook. This manual is a &lt;em&gt;work in progress&lt;/em&gt; and is the work of many individuals. Many sections do not yet exist and some of those that do exist need to be updated. If you are interested in helping with this project, send email to the &lt;a href="https://lists.FreeBSD.org/subscription/freebsd-doc"&gt;FreeBSD documentation project mailing list&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The latest version of this document is always available from the &lt;a href="https://www.FreeBSD.org/"&gt;FreeBSD World Wide Web server&lt;/a&gt;. It may also be downloaded in a variety of formats and compression options from the &lt;a href="https://download.freebsd.org/doc/"&gt;FreeBSD download server&lt;/a&gt; or one of the numerous &lt;a href="https://docs.freebsd.org/en/books/handbook/mirrors#mirrors"&gt;mirror sites&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>FreeBSD Architecture Handbook</title><link>https://docs.freebsd.org/en/books/arch-handbook/book/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/arch-handbook/book/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Welcome to the FreeBSD Architecture Handbook. This manual is a &lt;em&gt;work in progress&lt;/em&gt; and is the work of many individuals. Many sections do not yet exist and some of those that do exist need to be updated. If you are interested in helping with this project, send email to the &lt;a href="https://lists.FreeBSD.org/subscription/freebsd-doc"&gt;FreeBSD documentation project mailing list&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The latest version of this document is always available from the &lt;a href="https://www.FreeBSD.org/"&gt;FreeBSD World Wide Web server&lt;/a&gt;. It may also be downloaded in a variety of formats and compression options from the &lt;a href="https://download.freebsd.org/doc/"&gt;FreeBSD download server&lt;/a&gt; or one of the numerous &lt;a href="https://docs.freebsd.org/en/books/handbook/mirrors#mirrors"&gt;mirror sites&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>FreeBSD Documentation Project Primer for New Contributors</title><link>https://docs.freebsd.org/en/books/fdp-primer/book/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/fdp-primer/book/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Thank you for becoming a part of the FreeBSD Documentation Project. Your contribution is extremely valuable, and we appreciate it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This primer covers details needed to start contributing to the FreeBSD Documentation Project, or FDP, including tools, software, and the philosophy behind the Documentation Project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This is a work in progress. Corrections and additions are always welcome.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="preface"&gt;Preface&lt;a class="anchor" href="#preface"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="preface-prompts"&gt;Shell Prompts&lt;a class="anchor" href="#preface-prompts"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This table shows the default system prompt and superuser prompt.
+The examples use these prompts to indicate which type of user is running the example.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>FreeBSD Quickstart Guide for Linux® Users</title><link>https://docs.freebsd.org/en/articles/linux-users/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/linux-users/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document is intended to quickly familiarize intermediate to advanced Linux® users with the basics of FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Introduction&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document highlights some of the technical differences between FreeBSD and Linux® so that intermediate to advanced Linux® users can quickly familiarize themselves with the basics of FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document assumes that FreeBSD is already installed.
+Refer to the &lt;a href="https://docs.freebsd.org/en/books/handbook/bsdinstall#bsdinstall"&gt;Installing FreeBSD&lt;/a&gt; chapter of the FreeBSD Handbook for help with the installation process.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>FreeBSD Release Engineering</title><link>https://docs.freebsd.org/en/articles/freebsd-releng/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/freebsd-releng/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This article describes the release engineering process of the FreeBSD Project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="introduction"&gt;1. Introduction to the FreeBSD Release Engineering Process&lt;a class="anchor" href="#introduction"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Development of FreeBSD has a very specific workflow.
+In general, all changes to the FreeBSD base system are committed to the main branch, which reflects the top of the source tree.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;After a reasonable testing period, changes can then be merged to the stable/ branches.
+The default minimum timeframe before merging to stable/ branches is three (3) days.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>FreeBSD Support for Leap Seconds</title><link>https://docs.freebsd.org/en/articles/leap-seconds/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/leap-seconds/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="leapseconds-definition"&gt;1. Introduction&lt;a class="anchor" href="#leapseconds-definition"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A &lt;em&gt;leap second&lt;/em&gt; is an one second adjustment made at specific times of year to UTC to synchronize atomic time scales with variations in the rotation of the Earth.
+This article describes how FreeBSD interacts with leap seconds.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As of this writing, the next leap second will occur at 2015-Jun-30 23:59:60 UTC.
+This leap second will occur during a business day for North and South America and the Asia/Pacific region.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Frequently Asked Questions About The FreeBSD Mailing Lists</title><link>https://docs.freebsd.org/en/articles/mailing-list-faq/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/mailing-list-faq/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This is the FAQ for the FreeBSD mailing lists.
+If you are interested in helping with this project, send email to the &lt;a href="https://lists.FreeBSD.org/subscription/freebsd-doc"&gt;FreeBSD documentation project mailing list&lt;/a&gt;.
+The latest version of this document is always available from the &lt;a href="https://docs.freebsd.org/en/articles/mailing-list-faq/"&gt;FreeBSD World Wide Web server&lt;/a&gt;.
+It may also be downloaded as one large &lt;a href="https://docs.freebsd.org/en/articles/mailing-list-faq/"&gt;HTML&lt;/a&gt; file with HTTP or as plain text, PostScript, PDF, etc. from the &lt;a href="https://download.freebsd.org/doc/"&gt;FreeBSD FTP server&lt;/a&gt;.
+You may also want to &lt;a href="https://www.FreeBSD.org/search/"&gt;Search the FAQ&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>How to get Best Results from the FreeBSD-questions Mailing List</title><link>https://docs.freebsd.org/en/articles/freebsd-questions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/freebsd-questions/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document provides useful information for people looking to prepare an e-mail to the FreeBSD-questions mailing list.
+Advice and hints are given that will maximize the chance that the reader will receive useful replies.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document is regularly posted to the FreeBSD-questions mailing list.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_introduction"&gt;1. Introduction&lt;a class="anchor" href="#_introduction"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;code&gt;FreeBSD-questions&lt;/code&gt; is a mailing list maintained by the FreeBSD project to help people who have questions about the normal use of FreeBSD.
+Another group, &lt;code&gt;FreeBSD-hackers&lt;/code&gt;, discusses more advanced questions such as future development work.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Implementing UFS Journaling on a Desktop PC</title><link>https://docs.freebsd.org/en/articles/gjournal-desktop/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/gjournal-desktop/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A journaling file system uses a log to record file system updates and preserves consistency in the event of a system crash or power failure.
+Although unsaved changes to files may still be lost, journaling greatly reduces the risk of file system corruption caused by an unclean shutdown and significantly shortens recovery time.
+While the UFS file system employed by FreeBSD does not implement journaling as an inherent on-disk feature, FreeBSD provides journaling support through file system-level mechanisms (Soft Updates with journaling) as well as through the GEOM framework (&lt;code&gt;gjournal&lt;/code&gt;).
+This article describes the available UFS journaling mechanisms and explains their appropriate use on modern FreeBSD systems.
+&lt;em&gt;The content has been reviewed and updated for FreeBSD versions 13 through 15&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Independent Verification of IPsec Functionality in FreeBSD</title><link>https://docs.freebsd.org/en/articles/ipsec-must/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/ipsec-must/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;You installed IPsec and it seems to be working.
+How do you know? I describe a method for experimentally verifying that IPsec is working.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="problem"&gt;1. The Problem&lt;a class="anchor" href="#problem"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;First, lets assume you have &lt;a href="../ipsec-must/#ipsec-install"&gt;Installing IPsec&lt;/a&gt;.
+How do you know it is &lt;a href="../ipsec-must/#caveat"&gt;Caveat&lt;/a&gt;? Sure, your connection will not work if it is misconfigured, and it will work when you finally get it right.
+&lt;a href="https://man.freebsd.org/cgi/man.cgi?query=netstat&amp;amp;sektion=1&amp;amp;format=html"&gt;netstat(1)&lt;/a&gt; will list it. But can you independently confirm it?&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Introduction to NanoBSD</title><link>https://docs.freebsd.org/en/articles/nanobsd/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/nanobsd/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document provides information about the NanoBSD tools, which can be used to create FreeBSD system images for embedded applications, suitable for use on a USB key, memory card or other mass storage media.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Introduction to NanoBSD&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;NanoBSD is a tool developed by Poul-Henning Kamp &amp;lt;&lt;a href="mailto:phk@FreeBSD.org"&gt;phk@FreeBSD.org&lt;/a&gt;&amp;gt; and now maintained by Warner Losh &amp;lt;&lt;a href="mailto:imp@FreeBSD.org"&gt;imp@FreeBSD.org&lt;/a&gt;&amp;gt;.
+It creates a FreeBSD system image for embedded applications, suitable for use on a USB key, memory card or other mass storage media.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>LDAP Authentication</title><link>https://docs.freebsd.org/en/articles/ldap-auth/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/ldap-auth/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document is intended as a guide for the configuration of an LDAP server (principally an OpenLDAP server) for authentication on FreeBSD.
+This is useful for situations where many servers need the same user accounts, for example as a replacement for NIS.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="preface"&gt;1. Preface&lt;a class="anchor" href="#preface"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document is intended to give the reader enough of an understanding of LDAP to configure an LDAP server.
+This document will attempt to provide an explanation of &lt;a class="package" href="https://cgit.freebsd.org/ports/tree/net/nss_ldap/"&gt;net/nss_ldap&lt;/a&gt; and &lt;a class="package" href="https://cgit.freebsd.org/ports/tree/security/pam_ldap/"&gt;security/pam_ldap&lt;/a&gt; for use with client machines services for use with the LDAP server.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Legacy FreeBSD Release Engineering</title><link>https://docs.freebsd.org/en/articles/releng/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/releng/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;i class="fa icon-note" title="Note"&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document is outdated and does not accurately describe the current release procedures of the FreeBSD Release Engineering team.
+It is retained for historical purposes.
+The current procedures used by the FreeBSD Release Engineering team are available in the &lt;a href="https://docs.freebsd.org/en/articles/freebsd-releng/"&gt;FreeBSD Release Engineering&lt;/a&gt; article.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This paper describes the approach used by the FreeBSD release engineering team to make production quality releases of the FreeBSD Operating System.
+It details the methodology used for the official FreeBSD releases and describes the tools available for those interested in producing customized FreeBSD releases for corporate rollouts or commercial productization.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Linux® emulation in FreeBSD</title><link>https://docs.freebsd.org/en/articles/linux-emulation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/linux-emulation/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This masters thesis deals with updating the Linux® emulation layer (the so called &lt;em&gt;Linuxulator&lt;/em&gt;).
+The task was to update the layer to match the functionality of Linux® 2.6.
+As a reference implementation, the Linux® 2.6.16 kernel was chosen.
+The concept is loosely based on the NetBSD implementation.
+Most of the work was done in the summer of 2006 as a part of the Google Summer of Code students program.
+The focus was on bringing the &lt;em&gt;NPTL&lt;/em&gt; (new POSIX® thread library) support into the emulation layer, including &lt;em&gt;TLS&lt;/em&gt; (thread local storage), &lt;em&gt;futexes&lt;/em&gt; (fast user space mutexes), &lt;em&gt;PID mangling&lt;/em&gt;, and some other minor things.
+Many small problems were identified and fixed in the process.
+My work was integrated into the main FreeBSD source repository and will be shipped in the upcoming 7.0R release.
+We, the emulation development team, are working on making the Linux® 2.6 emulation the default emulation layer in FreeBSD.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Mirroring FreeBSD</title><link>https://docs.freebsd.org/en/articles/hubs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/hubs/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;An in-progress article on how to mirror FreeBSD, aimed at hub administrators.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;i class="fa icon-note" title="Note"&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We are not accepting new community mirrors at this time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="mirror-contact"&gt;1. Contact Information&lt;a class="anchor" href="#mirror-contact"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The Mirror System Coordinators can be reached through email at &lt;a href="mailto:mirror-admin@FreeBSD.org"&gt;mirror-admin@FreeBSD.org&lt;/a&gt;.
+There is also a &lt;a href="https://lists.FreeBSD.org/subscription/freebsd-hubs"&gt;FreeBSD mirror sites mailing lists&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="mirror-requirements"&gt;2. Requirements for FreeBSD Mirrors&lt;a class="anchor" href="#mirror-requirements"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="mirror-diskspace"&gt;2.1. Disk Space&lt;a class="anchor" href="#mirror-diskspace"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Disk space is one of the most important requirements.
+Depending on the set of releases, architectures, and degree of completeness you want to mirror, a huge amount of disk space may be consumed.
+Also keep in mind that &lt;em&gt;official&lt;/em&gt; mirrors are probably required to be complete.
+The web pages should always be mirrored completely.
+Also note that the numbers stated here are reflecting the current state (at 12.0-RELEASE/11.3-RELEASE).
+Further development and releases will only increase the required amount.
+Also make sure to keep some (ca. 10-20%) extra space around just to be sure.
+Here are some approximate figures:&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>OpenPGP Keys</title><link>https://docs.freebsd.org/en/articles/pgpkeys/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/pgpkeys/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;hr/&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;These OpenPGP keys can be used to verify a signature or send encrypted email to &lt;code&gt;FreeBSD.org&lt;/code&gt; officers or developers.
+The complete keyring can be downloaded at &lt;a href="https://docs.FreeBSD.org/pgpkeys/pgpkeys.txt"&gt;pgpkeyring.txt&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="pgpkeys-officers"&gt;1. Officers&lt;a class="anchor" href="#pgpkeys-officers"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_security_officer_team_security_officerfreebsd_org"&gt;1.1. Security Officer Team &lt;code&gt;&amp;lt;&lt;a href="mailto:security-officer@FreeBSD.org"&gt;security-officer@FreeBSD.org&lt;/a&gt;&amp;gt;&lt;/code&gt;&lt;a class="anchor" href="#_security_officer_team_security_officerfreebsd_org"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="literalblock literal-block-margin"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;pub rsa4096/D9AD2A18057474CB 2022-12-11 [C] [expires: 2030-01-24]
+ Key fingerprint = 0BE3 3275 D74C 953C 79F8 1107 D9AD 2A18 0574 74CB
+uid FreeBSD Security Officer &amp;lt;security-officer@freebsd.org&amp;gt;
+sub rsa4096/6E58DE901F001AEF 2022-12-11 [S] [expires: 2028-01-24]
+sub rsa4096/46DB26D62F6039B7 2022-12-11 [E] [expires: 2028-01-24]&lt;/pre&gt;
+&lt;/div&gt;</description></item><item><title>Pluggable Authentication Modules</title><link>https://docs.freebsd.org/en/articles/pam/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/pam/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This article describes the underlying principles and mechanisms of the Pluggable Authentication Modules (PAM) library, and explains how to configure PAM, how to integrate PAM into applications, and how to write PAM modules.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="pam-intro"&gt;1. Introduction&lt;a class="anchor" href="#pam-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The Pluggable Authentication Modules (PAM) library is a generalized API for authentication-related services which allows a system administrator to add new authentication methods simply by installing new PAM modules, and to modify authentication policies by editing configuration files.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Port Mentor Guidelines</title><link>https://docs.freebsd.org/en/articles/port-mentor-guidelines/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/port-mentor-guidelines/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="port-mentor.guidelines"&gt;1. Guideline for Mentor/Mentee Relationships&lt;a class="anchor" href="#port-mentor.guidelines"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This section is intended to help demystify the mentoring process, as well as a way to openly promote a constructive discussion to adapt and grow the guidelines.
+In our lives we have too many rules; we are not a government organization that inflicts regulation, but rather a collective of like minded individuals working toward a common goal, maintaining the quality assurance of the product we call the Ports Tree.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Practical rc.d scripting in BSD</title><link>https://docs.freebsd.org/en/articles/rc-scripting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/rc-scripting/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Beginners may find it difficult to relate the facts from the formal documentation on the BSD &lt;span class="filename"&gt;rc.d&lt;/span&gt; framework with the practical tasks of &lt;span class="filename"&gt;rc.d&lt;/span&gt; scripting.
+In this article, we consider a few typical cases of increasing complexity, show &lt;span class="filename"&gt;rc.d&lt;/span&gt; features suited for each case, and discuss how they work.
+Such an examination should provide reference points for further study of the design and efficient application of &lt;span class="filename"&gt;rc.d&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="rcng-intro"&gt;1. Introduction&lt;a class="anchor" href="#rcng-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The historical BSD had a monolithic startup script, &lt;span class="filename"&gt;/etc/rc&lt;/span&gt;.
+It was invoked by &lt;a href="https://man.freebsd.org/cgi/man.cgi?query=init&amp;amp;sektion=8&amp;amp;format=html"&gt;init(8)&lt;/a&gt; at system boot time and performed all userland tasks required for multi-user operation: checking and mounting file systems, setting up the network, starting daemons, and so on.
+The precise list of tasks was not the same in every system; admins needed to customize it.
+With few exceptions, &lt;span class="filename"&gt;/etc/rc&lt;/span&gt; had to be modified, and true hackers liked it.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Problem Report Handling Guidelines With Bugzilla</title><link>https://docs.freebsd.org/en/articles/pr-guidelines/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/pr-guidelines/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;These guidelines describe recommended handling practices for FreeBSD Problem Reports (PRs) as submitted via Bugzilla.
+Whilst developed for the FreeBSD Bugzilla Database Maintenance Team &lt;a href="mailto:freebsd-bugbusters@FreeBSD.org"&gt;freebsd-bugbusters@FreeBSD.org&lt;/a&gt;, these guidelines should be followed by anyone working with FreeBSD Problem Reports.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Introduction&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Bugzilla is an issue management system used by the FreeBSD Project.
+As accurate tracking of outstanding software defects is important to FreeBSD’s quality, the correct use of the software is essential to the forward progress of the Project.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Remote Installation of the FreeBSD Operating System Without a Remote Console</title><link>https://docs.freebsd.org/en/articles/remote-install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/remote-install/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This article documents the remote installation of the FreeBSD operating system when the console of the remote system is unavailable.
+The main idea behind this article is the result of a collaboration with &lt;code&gt;Martin Matuska &amp;lt;&lt;a href="mailto:mm@FreeBSD.org"&gt;mm@FreeBSD.org&lt;/a&gt;&amp;gt;&lt;/code&gt; with valuable input provided by &lt;code&gt;Paweł Jakub Dawidek &amp;lt;&lt;a href="mailto:pjd@FreeBSD.org"&gt;pjd@FreeBSD.org&lt;/a&gt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="background"&gt;1. Background&lt;a class="anchor" href="#background"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;There are many server hosting providers in the world, but very few of them are officially supporting FreeBSD.
+They usually provide support for a Linux® distribution to be installed on the servers they offer.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Serial and UART Tutorial</title><link>https://docs.freebsd.org/en/articles/serial-uart/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/serial-uart/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This article talks about using serial hardware with FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="uart"&gt;1. The UART: What it is and how it works&lt;a class="anchor" href="#uart"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;Copyright ® 1996 &lt;code&gt;Frank Durda IV &amp;lt;&lt;a href="mailto:uhclem@FreeBSD.org"&gt;uhclem@FreeBSD.org&lt;/a&gt;&amp;gt;&lt;/code&gt;, All Rights Reserved. 13 January 1996.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The Universal Asynchronous Receiver/Transmitter (UART) controller is the key component of the serial communications subsystem of a computer.
+The UART takes bytes of data and transmits the individual bits in a sequential fashion.
+At the destination, a second UART re-assembles the bits into complete bytes.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>The vinum Volume Manager</title><link>https://docs.freebsd.org/en/articles/vinum/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/vinum/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="vinum-synopsis"&gt;1. Synopsis&lt;a class="anchor" href="#vinum-synopsis"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;No matter the type of disks, there are always potential problems.
+The disks can be too small, too slow, or too unreliable to meet the system’s requirements.
+While disks are getting bigger, so are data storage requirements.
+Often a file system is needed that is bigger than a disk’s capacity.
+Various solutions to these problems have been proposed and implemented.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;One method is through the use of multiple, and sometimes redundant, disks.
+In addition to supporting various cards and controllers for hardware Redundant Array of Independent Disks RAID systems, the base FreeBSD system includes the &lt;span class="filename"&gt;vinum&lt;/span&gt; volume manager, a block device driver that implements virtual disk drives and addresses these three problems.
+&lt;span class="filename"&gt;vinum&lt;/span&gt; provides more flexibility, performance, and reliability than traditional disk storage and implements &lt;code&gt;RAID&lt;/code&gt;-0, &lt;code&gt;RAID&lt;/code&gt;-1, and &lt;code&gt;RAID&lt;/code&gt;-5 models, both individually and in combination.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Use Language Servers for Development in the FreeBSD Src Tree</title><link>https://docs.freebsd.org/en/articles/freebsd-src-lsp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/freebsd-src-lsp/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Introduction&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This guide is about setting up a FreeBSD src tree with language servers performing source code indexing. The guide describes the steps for Vim/NeoVim and VSCode. If you use a different text editor you can use this guide as a reference and search the equivalent commands for your preferred editor.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="requirements"&gt;2. Requirements&lt;a class="anchor" href="#requirements"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In order to follow this guide we need to install certain requirements. We need a Language server, &lt;code&gt;ccls&lt;/code&gt; or &lt;code&gt;clangd&lt;/code&gt;, and optionally a compilation database.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Writing a GEOM Class</title><link>https://docs.freebsd.org/en/articles/geom-class/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/geom-class/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This text documents some starting points in developing GEOM classes, and kernel modules in general.
+It is assumed that the reader is familiar with C userland programming.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Introduction&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="intro-docs"&gt;1.1. Documentation&lt;a class="anchor" href="#intro-docs"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Documentation on kernel programming is scarce - it is one of few areas where there is nearly nothing in the way of friendly tutorials, and the phrase &amp;#34;use the source!&amp;#34; really holds true.
+However, there are some bits and pieces (some of them seriously outdated) floating around that should be studied before beginning to code:&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Writing FreeBSD Problem Reports</title><link>https://docs.freebsd.org/en/articles/problem-reports/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/problem-reports/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This article describes how to best formulate and submit a problem report to the FreeBSD Project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="pr-scope"&gt;1. Scope of this article&lt;a class="anchor" href="#pr-scope"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This article was originally written to cover Problem Report submissions via Bugzilla, but parts will also apply to submitting via Phabricator review system or the FreeBSD Github organization.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="pr-intro"&gt;2. Introduction&lt;a class="anchor" href="#pr-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;One of the most frustrating experiences one can have as a software user is to submit a problem report only to have it summarily closed with a terse and unhelpful explanation like &amp;#34;not a bug&amp;#34; or &amp;#34;bogus report&amp;#34;.
+Similarly, one of the most frustrating experiences as a software developer is to be flooded with problem reports that are not really problem reports but requests for support, or that contain little or no information about what the problem is and how to reproduce it.&lt;/p&gt;
+&lt;/div&gt;</description></item></channel></rss>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/status/report-2024-01-2024-03/bsdinstall/">
+
+  <title>
+    
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content="  " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/status/report-2024-01-2024-03/bsdinstall/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/status\/report-2024-01-2024-03\/bsdinstall\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/about/></a></li>
+  <li><a href=/features/></a></li>
+  <li><a href=/applications/>Applications</a></li>
+  <li><a href=/administration/>Administration</a></li>
+  <li><a href=/news/newsflash/>News</a></li>
+  <li><a href=/events></a></li>
+  <li><a href=/press>Press</a></li>
+  <li><a href=/art>Artwork</a></li>
+  <li><a href=/donations>Donations</a></li>
+  <li><a href=/copyright></a></li>
+  <li><a href=/privacy>Privacy Policy</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1></h1><div class="sect2">
+<h3 id="_graphical_installer_for_freebsd">Graphical Installer for FreeBSD</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://people.defora.org/~khorben/FreeBSD/bsdinstall/bsdinstall%20-%20Now%20with%20Graphics!%20-%20AsiaBSDCon%202024%20-%20WIP%20Session.pdf">Slides from AsiaBSDCon 2024</a> URL: <a href="https://people.defora.org/~khorben/FreeBSD/bsdinstall/bsdinstall%20-%20Now%20with%20Graphics!%20-%20AsiaBSDCon%202024%20-%20WIP%20Session.pdf" class="bare">https://people.defora.org/~khorben/FreeBSD/bsdinstall/bsdinstall%20-%20Now%20with%20Graphics!%20-%20AsiaBSDCon%202024%20-%20WIP%20Session.pdf</a><br/>
+<a href="https://github.com/khorben/gbsddialog">gbsddialog</a> URL: <a href="https://github.com/khorben/gbsddialog" class="bare">https://github.com/khorben/gbsddialog</a><br/>
+<a href="https://youtu.be/jm6byc7N2O4">preview video</a> URL: <a href="https://youtu.be/jm6byc7N2O4" class="bare">https://youtu.be/jm6byc7N2O4</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Pierre Pronchery &lt;<a href="mailto:pierre@freebsdfoundation.org">pierre@freebsdfoundation.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>The first hurdle to overcome when testing a new Operating System is to get it installed.
+What is more, the first impression new users gather from an Operating System is its installation process.
+The state of the art for Operating System installers nowadays definitely involves a graphical process.
+This is the case for mainstream systems but also for other UNIX systems comparable to <a href="https://www.freebsd.org">FreeBSD</a>: <a href="https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux">RedHat Enterprise Linux</a>, <a href="https://ubuntu.com/">Ubuntu</a>, <a href="https://www.debian.org">Debian GNU/Linux</a>, or even <a href="https://www.devuan.org">Devuan GNU+Linux</a>
+Regardless of the technical level of the actual user, this is how the platform will be compared in the public eye.</p>
+</div>
+<div class="paragraph">
+<p>In practice, FreeBSD has already been derived as a desktop-oriented Operating System by different projects.
+Of these, I only found <a href="https://www.ghostbsd.org">GhostBSD</a> as a maintained project offering a graphical procedure to install the system.
+The objective here was to consider a procedure that FreeBSD could adopt as part of its base system, in order to ship a graphical installer much like the current installer.
+However, <a href="https://ghostbsd-documentation-portal.readthedocs.io/en/latest/user/installation-guide/custom-installation.html#installing-ghostbsd">GhostBSD’s installer</a> relies on a Gtk+ interface driven with Python, implying a hefty footprint on the installation media when adopting FreeBSD’s usual image generation procedure.
+It would also imply importing and maintaining new projects into the ports tree.</p>
+</div>
+<div class="paragraph">
+<p>Instead, with knowledge of the current <a href="https://man.freebsd.org/cgi/man.cgi?query=bsdinstall&amp;sektion=8&amp;format=html">bsdinstall(8)</a> and <a href="https://man.freebsd.org/cgi/man.cgi?query=bsdconfig&amp;sektion=8&amp;format=html">bsdconfig(8)</a> utilities, I envisioned a BSD-licensed replacement for <a href="https://man.freebsd.org/cgi/man.cgi?query=Xdialog&amp;sektion=1&amp;format=html">Xdialog(1)</a>.
+Just like when invoking bsdconfig with the -X switch for graphical mode, it could be dropped in instead of <a href="https://man.freebsd.org/cgi/man.cgi?query=bsddialog&amp;sektion=1&amp;format=html">bsddialog(1)</a> and allow graphical installation - while sharing the infrastructure of the current installer.
+To avoid confusion with the current implementation of Xdialog from the x11/xdialog port, I have named its replacement <a href="https://man.freebsd.org/cgi/man.cgi?query=gbsddialog&amp;sektion=1&amp;format=html">gbsddialog(1)</a>.
+It also has to be said that Xdialog is quite obsolete (latest release in 2006) and this shows visually too.</p>
+</div>
+<div class="paragraph">
+<p>After creating a Proof-of-Concept prototype past the 14.0 release, I was provided with a 2-months window by the <a href="https://www.freebsdfoundation.org">FreeBSD Foundation</a>, in order to complete a working implementation.
+Thanks to a few shortcuts, I was glad to present the outcome of this effort during the WIP session of <a href="https://2024.asiabsdcon.org/program.html">AsiaBSDCon 2024</a>, including a working graphical installer.</p>
+</div>
+<div class="paragraph">
+<p>Most of the necessary patches are already available for review in <a href="https://reviews.freebsd.org">FreeBSD’s Phabricator</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://reviews.freebsd.org/D44279">D44279 bsdinstall: implement adduser with bsddialog</a></p>
+</li>
+<li>
+<p><a href="https://reviews.freebsd.org/D44280">D44280 bsdinstall: implement rootpass with bsddialog</a></p>
+</li>
+<li>
+<p><a href="https://reviews.freebsd.org/D44670">D44670 bsdinstall: implement timezone with bsddialog</a></p>
+</li>
+<li>
+<p><a href="https://reviews.freebsd.org/D44671">D44671 bsdinstall: allow forcing a specific partitioning mode</a></p>
+</li>
+<li>
+<p><a href="https://reviews.freebsd.org/D44672">D44672 bsdinstall: obtain the dialog binary from $DIALOG</a></p>
+</li>
+<li>
+<p><a href="https://reviews.freebsd.org/D44673">D44673 bsdinstall: handle command-line options in targets</a></p>
+</li>
+<li>
+<p><a href="https://reviews.freebsd.org/D44674">D44674 bsdinstall: add support for graphical mode</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>I have tried to keep these patches in growing order of friction expected before integration.</p>
+</div>
+<div class="paragraph">
+<p>The most important objective of this project was to improve bsdinstall, regardless of the success of this integration.
+From the items above, it should be noted that D44279, D44280, D44670 are expecting to improve the general look &amp; feel of the installer, even while in text mode.
+Similarly, D44671 and D44672 improve the overall versatility of the installer when scripted or customized.
+D44673 and D44674 bring it on par with bsdconfig -X, even allowing the graphical installation of jails.</p>
+</div>
+<div class="paragraph">
+<p>Some parts are still missing, or made use of shortcuts still unsuitable for integration:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The &#34;fetchmissingdists&#34; target was avoided by shipping every component on the installation media;</p>
+</li>
+<li>
+<p>The &#34;checksum&#34; and &#34;extract&#34; targets had to be re-implemented with simpler code, degrading the user experience also with the regular installer;</p>
+</li>
+<li>
+<p>Creation of the installation media generates an additional, heavy image (almost 8 GB), and is suspected to be hindered by a bug in <a href="https://man.freebsd.org/cgi/man.cgi?query=makefs&amp;sektion=8&amp;format=html">makefs(8)</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The corresponding code can be found in my <a href="https://github.com/khorben/freebsd-src/">GitHub fork</a> in the <a href="https://github.com/khorben/freebsd-src/tree/khorben/bsdinstall-graphical4">khorben/bsdinstall-graphical4</a> branch.
+As can be guessed from the branch name, depending on the complexity of rebasing operations, combined with the (hopefully) progressive integration of the changes proposed, new branches may be added to keep track of the progress.
+(In fact a <a href="https://github.com/khorben/freebsd-src/tree/khorben/bsdinstall-graphical5">khorben/bsdinstall-graphical5</a> branch already exists.)</p>
+</div>
+<div class="paragraph">
+<p>Still, a lot needs to be done for the installer to reach a new level of maturity overall.
+While working on this project, I have received general complaints on the installer, and calls for a complete rewrite.
+It is true that the current code base suffers from a number of issues and limitations.
+The lack of a graphical installer is one of many symptoms, which range from the lack of recovery from errors, of navigability to previous steps, of a general vision of the installation progress, or of a network-based installer.
+In the meantime, this is the installer we have and are familiar with, and I think it can still be saved and improved.</p>
+</div>
+<div class="paragraph">
+<p>Special thanks go to <a href="mailto:emaste@FreeBSD.org">Ed Maste</a> and <a href="mailto:jrm@FreeBSD.org">Joe Mingrone</a> for the opportunity, and to <a href="mailto:jadawin@FreeBSD.org">Philippe Audeoud</a>, <a href="mailto:tcberner">Tobias C. Berner</a>, <a href="mailto:olce@FreeBSD.org">Olivier Certner</a>, <a href="mailto:jrtc27@FreeBSD.org">Jessica Clarke</a>, <a href="mailto:olivier@FreeBSD.org">Olivier Cochard-Labbé</a>, <a href="mailto:bapt@FreeBSD.org">Baptiste Daroussin</a>, <a href="mailto:brd@FreeBSD.org">Brad Davis</a>, <a href="mailto:dexter@FreeBSD.org">Michael Dexter</a>, <a href="mailto:lwhsu@FreeBSD.org">Li-Wen Hsu</a>, <a href="mailto:0mp@FreeBSD.org">Mateusz Piotrowski</a>, <a href="mailto:asiciliano@FreeBSD.org">Alfonso Siciliano</a>, <a href="mailto:manu@FreeBSD.org">Emmanuel Vadot</a>, and <a href="mailto:rwatson@FreeBSD.org">Robert Watson</a> for the feedback, reviews, and encouragements.
+(If I missed anyone, you know I did not mean to!)</p>
+</div>
+<div class="paragraph">
+<p>Sponsor: The FreeBSD Foundation</p>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: May 5, 2024 by <a href="https://cgit.freebsd.org/doc/commit/?id=b828d2efba" target="_blank">Graham Perrin</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

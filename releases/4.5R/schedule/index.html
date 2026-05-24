@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/releases/4.5R/schedule/">
+
+  <title>
+    FreeBSD 4.5 Release Process |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD 4.5 Release Process " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/releases/4.5R/schedule/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/releases\/4.5R\/schedule\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/where></a></li>
+  <li>
+    <a href=/releases>Release Information</a>
+    <ul>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Legacy Release: <a href=ZgotmplZ></a></li>
+    </ul>
+  </li>
+  <li>
+    <a href=/snapshots>Snapshot Releases</a>
+      <ul>
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+      </ul>
+  </li>
+  <li><a href=/ports>Ported Applications</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD 4.5 Release Process</h1><h1>Introduction</h1>
+
+<p>The release engineering team (<a href="mailto:re@FreeBSD.org" shape="rect">re@FreeBSD.org</a>) for FreeBSD 4.5
+  consists of Murray Stokely, Steve Price, Robert Watson, and John
+  Baldwin.</p>
+
+<p>The x86 build team consists of Murray Stokely and John Baldwin.</p>
+
+<p>The Alpha build team consists of David O&#39;Brien, Wilko Bulte, John
+  Baldwin, and Murray Stokely.</p>
+
+<p>The third-party packages are handled by Steve Price and the Ports
+  managers (<a href="mailto:portmgr@FreeBSD.org" shape="rect">portmgr@FreeBSD.org</a>).</p>
+
+<p>General discussions about the release engineering process or
+  quality assurance issues should be sent to the public <a href="mailto:freebsd-qa@FreeBSD.org" shape="rect">freebsd-qa</a> mailing list.
+  MFC requests should be sent to <a href="mailto:re@FreeBSD.org" shape="rect">re@FreeBSD.org</a>.</p>
+
+<p>For an overview of the entire release engineering process, please
+  see <a href="../../../doc/en_US.ISO8859-1/articles/releng/article.html" shape="rect">this
+  document</a>.</p>
+
+<h1>Schedule</h1>
+
+<table class="tblbasic">
+  <tbody><tr><td rowspan="1" colspan="1">Action</td><td rowspan="1" colspan="1">Expected</td><td rowspan="1" colspan="1">Actual</td><td rowspan="1" colspan="1">Description</td>
+      </tr>
+  <tr>
+    <td rowspan="1" colspan="1">Reminder announcement</td><td rowspan="1" colspan="1">01 Dec 2001</td><td rowspan="1" colspan="1">03 Dec 2001</td>
+    <td rowspan="1" colspan="1">Release Engineers send announcement email to
+      developers@FreeBSD.org with a rough schedule for the FreeBSD 4.5
+      release.</td>
+  </tr>
+  <tr>
+    <td rowspan="1" colspan="1"><tt>4.5-PRERELEASE</tt></td>
+    <td rowspan="1" colspan="1">20 Dec 2001</td>
+    <td rowspan="1" colspan="1">20 Dec 2001</td>
+    <td rowspan="1" colspan="1"><tt>newvers.sh</tt>, <tt>param.h</tt>, and <tt>release.ent</tt> updated.</td>
+  </tr>
+  <tr>
+    <td rowspan="1" colspan="1">FTP site updated</td>
+    <td rowspan="1" colspan="1">20 Dec 2001</td>
+    <td rowspan="1" colspan="1">20 Dec 2001</td>
+    <td rowspan="1" colspan="1"><tt>pkg_add -r</tt> works for <tt>4.5-PRERELEASE</tt> machines.</td>
+  </tr>
+  <tr>
+    <td rowspan="1" colspan="1">Code freeze begins</td>
+    <td rowspan="1" colspan="1">20 Dec 2001</td>
+    <td rowspan="1" colspan="1">20 Dec 2001</td>
+
+    <td rowspan="1" colspan="1">After this date, all commits to the <tt>RELENG_4</tt> branch
+      must be approved by <a href="mailto:re@FreeBSD.org" shape="rect">re@FreeBSD.org</a>.  Certain highly
+      active documentation committers are exempt from this rule for
+      routine man page / release note updates.  Heads-up emails
+      should be sent to the developers@, stable@, and qa@ lists.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Commercial software demos updated.</td>
+    <td rowspan="1" colspan="1">05 Jan 2002</td>
+    <td rowspan="1" colspan="1">24 Jan 2002</td>
+    <td rowspan="1" colspan="1">The second disc contains commercial software demos, these
+      demos should be updated to contain the latest versions.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1"><tt>4.5-RC</tt></td>
+    <td rowspan="1" colspan="1">09 Jan 2002</td>
+    <td rowspan="1" colspan="1">09 Jan 2002</td>
+    <td rowspan="1" colspan="1"><tt>newvers.sh</tt> and <tt>release.ent</tt> updated.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Announce the Ports Freeze</td>
+    <td rowspan="1" colspan="1">09 Jan 2002</td>
+    <td rowspan="1" colspan="1">09 Jan 2002</td>
+    <td rowspan="1" colspan="1">Someone from <tt>portmgr</tt> should email
+    <tt>freebsd-ports@</tt> and CC: <tt>developers@</tt> to set a date
+    for the tagging of the ports tree.  Will set this date at January
+    22nd.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Heads up to hubs</td>
+    <td rowspan="1" colspan="1">09 Jan 2002</td>
+    <td rowspan="1" colspan="1">09 Jan 2002</td>
+    <td rowspan="1" colspan="1">A message should be sent to
+      <tt>freebsd-hubs@FreeBSD.org</tt> before the release is uploaded.  The
+      site administrators have frequently requested advance notice for
+      new ISOs.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">First release candidate</td>
+    <td rowspan="1" colspan="1">09 Jan 2002</td>
+    <td rowspan="1" colspan="1">09 Jan 2002</td>
+    <td rowspan="1" colspan="1">The first release candidate for the x86 and Alpha architecture is
+      released.  ISO images should be uploaded to
+      <tt>ftp-master.FreeBSD.org</tt> and
+    <tt>releng4.FreeBSD.org</tt>.  A network install directory should
+    be uploaded to <tt>ftp-master.FreeBSD.org</tt>.  The
+    <tt>packages</tt> and <tt>XF86336</tt> directories may be
+    symlinked to save space, as long as you&#39;re sure to use
+    <em>relative</em> symlinks.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Heads up to -stable</td>
+    <td rowspan="1" colspan="1">09 Jan 2002</td>
+    <td rowspan="1" colspan="1">09 Jan 2002</td>
+    <td rowspan="1" colspan="1">A message should be sent to <tt>qa@FreeBSD.org</tt> and
+    <tt>stable@FreeBSD.org</tt> after the release is uploaded.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Second release candidate</td>
+    <td rowspan="1" colspan="1">?? Jan 2002</td>
+    <td rowspan="1" colspan="1">18 Jan 2002</td>
+    <td rowspan="1" colspan="1">Note: the release date of this candidate depends on the user
+    experience with RC1.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Third release candidate</td>
+    <td rowspan="1" colspan="1">23 Jan 2002</td>
+    <td rowspan="1" colspan="1">24 Jan 2002</td>
+    <td rowspan="1" colspan="1">4.5 RC3 for the x86 and Alpha architectures will be made
+    available from <tt>ftp.FreeBSD.org</tt> and the mirrors.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Ports tree frozen.</td>
+    <td rowspan="1" colspan="1">22 Jan 2002</td>
+    <td rowspan="1" colspan="1">22 Jan 2002</td>
+    <td rowspan="1" colspan="1"><tt>CVSROOT/avail</tt> locks out everyone but the person who
+      does the tagging.  It will take approximately 2 hours to tag the
+      entire ports tree with the <tt>RELEASE_4_5_0</tt> tag.  After
+      this time, the ports/ tree will be re-opened for commits, but
+      commits made after tagging will not go in 4.5-RELEASE.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Final package build starts</td>
+    <td rowspan="1" colspan="1">22 Jan 2002</td>
+    <td rowspan="1" colspan="1">22 Jan 2002</td>
+    <td rowspan="1" colspan="1">The ports cluster and <a href="http://bento.FreeBSD.org" shape="rect">bento</a>
+    build final packages.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Package split</td>
+    <td rowspan="1" colspan="1">23 Jan 2002</td>
+    <td rowspan="1" colspan="1">29 Jan 2002</td>
+    <td rowspan="1" colspan="1">The packages must be split so that packages with similar
+      dependencies appear on each of the four discs, with the most
+      popular packages appearing on the first disc.</td>
+  </tr>
+  <tr>
+    <td rowspan="1" colspan="1">doc tree tagged.</td>
+    <td rowspan="1" colspan="1">24 Jan 2002</td>
+    <td rowspan="1" colspan="1">24 Jan 2002</td>
+    <td rowspan="1" colspan="1"><tt>RELEASE_4_5_0</tt> tag for docs.</td>
+  </tr>
+  <tr>
+    <td rowspan="1" colspan="1"><tt>RELENG_4_5</tt> branch</td>
+    <td rowspan="1" colspan="1">25 Jan 2002</td>
+    <td rowspan="1" colspan="1">26 Jan 2002</td>
+    <td rowspan="1" colspan="1">The release branch is created.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Note to freebsd-stable@</td>
+    <td rowspan="1" colspan="1">25 Jan 2002</td>
+    <td rowspan="1" colspan="1">26 Jan 2002</td>
+    <td rowspan="1" colspan="1">A note should be sent to the freebsd-stable to let
+    over-anxious users know that the tags have been created but the
+    release still isn&#39;t ready.  Tags may be slid before the
+    announcement goes out.  Point users to freebsd-qa@ for
+    details.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Version numbers bumped.</td>
+    <td rowspan="1" colspan="1">25 Jan 2002</td>
+    <td rowspan="1" colspan="1">25 Jan 2002</td>
+    <td rowspan="1" colspan="1">The files listed <a href="releng.html#versionbump" shape="rect">here</a>
+    are updated to reflect the fact that this is FreeBSD 4.5.</td>
+  </tr>
+  <tr>
+    <td rowspan="1" colspan="1">src tree tagged.</td>
+    <td rowspan="1" colspan="1">27 Jan 2002</td>
+    <td rowspan="1" colspan="1">27 Jan 2002</td>
+    <td rowspan="1" colspan="1"><tt>RELEASE_4_5_0_RELEASE</tt> tag for src.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Update man.cgi on the website.</td>
+    <td rowspan="1" colspan="1">25 Jan 2002</td>
+    <td rowspan="1" colspan="1">--</td>
+    <td rowspan="1" colspan="1">Make sure the 4.5 manual pages are being displayed by default
+    for the man-&gt;web gateway.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Archive the errata for FreeBSD 4.4.</td>
+    <td rowspan="1" colspan="1">25 Jan 2002</td>
+    <td rowspan="1" colspan="1">25 Jan 2002</td>
+    <td rowspan="1" colspan="1">The new RELNOTESng errata file should be setup, and the old
+    errata file archived.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Final builds.</td>
+    <td rowspan="1" colspan="1">28 Jan 2002</td>
+    <td rowspan="1" colspan="1">28 Jan 2002</td>
+    <td rowspan="1" colspan="1">Final builds for x86 and Alpha in a pristine environment.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Warn <tt>hubs@FreeBSD.org</tt></td>
+    <td rowspan="1" colspan="1">28 Jan 2002</td>
+    <td rowspan="1" colspan="1">28 Jan 2002</td>
+    <td rowspan="1" colspan="1">Heads up email to <a href="mailto:hubs@FreeBSD.org" shape="rect">hubs@FreeBSD.org</a> to give admins
+    time to prepare for the load spike to come.</td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Upload to <tt>ftp-master</tt>.</td>
+    <td rowspan="1" colspan="1">28 Jan 2002</td>
+    <td rowspan="1" colspan="1">28 Jan 2002</td>
+    <td rowspan="1" colspan="1">release and packages uploaded to <tt>ftp-master.FreeBSD.org</tt></td>
+  </tr>
+
+  <tr>
+    <td rowspan="1" colspan="1">Announcement</td>
+    <td rowspan="1" colspan="1">28 Jan 2002</td>
+    <td rowspan="1" colspan="1">29 Jan 2002</td>
+    <td rowspan="1" colspan="1">Announcement sent out after a majority of the mirrors have
+    received the bits.</td>
+  </tr>
+</tbody></table>
+
+<p>It&#39;s been pointed out that this table is rather boring. Bruce Mah
+  gave a slightly more interesting rendition of the <a href="http://docs.FreeBSD.org/cgi/getmsg.cgi?fetch=739618+0+archive/2001/freebsd-chat/20011223.freebsd-chat" shape="rect">12
+  days of Code-Freeze</a>.</p>
+
+
+  
+          <br class="clearboth"/>
+        
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: May 15, 2021 by <a href="https://cgit.freebsd.org/doc/commit/?id=ae8601460f" target="_blank">Allan Jude</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

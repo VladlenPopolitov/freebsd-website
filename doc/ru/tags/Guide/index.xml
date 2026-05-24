@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Guide on FreeBSD Documentation Portal</title><link>https://docs.freebsd.org/ru/tags/Guide/</link><description>Recent content in Guide on FreeBSD Documentation Portal</description><generator>Hugo</generator><language>ru</language><copyright>BSD 2-clause 'Simplified' License</copyright><atom:link href="https://docs.freebsd.org/ru/tags/Guide/index.xml" rel="self" type="application/rss+xml"/><item><title>Глава 3. Быстрое портирование</title><link>https://docs.freebsd.org/ru/books/porters-handbook/quick-porting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/porters-handbook/quick-porting/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;В этом разделе описано, как быстро создать новый порт. Для случаев, когда этот быстрый метод не подходит, полный процесс &amp;#34;Медленного портирования&amp;#34; описан в разделе &lt;a href="../slow-porting/#slow-porting"&gt;Медленное портирование&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Во-первых, скачайте оригинальный tar-файл и поместите его в каталог &lt;code&gt;DISTDIR&lt;/code&gt;, который по умолчанию есть не что иное, как &lt;span class="filename"&gt;/usr/ports/distfiles&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;i class="fa icon-note" title="Note"&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Здесь предполагается, что программное обеспечение компилируется без проблем как есть, то есть для работы приложения на вашей системе FreeBSD не потребовалось абсолютно никаких изменений. Если требовалось что-то изменить, то вам придется обратиться также и к следующему разделу — &lt;a href="../slow-porting/#slow-porting"&gt;Медленное портирование&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Глава 2. Установка FreeBSD</title><link>https://docs.freebsd.org/ru/books/handbook/bsdinstall/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/handbook/bsdinstall/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="bsdinstall-synopsis"&gt;2.1. Обзор&lt;a class="anchor" href="#bsdinstall-synopsis"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;FreeBSD поддерживает различные архитектуры, включая amd64, ARM®, RISC-V® и PowerPC®. В зависимости от архитектуры и платформы, различные образы могут быть &lt;a href="https://www.freebsd.org/where/"&gt;скачены&lt;/a&gt; для установки или непосредственного запуска FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Типы образов:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Диски образов виртуальных машин, такие как &lt;code&gt;qcow2&lt;/code&gt;, &lt;code&gt;vmdk&lt;/code&gt;, &lt;code&gt;vhd&lt;/code&gt;, и образы raw-устройств. Это не установочные образы, а образы с предустановленной FreeBSD, готовые к выполнению задач после установки. Образы виртуальных машин также часто используются в облачных средах.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Образы SD-карт для встраиваемых систем, таких как Raspberry Pi. Эти файлы необходимо распаковать и записать как сырой образ на SD-карту, с которой будет загружаться плата.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Установочные образы для загрузки с ISO или USB-устройства, чтобы установить FreeBSD на диск для обычной настольной, портативной или серверной системы.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</description></item><item><title>Глава 3. Объекты ядра</title><link>https://docs.freebsd.org/ru/books/arch-handbook/kobj/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/arch-handbook/kobj/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Объекты ядра, или &lt;em&gt;Kobj&lt;/em&gt;, предоставляют объектно-ориентированную систему программирования на языке C для ядра. Таким образом, данные, с которыми производится работа, содержат описание того, как над ними следует выполнять операции. Это позволяет добавлять и удалять операции из интерфейса во время выполнения без нарушения бинарной совместимости.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="kernel-objects-term"&gt;3.1. Терминология&lt;a class="anchor" href="#kernel-objects-term"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="dlist"&gt;
+&lt;dl&gt;
+&lt;dt class="hdlist1"&gt;Объект&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;Набор данных - структура данных - аллокация данных.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="hdlist1"&gt;Метод&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;Операция — функция.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="hdlist1"&gt;Класс&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;Один или несколько методов.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="hdlist1"&gt;Интерфейс&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;Стандартный набор из одного или нескольких методов.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="kernel-objects-operation"&gt;3.2. Как работает Kobj&lt;a class="anchor" href="#kernel-objects-operation"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Kobj работает путем генерации описаний методов. Каждое описание содержит уникальный идентификатор, а также функцию по умолчанию. Адрес описания используется для однозначной идентификации метода в таблице методов класса.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Глава 4. Медленное портирование</title><link>https://docs.freebsd.org/ru/books/porters-handbook/slow-porting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/porters-handbook/slow-porting/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Итак, всё оказалось не так уж и просто, и порт потребовал некоторых модификаций для того, чтобы заставить его работать. В этом разделе мы расскажем, шаг за шагом, как его модифицировать, чтобы он работал с нашей системой портов.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="slow-work"&gt;4.1. Как всё это работает&lt;a class="anchor" href="#slow-work"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Во-первых, когда пользователь даёт в своём каталоге с портом команду &lt;code&gt;make&lt;/code&gt;, происходит целая череда событий. Во время чтения этого текста может оказаться полезным иметь файл &lt;span class="filename"&gt;bsd.port.mk&lt;/span&gt; открытым в другом окне, что сильно поможет его понять.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Глава 6. Введение в Asciidoctor</title><link>https://docs.freebsd.org/ru/books/fdp-primer/asciidoctor-primer/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/fdp-primer/asciidoctor-primer/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Большая часть документации FDP написана с использованием AsciiDoc. В этой главе объясняется, что это значит, как читать и понимать исходный код документации, а также используемые методы. Для получения полного справочника по возможностям Asciidoctor обратитесь к &lt;a href="https://docs.asciidoctor.org/home/"&gt;документации Asciidoctor&lt;/a&gt;. Некоторые примеры, используемые в этой главе, взяты из &lt;a href="https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference"&gt;краткого справочника по синтаксису AsciiDoc&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="asciidoctor-primer-overview"&gt;6.1. Обзор&lt;a class="anchor" href="#asciidoctor-primer-overview"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;В первые дни существования компьютеров электронный текст был простым. Существовало несколько наборов символов, таких как ASCII или EBCDIC, но на этом всё и заканчивалось. Текст был текстом, и вы видели именно то, что получали. Никаких изысков, никакого форматирования, никакого интеллекта.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Глава 7. Флейворы</title><link>https://docs.freebsd.org/ru/books/porters-handbook/flavors/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/porters-handbook/flavors/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="flavors-intro"&gt;7.1. Введение в флейворы (Flavors)&lt;a class="anchor" href="#flavors-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Флейворы (Flavors) — это способ создания нескольких вариаций порта. Порт собирается несколько раз с различными вариациями.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Например, порт может иметь обычную версию с множеством функций и значительным количеством зависимостей, а также облегчённую &amp;#34;lite&amp;#34;-версию только с базовыми функциями и минимальными зависимостями.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Еще одним примером может быть порт с вариантом GTK и вариантом QT, в зависимости от используемого набора инструментов.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="flavors-using"&gt;7.2. Использование FLAVORS&lt;a class="anchor" href="#flavors-using"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Чтобы объявить порт с несколькими флейворами, добавьте &lt;code&gt;FLAVORS&lt;/code&gt; в его &lt;span class="filename"&gt;Makefile&lt;/span&gt;. Первый вариант в &lt;code&gt;FLAVORS&lt;/code&gt; является вариантом по умолчанию.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Глава 11. Справочник</title><link>https://docs.freebsd.org/ru/books/fdp-primer/manual-pages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/fdp-primer/manual-pages/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="manual-pages-introduction"&gt;11.1. Введение&lt;a class="anchor" href="#manual-pages-introduction"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;Справочник&lt;/em&gt;, часто сокращаемый до &lt;em&gt;man-страниц&lt;/em&gt;, изначально задумывались как легкодоступные напоминания о синтаксисе команд, деталях драйверов устройств или форматах конфигурационных файлов. Со временем они стали крайне полезным справочным материалом для быстрого ознакомления прямо из командной строки для пользователей, системных администраторов и программистов.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Хотя они предназначены скорее как справочные материалы, а не учебные руководства, разделы EXAMPLES в manual pages часто содержат подробные примеры использования.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Страницы Справочника обычно отображаются интерактивно с помощью команды &lt;a href="https://man.freebsd.org/cgi/man.cgi?query=man&amp;amp;sektion=1&amp;amp;format=html"&gt;man(1)&lt;/a&gt;. Когда пользователь вводит &lt;code&gt;man ls&lt;/code&gt;, выполняется поиск страницы Справочника, соответствующей &lt;code&gt;ls&lt;/code&gt;. Первый найденный результат отображается.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Глава 11. Устройства PCI</title><link>https://docs.freebsd.org/ru/books/arch-handbook/pci/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/arch-handbook/pci/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Эта глава расскажет о механизмах FreeBSD для написания драйвера устройства на шине PCI.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="pci-probe"&gt;11.1. Обнаружение и подключение&lt;a class="anchor" href="#pci-probe"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Информация о том, как код шины PCI перебирает неприсоединённые устройства и проверяет, сможет ли только что загруженный kld присоединиться к любому из них.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_пример_исходного_кода_драйвера_mypci_c"&gt;11.1.1. Пример исходного кода драйвера (&lt;span class="filename"&gt;mypci.c&lt;/span&gt;)&lt;a class="anchor" href="#_пример_исходного_кода_драйвера_mypci_c"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="literalblock programlisting"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;/*
+ * Simple KLD to play with the PCI functions.
+ *
+ * Murray Stokely
+ */
+
+#include &amp;lt;sys/param.h&amp;gt;		/* defines used in kernel.h */
+#include &amp;lt;sys/module.h&amp;gt;
+#include &amp;lt;sys/systm.h&amp;gt;
+#include &amp;lt;sys/errno.h&amp;gt;
+#include &amp;lt;sys/kernel.h&amp;gt;		/* types used in module initialization */
+#include &amp;lt;sys/conf.h&amp;gt;		/* cdevsw struct */
+#include &amp;lt;sys/uio.h&amp;gt;		/* uio struct */
+#include &amp;lt;sys/malloc.h&amp;gt;
+#include &amp;lt;sys/bus.h&amp;gt;		/* structs, prototypes for pci bus stuff and DEVMETHOD macros! */
+
+#include &amp;lt;machine/bus.h&amp;gt;
+#include &amp;lt;sys/rman.h&amp;gt;
+#include &amp;lt;machine/resource.h&amp;gt;
+
+#include &amp;lt;dev/pci/pcivar.h&amp;gt;	/* For pci_get macros! */
+#include &amp;lt;dev/pci/pcireg.h&amp;gt;
+
+/* The softc holds our per-instance data. */
+struct mypci_softc {
+	device_t	my_dev;
+	struct cdev	*my_cdev;
+};
+
+/* Function prototypes */
+static d_open_t		mypci_open;
+static d_close_t	mypci_close;
+static d_read_t		mypci_read;
+static d_write_t	mypci_write;
+
+/* Character device entry points */
+
+static struct cdevsw mypci_cdevsw = {
+	.d_version =	D_VERSION,
+	.d_open =	mypci_open,
+	.d_close =	mypci_close,
+	.d_read =	mypci_read,
+	.d_write =	mypci_write,
+	.d_name =	&amp;#34;mypci&amp;#34;,
+};
+
+/*
+ * In the cdevsw routines, we find our softc by using the si_drv1 member
+ * of struct cdev. We set this variable to point to our softc in our
+ * attach routine when we create the /dev entry.
+ */
+
+int
+mypci_open(struct cdev *dev, int oflags, int devtype, struct thread *td)
+{
+	struct mypci_softc *sc;
+
+	/* Look up our softc. */
+	sc = dev-&amp;gt;si_drv1;
+	device_printf(sc-&amp;gt;my_dev, &amp;#34;Opened successfully.\n&amp;#34;);
+	return (0);
+}
+
+int
+mypci_close(struct cdev *dev, int fflag, int devtype, struct thread *td)
+{
+	struct mypci_softc *sc;
+
+	/* Look up our softc. */
+	sc = dev-&amp;gt;si_drv1;
+	device_printf(sc-&amp;gt;my_dev, &amp;#34;Closed.\n&amp;#34;);
+	return (0);
+}
+
+int
+mypci_read(struct cdev *dev, struct uio *uio, int ioflag)
+{
+	struct mypci_softc *sc;
+
+	/* Look up our softc. */
+	sc = dev-&amp;gt;si_drv1;
+	device_printf(sc-&amp;gt;my_dev, &amp;#34;Asked to read %zd bytes.\n&amp;#34;, uio-&amp;gt;uio_resid);
+	return (0);
+}
+
+int
+mypci_write(struct cdev *dev, struct uio *uio, int ioflag)
+{
+	struct mypci_softc *sc;
+
+	/* Look up our softc. */
+	sc = dev-&amp;gt;si_drv1;
+	device_printf(sc-&amp;gt;my_dev, &amp;#34;Asked to write %zd bytes.\n&amp;#34;, uio-&amp;gt;uio_resid);
+	return (0);
+}
+
+/* PCI Support Functions */
+
+/*
+ * Compare the device ID of this device against the IDs that this driver
+ * supports. If there is a match, set the description and return success.
+ */
+static int
+mypci_probe(device_t dev)
+{
+
+	device_printf(dev, &amp;#34;MyPCI Probe\nVendor ID : 0x%x\nDevice ID : 0x%x\n&amp;#34;,
+	 pci_get_vendor(dev), pci_get_device(dev));
+
+	if (pci_get_vendor(dev) == 0x11c1) {
+		printf(&amp;#34;We&amp;#39;ve got the Winmodem, probe successful!\n&amp;#34;);
+		device_set_desc(dev, &amp;#34;WinModem&amp;#34;);
+		return (BUS_PROBE_DEFAULT);
+	}
+	return (ENXIO);
+}
+
+/* Attach function is only called if the probe is successful. */
+
+static int
+mypci_attach(device_t dev)
+{
+	struct mypci_softc *sc;
+
+	printf(&amp;#34;MyPCI Attach for : deviceID : 0x%x\n&amp;#34;, pci_get_devid(dev));
+
+	/* Look up our softc and initialize its fields. */
+	sc = device_get_softc(dev);
+	sc-&amp;gt;my_dev = dev;
+
+	/*
+	 * Create a /dev entry for this device. The kernel will assign us
+	 * a major number automatically. We use the unit number of this
+	 * device as the minor number and name the character device
+	 * &amp;#34;mypci&amp;lt;unit&amp;gt;&amp;#34;.
+	 */
+	sc-&amp;gt;my_cdev = make_dev(&amp;amp;mypci_cdevsw, device_get_unit(dev),
+	 UID_ROOT, GID_WHEEL, 0600, &amp;#34;mypci%u&amp;#34;, device_get_unit(dev));
+	sc-&amp;gt;my_cdev-&amp;gt;si_drv1 = sc;
+	printf(&amp;#34;Mypci device loaded.\n&amp;#34;);
+	return (0);
+}
+
+/* Detach device. */
+
+static int
+mypci_detach(device_t dev)
+{
+	struct mypci_softc *sc;
+
+	/* Teardown the state in our softc created in our attach routine. */
+	sc = device_get_softc(dev);
+	destroy_dev(sc-&amp;gt;my_cdev);
+	printf(&amp;#34;Mypci detach!\n&amp;#34;);
+	return (0);
+}
+
+/* Called during system shutdown after sync. */
+
+static int
+mypci_shutdown(device_t dev)
+{
+
+	printf(&amp;#34;Mypci shutdown!\n&amp;#34;);
+	return (0);
+}
+
+/*
+ * Device suspend routine.
+ */
+static int
+mypci_suspend(device_t dev)
+{
+
+	printf(&amp;#34;Mypci suspend!\n&amp;#34;);
+	return (0);
+}
+
+/*
+ * Device resume routine.
+ */
+static int
+mypci_resume(device_t dev)
+{
+
+	printf(&amp;#34;Mypci resume!\n&amp;#34;);
+	return (0);
+}
+
+static device_method_t mypci_methods[] = {
+	/* Device interface */
+	DEVMETHOD(device_probe,		mypci_probe),
+	DEVMETHOD(device_attach,	mypci_attach),
+	DEVMETHOD(device_detach,	mypci_detach),
+	DEVMETHOD(device_shutdown,	mypci_shutdown),
+	DEVMETHOD(device_suspend,	mypci_suspend),
+	DEVMETHOD(device_resume,	mypci_resume),
+
+	DEVMETHOD_END
+};
+
+static devclass_t mypci_devclass;
+
+DEFINE_CLASS_0(mypci, mypci_driver, mypci_methods, sizeof(struct mypci_softc));
+DRIVER_MODULE(mypci, pci, mypci_driver, mypci_devclass, 0, 0);&lt;/pre&gt;
+&lt;/div&gt;</description></item><item><title>Глава 13. Что делать нужно, и что делать нельзя</title><link>https://docs.freebsd.org/ru/books/porters-handbook/porting-dads/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/porters-handbook/porting-dads/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="dads-intro"&gt;13.1. Введение&lt;a class="anchor" href="#dads-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Вот список часто встречающихся действий, которые нужно и которые нельзя делать во время процесса портирования. Проверьте порт по этому списку, и также проверьте порты в &lt;a href="https://bugs.FreeBSD.org/search/"&gt;базе сообщений PR&lt;/a&gt;, которые присланы другими людьми. Присылайте любые комментарии о портах, которые вы проверили, так, как это описано в статье о &lt;a href="https://docs.freebsd.org/ru/articles/contributing/#CONTRIB-GENERAL"&gt;Сообщениях об ошибках и общих замечаниях&lt;/a&gt;. Проверка портов в базе сообщений PR позволит нам быстрее коммитить их и удостовериться, что вы знаете, что делаете.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Глава 13. WINE</title><link>https://docs.freebsd.org/ru/books/handbook/wine/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/handbook/wine/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="wine-synopsis"&gt;13.1. Обзор&lt;a class="anchor" href="#wine-synopsis"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://www.winehq.org/"&gt;WINE&lt;/a&gt;, что расшифровывается как Wine Is Not an Emulator (WINE — это не эмулятор), технически является программным уровнем трансляции. Он позволяет устанавливать и запускать программное обеспечение, написанное для Windows®, в системах FreeBSD (и других).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Он работает, перехватывая системные вызовы, или запросы от программного обеспечения к операционной системе, и преобразует их из вызовов Windows® в вызовы, которые понимает FreeBSD. Он также преобразует любые ответы, если это необходимо, в то, что ожидает программное обеспечение Windows®. Таким образом, в некотором смысле он &lt;em&gt;эмулирует&lt;/em&gt; среду Windows®, предоставляя многие из ресурсов, которые ожидают приложения Windows®.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Глава 17. Использование макроса USES</title><link>https://docs.freebsd.org/ru/books/porters-handbook/uses/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/porters-handbook/uses/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="uses-intro"&gt;17.1. Введение в &lt;code&gt;USES&lt;/code&gt;&lt;a class="anchor" href="#uses-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Макросы &lt;code&gt;USES&lt;/code&gt; упрощают объявление требований и настроек для порта. Они могут добавлять зависимости, изменять поведение при сборке, добавлять метаданные в пакеты и так далее, просто выбирая предустановленные значения.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Каждый раздел в этой главе описывает возможное значение для &lt;code&gt;USES&lt;/code&gt;, а также его возможные аргументы. Аргументы добавляются к значению после двоеточия (&lt;code&gt;:&lt;/code&gt;). Несколько аргументов разделяются запятыми (&lt;code&gt;,&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id="uses-intro-ex1" class="exampleblock"&gt;
+&lt;div class="title"&gt;Пример 1. Использование нескольких значений&lt;/div&gt;
+&lt;div class="content"&gt;
+&lt;div class="literalblock programlisting"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;USES=	bison perl&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="uses-intro-ex2" class="exampleblock"&gt;
+&lt;div class="title"&gt;Пример 2. Добавление аргумента&lt;/div&gt;</description></item><item><title>Глава 19. Аудит событий безопасности</title><link>https://docs.freebsd.org/ru/books/handbook/audit/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/handbook/audit/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="audit-synopsis"&gt;19.1. Обзор&lt;a class="anchor" href="#audit-synopsis"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Операционная система FreeBSD включает поддержку аудита событий безопасности. Аудит событий обеспечивает надёжное, детализированное и настраиваемое журналирование различных системных событий, связанных с безопасностью, включая входы в систему, изменения конфигурации, доступ к файлам и сети. Эти записи журнала могут быть неоценимыми для мониторинга системы в реальном времени, обнаружения вторжений и &amp;#34;посмертного&amp;#34; анализа после краха системы. FreeBSD реализует опубликованный Sun™ программный интерфейс Basic Security Module (BSM) и формат файлов, и также совместима с реализациями аудита Solaris™ и Mac OS® X.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Руководство коммиттера</title><link>https://docs.freebsd.org/ru/articles/committers-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/articles/committers-guide/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Аннотация&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;В этом документе представлена информация для сообщества коммиттеров FreeBSD. Все новые коммиттеры должны прочитать этот документ перед началом работы, а существующим коммиттерам настоятельно рекомендуется периодически его пересматривать.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Почти все разработчики FreeBSD имеют права на коммит в один или несколько репозиториев. Однако некоторые разработчики не имеют таких прав, и часть информации здесь применима и к ним. (Например, некоторые люди имеют права только для работы с базой данных отчётов о проблемах.) Дополнительную информацию можно найти в &lt;a href="../committers-guide/#non-committers"&gt;Вопросы&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Глава 27. DTrace</title><link>https://docs.freebsd.org/ru/books/handbook/dtrace/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/handbook/dtrace/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="dtrace-synopsis"&gt;27.1. Обзор&lt;a class="anchor" href="#dtrace-synopsis"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;DTrace, также известный как Dynamic Tracing, был разработан Sun™ в качестве инструмента для выявления узких мест в производительности рабочих и предпроизводственных систем. Помимо диагностики проблем с производительностью, DTrace можно использовать для исследования и отладки неожиданного поведения как в ядре FreeBSD, так и в пользовательских программах.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;DTrace — это выдающийся инструмент для профилирования, обладающий впечатляющим набором возможностей для диагностики проблем в системе. Его также можно использовать для запуска предварительно написанных скриптов, чтобы воспользоваться его функциональностью. Пользователи могут создавать собственные утилиты, используя язык DTrace D, что позволяет настраивать профилирование в соответствии с конкретными потребностями.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Аутентификация LDAP</title><link>https://docs.freebsd.org/ru/articles/ldap-auth/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/articles/ldap-auth/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Аннотация&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Этот документ является руководством по настройке сервера LDAP (в основном сервера OpenLDAP) для аутентификации в FreeBSD. Это полезно в ситуациях, когда множество серверов требуют одинаковых учётных записей пользователей, например, в качестве замены NIS.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="preface"&gt;1. Предисловие&lt;a class="anchor" href="#preface"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Этот документ предназначен для того, чтобы дать читателю достаточно знаний о LDAP для настройки сервера LDAP. В документе будет предпринята попытка объяснить использование &lt;a class="package" href="https://cgit.freebsd.org/ports/tree/net/nss_ldap/"&gt;net/nss_ldap&lt;/a&gt; и &lt;a class="package" href="https://cgit.freebsd.org/ports/tree/security/pam_ldap/"&gt;security/pam_ldap&lt;/a&gt; для клиентских машин, работающих с сервером LDAP.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;По завершении читатель должен уметь настроить и развернуть сервер FreeBSD, способный размещать каталог LDAP, а также настроить и развернуть сервер FreeBSD, который может проходить аутентификацию с использованием каталога LDAP.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Быстрое руководство по FreeBSD для пользователей Linux®</title><link>https://docs.freebsd.org/ru/articles/linux-users/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/articles/linux-users/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Аннотация&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Этот документ предназначен для быстрого ознакомления с основами FreeBSD пользователей Linux® среднего и продвинутого уровня.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Введение&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;В этом документе освещаются некоторые технические различия между FreeBSD и Linux®, чтобы пользователи Linux® среднего и продвинутого уровней могли быстро ознакомиться с основами FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Этот документ предполагает, что FreeBSD уже установлена. Для получения помощи по процессу установки обратитесь к главе &lt;a href="https://docs.freebsd.org/ru/books/handbook/bsdinstall#bsdinstall"&gt;Установка FreeBSD&lt;/a&gt; Руководства FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="shells"&gt;2. Стандартная оболочка&lt;a class="anchor" href="#shells"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Пользователи Linux® часто удивляются, обнаружив, что Bash не является оболочкой по умолчанию в FreeBSD. На самом деле, Bash не включён в стандартную установку. Вместо этого используется совместимая с POSIX® shell оболочка &lt;a href="https://man.freebsd.org/cgi/man.cgi?query=sh&amp;amp;sektion=1&amp;amp;format=html"&gt;sh(1)&lt;/a&gt; в качестве оболочки пользователя по умолчанию. Оболочка root — это &lt;a href="https://man.freebsd.org/cgi/man.cgi?query=tcsh&amp;amp;sektion=1&amp;amp;format=html"&gt;tcsh(1)&lt;/a&gt; по умолчанию в FreeBSD 13 и более ранних версиях и &lt;a href="https://man.freebsd.org/cgi/man.cgi?query=sh&amp;amp;sektion=1&amp;amp;format=html"&gt;sh(1)&lt;/a&gt; в FreeBSD 14 и позднее. Оболочка &lt;a href="https://man.freebsd.org/cgi/man.cgi?query=sh&amp;amp;sektion=1&amp;amp;format=html"&gt;sh(1)&lt;/a&gt; очень похожа на Bash, но имеет гораздо меньший набор возможностей. Как правило, скрипты, написанные для &lt;a href="https://man.freebsd.org/cgi/man.cgi?query=sh&amp;amp;sektion=1&amp;amp;format=html"&gt;sh(1)&lt;/a&gt;, будут работать в Bash, но обратное не всегда верно.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Введение в NanoBSD</title><link>https://docs.freebsd.org/ru/articles/nanobsd/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/articles/nanobsd/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Аннотация&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Этот документ предоставляет информацию об инструментах NanoBSD, которые могут быть использованы для создания образов системы FreeBSD для встраиваемых приложений, подходящих для использования на USB-накопителе, карте памяти или других носителях данных.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Введение в NanoBSD&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;NanoBSD — это инструмент, разработанный Poul-Henning Kamp &amp;lt;&lt;a href="mailto:phk@FreeBSD.org"&gt;phk@FreeBSD.org&lt;/a&gt;&amp;gt; и в настоящее время поддерживаемый Warner Losh &amp;lt;&lt;a href="mailto:imp@FreeBSD.org"&gt;imp@FreeBSD.org&lt;/a&gt;&amp;gt;. Он создаёт образ системы FreeBSD для встраиваемых приложений, подходящий для использования на USB-накопителе, карте памяти или другом носителе данных.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Практическое руководство по написанию rc.d скриптов в BSD</title><link>https://docs.freebsd.org/ru/articles/rc-scripting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/articles/rc-scripting/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Аннотация&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Новичкам может быть сложно соотнести факты из официальной документации по фреймворку &lt;span class="filename"&gt;rc.d&lt;/span&gt; в BSD с практическими задачами написания скриптов для &lt;span class="filename"&gt;rc.d&lt;/span&gt;. В этой статье мы рассмотрим несколько типичных случаев возрастающей сложности, покажем возможности &lt;span class="filename"&gt;rc.d&lt;/span&gt;, подходящие для каждого случая, и обсудим, как они работают. Такое рассмотрение должно дать ориентиры для дальнейшего изучения устройства и эффективного применения &lt;span class="filename"&gt;rc.d&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="rcng-intro"&gt;1. Введение&lt;a class="anchor" href="#rcng-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Исторически в BSD был монолитный стартовый сценарий &lt;span class="filename"&gt;/etc/rc&lt;/span&gt;. Он вызывался &lt;a href="https://man.freebsd.org/cgi/man.cgi?query=init&amp;amp;sektion=8&amp;amp;format=html"&gt;init(8)&lt;/a&gt; во время загрузки системы и выполнял все задачи пользовательского пространства, необходимые для многопользовательского режима: проверку и монтирование файловых систем, настройку сети, запуск демонов и так далее. Точный список задач не был одинаковым в каждой системе; администраторам требовалось его настраивать. За редкими исключениями, &lt;span class="filename"&gt;/etc/rc&lt;/span&gt; приходилось изменять, и настоящим хакерам это нравилось.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Программирование на языке ассемблера для x86</title><link>https://docs.freebsd.org/ru/articles/x86-assembly/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/articles/x86-assembly/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;Эта глава была написана G. Adam Stanislav &amp;lt;&lt;a href="mailto:adam@redprince.net"&gt;adam@redprince.net&lt;/a&gt;&amp;gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="x86-intro"&gt;1. Обзор&lt;a class="anchor" href="#x86-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Программирование на ассемблере в UNIX® крайне плохо документировано. Обычно предполагается, что никто не захочет его использовать, поскольку различные системы UNIX® работают на разных микропроцессорах, и поэтому всё должно быть написано на C для обеспечения переносимости.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;В действительности переносимость программ на C — это скорее миф. Даже программы на C требуют изменений при переносе с одной UNIX®-системы на другую, независимо от процессора, на котором они работают. Обычно такая программа содержит множество условных операторов, зависящих от системы, для которой она компилируется.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Универсальная система печати Unix на FreeBSD</title><link>https://docs.freebsd.org/ru/articles/cups/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/articles/cups/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Аннотация&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Эта статья посвящена конфигурированию Универсальной Системы Печати UNIX (CUPS) на FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="printing-cups"&gt;1. Знакомимся с универсальной системой печати UNIX (CUPS)&lt;a class="anchor" href="#printing-cups"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Универсальная система печати UNIX (Common Unix Printing System, или сокращенно CUPS), предоставляет переносимую среду печати для UNIX® и UNIX®-подобных операционных систем. Она была разработана компанией Easy Software Products, чтобы предоставить стандартное решение в печати для всех разработчиков и пользователей UNIX®.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Универсальная система печати UNIX использует протокол межсетевой печати (Internet Printing Protocol, IPP) как основу для управления заданиями на печать и очередями. Также частично поддерживаются следующие протоколы: LPD, SMB и AppSocket (также известный как JetDirect). CUPS даёт возможность обзора сетевых принтеров и использования опций, базирующихся на ПостСкрипт Описании Принтеров (PostScript Printer Definition, PPD), чтобы поддерживать в UNIX® общепринятые традиции печати. В результате CUPS идеально подходит для совместного использования принтеров в смешанной среде из FreeBSD, Linux®, Mac OS® X или Windows®.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Шрифты и FreeBSD</title><link>https://docs.freebsd.org/ru/articles/fonts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/articles/fonts/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Аннотация&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Этот документ содержит описание различных файлов шрифтов, которые могут использоваться с FreeBSD и драйвером системной консоли, системой X11, программами Ghostscript и Groff. Даются реально работающие примеры по переключению экрана системной консоли в режим 80x60 и использованию файлов шрифтов формата Type 1 с перечисленными выше прикладными программами.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Введение&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Существует много мест, где можно найти файлы шрифтов, но встает вопрос о возможных способах их использования с FreeBSD. Ответ может быть найден в результате тщательного изучения документации по тем компонентам, которые вы собираетесь использовать. На это тратится очень много времени, и это пособие является попыткой дать готовые ответы для тех, кто заинтересуется такими вопросами.&lt;/p&gt;
+&lt;/div&gt;</description></item></channel></rss>

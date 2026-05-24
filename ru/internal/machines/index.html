@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/ru/internal/machines/">
+
+  <title>
+    Сеть FreeBSD.org |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" Сеть FreeBSD.org " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="ru" >
+  <meta property="og:url" content="https://www.freebsd.org/ru/internal/machines/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/ru\/internal\/machines\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/ru/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              О проекте
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/about">О проекте</a>
+            </li>
+            <li>
+              <a href="/ru/projects/newbies">Введение</a>
+            </li>
+            <li>
+              <a href="/ru/features">Возможности</a>
+            </li>
+            <li>
+              <a href="/ru/privacy">Политика конфиденциальности</a>
+            </li>
+            <li>
+              <a href="/ru/projects">Проекты</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Порты</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Получить FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/where">Получить FreeBSD</a>
+            </li>
+            <li>
+              <a href="/ru/releases">Информация о релизах</a>
+            </li>
+            <li>
+              <a href="/ru/releng">Разработка релизов</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Документация
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/ru/">Документация</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/handbook/">Руководство FreeBSD</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/porters-handbook/">Руководство портировщика</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books/fdp-primer">Руководство проекта документации</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Страницы Справочника</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Презентации и статьи</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/books">Книги</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/ru/articles">Статьи</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Сообщество
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/community">Сообщество</a>
+            </li>
+            <li>
+              <a href="/ru/community/mailinglists">Списки рассылки</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Форумы</a>
+            </li>
+            <li>
+              <a href="/ru/usergroups">Группы пользователей</a>
+            </li>
+            <li>
+              <a href="/ru/events">События</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">Журнал FreeBSD</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Разработчики
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/projects">Разработчики</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Идеи проектов</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git-репозиторий</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">Зеркало GitHub</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Проверка кода (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Сервис непрерывной интеграции</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Поддержка
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/support">Поддержка</a>
+            </li>
+            <li>
+              <a href="/ru/commercial">Поставщики</a>
+            </li>
+            <li>
+              <a href="/ru/security">Информация о безопасности</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Сообщения об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support">Отправка сообщений об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support/webresources">Веб-ресурсы</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="ru">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/ru/" class="current-lang" aria-current="page">Russian</a>
+          </li>
+          
+            <li>
+              <a href="/internal/machines/" lang="en">English</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Пожертвовать
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=https://www.freebsd.msk.ru/doc/ru/>Документация</a></li>
+  <li><a href=https://www.freebsd.msk.ru/doc/ru/books/faq/>Час­то за­да­ва­е­мые воп­ро­сы</a></li>
+  <li><a href=https://www.freebsd.msk.ru/doc/ru/books/handbook/></a></li>
+  <li><a href="https://man.FreeBSD.org">Стра­ни­цы Спра­воч­ни­ка</a></li>
+  <li><a href="https://papers.freebsd.org/">Пре­зен­та­ции и ис­сле­до­ва­ния</a></li>
+  <li><a href=https://www.freebsd.msk.ru/doc/ru/>Книги и статьи</a></li>
+  <li><a href=/ru/docs/webresources/>Веб-ресурсы</a></li>
+  <li><a href=/ru/projects/newbies/>Для но­вич­ков</a></li>
+  <li><a href=/ru/docproj>Про­ект до­ку­мен­ти­ро­ва­ния</a></li>
+  <li><a href="https://www.freebsd.msk.ru/doc/doc/">Архив</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>Сеть FreeBSD.org</h1><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Для тех, кто имеет доступ к сети FreeBSD.org, эта страница описывает, какие машинные ресурсы доступны и для каких целей они выделены.</p>
+</div>
+<div class="paragraph">
+<p>Список ключей SSH и их подписей для открыто доступных машин в домене FreeBSD.org находится в <a href="https://www.FreeBSD.org/internal/ssh-keys.asc">этом файле</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_все_имена_хостов_относятся_к_домену_freebsd_org">Все имена хостов относятся к домену FreeBSD.org</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch tblbasic">
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Хост</th>
+<th class="tableblock halign-left valign-top">ОС</th>
+<th class="tableblock halign-left valign-top">Назначение</th>
+<th class="tableblock halign-left valign-top">Владелец (владельцы)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">beast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Машина архитектуры Alpha для тестирования FreeBSD/alpha</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">obrien/peter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">builder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Хранилище исходников BSD/OS<br/>
+Машина сборки документации FreeBSD для выкладывания на FTP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">коммиттеры</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">freefall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GNATS/shell</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">коммиттеры</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ftp-master</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Главный сервер ftp (вспомогательный сервер)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">peter/kuriyama/obrien/steve</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gohan10-17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6-STABLE/7-CURRENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Кластер сборки портов</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ports team</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gohan20-39</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6-STABLE/7-CURRENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Кластер сборки портов</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ports team</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hub</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Службы электронной почты</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postmaster</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mx1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Сервер входящей почты</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dhw/peter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mx2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Сервер исходящей почты</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dhw/peter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ncvsup (cvsup10)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Открытое зеркало CVSup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kuriyama</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ns0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Основной сервер DNS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dg/ps/peter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">panther</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-CURRENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Образцовая машина тестирования изменений для архитектуры sparc64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">коммиттеры</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pluto1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-CURRENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Образцовая машина тестирования изменений для архитектуры ia64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">коммиттеры</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pluto2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Образцовая машина тестирования изменений для архитектуры ia64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">коммиттеры</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pointyhat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-CURRENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Главная машина для построения пакетов всех архитектур</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ports team</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ref4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Образцовая машина для тестирования изменений в ветке 4-stable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">коммиттеры</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ref5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5-CURRENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Образцовая машина для тестирования изменений в 5-current</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">коммиттеры</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">repoman</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Основной репозиторий CVS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">peter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sledge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-CURRENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Образцовая машина для тестирования изменений для архитектуры amd64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">коммиттеры</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spit (cvsup-master)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Основное зеркало CVSup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kuriyama</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">www</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-STABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Веб-сервер</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">webmaster</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_аппаратные_конфигурации">Аппаратные конфигурации</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch tblbasic">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Хост</th>
+<th class="tableblock halign-left valign-top">Тип</th>
+<th class="tableblock halign-left valign-top">Аппаратура</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">beast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API UP2000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 x 833MHz Alpha 21264 (8MB кэша 2 уровня), память 2GB, Adaptec 2940U2W SCSI, 2 диска SCSI U160, сетевой адаптер 3COM 3c905B.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">builder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel x86</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pentium III 800МГц, память 512МБ, диск 40GB Seagate ATA, сетевой адаптер Intel EtherExpress Pro 10/100B.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">freefall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel x86</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pentium III 800МГц, память 1024МБ, дисковый контроллер Mylex DAC960 PCI SCSI RAID, диски 5x18GB SCSI U2W, сетевой адаптер Intel EtherExpress Pro 10/100B.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gohan10-17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel x86</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">800MHz Pentium III, 512MB mem, дисковый контроллер Intel ICH ATA66, диск 1x30GB ATA66, сетевой адаптер Intel EtherExpress Pro 10/100B.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gohan20-39</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hub</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel x86 MP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 x 600MHz Pentium III, память 1GB, дисковый контроллер Mylex DAC960 PCI SCSI RAID, диски 3x9GB SCSI WIDE, сетевой адаптер Intel EtherExpress Pro 10/100B.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mx2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel x86</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pentium III 850МГц FC-PGA, память 512МБ, LSI 53C1010 U160 SCSI, диск 1x18GB 10K RPM U160 SCSI, сетевой адаптер Intel EtherExpress Pro 10/100B.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">panther</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sun OEM ATX Panther board</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">300 MHz UltraSparc-IIi, память 512MB, диски 2x9GB 10K RPM Ultra2 SCSI, сетевой адаптер Sun HME 10/100B.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pluto1, pluto2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HP rx2600 (IA-64)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2x900MHz Itanium2 (McKinley) - HP zx1 (pluto) chipset, память 2048MB (используется 1024MB), дисковый контроллер LSILogic 1030 U320 SCSI (mpt), диск 1x36GB 10K RPM U160 SCSI, сетевой адаптер Broadcom BCM5701 10/100/1000.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pointyhat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel x86 MP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2x1266MHz Pentium III, память 2048МБ, дисковый контроллер 3ware 4-port IDE (twe), диски 4x160GB UltraATA в режиме RAID 1+0.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ref4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel x86</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Celeron 500МГц FC-PGA, память 512МБ, диск 1x30ГБ IDE, сетевой адаптер Intel EtherExpress Pro 10/100B.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ref5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel x86</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Celeron 500МГц FC-PGA, память 512МБ, диск 1x20ГБ IDE, сетевой адаптер Intel EtherExpress Pro 10/100B.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sledge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rioworks HDAMA (AMD64)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2x1.8GHz Opteron 244 - AMD 8111/8131 chipset, память 8192MB, диск 1x40GB Seagate ST340014A IDE, сетевой адаптер Broadcom BCM5703 10/100/1000.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Все машины подключены на скорости 100Мбит/с (полный дуплекс) к отдельному коммутатору Cisco 2948G с резервируемыми гигабитными выходами. Подключение к Интернет и размещение серверов обеспечивает <a href="http://www.yahoo.com/">Yahoo!</a>. Во всех системах имеются консоли, подключенные к последовательному порту и удалённое управление электропитанием.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_кластер_сборки_портов_в_корее">Кластер сборки портов в Корее</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch tblbasic">
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Хост</th>
+<th class="tableblock halign-left valign-top">ОС</th>
+<th class="tableblock halign-left valign-top">Назначение</th>
+<th class="tableblock halign-left valign-top">Владелец (владельцы)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dalki, dosirak, haessal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5-CURRENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Кластер сборки портов</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ports team</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_аппаратные_конфигурации_2">Аппаратные конфигурации</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch tblbasic">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Хост</th>
+<th class="tableblock halign-left valign-top">Тип</th>
+<th class="tableblock halign-left valign-top">Аппаратура</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dalki, haessal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel x86</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2x2.20GHz Pentium 4 Xeon, память 2GB, дисковый контроллер Adaptec aic7899 Ultra160 SCSI, диск 1x36GB SCSI-3, сетевые адаптеры 2xIntel EtherExpress Pro 10/100B.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dosirak</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intel x86</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2x2.20GHz Pentium 4 Xeon, память 4GB, дисковый контроллер Adaptec aic7899 Ultra160 SCSI, диск 1x36GB SCSI-3, сетевые адаптеры 2xIntel EtherExpress Pro 10/100B.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Все машины подключены на скорости 100Мбит/с (полный дуплекс) к отдельному коммутатору Cisco 2950G с резервируемыми гигабитными выходами. Подключение к Интернет и размещение серверов обеспечивает <a href="http://kr.yahoo.com/">Yahoo! Korea</a> и <a href="http://www.kidc.net/">KIDC</a>. Сами машины предоставлены <a href="http://www.eslim.co.kr/">eSlim Korea</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_политика_администрирования">Политика администрирования</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Если интересующей машиной &#34;владеет&#34; какое-то конкретное лицо, пожалуйста, по всем административным вопросам сначала обращайтесь к нему, включая изменения в бюджетах пользователей или файловой системе.</p>
+</div>
+<div class="paragraph">
+<p>Все новые пользовательские бюджеты должны быть согласованы с группой администраторов, <a href="mailto:admin@FreeBSD.org">admin@FreeBSD.org</a>, и должны выделяться исключительно для разработчиков FreeBSD всех категорий, как занимающихся документированием, так и портированием приложений или самой системой. Бюджеты могут быть выданы и для разработчиков, не участвующих в проекте, если им нужно протестировать что-либо очень экспериментальное и для этого нужен доступ к машине с FreeBSD. Бюджеты не раздаются всем подряд ради &#34;крутого&#34; почтового домена и в других подобных целях. Пытаться просить будет пустой тратой времени. Спасибо.</p>
+</div>
+<div class="paragraph">
+<p><a href="..">Внутренняя информация FreeBSD</a></p>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Последнее изменение</strong>: 6 октября 2025 г. от <a href="https://cgit.freebsd.org/doc/commit/?id=f27178d4eb" target="_blank">Andrey Zakhvatov</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">О проекте</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/ru/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">Фонд FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/ru/where" class="column-element">Получить FreeBSD</a>
+          </li>
+          <li>
+            <a href="/ru/internal/code-of-conduct" class="column-element">Кодекс поведения</a>
+          </li>
+          <li>
+            <a href="/ru/security" class="column-element">Бюллетени безопасности</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Документация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Портал документации</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Страницы Справочника</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Презентации и статьи</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Предыдущие версии</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">Документы 4.4BSD</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Сообщество</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/ru/articles/contributing" class="column-element">Присоединиться</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Форум сообщества</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Списки рассылки</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC-каналы</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Баг-трекер</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Правовая информация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Пожертвования</a>
+          </li>
+          <li>
+            <a href="/ru/copyright/freebsd-license" class="column-element">Лицензирование</a>
+          </li>
+          <li>
+            <a href="/ru/privacy" class="column-element">Политика конфиденциальности</a>
+          </li>
+          <li>
+            <a href="/ru/copyright" class="column-element">Юридические уведомления</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p>
+        <span>Сделано <span class="heart">❤️</span> сообществом FreeBSD</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/status/report-2021-07-2021-09/current-compilation-time-analysis/">
+
+  <title>
+    
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content="  " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/status/report-2021-07-2021-09/current-compilation-time-analysis/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/status\/report-2021-07-2021-09\/current-compilation-time-analysis\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/about/></a></li>
+  <li><a href=/features/></a></li>
+  <li><a href=/applications/>Applications</a></li>
+  <li><a href=/administration/>Administration</a></li>
+  <li><a href=/news/newsflash/>News</a></li>
+  <li><a href=/events></a></li>
+  <li><a href=/press>Press</a></li>
+  <li><a href=/art>Artwork</a></li>
+  <li><a href=/donations>Donations</a></li>
+  <li><a href=/copyright></a></li>
+  <li><a href=/privacy>Privacy Policy</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1></h1><div class="sect2">
+<h3 id="_current_compilation_time_analysis">-CURRENT compilation time analysis</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=257141">Bug 257141</a> URL: <a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=257141">https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=257141</a><br/>
+<a href="https://lists.freebsd.org/archives/freebsd-current/2021-September/index.html#msg511">Discussion on freebsd-current</a> URL: <a href="https://lists.freebsd.org/archives/freebsd-current/2021-September/index.html#msg511">https://lists.freebsd.org/archives/freebsd-current/2021-September/index.html#msg511</a><br/>
+<a href="https://people.freebsd.org/~wosch/build-time/buildworld/">Visual chart of buildworld by stages</a> URL: <a href="https://people.freebsd.org/~wosch/build-time/buildworld/">https://people.freebsd.org/%7Ewosch/build-time/buildworld/</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Wolfram Schneider &lt;<a href="mailto:wosch@FreeBSD.org">wosch@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Re-building FreeBSD from source takes a lot of CPU resources.
+Depending on your machine it takes between 20min and several hours.
+At the end of `make buildworld&#39; we log the real time and which
+parameters are used for parallel build. E.g.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>time make -j $(sysctl -n hw.ncpu) buildworld &gt; buildworld.log 2&gt;&amp;1
+tail buildworld.log
+&gt;&gt;&gt; World build completed on Sat Sep  4 20:58:00 UTC 2021
+&gt;&gt;&gt; World built in 7235 seconds, ncpu: 3, make -j3
+     7235.61 real     20527.30 user       915.88 sys</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The build process runs in several steps.
+It would be great to know which step takes most of the time,
+and what are the effects of special build parameters.
+With a small patch in Aug 2021 we get this information now:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>egrep &#39;&gt;&gt;&gt; stage| real &#39; buildworld.log
+&gt;&gt;&gt; stage 1.1: legacy release compatibility shims
+        0.28 real         0.18 user         0.10 sys
+&gt;&gt;&gt; stage 1.2: bootstrap tools
+      165.99 real       472.58 user        11.56 sys
+&gt;&gt;&gt; stage 2.1: cleaning up the object tree
+       21.47 real        36.96 user        14.14 sys
+       15.87 real        29.14 user        11.87 sys
+&gt;&gt;&gt; stage 2.3: build tools
+        2.42 real         3.79 user         0.62 sys
+&gt;&gt;&gt; stage 3: cross tools
+        9.92 real        18.49 user         1.75 sys
+&gt;&gt;&gt; stage 3.1: recording build metadata
+        0.07 real         0.01 user         0.06 sys
+&gt;&gt;&gt; stage 4.1: building includes
+       16.62 real        36.46 user         9.48 sys
+&gt;&gt;&gt; stage 4.2: building libraries
+     5440.89 real     15724.60 user       482.58 sys
+&gt;&gt;&gt; stage 4.3: building lib32 shim libraries
+      615.91 real      1654.77 user       164.58 sys
+&gt;&gt;&gt; stage 4.4: building everything
+      937.23 real      2540.06 user       205.47 sys</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, we spent most of the time in &#34;stage 4.2: building libraries&#34;,
+77% of the CPU time and 75% of the real time.
+Now running the buildworld with the parameter WITHOUT_TOOLCHAIN=yes
+we get a 3.3x faster build. Instead of 2h it will be done in 36 minutes!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>time make -j $(sysctl -n hw.ncpu) WITHOUT_TOOLCHAIN=yes buildworld &gt; buildworld.log 2&gt;&amp;1
+&gt;&gt;&gt; World build completed on Fri Sep 17 12:31:41 UTC 2021
+&gt;&gt;&gt; World built in 2207 seconds, ncpu: 3, make -j3
+     2207.44 real      5710.83 user       676.16 sys</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>egrep &#39;&gt;&gt;&gt; stage| real &#39; buildworld.log
+&gt;&gt;&gt; stage 1.1: legacy release compatibility shims
+        0.35 real         0.20 user         0.16 sys
+&gt;&gt;&gt; stage 1.2: bootstrap tools
+       20.47 real        51.98 user         5.12 sys
+&gt;&gt;&gt; stage 2.1: cleaning up the object tree
+       20.92 real        34.45 user        13.57 sys
+       16.33 real        28.59 user        12.33 sys
+&gt;&gt;&gt; stage 2.3: build tools
+        2.59 real         3.90 user         0.86 sys
+&gt;&gt;&gt; stage 3: cross tools
+       10.46 real        18.62 user         2.35 sys
+&gt;&gt;&gt; stage 3.1: recording build metadata
+        0.07 real         0.03 user         0.05 sys
+        0.08 real         0.03 user         0.05 sys
+&gt;&gt;&gt; stage 4.1: building includes
+       15.50 real        33.03 user         9.29 sys
+&gt;&gt;&gt; stage 4.2: building libraries
+      750.31 real      1962.43 user       218.60 sys
+&gt;&gt;&gt; stage 4.3: building lib32 shim libraries
+      684.05 real      1780.35 user       213.22 sys
+&gt;&gt;&gt; stage 4.4: building everything
+      677.87 real      1787.13 user       186.82 sys</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using WITHOUT_TOOLCHAIN=yes is fine as long as there
+are no major LLVM compiler changes.</p>
+</div>
+<div class="paragraph">
+<p>If you dislike this feature or suspect it is causing
+trouble you can disable it with the variable TIME_ENV=&#34;&#34;</p>
+</div>
+<div class="paragraph">
+<p>Next task: get more detailed timing information for the long-running stages (4.2, 4.3, 4.4)</p>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: November 16, 2021 by <a href="https://cgit.freebsd.org/doc/commit/?id=5577c806c6" target="_blank">Wolfram Schneider</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

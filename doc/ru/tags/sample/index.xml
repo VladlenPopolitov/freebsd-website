@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sample on FreeBSD Documentation Portal</title><link>https://docs.freebsd.org/ru/tags/sample/</link><description>Recent content in Sample on FreeBSD Documentation Portal</description><generator>Hugo</generator><language>ru</language><copyright>BSD 2-clause 'Simplified' License</copyright><atom:link href="https://docs.freebsd.org/ru/tags/sample/index.xml" rel="self" type="application/rss+xml"/><item><title>Глава 14. Примерный Makefile</title><link>https://docs.freebsd.org/ru/books/porters-handbook/porting-samplem/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/ru/books/porters-handbook/porting-samplem/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;!-- toc disabled --&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Образец Makefile, который можно использовать для создания нового порта.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Вам рекомендуется следовать этому формату (соблюдая &lt;a href="../order/#"&gt;порядок&lt;/a&gt; следования переменных, пустые строки между разделами, и так далее). Этот формат разработан для того, чтобы важная информация была легко найдена. Обратитесь &lt;a href="../testing/#"&gt;главе о тестировании&lt;/a&gt;, чтобы узнать больше о lint, утилитах для форматирования и проверки файла &lt;span class="filename"&gt;Makefile&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="literalblock programlisting"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;PORTNAME=	xdvi &lt;i class="conum" data-value="1"&gt;&lt;/i&gt;&lt;b&gt;(1)&lt;/b&gt;
+DISTVERSION=	18.2
+CATEGORIES=	print
+MASTER_SITES=	${MASTER_SITE_XCONTRIB} &lt;i class="conum" data-value="2"&gt;&lt;/i&gt;&lt;b&gt;(2)&lt;/b&gt;
+MASTER_SITE_SUBDIR=	applications
+PKGNAMEPREFIX=	ja-
+DISTNAME=	xdvi-pl18
+EXTRACT_SUFX=	.tar.Z &lt;i class="conum" data-value="3"&gt;&lt;/i&gt;&lt;b&gt;(3)&lt;/b&gt;
+
+PATCH_SITES=	ftp://ftp.sra.co.jp/pub/X11/japanese/ &lt;i class="conum" data-value="4"&gt;&lt;/i&gt;&lt;b&gt;(4)&lt;/b&gt;
+PATCHFILES=	xdvi-18.patch1.gz xdvi-18.patch2.gz
+PATCH_DIST_STRIP=	-p1 &lt;i class="conum" data-value="5"&gt;&lt;/i&gt;&lt;b&gt;(5)&lt;/b&gt;
+
+MAINTAINER=	asami@FreeBSD.org &lt;i class="conum" data-value="6"&gt;&lt;/i&gt;&lt;b&gt;(6)&lt;/b&gt;
+COMMENT=	DVI Previewer for the X Window System
+WWW=		http://xdvi.sourceforge.net/
+
+LICENSE=	BSD2CLAUSE &lt;i class="conum" data-value="7"&gt;&lt;/i&gt;&lt;b&gt;(7)&lt;/b&gt;
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+RUN_DEPENDS=	gs:print/ghostscript &lt;i class="conum" data-value="8"&gt;&lt;/i&gt;&lt;b&gt;(8)&lt;/b&gt;
+
+USES=		gmake &lt;i class="conum" data-value="9"&gt;&lt;/i&gt;&lt;b&gt;(9)&lt;/b&gt;
+
+&lt;i class="conum" data-value="10"&gt;&lt;/i&gt;&lt;b&gt;(10)&lt;/b&gt;
+IS_INTERACTIVE=	yes &lt;i class="conum" data-value="11"&gt;&lt;/i&gt;&lt;b&gt;(11)&lt;/b&gt;
+WRKSRC=		${WRKDIR}/xdvi-new &lt;i class="conum" data-value="12"&gt;&lt;/i&gt;&lt;b&gt;(12)&lt;/b&gt;
+GNU_CONFIGURE=	yes &lt;i class="conum" data-value="13"&gt;&lt;/i&gt;&lt;b&gt;(13)&lt;/b&gt;
+
+&lt;i class="conum" data-value="14"&gt;&lt;/i&gt;&lt;b&gt;(14)&lt;/b&gt;
+OPTIONS_DEFINE=	DOCS EXAMPLES FOO
+OPTIONS_DEFAULT=FOO
+OPTIONS_SUB=	yes &lt;i class="conum" data-value="15"&gt;&lt;/i&gt;&lt;b&gt;(15)&lt;/b&gt;
+
+FOO_DESC=		Enable foo support
+FOO_CONFIGURE_ENABLE=	foo
+
+&lt;i class="conum" data-value="16"&gt;&lt;/i&gt;&lt;b&gt;(16)&lt;/b&gt;
+MY_FAVORITE_RESPONSE=	&amp;#34;yeah, right&amp;#34;
+
+&lt;i class="conum" data-value="17"&gt;&lt;/i&gt;&lt;b&gt;(17)&lt;/b&gt;
+pre-fetch:
+	i go fetch something, yeah
+
+post-patch:
+	мне кое-что сделать после применения патча, великолепно
+
+pre-install:
+	и потом ещё кое-что перед установкой, ого
+
+.include &amp;lt;bsd.port.mk&amp;gt; &lt;i class="conum" data-value="18"&gt;&lt;/i&gt;&lt;b&gt;(18)&lt;/b&gt;&lt;/pre&gt;
+&lt;/div&gt;</description></item></channel></rss>

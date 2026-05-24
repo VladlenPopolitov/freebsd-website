@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/status/report-2025-07-2025-09/sta-wpc-ci-automation/">
+
+  <title>
+    
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content="  " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/status/report-2025-07-2025-09/sta-wpc-ci-automation/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/status\/report-2025-07-2025-09\/sta-wpc-ci-automation\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/about/></a></li>
+  <li><a href=/features/></a></li>
+  <li><a href=/applications/>Applications</a></li>
+  <li><a href=/administration/>Administration</a></li>
+  <li><a href=/news/newsflash/>News</a></li>
+  <li><a href=/events></a></li>
+  <li><a href=/press>Press</a></li>
+  <li><a href=/art>Artwork</a></li>
+  <li><a href=/donations>Donations</a></li>
+  <li><a href=/copyright></a></li>
+  <li><a href=/privacy>Privacy Policy</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1></h1><div class="sect2">
+<h3 id="_sta_work_package_c_cicd_automation">STA Work Package C: CI/CD Automation</h3>
+<div class="paragraph">
+<p>Contact: Siva Mahadevan &lt;<a href="mailto:smahadevan@freebsdfoundation.org">smahadevan@freebsdfoundation.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>In this quarter, as part of the infrastructure modernization work commissioned by the Sovereign Tech Agency (STA), I have been working on the in-tree CI Makefile targets.
+I also worked on bringing our CI test reports to a clean state on our tier-1 architectures (amd64 and aarch64).
+This report is a supplement to the overall STA status report and will describe the work done in more detail.</p>
+</div>
+<div class="sect3">
+<h4 id="_testsci_improvements">tests/ci improvements</h4>
+<div class="paragraph">
+<p>The <span class="filename">tests/ci</span> subdirectory in the src tree was introduced in <a href="https://cgit.freebsd.org/src/commit/?id=cb9d4bb1fbb9ac0eb9f211656e91f9d5254c166c">commit: Add preliminary in-tree CI infrastructure for developers</a> by <a href="mailto:bofh@FreeBSD.org">Moin Rahman</a> and aims to provide an easy way for developers to replicate the CI testing run by <a href="https://ci.freebsd.org">our Jenkins cluster</a>.
+In this quarter, the following improvements were made by the team:</p>
+</div>
+<div class="paragraph">
+<p>New functionality:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=f6e5bcd4716c2974c7ceb1fbbfc0ef8db8e13d8b">tests/ci: run ci-full kyua tests in parallel</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=92a7f2d577630d670643f855a1d123a2260102af">tests/ci: Add KYUA_TEST_FILTERS to allow user to select specific tests</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=932cf5fa44b7ff3b7ea21ccb32bbbefff11c160c">tests/ci: Add CIENV variable</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Bug fixes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=ed4c64bc792fd2509d8fd6805f8e174c2db62338">tests/ci: Use suitable variable for qemu-user-static existence check</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=2f50ea54c6e3b15f655e800eb680ddcb80e30b4f">tests/ci: fix race condition in bhyveload boot</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=57f725a6a6c19b12015854589764babe58252155">tests/ci: fix missing /usr/local/{sbin,bin} in freebsdci rc PATH</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=9f3e4b28f9dec27b73eeebd161d119d1e9864081">tests/ci: Fix missing qemu devices</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=10fb5e7117e522540167fa02692e1e7b8e38eec0">tests/ci: Fix race condition with ci-extractmeta</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=66fe805070d121d4b93f63b7b02a70d76069edfc">tests/ci: Fix wrong chflags target path in &#39;beforeclean&#39; target</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=9ec37e8ff49c6b555e8d4f522adc9378157df170">tests/ci: Use QEMU blockdev declaration for all platforms</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=e990e460d50c628dfa681c5693bd8ece87b001ad">tests/ci: Fix unescaped kld_list var in rc.conf</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With these changes, a developer can run CI with these example commands as root:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell"># Fully parallel CI:
+make ci
+
+# Single-threaded CI
+make PARALLEL_JOBS=1 ci
+
+# Single-threaded CI, running a subset of the tests as described in kyua-test(1)
+make PARALLEL_JOBS=1 KYUA_TEST_FILTERS=&#39;/path/to/testcase /path/to/another:testname1&#39; ci
+
+# Run smoke (boot) tests
+make CITYPE=smoke ci</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test_case_management">Test case management</h4>
+<div class="paragraph">
+<p><a href="https://ci.freebsd.org/tinderbox">Tinderbox</a> has been reporting that our supported platforms are failing in CI since a <a href="https://ci.freebsd.org/job/FreeBSD-main-amd64-test/26756/">run from the last quarter</a>.
+As the backlog grows larger, it becomes harder for users and developers to notice a new failure and pin it to a particular commit.</p>
+</div>
+<div class="paragraph">
+<p>To complement the <span class="filename">tests/ci</span> CI/CD automation improvements, along with <a href="https://github.com/markjdb/bricoler">Bricoler</a> to help with more granular investigations, I worked on cleaning up the failing test backlog on tier-1 architectures.
+The following patches and bug reports were submitted as a result of this (still ongoing) work:</p>
+</div>
+<div class="paragraph">
+<p>New bug reports filed to track failing or flaky tests:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=288991">PR 288991: sys/netinet/output:output_raw_flowid_mpath_success</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289096">PR 289096: lib/libexecinfo/sigtramp_test:test_backtrace_sigtramp</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289165">PR 289165: usr.bin/limits/limits_test:cputime_soft_flag</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289240">PR 289240: sys/netlink/netlink_socket:overflow</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289239">PR 289239: sys/netpfil/pf/sctp:pfsync</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289236">PR 289236: sys/kern/exterr_test:gettext_extended</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289382">PR 289382: sys/netinet6/lpm6:lpm6_test1_success</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289628">PR 289628: sys/netpfil/pf/nat:endpoint_independent_pass</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289630">PR 289630: libexec/rc/rc_subr_test:wait_for_pids_progress</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289237">PR 289237: sys/fs/fusefs/last_local_modify:main</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289084">PR 289084: lib/libc/string/memcmp_test:{diff,neq}</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289477">PR 289477: sys/netpfil/pf/route_to:prefer_ipv6_nexthop_mixed_af_random_table_ipv4</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289299">PR 289299: sys/netpfil/pf/rules_counter:keepcounters</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289684">PR 289684: sys/netlink/test_snl:snl_parse_errmsg_capped</a></p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=289146">PR 289146: sbin/ipfw/test_add_rule.py:TestAddRule::test_add_action</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Unskip tests that are wrongly skipped in CI:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=6ff78a63d8cd0dd64ae79cbda5cb03572c1e17f5">tests/sys/netpfil: unskip tests that no longer need to be skipped</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=178b9c2364740ead21f584dc30c3aa45bd0bb8bf">tests/ci: Add missing kmods and pkgs to unskip tests</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Test case metadata fixes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=83b08f40264177ecf03fce808474815816f9846f">fix parallel execution of swapon tests</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=1e570722dced7a3afc0a35b10af047b835e51567">cap_dns/tests/dns_test: mark tests as needing network access</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=68fe0d9cc03bd80f63a5317a633d2426ae286316">pfctl tests: use require.kmods instead of manual check for pf</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=df88c711a26c04192761e96dc08a6f3f9e42afed">cap_net/net_test: require &#39;allow_network_access&#39;</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=5dadfac51c3876b0ba6fde831cb4417594167fed">tests/mac_portacl: enable is_exclusive for now</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=cacfd42b0c57b3455ca4a23e21de071fa0cc9ed0">tests/sys/mqueue: use require.kmods property instead of ad-hoc checks</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=215a0654186926b2e4497d83f3eb45b5eefcb23f">tests/sys/netlink: use require.kmods property instead of ad-hoc checks</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=308c9c995794f1ae89bba1d43aab9c51f7e90a09">tests/sys/opencrypto: use require.kmods property instead of ad-hoc checks</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=26d3dfa8733892adf107b045a8c98d480b4bb21d">tests/sys/aio: use require.kmods property instead of ad-hoc checks</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=c444bfca0063d0820f3fc72cb429809f5f52a970">tests/pf/ioctl: use require.kmods property instead of ad-hoc checks</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=559b0f6b82867b60a2d5cb1b2744114603cb17a7">tests/sys/netmap: use require.kmods property instead of ad-hoc checks</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=74898ce961e1f4818eba500dfa3a06bc30c1d9b3">tests/sndstat: use require.kmods property instead of ad-hoc checks</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=7a1a6d1e2a836d189447ba725b0e256014613ab8">tests/socket_accf: use require.kmods property instead of ad-hoc checks</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=4079513328d5656e31cb853a799176ff2500f79b">tests/sys/net: use require.kmods property instead of ad-hoc checks</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=427be10491e37160a82eef31622676c655a29f1e">tests/sys/netinet: use require.kmods property instead of ad-hoc checks</a></p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=f53228c4e398468c71d3ed8a372cc29ccae6a0c1">tests/vmm_cred_jail: use require.kmods property instead of ad-hoc checks</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>mark tests as &#34;expected fail&#34; (xfail), currently WIP:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=df997faca8411bdf8008c25de5db3ed719019d21">atf_pytest: fix xfail detection from pytest report</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tooling_wip">Tooling (WIP)</h4>
+<div class="paragraph">
+<p>To catch errors more quickly, instead of relying on <a href="https://ci.freebsd.org">Jenkins</a> to update the test report, I ran local CI multiple times daily.
+To help with this, I worked on some tooling to speed up the testing/debugging cycles.
+I am maintaining the following (currently uncommitted) tools:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://codeberg.org/svmhdvn/mypoudriere/src/branch/main/myfreebsd">parallel CI runner built on top of tests/ci</a></p>
+</li>
+<li>
+<p><a href="https://codeberg.org/svmhdvn/depistage">(VERY WIP) automated CI bug report/triage system</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sponsor: The FreeBSD Foundation</p>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: September 22, 2025 by <a href="https://cgit.freebsd.org/doc/commit/?id=7d8509a49c" target="_blank">Siva Mahadevan</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

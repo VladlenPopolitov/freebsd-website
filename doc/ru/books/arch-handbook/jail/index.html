@@ -1,0 +1,304 @@
+<!doctype html><html class=theme-light lang=ru><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Подсистема клеток"><meta name=keywords content="jail,architecture,networking,kernel"><meta name=copyright content="1995-2026 The FreeBSD Foundation"><link rel=canonical href=https://docs.freebsd.org/ru/books/arch-handbook/jail/><title>Глава 4. Подсистема клеток | FreeBSD Documentation Portal</title><meta name=theme-color content="#790000"><meta name=color-scheme content="system light dark high-contrast"><link rel="shortcut icon" href=https://docs.freebsd.org/favicon.ico><link rel=stylesheet href=https://docs.freebsd.org/styles/main.min.css><link rel=stylesheet href=https://docs.freebsd.org/css/font-awesome-min.css><script defer src=/js/theme-chooser.min.js></script><script defer src=/js/copy-clipboard.min.js></script><script defer src=/js/search.min.js></script><meta name=twitter:card content="summary"><meta name=twitter:domain content="www.freebsd.msk.ru/doc"><meta name=twitter:site content="@freebsd"><meta name=twitter:url content="https://twitter.com/freebsd"><meta property="og:title" content="Глава 4. Подсистема клеток"><meta property="og:description" content="Подсистема клеток"><meta property="og:type" content="website"><meta property="og:image" content="https://docs.freebsd.org/favicon.ico"><meta property="og:image:alt" content="FreeBSD Logo"><meta property="og:locale" content="ru"><meta property="og:url" content="https://docs.freebsd.org/ru/books/arch-handbook/jail/"><meta property="og:site_name" content="FreeBSD Documentation Portal"><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","url":"https:\/\/docs.freebsd.org\/ru\/books\/arch-handbook\/jail\/","name":"FreeBSD Documentation Portal","headline":"FreeBSD Documentation Portal","description":"FreeBSD Documentation Portal"}</script><script defer data-domain=freebsd.org src=https://plausible.io/js/script.outbound-links.js></script></head><body><header><div class=header-container><div class=logo-menu-bars-container><a href=https://www.FreeBSD.org class=logo><img src=https://docs.freebsd.org/images/FreeBSD-monochromatic.svg width=160 height=50 alt="FreeBSD logo">
+</a><label class=menu-bars for=menu-bars><i class="fa fa-bars" aria-hidden=true></i></label></div><input id=menu-bars type=checkbox><nav><ul class=menu><li class=menu-item><input id=about type=checkbox>
+<a href=# aria-label="Navigate to About section"><label class=menu-item-description for=about>О нас
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=https://www.freebsd.msk.ru/ru/about/ target=_blank>О нас</a></li><li><a href=https://www.freebsd.msk.ru/ru/about/ target=_blank>FreeBSD</a></li><li><a href=https://freebsdfoundation.org/about-us/about-the-foundation/ target=_blank>Фонд FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/internal/code-of-conduct/ target=_blank>Кодекс Этики</a></li></ul></li><li class=menu-item><input id=download type=checkbox>
+<a href=# aria-label="Navigate to get FreeBSD section"><label class=menu-item-description for=download>Получить FreeBSD
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=https://www.freebsd.msk.ru/ru/where/ target=_blank>Получить FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/releases/ target=_blank>Информация о релизах</a></li><li><a href=https://www.freebsd.msk.ru/ru/releng/ target=_blank>Подготовка релизов</a></li><li><a href=https://www.freebsd.msk.ru/ru/security/ target=_blank>Бюллетени Безопасности</a></li></ul></li><li class=menu-item><input id=documentation type=checkbox>
+<a href=# aria-label="Navigate to get Documentation section"><label class=menu-item-description for=documentation>Документация
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=/ru>Портал документации</a></li><li><a href=https://docs.freebsd.org/ru/books/handbook>Руководство</a></li><li><a href=https://docs.freebsd.org/ru/books/porters-handbook>Руководство по созданию портов</a></li><li><a href=https://www.freebsd.msk.ru/doc/en/books/fdp-primer>Учебник Проекта Документирования</a></li><li><a href=https://man.FreeBSD.org target=_blank>Страницы Справочника</a></li><li><a href=https://papers.FreeBSD.org target=_blank>Презентации и публикации</a></li><li><a href=https://wiki.FreeBSD.org target=_blank>Wiki</a></li><li><a href=https://docs.freebsd.org/ru/books>Книги</a></li><li><a href=https://docs.freebsd.org/ru/articles>Статьи</a></li></ul></li><li class=menu-item><input id=community type=checkbox>
+<a href=# aria-label="Navigate to get Community section"><label class=menu-item-description for=community>Сообщество
+<i class="fa fa-angle-down fa-lg" aria-hidden=true></i></label></a><ul class=sub-menu><li class=title><a href=https://www.freebsd.msk.ru/ru/community/>Сообщество</a></li><li><a href=https://docs.freebsd.org/ru/articles/contributing>Стать участником</a></li><li><a href=https://forums.freebsd.org/ target=_blank>Форум</a></li><li><a href=https://lists.freebsd.org/ target=_blank>Списки рассылки</a></li><li><a href=https://wiki.freebsd.org/IRC/Channels target=_blank>Каналы IRC</a></li><li><a href=https://bugs.freebsd.org/bugzilla/ target=_blank>Трекер ошибок</a></li><li><a href=https://www.freebsd.msk.ru/ru/support/ target=_blank>Поддержка</a></li></ul></li></ul></nav><div class=search-donate-container><form class=search method=get id=search-header-form action=https://www.freebsd.msk.ru/doc/search name=search-header-form><input type=hidden name=DB value=ru>
+<input id=words name=P type=text size=20 maxlength=255>
+<button>
+<i class="fa fa-search" aria-hidden=true></i></button></form><div class=donate><a href=https://freebsdfoundation.org/donate/ target=_blank><span class=heart>♥</span>
+Пожертвования</a></div></div></div></header><input type=checkbox class="hidden toggle" id=menu-control><main class=main-wrapper-book><a id=top></a><aside class=book-menu><div class=book-menu-content><input id=search-book type=text placeholder=Поиск aria-label=Поиск maxlength=128><nav id=MenuContents><ul><li><input type=checkbox id=chapter-e225d42e608241110686a45286ec1826 class=toggle>
+<label for=chapter-e225d42e608241110686a45286ec1826><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/parti/>Глава I. Ядро</a></li><li><input type=checkbox id=chapter-f7741d1cde524f70b4bef733f3dba704 class=toggle>
+<label class="icon cursor" for=chapter-f7741d1cde524f70b4bef733f3dba704><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/boot/>Глава 1. Начальная загрузка и инициализация ядра</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/boot/#boot-synopsis>1.1. Обзор</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/boot/#boot-overview>1.2. Обзор</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/boot/#boot-bios>1.3. BIOS</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/boot/#boot-boot0>1.4. Главная загрузочная запись (<code>boot0</code>)</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/boot/#boot-boot1>1.5. Этап <code>boot1</code></a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/boot/#btx-server>1.6. Сервер BTX</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/boot/#boot2>1.7. Этап загрузки boot2</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/boot/#boot-loader>1.8. Этап загрузчика (loader)</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/boot/#boot-kernel>1.9. Инициализация ядра</a></li></ul></li><li><input type=checkbox id=chapter-f4e4648d40560f69d70cb79386b5e493 class=toggle>
+<label class="icon cursor" for=chapter-f4e4648d40560f69d70cb79386b5e493><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/locking/>Глава 2. Заметки о блокировках</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/locking/#locking-mutexes>2.1. Mutexes</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/locking/#locking-sx>2.2. Разделяемые эксклюзивные блокировки</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/locking/#locking-atomic>2.3. Атомарно защищённые переменные</a></li></ul></li><li><input type=checkbox id=chapter-5a0b222a2a29718869f8b8986a63b39a class=toggle>
+<label class="icon cursor" for=chapter-5a0b222a2a29718869f8b8986a63b39a><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/kobj/>Глава 3. Объекты ядра</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/kobj/#kernel-objects-term>3.1. Терминология</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/kobj/#kernel-objects-operation>3.2. Как работает Kobj</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/kobj/#kernel-objects-using>3.3. Использование Kobj</a></li></ul></li><li><input type=checkbox id=chapter-f4334039d34d6bb4f5b6995dbe1ba61b class=toggle checked>
+<label class="icon cursor" for=chapter-f4334039d34d6bb4f5b6995dbe1ba61b><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/jail/>Глава 4. Подсистема клеток</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/jail/#jail-arch>4.1. Архитектура</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/jail/#jail-restrictions>4.2. Ограничения</a></li></ul></li><li><input type=checkbox id=chapter-512f3e8f8906850b0e30a3510b84dd9b class=toggle>
+<label class="icon cursor" for=chapter-512f3e8f8906850b0e30a3510b84dd9b><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/sysinit/>Глава 5. Фреймворк SYSINIT</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/sysinit/#sysinit-term>5.1. Терминология</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/sysinit/#sysinit-operation>5.2. Работа механизма SYSINIT</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/sysinit/#sysinit-using>5.3. Использование SYSINIT</a></li></ul></li><li><input type=checkbox id=chapter-33bf7757c7fbadf66b0b8c7066fdadcd class=toggle>
+<label class="icon cursor" for=chapter-33bf7757c7fbadf66b0b8c7066fdadcd><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/mac/>Глава 6. Фреймворк TrustedBSD MAC</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/mac/#mac-copyright>6.1. Авторские права документации MAC</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/mac/#mac-synopsis>6.2. Обзор</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/mac/#mac-introduction>6.3. Введение</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/mac/#mac-background>6.4. Общие сведения о политиках</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/mac/#mac-framework-kernel-arch>6.5. Архитектура MAC Framework в ядре</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/mac/#mac-policy-architecture>6.6. Архитектура политик MAC</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/mac/#mac-entry-point-reference>6.7. Справочник по точкам входа политики MAC</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/mac/#mac-userland-arch>6.8. Пользовательская архитектура</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/mac/#mac-conclusion>6.9. Заключение</a></li></ul></li><li><input type=checkbox id=chapter-2e246581e6b863fbce76d640074e4372 class=toggle>
+<label class="icon cursor" for=chapter-2e246581e6b863fbce76d640074e4372><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/vm/>Глава 7. Система управления виртуальной памятью</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/vm/#vm-physmem>7.1. Управление физической памятью <code>vm_page_t</code></a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/vm/#vm-cache>7.2. Унифицированный буферный кэш <code>vm_object_t</code></a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/vm/#vm-fileio>7.3. Ввод-вывод файловой системы <code>struct buf</code></a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/vm/#vm-pagetables>7.4. Отображение таблиц страниц <code>vm_map_t, vm_entry_t</code></a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/vm/#vm-kvm>7.5. Отображение виртуальной памяти ядра</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/vm/#vm-tuning>7.6. Настройка системы виртуальной памяти во FreeBSD</a></li></ul></li><li><input type=checkbox id=chapter-30a7c6e2b9aa9b0f60f7f3e57377b2c1 class=toggle>
+<label class="icon cursor" for=chapter-30a7c6e2b9aa9b0f60f7f3e57377b2c1><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/smp/>Глава 8. Документ по архитектуре SMPng</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/smp/#smp-intro>8.1. Введение</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/smp/#smp-lock-fundamentals>8.2. Основные инструменты и основы блокировки</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/smp/#smp-design>8.3. Общая архитектура и дизайн</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/smp/#smp-lock-strategies>8.4. Конкретные стратегии блокировки</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/smp/#smp-implementation-notes>8.5. Заметки о реализации</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/smp/#smp-misc>8.6. Разные темы</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/smp/#smp-glossary>Глоссарий</a></li></ul></li><li><input type=checkbox id=chapter-cd3ab871fc1d8ba3ceb5bb7fbee583c0 class=toggle>
+<label for=chapter-cd3ab871fc1d8ba3ceb5bb7fbee583c0><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/partii/>Глава II. Драйверы устройств</a></li><li><input type=checkbox id=chapter-aa23a7ffe5ebb3462f72fceebc840627 class=toggle>
+<label class="icon cursor" for=chapter-aa23a7ffe5ebb3462f72fceebc840627><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/driverbasics/>Глава 9. Написание драйверов устройств для FreeBSD</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/driverbasics/#driverbasics-intro>9.1. Введение</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/driverbasics/#driverbasics-kld>9.2. Динамический загрузчик модулей ядра - KLD</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/driverbasics/#driverbasics-char>9.3. Символьные устройства</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/driverbasics/#driverbasics-block>9.4. Блочные устройства (удалены)</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/driverbasics/#driverbasics-net>9.5. Драйверы сетевых устройств</a></li></ul></li><li><input type=checkbox id=chapter-b360f92c2e6535ae7b4ecbfd974373ed class=toggle>
+<label class="icon cursor" for=chapter-b360f92c2e6535ae7b4ecbfd974373ed><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/>Глава 10. Драйверы устройств ISA</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-synopsis>10.1. Обзор</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-basics>10.2. Основная информация</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-device-t>10.3. Указатель <code>device_t</code></a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-config>10.4. Файл конфигурации и порядок определения и проверки при автоматической настройке</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-resources>10.5. Ресурсы</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-busmem>10.6. Отображение памяти шины</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-dma>10.7. DMA</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-probe>10.8. xxx_isa_probe</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-attach>10.9. xxx_isa_attach</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-detach>10.10. xxx_isa_detach</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-shutdown>10.11. xxx_isa_shutdown</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/isa/#isa-driver-intr>10.12. xxx_intr</a></li></ul></li><li><input type=checkbox id=chapter-9e400dd16bbf16d82ed694e2f30dc654 class=toggle>
+<label class="icon cursor" for=chapter-9e400dd16bbf16d82ed694e2f30dc654><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/pci/>Глава 11. Устройства PCI</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/pci/#pci-probe>11.1. Обнаружение и подключение</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/pci/#pci-bus>11.2. Ресурсы шины</a></li></ul></li><li><input type=checkbox id=chapter-032fd7755aa76b13077a112f3eea3075 class=toggle>
+<label class="icon cursor" for=chapter-032fd7755aa76b13077a112f3eea3075><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/scsi/>Глава 12. Контроллеры SCSI с общим методом доступа (CAM)</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/scsi/#scsi-synopsis>12.1. Обзор</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/scsi/#scsi-general>12.2. Общая архитектура</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/scsi/#_глобальные_переменные_и_шаблонный_код>12.3. Глобальные переменные и Шаблонный код</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/scsi/#_конфигурация_устройства_xxx_attach>12.4. Конфигурация устройства: xxx_attach</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/scsi/#_обработка_сообщений_cam_xxx_action>12.5. Обработка сообщений CAM: xxx_action</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/scsi/#scsi-polling>12.6. Опрос xxx_poll</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/scsi/#scsi-async>12.7. Асинхронные события</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/scsi/#scsi-interrupts>12.8. Прерывания</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/scsi/#scsi-errors>12.9. Сводка ошибок</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/scsi/#scsi-timeout>12.10. Обработка таймаутов</a></li></ul></li><li><input type=checkbox id=chapter-94d6233007919b7aa9033ddf0549a423 class=toggle>
+<label class="icon cursor" for=chapter-94d6233007919b7aa9033ddf0549a423><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/usb/>Глава 13. USB-устройства</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/usb/#usb-intro>13.1. Введение</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/usb/#usb-hc>13.2. Контроллеры хоста</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/usb/#usb-dev>13.3. Информация об устройстве USB</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/usb/#usb-devprobe>13.4. Обнаружение устройства и подключение</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/usb/#usb-protocol>13.5. Информация о протоколе драйверов USB</a></li></ul></li><li><input type=checkbox id=chapter-d76283439a2708222f9691f4d5d3ff0c class=toggle>
+<label class="icon cursor" for=chapter-d76283439a2708222f9691f4d5d3ff0c><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/newbus/>Глава 14. Newbus</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/newbus/#newbus-devdrivers>14.1. Драйверы устройств</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/newbus/#newbus-overview>14.2. Обзор Newbus</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/newbus/#newbus-api>14.3. Newbus API</a></li></ul></li><li><input type=checkbox id=chapter-07ef3c9a1d05a1e0bebe086bceaec96e class=toggle>
+<label class="icon cursor" for=chapter-07ef3c9a1d05a1e0bebe086bceaec96e><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/sound/>Глава 15. Звуковая подсистема</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/sound/#oss-intro>15.1. Введение</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/sound/#oss-files>15.2. Файлы</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/sound/#pcm-probe-and-attach>15.3. Обнаружение, подключение и т.д.</a></li><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/sound/#oss-interfaces>15.4. Интерфейсы</a></li></ul></li><li><input type=checkbox id=chapter-372f2f1d30ad3fe050e4acf53c9a7d99 class=toggle>
+<label class="icon cursor" for=chapter-372f2f1d30ad3fe050e4acf53c9a7d99><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/pccard/>Глава 16. PC Card</a><ul><li><a href=https://docs.freebsd.org/ru/books/arch-handbook/pccard/#pccard-adddev>16.1. Добавление устройства</a></li></ul></li><li><input type=checkbox id=chapter-95e1d08d074a8f95482866ef53268ac3 class=toggle>
+<label for=chapter-95e1d08d074a8f95482866ef53268ac3><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/partiii/>Глава III. Приложения</a></li><li><input type=checkbox id=chapter-e8d48fb969de4c496c50f4ae951edb10 class=toggle>
+<label for=chapter-e8d48fb969de4c496c50f4ae951edb10><a role=button></a></label><a href=https://docs.freebsd.org/ru/books/arch-handbook/bibliography/>Библиография</a></li><li></li></ul></nav></div></aside><div class=book><div class=book-menu-mobile><label for=menu-control><span class=menu-control-button><i class="fa fa-list" aria-hidden=true title="Меню книги"></i>
+Меню книги</span></label></div><h1 class=title>Глава 4. Подсистема клеток</h1><div class="admonitionblock note"><p><i class="fa fa-exclamation-circle" aria-hidden=true></i>
+Этот перевод может быть устаревшим. Для того, чтобы помочь с переводом, пожалуйста, обратитесь к <a href=https://translate-dev.freebsd.org/ target=_blank>Сервер переводов FreeBSD</a>.</p></div><div class=toc-mobile><h3>Содержание</h3><nav id=TableOfContents><ul><li><a href=#jail-arch>4.1. Архитектура</a></li><li><a href=#jail-restrictions>4.2. Ограничения</a></li></ul></nav></div><div class=book-content><div id=preamble><div class=sectionbody><div class=paragraph><p>На большинстве систем UNIX® пользователь <code>root</code> обладает неограниченной властью. Это не способствует безопасности. Если злоумышленник получит права <code>root</code> в системе, у него окажутся все функции под рукой. В FreeBSD существуют sysctl-параметры, которые ограничивают власть <code>root</code>, чтобы минимизировать ущерб от действий злоумышленника. В частности, одна из таких функций называется <code>уровни безопасности</code>. Аналогично, другая функция, доступная начиная с FreeBSD 4.0, — это утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a> — клетка. Клетка создаёт chroot-окружение и накладывает определённые ограничения на процессы, запущенные внутри <code>клетки</code>. Например, процесс в <code>клетке</code> не может влиять на процессы вне её, использовать определённые системные вызовы или наносить какой-либо ущерб основной системе.</p></div><div class=paragraph><p>Клетка становится новой моделью безопасности. Пользователи запускают потенциально уязвимые серверы, такие как Apache, BIND и sendmail, внутри клеток, так что если злоумышленник получит права <code>root</code> внутри клетки, это будет лишь неудобством, а не катастрофой. Данная статья в основном сосредоточена на внутреннем устройстве (исходном коде) клетки. Для получения информации о настройке клетки см. <a href=https://docs.freebsd.org/ru/books/handbook/jails#jails-synopsis>раздел о клетках Руководства FreeBSD</a>.</p></div></div></div><div class=sect1><h2 id=jail-arch>4.1. Архитектура<a class=anchor href=#jail-arch></a></h2><div class=sectionbody><div class=paragraph><p><code>Клетка</code> состоит из двух областей: пользовательской программы <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a> и кода, реализованного в ядре: системного вызова <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=2&amp;format=html">jail(2)</a> и связанных с ним ограничений. Я расскажу о пользовательской программе, а затем о том, как <code>клетка</code> реализована в ядре.</p></div><div class=sect2><h3 id=_код_в_пользовательском_пространстве>4.1.1. Код в пользовательском пространстве<a class=anchor href=#_код_в_пользовательском_пространстве></a></h3><div class=paragraph><p>Исходный код пользовательской части <code>клетки</code> находится в <span class=filename>/usr/src/usr.sbin/jail</span> и состоит из одного файла <span class=filename>jail.c</span>. Программа принимает следующие аргументы: путь к <code>клетке</code>, имя хоста, IP-адрес и команду для выполнения.</p></div><div class=sect3><h4 id=_структуры_данных>4.1.1.1. Структуры данных<a class=anchor href=#_структуры_данных></a></h4><div class=paragraph><p>В файле <span class=filename>jail.c</span> первое, на что я бы обратил внимание, это объявление важной структуры <code>struct jail j;</code>, которая была включена из <span class=filename>/usr/include/sys/jail.h</span>.</p></div><div class=paragraph><p>Определение структуры <code>jail</code> выглядит следующим образом:</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/include/sys/jail.h:
+
+struct jail {
+        u_int32_t       version;
+        char            *path;
+        char            *hostname;
+        u_int32_t       ip_number;
+};</pre></div></div><div class=paragraph><p>Как видно, существует запись для каждого из аргументов, переданных программе <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a>, и действительно, они устанавливаются во время её выполнения.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/usr.sbin/jail/jail.c
+char path[PATH_MAX];
+...
+if (realpath(argv[0], path) == NULL)
+    err(1, &#34;realpath: %s&#34;, argv[0]);
+if (chdir(path) != 0)
+    err(1, &#34;chdir: %s&#34;, path);
+memset(&amp;j, 0, sizeof(j));
+j.version = 0;
+j.path = path;
+j.hostname = argv[1];</pre></div></div></div><div class=sect3><h4 id=_сетевое_взаимодействие>4.1.1.2. Сетевое взаимодействие<a class=anchor href=#_сетевое_взаимодействие></a></h4><div class=paragraph><p>Один из аргументов, передаваемых программе <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a>, — это IP-адрес, по которому можно получить доступ к клетке через сеть. <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a> преобразует указанный IP-адрес в порядок байтов хоста и сохраняет его в <code>j</code> (структура <code>jail</code>).</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/usr.sbin/jail/jail.c:
+struct in_addr in;
+...
+if (inet_aton(argv[2], &amp;in) == 0)
+    errx(1, &#34;Could not make sense of ip-number: %s&#34;, argv[2]);
+j.ip_number = ntohl(in.s_addr);</pre></div></div><div class=paragraph><p>Функция <a href="https://man.freebsd.org/cgi/man.cgi?query=inet_aton&amp;sektion=3&amp;format=html">inet_aton(3)</a> "интерпретирует указанную строку символов как интернет-адрес, помещая адрес в предоставленную структуру." Член структуры <code>ip_number</code> в структуре <code>jail</code> устанавливается только тогда, когда IP-адрес, помещённый в структуру <code>in</code> функцией <a href="https://man.freebsd.org/cgi/man.cgi?query=inet_aton&amp;sektion=3&amp;format=html">inet_aton(3)</a>, преобразуется в порядок байтов хоста с помощью <a href="https://man.freebsd.org/cgi/man.cgi?query=ntohl&amp;sektion=3&amp;format=html">ntohl(3)</a>.</p></div></div><div class=sect3><h4 id=_процесс_в_клетке>4.1.1.3. Процесс в клетке<a class=anchor href=#_процесс_в_клетке></a></h4><div class=paragraph><p>Наконец, пользовательская программа помещает процесс в <code>клетку</code>. Теперь <code>клетка</code> становится самим заключенным процессом и выполняет команду, используя <a href="https://man.freebsd.org/cgi/man.cgi?query=execv&amp;sektion=3&amp;format=html">execv(3)</a>.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/usr.sbin/jail/jail.c
+i = jail(&amp;j);
+...
+if (execv(argv[3], argv + 3) != 0)
+    err(1, &#34;execv: %s&#34;, argv[3]);</pre></div></div><div class=paragraph><p>Как видно, вызывается функция <code>jail()</code>, и её аргументом является структура <code>jail</code>, заполненная аргументами, переданными программе. В конце выполняется указанная вами программа. Теперь я расскажу о том, как <code>клетка</code> реализована в ядре.</p></div></div></div><div class=sect2><h3 id=_пространство_ядра_системы>4.1.2. Пространство ядра системы<a class=anchor href=#_пространство_ядра_системы></a></h3><div class=paragraph><p>Мы сейчас рассмотрим файл <span class=filename>/usr/src/sys/kern/kern_jail.c</span>. В этом файле определены системный вызов <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=2&amp;format=html">jail(2)</a>, соответствующие sysctls и сетевые функции.</p></div><div class=sect3><h4 id=_управляемые_переменные_ядра_sysctl>4.1.2.1. Управляемые переменные ядра sysctl<a class=anchor href=#_управляемые_переменные_ядра_sysctl></a></h4><div class=paragraph><p>В файле <span class=filename>kern_jail.c</span> определены следующие параметры sysctl:</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/kern/kern_jail.c:
+int     jail_set_hostname_allowed = 1;
+SYSCTL_INT(_security_jail, OID_AUTO, set_hostname_allowed, CTLFLAG_RW,
+    &amp;jail_set_hostname_allowed, 0,
+    &#34;Processes in jail can set their hostnames&#34;);
+
+int     jail_socket_unixiproute_only = 1;
+SYSCTL_INT(_security_jail, OID_AUTO, socket_unixiproute_only, CTLFLAG_RW,
+    &amp;jail_socket_unixiproute_only, 0,
+    &#34;Processes in jail are limited to creating UNIX/IPv4/route sockets only&#34;);
+
+int     jail_sysvipc_allowed = 0;
+SYSCTL_INT(_security_jail, OID_AUTO, sysvipc_allowed, CTLFLAG_RW,
+    &amp;jail_sysvipc_allowed, 0,
+    &#34;Processes in jail can use System V IPC primitives&#34;);
+
+static int jail_enforce_statfs = 2;
+SYSCTL_INT(_security_jail, OID_AUTO, enforce_statfs, CTLFLAG_RW,
+    &amp;jail_enforce_statfs, 0,
+    &#34;Processes in jail cannot see all mounted file systems&#34;);
+
+int    jail_allow_raw_sockets = 0;
+SYSCTL_INT(_security_jail, OID_AUTO, allow_raw_sockets, CTLFLAG_RW,
+    &amp;jail_allow_raw_sockets, 0,
+    &#34;Prison root can create raw sockets&#34;);
+
+int    jail_chflags_allowed = 0;
+SYSCTL_INT(_security_jail, OID_AUTO, chflags_allowed, CTLFLAG_RW,
+    &amp;jail_chflags_allowed, 0,
+    &#34;Processes in jail can alter system file flags&#34;);
+
+int     jail_mount_allowed = 0;
+SYSCTL_INT(_security_jail, OID_AUTO, mount_allowed, CTLFLAG_RW,
+    &amp;jail_mount_allowed, 0,
+    &#34;Processes in jail can mount/unmount jail-friendly file systems&#34;);</pre></div></div><div class=paragraph><p>Каждый из этих параметров sysctl может быть доступен пользователю через программу <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a>. В ядре эти конкретные параметры sysctl распознаются по их именам. Например, имя первого параметра sysctl — <code>security.jail.set_hostname_allowed</code>.</p></div></div><div class=sect3><h4 id=_системный_вызов_jail2>4.1.2.2. Системный вызов <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=2&amp;format=html">jail(2)</a><a class=anchor href=#_системный_вызов_jail2></a></h4><div class=paragraph><p>Как и все системные вызовы, системный вызов <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=2&amp;format=html">jail(2)</a> принимает два аргумента: <code>struct thread *td</code> и <code>struct jail_args *uap</code>. <code>td</code> — это указатель на структуру <code>thread</code>, которая описывает вызывающий поток. В данном контексте <code>uap</code> — это указатель на структуру, в которой содержится указатель на структуру <code>jail</code>, переданную из пользовательского пространства <span class=filename>jail.c</span>. Ранее, когда я описывал пользовательскую программу, вы видели, что системному вызову <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=2&amp;format=html">jail(2)</a> была передана структура <code>jail</code> в качестве собственного аргумента.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/kern/kern_jail.c:
+/*
+ * struct jail_args {
+ *  struct jail *jail;
+ * };
+ */
+int
+jail(struct thread *td, struct jail_args *uap)</pre></div></div><div class=paragraph><p>Следовательно, <code>uap→jail</code> можно использовать для доступа к структуре <code>jail</code>, которая была передана системному вызову. Далее системный вызов копирует структуру <code>клетка</code> в пространство ядра с помощью функции <a href="https://man.freebsd.org/cgi/man.cgi?query=copyin&amp;sektion=9&amp;format=html">copyin(9)</a>. <a href="https://man.freebsd.org/cgi/man.cgi?query=copyin&amp;sektion=9&amp;format=html">copyin(9)</a> принимает три аргумента: адрес данных, которые нужно скопировать в пространство ядра (<code>uap→jail</code>), место для записи данных (<code>j</code>) и размер хранилища. Структура <code>jail</code>, на которую указывает <code>uap→jail</code>, копируется в пространство ядра и сохраняется в другой структуре <code>клетка</code> — <code>j</code>.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/kern/kern_jail.c:
+error = copyin(uap-&gt;jail, &amp;j, sizeof(j));</pre></div></div><div class=paragraph><p>В <span class=filename>jail.h</span> определена ещё одна важная структура — <code>prison</code>. Структура <code>prison</code> используется исключительно в пространстве ядра. Вот определение структуры <code>prison</code>.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/include/sys/jail.h:
+struct prison {
+        LIST_ENTRY(prison) pr_list;                     /* (a) all prisons */
+        int              pr_id;                         /* (c) prison id */
+        int              pr_ref;                        /* (p) refcount */
+        char             pr_path[MAXPATHLEN];           /* (c) chroot path */
+        struct vnode    *pr_root;                       /* (c) vnode to rdir */
+        char             pr_host[MAXHOSTNAMELEN];       /* (p) jail hostname */
+        u_int32_t        pr_ip;                         /* (c) ip addr host */
+        void            *pr_linux;                      /* (p) linux abi */
+        int              pr_securelevel;                /* (p) securelevel */
+        struct task      pr_task;                       /* (d) destroy task */
+        struct mtx       pr_mtx;
+      void            **pr_slots;                     /* (p) additional data */
+};</pre></div></div><div class=paragraph><p>Системный вызов <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=2&amp;format=html">jail(2)</a> затем выделяет память для структуры <code>prison</code> и копирует данные между структурой <code>клетка</code> и структурой <code>prison</code>.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/kern/kern_jail.c:
+MALLOC(pr, struct prison *, sizeof(*pr), M_PRISON, M_WAITOK | M_ZERO);
+...
+error = copyinstr(j.path, &amp;pr-&gt;pr_path, sizeof(pr-&gt;pr_path), 0);
+if (error)
+    goto e_killmtx;
+...
+error = copyinstr(j.hostname, &amp;pr-&gt;pr_host, sizeof(pr-&gt;pr_host), 0);
+if (error)
+     goto e_dropvnref;
+pr-&gt;pr_ip = j.ip_number;</pre></div></div><div class=paragraph><p>Далее мы рассмотрим ещё один важный системный вызов <a href="https://man.freebsd.org/cgi/man.cgi?query=jail_attach&amp;sektion=2&amp;format=html">jail_attach(2)</a>, который реализует функцию помещения процесса в клетку.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/kern/kern_jail.c:
+/*
+ * struct jail_attach_args {
+ *      int jid;
+ * };
+ */
+int
+jail_attach(struct thread *td, struct jail_attach_args *uap)</pre></div></div><div class=paragraph><p>Этот системный вызов вносит изменения, которые позволяют отличить процесс в клетке от процессов вне клетки. Чтобы понять, что делает <a href="https://man.freebsd.org/cgi/man.cgi?query=jail_attach&amp;sektion=2&amp;format=html">jail_attach(2)</a>, необходима некоторая справочная информация.</p></div><div class=paragraph><p>В FreeBSD каждый видимый ядром поток идентифицируется своей структурой <code>thread</code>, а процессы описываются их структурами <code>proc</code>. Определения структур <code>thread</code> и <code>proc</code> можно найти в <span class=filename>/usr/include/sys/proc.h</span>. Например, аргумент <code>td</code> в любом системном вызове на самом деле является указателем на структуру <code>thread</code> вызывающего потока, как было указано ранее. Член <code>td_proc</code> в структуре <code>thread</code>, на которую указывает <code>td</code>, является указателем на структуру <code>proc</code>, представляющую процесс, содержащий поток, представленный структурой <code>td</code>. Структура <code>proc</code> содержит члены, которые могут описывать идентификацию владельца (<code>p_ucred</code>), ограничения ресурсов процесса (<code>p_limit</code>) и так далее. В структуре <code>ucred</code>, на которую указывает член <code>p_ucred</code> в структуре <code>proc</code>, есть указатель на структуру <code>prison</code> (<code>cr_prison</code>).</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/include/sys/proc.h:
+struct thread {
+    ...
+    struct proc *td_proc;
+    ...
+};
+struct proc {
+    ...
+    struct ucred *p_ucred;
+    ...
+};
+/usr/include/sys/ucred.h
+struct ucred {
+    ...
+    struct prison *cr_prison;
+    ...
+};</pre></div></div><div class=paragraph><p>В файле <span class=filename>kern_jail.c</span> функция <code>jail()</code> вызывает функцию <code>jail_attach()</code> с заданным <code>jid</code>. Затем <code>jail_attach()</code> вызывает функцию <code>change_root()</code> для изменения корневого каталога вызывающего процесса. Функция <code>jail_attach()</code> создаёт новую структуру <code>ucred</code> и присоединяет её к вызывающему процессу после успешного присоединения структуры <code>prison</code> к структуре <code>ucred</code>. С этого момента вызывающий процесс считается находящимся в клетке. Когда в ядре вызывается функция <code>jailed()</code> с вновь созданной структурой <code>ucred</code> в качестве аргумента, она возвращает 1, указывая, что учётные данные связаны с клеткой. Общим родительским процессом для всех процессов, созданных внутри клетки, является процесс, запускающий <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a>, так как он вызывает системный вызов <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=2&amp;format=html">jail(2)</a>. При выполнении программы через <a href="https://man.freebsd.org/cgi/man.cgi?query=execve&amp;sektion=2&amp;format=html">execve(2)</a> она наследует свойство клетки из структуры <code>ucred</code> родительского процесса, следовательно, у неё структура <code>ucred</code> тоже со свойством клетки.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/kern/kern_jail.c
+int
+jail(struct thread *td, struct jail_args *uap)
+{
+...
+    struct jail_attach_args jaa;
+...
+    error = jail_attach(td, &amp;jaa);
+    if (error)
+        goto e_dropprref;
+...
+}
+
+int
+jail_attach(struct thread *td, struct jail_attach_args *uap)
+{
+    struct proc *p;
+    struct ucred *newcred, *oldcred;
+    struct prison *pr;
+...
+    p = td-&gt;td_proc;
+...
+    pr = prison_find(uap-&gt;jid);
+...
+    change_root(pr-&gt;pr_root, td);
+...
+    newcred-&gt;cr_prison = pr;
+    p-&gt;p_ucred = newcred;
+...
+}</pre></div></div><div class=paragraph><p>Когда процесс создаётся из родительского процесса, системный вызов <a href="https://man.freebsd.org/cgi/man.cgi?query=fork&amp;sektion=2&amp;format=html">fork(2)</a> использует <code>crhold()</code> для поддержания учётных данных нового процесса. Это автоматически сохраняет учётные данные нового дочернего процесса согласованными с родительским, поэтому дочерний процесс также остаётся в клетке.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/kern/kern_fork.c:
+p2-&gt;p_ucred = crhold(td-&gt;td_ucred);
+...
+td2-&gt;td_ucred = crhold(p2-&gt;p_ucred);</pre></div></div></div></div></div></div><div class=sect1><h2 id=jail-restrictions>4.2. Ограничения<a class=anchor href=#jail-restrictions></a></h2><div class=sectionbody><div class=paragraph><p>В ядре существуют ограничения доступа, связанные с процессами в клетках. Обычно эти ограничения просто проверяют, находится ли процесс в клетке, и если да, возвращают ошибку. Например:</p></div><div class="literalblock programlisting"><div class=content><pre>if (jailed(td-&gt;td_ucred))
+    return (EPERM);</pre></div></div><div class=sect2><h3 id=_sysv_ipc>4.2.1. SysV IPC<a class=anchor href=#_sysv_ipc></a></h3><div class=paragraph><p>System V IPC основан на сообщениях. Процессы могут отправлять друг другу эти сообщения, которые указывают им, как действовать. Функции, работающие с сообщениями: <a href="https://man.freebsd.org/cgi/man.cgi?query=msgctl&amp;sektion=3&amp;format=html">msgctl(3)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=msgget&amp;sektion=3&amp;format=html">msgget(3)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=msgsnd&amp;sektion=3&amp;format=html">msgsnd(3)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=msgrcv&amp;sektion=3&amp;format=html">msgrcv(3)</a>. Ранее я упоминал, что существуют определённые sysctl, которые можно включать или выключать для изменения поведения клетки. Один из таких sysctl — <code>security.jail.sysvipc_allowed</code>. По умолчанию этот sysctl установлен в 0. Если бы он был установлен в 1, это бы свело на нет весь смысл клетки: привилегированные пользователи внутри клетки смогли бы влиять на процессы за её пределами. Разница между сообщением и сигналом заключается в том, что сообщение состоит только из номера сигнала.</p></div><div class=paragraph><p><span class=filename>/usr/src/sys/kern/sysv_msg.c</span>:</p></div><div class=ulist><ul><li><p><code>msgget(key, msgflg)</code>: <code>msgget</code> возвращает (и, возможно, создаёт) дескриптор сообщения, который обозначает очередь сообщений для использования в других функциях.</p></li><li><p><code>msgctl(msgid, cmd, buf)</code>: С помощью этой функции процесс может запросить статус дескриптора сообщения.</p></li><li><p><code>msgsnd(msgid, msgp, msgsz, msgflg)</code>: <code>msgsnd</code> отправляет сообщение процессу.</p></li><li><p><code>msgrcv(msgid, msgp, msgsz, msgtyp, msgflg)</code>: процесс получает сообщения с помощью этой функции</p></li></ul></div><div class=paragraph><p>В каждом из системных вызовов, соответствующих этим функциям, присутствует следующее условие:</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/kern/sysv_msg.c:
+if (!jail_sysvipc_allowed &amp;&amp; jailed(td-&gt;td_ucred))
+    return (ENOSYS);</pre></div></div><div class=paragraph><p>Системные вызовы семафоров позволяют процессам синхронизировать выполнение, атомарно выполняя набор операций над набором семафоров. По сути, семафоры предоставляют ещё один способ для процессов блокировать ресурсы. Однако процесс, ожидающий семафор, который уже используется, будет находиться в состоянии сна до тех пор, пока ресурсы не будут освобождены. Следующие системные вызовы семафоров блокируются внутри клетки: <a href="https://man.freebsd.org/cgi/man.cgi?query=semget&amp;sektion=2&amp;format=html">semget(2)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=semctl&amp;sektion=2&amp;format=html">semctl(2)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=semop&amp;sektion=2&amp;format=html">semop(2)</a>.</p></div><div class=paragraph><p><span class=filename>/usr/src/sys/kern/sysv_sem.c</span>:</p></div><div class=ulist><ul><li><p><code>semctl(semid, semnum, cmd, …​)</code>: <code>semctl</code> выполняет указанную команду <code>cmd</code> для очереди семафоров, указанной в <code>semid</code>.</p></li><li><p><code>semget(key, nsems, flag)</code>: <code>semget</code> создаёт массив семафоров, соответствующих <code>key</code>.</p><div class=paragraph><p><code>key и flag имеют то же значение, как и в msgget.</code></p></div></li><li><p><code>semop(semid, array, nops)</code>: <code>semop</code> выполняет набор операций, указанных в <code>array</code>, для набора семафоров, идентифицируемых <code>semid</code>.</p></li></ul></div><div class=paragraph><p>Система IPC System V позволяет процессам использовать общую память. Процессы могут взаимодействовать напрямую друг с другом, разделяя части своего виртуального адресного пространства и затем читая и записывая данные в общей памяти. Эти системные вызовы заблокированы в среде <em>клетки</em>: <a href="https://man.freebsd.org/cgi/man.cgi?query=shmdt&amp;sektion=2&amp;format=html">shmdt(2)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=shmat&amp;sektion=2&amp;format=html">shmat(2)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=shmctl&amp;sektion=2&amp;format=html">shmctl(2)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=shmget&amp;sektion=2&amp;format=html">shmget(2)</a>.</p></div><div class=paragraph><p><span class=filename>/usr/src/sys/kern/sysv_shm.c</span>:</p></div><div class=ulist><ul><li><p><code>shmctl(shmid, cmd, buf)</code>: <code>shmctl</code> выполняет различные управляющие операции над областью разделяемой памяти, идентифицируемой <code>shmid</code>.</p></li><li><p><code>shmget(key, size, flag)</code>: <code>shmget</code> обращается к существующей или создаёт новую область разделяемой памяти размером <code>size</code> байт.</p></li><li><p><code>shmat(shmid, addr, flag)</code>: <code>shmat</code> присоединяет область разделяемой памяти, идентифицируемую <code>shmid</code>, к адресному пространству процесса.</p></li><li><p><code>shmdt(addr)</code>: <code>shmdt</code> отсоединяет ранее присоединенную область разделяемой памяти по адресу <code>addr</code>.</p></li></ul></div></div><div class=sect2><h3 id=_сокеты>4.2.2. Сокеты<a class=anchor href=#_сокеты></a></h3><div class=paragraph><p>Клетка обрабатывает системный вызов <a href="https://man.freebsd.org/cgi/man.cgi?query=socket&amp;sektion=2&amp;format=html">socket(2)</a> и связанные низкоуровневые функции сокетов особым образом. Для определения, разрешено ли создание определённого сокета, сначала проверяется значение sysctl <code>security.jail.socket_unixiproute_only</code>. Если оно установлено, сокеты разрешено создавать только в случае, если указанное семейство равно <code>PF_LOCAL</code>, <code>PF_INET</code> или <code>PF_ROUTE</code>. В противном случае возвращается ошибка.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/kern/uipc_socket.c:
+int
+socreate(int dom, struct socket **aso, int type, int proto,
+    struct ucred *cred, struct thread *td)
+{
+    struct protosw *prp;
+...
+    if (jailed(cred) &amp;&amp; jail_socket_unixiproute_only &amp;&amp;
+        prp-&gt;pr_domain-&gt;dom_family != PF_LOCAL &amp;&amp;
+        prp-&gt;pr_domain-&gt;dom_family != PF_INET &amp;&amp;
+        prp-&gt;pr_domain-&gt;dom_family != PF_ROUTE) {
+        return (EPROTONOSUPPORT);
+    }
+...
+}</pre></div></div></div><div class=sect2><h3 id=_berkeley_packet_filter>4.2.3. Berkeley Packet Filter<a class=anchor href=#_berkeley_packet_filter></a></h3><div class=paragraph><p>Берклиевский фильтр пакетов (BPF) предоставляет низкоуровневый интерфейс к канальному уровню, независимый от протокола. В настоящее время BPF управляется через <a href="https://man.freebsd.org/cgi/man.cgi?query=devfs&amp;sektion=8&amp;format=html">devfs(8)</a>, который определяет возможность его использования в клетке.</p></div></div><div class=sect2><h3 id=_протоколы>4.2.4. Протоколы<a class=anchor href=#_протоколы></a></h3><div class=paragraph><p>Существуют определённые протоколы, которые очень распространены, такие как TCP, UDP, IP и ICMP. IP и ICMP находятся на одном уровне: сетевом уровне 2. Принимаются определённые меры предосторожности, чтобы предотвратить привязку протокола к определённому адресу процессом в клетке, только если установлен параметр <code>nam</code>. <code>nam</code> является указателем на структуру <code>sockaddr</code>, которая описывает адрес, к которому привязывается служба. Более точное определение заключается в том, что <code>sockaddr</code> "может использоваться как шаблон для ссылки на идентификационный тег и длину каждого адреса". В функции <code>in_pcbbind_setup()</code>, <code>sin</code> — это указатель на структуру <code>sockaddr_in</code>, которая содержит порт, адрес, длину и семейство доменов сокета, который должен быть привязан. В основном, это запрещает любым процессам из клетки указывать адрес, который не принадлежит клетке, в которой существует вызывающий процесс.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/netinet/in_pcb.c:
+int
+in_pcbbind_setup(struct inpcb *inp, struct sockaddr *nam, in_addr_t *laddrp,
+    u_short *lportp, struct ucred *cred)
+{
+    ...
+    struct sockaddr_in *sin;
+    ...
+    if (nam) {
+        sin = (struct sockaddr_in *)nam;
+        ...
+        if (sin-&gt;sin_addr.s_addr != INADDR_ANY)
+            if (prison_ip(cred, 0, &amp;sin-&gt;sin_addr.s_addr))
+                return(EINVAL);
+        ...
+        if (lport) {
+            ...
+            if (prison &amp;&amp; prison_ip(cred, 0, &amp;sin-&gt;sin_addr.s_addr))
+                return (EADDRNOTAVAIL);
+            ...
+        }
+    }
+    if (lport == 0) {
+        ...
+        if (laddr.s_addr != INADDR_ANY)
+            if (prison_ip(cred, 0, &amp;laddr.s_addr))
+                return (EINVAL);
+        ...
+    }
+...
+    if (prison_ip(cred, 0, &amp;laddr.s_addr))
+        return (EINVAL);
+...
+}</pre></div></div><div class=paragraph><p>Вы можете задаться вопросом, какую функцию выполняет <code>prison_ip()</code>. <code>prison_ip()</code> принимает три аргумента: указатель на учётные данные (представленные как <code>cred</code>), любые флаги и IP-адрес. Она возвращает 1, если IP-адрес НЕ принадлежит клетке, и 0 в противном случае. Как видно из кода, если это действительно IP-адрес, не принадлежащий клетке, протоколу не разрешается привязываться к этому адресу.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/kern/kern_jail.c:
+int
+prison_ip(struct ucred *cred, int flag, u_int32_t *ip)
+{
+    u_int32_t tmp;
+
+    if (!jailed(cred))
+        return (0);
+    if (flag)
+        tmp = *ip;
+    else
+        tmp = ntohl(*ip);
+    if (tmp == INADDR_ANY) {
+        if (flag)
+            *ip = cred-&gt;cr_prison-&gt;pr_ip;
+        else
+            *ip = htonl(cred-&gt;cr_prison-&gt;pr_ip);
+        return (0);
+    }
+    if (tmp == INADDR_LOOPBACK) {
+        if (flag)
+            *ip = cred-&gt;cr_prison-&gt;pr_ip;
+        else
+            *ip = htonl(cred-&gt;cr_prison-&gt;pr_ip);
+        return (0);
+    }
+    if (cred-&gt;cr_prison-&gt;pr_ip != tmp)
+        return (1);
+    return (0);
+}</pre></div></div></div><div class=sect2><h3 id=_файловая_система>4.2.5. Файловая система<a class=anchor href=#_файловая_система></a></h3><div class=paragraph><p>Даже пользователи с правами <code>root</code> внутри <code>клетки</code> не могут снять или изменить любые флаги файлов, такие как неизменяемый, только для добавления и неудаляемый, если уровень безопасности (<code>securelevel</code>) больше 0.</p></div><div class="literalblock programlisting"><div class=content><pre>/usr/src/sys/ufs/ufs/ufs_vnops.c:
+static int
+ufs_setattr(ap)
+    ...
+{
+    ...
+        if (!priv_check_cred(cred, PRIV_VFS_SYSFLAGS, 0)) {
+            if (ip-&gt;i_flags
+                &amp; (SF_NOUNLINK | SF_IMMUTABLE | SF_APPEND)) {
+                    error = securelevel_gt(cred, 0);
+                    if (error)
+                        return (error);
+            }
+            ...
+        }
+}
+/usr/src/sys/kern/kern_priv.c
+int
+priv_check_cred(struct ucred *cred, int priv, int flags)
+{
+    ...
+    error = prison_priv_check(cred, priv);
+    if (error)
+        return (error);
+    ...
+}
+/usr/src/sys/kern/kern_jail.c
+int
+prison_priv_check(struct ucred *cred, int priv)
+{
+    ...
+    switch (priv) {
+    ...
+    case PRIV_VFS_SYSFLAGS:
+        if (jail_chflags_allowed)
+            return (0);
+        else
+            return (EPERM);
+    ...
+    }
+    ...
+}</pre></div></div></div></div></div></div><hr><div class=last-modified><p><strong>Изменено</strong>: 17 мая 2026 г. by <a href="https://cgit.freebsd.org/doc/commit/?id=c8bb62a28f" target=_blank>Vladlen Popolitov</a></p></div><div class=buttons><div class=prev><i class="fa fa-angle-left" aria-hidden=true title=Назад></i><div class=container><a href=https://docs.freebsd.org/ru/books/arch-handbook/kobj class=direction>Назад</a></div></div><div class=home><i class="fa fa-home" aria-hidden=true title=Главная></i><div class=container><a href=../ class=direction>Главная</a></div></div><div class=next><div class=container><a href=https://docs.freebsd.org/ru/books/arch-handbook/sysinit class=direction>Далее</a></div><i class="fa fa-angle-right" aria-hidden=true title=Далее></i></div></div><label class="hidden book-menu-overlay" for=menu-control></label></div><aside class=toc><div class=toc-content><h3>Содержание</h3><nav id=TableOfContents><ul><li><a href=#jail-arch>4.1. Архитектура</a></li><li><a href=#jail-restrictions>4.2. Ограничения</a></li></ul></nav><hr><div class=resources><h3>Материалы</h3><ul class=contents><li><i class="fa fa-file-pdf-o" aria-hidden=true title="Скачать PDF"></i><a href=https://download.freebsd.org/doc/ru/books/arch-handbook/arch-handbook_ru.pdf>Скачать PDF</a></li><li><i class="fa fa-pencil-square-o" aria-hidden=true title="Редактировать эту страницу"></i><a href=https://github.com/freebsd/freebsd-doc/blob/main/documentation/content/ru/books/arch-handbook/jail/_index.adoc target=_blank>Редактировать эту страницу</a></li></ul></div></div></aside><a class=to-top href=#top><i class="fa fa-arrow-circle-up" aria-hidden=true></i></a></main><footer><div class=footer-container><section class=logo-column><img src=https://docs.freebsd.org/images/FreeBSD-colors.svg width=160 height=50 alt="FreeBSD logo"><div class=options-container><div class=language-container><a id=languages href=https://docs.freebsd.org/ru/languages><img src=https://docs.freebsd.org/images/language.png class=language-image alt="Выберите язык">
+<span>Русский</span></a></div><div class=theme-container><select id=theme-chooser><option value=theme-system>Система</option><option value=theme-light>Светлый</option><option value=theme-dark>Тёмный</option><option value=theme-high-contrast>Высокая контрастность</option></select></div></div></section><section class=about-column><h3 class=column-title>О нас</h3><ul class=column-elements-container><li><a href=https://www.freebsd.msk.ru/ru/about/ target=_blank class=column-element>FreeBSD</a></li><li><a href=https://freebsdfoundation.org/ target=_blank class=column-element>Фонд FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/where/ target=_blank class=column-element>Получить FreeBSD</a></li><li><a href=https://www.freebsd.msk.ru/ru/internal/code-of-conduct target=_blank class=column-element>Кодекс Этики</a></li><li><a href=https://www.freebsd.msk.ru/ru/security/ target=_blank class=column-element>Бюллетени Безопасности</a></li></ul></section><section class=documentation-column><h3 class=column-title>Документация</h3><ul class=column-elements-container><li><a href=/ru class=column-element>Портал документации</a></li><li><a href=https://man.FreeBSD.org target=_blank class=column-element>Страницы Справочника</a></li><li><a href=https://papers.FreeBSD.org target=_blank class=column-element>Презентации и публикации</a></li><li><a href=https://docs-archive.freebsd.org/doc/ target=_blank class=column-element>Предыдущие версии</a></li><li><a href=https://docs-archive.freebsd.org/44doc/ target=_blank class=column-element>Документы 4.4BSD</a></li><li><a href=https://wiki.freebsd.org/ target=_blank class=column-element>Wiki</a></li></ul></section><section class=community-column><h3 class=column-title>Сообщество</h3><ul class=column-elements-container><li><a href=https://docs.freebsd.org/ru/articles/contributing class=column-element>Принять участие</a></li><li><a href=https://forums.freebsd.org/ target=_blank class=column-element>Форум Сообщества</a></li><li><a href=https://lists.freebsd.org/ target=_blank class=column-element>Списки рассылки</a></li><li><a href=https://wiki.freebsd.org/IRC/Channels target=_blank class=column-element>Каналы IRC</a></li><li><a href=https://bugs.freebsd.org/bugzilla/ target=_blank class=column-element>Трекер ошибок</a></li></ul></section><section class=legal-column><h3 class=column-title>Юридическая информация</h3><ul class=column-elements-container><li><a href=https://freebsdfoundation.org/donate/ target=_blank class=column-element>Пожертвования</a></li><li><a href=https://www.freebsd.msk.ru/ru/copyright/freebsd-license/ target=_blank class=column-element>Лицензирование</a></li><li><a href=https://www.freebsd.msk.ru/ru/privacy/ target=_blank class=column-element>Политика Конфиденциальности</a></li><li><a href=https://www.freebsd.msk.ru/ru/copyright/ target=_blank class=column-element>Юридические оговорки</a></li></ul></section><section class=copyright-column><p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p><span>Сделано с помощью <span class=heart>♥</span> Сообществом FreeBSD</span></section></div></footer></body></html>

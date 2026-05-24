@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Guide on FreeBSD Documentation Portal</title><link>https://docs.freebsd.org/en/tags/Guide/</link><description>Recent content in Guide on FreeBSD Documentation Portal</description><generator>Hugo</generator><language>en</language><copyright>BSD 2-clause 'Simplified' License</copyright><atom:link href="https://docs.freebsd.org/en/tags/Guide/index.xml" rel="self" type="application/rss+xml"/><item><title>Chapter 3. Quick Porting</title><link>https://docs.freebsd.org/en/books/porters-handbook/quick-porting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/porters-handbook/quick-porting/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This section describes how to quickly create a new port.
+For applications where this quick method is not adequate, the full &amp;#34;Slow Porting&amp;#34; process is described in &lt;a href="../slow-porting/#slow-porting"&gt;Slow Porting&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;First, get the original tarball and put it into &lt;code&gt;DISTDIR&lt;/code&gt;, which defaults to &lt;span class="filename"&gt;/usr/ports/distfiles&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;i class="fa icon-note" title="Note"&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;These steps assume that the software compiled out-of-the-box.
+In other words, absolutely no changes were required for the application to work on a FreeBSD system.
+If anything had to be changed, refer to &lt;a href="../slow-porting/#slow-porting"&gt;Slow Porting&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 2. Installing FreeBSD</title><link>https://docs.freebsd.org/en/books/handbook/bsdinstall/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/handbook/bsdinstall/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="bsdinstall-synopsis"&gt;2.1. Synopsis&lt;a class="anchor" href="#bsdinstall-synopsis"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;FreeBSD supports different architectures including amd64, ARM®, RISC-V®, and PowerPC®.
+Depending on the architecture and platform, different images can be &lt;a href="https://www.freebsd.org/where/"&gt;downloaded&lt;/a&gt; to install or directly run FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The image types are:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Virtual Machine disk images, such as &lt;code&gt;qcow2&lt;/code&gt;, &lt;code&gt;vmdk&lt;/code&gt;, &lt;code&gt;vhd&lt;/code&gt;, and raw device images. These are not installation images, but images that have FreeBSD preinstalled and ready for post-installation tasks. Virtual machine images are also commonly used in cloud environments.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SD card images, for embedded systems such as Raspberry Pi. These files must be uncompressed and written as a raw image to an SD card, from which the board will boot.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Installation images to boot from an ISO or USB device to install FreeBSD on a drive for the usual desktop, laptop, or server system.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 3. Kernel Objects</title><link>https://docs.freebsd.org/en/books/arch-handbook/kobj/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/arch-handbook/kobj/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Kernel Objects, or &lt;em&gt;Kobj&lt;/em&gt; provides an object-oriented C programming system for the kernel.
+As such the data being operated on carries the description of how to operate on it.
+This allows operations to be added and removed from an interface at run time and without breaking binary compatibility.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="kernel-objects-term"&gt;3.1. Terminology&lt;a class="anchor" href="#kernel-objects-term"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="dlist"&gt;
+&lt;dl&gt;
+&lt;dt class="hdlist1"&gt;Object&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;A set of data - data structure - data allocation.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="hdlist1"&gt;Method&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;An operation - function.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="hdlist1"&gt;Class&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;One or more methods.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class="hdlist1"&gt;Interface&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;A standard set of one or more methods.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 4. Slow Porting</title><link>https://docs.freebsd.org/en/books/porters-handbook/slow-porting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/porters-handbook/slow-porting/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Okay, so it was not that simple, and the port required some modifications to get it to work.
+In this section, we will explain, step by step, how to modify it to get it to work with the ports paradigm.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="slow-work"&gt;4.1. How Things Work&lt;a class="anchor" href="#slow-work"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;First, this is the sequence of events which occurs when the user first types &lt;code&gt;make&lt;/code&gt; in the port’s directory.
+Having &lt;span class="filename"&gt;bsd.port.mk&lt;/span&gt; in another window while reading this really helps to understand it.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 6. Asciidoctor Primer</title><link>https://docs.freebsd.org/en/books/fdp-primer/asciidoctor-primer/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/fdp-primer/asciidoctor-primer/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Most FDP documentation is written with AsciiDoc.
+This chapter explains what that means, how to read and understand the documentation source, and the techniques used.
+To get a complete reference of the Asciidoctor capabilities please consult the &lt;a href="https://docs.asciidoctor.org/home/"&gt;Asciidoctor documentation&lt;/a&gt;.
+Some of the examples used in this chapter have been taken from the &lt;a href="https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference"&gt;AsciiDoc Syntax Quick Reference&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="asciidoctor-primer-overview"&gt;6.1. Overview&lt;a class="anchor" href="#asciidoctor-primer-overview"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In the original days of computers, electronic text was simple.
+There were a few character sets like ASCII or EBCDIC, but that was about it.
+Text was text, and what you saw really was what you got.
+No frills, no formatting, no intelligence.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 7. Flavors</title><link>https://docs.freebsd.org/en/books/porters-handbook/flavors/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/porters-handbook/flavors/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="flavors-intro"&gt;7.1. An Introduction to Flavors&lt;a class="anchor" href="#flavors-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Flavors are a way to have multiple variations of a port.
+The port is built multiple times, with variations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For example, a port can have a normal version with many features and quite a few dependencies, and a light &amp;#34;lite&amp;#34; version with only basic features and minimal dependencies.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Another example could be, a port can have a GTK flavor and a QT flavor, depending on which toolkit it uses.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 11. Manual Pages</title><link>https://docs.freebsd.org/en/books/fdp-primer/manual-pages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/fdp-primer/manual-pages/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="manual-pages-introduction"&gt;11.1. Introduction&lt;a class="anchor" href="#manual-pages-introduction"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;Manual pages&lt;/em&gt;, commonly shortened to &lt;em&gt;man pages&lt;/em&gt;, were conceived as readily-available reminders for command syntax, device driver details, or configuration file formats.
+They have become an extremely valuable quick-reference from the command line for users, system administrators, and programmers.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Although intended as reference material rather than tutorials, the EXAMPLES sections of manual pages often provide detailed use case.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Manual pages are generally shown interactively by the &lt;a href="https://man.freebsd.org/cgi/man.cgi?query=man&amp;amp;sektion=1&amp;amp;format=html"&gt;man(1)&lt;/a&gt; command.
+When the user types &lt;code&gt;man ls&lt;/code&gt;, a search is performed for a manual page matching &lt;code&gt;ls&lt;/code&gt;.
+The first matching result is displayed.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 11. PCI Devices</title><link>https://docs.freebsd.org/en/books/arch-handbook/pci/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/arch-handbook/pci/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This chapter will talk about the FreeBSD mechanisms for writing a device driver for a device on a PCI bus.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="pci-probe"&gt;11.1. Probe and Attach&lt;a class="anchor" href="#pci-probe"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Information here about how the PCI bus code iterates through the unattached devices and see if a newly loaded kld will attach to any of them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_sample_driver_source_mypci_c"&gt;11.1.1. Sample Driver Source (&lt;span class="filename"&gt;mypci.c&lt;/span&gt;)&lt;a class="anchor" href="#_sample_driver_source_mypci_c"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="literalblock programlisting"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;/*
+ * Simple KLD to play with the PCI functions.
+ *
+ * Murray Stokely
+ */
+
+#include &amp;lt;sys/param.h&amp;gt;		/* defines used in kernel.h */
+#include &amp;lt;sys/module.h&amp;gt;
+#include &amp;lt;sys/systm.h&amp;gt;
+#include &amp;lt;sys/errno.h&amp;gt;
+#include &amp;lt;sys/kernel.h&amp;gt;		/* types used in module initialization */
+#include &amp;lt;sys/conf.h&amp;gt;		/* cdevsw struct */
+#include &amp;lt;sys/uio.h&amp;gt;		/* uio struct */
+#include &amp;lt;sys/malloc.h&amp;gt;
+#include &amp;lt;sys/bus.h&amp;gt;		/* structs, prototypes for pci bus stuff and DEVMETHOD macros! */
+
+#include &amp;lt;machine/bus.h&amp;gt;
+#include &amp;lt;sys/rman.h&amp;gt;
+#include &amp;lt;machine/resource.h&amp;gt;
+
+#include &amp;lt;dev/pci/pcivar.h&amp;gt;	/* For pci_get macros! */
+#include &amp;lt;dev/pci/pcireg.h&amp;gt;
+
+/* The softc holds our per-instance data. */
+struct mypci_softc {
+	device_t	my_dev;
+	struct cdev	*my_cdev;
+};
+
+/* Function prototypes */
+static d_open_t		mypci_open;
+static d_close_t	mypci_close;
+static d_read_t		mypci_read;
+static d_write_t	mypci_write;
+
+/* Character device entry points */
+
+static struct cdevsw mypci_cdevsw = {
+	.d_version =	D_VERSION,
+	.d_open =	mypci_open,
+	.d_close =	mypci_close,
+	.d_read =	mypci_read,
+	.d_write =	mypci_write,
+	.d_name =	&amp;#34;mypci&amp;#34;,
+};
+
+/*
+ * In the cdevsw routines, we find our softc by using the si_drv1 member
+ * of struct cdev. We set this variable to point to our softc in our
+ * attach routine when we create the /dev entry.
+ */
+
+int
+mypci_open(struct cdev *dev, int oflags, int devtype, struct thread *td)
+{
+	struct mypci_softc *sc;
+
+	/* Look up our softc. */
+	sc = dev-&amp;gt;si_drv1;
+	device_printf(sc-&amp;gt;my_dev, &amp;#34;Opened successfully.\n&amp;#34;);
+	return (0);
+}
+
+int
+mypci_close(struct cdev *dev, int fflag, int devtype, struct thread *td)
+{
+	struct mypci_softc *sc;
+
+	/* Look up our softc. */
+	sc = dev-&amp;gt;si_drv1;
+	device_printf(sc-&amp;gt;my_dev, &amp;#34;Closed.\n&amp;#34;);
+	return (0);
+}
+
+int
+mypci_read(struct cdev *dev, struct uio *uio, int ioflag)
+{
+	struct mypci_softc *sc;
+
+	/* Look up our softc. */
+	sc = dev-&amp;gt;si_drv1;
+	device_printf(sc-&amp;gt;my_dev, &amp;#34;Asked to read %zd bytes.\n&amp;#34;, uio-&amp;gt;uio_resid);
+	return (0);
+}
+
+int
+mypci_write(struct cdev *dev, struct uio *uio, int ioflag)
+{
+	struct mypci_softc *sc;
+
+	/* Look up our softc. */
+	sc = dev-&amp;gt;si_drv1;
+	device_printf(sc-&amp;gt;my_dev, &amp;#34;Asked to write %zd bytes.\n&amp;#34;, uio-&amp;gt;uio_resid);
+	return (0);
+}
+
+/* PCI Support Functions */
+
+/*
+ * Compare the device ID of this device against the IDs that this driver
+ * supports. If there is a match, set the description and return success.
+ */
+static int
+mypci_probe(device_t dev)
+{
+
+	device_printf(dev, &amp;#34;MyPCI Probe\nVendor ID : 0x%x\nDevice ID : 0x%x\n&amp;#34;,
+	 pci_get_vendor(dev), pci_get_device(dev));
+
+	if (pci_get_vendor(dev) == 0x11c1) {
+		printf(&amp;#34;We&amp;#39;ve got the Winmodem, probe successful!\n&amp;#34;);
+		device_set_desc(dev, &amp;#34;WinModem&amp;#34;);
+		return (BUS_PROBE_DEFAULT);
+	}
+	return (ENXIO);
+}
+
+/* Attach function is only called if the probe is successful. */
+
+static int
+mypci_attach(device_t dev)
+{
+	struct mypci_softc *sc;
+
+	printf(&amp;#34;MyPCI Attach for : deviceID : 0x%x\n&amp;#34;, pci_get_devid(dev));
+
+	/* Look up our softc and initialize its fields. */
+	sc = device_get_softc(dev);
+	sc-&amp;gt;my_dev = dev;
+
+	/*
+	 * Create a /dev entry for this device. The kernel will assign us
+	 * a major number automatically. We use the unit number of this
+	 * device as the minor number and name the character device
+	 * &amp;#34;mypci&amp;lt;unit&amp;gt;&amp;#34;.
+	 */
+	sc-&amp;gt;my_cdev = make_dev(&amp;amp;mypci_cdevsw, device_get_unit(dev),
+	 UID_ROOT, GID_WHEEL, 0600, &amp;#34;mypci%u&amp;#34;, device_get_unit(dev));
+	sc-&amp;gt;my_cdev-&amp;gt;si_drv1 = sc;
+	printf(&amp;#34;Mypci device loaded.\n&amp;#34;);
+	return (0);
+}
+
+/* Detach device. */
+
+static int
+mypci_detach(device_t dev)
+{
+	struct mypci_softc *sc;
+
+	/* Teardown the state in our softc created in our attach routine. */
+	sc = device_get_softc(dev);
+	destroy_dev(sc-&amp;gt;my_cdev);
+	printf(&amp;#34;Mypci detach!\n&amp;#34;);
+	return (0);
+}
+
+/* Called during system shutdown after sync. */
+
+static int
+mypci_shutdown(device_t dev)
+{
+
+	printf(&amp;#34;Mypci shutdown!\n&amp;#34;);
+	return (0);
+}
+
+/*
+ * Device suspend routine.
+ */
+static int
+mypci_suspend(device_t dev)
+{
+
+	printf(&amp;#34;Mypci suspend!\n&amp;#34;);
+	return (0);
+}
+
+/*
+ * Device resume routine.
+ */
+static int
+mypci_resume(device_t dev)
+{
+
+	printf(&amp;#34;Mypci resume!\n&amp;#34;);
+	return (0);
+}
+
+static device_method_t mypci_methods[] = {
+	/* Device interface */
+	DEVMETHOD(device_probe,		mypci_probe),
+	DEVMETHOD(device_attach,	mypci_attach),
+	DEVMETHOD(device_detach,	mypci_detach),
+	DEVMETHOD(device_shutdown,	mypci_shutdown),
+	DEVMETHOD(device_suspend,	mypci_suspend),
+	DEVMETHOD(device_resume,	mypci_resume),
+
+	DEVMETHOD_END
+};
+
+static devclass_t mypci_devclass;
+
+DEFINE_CLASS_0(mypci, mypci_driver, mypci_methods, sizeof(struct mypci_softc));
+DRIVER_MODULE(mypci, pci, mypci_driver, mypci_devclass, 0, 0);&lt;/pre&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 13. Dos and Don'ts</title><link>https://docs.freebsd.org/en/books/porters-handbook/porting-dads/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/porters-handbook/porting-dads/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="dads-intro"&gt;13.1. Introduction&lt;a class="anchor" href="#dads-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Here is a list of common dos and don’ts that are encountered during the porting process.
+Check the port against this list, but also check ports in the &lt;a href="https://bugs.FreeBSD.org/search/"&gt;PR database&lt;/a&gt; that others have submitted.
+Submit any comments on ports as described in &lt;a href="https://docs.freebsd.org/en/articles/contributing/#CONTRIB-GENERAL"&gt;Bug Reports and General Commentary&lt;/a&gt;.
+Checking ports in the PR database will both make it faster for us to commit them, and prove that you know what you are doing.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 13. WINE</title><link>https://docs.freebsd.org/en/books/handbook/wine/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/handbook/wine/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="wine-synopsis"&gt;13.1. Synopsis&lt;a class="anchor" href="#wine-synopsis"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://www.winehq.org/"&gt;WINE&lt;/a&gt;, which stands for Wine Is Not an Emulator, is technically a software translation layer.
+It allows installing and running software written for Windows® on FreeBSD (and other) systems.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;It operates by intercepting system calls, or requests from the software to the operating system, and translating them from Windows® calls to calls that FreeBSD understands.
+It will also translate any responses as needed into what the Windows® software is expecting.
+So in some ways, it &lt;em&gt;emulates&lt;/em&gt; a Windows® environment, in that it provides many of the resources Windows® applications are expecting.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 17. Using USES Macros</title><link>https://docs.freebsd.org/en/books/porters-handbook/uses/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/porters-handbook/uses/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="uses-intro"&gt;17.1. An Introduction to &lt;code&gt;USES&lt;/code&gt;&lt;a class="anchor" href="#uses-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;code&gt;USES&lt;/code&gt; macros make it easy to declare requirements and settings for a port.
+They can add dependencies, change building behavior, add metadata to packages, and so on, all by selecting simple, preset values.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Each section in this chapter describes a possible value for &lt;code&gt;USES&lt;/code&gt;, along with its possible arguments.
+Arguments are appended to the value after a colon (&lt;code&gt;:&lt;/code&gt;).
+Multiple arguments are separated by commas (&lt;code&gt;,&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 19. Security Event Auditing</title><link>https://docs.freebsd.org/en/books/handbook/audit/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/handbook/audit/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="audit-synopsis"&gt;19.1. Synopsis&lt;a class="anchor" href="#audit-synopsis"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The FreeBSD operating system includes support for security event auditing.
+Event auditing supports reliable, fine-grained, and configurable logging of a variety of security-relevant system events, including logins, configuration changes, and file and network access.
+These log records can be invaluable for live system monitoring, intrusion detection, and postmortem analysis.
+FreeBSD implements Sun™&amp;#39;s published Basic Security Module (BSM) Application Programming Interface (API) and file format, and is interoperable with the Solaris™ and Mac OS® X audit implementations.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Committer's Guide</title><link>https://docs.freebsd.org/en/articles/committers-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/committers-guide/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document provides information for the FreeBSD committer community.
+All new committers should read this document before they start, and existing committers are strongly encouraged to review it from time to time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Almost all FreeBSD developers have commit rights to one or more repositories.
+However, a few developers do not, and some of the information here applies to them as well.
+(For instance, some people only have rights to work with the Problem Report database.)
+Please see &lt;a href="../committers-guide/#non-committers"&gt;Issues Specific to Developers Who Are Not Committers&lt;/a&gt; for more information.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Chapter 27. DTrace</title><link>https://docs.freebsd.org/en/books/handbook/dtrace/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/books/handbook/dtrace/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="dtrace-synopsis"&gt;27.1. Synopsis&lt;a class="anchor" href="#dtrace-synopsis"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;DTrace, also known as Dynamic Tracing, was developed by Sun™ as a tool for locating performance bottlenecks in production and pre-production systems.
+In addition to diagnosing performance problems, DTrace can be used to help investigate and debug unexpected behavior in both the FreeBSD kernel and in userland programs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;DTrace is a remarkable profiling tool, with an impressive array of features for diagnosing system issues.
+It may also be used to run pre-written scripts to take advantage of its capabilities.
+Users can author their own utilities using the DTrace D Language, allowing them to customize their profiling based on specific needs.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>CUPS on FreeBSD</title><link>https://docs.freebsd.org/en/articles/cups/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/cups/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;An article about configuring CUPS on FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="printing-cups"&gt;1. An Introduction to the Common Unix Printing System (CUPS)&lt;a class="anchor" href="#printing-cups"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;CUPS, the Common UNIX Printing System, provides a portable printing layer for UNIX®-based operating systems.
+It has been developed by Easy Software Products to promote a standard printing solution for all UNIX® vendors and users.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;CUPS uses the Internet Printing Protocol (IPP) as the basis for managing print jobs and queues.
+The Line Printer Daemon (LPD), Server Message Block (SMB), and AppSocket (aka JetDirect) protocols are also supported with reduced functionality.
+CUPS adds network printer browsing and PostScript Printer Description (PPD) based printing options to support real-world printing under UNIX®.
+As a result, CUPS is ideally-suited for sharing and accessing printers in mixed environments of FreeBSD, Linux®, Mac OS® X, or Windows®.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Fonts and FreeBSD</title><link>https://docs.freebsd.org/en/articles/fonts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/fonts/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document contains a description of the various font files that may be used with FreeBSD and the syscons driver, X11, Ghostscript and Groff.
+Cookbook examples are provided for switching the syscons display to 80x60 mode, and for using type 1 fonts with the above application programs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Introduction&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;There are many sources of fonts available, and one might ask how they might be used with FreeBSD.
+The answer can be found by carefully searching the documentation for the component that one would like to use.
+This is very time consuming, so this tutorial is an attempt to provide a shortcut for others who might be interested.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>FreeBSD Quickstart Guide for Linux® Users</title><link>https://docs.freebsd.org/en/articles/linux-users/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/linux-users/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document is intended to quickly familiarize intermediate to advanced Linux® users with the basics of FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Introduction&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document highlights some of the technical differences between FreeBSD and Linux® so that intermediate to advanced Linux® users can quickly familiarize themselves with the basics of FreeBSD.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document assumes that FreeBSD is already installed.
+Refer to the &lt;a href="https://docs.freebsd.org/en/books/handbook/bsdinstall#bsdinstall"&gt;Installing FreeBSD&lt;/a&gt; chapter of the FreeBSD Handbook for help with the installation process.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Introduction to NanoBSD</title><link>https://docs.freebsd.org/en/articles/nanobsd/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/nanobsd/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document provides information about the NanoBSD tools, which can be used to create FreeBSD system images for embedded applications, suitable for use on a USB key, memory card or other mass storage media.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="intro"&gt;1. Introduction to NanoBSD&lt;a class="anchor" href="#intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;NanoBSD is a tool developed by Poul-Henning Kamp &amp;lt;&lt;a href="mailto:phk@FreeBSD.org"&gt;phk@FreeBSD.org&lt;/a&gt;&amp;gt; and now maintained by Warner Losh &amp;lt;&lt;a href="mailto:imp@FreeBSD.org"&gt;imp@FreeBSD.org&lt;/a&gt;&amp;gt;.
+It creates a FreeBSD system image for embedded applications, suitable for use on a USB key, memory card or other mass storage media.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>LDAP Authentication</title><link>https://docs.freebsd.org/en/articles/ldap-auth/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/ldap-auth/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document is intended as a guide for the configuration of an LDAP server (principally an OpenLDAP server) for authentication on FreeBSD.
+This is useful for situations where many servers need the same user accounts, for example as a replacement for NIS.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="preface"&gt;1. Preface&lt;a class="anchor" href="#preface"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This document is intended to give the reader enough of an understanding of LDAP to configure an LDAP server.
+This document will attempt to provide an explanation of &lt;a class="package" href="https://cgit.freebsd.org/ports/tree/net/nss_ldap/"&gt;net/nss_ldap&lt;/a&gt; and &lt;a class="package" href="https://cgit.freebsd.org/ports/tree/security/pam_ldap/"&gt;security/pam_ldap&lt;/a&gt; for use with client machines services for use with the LDAP server.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>Practical rc.d scripting in BSD</title><link>https://docs.freebsd.org/en/articles/rc-scripting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/rc-scripting/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph abstract-title"&gt;
+&lt;p&gt;Abstract&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Beginners may find it difficult to relate the facts from the formal documentation on the BSD &lt;span class="filename"&gt;rc.d&lt;/span&gt; framework with the practical tasks of &lt;span class="filename"&gt;rc.d&lt;/span&gt; scripting.
+In this article, we consider a few typical cases of increasing complexity, show &lt;span class="filename"&gt;rc.d&lt;/span&gt; features suited for each case, and discuss how they work.
+Such an examination should provide reference points for further study of the design and efficient application of &lt;span class="filename"&gt;rc.d&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="rcng-intro"&gt;1. Introduction&lt;a class="anchor" href="#rcng-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The historical BSD had a monolithic startup script, &lt;span class="filename"&gt;/etc/rc&lt;/span&gt;.
+It was invoked by &lt;a href="https://man.freebsd.org/cgi/man.cgi?query=init&amp;amp;sektion=8&amp;amp;format=html"&gt;init(8)&lt;/a&gt; at system boot time and performed all userland tasks required for multi-user operation: checking and mounting file systems, setting up the network, starting daemons, and so on.
+The precise list of tasks was not the same in every system; admins needed to customize it.
+With few exceptions, &lt;span class="filename"&gt;/etc/rc&lt;/span&gt; had to be modified, and true hackers liked it.&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>x86 Assembly Language Programming</title><link>https://docs.freebsd.org/en/articles/x86-assembly/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://docs.freebsd.org/en/articles/x86-assembly/</guid><description>&lt;div id="preamble"&gt;
+&lt;div class="sectionbody"&gt;
+
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;This article was written by G. Adam Stanislav &amp;lt;&lt;a href="mailto:adam@redprince.net"&gt;adam@redprince.net&lt;/a&gt;&amp;gt; (2001), and adjusted by Mitchell Horne &amp;lt;&lt;a href="mailto:mhorne@FreeBSD.org"&gt;mhorne@FreeBSD.org&lt;/a&gt;&amp;gt; (2026).&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;i class="fa icon-note" title="Note"&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The content in this article is historical.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="x86-intro"&gt;1. Synopsis&lt;a class="anchor" href="#x86-intro"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Assembly language programming under UNIX® is highly undocumented.
+It is generally assumed that no one would ever want to use it because various UNIX systems run on different microprocessors, so everything should be written in C for portability.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In reality, C portability is quite a myth.
+Even C programs need to be modified when ported from one UNIX to another, regardless of what processor each runs on.
+Typically, such a program is full of conditional statements depending on the system it is compiled for.&lt;/p&gt;
+&lt;/div&gt;</description></item></channel></rss>

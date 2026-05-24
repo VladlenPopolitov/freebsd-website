@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/releases/2.1.5R/announce/">
+
+  <title>
+    FreeBSD 1.0 Announcement |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD 1.0 Announcement " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/releases/2.1.5R/announce/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/releases\/2.1.5R\/announce\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/where></a></li>
+  <li>
+    <a href=/releases>Release Information</a>
+    <ul>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Production Release: <a href=ZgotmplZ></a></li>
+      <li>Legacy Release: <a href=ZgotmplZ></a></li>
+    </ul>
+  </li>
+  <li>
+    <a href=/snapshots>Snapshot Releases</a>
+      <ul>
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+        
+        
+        <li>Upcoming Release: <a href=ZgotmplZ></a></li>
+        
+      </ul>
+  </li>
+  <li><a href=/ports>Ported Applications</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD 1.0 Announcement</h1><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>FreeBSD <a href="ftp://ftp.FreeBSD.org/pub/FreeBSD/2.1.5-RELEASE">2.1.5-RELEASE</a> is now available on ftp.FreeBSD.org and various FTP mirror sites throughout the world. It can also be ordered on <a href="http://www.cdrom.com/titles/freebsd.html">CD</a> from <a href="http://www.cdrom.com/">Walnut Creek CDROM</a>.</p>
+</div>
+<div class="paragraph">
+<p>FreeBSD 2.1.5 represents the culmination of over a year’s worth of work on the 2.1-STABLE branch of FreeBSD since it began with FreeBSD 2.0.5. In the 7 months since 2.1 was released, many bug fixes, updates and careful enhancements have been made, the results of which you now see here.</p>
+</div>
+<div class="paragraph">
+<p>The STABLE branch was conceived out of the need to allow FreeBSD to grow and support long-term development projects (like devfs, NFSv3, IPX, PCCARD, etc.) while at the same time not jeopardizing the stability of its existing user base. FreeBSD 2.1.5 marks the finishing point for that effort and, barring any small &#34;slipstream&#34; releases done to solve significant problems, no further releases along the 2.1-STABLE branch are anticipated. The concept of &#34;stable&#34; and &#34;experimental&#34; tracks is not being abandoned, we’ll simply be doing this somewhat differently in the future.</p>
+</div>
+<div class="paragraph">
+<p>For more information on the 2.1.5 release itself, please consult the <a href="../notes/">Release Notes</a>.</p>
+</div>
+<div class="paragraph">
+<p>The official sources for FreeBSD are available via anonymous FTP from: <a href="ftp://ftp.FreeBSD.org/pub/FreeBSD">ftp.FreeBSD.org</a>.</p>
+</div>
+<div class="paragraph">
+<p>Or via the WEB at: <a href="http://www.FreeBSD.org/releases/">www.FreeBSD.org</a>.</p>
+</div>
+<div class="paragraph">
+<p>And on CD-ROM from Walnut Creek CDROM:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>     Walnut Creek CDROM
+     4041 Pike Lane, #D
+     Concord CA, 94520 USA
+     Phone: +1 510 674-0783
+     Fax: +1 510 674-0821
+     Tech Support: +1 510 603-1234
+     Email: info@cdrom.com
+     WWW: http://www.cdrom.com</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Additionally, FreeBSD is available via anonymous FTP from the following mirror sites. If you choose to obtain FreeBSD via anonymous FTP, please try to use a site near you:</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_australia">Australia</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@au.FreeBSD.org">hostmaster@au.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.au.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.au.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp2.au.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp2.au.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp3.au.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp3.au.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp4.au.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp4.au.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_brazil">Brazil</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@br.FreeBSD.org">hostmaster@br.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.br.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.br.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp2.br.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp2.br.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp3.br.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp3.br.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp4.br.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp4.br.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp5.br.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp5.br.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp6.br.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp6.br.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp7.br.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp7.br.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_canada">Canada</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@ca.FreeBSD.org">hostmaster@ca.FreeBSD.org</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.ca.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.ca.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_czech_republic">Czech Republic</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://sunsite.mff.cuni.cz/OS/FreeBSD" class="bare">ftp://sunsite.mff.cuni.cz/OS/FreeBSD</a></p>
+<div class="paragraph">
+<p>Problem Contact: <a href="mailto:jj@sunsite.mff.cuni.cz">jj@sunsite.mff.cuni.cz</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_estonia">Estonia</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@ee.FreeBSD.org">hostmaster@ee.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.ee.freebsd.ORG/pub/FreeBSD" class="bare">ftp://ftp.ee.freebsd.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_finland">Finland</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@fi.FreeBSD.org">hostmaster@fi.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.fi.freebsd.ORG/pub/FreeBSD" class="bare">ftp://ftp.fi.freebsd.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_france">France</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.ibp.fr/pub/FreeBSD" class="bare">ftp://ftp.ibp.fr/pub/FreeBSD</a></p>
+<div class="paragraph">
+<p>Problem Contact: <a href="mailto:Remy.Card@ibp.fr">Remy.Card@ibp.fr</a>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_germany">Germany</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@de.FreeBSD.org">hostmaster@de.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.de.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.de.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp2.de.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp2.de.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp3.de.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp3.de.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp4.de.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp4.de.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp5.de.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp5.de.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp6.de.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp6.de.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp7.de.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp7.de.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hong_kong">Hong Kong</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.hk.super.net/pub/FreeBSD" class="bare">ftp://ftp.hk.super.net/pub/FreeBSD</a></p>
+<div class="paragraph">
+<p>Problem Contact: <a href="mailto:ftp-admin@HK.Super.NET">ftp-admin@HK.Super.NET</a>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ireland">Ireland</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@ie.FreeBSD.org">hostmaster@ie.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.ie.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.ie.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_israel">Israel</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://orgchem.weizmann.ac.il/pub/FreeBSD" class="bare">ftp://orgchem.weizmann.ac.il/pub/FreeBSD</a></p>
+<div class="paragraph">
+<p>Problem Contact: <a href="mailto:serg@klara.weizmann.ac.il">serg@klara.weizmann.ac.il</a>.</p>
+</div>
+</li>
+<li>
+<p><a href="ftp://xray4.weizmann.ac.il/pub/FreeBSD" class="bare">ftp://xray4.weizmann.ac.il/pub/FreeBSD</a></p>
+<div class="paragraph">
+<p>Problem Contact: <a href="mailto:serg@klara.weizmann.ac.il">serg@klara.weizmann.ac.il</a>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_japan">Japan</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@jp.FreeBSD.org">hostmaster@jp.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.jp.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.jp.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp2.jp.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp2.jp.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp3.jp.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp3.jp.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp4.jp.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp4.jp.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp5.jp.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp5.jp.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp6.jp.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp6.jp.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_korea">Korea</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@kr.FreeBSD.org">hostmaster@kr.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.kr.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.kr.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp2.kr.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp2.kr.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_netherlands">Netherlands</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@nl.FreeBSD.org">hostmaster@nl.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.nl.freebsd.ORG/pub/FreeBSD" class="bare">ftp://ftp.nl.freebsd.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_poland">Poland</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://SunSITE.icm.edu.pl/pub/FreeBSD" class="bare">ftp://SunSITE.icm.edu.pl/pub/FreeBSD</a></p>
+<div class="paragraph">
+<p>Problem Contact: <a href="mailto:ftp@SunSITE.icm.edu.pl">ftp@SunSITE.icm.edu.pl</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_portugal">Portugal</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.ua.pt/pub/misc/FreeBSD" class="bare">ftp://ftp.ua.pt/pub/misc/FreeBSD</a></p>
+<div class="paragraph">
+<p>Problem Contact: <a href="mailto:archie@ua.pt">archie@ua.pt</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_russia">Russia</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@ru.FreeBSD.org">hostmaster@ru.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.ru.FreeBSD.org/pub/FreeBSD" class="bare">ftp://ftp.ru.FreeBSD.org/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp2.ru.FreeBSD.org/pub/FreeBSD" class="bare">ftp://ftp2.ru.FreeBSD.org/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_south_africa">South Africa</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@za.FreeBSD.org">hostmaster@za.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.za.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.za.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp2.za.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp2.za.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp3.za.FreeBSD.ORG/FreeBSD" class="bare">ftp://ftp3.za.FreeBSD.ORG/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sweden">Sweden</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact the <a href="mailto:hostmaster@se.FreeBSD.org">hostmaster@se.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.se.freebsd.ORG/pub/FreeBSD" class="bare">ftp://ftp.se.freebsd.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_taiwan">Taiwan</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@tw.FreeBSD.org">hostmaster@tw.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.tw.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.tw.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp2.tw.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp2.tw.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp3.tw.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp3.tw.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thailand">Thailand</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.nectec.or.th/pub/FreeBSD" class="bare">ftp://ftp.nectec.or.th/pub/FreeBSD</a></p>
+<div class="paragraph">
+<p>Problem Contact: <a href="mailto:ftpadmin@ftp.nectec.or.th">ftpadmin@ftp.nectec.or.th</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usa">USA</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@FreeBSD.org">hostmaster@FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp2.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp2.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp3.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp3.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp4.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp4.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp5.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp5.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp6.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp6.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_uk">UK</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of problems, please contact <a href="mailto:hostmaster@uk.FreeBSD.org">hostmaster@uk.FreeBSD.org</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.uk.FreeBSD.ORG/packages/unix/FreeBSD" class="bare">ftp://ftp.uk.FreeBSD.ORG/packages/unix/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp2.uk.FreeBSD.ORG/pub/walnut.creek/FreeBSD" class="bare">ftp://ftp2.uk.FreeBSD.ORG/pub/walnut.creek/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp3.uk.FreeBSD.ORG/pub/BSD/FreeBSD" class="bare">ftp://ftp3.uk.FreeBSD.ORG/pub/BSD/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The latest versions of export-restricted code for FreeBSD (2.0C or later) (eBones and secure) are being made available at the following locations. If you are outside the U.S. or Canada, please get secure (DES) and eBones (Kerberos) from one of the following foreign distribution sites:</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_south_africa_2">South Africa</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.internat.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.internat.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp2.internat.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp2.internat.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_brazil_2">Brazil</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://ftp.br.FreeBSD.ORG/pub/FreeBSD" class="bare">ftp://ftp.br.FreeBSD.ORG/pub/FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_finland_2">Finland</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ftp://nic.funet.fi/pub/unix/FreeBSD/eurocrypt" class="bare">ftp://nic.funet.fi/pub/unix/FreeBSD/eurocrypt</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="../../">Release Home</a></p>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: February 21, 2021 by <a href="https://cgit.freebsd.org/doc/commit/?id=eb4b89b8d3" target="_blank">Danilo G. Baio</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

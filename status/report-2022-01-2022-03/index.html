@@ -1,0 +1,2172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/status/report-2022-01-2022-03/">
+
+  <title>
+    FreeBSD Quarterly Status Report First Quarter 2022 |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" FreeBSD Quarterly Status Report First Quarter 2022 " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/status/report-2022-01-2022-03/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/status\/report-2022-01-2022-03\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://www.freebsd.msk.ru/doc/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/handbook/">FreeBSD Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://www.freebsd.msk.ru/doc/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/about/></a></li>
+  <li><a href=/features/></a></li>
+  <li><a href=/applications/>Applications</a></li>
+  <li><a href=/administration/>Administration</a></li>
+  <li><a href=/news/>News</a></li>
+  <li><a href=/events></a></li>
+  <li><a href=/press>Press</a></li>
+  <li><a href=/art>Artwork</a></li>
+  <li><a href=/donations>Donations</a></li>
+  <li><a href=/copyright></a></li>
+  <li><a href=/privacy>Privacy Policy</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>FreeBSD Quarterly Status Report First Quarter 2022</h1><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>As things are yet again settling into a new normal, it’s once again time for a status report for the FreeBSD Project.</p>
+</div>
+<div class="paragraph">
+<p>You may have noticed that this report is also a little on the late side, and it’s with regret that it’s taken this long to get to it - however, thanks to a few kind souls who’ve stepped up to the plate, in addition to the folks on the team who do things quietly in the background, future reports should hopefully be more on time.</p>
+</div>
+<div class="paragraph">
+<p>So let’s get some introductions in order, as yours truly is delighted to accept a hand from Pau Amma who already has been helping with reviews for a while, Lorenzo Salvadore who is stepping up to get some tooling in place to make it less of a chore to make the reports, as well as Sergio Carlavilla who is stepping up to help with all the work that can’t be easily automated.</p>
+</div>
+<div class="paragraph">
+<p>This report covers a very diverse set of topics including but not limited to accessibility, system boot speed-up, an implementation of GEOM union, changes to the WiFi situation, and many other things.</p>
+</div>
+<div class="paragraph">
+<p>We hope you’ll enjoy reading it!</p>
+</div>
+<div class="paragraph">
+<p>Daniel Ebdrup Jensen, on behalf of the status report team.</p>
+</div>
+<hr/>
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#FreeBSD-Team-Reports">FreeBSD Team Reports</a>
+<ul class="sectlevel2">
+<li><a href="#_freebsd_foundation">FreeBSD Foundation</a></li>
+<li><a href="#_freebsd_release_engineering_team">FreeBSD Release Engineering Team</a></li>
+<li><a href="#_cluster_administration_team">Cluster Administration Team</a></li>
+<li><a href="#_continuous_integration">Continuous Integration</a></li>
+<li><a href="#_ports_collection">Ports Collection</a></li>
+</ul>
+</li>
+<li><a href="#projects">Projects</a>
+<ul class="sectlevel2">
+<li><a href="#_freebsd_accessibility">FreeBSD Accessibility</a></li>
+<li><a href="#_boot_performance_improvements">Boot Performance Improvements</a></li>
+</ul>
+</li>
+<li><a href="#kernel">Kernel</a>
+<ul class="sectlevel2">
+<li><a href="#_ena_freebsd_driver_update">ENA FreeBSD Driver Update</a></li>
+<li><a href="#_a_new_geom_facility_gunion">A New GEOM Facility, gunion</a></li>
+<li><a href="#_realtek_wireless_driver_support">Realtek Wireless driver support</a></li>
+<li><a href="#_intel_wireless_driver_support_and_linuxkpi_802_11_compatibility_layer">Intel Wireless driver support and LinuxKPI 802.11 compatibility layer</a></li>
+<li><a href="#_kernel_crypto_changes_to_support_wireguard">Kernel Crypto changes to support WireGuard</a></li>
+</ul>
+</li>
+<li><a href="#architectures">Architectures</a>
+<ul class="sectlevel2">
+<li><a href="#_nxp_dpaa2_support">NXP DPAA2 support</a></li>
+</ul>
+</li>
+<li><a href="#documentation">Documentation</a>
+<ul class="sectlevel2">
+<li><a href="#_documentation_engineering_team">Documentation Engineering Team</a></li>
+</ul>
+</li>
+<li><a href="#ports">Ports</a>
+<ul class="sectlevel2">
+<li><a href="#_kde_on_freebsd">KDE on FreeBSD</a></li>
+<li><a href="#_freebsd_office_team">FreeBSD Office Team</a></li>
+<li><a href="#_langgcc_ports_need_some_love_and_attention">lang/gcc* ports need some love and attention</a></li>
+<li><a href="#_portconfig">PortConfig</a></li>
+<li><a href="#_wifibox_use_linux_to_drive_your_wireless_card_on_freebsd">Wifibox: Use Linux to drive your wireless card on FreeBSD</a></li>
+</ul>
+</li>
+<li><a href="#third-Party-Projects">Third Party Projects</a>
+<ul class="sectlevel2">
+<li><a href="#_hellosystem">helloSystem</a></li>
+<li><a href="#_containers_and_freebsd_pot_potluck_and_potman">Containers and FreeBSD: Pot, Potluck and Potman</a></li>
+<li><a href="#_fpart_and_fpsync">Fpart and fpsync</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect1">
+<h2 id="FreeBSD-Team-Reports">FreeBSD Team Reports</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Entries from the various official and semi-official teams, as found in the
+<a href="../../administration/">Administration Page</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_freebsd_foundation">FreeBSD Foundation</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://www.FreeBSDfoundation.org">FreeBSD Foundation</a> URL: <a href="https://www.FreeBSDfoundation.org">https://www.FreeBSDFoundation.org</a><br/>
+<a href="https://freebsdfoundation.org/blog/technology-roadmap/">Technology Roadmap</a> URL: <a href="https://freebsdfoundation.org/blog/technology-roadmap/">https://FreeBSDFoundation.org/blog/technology-roadmap/</a><br/>
+<a href="https://www.FreeBSDfoundation.org/donate/">Donate</a> URL: <a href="https://www.FreeBSDfoundation.org/donate/">https://www.FreeBSDFoundation.org/donate/</a><br/>
+<a href="https://www.FreeBSDfoundation.org/FreeBSD-foundation-partnership-program/">Foundation Partnership Program</a> URL: <a href="https://www.FreeBSDfoundation.org/FreeBSD-foundation-partnership-program">https://www.FreeBSDFoundation.org/FreeBSD-foundation-partnership-program</a><br/>
+<a href="https://www.FreeBSDfoundation.org/journal/">FreeBSD Journal</a> URL: <a href="https://www.FreeBSDfoundation.org/journal/">https://www.FreeBSDFoundation.org/journal/</a><br/>
+<a href="https://www.FreeBSDfoundation.org/news-and-events/">Foundation News and Events</a> URL: <a href="https://www.FreeBSDfoundation.org/news-and-events/">https://www.FreeBSDFoundation.org/news-and-events/</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Deb Goodkin &lt;<a href="mailto:deb@FreeBSDFoundation.org">deb@FreeBSDFoundation.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD Foundation is a 501(c)(3) non-profit organization dedicated to supporting and promoting the FreeBSD Project and community worldwide. Donations from individuals and corporations are used to fund and manage software development projects, conferences, and developer summits.
+We also provide travel grants to FreeBSD contributors, purchase and support hardware to improve and maintain FreeBSD infrastructure, and provide resources to improve security, quality assurance, and release engineering efforts.
+We publish marketing material to promote, educate, and advocate for the FreeBSD Project, facilitate collaboration between commercial vendors and FreeBSD developers, and finally, represent the FreeBSD Project in executing contracts, license agreements, and other legal arrangements that require a recognized legal entity.</p>
+</div>
+<div class="paragraph">
+<p>Here are some highlights from the Foundation for the first quarter of 2022.</p>
+</div>
+<div class="sect3">
+<h4 id="_fundraising_efforts">Fundraising Efforts</h4>
+<div class="paragraph">
+<p>As promised, we updated our fundraising meter for 2022. So far, we’ve raised over $84,000 towards our 2022 goal of $1,400,000.
+We’d like to thank our individual and corporate donors for supporting our efforts this year.
+We’d also like to give a big shout out to our Gold Sponsor, Facebook, Silver Sponsors, VMware and Tarsnap, and the companies that provide free hosting for the Project: Bytemark, 365 Data Centers, NYI, NextArray, Sentex Data Communications, and the Computer Science Department at NCTU.</p>
+</div>
+<div class="paragraph">
+<p>You can find out how we spent your donations by reading about what we supported in Q1, in this report, and our Spring Newsletter.</p>
+</div>
+<div class="paragraph">
+<p>If you haven’t made a donation this year, please consider making a donation now at <a href="https://freebsdfoundation.org/donate/" class="bare">https://freebsdfoundation.org/donate/</a>.</p>
+</div>
+<div class="paragraph">
+<p>We also have a Partnership Program for larger commercial donors. You can find out more at <a href="https://freebsdfoundation.org/our-donors/freebsd-foundation-partnership-program/" class="bare">https://freebsdfoundation.org/our-donors/freebsd-foundation-partnership-program/</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_os_improvements">OS Improvements</h4>
+<div class="paragraph">
+<p>During the first quarter of 2022, 372 src, 41 ports, and 16 doc tree commits were made that identified The FreeBSD Foundation as a sponsor.
+# This represents 16, 0.4, and 5% of the total number of commits in each repository.</p>
+</div>
+<div class="paragraph">
+<p>You can read about Foundation-sponsored projects in individual quarterly report entries:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crypto changes for WireGuard</p>
+</li>
+<li>
+<p>Intel Wireless driver support</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is a small sample of other base system improvements from Foundation developers this quarter that do not have separate report entries.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_riscv_add_support_for_enabling_sv48_mode">riscv: Add support for enabling SV48 mode</h4>
+<div class="paragraph">
+<p>SV48 is intended for systems for which a 39-bit virtual address space is insufficient.  This change increases the size of the user map from 256GB to 128TB.
+The kernel map is left unchanged for now.</p>
+</div>
+<div class="paragraph">
+<p>For now SV48 mode is left disabled by default, but can be enabled with a tunable.
+Note that extant hardware does not implement SV48, but QEMU does.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In pmap_bootstrap(), allocate a L0 page and attempt to enable SV48 mode.
+If the write to SATP doesn’t take, the kernel continues to run in SV39 mode.</p>
+</li>
+<li>
+<p>Define VM_MAX_USER_ADDRESS to refer to the SV48 limit.
+In SV39 mode, the region [VM_MAX_USER_ADDRESS_SV39, VM_MAX_USER_ADDRESS_SV48] is not mappable.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_add_v3_support_to_ctf_tools">Add v3 support to CTF tools</h4>
+<div class="paragraph">
+<p>CTF, the Compact C Type Format, is a representation of type information most often contained within ELF binaries.
+This type information is helpful for probing tools like DTrace.
+Recent work by Mark Johnston allows different Dtrace providers like the FBT (Function Boundary Tracing) provider to work with version 3 of CTF.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_freebsd_on_the_framework_laptop">FreeBSD on the Framework Laptop</h4>
+<div class="paragraph">
+<p>Two Foundation staff members, Ed Maste and Mark Johnston, as well as a few developers and community members now each have access to Framework laptops, which are designed to make hardware upgrades, repairs, and customizations straightforward for the average user.  The goal of this work is to ensure that the experience running FreeBSD on the laptops matches the stability that FreeBSD users expect.</p>
+</div>
+<div class="paragraph">
+<p>Recent improvements and fixes include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Making audio switch appropriately between speakers and the headphone jack when headphones are plugged in or unplugged</p>
+</li>
+<li>
+<p>Fixing bug 259230, which would cause a Framework laptop to reboot or power off when the touchpad was used.</p>
+</li>
+<li>
+<p>Adding the Tempo Semiconductor 92HD95B HDA codec ID</p>
+</li>
+<li>
+<p>Temporarily fixing stalled usb enumeration, bluetooth, and S3 resume.  The temporary fix is to avoid attaching to several newer Intel controllers, which require firmware to be loaded, which is different from that implemented by ng_ubt_intel and iwmbtfw, so they are not usable yet.</p>
+</li>
+<li>
+<p>Avoiding a 16 second boot delay, by probing the TSC frequency earlier.  This lets us use the TSC to implement early DELAY, limiting the use of the sometimes-unreliable 8254 PIT.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can follow news about FreeBSD work on the Framework laptop at: <a href="https://wiki.freebsd.org/Laptops/Framework_Laptop" class="bare">https://wiki.freebsd.org/Laptops/Framework_Laptop</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_continuous_integration_and_quality_assurance">Continuous Integration and Quality Assurance</h4>
+<div class="paragraph">
+<p>The Foundation provides a full-time staff member and funds projects to improve continuous integration, automated testing, and overall quality assurance efforts for the FreeBSD project.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_supporting_freebsd_infrastructure">Supporting FreeBSD Infrastructure</h4>
+<div class="paragraph">
+<p>The Foundation provides hardware and support for the Project.
+At the time of writing, the server that will become the new Australian mirror has arrived in Australia, has a fresh FreeBSD install and will shortly join the cluster.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_freebsd_advocacy_and_education">FreeBSD Advocacy and Education</h4>
+<div class="paragraph">
+<p>Much of our effort is dedicated to Project advocacy. This may involve
+highlighting interesting FreeBSD work, producing literature, attending
+events, or giving presentations. The goal of the literature we produce
+is to teach people FreeBSD basics and help make their path to adoption
+or contribution easier. Other than attending and presenting at events,
+we encourage and help community members run their own FreeBSD events,
+give presentations, or staff FreeBSD tables.</p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD Foundation sponsors many conferences, events, and summits around the globe. These events can be BSD-related, open source, or technology events geared towards underrepresented groups.
+We support the FreeBSD-focused events to help provide a venue for sharing knowledge, working together on projects, and facilitating collaboration between developers and commercial users.
+This all helps provide a healthy ecosystem.
+We support the non-FreeBSD events to promote and raise awareness of FreeBSD, to increase the use of FreeBSD in different applications, and to recruit more contributors to the Project.
+We are continuing to attend virtual events and began planning the June 2022 Developer Summit.</p>
+</div>
+<div class="paragraph">
+<p>Check out some of the advocacy and education work we did last quarter:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Committed to hosting a FreeBSD Workshop at SCALE 19x and serve as a Media Sponsor - July 28-31, 2022 in Los Angeles, CA</p>
+</li>
+<li>
+<p>Participated in the FLOSS Weekly Podcast - January 5, 2022 <a href="https://twit.tv/shows/floss-weekly/episodes/662" class="bare">https://twit.tv/shows/floss-weekly/episodes/662</a></p>
+</li>
+<li>
+<p>Sent out the 2021 Impact Report showcasing how we supported the Project last year. <a href="https://freebsdfoundation.org/blog/2021-freebsd-foundation-impact-report/" class="bare">https://freebsdfoundation.org/blog/2021-freebsd-foundation-impact-report/</a></p>
+</li>
+<li>
+<p>Hosted a stand at FOSDEM 2022 - Videos from the stand can be found at: <a href="https://youtube.com/playlist?list=PLugwS7L7NMXxwqIRg1PlhgzhNRi1eVdRQ" class="bare">https://youtube.com/playlist?list=PLugwS7L7NMXxwqIRg1PlhgzhNRi1eVdRQ</a></p>
+</li>
+<li>
+<p>Participated in the Open Source Voices Podcast - Episode to be aired in late April [note from status report team: the episode has indeed be aired and is now available at <a href="https://www.opensourcevoices.org/29" class="bare">https://www.opensourcevoices.org/29</a>; unfortunately, there is and will be no transcript.]</p>
+</li>
+<li>
+<p>Began planning the June 2022 FreeBSD Developers Summit taking place virtually, June 16-17, 2022 <a href="https://wiki.freebsd.org/DevSummit/202206" class="bare">https://wiki.freebsd.org/DevSummit/202206</a></p>
+</li>
+<li>
+<p>Held a new FreeBSD Friday - How to Track FreeBSD Using Git Pt. 2 <a href="https://youtu.be/Fe-dJrDMK_0" class="bare">https://youtu.be/Fe-dJrDMK_0</a></p>
+</li>
+<li>
+<p>Presented at the St. Louis Unix User Group on March 9, 2022 <a href="https://ow.ly/1QXn50Ivj75" class="bare">https://ow.ly/1QXn50Ivj75</a></p>
+</li>
+<li>
+<p>Served as Admins and were accepted as a mentoring organization for the 2022 Google Summer of Code</p>
+</li>
+<li>
+<p>Held an Office Hours session on Google Summer of Code. <a href="https://youtu.be/x-4U1xurmBE" class="bare">https://youtu.be/x-4U1xurmBE</a></p>
+</li>
+<li>
+<p>Hosted a booth at the virtual Open Source 101 conference on March 29, 2022</p>
+</li>
+<li>
+<p>New blog posts:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://freebsdfoundation.org/blog/raid-z-expansion-feature-for-zfs/">RAID-Z Expansion Feature for ZFS In the Home Stretch</a></p>
+</li>
+<li>
+<p><a href="https://freebsdfoundation.org/blog/whats-ahead-for-freebsd-and-the-foundation-in-2022/">What’s Ahead for FreeBSD and the Foundation in 2022</a></p>
+</li>
+<li>
+<p><a href="https://freebsdfoundation.org/blog/work-with-freebsd-in-google-summer-of-code/">Work with FreeBSD in Google Summer of Code</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>New How-To Guide: <a href="https://freebsdfoundation.org/freebsd-project/resources/introduction-to-freebsd-jails/">An Introduction to FreeBSD Jails</a></p>
+</li>
+<li>
+<p>New FreeBSD Journal Article: <a href="https://freebsdfoundation.org/wp-content/uploads/2022/04/Contributing-to-FreeBSD-Ports-with-Git.pdf">Contributing to FreeBSD ports with Git</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We help educate the world about FreeBSD by publishing the professionally produced FreeBSD Journal.
+As we mentioned previously, the FreeBSD Journal is now a free publication.
+Find out more and access the latest issues at <a href="https://www.FreeBSDfoundation.org/journal/" class="bare">https://www.FreeBSDfoundation.org/journal/</a></p>
+</div>
+<div class="paragraph">
+<p>You can find out more about events we attended and upcoming events at <a href="https://www.FreeBSDfoundation.org/news-and-events/" class="bare">https://www.FreeBSDfoundation.org/news-and-events/</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_legalfreebsd_ip">Legal/FreeBSD IP</h4>
+<div class="paragraph">
+<p>The Foundation owns the FreeBSD trademarks, and it is our responsibility to protect them. We also provide legal support for the core team to investigate questions that arise.</p>
+</div>
+<div class="paragraph">
+<p>Go to <a href="https://www.FreeBSDfoundation.org">https://www.FreeBSDFoundation.org</a> to find more about how we support FreeBSD and how we can help you!</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_freebsd_release_engineering_team">FreeBSD Release Engineering Team</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://www.freebsd.org/releases/13.1R/schedule/">FreeBSD 13.1-RELEASE schedule</a> URL: <a href="https://www.freebsd.org/releases/13.1R/schedule/">https://www.freebsd.org/releases/13.1R/schedule/</a><br/>
+<a href="https://www.freebsd.org/releases/13.1R/">FreeBSD 13.1 Release Information</a> URL: <a href="https://www.freebsd.org/releases/13.1R/">https://www.freebsd.org/releases/13.1R/</a> [link added by status report team as this quarterly status report is being published after 13.1-RELEASE has been released]<br/>
+<a href="https://download.freebsd.org/ftp/releases/ISO-IMAGES/">FreeBSD releases</a> URL: <a href="https://download.freebsd.org/ftp/releases/ISO-IMAGES/">https://download.freebsd.org/ftp/releases/ISO-IMAGES/</a><br/>
+<a href="https://download.freebsd.org/ftp/snapshots/ISO-IMAGES/">FreeBSD development snapshots</a> URL: <a href="https://download.freebsd.org/ftp/snapshots/ISO-IMAGES/">https://download.freebsd.org/ftp/snapshots/ISO-IMAGES/</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: FreeBSD Release Engineering Team, &lt;<a href="mailto:re@FreeBSD.org">re@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD Release Engineering Team is responsible for setting and publishing release schedules for official project releases of FreeBSD, announcing code freezes and maintaining the respective branches, among other things.</p>
+</div>
+<div class="paragraph">
+<p>During the first quarter of 2022, the Release Engineering Team completed work on, and submitted to the developers the 13.1-RELEASE schedule.  This will be the second point release from the stable/13 branch.
+As of this writing, three BETA builds have been run, with at least two RC builds before the final release, currently scheduled for April 21, 2022.</p>
+</div>
+<div class="paragraph">
+<p>We look forward to another consistently stable release at the end of this cycle, as well as many more to come for other branches moving forward.</p>
+</div>
+<div class="paragraph">
+<p>Additionally throughout the quarter, several development snapshots builds were released for the <strong>main</strong>, <strong>stable/13</strong>, and <strong>stable/12</strong> branches.</p>
+</div>
+<div class="paragraph">
+<p>Sponsor: Rubicon Communications, LLC (&#34;Netgate&#34;)
+Sponsor: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_cluster_administration_team">Cluster Administration Team</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://www.freebsd.org/administration/#t-clusteradm">Cluster Administration Team members</a> URL: <a href="https://www.freebsd.org/administration/#t-clusteradm">https://www.freebsd.org/administration/#t-clusteradm</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Cluster Administration Team &lt;<a href="mailto:clusteradm@FreeBSD.org">clusteradm@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>FreeBSD Cluster Administration Team members are responsible for managing the machines the Project relies on to synchronise its distributed work and communications.
+In this quarter, the team has worked on the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Improved web service performance and security</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Moved some critical services to newer machines</p>
+</li>
+<li>
+<p>Swept all services to ensure the support of TLS v1.2 and v1.3 and disable v1 and v1.1</p>
+</li>
+<li>
+<p>Enabled dual-stack certificates for the primary FreeBSD web services.<br/>
+ECDSA and RSA certificates, preferring ECDSA, discussed with secteam@, benefit the project in favor of security and performance matter.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Infrastructure improvements at primary site</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Evicted some very old hardware</p>
+</li>
+<li>
+<p>Moved cluster internal services to newer hardware</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Build host</p>
+</li>
+<li>
+<p>Parts of LDAP, kerberos, DNS and NTP</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Installed an additional aarch64 package builder</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ampere3.nyi.freebsd.org</p>
+</li>
+<li>
+<p>Identical specs to ampere[12].nyi.freebsd.org</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Moved ftp0.nyi.freebsd.org to an aarch64 machine.</p>
+</li>
+<li>
+<p>Main distributed mirror site, download.freebsd.org, enhancements</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated <a href="https://download.freebsd.org/doc/">offline documentation</a> (PDF and HTML) in the mirrors.<br/>
+The old directory <code>/doc</code> is now on <a href="http://ftp-archive.freebsd.org/mirror/FreeBSD-Archive/old-docs/">ftp-archive</a>; it contains files prior to the Hugo/Asciidoctor migration.</p>
+</li>
+<li>
+<p>Moved ports INDEX files to distributed mirror, download.freebsd.org</p>
+</li>
+<li>
+<p>Removed <code>/ftp</code> from the canonical URLs of files on download.freebsd.org.<br/>
+Old URLs are still valid.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cleanup of Handbook/Mirrors section<br/>
+Much stale information; now there is more info about the official mirrors and locations. Former official mirrors are now named &#39;Community mirrors&#39;.</p>
+</li>
+<li>
+<p>Ongoing day to day cluster administration</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Cluster refresh</p>
+</li>
+<li>
+<p>Replacing failed disks</p>
+</li>
+<li>
+<p>Babysitting pkgsync</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Work in progress:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Improve the package building infrastructure</p>
+</li>
+<li>
+<p>Review the service jails and service administrators operation</p>
+</li>
+<li>
+<p>Set up powerpc pkgbuilder/ref/universal machines</p>
+</li>
+<li>
+<p>Search for more providers that can fit the requirements for a <a href="https://wiki.freebsd.org/Teams/clusteradm/generic-mirror-layout">generic mirrored layout</a> or a <a href="https://wiki.freebsd.org/Teams/clusteradm/tiny-mirror">tiny mirror</a></p>
+</li>
+<li>
+<p>Work with doceng@ to improve <a href="https://www.freebsd.org" class="bare">https://www.freebsd.org</a> and <a href="https://docs.freebsd.org" class="bare">https://docs.freebsd.org</a></p>
+</li>
+<li>
+<p>Improve the web service architecture</p>
+</li>
+<li>
+<p>Improve the cluster backup plan</p>
+</li>
+<li>
+<p>Improve the log analysis system</p>
+</li>
+<li>
+<p>Set up Australia mirror</p>
+</li>
+<li>
+<p>Hardware refresh</p>
+</li>
+</ul>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_continuous_integration">Continuous Integration</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://ci.FreeBSD.org">FreeBSD Jenkins Instance</a> URL: <a href="https://ci.FreeBSD.org">https://ci.FreeBSD.org</a><br/>
+<a href="https://artifact.ci.FreeBSD.org">FreeBSD CI artifact archive</a> URL: <a href="https://artifact.ci.FreeBSD.org">https://artifact.ci.FreeBSD.org</a><br/>
+<a href="https://wiki.freebsd.org/Jenkins">FreeBSD Jenkins wiki</a> URL: <a href="https://wiki.freebsd.org/Jenkins">https://wiki.freebsd.org/Jenkins</a><br/>
+<a href="https://wiki.freebsd.org/HostedCI">Hosted CI wiki</a> URL: <a href="https://wiki.freebsd.org/HostedCI">https://wiki.freebsd.org/HostedCI</a><br/>
+<a href="https://wiki.freebsd.org/3rdPartySoftwareCI">3rd Party Software CI</a> URL: <a href="https://wiki.freebsd.org/3rdPartySoftwareCI">https://wiki.freebsd.org/3rdPartySoftwareCI</a><br/>
+<a href="https://preview.tinyurl.com/y9maauwg">Tickets related to freebsd-testing@</a> URL: <a href="https://preview.tinyurl.com/y9maauwg">https://preview.tinyurl.com/y9maauwg</a><br/>
+<a href="https://github.com/freebsd/freebsd-ci">FreeBSD CI Repository</a> URL: <a href="https://github.com/freebsd/freebsd-ci">https://github.com/freebsd/freebsd-ci</a><br/>
+<a href="https://lists.freebsd.org/subscription/dev-ci">dev-ci Mailing List</a> URL: <a href="https://lists.freebsd.org/subscription/dev-ci">https://lists.freebsd.org/subscription/dev-ci</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Jenkins Admin &lt;<a href="mailto:jenkins-admin@FreeBSD.org">jenkins-admin@FreeBSD.org</a>&gt;<br/>
+Contact: Li-Wen Hsu &lt;<a href="mailto:lwhsu@FreeBSD.org">lwhsu@FreeBSD.org</a>&gt;<br/>
+Contact: <a href="https://lists.FreeBSD.org/mailman/listinfo/freebsd-testing">freebsd-testing Mailing List</a><br/>
+Contact: IRC #freebsd-ci channel on EFNet</p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD CI team maintains the continuous integration system of the FreeBSD project.
+The CI system checks the committed changes can be successfully built, then performs various tests and analysis over the newly built results.
+The artifacts from those builds are archived in the <a href="https://artifact.ci.FreeBSD.org">artifact server</a> for further testing and debugging needs.
+The CI team members examine the failing builds and unstable tests and work with the experts in that area to fix the code or adjust test infrastructure.</p>
+</div>
+<div class="paragraph">
+<p>During the first quarter of 2022, we continued working with the contributors and developers in the project to fulfil their testing needs and also keep collaborating with external projects and companies to improve their products and FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>Important changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://ci.freebsd.org/job/FreeBSD-main-amd64-dtrace_test/">DTrace tests</a> are running with KASAN now.</p>
+</li>
+<li>
+<p>Fixed and resumed the powerpc64le test jobs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Retired jobs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The jobs of main branch on mips* were removed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Work in progress and open tasks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Designing and implementing pre-commit CI building and testing (to support the <a href="https://gitlab.com/bsdimp/freebsd-workflow">workflow working group</a>)</p>
+</li>
+<li>
+<p>Designing and implementing use of CI cluster to build release artifacts as release engineering does</p>
+</li>
+<li>
+<p>Collecting and sorting CI tasks and ideas <a href="https://hackmd.io/@FreeBSD-CI/freebsd-ci-todo">here</a></p>
+</li>
+<li>
+<p>Testing and merging pull requests in <a href="https://github.com/freebsd/freebsd-ci/pulls">the FreeBSD-ci repo</a></p>
+</li>
+<li>
+<p>Reducing the procedures of CI/test environment setting up for contributors and developers</p>
+</li>
+<li>
+<p>Setting up the CI stage environment and putting the experimental jobs on it</p>
+</li>
+<li>
+<p>Setting up public network access for the VM guest running tests</p>
+</li>
+<li>
+<p>Implementing using bare metal hardware to run test suites</p>
+</li>
+<li>
+<p>Adding drm ports building tests against -CURRENT</p>
+</li>
+<li>
+<p>Planning to run ztest tests</p>
+</li>
+<li>
+<p>Adding more external toolchain related jobs</p>
+</li>
+<li>
+<p>Improving maturity of the hardware lab and adding more hardware under test</p>
+</li>
+<li>
+<p>Helping more software get FreeBSD support in its CI pipeline (Wiki pages: <a href="https://wiki.freebsd.org/3rdPartySoftwareCI">3rdPartySoftwareCI</a>, <a href="https://wiki.freebsd.org/HostedCI">HostedCI</a>)</p>
+</li>
+<li>
+<p>Working with hosted CI providers to have better FreeBSD support</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please see <a href="https://preview.tinyurl.com/y9maauwg">freebsd-testing@ related tickets</a> for more WIP information, and don’t hesitate to join the effort!</p>
+</div>
+<div class="paragraph">
+<p>Sponsor: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_ports_collection">Ports Collection</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://www.FreeBSD.org/ports/">About FreeBSD Ports</a> URL:<a href="https://www.FreeBSD.org/ports/">https://www.FreeBSD.org/ports/</a><br/>
+<a href="https://docs.freebsd.org/en/articles/contributing/#ports-contributing">Contributing to Ports</a> URL: <a href="https://docs.freebsd.org/en/articles/contributing/#ports-contributing">https://docs.freebsd.org/en/articles/contributing/#ports-contributing</a><br/>
+<a href="http://portsmon.freebsd.org/">FreeBSD Ports Monitoring</a> URL: <a href="http://portsmon.freebsd.org/">http://portsmon.freebsd.org/</a><br/>
+<a href="https://www.freebsd.org/portmgr/">Ports Management Team</a> URL: <a href="https://www.freebsd.org/portmgr/">https://www.freebsd.org/portmgr/</a><br/>
+<a href="http://ftp.freebsd.org/pub/FreeBSD/ports/ports/">Ports Tarball</a> URL: <a href="http://ftp.freebsd.org/pub/FreeBSD/ports/ports/">http://ftp.freebsd.org/pub/FreeBSD/ports/ports/</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: René Ladan &lt;<a href="mailto:portmgr-secretary@FreeBSD.org">portmgr-secretary@FreeBSD.org</a>&gt;<br/>
+Contact: FreeBSD Ports Management Team &lt;<a href="mailto:portmgr@FreeBSD.org">portmgr@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>The Ports Management Team is responsible for overseeing the overall direction of the Ports Tree, building packages, and personnel matters.
+Below is what happened in the last quarter.</p>
+</div>
+<div class="paragraph">
+<p>Before we start with the usual statistics, portmgr is happy to announce it has successfully restarted its lurker program.
+The first two lurkers are pizzamig@ and se@; they will learn about the inner workings of portmgr and bring in new ideas.</p>
+</div>
+<div class="paragraph">
+<p>Portmgr also started having bi-weekly meetings, some public results are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>restarting the lurker program</p>
+</li>
+<li>
+<p>fixes to ports going backwards in version</p>
+</li>
+<li>
+<p>dropping DragonFlyBSD version checks in bsd.port.mk</p>
+</li>
+<li>
+<p>dropping deprecation notes from ports transitively using Python 2.7</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Currently we have over 46,800 ports in the Ports Tree. There are currently 2,700 open ports PRs of which 680 are unassigned.
+The last quarter saw 9,403 commits to the main branch by 157 committers and 683 commits to the 2022Q1 branch by 63 committers.
+Compared to last quarter, this means a slight drop in activity to the main branch and a slight
+increase in the number of open PRs.</p>
+</div>
+<div class="paragraph">
+<p>No new committers joined during the last quarter, portmgr took one commit bit in for safekeeping because of a lack of recent commits.</p>
+</div>
+<div class="paragraph">
+<p>The cluster administration team has provided portmgr with a third aarch64 builder; it is being used for package builds.</p>
+</div>
+<div class="paragraph">
+<p>Things that happened in git:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Two new USES were introduced:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>elfctl to change an ELF binary’s feature control note</p>
+</li>
+<li>
+<p>minizip to get the correct library dependency on minizip</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Two keywords got removed:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>fcfontsdir (now handled by USES=fonts)</p>
+</li>
+<li>
+<p>glib-schemas, it has been replaced by a trigger</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Default versions that changed:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Lazarus switched to 2.2.0</p>
+</li>
+<li>
+<p>PHP switched to 8.0</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Some upgrades to major ports:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Chromium 100.0.4896.60</p>
+</li>
+<li>
+<p>Electron 13.6.9</p>
+</li>
+<li>
+<p>Firefox 99.0</p>
+</li>
+<li>
+<p>Firefox ESR 91.8.0</p>
+</li>
+<li>
+<p>Gnome 41</p>
+</li>
+<li>
+<p>KDE Frameworks 5.92.0</p>
+</li>
+<li>
+<p>KDE Plasma 5.24.4</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="projects">Projects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Projects that span multiple categories, from the kernel and userspace to the
+Ports Collection or external projects.</p>
+</div>
+<div class="sect2">
+<h3 id="_freebsd_accessibility">FreeBSD Accessibility</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://wiki.freebsd.org/Accessibility">Accessibility wiki page</a> URL: <a href="https://wiki.freebsd.org/Accessibility">https://wiki.freebsd.org/Accessibility</a><br/>
+<a href="https://lists.freebsd.org/archives/freebsd-accessibility/2021-October/000000.html">List introduction, goals, audience, and ground rules</a> URL: <a href="https://lists.freebsd.org/archives/freebsd-accessibility/2021-October/000000.html">link:https://lists.freebsd.org/archives/freebsd-accessibility/2021-October/000000.html</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Pau Amma &lt;<a href="mailto:pauamma@gundo.com">pauamma@gundo.com</a>&gt;<br/>
+Contact: FreeBSD accessibility discussions &lt;<a href="mailto:freebsd-accessibility@freebsd.org">freebsd-accessibility@freebsd.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Over the past several months, I’ve started putting together tools and resources to help make the FreeBSD ecosystem (more) accessible to people with disabilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a <a href="https://lists.freebsd.org/subscription/freebsd-accessibility">mailing list</a></p>
+</li>
+<li>
+<p>a <a href="https://wiki.freebsd.org/Accessibility">set of wiki pages</a> including <a href="https://wiki.freebsd.org/Accessibility/Resources">resources</a> and a <a href="https://wiki.freebsd.org/Accessibility/Wishlist">categorized wish list</a></p>
+</li>
+<li>
+<p>tooling including a <a href="https://bugs.freebsd.org/bugzilla/buglist.cgi?keywords=accessibility&amp;list_id=471790&amp;resolution=---">searchable accessibility Bugzilla keyword</a> and an <a href="https://reviews.freebsd.org/project/profile/87/">accessibility Phabricator group</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>I need all the help I can get with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>specifying, designing, implementing, and testing the items on the wishlist</p>
+</li>
+<li>
+<p>adding to the wishlist in areas were have little or no experience or for things I missed</p>
+</li>
+<li>
+<p>moving beyond software and documentation to processes and culture</p>
+</li>
+</ul>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_boot_performance_improvements">Boot Performance Improvements</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://wiki.freebsd.org/BootTime">Wiki page</a> URL: <a href="https://wiki.freebsd.org/BootTime">https://wiki.freebsd.org/BootTime</a><br/>
+<a href="https://www.daemonology.net/blog/2021-08-12-EC2-boot-time-benchmarking.html">OS boot time comparison</a> URL: <a href="https://www.daemonology.net/blog/2021-08-12-EC2-boot-time-benchmarking.html">https://www.daemonology.net/blog/2021-08-12-EC2-boot-time-benchmarking.html</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Colin Percival &lt;<a href="mailto:cperciva@FreeBSD.org">cperciva@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Colin Percival is coordinating an effort to speed up the FreeBSD boot process.
+For benchmarking purposes, he is primarily using an EC2 c5.xlarge instance as a reference platform and is measuring the time between when the virtual machine enters the EC2 &#34;running&#34; state and when it is possible to SSH into the instance.</p>
+</div>
+<div class="paragraph">
+<p>This work started in 2017, and as of the end of December 2021 the FreeBSD boot time was reduced from approximately 30 seconds to approximately 10 seconds.
+During 2022Q1, further improvements have shaved more time off the boot process, taking it down to roughly 8 seconds</p>
+</div>
+<div class="paragraph">
+<p>Two major issues remain outstanding:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The first time an EC2 instance boots, dhclient takes about 2 seconds longer than normal to get an IPv4 address.  The cause of this is unknown and requires investigation.</p>
+</li>
+<li>
+<p>IPv6 configuration includes two one-second-long sleep(1) invocations, one from /etc/rc.d/netif and the other from /etc/rc.d/rtsold.
+It might be possible to simply remove these; but care is needed to avoid progressing too far in the boot process before IPv6 addresses are configured.
+Input from IPv6 experts is required here.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Issues are listed on the wiki page as they are identified; the wiki page also has instructions for performing profiling.
+Users are encouraged to profile the boot process on their own systems, in case they experience delays which don’t show up on the system Colin is using for testing.</p>
+</div>
+<div class="paragraph">
+<p>This work is supported by Colin’s FreeBSD/EC2 Patreon.</p>
+</div>
+<div class="paragraph">
+<p>Sponsor: <a href="https://www.patreon.com/cperciva" class="bare">https://www.patreon.com/cperciva</a></p>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="kernel">Kernel</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Updates to kernel subsystems/features, driver support, filesystems, and more.</p>
+</div>
+<div class="sect2">
+<h3 id="_ena_freebsd_driver_update">ENA FreeBSD Driver Update</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://github.com/amzn/amzn-drivers/blob/master/kernel/fbsd/ena/README">ENA README</a> URL: <a href="https://github.com/amzn/amzn-drivers/blob/master/kernel/fbsd/ena/README">https://github.com/amzn/amzn-drivers/blob/master/kernel/fbsd/ena/README</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Michal Krawczyk &lt;<a href="mailto:mk@semihalf.com">mk@semihalf.com</a>&gt;<br/>
+Contact: Dawid Gorecki &lt;<a href="mailto:dgr@semihalf.com">dgr@semihalf.com</a>&gt;<br/>
+Contact: Marcin Wojtas &lt;<a href="mailto:mw@semihalf.com">mw@semihalf.com</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>ENA (Elastic Network Adapter) is the smart NIC available in the virtualized environment of Amazon Web Services (AWS).
+The ENA driver supports multiple transmit and receive queues and can handle up to 100 Gb/s of network traffic, depending on the instance type on which it is used.</p>
+</div>
+<div class="paragraph">
+<p>Completed since the last update:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add IPv6 layer 4 checksum offload support to the driver</p>
+</li>
+<li>
+<p>Add NUMA awareness to the driver when the RSS kernel option is enabled</p>
+</li>
+<li>
+<p>Rework validation of the Tx request ID</p>
+</li>
+<li>
+<p>Change lifetime of the driver’s timer service</p>
+</li>
+<li>
+<p>Avoid reset triggering when the device is unresponsive</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Work in progress:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Prototype the driver port to the iflib framework</p>
+</li>
+<li>
+<p>Tests of the incoming ENA driver release (v2.5.0)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sponsor: Amazon.com Inc</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_a_new_geom_facility_gunion">A New GEOM Facility, gunion</h3>
+<div class="paragraph">
+<p>Contact: Marshall Kirk McKusick &lt;<a href="mailto:mckusick@mckusick.com">mckusick@mckusick.com</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>The gunion facility is used to track changes to a read-only disk on a writable disk.
+Logically, a writable disk is placed over a read-only disk.
+Write requests are intercepted and stored on the writable disk.
+Read requests are first checked to see if they have been written on the top (writable disk) and if found are returned.
+If they have not been written on the top disk, then they are read from the lower disk.</p>
+</div>
+<div class="paragraph">
+<p>The gunion facility can be especially useful if you have a large disk with a corrupted filesystem that you are unsure of how to repair.
+You can use gunion to place another disk over the corrupted disk and then attempt to repair the filesystem.
+If the repair fails, you can revert all the changes in the upper disk and be back to the unchanged state of the lower disk thus allowing you to try another approach to repairing it.
+If the repair is successful you can commit all the writes recorded on the top disk to the lower disk.</p>
+</div>
+<div class="paragraph">
+<p>Another use of the gunion facility is to try out upgrades to your system.
+Place the upper disk over the disk holding your filesystem that is to be upgraded and then run the upgrade on it.
+If it works, commit it; if it fails, revert the upgrade.</p>
+</div>
+<div class="paragraph">
+<p>The gunion(8) utility is used to create and manage an instance of a gunion. Further details and usage examples can be found in the gunion(8) manual page.
+At this time, gunion(8) is available only in 14.0.</p>
+</div>
+<div class="paragraph">
+<p>Sponsor: Netflix</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_realtek_wireless_driver_support">Realtek Wireless driver support</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://wiki.freebsd.org/WiFi/Rtw88">rtw88 status FreeBSD wiki page</a> URL: <a href="https://wiki.freebsd.org/WiFi/Rtw88">https://wiki.freebsd.org/WiFi/Rtw88</a><br/>
+<a href="https://wiki.freebsd.org/WiFi/Rtw89">rtw89 status FreeBSD wiki page</a> URL: <a href="https://wiki.freebsd.org/WiFi/Rtw89">https://wiki.freebsd.org/WiFi/Rtw89</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Bjoern A. Zeeb &lt;<a href="mailto:bz@FreeBSD.org">bz@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>While the Intel Wireless driver update project is the main driver behind the work to bring support for newer chipsets and eventually newer IEEE 802.11 standards support, there is also an ongoing effort to support more drivers.
+The next two drivers in the (already longer) queue are Realtek’s rtw88 and rtw89.</p>
+</div>
+<div class="paragraph">
+<p>While the initial driver porting efforts for rtw88 and rtw89 happened on personal time, the LinuxKPI integration has to be done more and more along the Intel wireless driver work and so thanks are also due to The FreeBSD Foundation.</p>
+</div>
+<div class="paragraph">
+<p>The rtw88 driver has started to work on some machines with less than 4GB of main memory and was committed to the FreeBSD git repository for broader testing.
+While our version of the driver is aware of these limitations, the problem is currently assumed to be outside the driver in the interactions with LinuxKPI and busdma.</p>
+</div>
+<div class="paragraph">
+<p>The rtw89 driver has happily started to send packets and has problems receiving frames at this point.
+Further investigation will happen as soon as rtw88 is sorted out and it is expected that rtw89 will then also timely follow into FreeBSD’s git repository.</p>
+</div>
+<div class="paragraph">
+<p>The currently known requirements to compile both drivers have mostly gone into stable/13 and releng/13.1 already.</p>
+</div>
+<div class="paragraph">
+<p>For the latest state of the development, please check the referenced wiki pages and follow the freebsd-wireless mailing list.</p>
+</div>
+<div class="paragraph">
+<p>Sponsor: The FreeBSD Foundation (partly)</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_intel_wireless_driver_support_and_linuxkpi_802_11_compatibility_layer">Intel Wireless driver support and LinuxKPI 802.11 compatibility layer</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://wiki.freebsd.org/WiFi/Iwlwifi">iwlwifi status FreeBSD wiki page</a> URL: <a href="https://wiki.freebsd.org/WiFi/Iwlwifi">https://wiki.freebsd.org/WiFi/Iwlwifi</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Bjoern A. Zeeb &lt;<a href="mailto:bz@FreeBSD.org">bz@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>The Intel Wireless driver update project aims to bring support for newer chipsets along with mac80211 LinuxKPI compat code.
+The dual-licensed Intel driver code was ported in the past for the iwm(4) native driver; using the LinuxKPI compat framework allows us to use the driver directly and gives support to all the latest chipsets, with only minor local modifications.
+Some of the changes made while porting the driver to FreeBSD were kindly incorporated into the upstream Linux driver already.</p>
+</div>
+<div class="paragraph">
+<p>During the first quarter work continued with about 70 commits.
+Updating the driver and firmware reduced differences to the Linux version and gave us bugfixes and improvements.
+Changes to the LinuxKPI 802.11 compatibility layer were made to avoid firmware crashes and possible panics for users along with other improvements.</p>
+</div>
+<div class="paragraph">
+<p>Auto-loading support for LinuxKPI PCI drivers was comitted.
+This means that iwlwifi(4) will now load automatically during boot if a supported card is detected without any user interactions.
+Considering the current state of the driver and the next release a decision was made that iwm(4) supported chipsets will continue to attach to iwm(4) for now and only newer and otherwise unsupported chipsets will use the iwlwifi(4) driver.
+This is likely going to change in CURRENT as soon as iwlwifi(4) provides better support than iwm(4).</p>
+</div>
+<div class="paragraph">
+<p>The code was merged to the stable/13 branch and the current state will be shipped with the upcoming 13.1-RELEASE.</p>
+</div>
+<div class="paragraph">
+<p>In addition to The FreeBSD Foundation thanks need to go to all users who have been testing and reporting back or are patiently waiting for the next update.
+For the latest state of the development, please follow the freebsd-wireless mailing list.</p>
+</div>
+<div class="paragraph">
+<p>Sponsor: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_kernel_crypto_changes_to_support_wireguard">Kernel Crypto changes to support WireGuard</h3>
+<div class="paragraph">
+<p>Contact: John Baldwin &lt;<a href="mailto:jhb@FreeBSD.org">jhb@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>During the last quarter, I continued my work to improve the FreeBSD WireGuard driver.
+On the FreeBSD side, I added support for the XChaCha20-Poly1305 AEAD cipher.
+I also added a dedicated API to support [X]ChaCha20-Poly1035 on small, flat buffers.
+Finally, I added an API wrapper for the curve25519 implementation from libsodium.</p>
+</div>
+<div class="paragraph">
+<p>For the WireGuard driver, I wrote a series of patches which updates the driver to use crypto APIs such as those mentioned above in place of internal cipher implementations.
+The series also includes a fix to avoid scheduling excessive crypto tasks as well as a few other small fixes.
+This series is pending review.</p>
+</div>
+<div class="paragraph">
+<p>Sponsor: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="architectures">Architectures</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Updating platform-specific features and bringing in support for the new hardware
+platform.</p>
+</div>
+<div class="sect2">
+<h3 id="_nxp_dpaa2_support">NXP DPAA2 support</h3>
+<div class="paragraph">
+<p>Links<br/>
+<a href="https://github.com/mcusim/freebsd-src/tree/lx2160acex7-dev/sys/dev/dpaa2">Development</a> URL: <a href="https://github.com/mcusim/freebsd-src/tree/lx2160acex7-dev/sys/dev/dpaa2">https://github.com/mcusim/freebsd-src/tree/lx2160acex7-dev/sys/dev/dpaa2</a><br/></p>
+</div>
+<div class="paragraph">
+<p>Contact: Dmitry Salychev &lt;<a href="mailto:dsl@mcusim.org">dsl@mcusim.org</a>&gt;<br/>
+Contact: Bjoern A. Zeeb &lt;<a href="mailto:bz@FreeBSD.org">bz@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Some of the NXP SoCs (LX2160A, LS1088A) are shipped with <a href="https://www.nxp.com/design/qoriq-developer-resources/second-generation-data-path-acceleration-architecture-dpaa2:DPAA2">DPAA2</a>, the second generation of the data path acceleration architecture.
+It allows to dynamically configure and wire packet processing &#34;objects&#34; (like DPNI for a network interface, DPMAC for media access controller, etc.) together to form a network-on-a-chip.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://solidrun.atlassian.net/wiki/spaces/developer/pages/197494288/HoneyComb+LX2+ClearFog+CX+LX2+Quick+Start+Guide">Honeycomb LX2</a>, as one of the powerful ARM64 boards from SolidRun, is also built around NXP LX2160A and lacks on-board GbE support in FreeBSD.
+These drivers are about to change it.</p>
+</div>
+<div class="paragraph">
+<p>It’s still work in progress and a rough implementation of the drivers for some DPAA2 objects is available at the moment.
+A new network interface (dpni) can be used on Honeycomb for testing.</p>
+</div>
+<div class="paragraph">
+<p>TODO:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Update dpaa2_mc_fdt driver for the <a href="https://www.crowdsupply.com/traverse-technologies/ten64">Traverse Ten64</a> board</p>
+</li>
+<li>
+<p>Review and fix DPAA2 resources allocation to support as many DPNIs as possible</p>
+</li>
+<li>
+<p>Free driver resources properly</p>
+</li>
+<li>
+<p>Implement CPU affinity for DPIOs and DPNIs</p>
+</li>
+<li>
+<p>Implement cached memory-backed software portals</p>
+</li>
+<li>
+<p>Profile and mitigate bottlenecks</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sponsor: Bare Enthusiasm :)</p>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="documentation">Documentation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Noteworthy changes in the documentation tree, man-pages, or new external
+books/documents.</p>
+</div>
+<div class="sect2">
+<h3 id="_documentation_engineering_team">Documentation Engineering Team</h3>
+<div class="paragraph">
+<p>Link: <a href="https://www.freebsd.org/docproj/">FreeBSD Documentation Project</a><br/>
+Link: <a href="https://docs.freebsd.org/en/books/fdp-primer/">FreeBSD Documentation Project Primer for New Contributors</a><br/>
+Link: <a href="https://www.freebsd.org/administration/#t-doceng">Documentation Engineering Team</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: FreeBSD Doceng Team &lt;<a href="mailto:doceng@FreeBSD.org">doceng@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>The doceng@ team is a body to handle some of the meta-project issues associated with the FreeBSD Documentation Project; for more information, see <a href="https://www.freebsd.org/internal/doceng/">FreeBSD Doceng Team Charter</a>.</p>
+</div>
+<div class="paragraph">
+<p>No new documentation commit bit was granted during the last quarter, and only one commit bit was safe kept.</p>
+</div>
+<div class="paragraph">
+<p>Several tasks were completed related to the doc tree during the last quarter:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Fix some issues in the translation workflow with PO files and Weblate related to the po4a program.</p>
+<div class="paragraph">
+<p>More info <a href="https://lists.freebsd.org/archives/freebsd-translators/2022-February/000029.html">here</a>.</p>
+</div>
+</li>
+<li>
+<p>Update <a href="https://download.freebsd.org/doc/">offline documentation (PDF and HTML)</a>.</p>
+<div class="paragraph">
+<p>The old directory /doc is now on <a href="http://ftp-archive.freebsd.org/mirror/FreeBSD-Archive/old-docs/">ftp-archive</a>; it contains files prior to the Hugo/Asciidoctor migration.</p>
+</div>
+</li>
+<li>
+<p>Remove Google Analytics from documentation and website.</p>
+</li>
+<li>
+<p>Add last modified information to the documentation and website pages.</p>
+</li>
+<li>
+<p>Tag FreeBSD docset for 13.1-RELEASE.</p>
+</li>
+<li>
+<p>Add the first Indonesian translation to the doc tree.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_freebsd_translations_on_weblate">FreeBSD Translations on Weblate</h4>
+<div class="paragraph">
+<p>Link: <a href="https://wiki.freebsd.org/Doc/Translation/Weblate">Translate FreeBSD on Weblate</a><br/>
+Link: <a href="https://translate-dev.freebsd.org/">FreeBSD Weblate Instance</a></p>
+</div>
+<div class="paragraph">
+<p>The translation workflow with Weblate is more mature at this point.
+Several issues were fixed between PO files and po4a program.</p>
+</div>
+<div class="paragraph">
+<p>We welcome everyone to try our Weblate instance to translate a few documents.</p>
+</div>
+<div class="paragraph">
+<p>The first Indonesian translation was added to the FreeBSD project.
+We thank Azrael JD for the contribution, and we are looking forward to seeing more Indonesian translations.</p>
+</div>
+<div class="sect4">
+<h5 id="_q1_2022_status">Q1 2022 Status</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>12 languages (1 new language)</p>
+</li>
+<li>
+<p>142 registered users</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_languages">Languages</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Chinese (Simplified) (zh-cn)</p>
+</li>
+<li>
+<p>Chinese (Traditional) (zh-tw)</p>
+</li>
+<li>
+<p>Dutch (nl)</p>
+</li>
+<li>
+<p>French (fr)</p>
+</li>
+<li>
+<p>German (de)</p>
+</li>
+<li>
+<p>Indonesian (id) - Added</p>
+</li>
+<li>
+<p>Italian (it)</p>
+</li>
+<li>
+<p>Norwegian (nb-no)</p>
+</li>
+<li>
+<p>Persian (fa-ir)</p>
+</li>
+<li>
+<p>Portuguese (pt-br)</p>
+</li>
+<li>
+<p>Spanish (es)</p>
+</li>
+<li>
+<p>Turkish (tr)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We want to thank everyone that contributed, translating or reviewing documents.</p>
+</div>
+<div class="paragraph">
+<p>And please, help promote this effort on your local user group, we always need more volunteers.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_freebsd_website_revamp_webapps_working_group">FreeBSD Website Revamp - WebApps working group</h4>
+<div class="paragraph">
+<p>Contact: Sergio Carlavilla &lt;<a href="mailto:carlavilla@FreeBSD.org">carlavilla@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Working group in charge of creating the new FreeBSD Documentation Portal and redesigning the FreeBSD main website and its components.
+FreeBSD developers can follow and join the working group on the FreeBSD Slack channel #wg-www21.
+The work will be divided into four phases:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Redesign of the Documentation Portal</p>
+<div class="paragraph">
+<p>Create a new design, responsive and with global search. (<em>Complete</em>)</p>
+</div>
+</li>
+<li>
+<p>Redesign of the Manual Pages on web</p>
+<div class="paragraph">
+<p>Scripts to generate the HTML pages using mandoc. (<em>Work in progress</em>)</p>
+</div>
+</li>
+<li>
+<p>Redesign of the Ports page on web</p>
+<div class="paragraph">
+<p>Ports scripts to create an applications portal. (<em>Work in progress</em>)</p>
+</div>
+</li>
+<li>
+<p>Redesign of the FreeBSD main website</p>
+<div class="paragraph">
+<p>New design, responsive and dark theme. (<em>Not started</em>)</p>
+</div>
+</li>
+</ol>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ports">Ports</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Changes affecting the Ports Collection, whether sweeping changes that touch most
+of the tree, or individual ports themselves.</p>
+</div>
+<div class="sect2">
+<h3 id="_kde_on_freebsd">KDE on FreeBSD</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://freebsd.kde.org/">KDE FreeBSD</a> URL: <a href="https://freebsd.kde.org/">https://freebsd.kde.org/</a><br/>
+<a href="https://community.kde.org/FreeBSD">KDE Community FreeBSD</a> URL: <a href="https://community.kde.org/FreeBSD">https://community.kde.org/FreeBSD</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Adriaan de Groot &lt;<a href="mailto:kde@FreeBSD.org">kde@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>The KDE on FreeBSD project packages the software from the KDE Community, along with dependencies and related software, for the FreeBSD ports tree.
+The software includes a full desktop environment called KDE Plasma (for both X11 and Wayland) and hundreds of applications that can be used on any FreeBSD machine.</p>
+</div>
+<div class="paragraph">
+<p>The KDE team (kde@) is part of desktop@ and x11@ as well, building the software stack to make FreeBSD beautiful and usable as a daily-driver graphics-based desktop machine.</p>
+</div>
+<div class="paragraph">
+<p><strong>KDE Qt Patch Collection</strong> The Qt Company did not release Qt 5.15 updates under Open Source licenses in 2021, leaving the Open Source 5.15 version lagging behind the proprietary release.
+Qt 6 is released under an Open Source license, but for the world of Open Source software that requires Qt 5, there is still a need for updates.
+The KDE Community fills that need by maintaining a curated set of patches — generally backported from Qt6 — to maintain the Open Source version of Qt 5.
+FreeBSD ports now use this <strong>KDE Qt Patch Collection</strong>, rather than the outdated last Qt 5.15.2 release from the Qt Company.
+This landed both in main and the last quarterly branch for 2021, since it brings important bugfixes.</p>
+</div>
+<div class="sect3">
+<h4 id="_kde_stack">KDE Stack</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>KDE Plasma Desktop</strong> (all the <code><strong>/plasma5-</strong></code> ports) was updated to 5.23.5 at the start of the year. Since this happened very shortly after quarterly was branched, this was MFH’ed. The long-term-support release 5.24 landed mid-february. The FreeBSD ports do not stick to LTS releases, and will follow the regular release schedule. 5.24.3 landed on schedule in March.</p>
+</li>
+<li>
+<p><strong>KDE Gear</strong> (the collection of KDE libraries and applicatious outside of the Frameworks and Plasma Desktop groups) was updated to 21.12.1 and MFH’ed. Monthy releases landed as well: 21.12.2 in February.</p>
+</li>
+<li>
+<p><strong>KDE Frameworks</strong> have a monthly release cadence, so 5.90 landed in January, 5.91 in February and 5.92 in March.</p>
+</li>
+<li>
+<p><strong>KDE PIM</strong> currently does not support Contacts stored in a Google account because Google has changed the available REST API.</p>
+</li>
+<li>
+<p><strong>astro/kstars</strong> received its regularly scheduled updates.</p>
+</li>
+<li>
+<p><strong>deskutils/kalendar</strong> was updated. It has now reached the 1.0 stage.</p>
+</li>
+<li>
+<p><strong>deskutils/kodaskanna</strong> was added to the ports tree. It is a simple QR-code scanner for the desktop.</p>
+</li>
+<li>
+<p><strong>deskutils/latte-dock</strong> is an alternative launcher for use in KDE Plasma Desktop and other environments. It was updated to 0.10.7 as part of its monthly releases.</p>
+</li>
+<li>
+<p><strong>devel/okteta</strong>, an editor and viewer for binary data, was updated to 0.26.7, a regular bugfix release.</p>
+</li>
+<li>
+<p><strong>graphics/digikam</strong>, the digital photography manager, was updated to 7.6.0. (Thanks Dima Panov)</p>
+</li>
+<li>
+<p><strong>graphics/kf5-kimageformats</strong> has a new option enabling libheif and HEIC support.</p>
+</li>
+<li>
+<p><strong>graphics/kontrast</strong> was added to the &#39;accessibility&#39; category. This is a tool for checking color-combinations (e.g. for a website) for sufficient contrast and readability.</p>
+</li>
+<li>
+<p><strong>graphics/krita</strong> was updated to the next big release, Krita 5. (Thanks Max Brazhnikov)</p>
+</li>
+<li>
+<p><strong>lang/kross-interpreters</strong> was fixed for Ruby 3. (Thanks Yasuhiro Kimura)</p>
+</li>
+<li>
+<p><strong>sysutils/plasma5-discover</strong> was updated to resolve some denial-of-service bugs in KDE infrastructure.</p>
+</li>
+<li>
+<p><strong>www/falkon</strong> was updated. After a two-year wait, a new release of the KDE web browser built on Qt WebEngine (itself a wrapper around Chromium internals) arrived upstream and in ports.</p>
+</li>
+<li>
+<p><strong>x11/plasma5-plasma-workspace</strong> now can properly edit login and account information.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_related_applications">Related Applications</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>devel/qtcreator</strong> was updated to version 6. A new versioning model has been introduced by upstream, so this will now jump by major release number regularly. (Thanks to Florian Walpen)</p>
+</li>
+<li>
+<p><strong>irc/quassel</strong> was updated. Quassel is a distributed IRC client (think of it as your own personal IRC bouncer).</p>
+</li>
+<li>
+<p><strong>misc/tellico</strong> was updated. Tellico is a &#34;collection manager&#34;, for instance collections of books, music, stamps, or FreeBSD releases.</p>
+</li>
+<li>
+<p><strong>net-im/nheko</strong> was updated. This is one of a dozen Matrix clients available in the ports tree.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_elsewhere">Elsewhere</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>archivers/7-zip</strong> is the preferred tool for dealing with 7zip files; this affacts KDE applications that work with archives (like <strong>archivers/ark</strong>). We would like to thank makc@ for stewarding that update.</p>
+</li>
+<li>
+<p><strong>devel/libphonenumber</strong> has bi-weekly updates to chase the exciting world of telephony details.</p>
+</li>
+<li>
+<p><strong>graphics/poppler</strong> was updated to version 22.01. This version requires C++17, which pushes a number of consumers to the newer C++ standard as well. Most consumers were fixed in advance.</p>
+</li>
+</ul>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_freebsd_office_team">FreeBSD Office Team</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://wiki.freebsd.org/Office">The FreeBSD Office project</a> URL: <a href="https://wiki.freebsd.org/Office">https://wiki.freebsd.org/Office</a><br/>
+<a href="https://lists.freebsd.org/subscription/freebsd-office">The FreeBSD Office mailing list</a> URL: <a href="https://lists.freebsd.org/subscription/freebsd-office">https://lists.freebsd.org/subscription/freebsd-office</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: FreeBSD Office team ML &lt;<a href="mailto:office@FreeBSD.org">office@FreeBSD.org</a>&gt;<br/>
+Contact: Dima Panov &lt;<a href="mailto:fluffy@FreeBSD.org">fluffy@FreeBSD.org</a>&gt;<br/>
+Contact: Li-Wen Hsu &lt;<a href="mailto:lwhsu@FreeBSD.org">lwhsu@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>The FreeBSD Office team works on a number of office-related software suites and tools such as OpenOffice and LibreOffice.</p>
+</div>
+<div class="paragraph">
+<p>Work during this quarter was focused on providing the latest stable release of LibreOffice suite and companion apps to all FreeBSD users.</p>
+</div>
+<div class="paragraph">
+<p>During the 2022Q1 period we pushed maintenance patches for the LibreOffice 7.2 port to the quarterly branch and brought the latest, 7.3, releases and all companion libraries such as MDDS, libIxion and more to the ports tree.</p>
+</div>
+<div class="paragraph">
+<p>Also we are still working on the <a href="https://github.com/fluffykhv/freebsd-ports-boost">Boost WIP repository</a> to bring the latest Boost library to the ports.</p>
+</div>
+<div class="paragraph">
+<p>We are looking for people to help with the open tasks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="https://bugs.freebsd.org/bugzilla/buglist.cgi?bug_status=open&amp;email1=office%40FreeBSD.org&amp;emailassigned_to1=1&amp;emailcc1=1&amp;emailreporter1=1&amp;emailtype1=substring&amp;query_format=advanced&amp;list_id=374316">open bugs list</a> contains all filed issues which need some attention</p>
+</li>
+<li>
+<p>Upstream <a href="https://cgit.freebsd.org/ports/tree/editors/libreoffice/files">local patches in ports</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Patches, comments and objections are always welcome in the mailing list and Bugzilla.</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_langgcc_ports_need_some_love_and_attention">lang/gcc* ports need some love and attention</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://gcc.gnu.org">GCC Project</a> URL: <a href="https://gcc.gnu.org">https://gcc.gnu.org</a><br/>
+<a href="https://gcc.gnu.org/gcc-11/">GCC 11 release series</a> URL: <a href="https://gcc.gnu.org/gcc-11/">https://gcc.gnu.org/gcc-11/</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: <a href="mailto:toolchain@FreeBSD.org">toolchain@FreeBSD.org</a><br/>
+Contact: Gerald Pfeifer &lt;<a href="mailto:gerald@pfeifer.com">gerald@pfeifer.com</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>After about two decades of maintaining FreeBSD’s lang/gcc* ports, the time came to hand over the baton and mostly step back.
+Alas the baton essentially dropped to the floor, despite multiple calls for help.</p>
+</div>
+<div class="paragraph">
+<p>Here are a few specific tasks looking for help:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade GCC_DEFAULT in Mk/bsd.default-versions.mk from 10 to 11,
+including fixing the (luckily minor) fall out of an -exp run:
+<a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=258378">https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=258378</a></p>
+</li>
+<li>
+<p>Three changes to work through with upstream GCC (requires src
+expertise, not ports):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>upstreaming lang/gcc11/patch-gets-no-more</p>
+</li>
+<li>
+<p>upstreaming lang/gcc11/patch-arm-unwind-cxx-support</p>
+</li>
+<li>
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=256874">https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=256874</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>We have removed the unmaintained lang/gcc9-devel and lang/gcc10-devel
+ports, alas kept lang/gcc11-devel and lang/gcc12-devel which would be
+good to see if not weekly, then somewhat regular updates.</p>
+</li>
+</ul>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_portconfig">PortConfig</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://gitlab.com/alfix/portconfig/">Repository portconfig</a> URL: <a href="https://gitlab.com/alfix/portconfig/">https://gitlab.com/alfix/portconfig/</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Alfonso Sabato Siciliano (upstream) &lt;<a href="mailto:asiciliano@FreeBSD.org">asiciliano@FreeBSD.org</a>&gt;<br/>
+Contact: Baptiste Daroussin (port) &lt;<a href="mailto:bapt@FreeBSD.org">bapt@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>FreeBSD provides the Ports Collection to give users and administrators a simple way to install applications.
+It is possible to configure a port before the building and installation.
+PortConfig is an utility for setting the port options via a Text User Interface.</p>
+</div>
+<div class="paragraph">
+<p>As each terminal has different properties PortConfig can be customized via environment variables to set up the User Interface, for example: menu size, theme, borders, and so on; each feature is documented inside the manual.
+Further, if a port has a specific &#39;pkg-help&#39; file, PortConfig will show a Help button to open a &#34;popup&#34; with help information.</p>
+</div>
+<div class="paragraph">
+<p>FreeBSD provides thousands of ports therefore it is not feasible to test PortConfig for each use; please report any problem.</p>
+</div>
+<div class="paragraph">
+<p>Alfonso would like to thank Baptiste Daroussin for the port, suggestions, help, and testing for this utility and its library.</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_wifibox_use_linux_to_drive_your_wireless_card_on_freebsd">Wifibox: Use Linux to drive your wireless card on FreeBSD</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://github.com/pgj/freebsd-wifibox">Project GitHub Page</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/net/wifibox"><code>net/wifibox</code> port</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: PÁLI Gábor János &lt;<a href="mailto:pali.gabor@gmail.com">pali.gabor@gmail.com</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Wifibox is an experimental project for exploring the ways of deploying a virtualized Linux guest to drive wireless networking cards on the FreeBSD host system.
+There have been guides on the Internet to suggest the use of such techniques to improve the wireless networking experience, of which Wifibox aims to implement as a single easy-to-use software package.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> is utilized to run the embedded Linux system.
+This helps to achieve low resource footprint.
+It requires an x64 CPU with I/O MMU (AMD-Vi, Intel VT-d), ~150 MB physical memory, and some disk space available for the guest virtual disk image, which can be even ~30 MB only in certain cases.
+It works with FreeBSD 12 and later, some cards may require a recent 13-STABLE though.</p>
+</li>
+<li>
+<p>The guest is constructed using <a href="https://alpinelinux.org/">Alpine Linux</a>, a security-oriented, lightweight distribution based on <a href="https://www.musl-libc.org/">musl libc</a> and <a href="https://busybox.net/">BusyBox</a>.</p>
+</li>
+<li>
+<p>Configuration files are shared with the host system. The guest uses <a href="https://man.freebsd.org/cgi/man.cgi?query=wpa_supplicant&amp;sektion=8&amp;format=html">wpa_supplicant(8)</a> so it is possible to import the host’s <a href="https://man.freebsd.org/cgi/man.cgi?query=wpa_supplicant.conf&amp;sektion=8&amp;format=html">wpa_supplicant.conf(8)</a> file without any changes.</p>
+</li>
+<li>
+<p>When configured, <a href="https://man.freebsd.org/cgi/man.cgi?query=wpa_supplicant&amp;sektion=8&amp;format=html">wpa_supplicant(8)</a> control sockets could be exposed by the guest, which enables use of related utilities directly from the host, such as <a href="https://man.freebsd.org/cgi/man.cgi?query=wpa_cli&amp;sektion=8&amp;format=html">wpa_cli(8)</a> or <a href="https://man.freebsd.org/cgi/man.cgi?query=wpa_gui&amp;sektion=8&amp;format=html">wpa_gui(8)</a> from the <code>net/wpa_supplicant_gui</code> port/package.</p>
+</li>
+<li>
+<p>Everything is shipped in a single package that can be easily installed and removed.
+This comes with an <a href="https://man.freebsd.org/cgi/man.cgi?query=rc&amp;sektion=8&amp;format=html">rc(8)</a> system service that automatically launches the guest on boot and stops it on shutdown.</p>
+</li>
+<li>
+<p>A workaround is supplied for laptops to support suspend/resume.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Wifibox has been mainly tested with Intel chipsets so far, and it has shown great performance and stability.
+Therefore it might serve as an interim solution until the Intel Wireless support becomes mature enough.
+It was confirmed that Wifibox works with Atheros chipsets too, and feedback is more than welcome about others.
+Support for Broadcom chipsets is not yet complete, that is currently a work in progress.</p>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="third-Party-Projects">Third Party Projects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Many projects build upon FreeBSD or incorporate components of FreeBSD into their
+project. As these projects may be of interest to the broader FreeBSD community,
+we sometimes include brief updates submitted by these projects in our quarterly
+report. The FreeBSD project makes no representation as to the accuracy or
+veracity of any claims in these submissions.</p>
+</div>
+<div class="sect2">
+<h3 id="_hellosystem">helloSystem</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://hellosystem.github.io/docs/">Documentation</a> URL: <a href="https://hellosystem.github.io/">https://hellosystem.github.io/</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Simon Peter &lt;<a href="mailto:probono@puredarwin.org">probono@puredarwin.org</a>&gt;<br/>
+Contact: <code>#helloSystem</code> on <code>irc.libera.chat</code>, mirrored to <a href="https://matrix.to/#/%23helloSystem:matrix.org?via=matrix.org"><code>#helloSystem:matrix.org</code> on Matrix</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_is_hellosystem">What is helloSystem?</h4>
+<div class="paragraph">
+<p>helloSystem is FreeBSD preconfigured as a desktop operating system with a focus on simplicity, elegance, and usability.
+Its design follows the “Less, but better” philosophy.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_q1_2022_status_2">Q1 2022 Status</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Version 0.8.0 of helloSystem is under development and test</p>
+<div class="ulist">
+<ul>
+<li>
+<p>helloSystem 0.8.0 will be based on FreeBSD 13.1-RELEASE</p>
+</li>
+<li>
+<p>Experimental Live ISOs using FreeBSD 13.1-BETA3 are available</p>
+</li>
+<li>
+<p>Initial support for running Linux AppImage files using an optional Debian runtime</p>
+</li>
+<li>
+<p>Initial support for the AppImage format in the user interface</p>
+</li>
+<li>
+<p>Improved reliability and performance of mounted archives by using fuse-archive</p>
+</li>
+<li>
+<p>Various bugfixes</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Installable experimental Live ISO images are available at <a href="https://github.com/helloSystem/ISO/releases/tag/experimental-13.1" class="bare">https://github.com/helloSystem/ISO/releases/tag/experimental-13.1</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_contributing">Contributing</h4>
+<div class="paragraph">
+<p><a href="https://github.com/helloSystem/hello/blob/master/CONTRIBUTING.md">The project appreciates contributions in various areas</a>.</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_containers_and_freebsd_pot_potluck_and_potman">Containers and FreeBSD: Pot, Potluck and Potman</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://github.com/bsdpot">Pot organization on github</a> URL: <a href="https://github.com/bsdpot">https://github.com/bsdpot</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Luca Pizzamiglio (Pot) &lt;<a href="mailto:pizzamig@freebsd.org">pizzamig@freebsd.org</a>&gt;<br/>
+Contact: Stephan Lichtenauer (Potluck) &lt;<a href="mailto:sl@honeyguide.eu">sl@honeyguide.eu</a>&gt;<br/>
+Contact: Michael Gmelin (Potman) &lt;<a href="mailto:grembo@freebsd.org">grembo@freebsd.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Pot is a jail management tool that <a href="https://www.freebsd.org/news/status/report-2020-01-2020-03/#pot-and-the-nomad-pot-driver">also supports orchestration through Nomad</a>.</p>
+</div>
+<div class="paragraph">
+<p>As a result of production testing in a real-world cluster deployment, pot and related projects received stability improvements for controlling the pot lifecycle (i.e., pot prepare/start/stop).<br/>
+Various attributes and commands have been developed to improve support of nomad orchestration and batch jobs (e.g., change dns config during clone, ability to disable tmpfs, new last-run-stats command). A new pot release will follow soon.</p>
+</div>
+<div class="paragraph">
+<p>Potluck aims to be to FreeBSD and pot what Dockerhub is to Linux and Docker: a repository of pot flavours and complete container images for usage with pot and in many cases nomad.</p>
+</div>
+<div class="paragraph">
+<p>Many of the core images like <a href="https://potluck.honeyguide.net/blog/nomad-server/">Nomad</a>, <a href="https://potluck.honeyguide.net/blog/consul/">Consul</a> and <a href="https://potluck.honeyguide.net/blog/vault/">Vault</a> that can be used to build a private cloud and orchestration platform, but also e.g. <a href="https://potluck.honeyguide.net/blog/prometheus/">Prometheus</a> or <a href="https://potluck.honeyguide.net/blog/postgresql-patroni/">PostgreSQL Patroni</a>, have reached a stable status over the last quarter and are in production use now.</p>
+</div>
+<div class="paragraph">
+<p>To make navigating the evolving pot ecosystem easier, most project resources have been centralized in a dedicated github project: <a href="https://github.com/bsdpot">https://github.com/bsdpot</a></p>
+</div>
+<div class="paragraph">
+<p>There, we plan to release ansible playbooks that allow easily creating a FreeBSD based orchestration environment from scratch based on all these tools.</p>
+</div>
+<div class="paragraph">
+<p>As always, feedback and patches are welcome.</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_fpart_and_fpsync">Fpart and fpsync</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://www.fpart.org">Project site and documentation</a> URL: <a href="https://www.fpart.org">https://www.fpart.org</a><br/>
+<a href="https://github.com/martymac/fpart">Development</a> URL: <a href="https://github.com/martymac/fpart">https://github.com/martymac/fpart</a><br/>
+<a href="https://www.freshports.org/sysutils/fpart">Port</a> URL: <a href="https://www.freshports.org/sysutils/fpart">https://www.freshports.org/sysutils/fpart</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Ganael Laplanche &lt;<a href="mailto:martymac@FreeBSD.org">martymac@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="sect3">
+<h4 id="_what_is_fpart">What is fpart ?</h4>
+<div class="paragraph">
+<p>Fpart is a <strong>filesystem partitioner</strong>. It helps you sort file trees and pack them into bags (&#34;partitions&#34;).</p>
+</div>
+<div class="paragraph">
+<p>It uses FreeBSD’s fts(3) implementation (GNU/Linux builds can also use it as an option), which makes it crawl filesystems very fast.</p>
+</div>
+<div class="paragraph">
+<p>A hook facility is provided to trigger actions on the partitions produced.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_what_is_fpsync">What is fpsync ?</h4>
+<div class="paragraph">
+<p>Fpsync is a companion script that uses fpart under the hood to parallelize rsync(1) or cpio(1) jobs, making it a simple but powerful data migration tool. Those jobs can be run either locally or remotely (using SSH). Fpsync is <a href="https://www.fpart.org/links/">often used by researchers and cloud providers</a> where lots of data need to be moved and clusters are available to speed up transfers.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_q1_2022_status_3">Q1 2022 Status</h4>
+<div class="paragraph">
+<p>Both tools continued to evolve and saw several bugs fixed; see the <a href="https://www.fpart.org/changelog/">changelog</a>.</p>
+</div>
+<div class="paragraph">
+<p>Also, a user reported a major bug regarding our fts(3) implementation, which ignores readdir(3) errors. I have reported the bug in our Bugzilla:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=262038">https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=262038</a></p>
+</div>
+<div class="paragraph">
+<p>It should be merged soon (hopefully).</p>
+</div>
+<div class="paragraph">
+<p>Last but not least, fpart has been <a href="https://sill.etalab.gouv.fr/fr/software?id=229">referenced in the French Government’s &#39;SILL&#39;</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_contributing_2">Contributing</h4>
+<div class="paragraph">
+<p>If you are interested in contributing, have a look at the <a href="https://github.com/martymac/fpart/blob/master/TODO">TODO list</a>.</p>
+</div>
+<div class="paragraph">
+<p>Any contribution is welcome, more especially in the field of unit testing.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: June 11, 2022 by <a href="https://cgit.freebsd.org/doc/commit/?id=6a22be46dd" target="_blank">Lorenzo Salvadore</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>
