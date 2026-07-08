@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/ru/releases/15.1R/upgrading/">
+
+  <title>
+    Инструкции по обновлению до FreeBSD 15.1-RELEASE |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" Инструкции по обновлению до FreeBSD 15.1-RELEASE " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="ru" >
+  <meta property="og:url" content="https://www.freebsd.org/ru/releases/15.1R/upgrading/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/ru\/releases\/15.1R\/upgrading\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/ru/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              О проекте
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/about">О проекте</a>
+            </li>
+            <li>
+              <a href="/ru/projects/newbies">Введение</a>
+            </li>
+            <li>
+              <a href="/ru/features">Возможности</a>
+            </li>
+            <li>
+              <a href="/ru/privacy">Политика конфиденциальности</a>
+            </li>
+            <li>
+              <a href="/ru/projects">Проекты</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Порты</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Установка FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/where">Установка FreeBSD</a>
+            </li>
+            <li>
+              <a href="/ru/releases">Информация о релизах</a>
+            </li>
+            <li>
+              <a href="/ru/releng">О подготовке релизов</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Документация
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://docs.FreeBSD.org/ru/">Документация</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/handbook/">Руководство FreeBSD</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/faq/">Часто задаваемые вопросы</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/porters-handbook/">Руководство по созданию портов</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/fdp-primer">Учебник проекта документирования</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Страницы Справочника</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Презентации и публикации</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books">Книги</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/articles">Статьи</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Сообщество
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/community">Сообщество</a>
+            </li>
+            <li>
+              <a href="/ru/community/mailinglists">Списки рассылки</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Форумы</a>
+            </li>
+            <li>
+              <a href="/ru/usergroups">Сообщества пользователей</a>
+            </li>
+            <li>
+              <a href="/ru/events">События</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">Вестник FreeBSD</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Разработчики
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/projects">Разработчики</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Идеи для проектов</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Хранилище Git</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">Зеркало GitHub</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Рецензирование кода (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Сервис непрерывной интеграции</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Поддержка
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/support">Поддержка</a>
+            </li>
+            <li>
+              <a href="/ru/commercial">Вендоры</a>
+            </li>
+            <li>
+              <a href="/ru/security">Информация о безопасности</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Сообщения об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support">Отправка сообщений об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support/webresources">Ресурсы Интернет</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="ru">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/ru/" class="current-lang" aria-current="page">Russian</a>
+          </li>
+          
+            <li>
+              <a href="/releases/15.1R/upgrading/" lang="en">English</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          По­жерт­во­вать
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/ru/where></a></li>
+  <li>
+    <a href=/ru/releases>Ин­фор­ма­ция о ре­ли­зах</a>
+    <ul>
+      <li>Про­дук­тив­ный ре­лиз: <a href=https://www.freebsd.msk.ru/releases/15.1R/announce/>15.1</a></li>
+      <li>Ста­рый про­дук­тив­ный ре­лиз: <a href=https://www.freebsd.msk.ru/releases/15.0R/announce/>15.0</a></li>
+      <li>Ста­рый про­дук­тив­ный ре­лиз: <a href=https://www.freebsd.msk.ru/releases/14.4R/announce/>14.4</a></li>
+      <li>Ста­рый про­дук­тив­ный ре­лиз: <a href=https://www.freebsd.msk.ru/releases/14.3R/announce/>14.3</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href=/ru/snapshots>Про­ме­жу­точ­ные сбор­ки</a>
+      <ul>
+        
+        
+        <li>Пред­сто­я­щий ре­лиз: <a href=https://www.freebsd.msk.ru/releases/14.5R/schedule/>14.5</a></li>
+        
+        
+        
+        
+        
+      </ul>
+  </li>
+  <li><a href=/ru/ports>Пор­ти­ро­ван­ные при­ло­же­ния</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>Инструкции по обновлению до FreeBSD 15.1-RELEASE</h1><div class="sect1">
+<h2 id="_аннотация">Аннотация</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>В данном документе подробно описан порядок действий по обновлению существующих инсталляций до FreeBSD 15.1-RELEASE.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade">Введение</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>В этом документе объясняется порядок обновления существующих инсталляций 14.4-RELEASE или 15.0-RELEASE до 15.1-RELEASE.
+Системы, работающие под управлением более старых релизов, должны быть поэтапно обновлены до одного из этих релизов перед выполнением данного обновления.</p>
+</div>
+<div class="paragraph">
+<p>Перед обновлением операционной системы создайте резервные копии <em>всех</em> файловых систем, ознакомьтесь с <a href="../errata">последними исправлениями</a> для получения информации об известных проблемах и способах их обхода, а также с <a href="../relnotes">примечаниями к выпуску</a> для получения сведений о существенных изменениях и несовместимостях.</p>
+</div>
+<div class="paragraph">
+<p>Порядок выполнения бинарного обновления зависит от метода, используемого для управления операционной системой.
+Чтобы определить это, выполните следующую команду:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pkg which /usr/bin/uname</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Если отображается сообщение <code>/usr/bin/uname was not found in the database</code>, то обратитесь к разделу <a href="#upgrade-fu">Обновление с использованием дистрибутивных наборов</a> ниже.</p>
+</div>
+<div class="paragraph">
+<p>Если отображается имя пакета, например <code>FreeBSD-runtime-15.0</code>, см. раздел <a href="#upgrade-pkg">Обновление с использованием пакетов базовой системы</a> ниже.</p>
+</div>
+<div id="upgrade-source" class="paragraph">
+<p>Если выполняется обновление из исходных кодов, обратитесь к <a href="https://docs.freebsd.org/ru/books/handbook/cutting-edge/#makeworld">главе Руководства FreeBSD, посвящённой обновлению FreeBSD из исходных кодов</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade-fu">Обновление с использованием дистрибутивных наборов</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Системы, развёрнутые с использованием дистрибутивных наборов, обновляются с помощью <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a>.
+Системы, работающие под управлением 14.4-RELEASE или 15.0-RELEASE, могут быть обновлены следующим образом:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Установите все ожидающие патчи</strong>:</p>
+<div class="paragraph">
+<p>Всегда загружайте и устанавливайте все ожидающие патчи для текущей системы перед обновлением:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">freebsd-update fetch
+freebsd-update install</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Обновите ядро</strong></p>
+<div class="paragraph">
+<p>Загрузите и установите новое ядро:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">freebsd-update upgrade -r 15.1-RELEASE
+freebsd-update install</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>В процессе <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> может запросить помощь в объединении конфигурационных файлов.</p>
+</div>
+</li>
+<li>
+<p><strong>Перезагрузитесь в новое ядро</strong></p>
+<div class="paragraph">
+<p>Перезагрузитесь в новое ядро перед установкой нового пользовательского окружения:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">shutdown -r +10min &#34;Rebooting for a kernel upgrade&#34;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Обновите пользовательское окружение</strong></p>
+<div class="paragraph">
+<p>После перезагрузки снова выполните <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> для установки новых компонентов пользовательского окружения:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">freebsd-update install</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> может предложить пересобрать или переустановить все стороннее программное обеспечение из-за изменений в системных библиотеках.
+Следуйте этим инструкциям по мере необходимости.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>При обновлении с 14.4-RELEASE, если переустановка всего стороннего программного обеспечения невозможна, установите пакет <a href="https://cgit.freebsd.org/ports/tree/misc/compat14x/">misc/compat14x</a>.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</li>
+<li>
+<p><strong>Удалите старые файлы</strong></p>
+<div class="paragraph">
+<p>Снова выполните <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> для удаления устаревших файлов базовой системы:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">freebsd-update install</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Обновите загрузчик</strong></p>
+<div class="paragraph">
+<p>Чтобы определить, какой загрузчик необходимо обновить в вашей системе, выполните следующую команду:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">sysctl machdep.bootmethod</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Продолжите в разделе <a href="#upgrade-loader-uefi">Обновление загрузчика UEFI</a> или <a href="#upgrade-loader-bios">Обновление загрузчика BIOS</a> ниже.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade-pkg">Обновление с использованием пакетов базовой системы</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Системы, развёрнутые с применением пакетов базовой системы, обновляются с помощью <a href="https://man.freebsd.org/cgi/man.cgi?query=pkg&amp;sektion=8&amp;format=html">pkg(8)</a>.
+Системы, работающие под управлением 15.0-RELEASE, могут быть модернизированы следующим образом:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Создайте мгновенную копию установленной системы</strong></p>
+<div class="paragraph">
+<p>Если загрузка выполняется из файловой системы ZFS, создайте рекурсивную мгновенную копию работающей системы с именем, содержащим текущую дату:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">bectl create -r pre-15.1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>В меню загрузчика имеется меню для загрузки с этой копии на случай, если потребуется отменить обновление.</p>
+</div>
+</li>
+<li>
+<p><strong>Обновите установленную систему</strong></p>
+<div class="paragraph">
+<p>Перед тем, как выполнять модернизацию до нового релиза, обеспечьте актуальность установленной системы:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pkg upgrade -r FreeBSD-base</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Обновите базовую систему</strong></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pkg -oABI=FreeBSD:15:$(uname -p) -oOSVERSION=1501000 upgrade -r FreeBSD-base</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>После обновления просмотрите все сообщения, выведенные <code>pkg(8)</code>.
+Некоторые пакеты могут требовать дополнительных шагов по настройке, например выполнения <code>service &lt;name&gt; setup</code>.
+Следуйте этим инструкциям по мере необходимости.</p>
+</div>
+</li>
+<li>
+<p><strong>Обновите модули ядра сторонних разработчиков</strong></p>
+<div class="paragraph">
+<p>Если установлены модули ядра сторонних разработчиков, то они также обязательно должны быть обновлены вместе с базовой системой:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pkg upgrade -r FreeBSD-ports-kmods</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Если установка не использует их, <a href="https://man.freebsd.org/cgi/man.cgi?query=pkg&amp;sektion=8&amp;format=html">pkg(8)</a> ответит соответствующим образом.</p>
+</div>
+</li>
+<li>
+<p><strong>Проверьте наличие неудачных обновлений конфигурации</strong></p>
+<div class="paragraph">
+<p>Если <a href="https://man.freebsd.org/cgi/man.cgi?query=pkg&amp;sektion=8&amp;format=html">pkg(8)</a> не может объединить обновления конфигурационных файлов, он установит новую конфигурацию как файл с расширением <code>.pkgnew</code>.
+Проверьте их наличие с помощью следующей команды:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">find /etc /usr/local/etc -name &#39;*.pkgnew&#39; -ls</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Если они существуют, сравните их с развёрнутой версией (например, <code>diff /etc/rc.conf /etc/rc.conf.pkgnew</code>) и объедините все необходимые изменения.</p>
+</div>
+</li>
+<li>
+<p><strong>Обновите загрузчик</strong>:</p>
+<div class="paragraph">
+<p>Чтобы определить, какой загрузчик необходимо обновить в вашей системе, выполните следующую команду:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">sysctl machdep.bootmethod</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Продолжите в разделе <a href="#upgrade-loader-uefi">Обновление загрузчика UEFI</a> или <a href="#upgrade-loader-bios">Обновление загрузчика BIOS</a> ниже.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade-loader-uefi">Обновление загрузчика UEFI</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic" start="7">
+<li>
+<p><strong>Определение ESP</strong></p>
+<div class="paragraph">
+<p>Определите системный раздел EFI (ESP), в котором находится загрузчик, выполнив следующую команду:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">efibootmgr -v</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Вывод должен быть похож на следующий:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell"> +Boot0000* FreeBSD HD(1,GPT,f859c46d-19ee-4e40-8975-3ad1ab00ac09,0x800,0x82000)/File(\EFI\freebsd\loader.efi)
+                       nda0p1:/EFI/freebsd/loader.efi (null)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Активная запись загрузчика помечена символом плюс (+).
+Отметьте расположение загрузчика, в данном случае <code>EFI/freebsd/loader.efi</code> на <code>nda0p1</code>, хотя в системах оно может различаться.</p>
+</div>
+</li>
+<li>
+<p><strong>Монтирование ESP</strong></p>
+<div class="paragraph">
+<p>Если ESP ещё не смонтирован в <span class="filename">/boot/efi</span>, смонтируйте раздел, указанный в выводе <code>efibootmgr</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">mount_msdosfs /dev/nda0p1 /boot/efi</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Установка загрузчика</strong></p>
+<div class="paragraph">
+<p>На системах AMD64 обновите загрузчик в настроенном и стандартном расположениях, выполнив следующие команды:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">cp /boot/loader.efi /boot/efi/efi/freebsd/loader.efi
+cp /boot/loader.efi /boot/efi/efi/boot/bootx64.efi</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Заметьте, что в некоторых конфигурациях систем может наблюдаться другой порядок (к примеру, <code>EFI/BOOT/BOOTX64.EFI</code>), а также может отсутствовать <code>freebsd/loader.efi</code>.</p>
+</div>
+<div class="paragraph">
+<p>Для систем AArch64 вместо этого выполните следующие команды:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">cp /boot/loader.efi /boot/efi/efi/freebsd/loader.efi
+cp /boot/loader.efi /boot/efi/efi/boot/bootaa64.efi</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Для других архитектур действия различаются соответственно; при необходимости обратитесь к <a href="https://man.freebsd.org/cgi/man.cgi?query=loader.efi&amp;sektion=8&amp;format=html">loader.efi(8)</a>.</p>
+</div>
+</li>
+<li>
+<p><strong>Завершение</strong></p>
+<div class="paragraph">
+<p>Перезагрузитесь после завершения обновления до FreeBSD 15.1-RELEASE:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">shutdown -r +10min &#34;Rebooting for a system upgrade&#34;</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade-loader-bios">Обновление загрузчика BIOS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Для систем, загружающихся через BIOS или UEFI CSM и использующих схему разделов GPT, обновление начального загрузчика является необязательным, если только не обновляется корневой пул ZFS (что не рекомендуется).
+Обновление возможно только в том случае, если раздел <code>freebsd-boot</code> имеет размер не менее 180 КБ; теперь стандартным является 512 КБ.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="7">
+<li>
+<p><strong>Определение раздела freebsd-boot</strong></p>
+<div class="paragraph">
+<p>Определите имя устройства и индекс раздела <code>freebsd-boot</code>, выполнив следующую команду:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">gpart show</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Вывод должен быть похож на следующий:</p>
+</div>
+<div class="listingblock screen">
+<div class="content">
+<pre> =&gt;       34  246162605  ada0  GPT  (224G)
+          34       1024     1  freebsd-boot  (512K)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Отметьте имя (<code>ada</code>) и индекс (<code>1</code>) раздела <code>freebsd-boot</code>.</p>
+</div>
+</li>
+<li>
+<p><strong>Обновление загрузчика</strong></p>
+<div class="paragraph">
+<p>При использовании ZFS в BIOS обновите загрузочный код, выполнив следующую команду:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">gpart bootcode -b /boot/pmbr -p /boot/gptzfsboot -i 1 ada0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Где <code>1</code> — это индекс раздела <code>freebsd-boot</code>.</p>
+</div>
+<div class="paragraph">
+<p>Если загрузка выполняется с массива хранения, повторите этот шаг для всех дисков в пуле.</p>
+</div>
+<div class="paragraph">
+<p>При использовании UFS в BIOS вместо этого выполните следующую команду:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">gpart bootcode -b /boot/pmbr -p /boot/gptboot -i 1 ada0</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Завершение</strong></p>
+<div class="paragraph">
+<p>Выполните перезагрузку после завершения обновления до FreeBSD 15.1-RELEASE:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">shutdown -r now</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Последнее изменение</strong>: 4 июля 2026 г. от <a href="https://cgit.freebsd.org/doc/commit/?id=bed47330a1" target="_blank">Andrey Zakhvatov</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">О проекте</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/ru/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">Фонд FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/ru/where" class="column-element">Установка FreeBSD</a>
+          </li>
+          <li>
+            <a href="/ru/internal/code-of-conduct" class="column-element">Кодекс поведения</a>
+          </li>
+          <li>
+            <a href="/ru/security" class="column-element">Бюллетени безопасности</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Документация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Портал документации</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Страницы Справочника</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Презентации и публикации</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Предыдущие версии</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">Документы 4.4BSD</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Сообщество</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/ru/articles/contributing" class="column-element">Присоединиться</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Форум сообщества</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Списки рассылки</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">Каналы IRC</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Трекер ошибок</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Правовая информация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Пожертвования</a>
+          </li>
+          <li>
+            <a href="/ru/copyright/freebsd-license" class="column-element">Лицензирование</a>
+          </li>
+          <li>
+            <a href="/ru/privacy" class="column-element">Политика конфиденциальности</a>
+          </li>
+          <li>
+            <a href="/ru/copyright" class="column-element">Юридические уведомления</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p>
+        <span>Сделано <span class="heart">❤️</span> сообществом FreeBSD</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>
