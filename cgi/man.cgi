@@ -475,8 +475,8 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     'FreeBSD 15.0-RELEASE',
 "$manLocalDir/FreeBSD-15.0-RELEASE/man:$manLocalDir/FreeBSD-15.0-RELEASE/openssl/man",
 
-    'FreeBSD 14.4-STABLE',
-"$manLocalDir/FreeBSD-14.4-STABLE/man:$manLocalDir/FreeBSD-14.4-STABLE/openssl/man",
+    'FreeBSD 14.5-STABLE',
+"$manLocalDir/FreeBSD-14.5-STABLE/man:$manLocalDir/FreeBSD-14.5-STABLE/openssl/man",
     'FreeBSD 14.4-RELEASE',
 "$manLocalDir/FreeBSD-14.4-RELEASE/man:$manLocalDir/FreeBSD-14.4-RELEASE/openssl/man",
     'FreeBSD 14.3-RELEASE',
@@ -850,6 +850,7 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     'NetBSD 9.4',   "$manLocalDir/NetBSD-9.4",
     'NetBSD 10.0',  "$manLocalDir/NetBSD-10.0",
     'NetBSD 10.1',  "$manLocalDir/NetBSD-10.1",
+    'NetBSD 11.0',  "$manLocalDir/NetBSD-11.0",
 
     '2.8 BSD',      "$manLocalDir/2.8BSD",
     '2.9.1 BSD',    "$manLocalDir/2.9.1BSD",
@@ -990,8 +991,8 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     'Debian 9.13.0', "$manLocalDir/Debian-9.13.0/man:$manLocalDir/Debian-9.13.0/misc",
     'Debian 10.13.0', "$manLocalDir/Debian-10.13.0/man:$manLocalDir/Debian-10.13.0/misc",
     'Debian 11.11.0', "$manLocalDir/Debian-11.11.0/man:$manLocalDir/Debian-11.11.0/misc",
-    'Debian 12.14.0', "$manLocalDir/Debian-12.14.0/man:$manLocalDir/Debian-12.14.0/misc",
-    'Debian 13.5.0', "$manLocalDir/Debian-13.5.0/man:$manLocalDir/Debian-13.5.0/misc",
+    'Debian 12.15.0', "$manLocalDir/Debian-12.15.0/man:$manLocalDir/Debian-12.15.0/misc",
+    'Debian 13.6.0', "$manLocalDir/Debian-13.6.0/man:$manLocalDir/Debian-13.6.0/misc",
     'Debian 14.0 unstable', "$manLocalDir/Debian-unstable/man:$manLocalDir/Debian-unstable/misc",
 
     'Ubuntu 23.10 mantic', "$manLocalDir/Ubuntu-mantic-23.10/man:$manLocalDir/Ubuntu-mantic-23.10/misc",
@@ -1050,7 +1051,7 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     # alias SunOS 0.4, apparently released in April 1983 based on 4.2BSD beta
     'Sun UNIX 0.4', "$manLocalDir/Sun-UNIX-0.4",
 
-    'macOS 26.5.2',   "$manLocalDir/macOS-26.5.2/man:$manLocalDir/macOS-26.5.2/developer-man:$manLocalDir/macOS-26.5.2/developer-platform-sdk-man:$manLocalDir/macOS-26.5.2/xctoolchain-man",  
+    'macOS 26.6.1',   "$manLocalDir/macOS-26.6.1/man:$manLocalDir/macOS-26.6.1/developer-man:$manLocalDir/macOS-26.6.1/developer-platform-sdk-man:$manLocalDir/macOS-26.6.1/xctoolchain-man",  
     'macOS 15.7.5',   "$manLocalDir/macOS-15.7.5/man:$manLocalDir/macOS-15.7.5/developer-man:$manLocalDir/macOS-15.7.5/developer-platform-sdk-man:$manLocalDir/macOS-15.7.5/xctoolchain-man",  
     'macOS 14.8.5',   "$manLocalDir/macOS-14.8.5/man:$manLocalDir/macOS-14.8.5/developer-man:$manLocalDir/macOS-14.8.5/developer-platform-man:$manLocalDir/macOS-14.8.5/developer-platform-sdk-man:$manLocalDir/macOS-14.8.5/xctoolchain-man",  
     'macOS 13.6.5', "$manLocalDir/macOS-13.6.5/man:$manLocalDir/macOS-13.6.5/developer-man:$manLocalDir/macOS-13.6.5/developer-platform-man:$manLocalDir/macOS-13.6.5/developer-platform-sdk-man:$manLocalDir/macOS-13.6.5/xctoolchain-man",  
@@ -1212,6 +1213,7 @@ my %arch = (
 'NetBSD 9.4' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
 'NetBSD 10.0' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
 'NetBSD 10.1' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
+'NetBSD 11.0' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
 'OpenBSD 4.7' => { 'arch' => [qw/alpha amd64 armish aviion hp300 hppa hppa64 i386 landisk loongson luna88k mac68k macppc mvme68k mvme88k mvmeppc palm sgi socppc sparc sparc64 vax zaurus/] }, 
 'OpenBSD 4.8' => { 'arch' => [qw/alpha amd64 armish aviion hp300 hppa hppa64 i386 landisk loongson luna88k mac68k macppc mvme68k mvme88k mvmeppc palm sgi socppc sparc sparc64 vax zaurus/] }, 
 'OpenBSD 4.9' => { 'arch' => [qw/alpha amd64 armish aviion hp300 hppa hppa64 i386 landisk loongson luna88k mac68k macppc mvme68k mvme88k mvmeppc palm sgi socppc sparc sparc64 vax zaurus/] }, 
@@ -1270,7 +1272,7 @@ while ( ( $key, $val ) = each %manPath ) {
 
     'freebsd-stable',   'FreeBSD 15.1-STABLE',
     'freebsd-stable15', 'FreeBSD 15.1-STABLE',
-    'freebsd-stable14', 'FreeBSD 14.4-STABLE',
+    'freebsd-stable14', 'FreeBSD 14.5-STABLE',
 
     'freebsd-current',       'FreeBSD 16.0-CURRENT',
     'freebsd-release-ports', 'FreeBSD 15.1-RELEASE and Ports',
@@ -1279,7 +1281,7 @@ while ( ( $key, $val ) = each %manPath ) {
     'slackware',  'Linux Slackware 3.1',
     'redhat',     'Red Hat 9.0',
     'suse',       'SuSE 11.3',
-    'debian',     'Debian 13.5.0',
+    'debian',     'Debian 13.6.0',
     'ubuntu',     'Ubuntu 26.04 resolute',
     'dragonfly',  'DragonFly 6.4.2',
     'centos',     'CentOS 7.9',
@@ -1288,7 +1290,7 @@ while ( ( $key, $val ) = each %manPath ) {
     'opendarwin', 'OpenDarwin 7.2.1',
     'macosx',     'Darwin 8.0.1/ppc',
 
-    'netbsd',        'NetBSD 10.1',
+    'netbsd',        'NetBSD 11.0',
     'openbsd',       'OpenBSD 7.9',
     'opensuse',      'openSUSE 15.6',
     'openindiana',   'OpenIndiana 2025.10',
@@ -1303,7 +1305,7 @@ while ( ( $key, $val ) = each %manPath ) {
     'sunos5',        'SunOS 5.10',
     'sunos4',        'SunOS 4.1.3',
     'sunos',         'SunOS 4.1.3',
-    'macos',         'macOS 26.5.2',
+    'macos',         'macOS 26.6.1',
     'plan9',         'Plan 9',
     'osf1',          'OSF1 V5.1/alpha',
     'true64',        'OSF1 V5.1/alpha',

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/ru/status/report-2026-04-2026-06/clusteradm/">
+
+  <title>
+    
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content="  " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="ru" >
+  <meta property="og:url" content="https://www.freebsd.org/ru/status/report-2026-04-2026-06/clusteradm/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/ru\/status\/report-2026-04-2026-06\/clusteradm\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/ru/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              О проекте
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/about">О проекте</a>
+            </li>
+            <li>
+              <a href="/ru/projects/newbies">Введение</a>
+            </li>
+            <li>
+              <a href="/ru/features">Возможности</a>
+            </li>
+            <li>
+              <a href="/ru/privacy">Политика конфиденциальности</a>
+            </li>
+            <li>
+              <a href="/ru/projects">Проекты</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Порты</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Установка FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/where">Установка FreeBSD</a>
+            </li>
+            <li>
+              <a href="/ru/releases">Информация о релизах</a>
+            </li>
+            <li>
+              <a href="/ru/releng">О подготовке релизов</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Документация
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://docs.FreeBSD.org/ru/">Документация</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/handbook/">Руководство FreeBSD</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/faq/">Часто задаваемые вопросы</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/porters-handbook/">Руководство по созданию портов</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/fdp-primer">Учебник проекта документирования</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Страницы Справочника</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Презентации и публикации</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books">Книги</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/articles">Статьи</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Сообщество
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/community">Сообщество</a>
+            </li>
+            <li>
+              <a href="/ru/community/mailinglists">Списки рассылки</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Форумы</a>
+            </li>
+            <li>
+              <a href="/ru/usergroups">Сообщества пользователей</a>
+            </li>
+            <li>
+              <a href="/ru/events">События</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">Вестник FreeBSD</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Разработчики
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/projects">Разработчики</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Идеи для проектов</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Хранилище Git</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">Зеркало GitHub</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Рецензирование кода (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Сервис непрерывной интеграции</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Поддержка
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/support">Поддержка</a>
+            </li>
+            <li>
+              <a href="/ru/commercial">Вендоры</a>
+            </li>
+            <li>
+              <a href="/ru/security">Информация о безопасности</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Сообщения об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support">Отправка сообщений об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support/webresources">Ресурсы Интернет</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="ru">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/ru/" class="current-lang" aria-current="page">Russian</a>
+          </li>
+          
+            <li>
+              <a href="/status/report-2026-04-2026-06/clusteradm/" lang="en">English</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          По­жерт­во­вать
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/ru/about/></a></li>
+  <li><a href=/ru/features/></a></li>
+  <li><a href=/ru/applications/>При­ло­же­ния</a></li>
+  <li><a href=/ru/administration/>Ад­ми­ни­стра­ция</a></li>
+  <li><a href=/ru/news/newsflash/>Но­во­сти</a></li>
+  <li><a href=/ru/events></a></li>
+  <li><a href=/ru/press>Прес­са</a></li>
+  <li><a href=/ru/art>Ил­люс­тра­ции</a></li>
+  <li><a href=/ru/donations>По­жертво­ва­ния</a></li>
+  <li><a href=/ru/copyright></a></li>
+  <li><a href=/ru/privacy>Политика кон­фи­ден­ци­аль­нос­ти</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1></h1>
+    <div class="sect2">
+<h3 id="_команда_администраторов_кластера">Команда администраторов кластера</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://www.freebsd.org/administration/#t-clusteradm">Участники команды администраторов кластера</a> URL: <a href="https://www.freebsd.org/administration/#t-clusteradm" class="bare">https://www.freebsd.org/administration/#t-clusteradm</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Команда администраторов кластера &lt;<a href="mailto:clusteradm@FreeBSD.org">clusteradm@FreeBSD.org</a>&gt;<br/>
+Контактное лицо: Philip Paeps &lt;<a href="mailto:philip@FreeBSD.org">philip@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Члены команды администраторов кластера FreeBSD отвечают за управление машинами, на которые полагается Проект для синхронизации своей распределённой работы и коммуникаций.</p>
+</div>
+<div class="paragraph">
+<p>В этом квартале команда работала над следующим:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Обычная поддержка учётных записей пользователей FreeBSD.org.</p>
+</li>
+<li>
+<p>Обычная поддержка дисков и комплектующих (и их замена) для всех физических хостов и зеркал.</p>
+</li>
+<li>
+<p>Обновление программного обеспечения кластера.</p>
+</li>
+<li>
+<p>Координация работы сообщества зеркал.</p>
+</li>
+<li>
+<p>Дополнительная поддержка команды wiki-admin@.</p>
+</li>
+<li>
+<p>Частые вмешательства для предотвращения атак типа &#34;отказ в обслуживании&#34; со стороны ботов.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_обновление_кластера">Обновление кластера</h4>
+<div class="paragraph">
+<p>Продолжается работа по обновлению программного обеспечения, работающего на машинах кластера FreeBSD.org.
+Мы начали размещать рабочие нагрузки на stable/15.
+В рамках этой работы некоторые рабочие нагрузки переносятся на разные машины.
+Эта работа продолжается на конец квартала.</p>
+</div>
+<div class="paragraph">
+<p>Команда clusteradm обновляет рабочие сборщики пакетов (около 35 физических машин) с периодичностью примерно раз в шесть-восемь недель.
+На этих машинах работают снимки current ветки FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>Другие машины обновляются по мере необходимости, с учётом исправлений безопасности в зависимости от степени их доступности извне.</p>
+</div>
+<div class="paragraph">
+<p>На момент написания этого отчёта в кластере насчитывается 142 физические машины.
+У нас 42 машины на current, 21 на stable/15 и 73 на stable/14.</p>
+</div>
+<div class="paragraph">
+<p>Большинство оставшихся установок stable/13 будут обновлены до stable/15.</p>
+</div>
+<div class="listingblock screen">
+<div class="content">
+<pre> 12.x: Обычных   0, Клеток   7
+ 13.x: Обычных   6, Клеток  31
+ 14.x: Обычных  73, Клеток 254
+ 15.x: Обычных  21, Клеток   4
+ 16.x: Обычных  42, Клеток   6
+Всего: Обычных 142, Клеток 302
+Всего установок: 444
+Работает -RELEASE|{-p*}: 0
+Всего географических сайтов: 13</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_официальные_зеркала_freebsd">Официальные зеркала FreeBSD</h4>
+<div class="paragraph">
+<p>Текущие расположения: Австралия, Бразилия, Япония (два полных зеркальных сайта), Малайзия, Южная Африка, Швеция, Тайвань и Соединённые Штаты Америки — Калифорния, Чикаго, Нью-Джерси и Вашингтон.</p>
+</div>
+<div class="paragraph">
+<p>Наш зеркальный сайт на Тайване испытывает длительный перерыв в работе.</p>
+</div>
+<div class="paragraph">
+<p>Один из наших зеркальных сайтов в Японии получит полное обновление аппаратного обеспечения в 2026Q3.</p>
+</div>
+<div class="paragraph">
+<p>Оборудование и сетевое соединение были щедро предоставлены:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Лаборатория Cloud и SDN при <a href="https://www.bbtower.co.jp/en/corporate/">BroadBand Tower, Inc</a></p>
+</li>
+<li>
+<p><a href="https://www.cs.nycu.edu.tw/">Департамент компьютерных наук, Национальный университет Ян Мин Цзяо Тун</a></p>
+</li>
+<li>
+<p><a href="https://internet.asn.au/">Internet Association of Australia</a></p>
+</li>
+<li>
+<p><a href="https://www.isc.org/">Internet Systems Consortium</a></p>
+</li>
+<li>
+<p><a href="https://www.inx.net.za/">INX-ZA</a></p>
+</li>
+<li>
+<p><a href="https://www.kddi-webcommunications.co.jp/english/">KDDI Web Communications Inc</a></p>
+</li>
+<li>
+<p><a href="https://www.mohe.gov.my/en/services/research/myren">Malaysian Research &amp; Education Network</a></p>
+</li>
+<li>
+<p><a href="https://www.metapeer.com/">MetaPeer</a></p>
+</li>
+<li>
+<p><a href="https://www.nyi.net/">New York Internet</a></p>
+</li>
+<li>
+<p><a href="https://nic.br/">NIC.br</a></p>
+</li>
+<li>
+<p><a href="https://sonic.net">Sonic</a></p>
+</li>
+<li>
+<p><a href="https://www.teleservice.net/">Teleservice Skåne AB</a></p>
+</li>
+<li>
+<p><a href="https://your.org/">Your.Org</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Новые официальные зеркала всегда приветствуются.
+Мы отметили преимущества размещения одиночных зеркал в точках обмена интернет-трафиком (IXP) по всему миру, о чём свидетельствуют наши существующие зеркала в Австралии, Бразилии и Южной Африке.
+Если вы связаны с какими-либо организациями или знаете о них, готовых спонсировать одиночный зеркальный сервер, пожалуйста, свяжитесь с нами.
+Мы особенно заинтересованы в расположении в Европе.</p>
+</div>
+<div class="paragraph">
+<p>Смотрите <a href="https://wiki.freebsd.org/Teams/clusteradm/generic-mirror-layout">общую схему зеркалирования</a> для спецификаций полного зеркального сайта и <a href="https://wiki.freebsd.org/Teams/clusteradm/tiny-mirror">tiny-mirror</a> для одиночного зеркального сайта.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_поддержка_команды_wiki_admin">Поддержка команды wiki-admin@</h4>
+<div class="paragraph">
+<p>Команда администраторов кластера взяла на себя роль wiki-admin на протяжении большей части этого квартала, пока должность была вакантна.
+Недавно была назначена новая команда wiki-admin.
+Команда администраторов кластера продолжает поддерживать команду wiki-admin в необходимых обновлениях внутренней инфраструктуры вики.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_сбор_данных_для_больших_языковых_моделей">Сбор данных для больших языковых моделей</h4>
+<div class="paragraph">
+<p>Инфраструктура Проекта FreeBSD продолжает подвергаться постоянным атакам со стороны сборщиков данных для обучения больших языковых моделей («ИИ»).
+Компании, обучающие эти модели, в значительной степени перенесли операции по сбору данных со своей собственной — легко идентифицируемой — инфраструктуры на ботнеты («резидентные прокси»), что затрудняет их блокировку на сетевых границах без значительного сопутствующего ущерба.
+Команда администраторов кластера снова потратила значительное количество времени в этом квартале на смягчение этих распределённых атак типа «отказ в обслуживании».</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: Анонимные частные лица и компании<br/>
+Спонсор: <a href="https://github.com/sponsors/ppaeps" class="bare">https://github.com/sponsors/ppaeps</a></p>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Последнее изменение</strong>: 21 июля 2026 г. от <a href="https://cgit.freebsd.org/doc/commit/?id=7e4fcb89d9" target="_blank">Vladlen Popolitov</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">О проекте</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/ru/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">Фонд FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/ru/where" class="column-element">Установка FreeBSD</a>
+          </li>
+          <li>
+            <a href="/ru/internal/code-of-conduct" class="column-element">Кодекс поведения</a>
+          </li>
+          <li>
+            <a href="/ru/security" class="column-element">Бюллетени безопасности</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Документация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Портал документации</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Страницы Справочника</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Презентации и публикации</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Предыдущие версии</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">Документы 4.4BSD</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Сообщество</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/ru/articles/contributing" class="column-element">Присоединиться</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Форум сообщества</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Списки рассылки</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">Каналы IRC</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Трекер ошибок</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Правовая информация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Пожертвования</a>
+          </li>
+          <li>
+            <a href="/ru/copyright/freebsd-license" class="column-element">Лицензирование</a>
+          </li>
+          <li>
+            <a href="/ru/privacy" class="column-element">Политика конфиденциальности</a>
+          </li>
+          <li>
+            <a href="/ru/copyright" class="column-element">Юридические уведомления</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p>
+        <span>Сделано <span class="heart">❤️</span> сообществом FreeBSD</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

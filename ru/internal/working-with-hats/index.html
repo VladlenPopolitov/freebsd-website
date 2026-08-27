@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/ru/internal/working-with-hats/">
+
+  <title>
+    Работа с назначенными должностными лицами (Hat-ами) |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" Работа с назначенными должностными лицами (Hat-ами) " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="ru" >
+  <meta property="og:url" content="https://www.freebsd.org/ru/internal/working-with-hats/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/ru\/internal\/working-with-hats\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/ru/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              О проекте
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/about">О проекте</a>
+            </li>
+            <li>
+              <a href="/ru/projects/newbies">Введение</a>
+            </li>
+            <li>
+              <a href="/ru/features">Возможности</a>
+            </li>
+            <li>
+              <a href="/ru/privacy">Политика конфиденциальности</a>
+            </li>
+            <li>
+              <a href="/ru/projects">Проекты</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Порты</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Установка FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/where">Установка FreeBSD</a>
+            </li>
+            <li>
+              <a href="/ru/releases">Информация о релизах</a>
+            </li>
+            <li>
+              <a href="/ru/releng">О подготовке релизов</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Документация
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://docs.FreeBSD.org/ru/">Документация</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/handbook/">Руководство FreeBSD</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/faq/">Часто задаваемые вопросы</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/porters-handbook/">Руководство по созданию портов</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/fdp-primer">Учебник проекта документирования</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Страницы Справочника</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Презентации и публикации</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books">Книги</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/articles">Статьи</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Сообщество
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/community">Сообщество</a>
+            </li>
+            <li>
+              <a href="/ru/community/mailinglists">Списки рассылки</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Форумы</a>
+            </li>
+            <li>
+              <a href="/ru/usergroups">Сообщества пользователей</a>
+            </li>
+            <li>
+              <a href="/ru/events">События</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">Вестник FreeBSD</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Разработчики
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/projects">Разработчики</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Идеи для проектов</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Хранилище Git</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">Зеркало GitHub</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Рецензирование кода (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Сервис непрерывной интеграции</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Поддержка
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/support">Поддержка</a>
+            </li>
+            <li>
+              <a href="/ru/commercial">Вендоры</a>
+            </li>
+            <li>
+              <a href="/ru/security">Информация о безопасности</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Сообщения об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support">Отправка сообщений об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support/webresources">Ресурсы Интернет</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="ru">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/ru/" class="current-lang" aria-current="page">Russian</a>
+          </li>
+          
+            <li>
+              <a href="/internal/working-with-hats/" lang="en">English</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          По­жерт­во­вать
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=https://docs.FreeBSD.org/ru/>Документация</a></li>
+  <li><a href=https://docs.FreeBSD.org/ru/books/faq/>Час­то за­да­ва­е­мые воп­ро­сы</a></li>
+  <li><a href=https://docs.FreeBSD.org/ru/books/handbook/></a></li>
+  <li><a href="https://man.FreeBSD.org">Стра­ни­цы Спра­воч­ни­ка</a></li>
+  <li><a href="https://papers.freebsd.org/">Пре­зен­та­ции и ис­сле­до­ва­ния</a></li>
+  <li><a href=https://docs.FreeBSD.org/ru/>Книги и статьи</a></li>
+  <li><a href=/ru/docs/webresources/>Веб-ресурсы</a></li>
+  <li><a href=/ru/projects/newbies/>Для но­вич­ков</a></li>
+  <li><a href=/ru/docproj>Про­ект до­ку­мен­ти­ро­ва­ния</a></li>
+  <li><a href="https://docs.freebsd.org/doc/">Архив</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>Работа с назначенными должностными лицами (Hat-ами)</h1>
+    <div class="paragraph">
+<p>Warner Losh, член Основной Команды (Core Team) на момент написания приведённого ниже текста, отмечает следующие соображения и практики при работе с Ролями (hat):</p>
+</div>
+<div class="paragraph">
+<p>Это не официальное заявление Основной Команды, а скорее личная интерпретация позиции Основной Команды одним из её членов, как действующим членом Основной Команды, так и бывшим офицером безопасности. Это всего лишь руководство, а не дубина для выражения обид. Подобно тому, как style(9) является руководством для исходного кода, этот документ не задуман как абсолютная смирительная рубашка.</p>
+</div>
+<div class="paragraph">
+<p>Когда Основная Команда назначает кого-либо на Роль, она ожидает, что этот человек будет нести ответственность за определённую область дерева исходных кодов. Основная Команда ожидает, что этот человек будет конечным авторитетом в этой области дерева или будет обладать достаточным самоосознанием, чтобы понимать, что он таковым не является, и привлекать квалифицированную помощь. Основная Команда ожидает, что этот человек будет направлять разработку в этой области дерева. Иногда это означает принятие активной роли в повседневных делах, а в других случаях — реактивной роли в рецензировании уже закоммиченного кода.</p>
+</div>
+<div class="paragraph">
+<p>Когда участники присылают патчи, которые потенциально влияют на эту область дерева, Основная Команда ожидает, что Роль или его назначенные заместители должным образом проверят эти патчи. Основная Команда ожидает, что Роль будет работать с автором патча, чтобы исправить возможные проблемы. Основная Команда ожидает, что Роль будет предлагать решения и работать с автором для достижения компромисса. Основная Команда ожидает, что Роль будет вежлив. Разумно, чтобы Роли просили соблюдать обычные правила проекта при проверке патчей (например, чтобы они в целом соответствовали style(9) или преобладающему стилю файла, чтобы изменения стиля и содержания были разделены).</p>
+</div>
+<div class="paragraph">
+<p>Когда возникает спор, Основная Команда ожидает, что Роль приложит все усилия для достижения компромисса или иного разрешения спора. Ожидается, что Роль будет вежлив со всеми вовлечёнными сторонами. В крайних случаях Основная Команда признаёт, что Роли могут применить жёсткую меру и сказать «нет, это неприемлемо и не может быть добавлено (или должно быть отменено)». Основная Команда рассматривает эту последнюю возможность как крайнее средство и не одобряет использование её слишком часто или в качестве первой реакции.</p>
+</div>
+<div class="paragraph">
+<p>Часто жизненные обстоятельства мешают Роли выполнять свои обязанности. Одним из условий, которые Основная Команда обычно предъявляет к Ролям, является наличие заместителя, который может действовать в их отсутствие. Ожидается, что этот заместитель будет активным участником команды, которую собирает Роль, и должен быть осведомлён обо всех вопросах, касающихся той части дерева, которую Роль курирует. Ожидается, что заместитель сможет действовать в отсутствие Роли. Например, заместители офицера безопасности рассылают уведомления о безопасности, когда офицер отсутствует. В крайних случаях заместитель может отложить вопрос до возвращения Роли, но это ожидается как исключение, а не правило, особенно если возвращение Роли ожидается нескоро.</p>
+</div>
+<div class="paragraph">
+<p>Роли подотчётны Основной Команде. Если они хорошо выполняют свою работу, Основная Команда оставит их в покое. Если они плохо справляются, Основная Команда имеет возможность отстранить их. Ожидается, что Роли будут работать с Основной Командой, если у Основной Команды есть претензии к их исполнению обязанностей. Они занимают свои должности по усмотрению Основной Команды.</p>
+</div>
+<div class="paragraph">
+<p>Иногда Основная Команда налагает на конкретную Роль дополнительные, специфические требования, которые не применяются ко всем Ролям. Эти условия могут меняться со временем.</p>
+</div>
+<div class="paragraph">
+<p>Ожидается, что коммиттеры и другие лица, работающие с Ролями, будут руководствоваться здравым смыслом и вежливо общаться с Ролями. Ожидается, что они будут работать с Ролью и его командой для достижения решения, приемлемого для всех. В случае, если компромисс недостижим, ожидается, что коммиттеры примут решения Роли с доброй волей. В исключительных случаях эти решения могут быть обжалованы в Основной Команде. Однако Основная Команда, как правило, не будет отменять решения назначенных ею Ролей, если только Роль не действовал недобросовестно или произвольно. Основная Команда не является техническим наблюдательным советом и создала Роли как мини-наблюдательные советы, чтобы обеспечить надлежащие рамки для разрешения споров.</p>
+</div>
+<div class="paragraph">
+<p>Если коммиттер считает, что Роль злоупотребляет своей властью или регулярно грубит участникам, он должен довести этот вопрос до Основной Команды. Эта проблема может быть технической, социальной, процедурной или их комбинацией или подмножеством. Основная Команда рассмотрит дело и примет решение и ожидает, что обе стороны будут соблюдать это решение. Основная Команда ценит конкретные жалобы, а не общие, поскольку их легче разрешить.</p>
+</div>
+<div class="paragraph">
+<p>Основная Команда ожидает, что коммиттеры будут работать вместе в соответствующих списках рассылки для решения своих проблем. Роль и его команда должны относительно редко вовлекаться в свою роль как Роль, а вместо этого должны обычно быть просто ещё одним коммиттером. (Одно исключение — должность офицера безопасности, которая должна тайно устранять уязвимости до их объявления.) Роль должен быть «первым среди равных», а не председателем.</p>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Последнее изменение</strong>: 10 августа 2026 г. от <a href="https://cgit.freebsd.org/doc/commit/?id=d71d251088" target="_blank">Vladlen Popolitov</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">О проекте</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/ru/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">Фонд FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/ru/where" class="column-element">Установка FreeBSD</a>
+          </li>
+          <li>
+            <a href="/ru/internal/code-of-conduct" class="column-element">Кодекс поведения</a>
+          </li>
+          <li>
+            <a href="/ru/security" class="column-element">Бюллетени безопасности</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Документация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Портал документации</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Страницы Справочника</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Презентации и публикации</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Предыдущие версии</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">Документы 4.4BSD</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Сообщество</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/ru/articles/contributing" class="column-element">Присоединиться</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Форум сообщества</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Списки рассылки</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">Каналы IRC</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Трекер ошибок</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Правовая информация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Пожертвования</a>
+          </li>
+          <li>
+            <a href="/ru/copyright/freebsd-license" class="column-element">Лицензирование</a>
+          </li>
+          <li>
+            <a href="/ru/privacy" class="column-element">Политика конфиденциальности</a>
+          </li>
+          <li>
+            <a href="/ru/copyright" class="column-element">Юридические уведомления</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p>
+        <span>Сделано <span class="heart">❤️</span> сообществом FreeBSD</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

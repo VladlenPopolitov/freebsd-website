@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/status/report-2026-04-2026-06/hpc-ports-modernization/">
+
+  <title>
+    
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content="  " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="en" >
+  <meta property="og:url" content="https://www.freebsd.org/status/report-2026-04-2026-06/hpc-ports-modernization/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/status\/report-2026-04-2026-06\/hpc-ports-modernization\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              About
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/projects/newbies">Introduction</a>
+            </li>
+            <li>
+              <a href="/features">Features</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Ports</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Get FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/where">Get FreeBSD</a>
+            </li>
+            <li>
+              <a href="/releases">Release Information</a>
+            </li>
+            <li>
+              <a href="/releng">Release Engineering</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Documentation
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://docs.FreeBSD.org/en/">Documentation</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/en/books/handbook/">Handbook</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/en/books/faq/">FAQ</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/en/books/porters-handbook/">Porter&#39;s Handbook</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/en/books/fdp-primer">Documentation Project Handbook</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Manual pages</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Presentations and papers</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/en/books">Books</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/en/articles">Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Community
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/community">Community</a>
+            </li>
+            <li>
+              <a href="/community/mailinglists">Mailing lists</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Forums</a>
+            </li>
+            <li>
+              <a href="/usergroups">User Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">FreeBSD Journal</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Developers
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/projects">Developers</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Project Ideas</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Git Repository</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">GitHub Mirror</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Code Review (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Continuous Integration Service</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Support
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/support">Support</a>
+            </li>
+            <li>
+              <a href="/commercial">Vendors</a>
+            </li>
+            <li>
+              <a href="/security">Security Information</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support">Submitting Bug Reports</a>
+            </li>
+            <li>
+              <a href="/support/webresources">Web Resources</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="en">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/" class="current-lang" aria-current="page">English</a>
+          </li>
+          
+            <li>
+              <a href="/ru/status/report-2026-04-2026-06/hpc-ports-modernization/" lang="ru">Russian</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          Donate
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/about/></a></li>
+  <li><a href=/features/></a></li>
+  <li><a href=/applications/>Applications</a></li>
+  <li><a href=/administration/>Administration</a></li>
+  <li><a href=/news/newsflash/>News</a></li>
+  <li><a href=/events></a></li>
+  <li><a href=/press>Press</a></li>
+  <li><a href=/art>Artwork</a></li>
+  <li><a href=/donations>Donations</a></li>
+  <li><a href=/copyright></a></li>
+  <li><a href=/privacy>Privacy Policy</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1></h1>
+    <div class="sect2">
+<h3 id="_freebsd_hpc_ports_modernization_slurm_26_05_ucx_1_20_upstreaming_and_mpi_parallel_file_utilities">FreeBSD HPC Ports Modernization: Slurm 26.05, UCX 1.20 Upstreaming, and MPI-Parallel File Utilities</h3>
+<div class="paragraph">
+<p>Links:<br/>
+<a href="https://cgit.freebsd.org/ports/tree/sysutils/slurm-wlm/">sysutils/slurm-wlm</a> URL: <a href="https://cgit.freebsd.org/ports/tree/sysutils/slurm-wlm/" class="bare">https://cgit.freebsd.org/ports/tree/sysutils/slurm-wlm/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/net/ucx/">net/ucx</a> URL: <a href="https://cgit.freebsd.org/ports/tree/net/ucx/" class="bare">https://cgit.freebsd.org/ports/tree/net/ucx/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/sysutils/mpifileutils/">sysutils/mpifileutils</a> URL: <a href="https://cgit.freebsd.org/ports/tree/sysutils/mpifileutils/" class="bare">https://cgit.freebsd.org/ports/tree/sysutils/mpifileutils/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/devel/libcircle/">devel/libcircle</a> URL: <a href="https://cgit.freebsd.org/ports/tree/devel/libcircle/" class="bare">https://cgit.freebsd.org/ports/tree/devel/libcircle/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/devel/lwgrp/">devel/lwgrp</a> URL: <a href="https://cgit.freebsd.org/ports/tree/devel/lwgrp/" class="bare">https://cgit.freebsd.org/ports/tree/devel/lwgrp/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/devel/dtcmp/">devel/dtcmp</a> URL: <a href="https://cgit.freebsd.org/ports/tree/devel/dtcmp/" class="bare">https://cgit.freebsd.org/ports/tree/devel/dtcmp/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/benchmarks/py-reframe-hpc/">benchmarks/py-reframe-hpc</a> URL: <a href="https://cgit.freebsd.org/ports/tree/benchmarks/py-reframe-hpc/" class="bare">https://cgit.freebsd.org/ports/tree/benchmarks/py-reframe-hpc/</a><br/>
+<a href="https://github.com/openucx/ucx/pull/11354">openucx/ucx#11354: UCS/TYPE portability fixes for non-glibc/Clang environments (merged)</a> URL: <a href="https://github.com/openucx/ucx/pull/11354" class="bare">https://github.com/openucx/ucx/pull/11354</a><br/>
+<a href="https://github.com/openucx/ucx/pull/11549">openucx/ucx#11549: UCS/SYS portability fixes for non-Linux platforms (in review)</a> URL: <a href="https://github.com/openucx/ucx/pull/11549" class="bare">https://github.com/openucx/ucx/pull/11549</a><br/>
+<a href="https://github.com/hpc/mpifileutils/pull/664">hpc/mpifileutils#664: Portability fixes for FreeBSD/non-Linux builds (in review)</a> URL: <a href="https://github.com/hpc/mpifileutils/pull/664" class="bare">https://github.com/hpc/mpifileutils/pull/664</a><br/>
+<a href="https://kavocado.net/reports/">Kavocado Monthly Status Reports – FreeBSD HPC notes</a> URL: <a href="https://kavocado.net/reports/" class="bare">https://kavocado.net/reports/</a></p>
+</div>
+<div class="paragraph">
+<p>Contact: Generic Rikka &lt;<a href="mailto:rikka.goering@outlook.de">rikka.goering@outlook.de</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>This report continues the FreeBSD HPC Ports Modernization initiative.
+Previous quarters focused on bringing the Slurm + PMIx + PRRTE + UCX stack up to date and filling gaps in the surrounding ecosystem.
+This quarter’s work centered on three things: keeping the core scheduler and communication libraries current against fast-moving upstream releases, upstreaming the FreeBSD portability fixes accumulated while maintaining these ports so the local patchsets keep shrinking, and adding a new port for MPI-parallel file utilities that are common on large HPC filesystems.</p>
+</div>
+<div class="sect3">
+<h4 id="_work_completed">Work completed</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated <a href="https://cgit.freebsd.org/ports/tree/sysutils/slurm-wlm/">sysutils/slurm-wlm</a> twice this quarter, from 25.11.4 to 25.11.5 and then from 25.11.5 to 26.05.1, tracking the latest upstream releases.</p>
+</li>
+<li>
+<p>Fixed several FreeBSD-specific runtime issues in <a href="https://cgit.freebsd.org/ports/tree/net/ucx/">net/ucx</a>: hardened async thread state handling, corrected UCM relocation handling, fixed mm signal socket binding, and resolved other FreeBSD runtime portability issues.</p>
+</li>
+<li>
+<p>Updated <a href="https://cgit.freebsd.org/ports/tree/net/ucx/">net/ucx</a> from 1.20.0 to 1.20.1, and separately fixed a libucm early-init panic together with several gtest suite failures uncovered while validating the update.</p>
+</li>
+<li>
+<p>Added <a href="https://cgit.freebsd.org/ports/tree/sysutils/mpifileutils/">sysutils/mpifileutils</a> as a new port, along with its dependency stack: <a href="https://cgit.freebsd.org/ports/tree/devel/libcircle/">devel/libcircle</a>, <a href="https://cgit.freebsd.org/ports/tree/devel/lwgrp/">devel/lwgrp</a>, and <a href="https://cgit.freebsd.org/ports/tree/devel/dtcmp/">devel/dtcmp</a>.
+These provide MPI-parallel file utilities (copy, remove, checksum, etc.) commonly used on large HPC filesystems.</p>
+</li>
+<li>
+<p>Updated <a href="https://cgit.freebsd.org/ports/tree/benchmarks/py-reframe-hpc/">benchmarks/py-reframe-hpc</a> twice this quarter to track upstream releases of the regression testing framework.</p>
+</li>
+<li>
+<p>Upstreamed &#34;UCS/TYPE: Portability fixes for non-glibc/Clang environments&#34; to UCX, which was reviewed and merged.</p>
+</li>
+<li>
+<p>Opened &#34;UCS/SYS: portability fixes for non-Linux platforms&#34; against UCX, covering hostname buffer sizing, MAC address retrieval via <code>getifaddrs()</code>/<code>AF_LINK</code>, shared-memory error reporting, <code>mmap</code>/<code>munmap</code>-based reallocation, and <code>cpuset_getaffinity()</code>-based thread affinity queries; currently addressing review feedback.</p>
+</li>
+<li>
+<p>Opened a portability PR against mpifileutils guarding Linux-only APIs for FreeBSD and other non-Linux builds; currently in review.</p>
+</li>
+<li>
+<p>Collaborated with SchedMD on a Slurm configure-time probe for <code>H5PTopen</code>, used to detect the HDF5 high-level library, which was merged upstream.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_work_in_progress">Work in progress</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Addressing reviewer feedback on the open UCX and mpifileutils portability pull requests to get them merged upstream and reduce the FreeBSD ports&#39; local patchsets further.</p>
+</li>
+<li>
+<p>Continuing collaboration with SchedMD to upstream additional portability fixes discovered while maintaining <a href="https://cgit.freebsd.org/ports/tree/sysutils/slurm-wlm/">sysutils/slurm-wlm</a> on FreeBSD, including BSD socket-handling improvements.</p>
+</li>
+<li>
+<p>Evaluating a <code>proctrack/freebsd_reaper</code> Slurm plugin design, made possible by recently landed FreeBSD kernel support for exposing reaper metadata in process information.</p>
+</li>
+<li>
+<p>Continuing to track upstream Slurm, UCX, and PMIx/PRRTE releases closely to keep the FreeBSD ports current with minimal local patching.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_future_plans">Future plans</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Land the outstanding UCX and mpifileutils upstream pull requests, and continue identifying further portability issues to upstream rather than patch locally.</p>
+</li>
+<li>
+<p>Prototype and submit the Slurm <code>proctrack/freebsd_reaper</code> plugin once the underlying kernel interface work is finalized.</p>
+</li>
+<li>
+<p>Continue expanding the HPC software ecosystem available in the FreeBSD Ports Collection and reduce local patchsets across the stack wherever upstream acceptance is possible.</p>
+</li>
+<li>
+<p>Document a reference Slurm + OpenMPI + PMIx + PRRTE + UCX deployment on FreeBSD to lower the barrier for new sites experimenting with FreeBSD in an HPC context.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Last modified on</strong>: July 25, 2026 by <a href="https://cgit.freebsd.org/doc/commit/?id=9ee37b1761" target="_blank">Lorenzo Salvadore</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">About</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">FreeBSD Foundation</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/where" class="column-element">Get FreeBSD</a>
+          </li>
+          <li>
+            <a href="/internal/code-of-conduct" class="column-element">Code of Conduct</a>
+          </li>
+          <li>
+            <a href="/security" class="column-element">Security Advisories</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Documentation</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Documentation portal</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Manual pages</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Presentations and papers</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Previous versions</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">4.4BSD Documents</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Community</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/en/articles/contributing" class="column-element">Get involved</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Community forum</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Mailing lists</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">IRC Channels</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Bug Tracker</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Legal</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Donations</a>
+          </li>
+          <li>
+            <a href="/copyright/freebsd-license" class="column-element">Licensing</a>
+          </li>
+          <li>
+            <a href="/privacy" class="column-element">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/copyright" class="column-element">Legal notices</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 The FreeBSD Project. All rights reserved</p>
+        <span>Made with <span class="heart">❤️</span> by the FreeBSD Community</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

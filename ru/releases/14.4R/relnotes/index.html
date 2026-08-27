@@ -334,6 +334,8 @@
         
         
         
+        <li>Пред­сто­я­щий ре­лиз: <a href=https://www.freebsd.msk.ru/releases/15.2R/schedule/>15.2</a></li>
+        
         
         
       </ul>
@@ -346,7 +348,20 @@
   </aside>
 
   <div id="contentwrap">
-    <h1>Информация о релизе FreeBSD 14.4-RELEASE</h1><div class="sect1">
+    <h1>Информация о релизе FreeBSD 14.4-RELEASE</h1>
+    <nav class="release-docs" aria-label="Документы релиза">
+            <a href="/ru/releases/14.4R/">FreeBSD 14.4</a>:
+            <ul>
+              <li><a href="/ru/releases/14.4R/announce/">Анонс</a></li>
+              <li><a href="/ru/releases/14.4R/signatures/">Подписанные контрольные суммы</a></li>
+              <li><a href="/ru/releases/14.4R/installation/">Инструкции по обновлению</a></li>
+              <li><a href="/ru/releases/14.4R/hardware/">Информация об аппаратной совместимости</a></li>
+              <li><span aria-current="page">Информация о релизе</span></li>
+              <li><a href="/ru/releases/14.4R/errata/">Исправления и дополнения</a></li>
+              <li><a href="/ru/releases/14.4R/readme/">Readme</a></li>
+              <li><a href="/ru/releases/14.4R/schedule/">Расписание</a></li>
+            </ul>
+          </nav><div class="sect1">
 <h2 id="_аннотация">Аннотация</h2>
 <div class="sectionbody">
 <div class="paragraph abstract-title">
@@ -368,9 +383,8 @@
 </li>
 <li><a href="#userland">Пользовательское окружение</a>
 <ul class="sectlevel2">
-<li><a href="#userland-config">Изменения конфигурации пользовательского окружения</a></li>
 <li><a href="#userland-programs">Изменения в пользовательских приложениях</a></li>
-<li><a href="#userland-contrib">Предоставленное программное обеспечение</a></li>
+<li><a href="#userland-contrib">Стороннее системное программное обеспечение</a></li>
 <li><a href="#userland-deprecated-programs">Устаревшие приложения</a></li>
 <li><a href="#userland-libraries">Библиотеки времени выполнения и API</a></li>
 </ul>
@@ -384,7 +398,7 @@
 <li><a href="#drivers">Устройства и драйверы</a>
 <ul class="sectlevel2">
 <li><a href="#drivers-device">Драйверы устройств</a></li>
-<li><a href="#drivers-removals">Устаревшие и удаленные драйверы</a></li>
+<li><a href="#drivers-removals">Устаревшие и удалённые драйверы</a></li>
 </ul>
 </li>
 <li><a href="#storage">Подсистема хранения данных</a>
@@ -461,7 +475,7 @@
 Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> требует, чтобы обновляемая система имела подключение к сети Интернет.</p>
 </div>
 <div class="paragraph">
-<p>Source-based upgrades (those based on recompiling the FreeBSD base system from source code) from previous versions are supported, according to the instructions in <span class="filename">/usr/src/UPDATING</span>.</p>
+<p>Поддерживается модернизация предыдущих версий из исходного кода (основанная на перекомпиляции исходного кода базовой системы FreeBSD) в соответствии с инструкциями в файле <span class="filename">/usr/src/UPDATING</span>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -637,73 +651,9 @@
 <p>Этот раздел охватывает изменения и дополнения в пользовательских приложениях, предоставленном программном обеспечении и системных утилитах.</p>
 </div>
 <div class="sect2">
-<h3 id="userland-config">Изменения конфигурации пользовательского окружения</h3>
-
-</div>
-<div class="sect2">
 <h3 id="userland-programs">Изменения в пользовательских приложениях</h3>
 <div class="paragraph">
-<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=newfs&amp;sektion=8&amp;format=html">newfs(8)</a> получила флаг <code>-u</code> для отключения механизма soft updates и журналирования soft updates, предоставляя способ отключить включенные по умолчанию soft updates для файловых систем UFS2.
-<a href="https://cgit.freebsd.org/src/commit/?id=929ef0d36c6c">929ef0d36c6c</a>.
-<span class="contrib">(Sponsored by Klara, Inc. | NetApp, Inc.)</span>
-</p>
-</div>
-<div class="paragraph">
-<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=sockstat&amp;sektion=1&amp;format=html">sockstat(1)</a> теперь по умолчанию отображает конечные точки UDP-Lite, обеспечивая видимость этих сокетов наряду с другими сетевыми соединениями.
-<a href="https://cgit.freebsd.org/src/commit/?id=23cda744e4da">23cda744e4da</a>.</p>
-</div>
-<div class="paragraph">
-<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=mdo&amp;sektion=1&amp;format=html">mdo(1)</a> получила новые опции для управления идентификаторами пользователей и групп в запускаемых процессах, включая <code>-k</code> для сохранения текущих пользователей, <code>-g</code> и <code>-G</code> для установки основной и дополнительных групп, <code>-s</code> для дополнения списка дополнительных групп, а также <code>--euid</code>/<code>--ruid</code>/<code>--svuid</code>/<code>--egid</code>/<code>--rgid</code>/<code>--svgid</code> для переопределения конкретных идентификаторов. Это обеспечивает более тонкое управление учетными данными процессов с сохранением совместимости с существующим поведением.
-<a href="https://cgit.freebsd.org/src/commit/?id=58f55afb301b">58f55afb301b</a>.
-<span class="contrib">(Sponsored by The FreeBSD Foundation | Google LLC (GSoC 2025))</span>
-</p>
-</div>
-<div class="paragraph">
-<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> теперь устанавливает разделяемые библиотеки в определенном порядке (libsys, libc, libthr, затем остальные) для предотвращения сбоев при обновлении с 14.x до 15.x.
-<a href="https://cgit.freebsd.org/src/commit/?id=e26928669f39">e26928669f39</a>.
-<span class="contrib">(Sponsored by https://www.patreon.com/cperciva)</span>
-</p>
-</div>
-<div class="paragraph">
-<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=ngctl&amp;sektion=8&amp;format=html">ngctl(8)</a> получила флаг <code>-j</code> для запуска внутри jail, что позволяет управлять узлами netgraph из окружения jail. Это дает администраторам возможность настраивать конфигурации netgraph в jail, где ngctl может быть недоступен напрямую.
-<a href="https://cgit.freebsd.org/src/commit/?id=04911babef1b">04911babef1b</a>.</p>
-</div>
-<div class="paragraph">
-<p>Установщик <a href="https://man.freebsd.org/cgi/man.cgi?query=bsdinstall&amp;sektion=8&amp;format=html">bsdinstall(8)</a> больше не поддерживает установку ZFS на диски с разметкой MBR. Это удаляет ранее неработающую опцию, которая могла приводить к сбоям установки.
-<a href="https://cgit.freebsd.org/src/commit/?id=220584471931">220584471931</a>.
-<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
-</p>
-</div>
-<div class="paragraph">
-<p>Появилась новая утилита для управления звуковыми устройствами — <a href="https://man.freebsd.org/cgi/man.cgi?query=sndctl&amp;sektion=8&amp;format=html">sndctl(8)</a>, с интерфейсом, аналогичным <a href="https://man.freebsd.org/cgi/man.cgi?query=mixer&amp;sektion=8&amp;format=html">mixer(8)</a>.
-<a href="https://cgit.freebsd.org/src/commit/?id=00988d12bc37">00988d12bc37</a>.
-<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
-</p>
-</div>
-<div class="paragraph">
-<p>Инструмент <a href="https://man.freebsd.org/cgi/man.cgi?query=nuageinit&amp;sektion=7&amp;format=html">nuageinit(7)</a> теперь поддерживает команду chpasswd, позволяя изменять пароли через список или многострочную строку, включая устаревший синтаксис для совместимости с некоторыми провайдерами.
-<a href="https://cgit.freebsd.org/src/commit/?id=6c912470030b">6c912470030b</a>.
-<span class="contrib">(Sponsored by OVHCloud)</span>
-</p>
-</div>
-<div class="paragraph">
-<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=pkg&amp;sektion=7&amp;format=html">pkg(7)</a> теперь обрабатывает аргументы командной строки так же, как <a href="https://man.freebsd.org/cgi/man.cgi?query=pkg&amp;sektion=8&amp;format=html">pkg(8)</a>, требуя размещения опций в определенных позициях. Это изменяет поведение некоторых ранее допустимых последовательностей команд, например, <code>pkg -f bootstrap</code> больше не работает; пользователи должны использовать <code>pkg bootstrap -f</code>.
-<a href="https://cgit.freebsd.org/src/commit/?id=62947e508161">62947e508161</a>.
-<span class="contrib">(Sponsored by The FreeBSD Foundation | The FreeBSD Foundation)</span>
-</p>
-</div>
-<div class="paragraph">
-<p>Добавлены параметры meta и env для jail, позволяющие связывать с каждым jail произвольные строковые метаданные и информацию окружения. Параметры можно задавать при создании jail или изменять позже с помощью <code>jail -cm</code>, а просматривать с помощью <a href="https://man.freebsd.org/cgi/man.cgi?query=jls&amp;sektion=8&amp;format=html">jls(8)</a>. Sysctl <code>security.jail.meta_maxbufsize</code> управляет максимальным размером этих параметров.
-<a href="https://cgit.freebsd.org/src/commit/?id=527027da391d">527027da391d</a>.
-<span class="contrib">(Sponsored by SkunkWerks GmbH)</span>
-</p>
-</div>
-<div class="paragraph">
-<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=swapon&amp;sektion=8&amp;format=html">swapon(8)</a> теперь поддерживает зашифрованные файлы подкачки с использованием устройств <a href="https://man.freebsd.org/cgi/man.cgi?query=md&amp;sektion=4&amp;format=html">md(4)</a> с суффиксом <span class="filename">.eli</span> в <a href="https://man.freebsd.org/cgi/man.cgi?query=fstab&amp;sektion=5&amp;format=html">fstab(5)</a>. Это позволяет настраивать зашифрованную подкачку в fstab, как описано ранее в документации.
-<a href="https://cgit.freebsd.org/src/commit/?id=9d80d681ee9d">9d80d681ee9d</a>.</p>
-</div>
-<div class="paragraph">
-<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=diff&amp;sektion=1&amp;format=html">diff(1)</a> теперь сообщает об ошибках ввода-вывода, возникающих во время сравнения файлов алгоритмом Стоуна, выводя сообщения об ошибках там, где ранее только код возврата указывал на сбой.
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=diff&amp;sektion=1&amp;format=html">diff(1)</a> теперь сообщает об ошибках ввода-вывода, возникающих на этапе сравнения файлов в соответствии с алгоритмом Стоуна, выводя сообщения об ошибках там, где ранее на сбой указывал только код завершения работы.
 <a href="https://cgit.freebsd.org/src/commit/?id=3c10ed2ba3aa">3c10ed2ba3aa</a>.
 <span class="contrib">(Sponsored by Klara, Inc.)</span>
 </p>
@@ -718,132 +668,198 @@
 </p>
 </div>
 <div class="paragraph">
+<p>В утилите <a href="https://man.freebsd.org/cgi/man.cgi?query=mdo&amp;sektion=1&amp;format=html">mdo(1)</a>, предназначенной для повышения полномочий, добавлены новые параметры для управления идентификаторами пользователей и групп в запускаемых процессах, в том числе <code>-k</code> для сохранения текущих пользователей, <code>-g</code> и <code>-G</code> для указания основной и дополнительной групп, <code>-s</code> для дополнения списка дополнительных групп, а также <code>--euid</code>/<code>--ruid</code>/<code>--svuid</code>/<code>--egid</code>/<code>--rgid</code>/<code>--svgid</code> для переопределения конкретных идентификаторов.
+Это обеспечивает более тонкое управление полномочиями процессов с сохранением совместимости с существующим поведением.
+<a href="https://cgit.freebsd.org/src/commit/?id=58f55afb301b">58f55afb301b</a>.
+<span class="contrib">(Sponsored by The FreeBSD Foundation | Google LLC (GSoC 2025))</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=sockstat&amp;sektion=1&amp;format=html">sockstat(1)</a> теперь по умолчанию отображает конечные точки UDP-Lite, обеспечивая видимость этих сокетов наряду с другими сетевыми соединениями.
+<a href="https://cgit.freebsd.org/src/commit/?id=23cda744e4da">23cda744e4da</a>.</p>
+</div>
+<div class="paragraph">
+<p>Инструмент <a href="https://man.freebsd.org/cgi/man.cgi?query=nuageinit&amp;sektion=7&amp;format=html">nuageinit(7)</a> теперь поддерживает команду <strong>chpasswd</strong>, что позволяет изменять пароли при помощи списка или многострочного текста, при этом поддерживается устаревший формат для совместимости с некоторыми провайдерами.
+<a href="https://cgit.freebsd.org/src/commit/?id=6c912470030b">6c912470030b</a>.
+<span class="contrib">(Sponsored by OVHCloud)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=pkg&amp;sektion=7&amp;format=html">pkg(7)</a> теперь обрабатывает аргументы командной строки так же, как <a href="https://man.freebsd.org/cgi/man.cgi?query=pkg&amp;sektion=8&amp;format=html">pkg(8)</a>, требуя указания параметров в тех же самых позициях.
+<strong>Примечание</strong>: Это изменяет поведение некоторых ранее допустимых последовательностей команд, например, <code>pkg -f bootstrap</code> больше не работает; вместо этой команды пользователи должны использовать <code>pkg bootstrap -f</code>.
+<a href="https://cgit.freebsd.org/src/commit/?id=62947e508161">62947e508161</a>.
+<span class="contrib">(Sponsored by The FreeBSD Foundation | The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Программа установки <a href="https://man.freebsd.org/cgi/man.cgi?query=bsdinstall&amp;sektion=8&amp;format=html">bsdinstall(8)</a> больше не поддерживает установку ZFS на диски с разметкой MBR.
+Таким образом, исключён ранее некорректно работавший вариант, который мог приводить к сбоям при установке.
+<a href="https://cgit.freebsd.org/src/commit/?id=220584471931">220584471931</a>.
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=freebsd-update&amp;sektion=8&amp;format=html">freebsd-update(8)</a> теперь устанавливает разделяемые библиотеки в определенном порядке (libsys, libc, libthr, затем остальные) для предотвращения сбоев при обновлении с 14.x до 15.x.
+<a href="https://cgit.freebsd.org/src/commit/?id=e26928669f39">e26928669f39</a>.
+<span class="contrib">(Sponsored by https://www.patreon.com/cperciva)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>В утилите создания файловых систем <a href="https://man.freebsd.org/cgi/man.cgi?query=newfs&amp;sektion=8&amp;format=html">newfs(8)</a> добавлен новый флаг <code>-u</code> для отключения активированных по умолчанию механизмов soft updates и журналирования soft updates для файловых систем UFS2.
+<a href="https://cgit.freebsd.org/src/commit/?id=929ef0d36c6c">929ef0d36c6c</a>.
+<span class="contrib">(Sponsored by Klara, Inc. | NetApp, Inc.)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=ngctl&amp;sektion=8&amp;format=html">ngctl(8)</a> получила флаг <code>-j</code> для подключения и запуска внутри изоляторов, что позволяет управлять узлами netgraph из изолированного системного окружения <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a>.
+Это даёт администраторам возможность управлять настройками netgraph в изолированных окружениях, где ngctl может быть недоступен напрямую.
+<a href="https://cgit.freebsd.org/src/commit/?id=04911babef1b">04911babef1b</a>.</p>
+</div>
+<div class="paragraph">
+<p>Появилась новая утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=sndctl&amp;sektion=8&amp;format=html">sndctl(8)</a> для управления звуковыми устройствами, имеющая интерфейс, подобный <a href="https://man.freebsd.org/cgi/man.cgi?query=mixer&amp;sektion=8&amp;format=html">mixer(8)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=00988d12bc37">00988d12bc37</a>.
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>В подсистему <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a> добавлены параметры <code>meta</code> и <code>env</code>, позволяющие связывать с изолированными окружениями произвольные строковые метаданные и информацию системного окружения.
+Эти параметры можно задавать при создании изолятора или изменять позже с помощью <code>jail -cm</code>, а просматривать с помощью <a href="https://man.freebsd.org/cgi/man.cgi?query=jls&amp;sektion=8&amp;format=html">jls(8)</a>.
+<a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a>-переменная <code>security.jail.meta_maxbufsize</code> управляет максимальным размером этих параметров.
+<a href="https://cgit.freebsd.org/src/commit/?id=527027da391d">527027da391d</a>.
+<span class="contrib">(Sponsored by SkunkWerks GmbH)</span>
+</p>
+</div>
+<div class="paragraph">
 <p>Скрипт запуска Bluetooth <span class="filename">rc.d/bluetooth</span> теперь повторяет попытку сброса hccontrol до трех раз для повышения надежности и исправляет ошибку перенаправления, которая могла создавать посторонние файлы.
 <a href="https://cgit.freebsd.org/src/commit/?id=53d1c328e912">53d1c328e912</a>.</p>
 </div>
+<div class="paragraph">
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=swapon&amp;sektion=8&amp;format=html">swapon(8)</a> теперь поддерживает зашифрованные файлы подкачки с использованием устройств <a href="https://man.freebsd.org/cgi/man.cgi?query=md&amp;sektion=4&amp;format=html">md(4)</a> с суффиксом <span class="filename">.eli</span> в <a href="https://man.freebsd.org/cgi/man.cgi?query=fstab&amp;sektion=5&amp;format=html">fstab(5)</a>.
+Это позволяет настраивать в fstab шифрование памяти подкачки, как описано ранее в документации.
+<a href="https://cgit.freebsd.org/src/commit/?id=9d80d681ee9d">9d80d681ee9d</a>.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="userland-contrib">Предоставленное программное обеспечение</h3>
+<h3 id="userland-contrib">Стороннее системное программное обеспечение</h3>
 <div class="paragraph">
-<p>OpenSSL обновлен до версии 3.0.16.
-<a href="https://cgit.freebsd.org/src/commit/?id=aed5a47b3a8a">aed5a47b3a8a</a>.</p>
-</div>
-<div class="paragraph">
-<p>Шрифт Spleen обновлен до версии 2.2.0, добавлены недостающие символы (длинное тире, короткое тире, дефис, угловые скобки, белый квадрат, крестик, двойной крестик) и улучшено выравнивание символов, особенно для дисплеев с высоким разрешением.
-<a href="https://cgit.freebsd.org/src/commit/?id=c44ec96b471e">c44ec96b471e</a>.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=libarchive&amp;sektion=3&amp;format=html">libarchive(3)</a> обновлен до версии 3.8.5. Включает исправление ошибки в bsdtar, устраняющее регрессию в обработке шаблонов нулевой длины.
-<a href="https://cgit.freebsd.org/src/commit/?id=39fd1181e5b2">39fd1181e5b2</a>.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=xz&amp;sektion=1&amp;format=html">xz(1)</a> обновлен до версии 5.8.2.
-<a href="https://cgit.freebsd.org/src/commit/?id=07700b0107dc">07700b0107dc</a>.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=mtree&amp;sektion=8&amp;format=html">mtree(8)</a> обновлен до версии из NetBSD, улучшена совместимость и исправлены ошибки в mtree.
-<a href="https://cgit.freebsd.org/src/commit/?id=f9d671f726ac">f9d671f726ac</a>.</p>
-</div>
-<div class="paragraph">
-<p>База данных pci_vendors обновлена до версии 2026-02-10.
-<a href="https://cgit.freebsd.org/src/commit/?id=7805899ed791">7805899ed791</a>.</p>
-</div>
-<div class="paragraph">
-<p>tzdata обновлена до версии 2025c.
-<a href="https://cgit.freebsd.org/src/commit/?id=68e2f4cc5e4e">68e2f4cc5e4e</a>.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=bmake&amp;sektion=1&amp;format=html">bmake(1)</a> обновлен до версии 20251111.
-<a href="https://cgit.freebsd.org/src/commit/?id=c95f96dea30a">c95f96dea30a</a>.</p>
-</div>
-<div class="paragraph">
-<p>SQLite обновлен до версии 3.50.4.
-<a href="https://cgit.freebsd.org/src/commit/?id=ef55f6b86626">ef55f6b86626</a>.</p>
-</div>
-<div class="paragraph">
-<p>DNS-резолвер <a href="https://man.freebsd.org/cgi/man.cgi?query=unbound&amp;sektion=8&amp;format=html">unbound(8)</a> обновлён до версии 1.24.1, что устраняет уязвимости к отравлению кэша, связанные с ответами типа YXDOMAIN и «нет данных» (nodata) с типом non-referral, предотвращая возможную атаку отравления кэша со стороны злоумышленника. Это устраняет уязвимость CVE-2025-11411.
-<a href="https://cgit.freebsd.org/src/commit/?id=cd40a23fb249">cd40a23fb249</a>.</p>
-</div>
-<div class="paragraph">
-<p>OpenZFS обновлен до версии 2.2.9. Этот выпуск включает улучшения сокращения ARC, исправления проверок безопасности <code>zpool add</code>, синхронизации zvol blk-mq и исправления математических ошибок преобразования диапазонов BRT.
-<a href="https://cgit.freebsd.org/src/commit/?id=709465f2c4f1">709465f2c4f1</a>.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=less&amp;sektion=1&amp;format=html">less(1)</a> обновлен до версии 685.
-<a href="https://cgit.freebsd.org/src/commit/?id=054ae5e7b465">054ae5e7b465</a>.</p>
-</div>
-<div class="paragraph">
-<p>База данных USB-вендоров обновлена до версии 2025-12-13.
-<a href="https://cgit.freebsd.org/src/commit/?id=02138275effb">02138275effb</a>.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=unbound&amp;sektion=8&amp;format=html">unbound(8)</a> обновлен до версии 1.24.1. Этот выпуск включает исправление безопасности для CVE-2025-11411.
-<a href="https://cgit.freebsd.org/src/commit/?id=eeb41dca070f">eeb41dca070f</a>.</p>
-</div>
-<div class="paragraph">
-<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=kadmin&amp;sektion=1&amp;format=html">kadmin(1)</a> получила новую опцию <code>-f</code> для дампа баз данных Heimdal KDC в формате, совместимом с MIT, что позволяет выполнить миграцию на MIT KDC без воссоздания базы данных с нуля.
-<a href="https://cgit.freebsd.org/src/commit/?id=a93e1b731ae4">a93e1b731ae4</a>.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=mandoc&amp;sektion=1&amp;format=html">mandoc(1)</a> обновлен до версии 2025-09-26. Обновление улучшает сортировку по регистру в базе данных mandoc, добавляет макросы для версий AT&amp;T Unix 8 и 10, предупреждает о пустых строках в <a href="https://man.freebsd.org/cgi/man.cgi?query=man&amp;sektion=7&amp;format=html">man(7)</a> подобно <a href="https://man.freebsd.org/cgi/man.cgi?query=mdoc&amp;sektion=7&amp;format=html">mdoc(7)</a>, а также исправляет регрессию нижнего колонтитула в PDF/PS.
-<a href="https://cgit.freebsd.org/src/commit/?id=7fa4ccb8e4e7">7fa4ccb8e4e7</a>.</p>
-</div>
-<div class="paragraph">
-<p>expat обновлен до версии 2.7.3.
-<a href="https://cgit.freebsd.org/src/commit/?id=a85cfcb61efd">a85cfcb61efd</a>.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=bc&amp;sektion=1&amp;format=html">bc(1)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=dc&amp;sektion=1&amp;format=html">dc(1)</a> обновлены до версии 7.1.0.
+<p>Калькуляторы <a href="https://man.freebsd.org/cgi/man.cgi?query=bc&amp;sektion=1&amp;format=html">bc(1)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=dc&amp;sektion=1&amp;format=html">dc(1)</a> обновлены до версии 7.1.0.
 <a href="https://cgit.freebsd.org/src/commit/?id=ab36487a79cd">ab36487a79cd</a>.</p>
 </div>
 <div class="paragraph">
-<p>Консольный шрифт gallant теперь содержит более 4300 глифов, добавляя поддержку греческого, кириллицы, расширений IPA, расширенной латиницы, символов Zapf Dingbats, стрелок, математических символов, псевдографики, символов валют и глифов Powerline. Это расширяет набор символов, доступных в консоли для многоязычного текста и специальных символов.
-<a href="https://cgit.freebsd.org/src/commit/?id=8d2d6647d65a">8d2d6647d65a</a>.</p>
+<p>Утилита для сборки <a href="https://man.freebsd.org/cgi/man.cgi?query=bmake&amp;sektion=1&amp;format=html">bmake(1)</a> обновлена до версии 20251111.
+<a href="https://cgit.freebsd.org/src/commit/?id=c95f96dea30a">c95f96dea30a</a>.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=libucl&amp;sektion=3&amp;format=html">libucl(3)</a> обновлен до версии 0.9.2.
+<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=kadmin&amp;sektion=1&amp;format=html">kadmin(1)</a> получила новый параметр <code>-f</code> для получения копии баз данных Heimdal KDC в формате, совместимом с MIT, что позволяет выполнить миграцию на MIT KDC без воссоздания базы данных с нуля.
+<a href="https://cgit.freebsd.org/src/commit/?id=a93e1b731ae4">a93e1b731ae4</a>.</p>
+</div>
+<div class="paragraph">
+<p>Утилита постраничного просмотра <a href="https://man.freebsd.org/cgi/man.cgi?query=less&amp;sektion=1&amp;format=html">less(1)</a> обновлена до версии 685.
+<a href="https://cgit.freebsd.org/src/commit/?id=054ae5e7b465">054ae5e7b465</a>.</p>
+</div>
+<div class="paragraph">
+<p>Компилятор страниц Справочника <a href="https://man.freebsd.org/cgi/man.cgi?query=mandoc&amp;sektion=1&amp;format=html">mandoc(1)</a> обновлён до версии 2025-09-26, в которой улучшены сортировка по регистру и визуальная совместимость с <a href="https://man.freebsd.org/cgi/man.cgi?query=groff&amp;sektion=1&amp;format=html">groff(1)</a>, исправлены ошибки работы с нижним колонтитулом в PDF/PS, а также улучшен форматный контроль.
+<a href="https://cgit.freebsd.org/src/commit/?id=7fa4ccb8e4e7">7fa4ccb8e4e7</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=8039d22f6afd">8039d22f6afd</a>.</p>
+</div>
+<div class="paragraph">
+<p>Утилита работы с сетевыми сервисами <a href="https://man.freebsd.org/cgi/man.cgi?query=nc&amp;sektion=1&amp;format=html">nc(1)</a>, в дополнение к номерам портов для параметра <code>-p</code>, теперь принимает имена служб, например, <code>http</code>, в качестве параметров командной строки.
+<a href="https://cgit.freebsd.org/src/commit/?id=0fe58344e829">0fe58344e829</a>.</p>
+</div>
+<div class="paragraph">
+<p>Пакет для сжатия данных <a href="https://man.freebsd.org/cgi/man.cgi?query=xz&amp;sektion=1&amp;format=html">xz(1)</a> обновлён до версии 5.8.2.
+<a href="https://cgit.freebsd.org/src/commit/?id=07700b0107dc">07700b0107dc</a>.</p>
+</div>
+<div class="paragraph">
+<p>Многоформатная библиотека для архивации и сжатия, <a href="https://man.freebsd.org/cgi/man.cgi?query=libarchive&amp;sektion=3&amp;format=html">libarchive(3)</a>, обновлена до версии 3.8.5.
+В неё включено исправление ошибки, связанной с некорректной обработкой шаблонов нулевой длины в <a href="https://man.freebsd.org/cgi/man.cgi?query=tar&amp;sektion=1&amp;format=html">tar(1)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=39fd1181e5b2">39fd1181e5b2</a>.</p>
+</div>
+<div class="paragraph">
+<p>Библиотека libyaml обновлена до версии 0.2.5.
+<a href="https://cgit.freebsd.org/src/commit/?id=e52f11f4bbc8">e52f11f4bbc8</a>.</p>
+</div>
+<div class="paragraph">
+<p>lyaml, связка Lua с libyaml, теперь доступна в базовой системе.
+<a href="https://cgit.freebsd.org/src/commit/?id=c508393e49fc">c508393e49fc</a>.</p>
+</div>
+<div class="paragraph">
+<p>Библиотека <a href="https://man.freebsd.org/cgi/man.cgi?query=libucl&amp;sektion=3&amp;format=html">libucl(3)</a> обновлена до версии 0.9.2.
 <a href="https://cgit.freebsd.org/src/commit/?id=0a8d8b0c878f">0a8d8b0c878f</a>.
 <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
 </p>
 </div>
 <div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=mandoc&amp;sektion=1&amp;format=html">mandoc(1)</a> обновлен до Groff Compat Edition с улучшенной совместимостью с groff в форматировании, обработке ошибок и рендеринге.
-<a href="https://cgit.freebsd.org/src/commit/?id=8039d22f6afd">8039d22f6afd</a>.</p>
+<p>Обработчик XML, expat, обновлён до версии 2.7.3.
+<a href="https://cgit.freebsd.org/src/commit/?id=a85cfcb61efd">a85cfcb61efd</a>.</p>
 </div>
 <div class="paragraph">
-<p>OpenSSH обновлен до версии 10.0p2. Обновление удаляет поддержку слабого алгоритма подписи DSA и изменяет согласование ключей по умолчанию на пост-квантовый гибридный алгоритм mlkem768x25519-sha256. Фаза аутентификации sshd(8) теперь выполняется в отдельном бинарном файле sshd-auth.
+<p>Файловая система OpenZFS обновлена до версии 2.2.9.
+В этот релиз включены улучшения в оптимизации ARC, исправления проверок безопасности <code>zpool add</code>, синхронизации zvol blk-mq и расчётов преобразования диапазонов BRT.
+<a href="https://cgit.freebsd.org/src/commit/?id=709465f2c4f1">709465f2c4f1</a>.</p>
+</div>
+<div class="paragraph">
+<p>Утилита защиты от атак DoS, <a href="https://man.freebsd.org/cgi/man.cgi?query=blacklistd&amp;sektion=8&amp;format=html">blacklistd(8)</a>, обновлена и переименована в <a href="https://man.freebsd.org/cgi/man.cgi?query=blocklistd&amp;sektion=8&amp;format=html">blocklistd(8)</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=4690a369ff6d">4690a369ff6d</a>.</p>
+</div>
+<div class="paragraph">
+<p>Обновлена утилита сопоставления деревьев каталогов <a href="https://man.freebsd.org/cgi/man.cgi?query=mtree&amp;sektion=8&amp;format=html">mtree(8)</a>, при этом улучшена совместимость и исправлены ошибки.
+<a href="https://cgit.freebsd.org/src/commit/?id=f9d671f726ac">f9d671f726ac</a>.</p>
+</div>
+<div class="paragraph">
+<p>Преобразователь имён DNS, <a href="https://man.freebsd.org/cgi/man.cgi?query=unbound&amp;sektion=8&amp;format=html">unbound(8)</a>, обновлён до версии 1.24.1, что устраняет уязвимости к отравлению кэша, связанные с ответами типа <code>YXDOMAIN</code> и nodata с типом non-referral, предотвращая возможную атаку отравления кэша со стороны злоумышленника. Это устраняет уязвимость CVE-2025-11411.
+<a href="https://cgit.freebsd.org/src/commit/?id=eeb41dca070f">eeb41dca070f</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=cd40a23fb249">cd40a23fb249</a>.</p>
+</div>
+<div class="paragraph">
+<p>База данных вендоров PCI обновлена до версии 2026-02-10.
+<a href="https://cgit.freebsd.org/src/commit/?id=7805899ed791">7805899ed791</a>.</p>
+</div>
+<div class="paragraph">
+<p>База данных вендоров USB обновлена до версии 2025-12-13.
+<a href="https://cgit.freebsd.org/src/commit/?id=02138275effb">02138275effb</a>.</p>
+</div>
+<div class="paragraph">
+<p>База данных часовых поясов обновлена до версии 2025c.
+<a href="https://cgit.freebsd.org/src/commit/?id=68e2f4cc5e4e">68e2f4cc5e4e</a>.</p>
+</div>
+<div class="paragraph">
+<p>База данных SQLite обновлена до версии 3.50.4.
+<a href="https://cgit.freebsd.org/src/commit/?id=ef55f6b86626">ef55f6b86626</a>.</p>
+</div>
+<div class="paragraph">
+<p>Консольный шрифт <code>gallant</code> теперь содержит более 4300 символов, добавляя поддержку греческого языка, кириллицы, расширений IPA, расширенной латиницы, символов Zapf Dingbats, стрелок, математических символов, псевдографики, символов валют и Powerline.
+Это расширяет набор символов, доступных в консоли для многоязычного текста и символов.
+<a href="https://cgit.freebsd.org/src/commit/?id=8d2d6647d65a">8d2d6647d65a</a>.</p>
+</div>
+<div class="paragraph">
+<p>Консольный шрифт <code>spleen</code> обновлён до версии 2.2.0, добавлены недостающие символы (длинное тире, короткое тире, дефис, угловые скобки, белый квадрат, крестик, двойной крестик) и улучшено выравнивание символов, особенно для дисплеев с высоким разрешением.
+<a href="https://cgit.freebsd.org/src/commit/?id=c44ec96b471e">c44ec96b471e</a>.</p>
+</div>
+<div class="paragraph">
+<p>OpenSSH обновлён до версии 10.0p2. Обновление удаляет поддержку слабого алгоритма подписи DSA и изменяет согласование ключей по умолчанию на пост-квантовый гибридный алгоритм mlkem768x25519-sha256. Фаза аутентификации sshd(8) теперь выполняется в отдельном бинарном файле sshd-auth.
 <a href="https://cgit.freebsd.org/src/commit/?id=7ca599aa6139">7ca599aa6139</a>.
 <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
 </p>
 </div>
 <div class="paragraph">
-<p>lyaml, привязка Lua для libyaml, теперь доступна в базовой системе.
-<a href="https://cgit.freebsd.org/src/commit/?id=c508393e49fc">c508393e49fc</a>.</p>
-</div>
-<div class="paragraph">
-<p>libyaml обновлен до версии 0.2.5.
-<a href="https://cgit.freebsd.org/src/commit/?id=e52f11f4bbc8">e52f11f4bbc8</a>.</p>
-</div>
-<div class="paragraph">
-<p>Утилита <a href="https://man.freebsd.org/cgi/man.cgi?query=nc&amp;sektion=1&amp;format=html">nc(1)</a> (netcat) теперь принимает имена служб (например, &#39;http&#39;) в дополнение к номерам портов для опции -p и в качестве аргументов командной строки.
-<a href="https://cgit.freebsd.org/src/commit/?id=0fe58344e829">0fe58344e829</a>.</p>
-</div>
-<div class="paragraph">
-<p>Утилита blocklist (<a href="https://man.freebsd.org/cgi/man.cgi?query=blacklistd&amp;sektion=8&amp;format=html">blacklistd(8)</a>) обновлена с изменениями из вышестоящего проекта в рамках переименования из blacklist в blocklist.
-<a href="https://cgit.freebsd.org/src/commit/?id=4690a369ff6d">4690a369ff6d</a>.</p>
+<p>OpenSSL обновлён до версии 3.0.16.
+<a href="https://cgit.freebsd.org/src/commit/?id=aed5a47b3a8a">aed5a47b3a8a</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="userland-deprecated-programs">Устаревшие приложения</h3>
 <div class="paragraph">
-<p>Протокол маршрутизации RIP объявлен устаревшим и будет удален в одном из будущих релизов. Страницы руководства для <a href="https://man.freebsd.org/cgi/man.cgi?query=routed&amp;sektion=8&amp;format=html">routed(8)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=rtquery&amp;sektion=8&amp;format=html">rtquery(8)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=route6d&amp;sektion=8&amp;format=html">route6d(8)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=rip6query&amp;sektion=8&amp;format=html">rip6query(8)</a> обновлены с указанием на устаревание. Пользователям, нуждающимся в RIP, следует использовать альтернативы, такие как &#39;bird&#39; или &#39;quagga&#39; из коллекции портов.
+<p>Протокол маршрутизации RIP выводится из эксплуатации и будет удалён в одном из будущих релизов.
+Страницы Справочника для <a href="https://man.freebsd.org/cgi/man.cgi?query=routed&amp;sektion=8&amp;format=html">routed(8)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=rtquery&amp;sektion=8&amp;format=html">rtquery(8)</a>, <a href="https://man.freebsd.org/cgi/man.cgi?query=route6d&amp;sektion=8&amp;format=html">route6d(8)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=rip6query&amp;sektion=8&amp;format=html">rip6query(8)</a> обновлены с указанием на вывод из эксплуатации.
+Пользователям, которым необходима поддержка RIP, следует использовать альтернативы, такие как &#39;bird&#39; или &#39;quagga&#39; из коллекции портов.
 <a href="https://cgit.freebsd.org/src/commit/?id=d350c18f98fd">d350c18f98fd</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="userland-libraries">Библиотеки времени выполнения и API</h3>
 <div class="paragraph">
-<p>Функции <a href="https://man.freebsd.org/cgi/man.cgi?query=inet_net_ntop&amp;sektion=3&amp;format=html">inet_net_ntop(3)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=inet_net_pton&amp;sektion=3&amp;format=html">inet_net_pton(3)</a> обновлены для корректной обработки IPv6-адресов, исправляя предыдущее некорректное поведение.
+<p>Функции библиотеки для обработки сетевых адресов Интернет <a href="https://man.freebsd.org/cgi/man.cgi?query=inet_net_ntop&amp;sektion=3&amp;format=html">inet_net_ntop(3)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=inet_net_pton&amp;sektion=3&amp;format=html">inet_net_pton(3)</a> обновлены для корректной обработки адресов IPv6, исправляя предыдущее некорректное поведение.
 <a href="https://cgit.freebsd.org/src/commit/?id=b4871be3490d">b4871be3490d</a>.
 <span class="contrib">(Sponsored by https://www.patreon.com/bsdivy)</span>
 </p>
@@ -862,7 +878,8 @@
 <p>Этот раздел охватывает изменения в поддержке облачных сред.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=nuageinit&amp;sektion=7&amp;format=html">nuageinit(7)</a> получил множество улучшений: выполнение теперь журналируется; используется полностью совместимый парсер YAML; улучшена совместимость с cloud-init (добавлены &#39;runcmd&#39;, &#39;packages&#39;, &#39;fqdn&#39;, &#39;hostname&#39;, &#39;sudo&#39;, &#39;write_files&#39;, &#39;nameservers&#39;, &#39;tzsetup&#39;, &#39;doas&#39;); улучшена поддержка сети с множеством исправлений, добавлена поддержка &#39;wakeonlan&#39;, &#39;set-name&#39; и &#39;match.driver&#39;; используется <a href="https://man.freebsd.org/cgi/man.cgi?query=resolvconf&amp;sektion=8&amp;format=html">resolvconf(8)</a>; пользователь по умолчанию создается только при необходимости. Также добавлена поддержка cloud-init, конфигурации по сети и управления пакетами.
+<p>В подсистему инициализации виртуальных машин <a href="https://man.freebsd.org/cgi/man.cgi?query=nuageinit&amp;sektion=7&amp;format=html">nuageinit(7)</a> внесены различные улучшения: выполнение теперь протоколируется; используется полностью соответствующий стандарту обработчик YAML; улучшена совместимость с cloud-init (добавлены &#39;runcmd&#39;, &#39;packages&#39;, &#39;fqdn&#39;, &#39;hostname&#39;, &#39;sudo&#39;, &#39;write_files&#39;, &#39;nameservers&#39;, &#39;tzsetup&#39;, &#39;doas&#39;); улучшена поддержка сети с множеством исправлений, добавлена поддержка &#39;wakeonlan&#39;, &#39;set-name&#39; и &#39;match.driver&#39;; используется <a href="https://man.freebsd.org/cgi/man.cgi?query=resolvconf&amp;sektion=8&amp;format=html">resolvconf(8)</a>; используемый по умолчанию пользователь создаётся только при необходимости.
+Добавлена поддержка cloud-init, настройки по сети и управления пакетами.
 <a href="https://cgit.freebsd.org/src/commit/?id=548d4b2af90b">548d4b2af90b</a>,
 <a href="https://cgit.freebsd.org/src/commit/?id=5444803b745e">5444803b745e</a>,
 <a href="https://cgit.freebsd.org/src/commit/?id=3a680e954469">3a680e954469</a>,
@@ -885,12 +902,12 @@
 <h3 id="kernel-general">Общие изменения в ядре</h3>
 <div class="paragraph">
 <p>Система <a href="https://man.freebsd.org/cgi/man.cgi?query=jail&amp;sektion=8&amp;format=html">jail(8)</a> по умолчанию будет ограничивать непривилегированных пользователей в родительском jail от планирования, отладки или отправки сигналов процессам в дочерних jail в FreeBSD 15.0 и более поздних версиях.
-Для таких операций между jail требуются новые привилегии PRIV_SCHED_DIFFJAIL, PRIV_DEBUG_DIFFJAIL и PRIV_SIGNAL_DIFFJAIL.
-В FreeBSD 14.x введен новый параметр jail allow.nounprivileged_parent_tampering для досрочного включения нового поведения, но в FreeBSD 15.x он будет включен по умолчанию, что повлияет на среды разработки, полагающиеся на управление процессами между jail.
+Для таких операций, выполняемых между изолированными окружениями, требуются новые полномочия <code>PRIV_SCHED_DIFFJAIL</code>, <code>PRIV_DEBUG_DIFFJAIL</code> и <code>PRIV_SIGNAL_DIFFJAIL</code>.
+<strong>Примечание</strong>: Для изолированных системных окружений введён новый параметр allow.nounprivileged_parent_tampering, позволяющий применять новую модель поведения уже сейчас, однако по умолчанию она будет включена во FreeBSD 15.x, что повлияет на конфигурации сред разработки, полагающихся на управление процессами между изолированными окружениями.
 <a href="https://cgit.freebsd.org/src/commit/?id=5c6949e12ee6">5c6949e12ee6</a>.</p>
 </div>
 <div class="paragraph">
-<p>Изменение исправляет состояние гонки в коде переключения контекста powerpc, которое могло вызывать зависание системы после запуска всех AP, особенно в гостевых системах qemu-system-ppc64 power9 pseries.
+<p>Для POWER9 исправлена ошибка конкурентного доступа в коде переключения контекста, которая могла вызывать зависание системы после запуска всех AP.
 <a href="https://cgit.freebsd.org/src/commit/?id=666599639cf6">666599639cf6</a>.</p>
 </div>
 </div>
@@ -905,52 +922,53 @@
 <div class="sect2">
 <h3 id="drivers-device">Драйверы устройств</h3>
 <div class="paragraph">
-<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=mrsas&amp;sektion=4&amp;format=html">mrsas(4)</a> теперь поддерживает RAID-контроллер Fujitsu SAS 6Gbit/s 1GB (D3116), который используется в серверах Fujitsu PRIMERGY, таких как RX300 S7.
-<a href="https://cgit.freebsd.org/src/commit/?id=653099bcc191">653099bcc191</a>.</p>
+<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=epair&amp;sektion=4&amp;format=html">epair(4)</a> теперь поддерживает стабильные MAC-адреса через <a href="https://man.freebsd.org/cgi/man.cgi?query=sysctl&amp;sektion=8&amp;format=html">sysctl(8)</a>-параметр <code>net.link.epair.ether_gen_addr</code>.
+Это помогает поддерживать согласованность между назначениями DHCP и динамического DNS при повторном создании интерфейсов epair, например, после перезапуска изоляторов.
+Моделью поведения по умолчанию остаётся генерация случайных адресов MAC, однако установка sysctl в значение <code>1</code> включает стабильные адреса.
+<a href="https://cgit.freebsd.org/src/commit/?id=02f70f6633fd">02f70f6633fd</a>.</p>
 </div>
 <div class="paragraph">
-<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=mfi&amp;sektion=4&amp;format=html">mfi(4)</a> теперь поддерживает RAID-контроллер Fujitsu SAS 6Gbit/s 1GB (D3116) благодаря добавлению его идентификаторов субвендора и субустройства.
-<a href="https://cgit.freebsd.org/src/commit/?id=3690911c355a">3690911c355a</a>.</p>
-</div>
-<div class="paragraph">
-<p>Драйвер NVMe теперь поддерживает BAR5 для Table BIR и PBA BIR, что позволяет запускать FreeBSD на машинах Google Compute Engine C4.
-<a href="https://cgit.freebsd.org/src/commit/?id=dca645cd3112">dca645cd3112</a>.
-<span class="contrib">(Sponsored by Google)</span>
+<p>В драйвере <a href="https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&amp;sektion=4&amp;format=html">iwlwifi(4)</a> теперь имеется поддержка ACPI, что позволяет реализовать требования регулятора к настройкам параметров 802.11ax, 802.11be и PPAG (индивидуальной установки уровня мощности сигнала антенны).
+<a href="https://cgit.freebsd.org/src/commit/?id=c4496f82680c">c4496f82680c</a>.
+<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
 </p>
 </div>
 <div class="paragraph">
-<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=qat&amp;sektion=4&amp;format=html">qat(4)</a> теперь поддерживает устройство 402xx (ID 0x4944/0x4945) в рамках существующего драйвера qat_4xxx и добавляет необходимые файлы прошивки.
-<a href="https://cgit.freebsd.org/src/commit/?id=af51f41346ad">af51f41346ad</a>.
-<span class="contrib">(Sponsored by Intel Corporation)</span>
-</p>
-</div>
-<div class="paragraph">
-<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=smartpqi&amp;sektion=4&amp;format=html">smartpqi(4)</a> обновлен до версии 4660.0.2002, обеспечивая обновленную поддержку контроллеров Microchip smartpqi.
-<a href="https://cgit.freebsd.org/src/commit/?id=ec98cb56861f">ec98cb56861f</a>.
-<span class="contrib">(Sponsored by Microchip Technology Inc.)</span>
-</p>
-</div>
-<div class="paragraph">
-<p>Драйверы <a href="https://man.freebsd.org/cgi/man.cgi?query=ix&amp;sektion=4&amp;format=html">ix(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=ixv&amp;sektion=4&amp;format=html">ixv(4)</a> добавляют поддержку семейства устройств Intel Ethernet E610, включая новые PCI ID для вариантов backplane, SFP, 10 GbE, 2.5 GbE и SGMII. Это обеспечивает скорость соединения 2.5G, 5G и 10G на поддерживаемом оборудовании.
+<p>В драйверы <a href="https://man.freebsd.org/cgi/man.cgi?query=ix&amp;sektion=4&amp;format=html">ix(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=ixv&amp;sektion=4&amp;format=html">ixv(4)</a> добавлена поддержка семейства устройств Intel Ethernet E610, включая новые PCI ID для вариантов backplane, SFP, 10 GbE, 2.5 GbE и SGMII.
+Это обеспечивает скорость соединения 2.5G, 5G и 10G на поддерживаемом оборудовании.
 <a href="https://cgit.freebsd.org/src/commit/?id=a728b96686e6">a728b96686e6</a>.
 <span class="contrib">(Sponsored by Intel Corporation)</span>
 </p>
 </div>
 <div class="paragraph">
-<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=epair&amp;sektion=4&amp;format=html">epair(4)</a> теперь поддерживает стабильные MAC-адреса через sysctl <code>net.link.epair.ether_gen_addr</code>. Это помогает сохранять согласованные назначения DHCP и динамического DNS при повторном создании интерфейсов epair, например, после перезапуска jail. Поведение по умолчанию остается генерацией случайных MAC-адресов, но установка sysctl в 1 включает стабильные адреса.
-<a href="https://cgit.freebsd.org/src/commit/?id=02f70f6633fd">02f70f6633fd</a>.</p>
+<p>Драйверы <a href="https://man.freebsd.org/cgi/man.cgi?query=mfi&amp;sektion=4&amp;format=html">mfi(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=mrsas&amp;sektion=4&amp;format=html">mrsas(4)</a> теперь поддерживают RAID-контроллер Fujitsu SAS 6Gbit/s 1GB (D3116), используемый в серверах Fujitsu PRIMERGY, например, RX300 S7.
+<a href="https://cgit.freebsd.org/src/commit/?id=653099bcc191">653099bcc191</a>,
+<a href="https://cgit.freebsd.org/src/commit/?id=3690911c355a">3690911c355a</a>.</p>
 </div>
 <div class="paragraph">
-<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&amp;sektion=4&amp;format=html">iwlwifi(4)</a> теперь включает поддержку ACPI, что обеспечивает регуляторные возможности для 802.11ax, 802.11be и настройки усиления антенны для конкретной платформы (PPAG).
-<a href="https://cgit.freebsd.org/src/commit/?id=c4496f82680c">c4496f82680c</a>.
-<span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
+<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=nvme&amp;sektion=4&amp;format=html">nvme(4)</a> теперь поддерживает BAR5 для Table BIR и PBA BIR, что позволяет запускать FreeBSD на машинах Google Compute Engine C4.
+<a href="https://cgit.freebsd.org/src/commit/?id=dca645cd3112">dca645cd3112</a>.
+<span class="contrib">(Sponsored by Google)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=qat&amp;sektion=4&amp;format=html">qat(4)</a> теперь поддерживает устройство 402xx (ID 0x4944/0x4945) в рамках существующего драйвера qat_4xxx.
+<a href="https://cgit.freebsd.org/src/commit/?id=af51f41346ad">af51f41346ad</a>.
+<span class="contrib">(Sponsored by Intel Corporation)</span>
+</p>
+</div>
+<div class="paragraph">
+<p>Драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=smartpqi&amp;sektion=4&amp;format=html">smartpqi(4)</a> обновлён до версии 4660.0.2002, обеспечивая обновлённую поддержку контроллеров Microchip smartpqi.
+<a href="https://cgit.freebsd.org/src/commit/?id=ec98cb56861f">ec98cb56861f</a>.
+<span class="contrib">(Sponsored by Microchip Technology Inc.)</span>
 </p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="drivers-removals">Устаревшие и удаленные драйверы</h3>
+<h3 id="drivers-removals">Устаревшие и удалённые драйверы</h3>
 <div class="paragraph">
-<p>Встроенный в ядро MIDI-секвенсор объявлен устаревшим. Это изменение добавляет уведомление об устаревании в ядро и может затронуть приложения, которые полагаются на этот устаревший интерфейс.
+<p>Встроенный в ядро MIDI-секвенсор объявлен устаревшим.
+Это изменение добавляет уведомление об устаревании в ядро и может затронуть приложения, которые полагаются на этот устаревший интерфейс.
 <a href="https://cgit.freebsd.org/src/commit/?id=ab9c9443eec5">ab9c9443eec5</a>.
 <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
 </p>
@@ -967,17 +985,20 @@
 <div class="sect2">
 <h3 id="storage-general">Общие изменения в системах хранения</h3>
 <div class="paragraph">
-<p>Добавлена новая реализация файловой системы 9P (<a href="https://man.freebsd.org/cgi/man.cgi?query=p9fs&amp;sektion=4&amp;format=html">p9fs(4)</a>) для использования с устройствами bhyve virtio-9p. Она позволяет гостевым системам получать доступ к файлам хоста через общие ресурсы и может использоваться как корневая или некорневая файловая система. Драйвер загружается с помощью <code>virtio_p9fs_load=YES</code> в <span class="filename">loader.conf</span>.
+<p>Добавлена файловая система 9P (<a href="https://man.freebsd.org/cgi/man.cgi?query=p9fs&amp;sektion=4&amp;format=html">p9fs(4)</a>), используемая с устройствами <a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> virtio-9p.
+Она позволяет гостевым системам получать доступ к файлам хоста через общие ресурсы и может использоваться как корневая или некорневая файловая система.
+Соответствующий драйвер загружается с помощью <code>virtio_p9fs_load=YES</code> в <span class="filename">loader.conf</span>.
 <a href="https://cgit.freebsd.org/src/commit/?id=615fba7c6b39">615fba7c6b39</a>.</p>
 </div>
 <div class="paragraph">
-<p>Файловая система <a href="https://man.freebsd.org/cgi/man.cgi?query=tarfs&amp;sektion=4&amp;format=html">tarfs(4)</a> теперь корректно обрабатывает большие файлы, превышающие лимиты в 4 ГБ и 8 ГБ. Исправлены ошибки декомпрессии при поиске позиции за пределами 4 ГБ в tar-архивах, сжатых zstd, и правильно обрабатываются записи расширенных заголовков для файлов размером более 8 ГБ.
+<p>Файловая система <a href="https://man.freebsd.org/cgi/man.cgi?query=tarfs&amp;sektion=4&amp;format=html">tarfs(4)</a> теперь корректно обрабатывает большие файлы, размер которых превышает лимиты в 4 ГБ и 8 ГБ.
+В ней исправлены ошибки распаковки при поиске позиции за пределами 4 ГБ в tar-архивах, сжатых zstd, а также корректной обработки записей расширенных заголовков для файлов размером более 8 ГБ.
 <a href="https://cgit.freebsd.org/src/commit/?id=35c612fbabd8">35c612fbabd8</a>.
 <span class="contrib">(Sponsored by Klara, Inc.)</span>
 </p>
 </div>
 <div class="paragraph">
-<p>Файловые системы <a href="https://man.freebsd.org/cgi/man.cgi?query=nullfs&amp;sektion=4&amp;format=html">nullfs(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=unionfs&amp;sektion=4&amp;format=html">unionfs(4)</a> теперь выполняют более строгие проверки для vnode корневого каталога jail во время поиска &#39;..&#39;, предотвращая потенциальную уязвимость побега из chroot.
+<p>Файловые системы <a href="https://man.freebsd.org/cgi/man.cgi?query=unionfs&amp;sektion=4&amp;format=html">unionfs(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=nullfs&amp;sektion=4&amp;format=html">nullfs(4)</a> теперь выполняют более строгие проверки для vnode корневого каталога изолированных окружений во время поиска &#39;..&#39;, что предотвращает потенциальную уязвимость выхода за пределы chroot.
 <a href="https://cgit.freebsd.org/src/commit/?id=3feafab4a34c">3feafab4a34c</a>.</p>
 </div>
 </div>
@@ -992,12 +1013,8 @@
 <div class="sect2">
 <h3 id="boot-loader">Изменения в загрузчике</h3>
 <div class="paragraph">
-<p>Загрузчик EFI теперь использует функции Blt, предоставляемые прошивкой, только при использовании Graphics Output Protocol (GOP), что позволяет избежать проблем на старых системах на базе UGA, таких как MacBook.
+<p>Начальный загрузчик EFI, <a href="https://man.freebsd.org/cgi/man.cgi?query=loader.efi&amp;sektion=8&amp;format=html">loader.efi(8)</a>, теперь использует функции Blt, содержащиеся в микрокоде, только при использовании GOP (Graphics Output Protocol), что позволяет избежать проблем на старых системах на базе UGA, таких как MacBook.
 <a href="https://cgit.freebsd.org/src/commit/?id=6741fb1bd4f4">6741fb1bd4f4</a>.</p>
-</div>
-<div class="paragraph">
-<p>Файл описания устройства (device tree blob) для Raspberry Pi Zero 2W теперь включен в образы SD-карт релиза, обеспечивая поддержку этой модели оборудования.
-<a href="https://cgit.freebsd.org/src/commit/?id=fce5d401a803">fce5d401a803</a>.</p>
 </div>
 <div class="paragraph">
 <p>Установщик <a href="https://man.freebsd.org/cgi/man.cgi?query=bsdinstall&amp;sektion=8&amp;format=html">bsdinstall(8)</a> теперь копирует <span class="filename">loader.efi</span> во все ESP, созданные для многотомных наборов данных ZFS, обеспечивая резервирование загрузки в случае отказа основного диска.
@@ -1023,20 +1040,24 @@
 <div class="sect2">
 <h3 id="network-general">Общие сетевые изменения</h3>
 <div class="paragraph">
-<p>Код совместимости для версий IPFW, предшествующих FreeBSD 8, удален для упрощения кодовой базы. Пользователи или сторонние модули, которые все еще полагаются на старые интерфейсы совместимости, должны выполнить миграцию перед обновлением.
+<p>Для упрощения кодовой базы удалён код, обеспечивающий совместимость с версиями IPFW, предшествующих FreeBSD 8.
+Пользователи или модули сторонних разработчиков, которые всё ещё полагаются на старые интерфейсы совместимости, обязательно должны выполнить миграцию перед обновлением.
 <a href="https://cgit.freebsd.org/src/commit/?id=57865e505aef">57865e505aef</a>.
 <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
 </p>
 </div>
 <div class="paragraph">
-<p>Добавлен бинарный файл <span class="filename">sbin/ipfw15</span> с обновленным KBI для совместимости с ядрами 15.0+. Оригинальный бинарный файл <a href="https://man.freebsd.org/cgi/man.cgi?query=ipfw&amp;sektion=8&amp;format=html">ipfw(8)</a> обнаруживает новый KBI и автоматически запускает ipfw15, обеспечивая возможность загрузки правил межсетевого экрана во время обновления. Утилита также устанавливается как <span class="filename">/sbin/dnctl15</span> для совместимости с dummynet.
+<p>Добавлен бинарный файл <span class="filename">sbin/ipfw15</span>, содержащий обновлённый KBI для совместимости с ядрами 15.0+.
+Оригинальный бинарный файл <a href="https://man.freebsd.org/cgi/man.cgi?query=ipfw&amp;sektion=8&amp;format=html">ipfw(8)</a> обнаруживает новый KBI и автоматически запускает ipfw15, обеспечивая возможность загрузки правил межсетевого экрана во время обновления.
+Утилита также устанавливается как <span class="filename">/sbin/dnctl15</span> для совместимости с dummynet.
 <a href="https://cgit.freebsd.org/src/commit/?id=969e2b406835">969e2b406835</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="wireless-networking">Беспроводные сети</h3>
 <div class="paragraph">
-<p>Подсистема net80211 обновлена для корректной поддержки ширины каналов VHT160 и VHT80P80 с современными точками доступа, приводя ее в соответствие с изменениями от 802.11ac-2013 до 802.11-2020. Это включает поддержку VHT160 и VHT80P80 в коде совместимости драйверов 802.11 LinuxKPI, что влияет на производительность и совместимость беспроводных соединений.
+<p>Подсистема net80211 обновлена для полноценной поддержки ширины каналов VHT160 и VHT80P80 в современных точках доступа, что соответствует изменениям, произошедшим между 802.11ac-2013 и 802.11-2020.
+Это включает поддержку VHT160 и VHT80P80 в коде совместимости с драйвером 802.11 LinuxKPI, что влияет на производительность и совместимость беспроводных соединений.
 <a href="https://cgit.freebsd.org/src/commit/?id=ccdd6285df5d">ccdd6285df5d</a>.
 <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
 </p>
@@ -1051,12 +1072,16 @@
 <p>Этот раздел охватывает общую поддержку оборудования для физических машин, гипервизоров и сред виртуализации, а также изменения и обновления оборудования, которые не подходят в другие разделы этого документа.</p>
 </div>
 <div class="paragraph">
+<p>Набор данных о дереве устройств для Raspberry Pi Zero 2W теперь включён в образы релиза для карт памяти SD, обеспечивая поддержку этой модели.
+<a href="https://cgit.freebsd.org/src/commit/?id=fce5d401a803">fce5d401a803</a>.</p>
+</div>
+<div class="paragraph">
 <p>Пожалуйста, ознакомьтесь со <a href="https://www.freebsd.msk.ru/releases/14.4R/hardware">списком оборудования</a>, поддерживаемым 14.4-RELEASE, а также с <a href="https://www.freebsd.msk.ru/platforms/">страницей платформ</a> для полного списка поддерживаемых архитектур процессоров.</p>
 </div>
 <div class="sect2">
 <h3 id="hardware-virtualization">Поддержка виртуализации</h3>
 <div class="paragraph">
-<p><a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> теперь сообщает, что SVM отключен в регистре управления виртуальной машиной, предотвращая зависания на системах AMD с современными гостевыми ОС Windows.
+<p>Гипервизор <a href="https://man.freebsd.org/cgi/man.cgi?query=bhyve&amp;sektion=8&amp;format=html">bhyve(8)</a> теперь отражает SVM в регистре управления виртуальной машиной как отключенную функцию, предотвращая зависания на системах AMD с последними версиями Windows в качестве гостевых операционных систем.
 <a href="https://cgit.freebsd.org/src/commit/?id=321a15380668">321a15380668</a>.</p>
 </div>
 </div>
@@ -1068,32 +1093,32 @@
 <div class="paragraph">
 <p>В этом разделе рассматриваются изменения на страницах Справочника (<a href="https://man.freebsd.org/cgi/man.cgi?query=man&amp;sektion=1&amp;format=html">man(1)</a>) и другой документации, поставляемой в составе базовой системы.</p>
 </div>
+<div class="paragraph">
+<p>В системах, устанавливаемых из базовых системных пакетов, вновь появился каталог <span class="filename">/usr/share/examples</span>.
+<a href="https://cgit.freebsd.org/src/commit/?id=d149be3a0cbe">d149be3a0cbe</a>.</p>
+</div>
 <div class="sect2">
 <h3 id="man-pages">Страницы Справочника</h3>
 <div class="paragraph">
-<p>Файл UPDATING обновлен, чтобы отразить, что примеры файлов теперь устанавливаются в <span class="filename">/usr/share/examples</span> в соответствии с задуманным, благодаря предыдущему исправлению в системе сборки.
-<a href="https://cgit.freebsd.org/src/commit/?id=d149be3a0cbe">d149be3a0cbe</a>.</p>
+<p>Страницы Справочника <a href="https://man.freebsd.org/cgi/man.cgi?query=builtin&amp;sektion=1&amp;format=html">builtin(1)</a> по встроенным командам командного процессора были оптимизированы и дополнены новым разделом о встроенных привязках клавиш.
+<a href="https://cgit.freebsd.org/src/commit/?id=b98efcdb6210">b98efcdb6210</a>.</p>
 </div>
 <div class="paragraph">
-<p>Руководство по команде <a href="https://man.freebsd.org/cgi/man.cgi?query=builtin&amp;sektion=1&amp;format=html">builtin(1)</a> было оптимизировано и дополнено новым разделом о встроенных привязках клавиш.
-<a href="https://cgit.freebsd.org/src/commit/?id=b98efcdb6210">b98efcdb6210</a></p>
-</div>
-<div class="paragraph">
-<p>Страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=newaliases&amp;sektion=1&amp;format=html">newaliases(1)</a> обновлена, чтобы уточнить, что она предназначена для <a href="https://man.freebsd.org/cgi/man.cgi?query=sendmail&amp;sektion=8&amp;format=html">sendmail(8)</a>.
+<p>Страницы Справочника по команде <a href="https://man.freebsd.org/cgi/man.cgi?query=newaliases&amp;sektion=1&amp;format=html">newaliases(1)</a> обновлены и указывают на то, что она предназначена для <a href="https://man.freebsd.org/cgi/man.cgi?query=sendmail&amp;sektion=8&amp;format=html">sendmail(8)</a>.
 <a href="https://cgit.freebsd.org/src/commit/?id=e3df9a78da6b">e3df9a78da6b</a>.</p>
 </div>
 <div class="paragraph">
-<p>Страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=ps&amp;sektion=1&amp;format=html">ps(1)</a> теперь документирует, что <code>-a</code> и <code>-A</code> показывают все процессы независимо от других опций выбора, а также разъясняет поведение <code>-J</code>.
+<p>На страницах Справочника по <a href="https://man.freebsd.org/cgi/man.cgi?query=ps&amp;sektion=1&amp;format=html">ps(1)</a> теперь указано, что <code>-a</code> и <code>-A</code> показывают все процессы независимо от других выбранных параметров, а также разъяснено поведение <code>-J</code>.
 <a href="https://cgit.freebsd.org/src/commit/?id=f18a49a747f7">f18a49a747f7</a>.
 <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
 </p>
 </div>
 <div class="paragraph">
-<p>Страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=write&amp;sektion=2&amp;format=html">write(2)</a> теперь включает новый раздел, описывающий гарантии атомарности операций записи.
+<p>Страница Справочника по <a href="https://man.freebsd.org/cgi/man.cgi?query=write&amp;sektion=2&amp;format=html">write(2)</a> теперь включает новый раздел, описывающий гарантии атомарности операций записи.
 <a href="https://cgit.freebsd.org/src/commit/?id=c19f161f5f65">c19f161f5f65</a>.</p>
 </div>
 <div class="paragraph">
-<p>Добавлены страницы руководств для нескольких провайдеров DTrace, включая <a href="https://man.freebsd.org/cgi/man.cgi?query=dtrace_fbt&amp;sektion=4&amp;format=html">dtrace_fbt(4)</a> (трассировка границ функций), <a href="https://man.freebsd.org/cgi/man.cgi?query=dtrace_vfs&amp;sektion=4&amp;format=html">dtrace_vfs(4)</a> (активность VFS), <a href="https://man.freebsd.org/cgi/man.cgi?query=dtrace_pid&amp;sektion=4&amp;format=html">dtrace_pid(4)</a> (трассировка процессов на пользовательском уровне), <a href="https://man.freebsd.org/cgi/man.cgi?query=dtrace_priv&amp;sektion=4&amp;format=html">dtrace_priv(4)</a> (проверки привилегий) и <a href="https://man.freebsd.org/cgi/man.cgi?query=dtrace_callout_execute&amp;sektion=4&amp;format=html">dtrace_callout_execute(4)</a> (выполнение обработчиков callout).
+<p>Добавлены справочные страницы для нескольких провайдеров DTrace, в том числе <a href="https://man.freebsd.org/cgi/man.cgi?query=dtrace_fbt&amp;sektion=4&amp;format=html">dtrace_fbt(4)</a> (трассировка границ функций), <a href="https://man.freebsd.org/cgi/man.cgi?query=dtrace_vfs&amp;sektion=4&amp;format=html">dtrace_vfs(4)</a> (активность VFS), <a href="https://man.freebsd.org/cgi/man.cgi?query=dtrace_pid&amp;sektion=4&amp;format=html">dtrace_pid(4)</a> (трассировка процессов на пользовательском уровне), <a href="https://man.freebsd.org/cgi/man.cgi?query=dtrace_priv&amp;sektion=4&amp;format=html">dtrace_priv(4)</a> (проверки полномочий) и <a href="https://man.freebsd.org/cgi/man.cgi?query=dtrace_callout_execute&amp;sektion=4&amp;format=html">dtrace_callout_execute(4)</a> (выполнение обработчиков callout).
 <a href="https://cgit.freebsd.org/src/commit/?id=0c91fa982437">0c91fa982437</a>,
 <a href="https://cgit.freebsd.org/src/commit/?id=04bb91e9c5f7">04bb91e9c5f7</a>,
 <a href="https://cgit.freebsd.org/src/commit/?id=ff6b04c37e78">ff6b04c37e78</a>,
@@ -1110,43 +1135,44 @@
 <a href="https://cgit.freebsd.org/src/commit/?id=ded154a1df97">ded154a1df97</a>.</p>
 </div>
 <div class="paragraph">
-<p>Добавлены страницы руководств <a href="https://man.freebsd.org/cgi/man.cgi?query=linuxkpi&amp;sektion=4&amp;format=html">linuxkpi(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=linuxkpi_wlan&amp;sektion=4&amp;format=html">linuxkpi_wlan(4)</a>, предоставляющие краткую документацию по LinuxKPI и его функциям совместимости с 802.11.
+<p>Добавлены справочные страницы для <a href="https://man.freebsd.org/cgi/man.cgi?query=linuxkpi&amp;sektion=4&amp;format=html">linuxkpi(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=linuxkpi_wlan&amp;sektion=4&amp;format=html">linuxkpi_wlan(4)</a>, предоставляющие краткую документацию по LinuxKPI и его функциям совместимости с 802.11.
 <a href="https://cgit.freebsd.org/src/commit/?id=669062384f55">669062384f55</a>.
 <span class="contrib">(Sponsored by The FreeBSD Foundation)</span>
 </p>
 </div>
 <div class="paragraph">
-<p>Страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=vt&amp;sektion=4&amp;format=html">vt(4)</a> теперь включает пример увеличения размера буфера прокрутки и раздел, объясняющий консольные шрифты, охватывающий преобразование, поддержку и использование.
-<a href="https://cgit.freebsd.org/src/commit/?id=ce92b9d8332a">ce92b9d8332a</a>.
-<a href="https://cgit.freebsd.org/src/commit/?id=c330c43e58d7">c330c43e58d7</a>.</p>
-</div>
-<div class="paragraph">
-<p>Добавлена страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=cdboot&amp;sektion=8&amp;format=html">cdboot(8)</a>, документирующая ранее недокументированную утилиту cdboot.
+<p>Добавлены страницы Справочника по <a href="https://man.freebsd.org/cgi/man.cgi?query=cdboot&amp;sektion=8&amp;format=html">cdboot(8)</a>, описывающие ранее недокументированную утилиту cdboot.
 <a href="https://cgit.freebsd.org/src/commit/?id=d659366cc62a">d659366cc62a</a>.</p>
 </div>
 <div class="paragraph">
-<p>Страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=crash&amp;sektion=8&amp;format=html">crash(8)</a> обновлена в соответствии с текущим поведением системы, удалены ссылки на устаревшие сообщения паники и обновлены рекомендации по носителям для восстановления.
+<p>Страницы Справочника по <a href="https://man.freebsd.org/cgi/man.cgi?query=crash&amp;sektion=8&amp;format=html">crash(8)</a> обновлены в соответствии с актуальной моделью поведения системы, удалены ссылки на устаревшие сообщения паники и обновлены рекомендации по носителям для восстановления.
 <a href="https://cgit.freebsd.org/src/commit/?id=4f2140aa9677">4f2140aa9677</a>.</p>
 </div>
 <div class="paragraph">
-<p>Страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=dumpon&amp;sektion=8&amp;format=html">dumpon(8)</a> теперь показывает настройки для изменения поведения дампов <a href="https://man.freebsd.org/cgi/man.cgi?query=crash&amp;sektion=8&amp;format=html">crash(8)</a>.
+<p>Страницы Справочника по <a href="https://man.freebsd.org/cgi/man.cgi?query=dumpon&amp;sektion=8&amp;format=html">dumpon(8)</a> теперь показывают настройки для изменения модели поведения при работе с аварийными (<a href="https://man.freebsd.org/cgi/man.cgi?query=crash&amp;sektion=8&amp;format=html">crash(8)</a>) образами памяти.
 <a href="https://cgit.freebsd.org/src/commit/?id=7c8717183536">7c8717183536</a>.</p>
 </div>
 <div class="paragraph">
-<p>Страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=ipfw&amp;sektion=8&amp;format=html">ipfw(8)</a> теперь документирует, как удалить экземпляр конфигурации NAT.
+<p>Страница Справочника <a href="https://man.freebsd.org/cgi/man.cgi?query=ipfw&amp;sektion=8&amp;format=html">ipfw(8)</a> теперь документирует, как удалить экземпляр конфигурации NAT.
 <a href="https://cgit.freebsd.org/src/commit/?id=186ac4724746">186ac4724746</a>.</p>
 </div>
 <div class="paragraph">
-<p>Страница руководства утилиты <a href="https://man.freebsd.org/cgi/man.cgi?query=mtree&amp;sektion=8&amp;format=html">mtree(8)</a> обновлена, чтобы уточнить, что ключевое слово <code>type</code> остается обязательным и не удаляется с помощью <code>-R all</code>. Это обеспечивает согласованное поведение и предотвращает возможное неправильное толкование команды.
+<p>Страница Справочника по <a href="https://man.freebsd.org/cgi/man.cgi?query=mtree&amp;sektion=8&amp;format=html">mtree(8)</a> теперь уточняет, что ключевое слово <code>type</code> остаётся обязательным и не удаляется с помощью <code>-R all</code>.
+Это обеспечивает согласованную модель поведения и предотвращает возможное неправильное толкование команды.
 <a href="https://cgit.freebsd.org/src/commit/?id=f957857c4835">f957857c4835</a>.</p>
 </div>
 <div class="paragraph">
-<p>Страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=pf.conf&amp;sektion=5&amp;format=html">pf.conf(5)</a> теперь документирует, что диапазоны сетевых адресов, используемые в качестве элементов в списковых макросах, должны заключаться в кавычки с дополнительными одинарными кавычками.
+<p>Страница Справочника по <a href="https://man.freebsd.org/cgi/man.cgi?query=pf.conf&amp;sektion=5&amp;format=html">pf.conf(5)</a> теперь документирует, что диапазоны сетевых адресов, используемые в качестве элементов в списочных макросах, обязательно должны быть заключены в дополнительные одинарные кавычки.
 <a href="https://cgit.freebsd.org/src/commit/?id=0077daf9cdc4">0077daf9cdc4</a>.</p>
 </div>
 <div class="paragraph">
-<p>Страница руководства <a href="https://man.freebsd.org/cgi/man.cgi?query=pw&amp;sektion=8&amp;format=html">pw(8)</a> теперь разъясняет допустимые форматы списков участников для флагов <code>-M</code>, <code>-m</code> и <code>-d</code> опций <code>groupadd</code> и <code>groupmod</code>.
+<p>Страница Справочника по <a href="https://man.freebsd.org/cgi/man.cgi?query=pw&amp;sektion=8&amp;format=html">pw(8)</a> теперь разъясняет допустимые форматы списков участников для флагов <code>-M</code>, <code>-m</code> и <code>-d</code> параметров <code>groupadd</code> и <code>groupmod</code>.
 <a href="https://cgit.freebsd.org/src/commit/?id=78343cd2a0f1">78343cd2a0f1</a>.</p>
+</div>
+<div class="paragraph">
+<p>Страница Справочника по <a href="https://man.freebsd.org/cgi/man.cgi?query=vt&amp;sektion=4&amp;format=html">vt(4)</a> теперь включает пример увеличения размера буфера прокрутки и раздел, описывающий консольные шрифты, в том числе преобразование, поддержку и использование.
+<a href="https://cgit.freebsd.org/src/commit/?id=ce92b9d8332a">ce92b9d8332a</a>.
+<a href="https://cgit.freebsd.org/src/commit/?id=c330c43e58d7">c330c43e58d7</a>.</p>
 </div>
 </div>
 </div>
@@ -1154,7 +1180,7 @@
 
     <hr />
     <div>
-      <p><strong>Последнее изменение</strong>: 26 апреля 2026 г. от <a href="https://cgit.freebsd.org/doc/commit/?id=8d40edecc4" target="_blank">Vladlen Popolitov</a></p>
+      <p><strong>Последнее изменение</strong>: 18 июля 2026 г. от <a href="https://cgit.freebsd.org/doc/commit/?id=c26c5f0b41" target="_blank">Andrey Zakhvatov</a></p>
     </div>
     
   </div>

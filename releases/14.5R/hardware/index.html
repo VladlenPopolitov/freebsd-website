@@ -330,6 +330,8 @@
         
         
         
+        <li>Upcoming Release: <a href=https://www.freebsd.msk.ru/releases/15.2R/schedule/>15.2</a></li>
+        
         
         
       </ul>
@@ -342,7 +344,19 @@
   </aside>
 
   <div id="contentwrap">
-    <h1>FreeBSD 14.5 Hardware Notes</h1><div id="preamble">
+    <h1>FreeBSD 14.5 Hardware Notes</h1>
+    <nav class="release-docs" aria-label="Release documents">
+            <a href="/releases/14.5R/">FreeBSD 14.5</a>:
+            <ul>
+              <li><a href="/releases/14.5R/signatures/">signed checksum files</a></li>
+              <li><a href="/releases/14.5R/installation/">installation instructions</a></li>
+              <li><span aria-current="page">hardware information</span></li>
+              <li><a href="/releases/14.5R/relnotes/">release notes</a></li>
+              <li><a href="/releases/14.5R/errata/">errata</a></li>
+              <li><a href="/releases/14.5R/readme/">readme</a></li>
+              <li><a href="/releases/14.5R/schedule/">schedule</a></li>
+            </ul>
+          </nav><div id="preamble">
 <div class="sectionbody">
 <div id="toc" class="toc">
 <div id="toctitle" class="title">Table of Contents</div>
@@ -853,9 +867,10 @@ This means that some devices, which are supported by multiple drivers, may appea
 <div class="sect2">
 <h3 id="disk">3.1. Disk Controllers</h3>
 <div class="paragraph">
-<p>Controllers supported by the
-<strong>aac</strong>
-driver include:</p>
+<p>The
+<a href="https://man.freebsd.org/cgi/man.cgi?query=aac&amp;sektion=4&amp;format=html">aac(4)</a>
+driver supports the following Parallel SCSI, SATA, and 3G SAS
+RAID controllers from the Adaptec AAC family:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1115,7 +1130,7 @@ driver include:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>aacraid</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=aacraid&amp;sektion=4&amp;format=html">aacraid(4)</a>
 driver supports the following
 Adaptec 6G and 12G SAS/SATA RAID controllers:</p>
 </div>
@@ -1155,12 +1170,8 @@ Adaptec 6G and 12G SAS/SATA RAID controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ahc</strong>
-driver supports the following
-<code>SCSI</code>
-host adapter chips and
-<code>SCSI</code>
-controller cards:</p>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ahc&amp;sektion=4&amp;format=html">ahc(4)</a>
+driver supports the following VL/ISA/PCI parallel SCSI controllers and cards:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1365,7 +1376,7 @@ support</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ahci</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ahci&amp;sektion=4&amp;format=html">ahci(4)</a>
 driver supports AHCI compatible controllers having PCI class 1 (mass storage),
 subclass 6 (SATA) and programming interface 1 (AHCI).</p>
 </div>
@@ -1397,8 +1408,8 @@ device.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ahd</strong>
-driver supports the following:</p>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ahd&amp;sektion=4&amp;format=html">ahd(4)</a>
+driver supports the following PCI/PCI-X parallel SCSI controllers:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1436,8 +1447,9 @@ support</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>arcmsr</strong>
-driver supports the following cards:</p>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=arcmsr&amp;sektion=4&amp;format=html">arcmsr(4)</a>
+driver supports the following
+Areca PCI-X/PCIe SATA/SAS/NVMe RAID host adapters:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1571,7 +1583,7 @@ driver supports the following cards:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ata</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ata&amp;sektion=4&amp;format=html">ata(4)</a>
 driver supports the IDE interface on the following ATA/SATA controllers:</p>
 </div>
 <div class="paragraph">
@@ -1798,7 +1810,7 @@ not known what the chipset can do and how to program it.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ciss</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ciss&amp;sektion=4&amp;format=html">ciss(4)</a>
 driver supports controllers implementing
 Common Interface for SCSI-3 Support Open Specification v1.04, including:</p>
 </div>
@@ -1838,6 +1850,24 @@ Common Interface for SCSI-3 Support Open Specification v1.04, including:</p>
 <p>HP Smart Array E200i</p>
 </li>
 <li>
+<p>HP Smart Array E500</p>
+</li>
+<li>
+<p>HP Smart Array H240</p>
+</li>
+<li>
+<p>HP Smart Array H240ar</p>
+</li>
+<li>
+<p>HP Smart Array H240nr</p>
+</li>
+<li>
+<p>HP Smart Array H241</p>
+</li>
+<li>
+<p>HP Smart Array H244br</p>
+</li>
+<li>
 <p>HP Smart Array P212</p>
 </li>
 <li>
@@ -1848,6 +1878,15 @@ Common Interface for SCSI-3 Support Open Specification v1.04, including:</p>
 </li>
 <li>
 <p>HP Smart Array P230i</p>
+</li>
+<li>
+<p>HP Smart Array P240nr</p>
+</li>
+<li>
+<p>HP Smart Array P244br</p>
+</li>
+<li>
+<p>HP Smart Array P246br</p>
 </li>
 <li>
 <p>HP Smart Array P400</p>
@@ -1883,7 +1922,13 @@ Common Interface for SCSI-3 Support Open Specification v1.04, including:</p>
 <p>HP Smart Array P431</p>
 </li>
 <li>
+<p>HP Smart Array P440</p>
+</li>
+<li>
 <p>HP Smart Array P440ar</p>
+</li>
+<li>
+<p>HP Smart Array P441</p>
 </li>
 <li>
 <p>HP Smart Array P530</p>
@@ -1892,7 +1937,16 @@ Common Interface for SCSI-3 Support Open Specification v1.04, including:</p>
 <p>HP Smart Array P531</p>
 </li>
 <li>
+<p>HP Smart Array P542d</p>
+</li>
+<li>
 <p>HP Smart Array P600</p>
+</li>
+<li>
+<p>HP Smart Array P700m</p>
+</li>
+<li>
+<p>HP Smart Array P712m</p>
 </li>
 <li>
 <p>HP Smart Array P721m</p>
@@ -1901,10 +1955,16 @@ Common Interface for SCSI-3 Support Open Specification v1.04, including:</p>
 <p>HP Smart Array P731m</p>
 </li>
 <li>
+<p>HP Smart Array P741m</p>
+</li>
+<li>
 <p>HP Smart Array P800</p>
 </li>
 <li>
 <p>HP Smart Array P812</p>
+</li>
+<li>
+<p>HP Smart Array P822</p>
 </li>
 <li>
 <p>HP Smart Array P830</p>
@@ -1913,12 +1973,28 @@ Common Interface for SCSI-3 Support Open Specification v1.04, including:</p>
 <p>HP Smart Array P830i</p>
 </li>
 <li>
+<p>HP Smart Array P840</p>
+</li>
+<li>
+<p>HP Smart Array P840ar</p>
+</li>
+<li>
+<p>HP Smart Array P841</p>
+</li>
+<li>
 <p>HP Modular Smart Array 20 (MSA20)</p>
 </li>
 <li>
 <p>HP Modular Smart Array 500 (MSA500)</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Additionally, several HP Smart Array controllers are supported by PCI
+subdevice ID only, as no model name is available for them:
+0x3220, 0x3222, 0x3230, 0x3231, 0x3232, 0x3233, 0x3236, 0x3238,
+0x3239, 0x323A, 0x323B, 0x323C, and 0x324B
+(all with PCI subvendor 0x103C).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1937,7 +2013,7 @@ EISA adapters are not supported.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>hpt27xx</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=hpt27xx&amp;sektion=4&amp;format=html">hpt27xx(4)</a>
 driver supports the following SAS
 controllers:</p>
 </div>
@@ -1962,7 +2038,7 @@ controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>hptiop</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=hptiop&amp;sektion=4&amp;format=html">hptiop(4)</a>
 driver supports the following SAS and SATA RAID controllers:</p>
 </div>
 <div class="ulist">
@@ -2062,7 +2138,7 @@ are already End-of-Life:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>hptmv</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=hptmv&amp;sektion=4&amp;format=html">hptmv(4)</a>
 driver supports the following ATA RAID
 controllers:</p>
 </div>
@@ -2075,7 +2151,7 @@ controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>hptnr</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=hptnr&amp;sektion=4&amp;format=html">hptnr(4)</a>
 driver supports the following SATA
 controllers:</p>
 </div>
@@ -2091,7 +2167,7 @@ controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>hptrr</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=hptrr&amp;sektion=4&amp;format=html">hptrr(4)</a>
 driver supports the following RAID
 controllers:</p>
 </div>
@@ -2131,7 +2207,7 @@ controllers:</p>
 </div>
 <div class="paragraph">
 <p>The following controllers are supported by the
-<strong>ida</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ida&amp;sektion=4&amp;format=html">ida(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -2167,7 +2243,7 @@ driver:</p>
 </div>
 <div class="paragraph">
 <p>Controllers supported by the
-<strong>ips</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ips&amp;sektion=4&amp;format=html">ips(4)</a>
 driver include:</p>
 </div>
 <div class="ulist">
@@ -2198,14 +2274,14 @@ driver.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>isci</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=isci&amp;sektion=4&amp;format=html">isci(4)</a>
 driver provides support for Intel C600
 <code>SAS</code>
 controllers.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>isp</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=isp&amp;sektion=4&amp;format=html">isp(4)</a>
 driver supports the following optical Fibre Channel adapters:</p>
 </div>
 <div class="literalblock">
@@ -2225,7 +2301,7 @@ Qlogic 2422                          4Gb      PCI-X</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mfi</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mfi&amp;sektion=4&amp;format=html">mfi(4)</a>
 driver supports the following hardware:</p>
 </div>
 <div class="ulist">
@@ -2279,7 +2355,7 @@ driver supports the following hardware:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mlx</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mlx&amp;sektion=4&amp;format=html">mlx(4)</a>
 driver supports the following Parallel SCSI RAID controllers:</p>
 </div>
 <div class="ulist">
@@ -2337,12 +2413,12 @@ EISA adapters are not supported.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mmcsd</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mmcsd&amp;sektion=4&amp;format=html">mmcsd(4)</a>
 driver implements direct access block device for MMC and SD memory cards.</p>
 </div>
 <div class="paragraph">
 <p>These controllers are supported by the
-<strong>mpi3mr</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mpi3mr&amp;sektion=4&amp;format=html">mpi3mr(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -2380,9 +2456,9 @@ driver:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>These controllers are supported by the
-<strong>mpr</strong>
-driver:</p>
+<p>The
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mpr&amp;sektion=4&amp;format=html">mpr(4)</a>
+driver supports the following SATA/SAS/NVMe RAID controllers:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2438,7 +2514,7 @@ driver:</p>
 </div>
 <div class="paragraph">
 <p>These controllers are supported by the
-<strong>mps</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mps&amp;sektion=4&amp;format=html">mps(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -2480,7 +2556,7 @@ driver:</p>
 </div>
 <div class="paragraph">
 <p>The following controllers are supported by the
-<strong>mpt</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mpt&amp;sektion=4&amp;format=html">mpt(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -2581,8 +2657,8 @@ can take on - no separate compilation is required.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mrsas</strong>
-driver supports the following LSI/Broadcom SATA/SAS RAID controllers:</p>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mrsas&amp;sektion=4&amp;format=html">mrsas(4)</a>
+driver supports the following Broadcom/LSI SATA/SAS RAID controllers:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -2614,7 +2690,7 @@ Fujitsu D3116            Thunderbolt     6Gb/s</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mvs</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mvs&amp;sektion=4&amp;format=html">mvs(4)</a>
 driver supports the following controllers:</p>
 </div>
 <div class="paragraph">
@@ -2684,56 +2760,45 @@ ATAPI and non-DMA ATA commands executed one by one for each port.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ocs_fc</strong>
-driver supports these Fibre Channel adapters:</p>
-</div>
-<div class="paragraph">
-<p>Emulex 16/8G FC GEN 5 HBAS</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>LPe15004 FC Host Bus Adapters
-LPe160XX FC Host Bus Adapters</p>
-</div>
-</blockquote>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Emulex 32/16G FC GEN 6 HBAS</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>LPe3100X FC Host Bus Adapters
-LPe3200X FC Host Bus Adapters</p>
-</div>
-</blockquote>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Emulex 64/32G FC GEN 7 HBAS</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>LPe3500X FC Host Bus Adapters</p>
-</div>
-</blockquote>
-</div>
-</blockquote>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=nda&amp;sektion=4&amp;format=html">nda(4)</a>
+driver supports NVMe
+(Non-Volatile Memory Express)
+storage devices connected via PCIe or over NVMF
+(NVMe over Fabric)
+via the CAM subsystem.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>pms</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ocs_fc&amp;sektion=4&amp;format=html">ocs_fc(4)</a>
+driver supports the following PCIe Fibre Channel adapters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>LPe3500X FC Host Bus Adapter
+(Emulex 64/32G FC Gen 7 HBA)</p>
+</li>
+<li>
+<p>LPe3200X FC Host Bus Adapter
+(Emulex 32/16G FC Gen 6 HBA)</p>
+</li>
+<li>
+<p>LPe3100X FC Host Bus Adapter
+(Emulex 32/16G FC Gen 6 HBA)</p>
+</li>
+<li>
+<p>LPe160XX FC Host Bus Adapter
+(Emulex 16/8G FC Gen 5 HBA)</p>
+</li>
+<li>
+<p>LPe15004 FC Host Bus Adapter
+(Emulex 16/8G FC Gen 5 HBA)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://man.freebsd.org/cgi/man.cgi?query=pms&amp;sektion=4&amp;format=html">pms(4)</a>
 driver supports the following hardware:</p>
 </div>
 <div class="ulist">
@@ -2832,38 +2897,40 @@ driver supports the following hardware:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>pst</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=pst&amp;sektion=4&amp;format=html">pst(4)</a>
 driver supports the Promise Supertrak SX6000 ATA hardware RAID
 controller.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>sdhci</strong>
-driver supports different specification compatible chips.
-The following chips have been verified to work:</p>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=sdhci&amp;sektion=4&amp;format=html">sdhci(4)</a>
+driver supports the SD Host Controller Specification.
+When attaching via the PCI bus,
+the controller is automatically configured.
+Many SoC chips provide a SDHCI controller directly mapped to I/O memory.
+For those, the controller may be configured using
+fdt(4)
+or
+acpi(4)
+methods, supplied by your board’s vendor.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>ENE CB712</p>
-</li>
-<li>
-<p>ENE CB714</p>
-</li>
-<li>
-<p>RICOH R5C822</p>
-</li>
-<li>
-<p>RICOH R5CE823</p>
-</li>
-<li>
-<p>TI PCIXX21/XX11/XX12</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Unlike most other drivers that support a generic standard,
+<strong>sdhci</strong>
+requires a large number of quirks to cope with hardware bugs,
+proprietary registers and poorly specified power management.
+While many chipsets from
+Intel, Xilinx, Rockchip, Frescale, Ricoh, and TI have these entries,
+suboptimal performance may result when using some controllers.
+Quirks and custom configuration are most often required
+when the device is configured via
+fdt(4)
+or
+acpi(4).</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>siis</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=siis&amp;sektion=4&amp;format=html">siis(4)</a>
 driver supports the following controller chips:</p>
 </div>
 <div class="ulist">
@@ -2884,7 +2951,7 @@ driver supports the following controller chips:</p>
 </div>
 <div class="paragraph">
 <p>Controllers supported by the
-<strong>smartpqi</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=smartpqi&amp;sektion=4&amp;format=html">smartpqi(4)</a>
 driver include, but not limited to:</p>
 </div>
 <div class="ulist">
@@ -2903,7 +2970,7 @@ and SmartIOC Chipsets</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>sym</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=sym&amp;sektion=4&amp;format=html">sym(4)</a>
 driver provides support for the following Symbios/LSI Logic PCI SCSI
 controllers:</p>
 </div>
@@ -2998,7 +3065,7 @@ one of the following add-on boards:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>tws</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=tws&amp;sektion=4&amp;format=html">tws(4)</a>
 driver supports the following SATA/SAS RAID controller:</p>
 </div>
 <div class="ulist">
@@ -3031,7 +3098,7 @@ WORM/CD-R/CD-RW writing support is provided by <a href="https://man.freebsd.org/
 <h3 id="ethernet">3.2. Ethernet Interfaces</h3>
 <div class="paragraph">
 <p>The
-<strong>ae</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ae&amp;sektion=4&amp;format=html">ae(4)</a>
 driver supports Attansic/Atheros L2 PCIe FastEthernet controllers, and
 is known to support the following hardware:</p>
 </div>
@@ -3050,7 +3117,7 @@ is known to support the following hardware:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>age</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=age&amp;sektion=4&amp;format=html">age(4)</a>
 driver provides support for LOMs based on
 Attansic/Atheros L1 Gigabit Ethernet controller chips, including:</p>
 </div>
@@ -3111,7 +3178,7 @@ Attansic/Atheros L1 Gigabit Ethernet controller chips, including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>alc</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=alc&amp;sektion=4&amp;format=html">alc(4)</a>
 device driver provides support for the following Ethernet controllers:</p>
 </div>
 <div class="ulist">
@@ -3159,7 +3226,7 @@ device driver provides support for the following Ethernet controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ale</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ale&amp;sektion=4&amp;format=html">ale(4)</a>
 device driver provides support for the following Ethernet controllers:</p>
 </div>
 <div class="ulist">
@@ -3177,7 +3244,7 @@ device driver provides support for the following Ethernet controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>aue</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=aue&amp;sektion=4&amp;format=html">aue(4)</a>
 driver supports the following USB Fast Ethernet adapters based on the
 ADMtek AN986 Pegasus chipset:</p>
 </div>
@@ -3248,7 +3315,7 @@ USB10TA, USB10TX, USB100TX, USB100H1</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>axe</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=axe&amp;sektion=4&amp;format=html">axe(4)</a>
 driver supports ASIX Electronics AX88172/AX88178/AX88772/AX88772A/AX88772B/AX88760
 based USB Ethernet adapters including:</p>
 </div>
@@ -3389,7 +3456,7 @@ based USB Ethernet adapters including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>axge</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=axge&amp;sektion=4&amp;format=html">axge(4)</a>
 driver supports the following USB Gigabit Ethernet controllers:</p>
 </div>
 <div class="ulist">
@@ -3407,7 +3474,7 @@ driver supports the following USB Gigabit Ethernet controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>bce</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=bce&amp;sektion=4&amp;format=html">bce(4)</a>
 driver provides support for various NICs based on the QLogic NetXtreme II
 family of Gigabit Ethernet controllers, including the
 following:</p>
@@ -3490,7 +3557,7 @@ following:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>bge</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=bge&amp;sektion=4&amp;format=html">bge(4)</a>
 driver provides support for various NICs based on the Broadcom BCM570x
 family of Gigabit Ethernet controller chips, including the
 following:</p>
@@ -3555,7 +3622,7 @@ following:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>bnxt</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=bnxt&amp;sektion=4&amp;format=html">bnxt(4)</a>
 driver provides support for various NICs based on the Broadcom NetXtreme-C and
 NetXtreme-E families of Gigabit Ethernet controller chips, including the
 following:</p>
@@ -3629,7 +3696,7 @@ following:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>bxe</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=bxe&amp;sektion=4&amp;format=html">bxe(4)</a>
 driver provides support for various NICs based on the QLogic NetXtreme II
 family of 10Gb Ethernet controller chips, including the following:</p>
 </div>
@@ -3672,7 +3739,7 @@ family of 10Gb Ethernet controller chips, including the following:</p>
 </div>
 <div class="paragraph">
 <p>The chips supported by the
-<strong>cas</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=cas&amp;sektion=4&amp;format=html">cas(4)</a>
 driver are:</p>
 </div>
 <div class="ulist">
@@ -3720,7 +3787,7 @@ driver at this time:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>cdce</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=cdce&amp;sektion=4&amp;format=html">cdce(4)</a>
 driver supports USB Ethernet interfaces implementing the
 USB Communication Device Class Ethernet Control Model (CDC ECM) or
 Network Control Model (CDC NCM) protocol, such as:</p>
@@ -3749,7 +3816,7 @@ Network Control Model (CDC NCM) protocol, such as:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>cue</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=cue&amp;sektion=4&amp;format=html">cue(4)</a>
 driver supports CATC USB-EL1210A based USB Ethernet
 adapters including:</p>
 </div>
@@ -3771,7 +3838,7 @@ adapters including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>cxgb</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=cxgb&amp;sektion=4&amp;format=html">cxgb(4)</a>
 driver supports 10 Gigabit and 1 Gigabit Ethernet adapters based on the T3 and T3B chipset:</p>
 </div>
 <div class="ulist">
@@ -3789,7 +3856,7 @@ driver supports 10 Gigabit and 1 Gigabit Ethernet adapters based on the T3 and T
 </div>
 <div class="paragraph">
 <p>The
-<strong>cxgbe</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=cxgbe&amp;sektion=4&amp;format=html">cxgbe(4)</a>
 driver supports 100Gb and 25Gb Ethernet adapters based on the T6 ASIC:</p>
 </div>
 <div class="ulist">
@@ -3897,7 +3964,7 @@ driver supports 10Gb and 1Gb Ethernet adapters based on the T4 ASIC:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>cxgbev</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=cxgbev&amp;sektion=4&amp;format=html">cxgbev(4)</a>
 driver supports Virtual Functions on 100Gb and 25Gb Ethernet adapters
 based on the T6 ASIC:</p>
 </div>
@@ -4008,7 +4075,7 @@ on the T4 ASIC:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>dc</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=dc&amp;sektion=4&amp;format=html">dc(4)</a>
 driver provides support for the following chipsets:</p>
 </div>
 <div class="ulist">
@@ -4171,7 +4238,7 @@ desktops (21143, non-MII)</p>
 <div class="paragraph">
 <p>Gigabit Ethernet controllers built into the following Freescale
 system-on-chip devices are known to work with the
-<strong>dtsec</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=dtsec&amp;sektion=4&amp;format=html">dtsec(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -4199,7 +4266,7 @@ driver:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>em</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=em&amp;sektion=4&amp;format=html">em(4)</a>
 driver supports Gigabit Ethernet adapters based on the Intel
 82540, 82541ER, 82541PI, 82542, 82543, 82544, 82545, 82546, 82546EB,
 82546GB, 82547, 82571, 82572, 82573, 82574, 82575, 82576, and 82580
@@ -4298,18 +4365,18 @@ controller chips:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>enic</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=enic&amp;sektion=4&amp;format=html">enic(4)</a>
 driver should supports all known Cisco VIC cards.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>et</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=et&amp;sektion=4&amp;format=html">et(4)</a>
 driver supports Agere ET1310 10/100/Gigabit
 Ethernet adapters.</p>
 </div>
 <div class="paragraph">
 <p>Adapters supported by the
-<strong>fxp</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=fxp&amp;sektion=4&amp;format=html">fxp(4)</a>
 driver include:</p>
 </div>
 <div class="ulist">
@@ -4345,7 +4412,7 @@ driver include:</p>
 </div>
 <div class="paragraph">
 <p>Chips supported by the
-<strong>gem</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=gem&amp;sektion=4&amp;format=html">gem(4)</a>
 driver include:</p>
 </div>
 <div class="ulist">
@@ -4374,7 +4441,7 @@ driver at this time:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>genet</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=genet&amp;sektion=4&amp;format=html">genet(4)</a>
 driver supports the Ethernet controller portion of the Broadcom BCM2711
 on the Raspberry Pi 4 Model B and related systems.
 It utilizes the BCM54213PE PHY.</p>
@@ -4384,7 +4451,7 @@ It utilizes the BCM54213PE PHY.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ice</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ice&amp;sektion=4&amp;format=html">ice(4)</a>
 driver supports the Intel Ethernet 800 series.
 Most adapters in this series with SFP28/QSFP28 cages
 have firmware that requires that Intel qualified modules are used; these
@@ -4396,10 +4463,77 @@ This qualification check cannot be disabled by the driver.</p>
 <strong>ice</strong>
 driver supports 100Gb Ethernet adapters with these QSFP28 modules:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Intel® 100G QSFP28 100GBASE-SR4   E100GQSFPSR28SRX</p>
+</li>
+<li>
+<p>Intel® 100G QSFP28 100GBASE-SR4   SPTMBP1PMCDF</p>
+</li>
+<li>
+<p>Intel® 100G QSFP28 100GBASE-CWDM4 SPTSBP3CLCCO</p>
+</li>
+<li>
+<p>Intel® 100G QSFP28 100GBASE-DR    SPTSLP2SLCDF</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>The
-<strong>igc</strong>
-driver supports the following models:</p>
+<strong>ice</strong>
+driver supports 25Gb and 10Gb Ethernet adapters with these SFP28 modules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Intel® 10G/25G SFP28 25GBASE-SR E25GSFP28SR</p>
+</li>
+<li>
+<p>Intel®     25G SFP28 25GBASE-SR E25GSFP28SRX (Extended Temp)</p>
+</li>
+<li>
+<p>Intel®     25G SFP28 25GBASE-LR E25GSFP28LRX (Extended Temp)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The
+<strong>ice</strong>
+driver supports 10Gb and 1Gb Ethernet adapters with these SFP+ modules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Intel® 1G/10G SFP+ 10GBASE-SR E10GSFPSR</p>
+</li>
+<li>
+<p>Intel® 1G/10G SFP+ 10GBASE-SR E10GSFPSRG1P5</p>
+</li>
+<li>
+<p>Intel® 1G/10G SFP+ 10GBASE-SR E10GSFPSRG2P5</p>
+</li>
+<li>
+<p>Intel®    10G SFP+ 10GBASE-SR E10GSFPSRX (Extended Temp)</p>
+</li>
+<li>
+<p>Intel® 1G/10G SFP+ 10GBASE-LR E10GSFPLR</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that adapters also support all passive and active
+limiting direct attach cables that comply with SFF-8431 v4.1 and
+SFF-8472 v10.4 specifications.</p>
+</div>
+<div class="paragraph">
+<p>This is not an exhaustive list; please consult product documentation for an
+up-to-date list of supported media.</p>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://man.freebsd.org/cgi/man.cgi?query=igc&amp;sektion=4&amp;format=html">igc(4)</a>
+driver supports the following 2.5Gb Ethernet controllers:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4443,7 +4577,7 @@ driver supports the following models:</p>
 </div>
 <div class="paragraph">
 <p>The following devices are supported by the
-<strong>ipheth</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ipheth&amp;sektion=4&amp;format=html">ipheth(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -4458,7 +4592,7 @@ driver:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ix</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ix&amp;sektion=4&amp;format=html">ix(4)</a>
 driver supports Intel 10Gb Ethernet PCIe adapters,
 including:</p>
 </div>
@@ -4495,7 +4629,7 @@ including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ixl</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ixl&amp;sektion=4&amp;format=html">ixl(4)</a>
 driver supports the Intel Ethernet 700 series.
 Most adapters in this series with SFP+/SFP28/QSFP+ cages
 have firmware that requires that Intel qualified modules are used; these
@@ -4573,7 +4707,7 @@ up-to-date list of supported media.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>jme</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=jme&amp;sektion=4&amp;format=html">jme(4)</a>
 device driver provides support for the following Ethernet controllers:</p>
 </div>
 <div class="ulist">
@@ -4594,7 +4728,7 @@ device driver provides support for the following Ethernet controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>kue</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=kue&amp;sektion=4&amp;format=html">kue(4)</a>
 driver supports Kawasaki LSI KL5KLUSB101B based USB Ethernet
 adapters including:</p>
 </div>
@@ -4652,7 +4786,7 @@ adapters including:</p>
 </div>
 <div class="paragraph">
 <p>Adapters supported by the
-<strong>lge</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=lge&amp;sektion=4&amp;format=html">lge(4)</a>
 driver include:</p>
 </div>
 <div class="ulist">
@@ -4667,7 +4801,7 @@ driver include:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>liquidio</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=liquidio&amp;sektion=4&amp;format=html">liquidio(4)</a>
 driver supports the following cards:</p>
 </div>
 <div class="ulist">
@@ -4682,7 +4816,7 @@ driver supports the following cards:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mgb</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mgb&amp;sektion=4&amp;format=html">mgb(4)</a>
 driver supports Microchip PCIe Gigabit Ethernet interfaces, including:</p>
 </div>
 <div class="ulist">
@@ -4697,7 +4831,7 @@ driver supports Microchip PCIe Gigabit Ethernet interfaces, including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mlx4en</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mlx4en&amp;sektion=4&amp;format=html">mlx4en(4)</a>
 driver supports the following network adapters:</p>
 </div>
 <div class="ulist">
@@ -4712,7 +4846,7 @@ driver supports the following network adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mlx4ib</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mlx4ib&amp;sektion=4&amp;format=html">mlx4ib(4)</a>
 driver supports the following network adapters:</p>
 </div>
 <div class="ulist">
@@ -4727,7 +4861,7 @@ driver supports the following network adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mlx5en</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mlx5en&amp;sektion=4&amp;format=html">mlx5en(4)</a>
 driver supports 200Gb, 100Gb, 50Gb, 40Gb, 25Gb and 10Gb ethernet adapters.</p>
 </div>
 <div class="ulist">
@@ -4748,7 +4882,7 @@ driver supports 200Gb, 100Gb, 50Gb, 40Gb, 25Gb and 10Gb ethernet adapters.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mlx5ib</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mlx5ib&amp;sektion=4&amp;format=html">mlx5ib(4)</a>
 driver supports 100Gb, 50Gb, 40Gb, 25Gb and 10Gb network adapters.
 ConnectX-4 supports: 10/20/25/40/50/56/100Gb/s speeds.
 ConnectX-4 LX supports: 10/25/40/50Gb/s speeds (and reduced power consumption):</p>
@@ -4801,7 +4935,7 @@ ConnectX-4 LX supports: 10/25/40/50Gb/s speeds (and reduced power consumption):<
 </div>
 <div class="paragraph">
 <p>Adapters supported by the
-<strong>mos</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mos&amp;sektion=4&amp;format=html">mos(4)</a>
 driver include:</p>
 </div>
 <div class="ulist">
@@ -4813,7 +4947,7 @@ driver include:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>msk</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=msk&amp;sektion=4&amp;format=html">msk(4)</a>
 driver provides support for various NICs based on the Marvell/SysKonnect
 Yukon II based Gigabit Ethernet controller chips, including:</p>
 </div>
@@ -4922,7 +5056,7 @@ Yukon II based Gigabit Ethernet controller chips, including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>muge</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=muge&amp;sektion=4&amp;format=html">muge(4)</a>
 driver supports Microchip USB Gigabit Ethernet interfaces, including:</p>
 </div>
 <div class="ulist">
@@ -4940,7 +5074,7 @@ driver supports Microchip USB Gigabit Ethernet interfaces, including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mxge</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mxge&amp;sektion=4&amp;format=html">mxge(4)</a>
 driver supports 10 Gigabit Ethernet adapters based on the
 Myricom LANai Z8E chips:</p>
 </div>
@@ -4959,7 +5093,7 @@ Myricom LANai Z8E chips:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>my</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=my&amp;sektion=4&amp;format=html">my(4)</a>
 driver provides support for various NICs based on the Myson chipset.
 Supported models include:</p>
 </div>
@@ -4978,7 +5112,7 @@ Supported models include:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>nfe</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=nfe&amp;sektion=4&amp;format=html">nfe(4)</a>
 driver supports the following NVIDIA MCP onboard adapters:</p>
 </div>
 <div class="ulist">
@@ -5047,7 +5181,7 @@ driver supports the following NVIDIA MCP onboard adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>nge</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=nge&amp;sektion=4&amp;format=html">nge(4)</a>
 driver supports National Semiconductor DP83820 and DP83821 based
 Gigabit Ethernet adapters including:</p>
 </div>
@@ -5087,7 +5221,7 @@ Gigabit Ethernet adapters including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>oce</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=oce&amp;sektion=4&amp;format=html">oce(4)</a>
 driver supports the following network adapters:</p>
 </div>
 <div class="ulist">
@@ -5105,7 +5239,7 @@ driver supports the following network adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>qlnxe</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=qlnxe&amp;sektion=4&amp;format=html">qlnxe(4)</a>
 driver supports 25/40/100 Gigabit Ethernet &amp; CNA Adapter based on the following
 chipsets:</p>
 </div>
@@ -5121,7 +5255,7 @@ chipsets:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>qlxgb</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=qlxgb&amp;sektion=4&amp;format=html">qlxgb(4)</a>
 driver supports 10 Gigabit Ethernet &amp; CNA Adapter based on the following
 chipsets:</p>
 </div>
@@ -5137,7 +5271,7 @@ chipsets:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>qlxgbe</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=qlxgbe&amp;sektion=4&amp;format=html">qlxgbe(4)</a>
 driver supports 10 Gigabit Ethernet &amp; CNA Adapter based on the following
 chipsets:</p>
 </div>
@@ -5150,7 +5284,7 @@ chipsets:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>qlxge</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=qlxge&amp;sektion=4&amp;format=html">qlxge(4)</a>
 driver supports 10 Gigabit Ethernet &amp; CNA Adapter based on the following
 chipsets:</p>
 </div>
@@ -5163,7 +5297,7 @@ chipsets:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>re</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=re&amp;sektion=4&amp;format=html">re(4)</a>
 driver supports RealTek RTL8139C+, RTL8169, RTL816xS, RTL811xS, RTL8168,
 RTL810xE and RTL8111 based Fast Ethernet and Gigabit Ethernet adapters including:</p>
 </div>
@@ -5206,7 +5340,7 @@ RTL810xE and RTL8111 based Fast Ethernet and Gigabit Ethernet adapters including
 </div>
 <div class="paragraph">
 <p>Adapters supported by the
-<strong>rl</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=rl&amp;sektion=4&amp;format=html">rl(4)</a>
 driver include:</p>
 </div>
 <div class="ulist">
@@ -5313,7 +5447,7 @@ EN1207D (MPX 5030/5038; RealTek 8139 clone)</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>rue</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=rue&amp;sektion=4&amp;format=html">rue(4)</a>
 driver supports RealTek RTL8150 based USB Ethernet
 adapters including:</p>
 </div>
@@ -5335,13 +5469,13 @@ adapters including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>sfxge</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=sfxge&amp;sektion=4&amp;format=html">sfxge(4)</a>
 driver supports all 10Gb Ethernet adapters based on Solarflare SFC9000
 family controllers.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>sge</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=sge&amp;sektion=4&amp;format=html">sge(4)</a>
 device driver provides support for the following Ethernet controllers:</p>
 </div>
 <div class="ulist">
@@ -5356,7 +5490,7 @@ device driver provides support for the following Ethernet controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>sis</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=sis&amp;sektion=4&amp;format=html">sis(4)</a>
 driver supports Silicon Integrated Systems SiS 900 and SiS 7016 based
 Fast Ethernet adapters and embedded controllers, as well as Fast Ethernet
 adapters based on the National Semiconductor DP83815 (MacPhyter) and DP83816
@@ -5387,7 +5521,7 @@ Supported adapters include:</p>
 </div>
 <div class="paragraph">
 <p>Adapters supported by the
-<strong>sk</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=sk&amp;sektion=4&amp;format=html">sk(4)</a>
 driver include:</p>
 </div>
 <div class="ulist">
@@ -5435,7 +5569,7 @@ driver include:</p>
 </div>
 <div class="paragraph">
 <p>The following devices are supported by the
-<strong>smsc</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=smsc&amp;sektion=4&amp;format=html">smsc(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -5453,7 +5587,7 @@ driver:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ste</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ste&amp;sektion=4&amp;format=html">ste(4)</a>
 driver supports Sundance Technologies ST201 based Fast Ethernet
 adapters and embedded controllers including:</p>
 </div>
@@ -5472,7 +5606,7 @@ adapters and embedded controllers including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>stge</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=stge&amp;sektion=4&amp;format=html">stge(4)</a>
 driver provides support for various NICs based on the Sundance/Tamarack
 TC9021 based Gigabit Ethernet controller chips, including:</p>
 </div>
@@ -5506,7 +5640,7 @@ TC9021 based Gigabit Ethernet controller chips, including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ti</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ti&amp;sektion=4&amp;format=html">ti(4)</a>
 driver supports Gigabit Ethernet adapters based on the
 Alteon Tigon I and II chips.
 The
@@ -5564,7 +5698,7 @@ not yet been tested:</p>
 <div class="paragraph">
 <p>Gigabit Ethernet controllers built into the following Freescale
 system-on-chip devices are known to work with the
-<strong>tsec</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=tsec&amp;sektion=4&amp;format=html">tsec(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -5590,7 +5724,7 @@ devices, is also supported by this driver:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>udav</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=udav&amp;sektion=4&amp;format=html">udav(4)</a>
 driver supports the following adapters:</p>
 </div>
 <div class="ulist">
@@ -5605,7 +5739,7 @@ driver supports the following adapters:</p>
 </div>
 <div class="paragraph">
 <p>Devices supported by the
-<strong>ufoma</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ufoma&amp;sektion=4&amp;format=html">ufoma(4)</a>
 driver include:</p>
 </div>
 <div class="ulist">
@@ -5623,7 +5757,7 @@ driver include:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>uhso</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uhso&amp;sektion=4&amp;format=html">uhso(4)</a>
 driver should work with most devices from Option.
 The following devices have been verified to work</p>
 </div>
@@ -5663,7 +5797,7 @@ sysctl(8).</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ure</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ure&amp;sektion=4&amp;format=html">ure(4)</a>
 driver supports the following USB Ethernet controllers:</p>
 </div>
 <div class="literalblock">
@@ -5677,14 +5811,14 @@ Realtek RTL8168/8169/8110/8211 via rgephy(4)    10, 100, and 1000</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>urndis</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=urndis&amp;sektion=4&amp;format=html">urndis(4)</a>
 driver supports the
 &#34;tethering&#34;
 functionality of many Android devices.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>vge</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=vge&amp;sektion=4&amp;format=html">vge(4)</a>
 driver supports VIA Networking VT6120, VT6122, VT6130 and VT6132 based
 Gigabit Ethernet adapters including:</p>
 </div>
@@ -5703,7 +5837,7 @@ Gigabit Ethernet adapters including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>vr</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=vr&amp;sektion=4&amp;format=html">vr(4)</a>
 driver supports VIA Technologies Rhine I, Rhine II, and Rhine III based
 Fast Ethernet adapters including:</p>
 </div>
@@ -5728,7 +5862,7 @@ Fast Ethernet adapters including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>vte</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=vte&amp;sektion=4&amp;format=html">vte(4)</a>
 device driver provides support for the following Ethernet controllers:</p>
 </div>
 <div class="ulist">
@@ -5740,7 +5874,7 @@ device driver provides support for the following Ethernet controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>xl</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=xl&amp;sektion=4&amp;format=html">xl(4)</a>
 driver supports the following hardware:</p>
 </div>
 <div class="ulist">
@@ -5823,7 +5957,7 @@ driver supports this modem.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ar40xx_switch</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ar40xx&amp;apropos=&amp;&amp;sektion=4&amp;format=html">ar40xx_switch</a>
 driver supports the following Gigabit Ethernet switch controllers:</p>
 </div>
 <div class="ulist">
@@ -5838,7 +5972,7 @@ driver supports the following Gigabit Ethernet switch controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>arswitch</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=arswitch&amp;sektion=4&amp;format=html">arswitch(4)</a>
 driver supports the following Ethernet switch controllers:</p>
 </div>
 <div class="ulist">
@@ -5862,7 +5996,7 @@ driver supports the following Ethernet switch controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>e6000sw</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=e6000sw&amp;sektion=4&amp;format=html">e6000sw(4)</a>
 driver supports the following Gigabit Ethernet switch controllers:</p>
 </div>
 <div class="ulist">
@@ -5886,7 +6020,7 @@ driver supports the following Gigabit Ethernet switch controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>e6060sw</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=e6060sw&amp;sektion=4&amp;format=html">e6060sw(4)</a>
 driver supports the following Fast Ethernet switch controllers:</p>
 </div>
 <div class="ulist">
@@ -5907,7 +6041,7 @@ driver supports the following Fast Ethernet switch controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ip17x</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ip17x&amp;sektion=4&amp;format=html">ip17x(4)</a>
 driver supports the following Fast Ethernet switch controllers:</p>
 </div>
 <div class="ulist">
@@ -5931,7 +6065,7 @@ driver supports the following Fast Ethernet switch controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mtkswitch</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mtkswitch&amp;sektion=4&amp;format=html">mtkswitch(4)</a>
 driver supports the following Ethernet switch controllers:</p>
 </div>
 <div class="ulist">
@@ -5967,13 +6101,13 @@ driver supports the following Ethernet switch controllers:</p>
 <h3 id="wlan">3.4. Wireless Network Interfaces</h3>
 <div class="paragraph">
 <p>The
-<strong>ath</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ath&amp;sektion=4&amp;format=html">ath(4)</a>
 driver supports all Atheros Cardbus, ExpressCard, PCI and PCIe cards,
 except those that are based on the AR5005VL chipset.</p>
 </div>
 <div class="paragraph">
 <p>The following cards are among those supported by the
-<strong>ath_hal</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ath_hal&amp;sektion=4&amp;format=html">ath_hal(4)</a>
 module:</p>
 </div>
 <div class="literalblock">
@@ -6022,7 +6156,7 @@ TP-LINK TL-WDN4800   AR9380    PCIe       a/b/g/n</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>bwi</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=bwi&amp;sektion=4&amp;format=html">bwi(4)</a>
 driver supports Broadcom BCM43xx based wireless devices, including:</p>
 </div>
 <div class="literalblock">
@@ -6063,7 +6197,7 @@ uses does not support these chips.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>bwn</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=bwn&amp;sektion=4&amp;format=html">bwn(4)</a>
 driver supports Broadcom BCM43xx based wireless devices, including:</p>
 </div>
 <div class="literalblock">
@@ -6091,13 +6225,13 @@ The newer firmware is too big to fit into these old chips.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ipw</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ipw&amp;sektion=4&amp;format=html">ipw(4)</a>
 driver provides support for the
 Intel PRO/Wireless 2100a/b MiniPCI network adapter.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>iwi</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=iwi&amp;sektion=4&amp;format=html">iwi(4)</a>
 driver supports the following wireless network devices:</p>
 </div>
 <div class="ulist">
@@ -6115,7 +6249,7 @@ driver supports the following wireless network devices:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>iwlwifi</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&amp;sektion=4&amp;format=html">iwlwifi(4)</a>
 driver supports PCIe devices from the
 <strong>mvm</strong>
 sub-driver with the following chipset generations:</p>
@@ -6345,7 +6479,7 @@ sub-driver with the following chipset generations:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>iwm</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=iwm&amp;sektion=4&amp;format=html">iwm(4)</a>
 driver supports the following PCIe Wi-Fi devices:</p>
 </div>
 <div class="ulist">
@@ -6387,7 +6521,7 @@ driver supports the following PCIe Wi-Fi devices:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>iwn</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=iwn&amp;sektion=4&amp;format=html">iwn(4)</a>
 driver provides support for:</p>
 </div>
 <div class="ulist">
@@ -6471,7 +6605,7 @@ driver provides support for:</p>
 </div>
 <div class="paragraph">
 <p>The following cards are among those supported by the
-<strong>malo</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=malo&amp;sektion=4&amp;format=html">malo(4)</a>
 driver:</p>
 </div>
 <div class="literalblock">
@@ -6487,7 +6621,7 @@ U-Khan UW-2054i    88W8335    PCI    b/g</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>otus</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=otus&amp;sektion=4&amp;format=html">otus(4)</a>
 driver provides support for Atheros AR9170 USB IEEE 802.11b/g/n
 wireless network adapters, including:</p>
 </div>
@@ -6551,7 +6685,7 @@ wireless network adapters, including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ral</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ral&amp;sektion=4&amp;format=html">ral(4)</a>
 driver supports PCI/PCIe/CardBus wireless adapters based on Ralink Technology
 chipsets, including:</p>
 </div>
@@ -6649,7 +6783,7 @@ Zonet ZEW1600                RT2560     PCI</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>rsu</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=rsu&amp;sektion=4&amp;format=html">rsu(4)</a>
 driver provides support for Realtek RTL8188SU/RTL8192SU USB IEEE 802.11b/g/n
 wireless network adapters, including:</p>
 </div>
@@ -6704,7 +6838,7 @@ wireless network adapters, including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>rtw88</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=rtw88&amp;sektion=4&amp;format=html">rtw88(4)</a>
 driver supports PCIe devices with the following chipsets:</p>
 </div>
 <div class="ulist">
@@ -6725,7 +6859,7 @@ driver supports PCIe devices with the following chipsets:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>rtw89</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=rtw89&amp;sektion=4&amp;format=html">rtw89(4)</a>
 driver supports PCIe devices with the following chipsets:</p>
 </div>
 <div class="ulist">
@@ -6749,7 +6883,7 @@ driver supports PCIe devices with the following chipsets:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>rtwn_pci</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=rtwn_pci&amp;sektion=4&amp;format=html">rtwn_pci(4)</a>
 driver supports the following PCIe Wi-Fi devices:</p>
 </div>
 <div class="ulist">
@@ -6764,7 +6898,7 @@ driver supports the following PCIe Wi-Fi devices:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>rtwn_usb</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=rtwn_usb&amp;sektion=4&amp;format=html">rtwn_usb(4)</a>
 driver supports USB wireless network adapters based on certain
 Realtek RTL 8188/8192/8812 and 8821 chipsets, including:</p>
 </div>
@@ -6830,7 +6964,7 @@ ZyXEL NWD6605                         RTL8812AU     USB 3.0</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>rum</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=rum&amp;sektion=4&amp;format=html">rum(4)</a>
 driver supports USB 2.0 wireless
 adapters based on the Ralink RT2501USB and RT2601USB chipsets,
 including:</p>
@@ -6878,7 +7012,7 @@ TP-LINK TL-WN321G v1/v2/v3   USB</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>run</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=run&amp;sektion=4&amp;format=html">run(4)</a>
 driver supports the following wireless adapters:</p>
 </div>
 <div class="ulist">
@@ -7076,7 +7210,7 @@ driver supports the following wireless adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>uath</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uath&amp;sektion=4&amp;format=html">uath(4)</a>
 driver should work with the following adapters:</p>
 </div>
 <div class="literalblock">
@@ -7105,7 +7239,7 @@ driver should work with the following adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>upgt</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=upgt&amp;sektion=4&amp;format=html">upgt(4)</a>
 driver supports USB 2.0 Conexant/Intersil PrismGT series wireless
 adapters based on the GW3887 chipset, among them:</p>
 </div>
@@ -7148,7 +7282,7 @@ adapters based on the GW3887 chipset, among them:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ural</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ural&amp;sektion=4&amp;format=html">ural(4)</a>
 driver supports USB 2.0 wireless adapters based on the Ralink Technology
 RT2500USB chipset, including:</p>
 </div>
@@ -7190,7 +7324,7 @@ Zonet ZEW2500P               USB</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>urtw</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=urtw&amp;sektion=4&amp;format=html">urtw(4)</a>
 driver supports Realtek RTL8187B/L based wireless network devices, including:</p>
 </div>
 <div class="literalblock">
@@ -7210,13 +7344,13 @@ TRENDnet TEW-424UB V3.xR      RTL8225    USB</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>wpi</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=wpi&amp;sektion=4&amp;format=html">wpi(4)</a>
 driver provides support for the
 Intel PRO/Wireless 3945ABG Mini PCIe network adapter.</p>
 </div>
 <div class="paragraph">
 <p>The following devices are known to be supported by the
-<strong>zyd</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=zyd&amp;sektion=4&amp;format=html">zyd(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -7360,7 +7494,7 @@ driver:</p>
 <h3 id="misc-network">3.5. Miscellaneous Networks</h3>
 <div class="paragraph">
 <p>The
-<strong>u3g</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=u3g&amp;sektion=4&amp;format=html">u3g(4)</a>
 driver supports the following cellular modems:</p>
 </div>
 <div class="ulist">
@@ -7414,14 +7548,8 @@ for the complete list.</p>
 <div class="sect2">
 <h3 id="serial">3.6. Serial Interfaces</h3>
 <div class="paragraph">
-<p>The core component and the kernel interfaces talk to the hardware through the
-hardware interface.
-This interface serves as an abstraction of the hardware and allows varying
-UARTs to be used for serial communications.</p>
-</div>
-<div class="paragraph">
 <p>The
-<strong>uart</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uart&amp;sektion=4&amp;format=html">uart(4)</a>
 driver supports the following classes of UARTs:</p>
 </div>
 <div class="ulist">
@@ -7439,7 +7567,7 @@ device driver.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>scc</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=scc&amp;sektion=4&amp;format=html">scc(4)</a>
 driver supports the following classes of Serial Communications Controllers:</p>
 </div>
 <div class="ulist">
@@ -7454,7 +7582,7 @@ driver supports the following classes of Serial Communications Controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>puc</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=puc&amp;sektion=4&amp;format=html">puc(4)</a>
 driver supports the following
 PCI multi-port serial and parallel adapters:</p>
 </div>
@@ -8301,7 +8429,7 @@ PCI multi-port serial and parallel adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>uark</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uark&amp;sektion=4&amp;format=html">uark(4)</a>
 driver supports the following adapters:</p>
 </div>
 <div class="ulist">
@@ -8322,7 +8450,7 @@ driver supports the following adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ubsa</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ubsa&amp;sektion=4&amp;format=html">ubsa(4)</a>
 driver supports the following adapters:</p>
 </div>
 <div class="ulist">
@@ -8352,12 +8480,12 @@ driver supports the following adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ubser</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ubser&amp;sektion=4&amp;format=html">ubser(4)</a>
 driver provides support for the BWCT console management serial adapters.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>uchcom</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uchcom&amp;sektion=4&amp;format=html">uchcom(4)</a>
 driver supports the following USB to serial UART controllers:</p>
 </div>
 <div class="ulist">
@@ -8378,7 +8506,7 @@ driver supports the following USB to serial UART controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ucycom</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ucycom&amp;sektion=4&amp;format=html">ucycom(4)</a>
 driver currently supports the following devices which incorporate
 Cypress USB to RS232 bridge chips:</p>
 </div>
@@ -8391,7 +8519,7 @@ Cypress USB to RS232 bridge chips:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>uftdi</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uftdi&amp;sektion=4&amp;format=html">uftdi(4)</a>
 driver supports the following USB to serial UART controllers:</p>
 </div>
 <div class="ulist">
@@ -8427,7 +8555,7 @@ driver supports the following USB to serial UART controllers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>umcs</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=umcs&amp;sektion=4&amp;format=html">umcs(4)</a>
 driver was tested on the following adapters:</p>
 </div>
 <div class="ulist">
@@ -8442,7 +8570,7 @@ driver was tested on the following adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>umct</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=umct&amp;sektion=4&amp;format=html">umct(4)</a>
 driver supports the following adapters:</p>
 </div>
 <div class="ulist">
@@ -8466,7 +8594,7 @@ driver supports the following adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>uplcom</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uplcom&amp;sektion=4&amp;format=html">uplcom(4)</a>
 driver supports the following devices and adapters:</p>
 </div>
 <div class="ulist">
@@ -8652,7 +8780,7 @@ driver supports the following devices and adapters:</p>
 </div>
 <div class="paragraph">
 <p>The following devices should work with the
-<strong>uslcom</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uslcom&amp;sektion=4&amp;format=html">uslcom(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -8872,7 +9000,7 @@ and PL512 and MPOD PSUs</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>uvscom</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uvscom&amp;sektion=4&amp;format=html">uvscom(4)</a>
 driver supports the following adapters:</p>
 </div>
 <div class="ulist">
@@ -8896,7 +9024,7 @@ driver supports the following adapters:</p>
 <h3 id="sound">3.7. Sound Devices</h3>
 <div class="paragraph">
 <p>The
-<strong>snd_als4000</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_als4000&amp;sektion=4&amp;format=html">snd_als4000(4)</a>
 driver supports the following sound cards:</p>
 </div>
 <div class="ulist">
@@ -8908,7 +9036,7 @@ driver supports the following sound cards:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_atiixp</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_atiixp&amp;sektion=4&amp;format=html">snd_atiixp(4)</a>
 driver supports the following audio chipsets:</p>
 </div>
 <div class="ulist">
@@ -8926,7 +9054,7 @@ driver supports the following audio chipsets:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_cmi</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_cmi&amp;sektion=4&amp;format=html">snd_cmi(4)</a>
 driver supports the following sound cards:</p>
 </div>
 <div class="ulist">
@@ -8947,7 +9075,7 @@ driver supports the following sound cards:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_cs4281</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_cs4281&amp;sektion=4&amp;format=html">snd_cs4281(4)</a>
 driver supports the following sound cards:</p>
 </div>
 <div class="ulist">
@@ -8959,7 +9087,7 @@ driver supports the following sound cards:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_csa</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_csa&amp;sektion=4&amp;format=html">snd_csa(4)</a>
 driver supports the following sound cards:</p>
 </div>
 <div class="ulist">
@@ -9009,7 +9137,7 @@ driver yet.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_emu10k1</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_emu10k1&amp;sektion=4&amp;format=html">snd_emu10k1(4)</a>
 driver supports the following sound cards:</p>
 </div>
 <div class="ulist">
@@ -9030,7 +9158,7 @@ driver supports the following sound cards:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_emu10kx</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_emu10kx&amp;sektion=4&amp;format=html">snd_emu10kx(4)</a>
 driver supports the following sound cards:</p>
 </div>
 <div class="ulist">
@@ -9089,7 +9217,7 @@ as
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_envy24</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_envy24&amp;sektion=4&amp;format=html">snd_envy24(4)</a>
 driver supports the following audio devices:</p>
 </div>
 <div class="ulist">
@@ -9111,7 +9239,7 @@ Recording and other features of these cards are not supported.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_envy24ht</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_envy24ht&amp;sektion=4&amp;format=html">snd_envy24ht(4)</a>
 driver supports the following audio devices:</p>
 </div>
 <div class="ulist">
@@ -9166,7 +9294,7 @@ Recording and other features of these cards are not supported.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_es137x</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_es137x&amp;sektion=4&amp;format=html">snd_es137x(4)</a>
 driver supports the following sound cards:</p>
 </div>
 <div class="ulist">
@@ -9208,7 +9336,7 @@ driver supports the following sound cards:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_fm801</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_fm801&amp;sektion=4&amp;format=html">snd_fm801(4)</a>
 driver supports audio devices based on the following chipset:</p>
 </div>
 <div class="ulist">
@@ -9220,7 +9348,7 @@ driver supports audio devices based on the following chipset:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_hda</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_hda&amp;sektion=4&amp;format=html">snd_hda(4)</a>
 driver supports PCI class 04h
 (multimedia),
 subclass 03h
@@ -9230,7 +9358,7 @@ Intel High Definition Audio 1.0 specification.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_hdspe</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_hdspe&amp;sektion=4&amp;format=html">snd_hdspe(4)</a>
 driver supports the following audio devices:</p>
 </div>
 <div class="ulist">
@@ -9253,7 +9381,7 @@ be mapped to ADAT channels and vice versa.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_ich</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_ich&amp;sektion=4&amp;format=html">snd_ich(4)</a>
 driver supports the following audio devices:</p>
 </div>
 <div class="ulist">
@@ -9316,7 +9444,7 @@ driver supports the following audio devices:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_maestro3</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_maestro3&amp;sektion=4&amp;format=html">snd_maestro3(4)</a>
 driver supports the following audio devices:</p>
 </div>
 <div class="ulist">
@@ -9331,7 +9459,7 @@ driver supports the following audio devices:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_neomagic</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_neomagic&amp;sektion=4&amp;format=html">snd_neomagic(4)</a>
 driver supports the following audio devices:</p>
 </div>
 <div class="ulist">
@@ -9346,7 +9474,7 @@ driver supports the following audio devices:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_solo</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_solo&amp;sektion=4&amp;format=html">snd_solo(4)</a>
 driver supports the following sound cards:</p>
 </div>
 <div class="ulist">
@@ -9361,7 +9489,7 @@ driver supports the following sound cards:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_spicds</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_spicds&amp;sektion=4&amp;format=html">snd_spicds(4)</a>
 driver supports the following codecs:</p>
 </div>
 <div class="ulist">
@@ -9388,7 +9516,7 @@ driver supports the following codecs:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_t4dwave</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_t4dwave&amp;sektion=4&amp;format=html">snd_t4dwave(4)</a>
 driver supports the following audio devices:</p>
 </div>
 <div class="ulist">
@@ -9409,7 +9537,13 @@ driver supports the following audio devices:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_via8233</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_uaudio&amp;sektion=4&amp;format=html">snd_uaudio(4)</a>
+driver provides support for USB audio class devices and
+USB MIDI class devices.</p>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_via8233&amp;sektion=4&amp;format=html">snd_via8233(4)</a>
 driver supports the following audio chipsets:</p>
 </div>
 <div class="ulist">
@@ -9436,7 +9570,7 @@ driver supports the following audio chipsets:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_via82c686</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_via82c686&amp;sektion=4&amp;format=html">snd_via82c686(4)</a>
 driver supports audio devices based on the following chipset:</p>
 </div>
 <div class="ulist">
@@ -9448,7 +9582,7 @@ driver supports audio devices based on the following chipset:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>snd_vibes</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=snd_vibes&amp;sektion=4&amp;format=html">snd_vibes(4)</a>
 driver supports audio devices based on the following chipset:</p>
 </div>
 <div class="ulist">
@@ -9490,7 +9624,7 @@ Owing to the generic nature of most USB devices, with some exceptions any device
 </div>
 <div class="paragraph">
 <p>The
-<strong>atp</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=atp&amp;sektion=4&amp;format=html">atp(4)</a>
 driver provides support for the following Product IDs:</p>
 </div>
 <div class="ulist">
@@ -9528,8 +9662,15 @@ driver provides support for the following Product IDs:</p>
 </ul>
 </div>
 <div class="paragraph">
+<p>To discover the product-id of a touchpad, search for &#39;Trackpad&#39; in the
+output of
+lshal(1)
+and look up the property
+<strong>usb_device.product_id</strong>.</p>
+</div>
+<div class="paragraph">
 <p>The
-<strong>atopcase</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=atopcase&amp;sektion=4&amp;format=html">atopcase(4)</a>
 driver supports the following MacBooks produced in 2015-2018 years:</p>
 </div>
 <div class="ulist">
@@ -9571,7 +9712,7 @@ driver supports the following MacBooks produced in 2015-2018 years:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>abtn</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=abtn&amp;sektion=4&amp;format=html">abtn(4)</a>
 driver supports extended keyboard keys (special F-keys) on the following devices:</p>
 </div>
 <div class="ulist">
@@ -9586,7 +9727,7 @@ driver supports extended keyboard keys (special F-keys) on the following devices
 </div>
 <div class="paragraph">
 <p>Devices supported by the
-<strong>akbd</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=akbd&amp;sektion=4&amp;format=html">akbd(4)</a>
 driver include:</p>
 </div>
 <div class="ulist">
@@ -9607,7 +9748,7 @@ driver include:</p>
 </div>
 <div class="paragraph">
 <p>Devices supported by the
-<strong>ams</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ams&amp;sektion=4&amp;format=html">ams(4)</a>
 driver include:</p>
 </div>
 <div class="ulist">
@@ -9630,11 +9771,17 @@ driver include:</p>
 </ul>
 </div>
 <div class="paragraph">
+<p>The
+<a href="https://man.freebsd.org/cgi/man.cgi?query=dwcotg&amp;sektion=4&amp;format=html">dwcotg(4)</a>
+driver supports the
+Synopsys DesignWare USB controller found in many embedded devices.</p>
+</div>
+<div class="paragraph">
 <p>The <a href="https://man.freebsd.org/cgi/man.cgi?query=ehci&amp;sektion=4&amp;format=html">ehci(4)</a> driver supports USB 2.0 controllers implementing the Enhanced Host Controller Interface standard.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ohci</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ohci&amp;sektion=4&amp;format=html">ohci(4)</a>
 driver supports all OHCI v1.0 compliant controllers including:</p>
 </div>
 <div class="ulist">
@@ -9664,7 +9811,7 @@ driver supports all OHCI v1.0 compliant controllers including:</p>
 </div>
 <div class="paragraph">
 <p>The following devices are supported by the
-<strong>ugold</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ugold&amp;sektion=4&amp;format=html">ugold(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -9676,7 +9823,7 @@ driver:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>uhci</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uhci&amp;sektion=4&amp;format=html">uhci(4)</a>
 driver supports all UHCI v1.1 compliant controllers including:</p>
 </div>
 <div class="ulist">
@@ -9694,7 +9841,7 @@ driver supports all UHCI v1.1 compliant controllers including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>uipaq</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uipaq&amp;sektion=4&amp;format=html">uipaq(4)</a>
 driver supports the following iPAQ devices:</p>
 </div>
 <div class="ulist">
@@ -9733,7 +9880,7 @@ driver supports the following iPAQ devices:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>umass</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=umass&amp;sektion=4&amp;format=html">umass(4)</a>
 driver supports USB Mass Storage devices such as:</p>
 </div>
 <div class="ulist">
@@ -9771,7 +9918,7 @@ usb_quirk(4).</p>
 </div>
 <div class="paragraph">
 <p>The following devices are supported by the
-<strong>urio</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=urio&amp;sektion=4&amp;format=html">urio(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -9789,7 +9936,7 @@ driver:</p>
 </div>
 <div class="paragraph">
 <p>Devices supported by the
-<strong>umodem</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=umodem&amp;sektion=4&amp;format=html">umodem(4)</a>
 driver include:</p>
 </div>
 <div class="ulist">
@@ -9828,7 +9975,7 @@ driver include:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>rtsx</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=rtsx&amp;sektion=4&amp;format=html">rtsx(4)</a>
 driver supports the following Realtek SD card readers:</p>
 </div>
 <div class="ulist">
@@ -9867,7 +10014,7 @@ driver supports the following Realtek SD card readers:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ulpt</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ulpt&amp;sektion=4&amp;format=html">ulpt(4)</a>
 driver provides support for USB printers and parallel printer
 conversion cables, including the following:</p>
 </div>
@@ -9888,11 +10035,20 @@ conversion cables, including the following:</p>
 <li>
 <p>Entrega USB-to-parallel printer adapter</p>
 </li>
+<li>
+<p>Hewlett-Packard HP Deskjet 3420 (P/N: C8947A #ABJ)</p>
+</li>
+<li>
+<p>Oki Data MICROLINE ML660PS</p>
+</li>
+<li>
+<p>Seiko Epson PM-900C, 880C, 820C, 730C</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
 <p>The
-<strong>umct</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=umct&amp;sektion=4&amp;format=html">umct(4)</a>
 driver supports the following adapters:</p>
 </div>
 <div class="ulist">
@@ -9916,7 +10072,7 @@ driver supports the following adapters:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>uvisor</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=uvisor&amp;sektion=4&amp;format=html">uvisor(4)</a>
 driver supports the following devices:</p>
 </div>
 <div class="ulist">
@@ -9988,7 +10144,7 @@ driver supports the following devices:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>xhci</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=xhci&amp;sektion=4&amp;format=html">xhci(4)</a>
 driver supports
 <code>XHCI</code>
 compatible controllers having PCI class 12 (serial bus),
@@ -9999,7 +10155,7 @@ subclass 3 (USB) and programming interface 48 (XHCI).</p>
 <h3 id="firewire">3.9. IEEE 1394 (Firewire) Devices</h3>
 <div class="paragraph">
 <p>The
-<strong>fwohci</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=fwohci&amp;sektion=4&amp;format=html">fwohci(4)</a>
 driver provides support for PCI/CardBus FireWire interface cards.
 The driver supports the following IEEE 1394 OHCI chipsets:</p>
 </div>
@@ -10093,7 +10249,7 @@ The driver supports the following IEEE 1394 OHCI chipsets:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>sbp</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=sbp&amp;sektion=4&amp;format=html">sbp(4)</a>
 driver supports FireWire Serial Bus Protocol 2
 (SBP-2)
 storage devices.</p>
@@ -10103,7 +10259,7 @@ storage devices.</p>
 <h3 id="bluetooth">3.10. Bluetooth Devices</h3>
 <div class="paragraph">
 <p>The
-<strong>ng_ubt</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ng_ubt&amp;sektion=4&amp;format=html">ng_ubt(4)</a>
 driver supports all Bluetooth USB devices that conform with
 the Bluetooth specification v1.1, including:</p>
 </div>
@@ -10146,7 +10302,7 @@ the Bluetooth specification v1.1, including:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>ccr</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ccr&amp;sektion=4&amp;format=html">ccr(4)</a>
 driver supports the crypto accelerator engine included on adapters
 based on the T6 ASIC:</p>
 </div>
@@ -10174,7 +10330,7 @@ based on the T6 ASIC:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>hifn</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=hifn&amp;sektion=4&amp;format=html">hifn(4)</a>
 driver supports various cards containing the Hifn 7751, 7951,
 7811, 7955, and 7956
 chipsets, such as:</p>
@@ -10260,7 +10416,7 @@ Contains a 7955 and supports symmetric and random number operations.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>qat</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=qat&amp;sektion=4&amp;format=html">qat(4)</a>
 driver supports the following Intel QuickAssist Technology Engines:</p>
 </div>
 <div class="ulist">
@@ -10291,7 +10447,7 @@ driver supports the following Intel QuickAssist Technology Engines:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>safe</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=safe&amp;sektion=4&amp;format=html">safe(4)</a>
 driver supports the following SafeXcel chips:</p>
 </div>
 <div class="literalblock">
@@ -10305,7 +10461,7 @@ SafeNet 1741    A faster version of the 1141.</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>safexcel</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=safexcel&amp;sektion=4&amp;format=html">safexcel(4)</a>
 driver supports the cryptographic acceleration functions of the
 Inside Secure EIP-97 device found on some Marvell systems-on-chip.</p>
 </div>
@@ -10385,6 +10541,18 @@ including many laptop pointing devices (<a href="https://man.freebsd.org/cgi/man
 </tbody></table>
 </div>
 <div class="paragraph">
+<p>The
+<a href="https://man.freebsd.org/cgi/man.cgi?query=hgame&amp;sektion=4&amp;format=html">hgame(4)</a>
+driver supports HID gamepads, joysticks, and controllers such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>8bitdo USB Wireless Adapter 2</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p>[amd64, i386] Floppy drives (<a href="https://man.freebsd.org/cgi/man.cgi?query=fdc&amp;sektion=4&amp;format=html">fdc(4)</a> driver)</p>
 </div>
 <div class="paragraph">
@@ -10409,7 +10577,7 @@ including many laptop pointing devices (<a href="https://man.freebsd.org/cgi/man
 </div>
 <div class="paragraph">
 <p>The
-<strong>ads111x</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ads111x&amp;sektion=4&amp;format=html">ads111x(4)</a>
 driver provides support for the following devices:</p>
 </div>
 <div class="literalblock">
@@ -10421,7 +10589,7 @@ ADS1015     ADS1115</pre>
 </div>
 <div class="paragraph">
 <p>The
-<strong>amdsbwd</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=amdsbwd&amp;sektion=4&amp;format=html">amdsbwd(4)</a>
 driver supports the following chipsets:</p>
 </div>
 <div class="ulist">
@@ -10442,7 +10610,7 @@ driver supports the following chipsets:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>at45d</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=at45d&amp;sektion=4&amp;format=html">at45d(4)</a>
 driver provides support for the following devices:</p>
 </div>
 <div class="ulist">
@@ -10478,7 +10646,7 @@ driver provides support for the following devices:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>gpioths</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=gpioths&amp;sektion=4&amp;format=html">gpioths(4)</a>
 driver provides support for the following devices:</p>
 </div>
 <div class="literalblock">
@@ -10497,14 +10665,14 @@ The AM320x devices also support connection to an i2c bus,
 but this driver supports only the single-wire connection option.</p>
 </div>
 <div class="paragraph">
-<p><strong>ig4</strong>
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=ig4&amp;sektion=4&amp;format=html">ig4(4)</a>
 supports the I2C controllers based on Synopsys DesignWare IP that can be found
 in Intel® Core™ processors starting from the fourth generation, Intel®
 Bay Trail, Apollo Lake SoC families, and some AMD systems.</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>intpm</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=intpm&amp;sektion=4&amp;format=html">intpm(4)</a>
 driver supports the following chipsets:</p>
 </div>
 <div class="ulist">
@@ -10531,7 +10699,7 @@ driver supports the following chipsets:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>mx25l</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=mx25l&amp;sektion=4&amp;format=html">mx25l(4)</a>
 driver supports the following spi flash memory devices:</p>
 </div>
 <div class="ulist">
@@ -10624,13 +10792,13 @@ driver supports the following spi flash memory devices:</p>
 </div>
 <div class="paragraph">
 <p>The current version of the
-<strong>netfpga10g_nf10bmac</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=netfpga10g_nf10bmac&amp;sektion=4&amp;format=html">netfpga10g_nf10bmac(4)</a>
 driver works with one PIO mode interface of the
 NetFPGA-10G Embedded CPU Ethernet Core version 1.00a.</p>
 </div>
 <div class="paragraph">
 <p>The following PLX/Avago/Broadcom chips are supported by the
-<strong>ntb_hw_plx</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ntb_hw_plx&amp;sektion=4&amp;format=html">ntb_hw_plx(4)</a>
 driver:</p>
 </div>
 <div class="ulist">
@@ -10657,7 +10825,7 @@ driver:</p>
 </div>
 <div class="paragraph">
 <p>These temperature sensors are supported by the
-<strong>ow_temp</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=ow_temp&amp;sektion=4&amp;format=html">ow_temp(4)</a>
 driver:</p>
 </div>
 <div class="paragraph">
@@ -10725,7 +10893,7 @@ driver:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>superio</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=superio&amp;sektion=4&amp;format=html">superio(4)</a>
 driver supports a multitude of Super I/O controllers produced by Nuvoton,
 formerly known as Winbond, and ITE, namely:</p>
 </div>
@@ -10789,7 +10957,7 @@ formerly known as Winbond, and ITE, namely:</p>
 </div>
 <div class="paragraph">
 <p>The
-<strong>udl</strong>
+<a href="https://man.freebsd.org/cgi/man.cgi?query=udl&amp;sektion=4&amp;format=html">udl(4)</a>
 driver supports USB display devices
 based on the DisplayLink DL-120 / DL-160 graphic chip, including:</p>
 </div>
@@ -10856,7 +11024,7 @@ based on the DisplayLink DL-120 / DL-160 graphic chip, including:</p>
 
     <hr />
     <div>
-      <p><strong>Last modified on</strong>: May 19, 2026 by <a href="https://cgit.freebsd.org/doc/commit/?id=4c396c5b7f" target="_blank">Minsoo Choo</a></p>
+      <p><strong>Last modified on</strong>: August 6, 2026 by <a href="https://cgit.freebsd.org/doc/commit/?id=16933172ad" target="_blank">Colin Percival</a></p>
     </div>
     
   </div>

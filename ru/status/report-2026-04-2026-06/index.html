@@ -1,0 +1,3412 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="  ">
+  <meta name="keywords" content="">
+  <meta name="copyright" content="1995-2026 The FreeBSD Foundation">
+  <link rel="canonical" href="https://www.freebsd.org/ru/status/report-2026-04-2026-06/">
+
+  <title>
+    Отчёт о состоянии работ FreeBSD за второй квартал 2026 |
+    The FreeBSD Project
+  </title>
+
+  <meta name="theme-color" content="#790000">
+  <meta name="color-scheme" content="system light dark high-contrast">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/main.min.css">
+  <link rel="stylesheet" href="/css/font-awesome-min.css">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="www.freebsd.msk.ru/doc">
+  <meta name="twitter:site" content="@freebsd">
+  <meta name="twitter:url" content="https://twitter.com/freebsd">
+  <meta property="og:title" content=" Отчёт о состоянии работ FreeBSD за второй квартал 2026 " >
+  <meta property="og:description" content="  " >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  <meta property="og:image:alt" content="FreeBSD Logo">
+  <meta property="og:locale" content="ru" >
+  <meta property="og:url" content="https://www.freebsd.org/ru/status/report-2026-04-2026-06/">
+  <meta property="og:site_name" content="The FreeBSD Project">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "url": "https:\/\/www.freebsd.org\/ru\/status\/report-2026-04-2026-06\/",
+      "name": "The FreeBSD Project",
+      "headline": "The FreeBSD Project",
+      "description": ""
+    }
+  </script>
+  
+  <script defer src="/js/theme-chooser.min.js"></script>
+    <script async src="https://plausible.io/js/pa-QLSHWxEIso-L-cKLRNOUO.js" ></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script></head>
+
+  <body>
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+    <div id="page">
+      
+<header>
+  <div class="header-container">
+    <div class="logo-menu-bars-container">
+      <a href="/ru/" class="logo">
+        <img src="/images/FreeBSD-monochromatic.svg" width="160" height="50" alt="FreeBSD logo">
+      </a>
+      <label class="menu-bars" for="menu-bars">
+        <span class="menu-bars-icon" aria-hidden="true"></span>
+      </label>
+    </div>
+    <input id="menu-bars" type="checkbox">
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <input id="about" type="checkbox">
+          <a href="#" aria-label="Navigate to About section">
+            <label class="menu-item-description" for="about">
+              О проекте
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/about">О проекте</a>
+            </li>
+            <li>
+              <a href="/ru/projects/newbies">Введение</a>
+            </li>
+            <li>
+              <a href="/ru/features">Возможности</a>
+            </li>
+            <li>
+              <a href="/ru/privacy">Политика конфиденциальности</a>
+            </li>
+            <li>
+              <a href="/ru/projects">Проекты</a>
+            </li>
+            <li>
+              <a href="https://ports.freebsd.org/cgi/ports.cgi" title=ZgotmplZ>Порты</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="download" type="checkbox">
+          <a href="#" aria-label="Navigate to get FreeBSD section">
+            <label class="menu-item-description" for="download">
+              Установка FreeBSD
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/where">Установка FreeBSD</a>
+            </li>
+            <li>
+              <a href="/ru/releases">Информация о релизах</a>
+            </li>
+            <li>
+              <a href="/ru/releng">О подготовке релизов</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="documentation" type="checkbox">
+          <a href="#" aria-label="Navigate to get Documentation section">
+            <label class="menu-item-description" for="documentation">
+              Документация
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="https://docs.FreeBSD.org/ru/">Документация</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/handbook/">Руководство FreeBSD</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/faq/">Часто задаваемые вопросы</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/porters-handbook/">Руководство по созданию портов</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books/fdp-primer">Учебник проекта документирования</a>
+            </li>
+            <li>
+              <a href="https://man.FreeBSD.org">Страницы Справочника</a>
+            </li>
+            <li>
+              <a href="https://papers.FreeBSD.org">Презентации и публикации</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/books">Книги</a>
+            </li>
+            <li>
+              <a href="https://docs.FreeBSD.org/ru/articles">Статьи</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="community" type="checkbox">
+          <a href="#" aria-label="Navigate to get Community section">
+            <label class="menu-item-description" for="community">
+              Сообщество
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/community">Сообщество</a>
+            </li>
+            <li>
+              <a href="/ru/community/mailinglists">Списки рассылки</a>
+            </li>
+            <li>
+              <a href="https://forums.FreeBSD.org">Форумы</a>
+            </li>
+            <li>
+              <a href="/ru/usergroups">Сообщества пользователей</a>
+            </li>
+            <li>
+              <a href="/ru/events">События</a>
+            </li>
+            <li>
+              <a href="https://freebsdfoundation.org/our-work/journal/">Вестник FreeBSD</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="developers" type="checkbox">
+          <a href="#" aria-label="Navigate to get Developers section">
+            <label class="menu-item-description" for="developers">
+              Разработчики
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/projects">Разработчики</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org/IdeasPage">Идеи для проектов</a>
+            </li>
+            <li>
+              <a href="https://cgit.FreeBSD.org">Хранилище Git</a>
+            </li>
+            <li>
+              <a href="https://github.com/freebsd">Зеркало GitHub</a>
+            </li>
+            <li>
+              <a href="https://reviews.FreeBSD.org">Рецензирование кода (Phabricator)</a>
+            </li>
+            <li>
+              <a href="https://wiki.FreeBSD.org">Wiki</a>
+            </li>
+            <li>
+              <a href="https://ci.FreeBSD.org">Сервис непрерывной интеграции</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <input id="support" type="checkbox">
+          <a href="#" aria-label="Navigate to get Support section">
+            <label class="menu-item-description" for="support">
+              Поддержка
+              <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+            </label>
+          </a>
+          <ul class="sub-menu">
+            <li class="title">
+              <a href="/ru/support">Поддержка</a>
+            </li>
+            <li>
+              <a href="/ru/commercial">Вендоры</a>
+            </li>
+            <li>
+              <a href="/ru/security">Информация о безопасности</a>
+            </li>
+            <li>
+              <a href="https://bugs.FreeBSD.org/search/">Сообщения об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support">Отправка сообщений об ошибках</a>
+            </li>
+            <li>
+              <a href="/ru/support/webresources">Ресурсы Интернет</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="search-donate-container">
+      
+      <form
+        class="search"
+        method="get"
+        id="search-header-form"
+        action="https://duckduckgo.com"
+        name="search-header-form"
+        onsubmit="document.getElementById('words').value+=' site:FreeBSD.org'">
+        <input type="hidden" name="DB" value="ru">
+        <input type="hidden" name="ka" value="v">
+        <input type="hidden" name="kt" value="v">
+        <input type="hidden" name="kh" value="1">
+        <input type="hidden" name="kj" value="r2">
+        <input
+          id="words"
+          name="q"
+          type="text"
+          size="20"
+          maxlength="25"
+          onfocus="if( this.value==this.defaultValue ) this.value='';"
+          value=""
+          placeholder="">
+        <button>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <details class="i18n">
+        <summary class="lang-toggle">
+          <img src="/images/language.png" class="language-image" alt="" />
+        </summary>
+        <ul class="lang-dropdown">
+          <li>
+            <a href="/ru/" class="current-lang" aria-current="page">Russian</a>
+          </li>
+          
+            <li>
+              <a href="/status/report-2026-04-2026-06/" lang="en">English</a>
+            </li>
+          
+        </ul>
+      </details>
+      <div class="donate">
+        <a href="https://freebsdfoundation.org/donate/">
+          <span class="heart">❤️</span>
+          По­жерт­во­вать
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <main>
+        
+<div id="content">
+  <aside id="sidewrap">
+    <div id="sidenav">
+      
+
+<ul>
+  <li><a href=/ru/about/></a></li>
+  <li><a href=/ru/features/></a></li>
+  <li><a href=/ru/applications/>При­ло­же­ния</a></li>
+  <li><a href=/ru/administration/>Ад­ми­ни­стра­ция</a></li>
+  <li><a href=/ru/news/>Но­во­сти</a></li>
+  <li><a href=/ru/events></a></li>
+  <li><a href=/ru/press>Прес­са</a></li>
+  <li><a href=/ru/art>Ил­люс­тра­ции</a></li>
+  <li><a href=/ru/donations>По­жертво­ва­ния</a></li>
+  <li><a href=/ru/copyright></a></li>
+  <li><a href=/ru/privacy>Политика кон­фи­ден­ци­аль­нос­ти</a></li>
+</ul>
+
+
+    </div>
+  </aside>
+
+  <div id="contentwrap">
+    <h1>Отчёт о состоянии работ FreeBSD за второй квартал 2026</h1><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Перед вами второй отчёт о статусе FreeBSD за 2026 год — в нём 41 запись.</p>
+</div>
+<div class="paragraph">
+<p>Независимо от того, пишете ли вы отчёт впервые, являетесь ли студентом Google Summer of Code, членом какой-либо команды FreeBSD или автором иного рода — ваш отчёт полезен.
+Он помогает информировать сообщество о происходящем, о достигнутом прогрессе, о том, где может потребоваться помощь и т.д.</p>
+</div>
+<div class="paragraph">
+<p>Если вы являетесь участником проекта FreeBSD в каком-либо качестве, пожалуйста, подумайте о том, чтобы написать отчёт о своих собственных достижениях в следующем квартале!</p>
+</div>
+<div class="paragraph">
+<p>Хочу также поблагодарить <a href="mailto:vladlen@FreeBSD.org">Владлена Пополитова</a> за внедрение функции, которую давно просили: <a href="https://www.freebsd.org/status/feed.xml">RSS-канал</a> для подписки на отчёты.</p>
+</div>
+<div class="paragraph">
+<p>Приятного чтения!</p>
+</div>
+<div class="paragraph">
+<p>Лоренцо Сальвадоре (Lorenzo Salvadore), от имени команды по подготовке отчётов о статусе</p>
+</div>
+<hr/>
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#FreeBSD-Team-Reports">Отчёты команд FreeBSD</a>
+<ul class="sectlevel2">
+<li><a href="#_фонд_freebsd">Фонд FreeBSD</a></li>
+<li><a href="#_команда_управления_релизами_freebsd">Команда управления релизами FreeBSD</a></li>
+<li><a href="#_команда_администраторов_кластера">Команда администраторов кластера</a></li>
+<li><a href="#_команда_bugmeister">Команда Bugmeister</a></li>
+<li><a href="#_команда_wiki_admin">Команда Wiki-Admin</a></li>
+</ul>
+</li>
+<li><a href="#projects">Проекты</a>
+<ul class="sectlevel2">
+<li><a href="#_freebsd_cra_eurobsdcon_and_security_team">FreeBSD, CRA, EuroBSDCon и Команда безопасности</a></li>
+<li><a href="#_cyber_resilience_act_cra_readiness_project">Проект готовности к Закону о киберустойчивости (CRA)</a></li>
+<li><a href="#_freebsd_software_bill_of_materials_sbom">Перечень компонентов программного обеспечения FreeBSD (FreeBSD Software Bill of Materials - SBOM)</a></li>
+<li><a href="#_full_cpuid_control_for_bhyve">Полное управление CPUID для bhyve</a></li>
+<li><a href="#_sylvea_unified_system_management_platform_for_freebsd">Sylve — Унифицированная платформа управления системами для FreeBSD</a></li>
+<li><a href="#_hackathon_202606_halifax_nova_scotia_canada">Хакатон 202606 — Галифакс, Новая Шотландия, Канада</a></li>
+<li><a href="#_parthenope_текущее_состояние_и_улучшения">Parthenope — Текущее состояние и улучшения</a></li>
+<li><a href="#_нативное_получение_данных_s_m_a_r_t_во_freebsd">Нативное получение данных S.M.A.R.T. во FreeBSD</a></li>
+</ul>
+</li>
+<li><a href="#userland">Пользовательские программы</a>
+<ul class="sectlevel2">
+<li><a href="#_process_descriptor_api_completion_2">Завершение работы над API дескрипторов процессов 2</a></li>
+<li><a href="#_scheduler">Планировщик</a></li>
+</ul>
+</li>
+<li><a href="#kernel">Ядро</a>
+<ul class="sectlevel2">
+<li><a href="#_suspendresume_improvements">Улучшения приостановки/возобновления</a></li>
+<li><a href="#_hibernate_aka_suspend_to_disk">Гибернация (также известная как Suspend-to-disk)</a></li>
+<li><a href="#_collaborative_processor_performance_control_cppc">Совместное управление производительностью процессора (CPPC)</a></li>
+<li><a href="#_audio_stack_improvements">Улучшения аудиостека</a></li>
+<li><a href="#_linuxkpi_802_11_and_native_wireless_update">Обновление LinuxKPI 802.11 и нативного беспроводного стека</a></li>
+<li><a href="#_drm_drivers">Драйверы DRM</a></li>
+<li><a href="#_туннель_geneve">Туннель GENEVE</a></li>
+<li><a href="#_серия_улучшений_ipv6">Серия улучшений IPv6</a></li>
+<li><a href="#_поддержка_метрики_маршрутизации">Поддержка метрики маршрутизации</a></li>
+<li><a href="#_нативная_поддержка_mpls_для_freebsd">Нативная поддержка MPLS для FreeBSD</a></li>
+<li><a href="#_драйверы_hid_для_bluetooth">Драйверы HID для Bluetooth</a></li>
+<li><a href="#_ntsync9">NTSYNC(9)</a></li>
+</ul>
+</li>
+<li><a href="#architectures">Архитектуры</a>
+<ul class="sectlevel2">
+<li><a href="#_raspberry_pi_imager_freebsd_port">Порт Raspberry Pi Imager для FreeBSD</a></li>
+<li><a href="#_улучшение_экосистемы_разработки_для_arduino_и_esp32_во_freebsd">Улучшение экосистемы разработки для Arduino и ESP32 во FreeBSD</a></li>
+<li><a href="#_разработка_драйверов_freebsd_для_bananapi_r64r2_pro">Разработка драйверов FreeBSD для BananaPi-R64/R2-PRO</a></li>
+<li><a href="#_framework_laptop_support">Поддержка Framework Laptop</a></li>
+<li><a href="#_rocm_support_on_freebsd">Поддержка ROCm во FreeBSD</a></li>
+</ul>
+</li>
+<li><a href="#cloud">Облачная архитектура</a>
+<ul class="sectlevel2">
+<li><a href="#_freebsd_на_ec2">FreeBSD на EC2</a></li>
+<li><a href="#_freebsd_on_microsoft_hyperv_and_azure">FreeBSD в Microsoft HyperV и Azure</a></li>
+</ul>
+</li>
+<li><a href="#documentation">Документация</a>
+<ul class="sectlevel2">
+<li><a href="#_проект_русскоязычной_документации_freebsd_the_freebsd_russian_documentation_project">Проект русскоязычной документации FreeBSD (The FreeBSD Russian Documentation Project)</a></li>
+</ul>
+</li>
+<li><a href="#ports">Порты</a>
+<ul class="sectlevel2">
+<li><a href="#_dockerbox">Dockerbox</a></li>
+<li><a href="#_kde_во_freebsd">KDE во FreeBSD</a></li>
+<li><a href="#_gcc_во_freebsd">GCC во FreeBSD</a></li>
+<li><a href="#_improve_openjdk_on_freebsd">Улучшение OpenJDK во FreeBSD</a></li>
+<li><a href="#_модернизация_hpc_портов_freebsd_slurm_26_05_ucx_1_20_и_mpi_параллельные_утилиты_для_работы_с_файлами">Модернизация HPC-портов FreeBSD: Slurm 26.05, UCX 1.20 и MPI-параллельные утилиты для работы с файлами</a></li>
+<li><a href="#_improve_libvirt_support_for_bhyve_hypervisor">Улучшение поддержки libvirt для гипервизора bhyve</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect1">
+<h2 id="FreeBSD-Team-Reports">Отчёты команд FreeBSD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Отчёты различных официальных и полуофициальных команд, представленные на <a href="../../../administration/">Странице администрации</a>.</p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="_фонд_freebsd">Фонд FreeBSD</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://freebsdfoundation.org/">Фонд FreeBSD</a> URL: <a href="https://freebsdfoundation.org/" class="bare">https://freebsdfoundation.org/</a><br/>
+<a href="https://freebsdfoundation.org/blog/technology-roadmap/">Технологическая дорожная карта</a> URL: <a href="https://freebsdfoundation.org/blog/technology-roadmap/" class="bare">https://freebsdfoundation.org/blog/technology-roadmap/</a><br/>
+<a href="https://freebsdfoundation.org/donate/">Пожертвовать</a> URL: <a href="https://freebsdfoundation.org/donate/" class="bare">https://freebsdfoundation.org/donate/</a><br/>
+<a href="https://freebsdfoundation.org/our-donors/freebsd-foundation-partnership-program/">Программа партнёрства Фонда</a> URL: <a href="https://freebsdfoundation.org/our-donors/freebsd-foundation-partnership-program/" class="bare">https://freebsdfoundation.org/our-donors/freebsd-foundation-partnership-program/</a><br/>
+<a href="https://freebsdfoundation.org/journal/">Журнал FreeBSD</a> URL: <a href="https://freebsdfoundation.org/journal/" class="bare">https://freebsdfoundation.org/journal/</a><br/>
+<a href="https://freebsdfoundation.org/our-work/events/">Мероприятия Фонда</a> URL: <a href="https://freebsdfoundation.org/our-work/events/" class="bare">https://freebsdfoundation.org/our-work/events/</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Deb Goodkin &lt;<a href="mailto:deb@FreeBSDFoundation.org">deb@FreeBSDFoundation.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Фонд FreeBSD — это некоммерческая организация 501(c)(3), занимающаяся продвижением FreeBSD как через техническую, так и через нетехническую поддержку.
+Финансируемый исключительно за счёт пожертвований, Фонд поддерживает разработку программного обеспечения, инфраструктуру, безопасность и совместную работу; организует мероприятия и встречи разработчиков; предоставляет образовательные ресурсы и представляет Проект FreeBSD в юридических вопросах.</p>
+</div>
+<div class="sect3">
+<h4 id="_улучшения_операционной_системы">Улучшения операционной системы</h4>
+<div class="paragraph">
+<p>Во втором квартале 2026 года было закоммичено 638 изменений в <code>src</code>, 120 в <code>ports</code> и 31 в <code>doc</code> при спонсорской поддержке Фонда FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>Обратитесь к следующим записям отчёта, описывающим значительную часть этой спонсируемой разработки:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_audio_stack_improvements">Улучшения аудиостека</a></p>
+</li>
+<li>
+<p><a href="#_collaborative_processor_performance_control_cppc">Совместное управление производительностью процессора (CPPC)</a></p>
+</li>
+<li>
+<p><a href="#_dockerbox">Dockerbox</a></p>
+</li>
+<li>
+<p><a href="#_drm_drivers">Драйверы DRM</a></p>
+</li>
+<li>
+<p><a href="#_framework_laptop_support">Поддержка Framework Laptop</a></p>
+</li>
+<li>
+<p><a href="#_freebsd_cra_eurobsdcon_and_security_team">FreeBSD, CRA, EuroBSDCon и Команда безопасности</a></p>
+</li>
+<li>
+<p><a href="#_freebsd_on_microsoft_hyperv_and_azure">FreeBSD на Microsoft HyperV и Azure</a></p>
+</li>
+<li>
+<p><a href="#_freebsd_software_bill_of_materials_sbom">Спецификация программного обеспечения FreeBSD (SBOM)</a></p>
+</li>
+<li>
+<p><a href="#_full_cpuid_control_for_bhyve">Полное управление CPUID для bhyve</a></p>
+</li>
+<li>
+<p><a href="#_hackathon_202606_halifax_nova_scotia_canada">Хакатон 202606 — Галифакс, Новая Шотландия, Канада</a></p>
+</li>
+<li>
+<p><a href="#_hibernate_aka_suspend_to_disk">Гибернация (также известная как Suspend-to-disk)</a></p>
+</li>
+<li>
+<p><a href="#_improve_libvirt_support_for_bhyve_hypervisor">Улучшение поддержки libvirt для гипервизора bhyve</a></p>
+</li>
+<li>
+<p><a href="#_improve_openjdk_on_freebsd">Улучшение OpenJDK во FreeBSD</a></p>
+</li>
+<li>
+<p><a href="#_linuxkpi_802_11_and_native_wireless_update">Обновление LinuxKPI 802.11 и нативного беспроводного стека</a></p>
+</li>
+<li>
+<p><a href="#_ntsync9">NTSYNC(9)</a></p>
+</li>
+<li>
+<p><a href="#_process_descriptor_api_completion_2">Завершение работы над API дескрипторов процессов 2</a></p>
+</li>
+<li>
+<p><a href="#_raspberry_pi_imager_freebsd_port">Порт Raspberry Pi Imager для FreeBSD</a></p>
+</li>
+<li>
+<p><a href="#_rocm_support_on_freebsd">Поддержка ROCm во FreeBSD</a></p>
+</li>
+<li>
+<p><a href="#_scheduler">Планировщик</a></p>
+</li>
+<li>
+<p><a href="#_suspendresume_improvements">Улучшения приостановки/возобновления</a></p>
+</li>
+<li>
+<p><a href="#_sylvea_unified_system_management_platform_for_freebsd">Sylve — Унифицированная платформа управления системами для FreeBSD</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Другие основные моменты:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Фонд поддерживает два проекта: проект поддержки ноутбуков и удобства использования (в сотрудничестве с <a href="https://www.ql-research.com/">Quantum Leap Research</a>) и
+<a href="#_cyber_resilience_act_cra_readiness_project">Проект готовности к Закону о киберустойчивости (CRA)</a>.</p>
+</li>
+<li>
+<p>Для получения справочной информации о проекте поддержки ноутбуков и удобства использования обратитесь к <a href="https://www.freebsd.org/status/report-2025-01-2025-03/#_freebsd_foundation">ежеквартальному отчёту о состоянии за 2025Q1</a>.</p>
+</li>
+<li>
+<p>FreeBSD участвует в <a href="https://summerofcode.withgoogle.com/">Google Summer of Code (GSoC)</a> 2026.
+Обратитесь к <a href="https://wiki.freebsd.org/SummerOfCode2026Projects">странице вики FreeBSD Summer of Code 2026 Projects</a> для получения информации о каждом проекте.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_пропаганда">Пропаганда</h4>
+<div class="paragraph">
+<p>Во втором квартале 2026 года наша пропагандистская работа была сосредоточена на расширении нашего образовательного видеоконтента, охвате большего числа зрителей, чем когда-либо, объединении сообщества для продуктивного Саммита поставщиков и осмыслении работы, которая помогает поддерживать и развивать интерес к FreeBSD.
+Вот лишь несколько способов, которыми Фонд пропагандировал FreeBSD во втором квартале 2026 года:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Представление FreeBSD на <a href="https://osselcna2026.sched.com/event/2JQsf/what-running-freebsd-on-a-modern-laptop-taught-me-deb-goodkin-the-freebsd-foundation?iframe=no&amp;w=&amp;sidebar=yes&amp;bg=no">Open Source Summit North America</a>, где Деб Гудкин (Deb Goodkin), исполнительный директор Фонда FreeBSD, выступила с докладом «Чему меня научил запуск FreeBSD на современном ноутбуке».</p>
+</li>
+<li>
+<p><a href="https://wiki.freebsd.org/DevSummit/202606">Встреча разработчиков FreeBSD в июне 2026 года</a> состоялась в Оттаве 17-18 июня 2026 года.
+Полный обзор смотрите на нашей <a href="https://www.youtube.com/@FreeBSDMeetings/streams">странице YouTube</a>.</p>
+</li>
+<li>
+<p>Выступили в качестве серебряного спонсора <a href="https://www.bsdcan.org/2026/index.html">BSDCan 2026</a> и приняли участие в конференции, общаясь с сообществом FreeBSD и поддерживая мероприятие.</p>
+</li>
+<li>
+<p>Объявили о принятых проектах FreeBSD и участниках для <a href="https://summerofcode.withgoogle.com/programs/2026/organizations/the-freebsd-project">Google Summer of Code (GSoC) 2026</a>.</p>
+</li>
+<li>
+<p>Продолжили информационно-разъяснительную работу и взаимодействие с регулирующими органами через участие в месяце поддержки сопровождающих GitHub, где Энн Дикинсон (Anne Dickison) присоединилась к <a href="https://www.linkedin.com/events/7455656610233876480/">панельной дискуссии о предложениях по подтверждению возраста</a> и их влиянии на сопровождающих открытого исходного кода.</p>
+</li>
+<li>
+<p>Присоединились к Open Source Security Foundation (<a href="https://www.linuxfoundation.org/press/openssf-notes-quarter-of-growth-with-new-members-added-ai-security-resources-and-growing-community">OpenSSF</a>) для совместной работы по укреплению безопасности открытого исходного кода в различных экосистемах.</p>
+</li>
+<li>
+<p>Опубликовали следующие блоги и видео, чтобы информировать и обучать сообщество:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://freebsdfoundation.org/blog/call-for-testing-introducing-the-laptop-integration-testing-project/">Приглашение к тестированию: представляем проект Laptop Integration Testing</a></p>
+</li>
+<li>
+<p><a href="https://freebsdfoundation.org/blog/asiabsdcon-2026-trip-report-minsoo-choo/">Отчёт о поездке на AsiaBSDCon 2026 — Minsoo Choo</a></p>
+</li>
+<li>
+<p><a href="https://freebsdfoundation.org/blog/asiabsdcon-2026-trip-report-saikeo/">Отчёт о поездке на AsiaBSDCon 2026 — Saikeo</a></p>
+</li>
+<li>
+<p><a href="https://freebsdfoundation.org/blog/cleaning-up-critical-infrastructure-in-freebsd/">Очистка критической инфраструктуры во FreeBSD</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=dA-TNsVG9IY&amp;t=7s">Повышение привилегий во FreeBSD «из коробки»</a></p>
+</li>
+<li>
+<p><a href="https://freebsdfoundation.org/project/cyber-resilience-act-readiness/">Часто задаваемые вопросы/Руководство по проекту CRA</a></p>
+</li>
+<li>
+<p><a href="https://freebsdfoundation.org/blog/recap-of-the-april-2026-frankfurt-area-freebsd-hackathon-sven-ruediger/">Обзор хакатона FreeBSD в районе Франкфурта, апрель 2026 — Sven Ruediger</a></p>
+</li>
+<li>
+<p><a href="https://freebsdfoundation.org/blog/freebsd-graphics-port-upgraded-to-linux-6-12/">Порт графики FreeBSD обновлён до Linux 6.12</a></p>
+</li>
+<li>
+<p><a href="https://freebsdfoundation.org/blog/eurobsdcon-2026-travel-grant-application-now-open/">Открыт приём заявок на гранты для поездки на EuroBSDCon 2026</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Опубликовали <a href="https://freebsdfoundation.org/news-and-events/newsletter/april-newsletter/">апрельский</a> и <a href="https://freebsdfoundation.org/news-and-events/newsletter/may-newsletter/">майский</a> информационные бюллетени Фонда FreeBSD за 2026 год.</p>
+</li>
+<li>
+<p>Выпустили <a href="https://freebsdfoundation.org/our-work/journal/browser-based-edition/laptop-desktop/">январский/февральский/мартовский</a> выпуск журнала FreeBSD за 2026 год с HTML-версиями статей.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_непрерывная_интеграция_и_улучшение_рабочего_процесса">Непрерывная интеграция и улучшение рабочего процесса</h4>
+<div class="paragraph">
+<p>Фонд содержит штатного сотрудника, занимающегося улучшением системы непрерывной интеграции и тестовой инфраструктуры Проекта.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_юридические_вопросыинтеллектуальная_собственность_freebsd">Юридические вопросы/Интеллектуальная собственность FreeBSD</h4>
+<div class="paragraph">
+<p>Фонду принадлежат товарные знаки FreeBSD, и наша обязанность — защищать их.
+Мы также предоставляем юридическую поддержку основной команде для расследования возникающих вопросов.</p>
+</div>
+<div class="paragraph">
+<p>Посетите <a href="https://freebsdfoundation.org" class="bare">https://freebsdfoundation.org</a>, чтобы узнать больше о том, как мы поддерживаем FreeBSD и как мы можем помочь вам!</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_команда_управления_релизами_freebsd">Команда управления релизами FreeBSD</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://www.freebsd.org/releases/15.1R/announce/">Объявление о FreeBSD 15.1-RELEASE</a> URL: <a href="https://www.freebsd.org/releases/15.1R/announce/" class="bare">https://www.freebsd.org/releases/15.1R/announce/</a><br/>
+<a href="https://www.freebsd.org/releases/14.5R/schedule/">График выхода FreeBSD 14.5-RELEASE</a> URL: <a href="https://www.freebsd.org/releases/14.5R/schedule/" class="bare">https://www.freebsd.org/releases/14.5R/schedule/</a><br/>
+<a href="https://download.freebsd.org/releases/ISO-IMAGES/">Релизы FreeBSD</a> URL: <a href="https://download.freebsd.org/releases/ISO-IMAGES/" class="bare">https://download.freebsd.org/releases/ISO-IMAGES/</a><br/>
+<a href="https://download.freebsd.org/snapshots/ISO-IMAGES/">Разработочные снимки FreeBSD</a> URL: <a href="https://download.freebsd.org/snapshots/ISO-IMAGES/" class="bare">https://download.freebsd.org/snapshots/ISO-IMAGES/</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Команда управления релизами FreeBSD &lt;<a href="mailto:re@FreeBSD.org">re@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Команда управления релизами FreeBSD отвечает за установление и публикацию графиков выпуска официальных релизов FreeBSD, объявление заморозок кода и поддержку соответствующих веток, среди прочего.</p>
+</div>
+<div class="paragraph">
+<p>Команда управляла процессом 15.1-RELEASE, что привело к официальной сборке RELEASE и объявлению в июне.
+Началось планирование предстоящего 14.5-RELEASE, который должен выйти в сентябре.</p>
+</div>
+<div class="paragraph">
+<p>Команда управления релизами продолжила предоставление еженедельных разработочных снимков для веток <strong>main</strong>, <strong>stable/15</strong> и <strong>stable/14</strong>; а также для ветки <strong>stable/13</strong> до её конца жизненного цикла (End-of-Life) в конце апреля.</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_команда_администраторов_кластера">Команда администраторов кластера</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://www.freebsd.org/administration/#t-clusteradm">Участники команды администраторов кластера</a> URL: <a href="https://www.freebsd.org/administration/#t-clusteradm" class="bare">https://www.freebsd.org/administration/#t-clusteradm</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Команда администраторов кластера &lt;<a href="mailto:clusteradm@FreeBSD.org">clusteradm@FreeBSD.org</a>&gt;<br/>
+Контактное лицо: Philip Paeps &lt;<a href="mailto:philip@FreeBSD.org">philip@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Члены команды администраторов кластера FreeBSD отвечают за управление машинами, на которые полагается Проект для синхронизации своей распределённой работы и коммуникаций.</p>
+</div>
+<div class="paragraph">
+<p>В этом квартале команда работала над следующим:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Обычная поддержка учётных записей пользователей FreeBSD.org.</p>
+</li>
+<li>
+<p>Обычная поддержка дисков и комплектующих (и их замена) для всех физических хостов и зеркал.</p>
+</li>
+<li>
+<p>Обновление программного обеспечения кластера.</p>
+</li>
+<li>
+<p>Координация работы сообщества зеркал.</p>
+</li>
+<li>
+<p>Дополнительная поддержка команды wiki-admin@.</p>
+</li>
+<li>
+<p>Частые вмешательства для предотвращения атак типа &#34;отказ в обслуживании&#34; со стороны ботов.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_обновление_кластера">Обновление кластера</h4>
+<div class="paragraph">
+<p>Продолжается работа по обновлению программного обеспечения, работающего на машинах кластера FreeBSD.org.
+Мы начали размещать рабочие нагрузки на stable/15.
+В рамках этой работы некоторые рабочие нагрузки переносятся на разные машины.
+Эта работа продолжается на конец квартала.</p>
+</div>
+<div class="paragraph">
+<p>Команда clusteradm обновляет рабочие сборщики пакетов (около 35 физических машин) с периодичностью примерно раз в шесть-восемь недель.
+На этих машинах работают снимки current ветки FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>Другие машины обновляются по мере необходимости, с учётом исправлений безопасности в зависимости от степени их доступности извне.</p>
+</div>
+<div class="paragraph">
+<p>На момент написания этого отчёта в кластере насчитывается 142 физические машины.
+У нас 42 машины на current, 21 на stable/15 и 73 на stable/14.</p>
+</div>
+<div class="paragraph">
+<p>Большинство оставшихся установок stable/13 будут обновлены до stable/15.</p>
+</div>
+<div class="listingblock screen">
+<div class="content">
+<pre> 12.x: Обычных   0, Клеток   7
+ 13.x: Обычных   6, Клеток  31
+ 14.x: Обычных  73, Клеток 254
+ 15.x: Обычных  21, Клеток   4
+ 16.x: Обычных  42, Клеток   6
+Всего: Обычных 142, Клеток 302
+Всего установок: 444
+Работает -RELEASE|{-p*}: 0
+Всего географических сайтов: 13</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_официальные_зеркала_freebsd">Официальные зеркала FreeBSD</h4>
+<div class="paragraph">
+<p>Текущие расположения: Австралия, Бразилия, Япония (два полных зеркальных сайта), Малайзия, Южная Африка, Швеция, Тайвань и Соединённые Штаты Америки — Калифорния, Чикаго, Нью-Джерси и Вашингтон.</p>
+</div>
+<div class="paragraph">
+<p>Наш зеркальный сайт на Тайване испытывает длительный перерыв в работе.</p>
+</div>
+<div class="paragraph">
+<p>Один из наших зеркальных сайтов в Японии получит полное обновление аппаратного обеспечения в 2026Q3.</p>
+</div>
+<div class="paragraph">
+<p>Оборудование и сетевое соединение были щедро предоставлены:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Лаборатория Cloud и SDN при <a href="https://www.bbtower.co.jp/en/corporate/">BroadBand Tower, Inc</a></p>
+</li>
+<li>
+<p><a href="https://www.cs.nycu.edu.tw/">Департамент компьютерных наук, Национальный университет Ян Мин Цзяо Тун</a></p>
+</li>
+<li>
+<p><a href="https://internet.asn.au/">Internet Association of Australia</a></p>
+</li>
+<li>
+<p><a href="https://www.isc.org/">Internet Systems Consortium</a></p>
+</li>
+<li>
+<p><a href="https://www.inx.net.za/">INX-ZA</a></p>
+</li>
+<li>
+<p><a href="https://www.kddi-webcommunications.co.jp/english/">KDDI Web Communications Inc</a></p>
+</li>
+<li>
+<p><a href="https://www.mohe.gov.my/en/services/research/myren">Malaysian Research &amp; Education Network</a></p>
+</li>
+<li>
+<p><a href="https://www.metapeer.com/">MetaPeer</a></p>
+</li>
+<li>
+<p><a href="https://www.nyi.net/">New York Internet</a></p>
+</li>
+<li>
+<p><a href="https://nic.br/">NIC.br</a></p>
+</li>
+<li>
+<p><a href="https://sonic.net">Sonic</a></p>
+</li>
+<li>
+<p><a href="https://www.teleservice.net/">Teleservice Skåne AB</a></p>
+</li>
+<li>
+<p><a href="https://your.org/">Your.Org</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Новые официальные зеркала всегда приветствуются.
+Мы отметили преимущества размещения одиночных зеркал в точках обмена интернет-трафиком (IXP) по всему миру, о чём свидетельствуют наши существующие зеркала в Австралии, Бразилии и Южной Африке.
+Если вы связаны с какими-либо организациями или знаете о них, готовых спонсировать одиночный зеркальный сервер, пожалуйста, свяжитесь с нами.
+Мы особенно заинтересованы в расположении в Европе.</p>
+</div>
+<div class="paragraph">
+<p>Смотрите <a href="https://wiki.freebsd.org/Teams/clusteradm/generic-mirror-layout">общую схему зеркалирования</a> для спецификаций полного зеркального сайта и <a href="https://wiki.freebsd.org/Teams/clusteradm/tiny-mirror">tiny-mirror</a> для одиночного зеркального сайта.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_поддержка_команды_wiki_admin">Поддержка команды wiki-admin@</h4>
+<div class="paragraph">
+<p>Команда администраторов кластера взяла на себя роль wiki-admin на протяжении большей части этого квартала, пока должность была вакантна.
+Недавно была назначена новая команда wiki-admin.
+Команда администраторов кластера продолжает поддерживать команду wiki-admin в необходимых обновлениях внутренней инфраструктуры вики.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_сбор_данных_для_больших_языковых_моделей">Сбор данных для больших языковых моделей</h4>
+<div class="paragraph">
+<p>Инфраструктура Проекта FreeBSD продолжает подвергаться постоянным атакам со стороны сборщиков данных для обучения больших языковых моделей («ИИ»).
+Компании, обучающие эти модели, в значительной степени перенесли операции по сбору данных со своей собственной — легко идентифицируемой — инфраструктуры на ботнеты («резидентные прокси»), что затрудняет их блокировку на сетевых границах без значительного сопутствующего ущерба.
+Команда администраторов кластера снова потратила значительное количество времени в этом квартале на смягчение этих распределённых атак типа «отказ в обслуживании».</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: Анонимные частные лица и компании<br/>
+Спонсор: <a href="https://github.com/sponsors/ppaeps" class="bare">https://github.com/sponsors/ppaeps</a></p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_команда_bugmeister">Команда Bugmeister</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://bugs.freebsd.org/">FreeBSD Bugzilla</a> URL: <a href="https://bugs.freebsd.org/" class="bare">https://bugs.freebsd.org/</a>
+<a href="https://bugs.freebsd.org/bugzilla/page.cgi?id=showreport.html&amp;type=total_open_bugs_over_time">Общее количество открытых ошибок во времени</a> URL: <a href="https://bugs.freebsd.org/bugzilla/page.cgi?id=showreport.html&amp;type=total_open_bugs_over_time" class="bare">https://bugs.freebsd.org/bugzilla/page.cgi?id=showreport.html&amp;type=total_open_bugs_over_time</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Bugmeister &lt;<a href="mailto:bugmeister@FreeBSD.org">bugmeister@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>В этом квартале нам удалось снизить количество сообщений о проблемах (Problem Reports).</p>
+</div>
+<div class="paragraph">
+<p>Хотя мы по-прежнему получаем патчи для дерева исходных кодов (src), большинство получаемых патчей относится к портам.
+Возможно, это связано с внедрёнными нами настройками автоуведомлений.</p>
+</div>
+<div class="paragraph">
+<p>Для дерева src за последние 180 дней мы получили 643 новых сообщения о проблемах и закрыли 844.
+Для портов эти цифры составили 3493 и 4375 соответственно.</p>
+</div>
+<div class="paragraph">
+<p>В настоящее время мы не ведём статистику о том, сколько из них действительно приводят к коммитам, хотя мы полагаем, что это число не является незначительным.</p>
+</div>
+<div class="paragraph">
+<p>За тот же 180-дневный период Марк Линимон (Mark Linimon) и Торстен Цюльсдорф (Torsten Zuehlsdorff) продолжали работу по классификации (триажу) старых сообщений о проблемах.
+Работа Марка частично финансировалась Фондом FreeBSD в 2025 году.
+Результаты этой работы видны по двум последним спадам на нашем графике <a href="https://bugs.freebsd.org/bugzilla/page.cgi?id=showreport.html&amp;type=total_open_bugs_over_time">Общее количество открытых ошибок во времени</a>.</p>
+</div>
+<div class="paragraph">
+<p>Кроме того, в этом году мы, похоже, привлекаем больше внимания со стороны различных разработчиков FreeBSD (коммиттеров).
+Пожалуйста, свяжитесь с <a href="mailto:bugmeister@FreeBSD.org">bugmeister</a>, если вы заинтересованы в помощи.</p>
+</div>
+<div class="paragraph">
+<p>Конечно, мы всё ещё лучше справляемся с классификацией сообщений, чем с привлечением внимания к уже имеющимся.
+Предложения приветствуются.</p>
+</div>
+<div class="paragraph">
+<p>Марк Линимон взял на себя долгосрочный проект по обеспечению применимости всех отправленных патчей.
+Однако он не претендует на роль специалиста по контролю качества и не может самостоятельно оценивать их пригодность.</p>
+</div>
+<div class="paragraph">
+<p>Общий вывод заключается в том, что благодаря обучению пользователей в этом году мы получаем сообщения о проблемах более высокого качества.
+В частности, патчи проверяются на применимость в течение одной-двух недель после их поступления и при необходимости исправляются.</p>
+</div>
+<div class="paragraph">
+<p>Однако чем дальше в прошлое мы углубляемся, тем более проблемными становятся сообщения, особенно за 2019 год и ранее.
+Полагаю, этого следовало ожидать.
+Марк продолжает работать над ними в фоновом режиме.
+Текущее количество составляет 2611.
+Около 427 из них, в основном за 2019 год и ранее, всё ещё требуют дальнейшей доработки.</p>
+</div>
+<div class="paragraph">
+<p>Проблема с настройкой обновления до Bugzilla 5.2 была исправлена.
+Поверхностное тестирование не выявило значимых регрессий.
+Выпуск версии с исправлениями 5.2.1 ожидается в ближайшее время.
+Переход на эту кодовую базу планируется осуществить сразу после её выхода.
+Изначально это планировалось сделать раньше, однако это казалось нецелесообразным во время подготовки релиза FreeBSD 15.0, а затем было отложено до 15.1.</p>
+</div>
+<div class="paragraph">
+<p>&#34;patchQA.py&#34; всё ещё находится в бета-версии.
+Код применения патчей не справляется со своей задачей и должен быть заменён.</p>
+</div>
+<div class="paragraph">
+<p>Другая известная проблема с patchQA.py заключается в том, что он не знает происхождения файлов, которые устанавливаются в /etc с помощью installworld.
+Существуют внешние shell-скрипты, проходящие тестирование, чтобы помочь автоматизировать исправление данных.
+Это может оказаться проще, чем пытаться писать для этой цели более хрупкий код на Python.</p>
+</div>
+<div class="paragraph">
+<p>Мы создали множество новых учётных записей Bugzilla по запросам пользователей.
+Количество запросов на создание новых учётных записей увеличилось в этом году.
+На данный момент в 2026 году их 291, что составляет почти 2 в день.</p>
+</div>
+<div class="paragraph">
+<p>Прошёл уже год с тех пор, как мы начали требовать запросы по электронной почте для создания учётных записей вместо автоматических запросов.
+Благодаря этому поток спама был снижен практически до нуля.</p>
+</div>
+<div class="paragraph">
+<p>Другая проблема, за которой мы наблюдаем, — огромное количество HTTP-запросов от поисковых роботов (краулеров).
+На сегодняшний день эти запросы намного превышают количество запросов от реальных пользователей FreeBSD.
+Они являются причиной внезапных замедлений работы, на которые жалуются наши пользователи.
+Поскольку никто из нас не является профессиональным системным администратором, мы приветствуем помощь от кого-либо с профессиональным опытом решения таких проблем.</p>
+</div>
+<div class="paragraph">
+<p>Благодарность Александру Зиаи (Alexander Ziaee) и многим другим, кто помог нам достичь текущего состояния.</p>
+</div>
+<div class="paragraph">
+<p>См. также: <a href="https://wiki.freebsd.org/Bugzilla/SearchQueries" class="bare">https://wiki.freebsd.org/Bugzilla/SearchQueries</a></p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_команда_wiki_admin">Команда Wiki-Admin</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://www.freebsd.org/administration/#t-wiki">Участники команды Wiki-Admin</a> URL: <a href="https://www.freebsd.org/administration/#t-wiki" class="bare">https://www.freebsd.org/administration/#t-wiki</a></p>
+</div>
+<div class="paragraph">
+<p>Марк Линимон (Mark Linimon) отошёл от роли wiki-admin, и два коммиттера взяли на себя обязанности wiki-admin.</p>
+</div>
+<div class="paragraph">
+<p>В краткосрочной перспективе команда будет заниматься запросами на создание учётных записей и т.п.</p>
+</div>
+<div class="paragraph">
+<p>В среднесрочной перспективе планируется помощь в структурировании страниц вики.</p>
+</div>
+<div class="paragraph">
+<p>В долгосрочной перспективе рассматривается идея перехода с MoinMoin Wiki на другое вики-программное обеспечение.</p>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="projects">Проекты</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Проекты, охватывающие несколько категорий — от ядра и пользовательских инструментов до Коллекции портов или внешних проектов.</p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="_freebsd_cra_eurobsdcon_and_security_team">FreeBSD, CRA, EuroBSDCon и Команда безопасности</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://alpha-omega.dev">Alpha-Omega — Проект Фонда Linux</a> URL: <a href="https://alpha-omega.dev" class="bare">https://alpha-omega.dev</a><br/>
+<a href="https://freebsdfoundation.org">Фонд FreeBSD</a> URL: <a href="https://freebsdfoundation.org" class="bare">https://freebsdfoundation.org</a><br/>
+<a href="https://www.freebsd.org/security/">Информация о безопасности FreeBSD</a> URL: <a href="https://www.freebsd.org/security/" class="bare">https://www.freebsd.org/security/</a><br/>
+<a href="https://2026.eurobsdcon.org">EuroBSDCon 2026</a> URL: <a href="https://2026.eurobsdcon.org" class="bare">https://2026.eurobsdcon.org</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Pierre Pronchery &lt;<a href="mailto:pierre@freebsdfoundation.org">pierre@freebsdfoundation.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Этот квартал ознаменовал начало моего участия в новой инициативе Alpha-Omega, связанной с ИИ.
+Новую волну раскрытий уязвимостей безопасности с использованием больших языковых моделей (LLM) трудно не заметить, и теперь Alpha-Omega помогает ведущим экосистемам открытого исходного кода, сталкивающимся с этой проблемой.
+Это включает FreeBSD, и, учитывая ситуацию, я вызвался добровольцем и был принят в команду безопасности FreeBSD.
+Моя цель там, помимо помощи с входящими отчётами, где я могу, — понять существующие процессы и предложить улучшения для облегчения и масштабирования операций.
+Это началось с нового экземпляра <a href="https://requesttracker.com/rtir/">RTIR</a> и с экспериментального экземпляра <a href="https://forgejo.org">Forgejo</a> для CI/CD и возможного использования интеграции LLM в рабочий процесс команды безопасности.</p>
+</div>
+<div class="paragraph">
+<p>По смежной теме, в целях облегчения соответствия европейскому <a href="https://en.wikipedia.org/wiki/Cyber_Resilience_Act">Закону о киберустойчивости</a> (CRA), <a href="http://pkgconf.org">pkgconf</a> был импортирован в базовую систему FreeBSD версии 2.9.93.
+Теперь он включает <a href="https://man.freebsd.org/cgi/man.cgi?query=spdxtool&amp;sektion=1&amp;format=html">spdxtool(1)</a>, который поддерживает генерацию <a href="https://en.wikipedia.org/wiki/Software_supply_chain">Спецификации программного обеспечения</a> (SBOM), соответствующей <a href="https://spdx.github.io/spdx-spec/v3.0.1/">спецификации SPDX 3.0.1</a>.
+Совместно с Tuukka Pasanen мы предлагаем структуру для рецензирования в <a href="https://reviews.freebsd.org/D56474">D56474</a>, которую, к сожалению, ещё предстоит доработать перед импортом.</p>
+</div>
+<div class="paragraph">
+<p>Во-первых, её следует обновить с учётом доступности spdxtool (патч уже доступен).
+Что более важно, найти правильную степень детализации для количества генерируемых файлов SBOM при встраивании в систему сборки FreeBSD было непросто.
+Этим объясняется отсутствие метаданных в некоторых случаях; мы работаем над этим, чтобы подход был максимально последовательным с самого начала.
+Наконец, заранее приношу извинения за более чем 1000 файлов, добавляемых в предстоящий релиз; надеюсь, это будет смягчено переходом на pkgbase, с которым, как мы полагаем, это будет идеально сочетаться.
+Ожидается, что файлы SBOM будут автоматически предоставляться в соответствующих установленных пакетах, что позволит инструментам SBOM работать с точным знанием состояния установленной системы.</p>
+</div>
+<div class="paragraph">
+<p>В этом контексте я рад сообщить, что Alice Sowerby, Peter Hansteen и я объединяемся для проведения семинара о соответствии требованиям CRA для систем на базе BSD на предстоящей конференции EuroBSDCon в Брюсселе в сентябре 2026 года.
+Приглашаем вас присоединиться к нам там для получения практической информации о соответствии требованиям CRA в нашей экосистеме!</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: Alpha-Omega, The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_cyber_resilience_act_cra_readiness_project">Проект готовности к Закону о киберустойчивости (CRA)</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://github.com/FreeBSDFoundation/all-projects/tree/main/Cyber%20Resilience%20Act%20Readiness">Проект готовности к Закону о киберустойчивости</a> URL: <a href="https://github.com/FreeBSDFoundation/all-projects/tree/main/Cyber%20Resilience%20Act%20Readiness" class="bare">https://github.com/FreeBSDFoundation/all-projects/tree/main/Cyber%20Resilience%20Act%20Readiness</a></p>
+</div>
+<div class="paragraph">
+<p>Фонд реализует проект в течение 2026 года для активной подготовки Фонда FreeBSD, Проекта и сообщества к Закону ЕС о киберустойчивости.
+Существует шесть основных направлений деятельности: Безопасность и обработка уязвимостей, Инструментарий SBOM, Публичная документация, Взаимодействие с законодателями сообщества, Публичный репозиторий проекта и Коммуникации.</p>
+</div>
+<div class="paragraph">
+<p>За второй квартал проект достиг значительного прогресса в достижении своих ключевых целей.</p>
+</div>
+<div class="paragraph">
+<p>Усилия в области безопасности были сосредоточены на улучшении обработки уязвимостей и готовности цепочки поставок через обсуждения с нижестоящими поставщиками процессов отчетности, использования Спецификации программного обеспечения (SBOM) и потенциального финансирования работ по обеспечению соответствия требованиям.</p>
+</div>
+<div class="paragraph">
+<p>Фонд также укрепил сотрудничество с более широкой экосистемой открытого исходного кода, участвуя в деятельности Open Regulatory Compliance и OpenSSF, вступив в OpenSSF в качестве ассоциированного члена, приняв участие в Open Source Summit North America и взаимодействуя с такими проектами, как Zephyr, для обмена стратегиями готовности к CRA.</p>
+</div>
+<div class="paragraph">
+<p>Работа над инструментарием SBOM значительно продвинулась и теперь близка к полноценной сквозной функциональности.
+Мы планируем опубликовать технический блог, как только оставшаяся работа будет завершена.</p>
+</div>
+<div class="paragraph">
+<p>Фонд также создал проект руководства по CRA для сообщества FreeBSD, и мы планируем опубликовать его вместе с выделенным разделом на веб-сайте Фонда, предоставляющим постоянную информацию о соответствии требованиям.</p>
+</div>
+<div class="paragraph">
+<p>Прозрачность оставалась приоритетом, и Фонд публиковал ежемесячные публичные обновления и протоколы встреч в репозитории по ссылке выше.
+На EuroBSDCon будет проведён полнодневный учебный курс по CRA и SBOM, который мы приглашаем вас посетить!</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_freebsd_software_bill_of_materials_sbom">Перечень компонентов программного обеспечения FreeBSD (FreeBSD Software Bill of Materials - SBOM)</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://github.com/illuusio/freebsd-src/tree/freebsd-lua-tools-sbom/share/sbom">Инструменты FreeBSD Lua для SBOM</a> URL: <a href="https://github.com/illuusio/freebsd-src/tree/freebsd-lua-tools-sbom/share/sbom" class="bare">https://github.com/illuusio/freebsd-src/tree/freebsd-lua-tools-sbom/share/sbom</a><br/>
+<a href="https://github.com/illuusio/freebsd-src/tree/sbom-pkgconfig-meld/share/sbom">Файлы SBOM для pkg-config (в разработке), которые являются основой для работы Пьера Проншери</a> URL: <a href="https://github.com/illuusio/freebsd-src/tree/sbom-pkgconfig-meld/share/sbom" class="bare">https://github.com/illuusio/freebsd-src/tree/sbom-pkgconfig-meld/share/sbom</a><br/>
+<a href="https://reviews.freebsd.org/D56474">Рецензирование генерации файлов SBOM как части процесса сборки</a> URL: <a href="https://reviews.freebsd.org/D56474" class="bare">https://reviews.freebsd.org/D56474</a><br/></p>
+</div>
+<div class="paragraph">
+<p>Открытые запросы на включение идентификаторов лицензий SPDX в вышестоящие проекты:<br/>
+<a href="https://github.com/freebsd/atf/pull/128">ATF PR#128</a> URL: <a href="https://github.com/freebsd/atf/pull/128" class="bare">https://github.com/freebsd/atf/pull/128</a><br/>
+<a href="https://gnats.netbsd.org/60308">bmake NetBSD GNATS#60308</a> URL: <a href="https://gnats.netbsd.org/60308" class="bare">https://gnats.netbsd.org/60308</a><br/>
+<a href="https://github.com/NLnetLabs/ldns/issues/305">LDNS ISSUE#305</a> URL: <a href="https://github.com/NLnetLabs/ldns/issues/305" class="bare">https://github.com/NLnetLabs/ldns/issues/305</a><br/>
+<a href="https://github.com/gwsw/less/pull/792">Less PR#792</a> URL: <a href="https://github.com/gwsw/less/pull/792" class="bare">https://github.com/gwsw/less/pull/792</a><br/>
+<a href="https://github.com/libarchive/libarchive/pull/3129">Libarchive PR#3129</a> URL: <a href="https://github.com/libarchive/libarchive/pull/3129" class="bare">https://github.com/libarchive/libarchive/pull/3129</a><br/>
+<a href="https://github.com/PJK/libcbor/issues/430">LibCBOR ISSUE#430</a> URL: <a href="https://github.com/PJK/libcbor/issues/430" class="bare">https://github.com/PJK/libcbor/issues/430</a><br/>
+<a href="https://gnats.netbsd.org/60309">libedit NetBSD GNATS#60309</a> URL: <a href="https://gnats.netbsd.org/60309" class="bare">https://gnats.netbsd.org/60309</a><br/>
+<a href="https://github.com/libevent/libevent/issues/1864">Libevent ISSUE#1864</a> URL: <a href="https://github.com/libevent/libevent/issues/1864" class="bare">https://github.com/libevent/libevent/issues/1864</a><br/>
+<a href="https://github.com/the-tcpdump-group/libpcap/pull/1689">LibPCAP PR#1689</a> URL: <a href="https://github.com/the-tcpdump-group/libpcap/pull/1689" class="bare">https://github.com/the-tcpdump-group/libpcap/pull/1689</a><br/>
+<a href="https://github.com/vstakhov/libucl/pull/386">LibUCL PR#386</a> URL: <a href="https://github.com/vstakhov/libucl/pull/386" class="bare">https://github.com/vstakhov/libucl/pull/386</a><br/>
+<a href="https://bugs.astron.com/view.php?id=777">TCSH Mantis#777</a> URL: <a href="https://bugs.astron.com/view.php?id=777" class="bare">https://bugs.astron.com/view.php?id=777</a><br/></p>
+</div>
+<div class="paragraph">
+<p>Контакт: Tuukka Pasanen &lt;<a href="mailto:tuukka.pasanen@ilmi.fi">tuukka.pasanen@ilmi.fi</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Работа над спецификацией состава программного обеспечения FreeBSD (SBOM) продолжалась в течение второго квартала 2026 года.
+В этом квартале основное внимание уделялось рецензированию и обновлению файлов pkg-config <span class="filename">.pc</span> и добавлению SPDX-License-Identifier в сторонние проекты, включённые в исходный код FreeBSD.
+Эта работа будет продолжена в третьем квартале.</p>
+</div>
+<div class="paragraph">
+<p>Как уже было сказано, большая часть работы в этом квартале была посвящена доработке файлов pkg-config <span class="filename">.pc</span>, поскольку эти файлы необходимы при формировании файлов SBOM, совместимых с SPDX 2.2 и SPDX Lite 3.0.1.
+В течение этого года Пьер Проншери (Pierre Pronchery) добавлял другие важные компоненты, такие как pkgconf, в исходный код FreeBSD.
+В настоящее время самые большие усилия с его стороны в части инструментария направлены на рецензирование части сборки, отвечающей за генерацию SBOM, в рамках которой также рецензируются файлы <span class="filename">.pc</span>.
+Когда рецензирование будет завершено и исходный код будет добавлен во FreeBSD, SBOM можно будет создавать в процессе сборки.</p>
+</div>
+<div class="paragraph">
+<p>Помимо работы над файлами <span class="filename">.pc</span>, была проведена доработка инструментов FreeBSD Lua для SBOM. Эти инструменты использовались для создания текущего набора файлов <span class="filename">.pc</span> и могут быть применены для будущих обновлений.
+Эти скрипты всё ещё несколько сырые и сложные в использовании, но сейчас они в гораздо лучшем состоянии, чем раньше, и к ним есть документация по использованию.</p>
+</div>
+<div class="paragraph">
+<p>Добавление SPDX-License-Identifier в репозитории сторонних проектов также продолжается и будет выполняться в порядке, согласованном с предпочтениями сопровождающих этих проектов.
+Почему идентификаторы лицензий добавляются в сторонние проекты?
+На этот вопрос нет простого ответа, но наиболее близкое объяснение заключается в том, что машиночитаемые идентификаторы лицензий помогают поддерживать информацию SBOM в будущем.</p>
+</div>
+<div class="paragraph">
+<p>Если вы хотите помочь в этой работе:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Примите участие в рецензировании файлов <span class="filename">.pc</span> в Phabricator в рамках рецензирования &#34;Generate SBOM files as part of the build&#34;.</p>
+</li>
+<li>
+<p>Помогите с рецензированием импорта pkgconf 3.0 в исходный код FreeBSD.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Спонсор: FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_full_cpuid_control_for_bhyve">Полное управление CPUID для bhyve</h3>
+<div class="paragraph">
+<p>Контактное лицо: Hans Rosenfeld &lt;<a href="mailto:rosenfeld@grumpf.hope-2000.org">rosenfeld@grumpf.hope-2000.org</a>&gt;</p>
+</div>
+<div class="sect3">
+<h4 id="_обзор_проекта">Обзор проекта</h4>
+<div class="paragraph">
+<p>Текущая работа над этим проектом направлена на интеграцию существующей концептуальной реализации во FreeBSD и добавление следующих функций удобства использования:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>удобный метод настройки для переопределения отдельных битов, частей или даже целых функций CPUID по мере необходимости с сохранением остальной информации о CPUID хоста или предварительно заданной конфигурации CPUID;</p>
+</li>
+<li>
+<p>удобный метод настройки идентификатора гипервизора, сообщаемого bhyve;</p>
+</li>
+<li>
+<p>набор предварительно заданных конфигураций CPUID на основе общих архитектурных уровней x86, возможно, также включающий набор данных CPUID для нескольких реальных моделей процессоров, и удобный метод настройки для выбора одного из них для виртуальной машины.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_изменения_в_течение_последнего_квартала">Изменения в течение последнего квартала</h4>
+<div class="sect4">
+<h5 id="_расширения_синтаксиса_конфигурации_bhyve">Расширения синтаксиса конфигурации bhyve</h5>
+<div class="paragraph">
+<p>Существующий синтаксис файла конфигурации bhyve был ограничен присваиваниями узлам конфигурации, которые внутренне преобразовывались в древовидный набор списков nvlist.</p>
+</div>
+<div class="paragraph">
+<p>Чтобы обеспечить более гибкую настройку с использованием предварительно заданных фрагментов файлов конфигурации, синтаксис файла конфигурации bhyve был дополнен двумя новыми возможностями:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>В узел конфигурации можно добавить значение с помощью оператора <code>+=</code>.
+Если этому же узлу конфигурации уже было присвоено значение, новое значение добавляется к старому, разделяясь запятой.</p>
+</li>
+<li>
+<p>Другой файл конфигурации можно включить с помощью директивы <code>include</code>.
+Поддерживаются абсолютные и относительные пути, но относительные пути интерпретируются как относительные к пути файла конфигурации, в котором находится директива включения.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_ещё_более_гибкая_настройка_cpuid">Ещё более гибкая настройка CPUID</h5>
+<div class="paragraph">
+<p>Механизм настройки CPUID был расширен для поддержки символических имён возможностей, где каждое имя соответствует определённому биту регистра для функции CPUID.
+Это особенно полезно для отдельных расширений системы команд или других опциональных возможностей, которые можно включать или отключать по желанию.</p>
+</div>
+<div class="paragraph">
+<p>Таким образом, вместо настройки <code>cpuid.0x00000001+=edx|=0x00040000</code> теперь можно просто написать <code>cpuid.enable+=psn</code>.
+Существует также соответствующая опция <code>cpuid.disable</code> для символических возможностей.</p>
+</div>
+<div class="paragraph">
+<p>Использование битовых операций над регистрами CPUID, конечно, всё ещё поддерживается, поскольку не все возможности CPUID могут быть выражены в виде отдельных битов возможностей.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_использование_архитектурных_уровней_x86">Использование архитектурных уровней x86</h5>
+<div class="paragraph">
+<p>Архитектурные уровни x86 теперь реализованы как набор предварительно заданных фрагментов файлов конфигурации, причём каждый более высокий уровень строится поверх более низкого.</p>
+</div>
+<div class="paragraph">
+<p>Чтобы проиллюстрировать это, вот как теперь выглядит x86-64-v3.cfg:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>include x86-64-v2.cfg
+cpuid.enable+=fma,movbe,osxsave,avx,f16c
+cpuid.enable+=bmi1,avx2,bmi2
+cpuid.enable+=abm</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Модель процессора или архитектуры можно выбрать либо путём включения соответствующего файла конфигурации из <code>/usr/share/bhyve/cpu</code> в файл конфигурации bhyve, либо указав её в командной строке как часть конфигурации виртуального процессора: <code>bhyve […​] -c 16,model=x86-64-v1 […​]</code></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_ограничения_cpuid">Ограничения CPUID</h5>
+<div class="paragraph">
+<p>Чтобы предотвратить случайное включение возможностей CPUID для гостевого процессора, которые не поддерживаются хост-процессором, анализатор конфигурации CPUID был расширен списком ограничений CPUID, которые проверяются при установке или изменении значения определённого регистра CPUID.</p>
+</div>
+<div class="paragraph">
+<p>Для любого регистра в функции CPUID ограничение может указывать, какие биты неизменяемы, а какие могут быть только очищены.</p>
+</div>
+<div class="paragraph">
+<p>Ограничения проверяются после применения конфигурации CPUID.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_планы_на_следующий_квартал">Планы на следующий квартал</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Реализовать переопределения для ограничений CPUID, чтобы игнорировать любые ограничения или предупреждать о нарушении ограничения вместо остановки настройки виртуальной машины.</p>
+</li>
+<li>
+<p>Предоставить больше предварительно заданных конфигураций процессоров на основе реальных процессоров.</p>
+</li>
+<li>
+<p>Аналогично установке архитектурного уровня x86, будет реализован механизм для переопределения идентификации гипервизора без необходимости ручного изменения битов CPUID.</p>
+</li>
+<li>
+<p>Провести рецензирование всего набора изменений и включить его во FreeBSD.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sylvea_unified_system_management_platform_for_freebsd">Sylve — Унифицированная платформа управления системами для FreeBSD</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://sylve.io">Веб-сайт</a> URL: <a href="https://sylve.io" class="bare">https://sylve.io</a><br/>
+<a href="https://github.com/AlchemillaHQ/Sylve">GitHub</a> URL: <a href="https://github.com/AlchemillaHQ/Sylve" class="bare">https://github.com/AlchemillaHQ/Sylve</a><br/>
+<a href="https://sylve-ci.alchemilla.io">CI</a> URL: <a href="https://sylve-ci.alchemilla.io" class="bare">https://sylve-ci.alchemilla.io</a><br/>
+<a href="https://discord.gg/bJB826JvXK">Discord</a> URL: <a href="https://discord.gg/bJB826JvXK" class="bare">https://discord.gg/bJB826JvXK</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Hayzam Sherif &lt;<a href="mailto:hayzam@alchemilla.io">hayzam@alchemilla.io</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Sylve — это современная унифицированная платформа управления системами для FreeBSD.
+Она предоставляет интегрированный веб-интерфейс для управления виртуальными машинами (через Bhyve), клетками (Jails), сетью вокруг них и хранилищем ZFS.</p>
+</div>
+<div class="paragraph">
+<p>Бэкенд реализован на Go, а фронтенд построен на Svelte.
+Проект делает акцент на минимальном системном следе.
+По умолчанию ему не требуются никакие пакеты за пределами базовой системы.</p>
+</div>
+<div class="paragraph">
+<p>Опциональные зависимости времени выполнения, необходимые только при использовании соответствующих функций, включают:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cgit.freebsd.org/ports/tree/devel/libvirt/">devel/libvirt</a> для виртуализации</p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/ports/tree/devel/qemu/">devel/qemu</a> для управления образами дисков</p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/ports/tree/net/samba419/">net/samba419</a> для общего доступа к файлам по SMB</p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/ports/tree/sysutils/swtpm/">sysutils/swtpm</a> для поддержки эмуляции TPM</p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/ports/tree/dns/dnsmasq/">dns/dnsmasq</a> для служб DHCP и DNS</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Порт подтягивает эти зависимости для удобства пользователя, но сам по себе Sylve не требует зависимостей для запуска.</p>
+</div>
+<div class="sect3">
+<h4 id="_основные_достижения_во_втором_квартале">Основные достижения во втором квартале</h4>
+<div class="sect4">
+<h5 id="_дата_центр_кластер">Дата-центр / Кластер</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Реализованы способы для пользователей по организации высокодоступных виртуальных машин и клеток с автоматическим переключением на резервный/третичный и т.д. узел в кластере с помощью репликации ZFS (прямой миграции (live migration) пока нет).</p>
+</li>
+<li>
+<p>Реализована возможность простой миграции виртуальных машин/клеток между узлами в кластере без кворума или высокой доступности (HA) с помощью простой кнопки «Migrate» в пользовательском интерфейсе.</p>
+</li>
+<li>
+<p>Рабочие процессы резервного копирования и восстановления значительно улучшены: улучшена обработка ошибок и обратная связь с пользователем, включая поддержку зашифрованных наборов данных.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_сеть">Сеть</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Добавлена поддержка добавления сетевых маршрутов из веб-интерфейса.</p>
+</li>
+<li>
+<p>Реализован межсетевой экран на основе PF с полной поддержкой правил трафика и NAT, включая возможность использования объектов в правилах для списков IP-адресов, FQDN и т.д.</p>
+</li>
+<li>
+<p>Добавлена поддержка интуитивно понятного интерфейса конфигурации WireGuard, позволяющего пользователям легко настраивать и управлять туннелями WireGuard.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_хранилище">Хранилище</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=smart&amp;sektion=8&amp;format=html">smart(8)</a> включён в качестве зависимости как альтернатива smartmontools.</p>
+</li>
+<li>
+<p>Управление пулами ZFS теперь поддерживает создание специальных VDEV.</p>
+</li>
+<li>
+<p>Samba теперь использует встроенный mDNS-сервер вместо avahi.</p>
+</li>
+<li>
+<p>Добавлена начальная поддержка iSCSI, позволяющая пользователям создавать и управлять iSCSI-целями и инициаторами непосредственно из веб-интерфейса.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_виртуальные_машины_и_клетки">Виртуальные машины и клетки</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Улучшена отзывчивость и производительность пользовательского интерфейса, особенно для больших кластеров с большим количеством виртуальных машин/клеток.</p>
+</li>
+<li>
+<p>Добавлена поддержка тегов VLAN для клеток напрямую, без необходимости создания отдельного моста для каждой VLAN.</p>
+</li>
+<li>
+<p>Множество ручных флагов командной строки теперь преобразованы в синтаксис XML libvirt для виртуальных машин, что упрощает управление и улучшает совместимость с инструментами на основе libvirt.</p>
+</li>
+<li>
+<p>Значительно улучшены процессы автоматического запуска/остановки виртуальных машин и клеток.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_общее">Общее</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Переработана система уведомлений: добавлена поддержка веб-хуков Discord, ntfy.sh и транспортов на основе SMTP. Теперь она также поддерживает несколько транспортов одновременно и позволяет пользователям настраивать, для каких событий они хотят получать уведомления.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_обновление_дорожной_карты">Обновление дорожной карты</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Все пункты дорожной карты (кроме общих ресурсов NFS с предыдущего квартала) были выполнены, и теперь мы работаем над следующим набором функций для третьего квартала:</p>
+</li>
+<li>
+<p>Поддержка общих ресурсов NFS, позволяющая пользователям создавать общие ресурсы NFS и управлять ими непосредственно из веб-интерфейса.</p>
+</li>
+<li>
+<p>Упрощённый режим пользовательского интерфейса, призванный облегчить новым пользователям начало работы с Sylve в качестве NAS-устройства.</p>
+</li>
+<li>
+<p>Поддержка Podman и контейнеров OCI, позволяющая пользователям запускать контейнеры вместе с виртуальными машинами и (классическими) клетками.</p>
+</li>
+<li>
+<p>Мобильное приложение для iOS и Android, позволяющее пользователям управлять своими кластерами на ходу.</p>
+</li>
+<li>
+<p>Библиотека шаблонов приложений, позволяющая пользователям легко разворачивать популярные приложения (такие как Nextcloud, Plex и т.д.) одним щелчком мыши.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Спонсоры: The FreeBSD Foundation, Alchemilla Ventures (разработка), IPTechnics LLC (инфраструктура и тестирование)</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hackathon_202606_halifax_nova_scotia_canada">Хакатон 202606 — Галифакс, Новая Шотландия, Канада</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://wiki.freebsd.org/Hackathon/202606">Страница вики Хакатона/202606</a> URL: <a href="https://wiki.freebsd.org/Hackathon/202606" class="bare">https://wiki.freebsd.org/Hackathon/202606</a><br/>
+<a href="https://wiki.freebsd.org/Hackathon">Страница вики хакатонов FreeBSD</a> URL: <a href="https://wiki.freebsd.org/Hackathon" class="bare">https://wiki.freebsd.org/Hackathon</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Joe Mingrone &lt;<a href="mailto:jrm@FreeBSD.org">jrm@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>После <a href="https://www.bsdcan.org/2026/">BSDCan 2026 в Оттаве</a> некоторые члены сообщества собрались на хакатон в Университете Далхаузи в Галифаксе, Новая Шотландия, Канада.
+По трём репозиториям было закоммичено 93 изменения с тегом <code>Event: Halifax Hackathon 202606</code>.</p>
+</div>
+<div class="paragraph">
+<p>Большая часть этой работы описана в отдельных записях отчёта, но здесь приводится краткий обзор.
+Основной объём работы над src был сосредоточен на управлении энергопотреблением процессора.
+Большая его часть попала в <a href="https://man.freebsd.org/cgi/man.cgi?query=hwpstate_intel&amp;sektion=4&amp;format=html">hwpstate_intel(4)</a>, который получил исправления для нескольких ошибок, связанных с MSR и неинициализированными переменными, перенёс настройку предпочтения энергоэффективности на 8-битную шкалу и заменил <code>thread_lock()</code> и <code>sched_bind()</code> на IPI.
+Был также добавлен новый KPI <code>cpu_get_pcpuid()</code>, который был принят как <a href="https://man.freebsd.org/cgi/man.cgi?query=hwpstate_intel&amp;sektion=4&amp;format=html">hwpstate_intel(4)</a>, так и <code>hwpstate_amd</code>.
+Проход по коду ACPI ужесточил типы обработчиков событий сна и пробуждения, удалил неиспользуемые флаги отключения из <code>acpi_cpu</code>, <a href="https://man.freebsd.org/cgi/man.cgi?query=acpi_hpet&amp;sektion=4&amp;format=html">acpi_hpet(4)</a> и <code>acpi_timer</code>, а также заставил ядро отклонять S4, когда S4BIOS не поддерживается.
+Для поддержки ноутбуков был закоммичен новый драйвер <code>hrfkill</code> для клавиши режима «в самолёте» на некоторых ноутбуках Framework, в <a href="https://man.freebsd.org/cgi/man.cgi?query=acpi_ibm&amp;sektion=4&amp;format=html">acpi_ibm(4)</a> была добавлена отправка в evdev события о нажатии клавиши отключения микрофона, а <a href="https://man.freebsd.org/cgi/man.cgi?query=iichid&amp;sektion=4&amp;format=html">iichid(4)</a> был изменён так, чтобы всегда освобождать свой ресурс прерываний.
+Другие изменения в src затронули libusb, libdtrace, libcxxrt, <a href="https://man.freebsd.org/cgi/man.cgi?query=ifconfig&amp;sektion=8&amp;format=html">ifconfig(8)</a>, <code>sched_ule</code> и ряд справочных страниц.
+В портах Python по умолчанию был переключён на 3.12, добавлен новый порт <a href="https://cgit.freebsd.org/ports/tree/databases/py-oracledb/">databases/py-oracledb</a>, а изменение в <a href="https://cgit.freebsd.org/ports/tree/sysutils/consolekit2/">sysutils/consolekit2</a> включило приостановку S0ix на 16-CURRENT.
+Порты Emacs получили различные обновления и улучшения; были обновлены порты R, Jenkins и некоторые биоинформатические порты.
+Работа над документацией добавила раздел в Справочник (Handbook) о собственной ZFS-шифровании, обновила инструкции по зашифрованному подкачку geli и улучшила руководство FDP Primer по созданию патчей с контекстом.</p>
+</div>
+<div class="paragraph">
+<p>Вот сырые данные о коммитах хакатона в репозиториях <a href="https://cgit.freebsd.org/doc/log/?qt=grep&amp;q=Event%3A.*Halifax+Hackathon+202606">doc</a>, <a href="https://cgit.freebsd.org/ports/log/?qt=grep&amp;q=Event%3A.*Halifax+Hackathon+202606">ports</a> и <a href="https://cgit.freebsd.org/src/log/?qt=grep&amp;q=Event%3A.*Halifax+Hackathon+202606">src</a>.</p>
+</div>
+<div class="paragraph">
+<p>Хотя большая часть времени была посвящена программированию, это были не только рабочие будни, как показывают <a href="https://p.obiw.ac/s/hfx">фотографии</a>.
+Участники провели несколько вечеров и полдня за развлечениями.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation (питание)</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_parthenope_текущее_состояние_и_улучшения">Parthenope — Текущее состояние и улучшения</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://docs.google.com/presentation/d/1QBWZyg2fdSmfs7xdZ1Jxg6-5I1iawoGweXVVk7tVlHk">Слайды презентации на BSDCan 2026</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Alfonso Sabato Siciliano &lt;<a href="mailto:asiciliano@FreeBSD.org">asiciliano@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Parthenope — это модульный двухэтапный установщик для FreeBSD, написанный на Lua.</p>
+</div>
+<div class="paragraph">
+<p>В течение этого квартала проект был представлен на BSDCan 2026, где были продемонстрированы его текущее состояние, недавние улучшения и направления дальнейшего развития.
+Презентация также представила несколько новых идей, макетов и концептуальных реализаций для будущего обсуждения и разработки, включая опыт «из коробки» и/или рабочий процесс пост-установочной настройки.</p>
+</div>
+<div class="paragraph">
+<p>С момента предыдущего отчёта о состоянии и презентации на EuroBSDCon 2025 несколько основных частей установщика были полностью переработаны или переписаны, включая:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Файл конфигурации;</p>
+</li>
+<li>
+<p>Файл связи, используемый для обмена данными между Этапом 1 и Этапом 2;</p>
+</li>
+<li>
+<p>Подсистемы установщика, включая интернационализацию, поддержку нескольких режимов и связанную инфраструктуру;</p>
+</li>
+<li>
+<p>Менеджеры Этапа 1 и Этапа 2;</p>
+</li>
+<li>
+<p>Фреймворк компонентов, где экраны установки теперь управляются и вызываются Менеджером Этапа 1;</p>
+</li>
+<li>
+<p>Несколько компонентов установщика и экранов установки.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Интерфейс Text User Interface (TUI) теперь близок к полноте функциональности, что приближает его к поддержке полной установки FreeBSD.
+Оставшимися основными компонентами и экранами являются редактор разделов, конфигурация ZFS, настройка загрузки и сетевой менеджер.</p>
+</div>
+<div class="paragraph">
+<p>Хотя пока ещё невозможно полностью установить FreeBSD с помощью Parthenope, разработка быстро продвигается к функциональному релизу.
+Следующие шаги:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Завершить оставшиеся компоненты и экраны TUI-установщика.</p>
+</li>
+<li>
+<p>Реализовать интерфейс командной строки (CLI) для улучшения доступности.</p>
+</li>
+<li>
+<p>Разработать веб-интерфейс для возможности установки через веб-браузер.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Parthenope начинался как личный проект, но продолжает расти благодаря идеям, отзывам и запросам функций от сообщества, которые всегда приветствуются.</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_нативное_получение_данных_s_m_a_r_t_во_freebsd">Нативное получение данных S.M.A.R.T. во FreeBSD</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://github.com/ctuffli/smart">S.M.A.R.T. на GitHub</a> URL: <a href="https://github.com/ctuffli/smart" class="bare">https://github.com/ctuffli/smart</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Chuck Tuffli &lt;<a href="mailto:chuck@freebsd.org">chuck@freebsd.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Во FreeBSD в базовую систему импортирована нативная утилита Self-Monitoring, Analysis, and Reporting Technology (S.M.A.R.T.) — <a href="https://man.freebsd.org/cgi/man.cgi?query=smart&amp;sektion=8&amp;format=html">smart(8)</a>, обеспечивающая лёгкие встроенные возможности мониторинга состояния дисков без необходимости установки сторонних пакетов.
+Она была вдохновлена фреймворком <a href="https://man.freebsd.org/cgi/man.cgi?query=diskctl&amp;sektion=8&amp;format=html">diskctl(8)</a>, предложенным на AsiaBSDCon 2016, для создания свободно лицензируемой утилиты S.M.A.R.T., устраняющей проблемы с лицензированием и пробелы в функциональности существующих инструментов.</p>
+</div>
+<div class="paragraph">
+<p>Утилита предоставляет унифицированный интерфейс для получения данных S.M.A.R.T. через несколько протоколов хранения, включая ATA, NVMe и SCSI.
+Она ориентирована на лёгкость интеграции с инструментами мониторинга, поддерживая несколько форматов вывода (поля с разделителями табуляции, JSON, XML) через <a href="https://man.freebsd.org/cgi/man.cgi?query=libxo&amp;sektion=3&amp;format=html">libxo(3)</a> и позволяя пользователям запрашивать конкретные атрибуты состояния.</p>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="userland">Пользовательские программы</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Изменения, затрагивающие базовую систему и программы в ней.</p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="_process_descriptor_api_completion_2">Завершение работы над API дескрипторов процессов 2</h3>
+<div class="paragraph">
+<p>Контактное лицо: Konstantin Belousov &lt;<a href="mailto:kib@FreeBSD.org">kib@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://reviews.freebsd.org/D57124">sys: добавление pdopenpid(2)</a> URL: <a href="https://reviews.freebsd.org/D57124" class="bare">https://reviews.freebsd.org/D57124</a><br/>
+link <a href="https://reviews.freebsd.org/D57163">pddupfd(2)</a> <a href="https://reviews.freebsd.org/D57163" class="bare">https://reviews.freebsd.org/D57163</a></p>
+</div>
+<div class="paragraph">
+<p>После добавления системных вызовов <a href="https://man.freebsd.org/cgi/man.cgi?query=pdwait&amp;sektion=2&amp;format=html">pdwait(2)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=pdrfork&amp;sektion=2&amp;format=html">pdrfork(2)</a> я обратил внимание на другие недостающие возможности, которые запрашивают прикладные программисты.
+Самым крупным запросом, по-видимому, является возможность получения дескриптора процесса для существующего процесса.</p>
+</div>
+<div class="paragraph">
+<p>В настоящее время только один файловый дескриптор может ссылаться на внутреннюю структуру struct procdesc в ядре, что отчасти объясняет, почему интерфейс для открытия процесса по pid ещё не реализован.
+В ходе работы была добавлена возможность для procdescs иметь более одного файла, указывающего на них.
+Атрибуты, управляющие поведением procdesc, например, daemon (закрытие файла не завершает процесс), были перенесены из procdesc в файл.</p>
+</div>
+<div class="paragraph">
+<p>Это изменение позволило расширить внутренние интерфейсы procdesc для реализации системного вызова man:pdopenid(2).</p>
+</div>
+<div class="paragraph">
+<p>Возможность, реализованная, например, в дескрипторах pidfd в Linux, — это системный вызов pidfd_getfd(), который дублирует указанный файловый дескриптор из целевого процесса в вызывающий процесс.
+Реализация этого для FreeBSD, названная man:pddupfd(2), относительно проста после получения вспомогательной функции fget_remote(9).</p>
+</div>
+<div class="paragraph">
+<p>Проблема возникла, когда был разработан алгоритм проверки привилегий, необходимых для выполнения операции.
+Ядро проверяет результат p_candebug(), чтобы определить, разрешено ли что-либо, что напрямую обращается к программным ресурсам удалённого процесса.
+Но результат p_candebug() действителен только пока удерживается блокировка целевого процесса.
+Кроме того, p_candebug() запрещает действия, если целевой процесс изменяет выполняемую программу с помощью man:execve(2), что может изменить привилегии процесса, если образ имеет set-uid или set-gid.
+В целом, простая проверка с помощью p_candebug() неадекватна, потому что мы не можем удерживать блокировку процесса на протяжении всего fget_remote().</p>
+</div>
+<div class="paragraph">
+<p>Для этого был разработан механизм, обеспечивающий взаимное исключение между выполнением exec в целевом процессе и вызывающим процессом, названный execblock.
+Также были добавлены вспомогательные функции для получения ссылки на текущее vmspace процесса, чтобы избежать использования execblock, когда для действия требуется только согласованное адресное пространство цели, например, чтение строк процесса или копирование памяти процесса.
+Существующие места в системе, подверженные этой гонке, были идентифицированы, и использование execblock или интерфейсов ссылок на vmspace было применено по мере необходимости.</p>
+</div>
+<div class="paragraph">
+<p>Затем man:pddupfd(2) был реализован с помощью fget_remote() и execblock.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_scheduler">Планировщик</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://wiki.freebsd.org/DevSummit/202606">Страница вики DevSummit</a> URL: <a href="https://wiki.freebsd.org/DevSummit/202606" class="bare">https://wiki.freebsd.org/DevSummit/202606</a><br/>
+<a href="https://wiki.freebsd.org/DevSummit/202606?action=AttachFile&amp;do=view&amp;target=Scheduler.pdf">Слайды</a> URL: <a href="https://wiki.freebsd.org/DevSummit/202606?action=AttachFile&amp;do=view&amp;target=Scheduler.pdf" class="bare">https://wiki.freebsd.org/DevSummit/202606?action=AttachFile&amp;do=view&amp;target=Scheduler.pdf</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Olivier Certner &lt;<a href="mailto:olce@FreeBSD.org">olce@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>В области планировщиков продолжается работа по нескольким направлениям.</p>
+</div>
+<div class="paragraph">
+<p>Мы работаем над решениями давних недостатков планировщика ULE, таких как несправедливость для неинтерактивных потоков в определённых конкретных обстоятельствах и очень слабое влияние значений nice.
+Похоже, что полностью решить первую проблему в рамках текущей архитектуры ULE сложно, поэтому параллельно мы разрабатываем новый дизайн со следующими дополнительными целями:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Более стабильное и предсказуемое поведение.</p>
+</li>
+<li>
+<p>Раздельно управляемые задержка и выделяемое процессорное время.</p>
+</li>
+<li>
+<p>Обеспечение новых возможностей, таких как планирование на гибридных процессорах, энергоэффективное планирование, иерархическое планирование и т.д., при сохранении справедливости.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Мы также детально проанализировали планировщики 4BSD и ULE, что привело к некоторым исправлениям ошибок, таким как:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Слияние приоритетов потоков, ограниченных по процессорному времени и имеющих разные значения nice (4BSD).</p>
+</li>
+<li>
+<p>Слишком медленное снижение приоритета при потреблении процессорного времени из-за устаревшего масштабирования для SMP (4BSD).</p>
+</li>
+<li>
+<p>Исправление ошибки на единицу в определении параметра <code>preempt_thresh</code> (ULE).</p>
+</li>
+<li>
+<p>Исправление выбора потока с наименьшим приоритетом на ранних этапах в некоторых пограничных случаях (ULE).</p>
+</li>
+<li>
+<p>Прекращение линейного потребления памяти в зависимости от <code>MAXCPU</code> для локальных очередей выполнения (4BSD; выполнено Minsoo Choo).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>По этим вопросам была проведена презентация на встрече разработчиков (Developer Summit) на BSDCan 2026 (см. ссылку в начале).</p>
+</div>
+<div class="paragraph">
+<p>На фронте гибридного планирования Koine Yuusuke создал ряд запросов на рецензирование с кодом для поддержки Intel Hardware Feedback Interface (HFI) и Thread Director (ITD), а Minsoo Choo предложил общую инфраструктуру для ёмкостей и оценок (capacities and scores).
+Мы рассмотрим эти материалы и будем сопровождать их включение.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="kernel">Ядро</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Обновления подсистем/функций ядра, поддержки драйверов, файловых систем и другое.</p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="_suspendresume_improvements">Улучшения приостановки/возобновления</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://obiw.ac/s0ix/">Блог</a> URL: <a href="https://obiw.ac/s0ix/" class="bare">https://obiw.ac/s0ix/</a><br/>
+<a href="https://youtu.be/RCjPc4X2Edc">Доклад на BSDCan о s2idle/S0ix</a> URL: <a href="https://youtu.be/RCjPc4X2Edc" class="bare">https://youtu.be/RCjPc4X2Edc</a><br/>
+<a href="https://github.com/obiwac/freebsd-s0ix/pull/15">Рабочая ветка</a> URL: <a href="https://github.com/obiwac/freebsd-s0ix/pull/15" class="bare">https://github.com/obiwac/freebsd-s0ix/pull/15</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: obiwac &lt;<a href="mailto:obiwac@FreeBSD.org">obiwac@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Приостановка с сохранением состояния (suspend-to-idle) и поддержка режима сна S0ix находятся в процессе добавления во FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>Это позволит современным ноутбукам Intel и AMD, некоторые из которых не поддерживают режим сна ACPI S3, переходить в состояния пониженного энергопотребления для увеличения времени работы от батареи.</p>
+</div>
+<div class="paragraph">
+<p>В основном статус такой же, как в предыдущем квартале — работа всё ещё продолжается по сужению проблем с возобновлением NVMe и исправлению проблем с состояниями D-state.</p>
+</div>
+<div class="paragraph">
+<p>Общий интерфейс управления питанием был закоммичен, а <a href="https://man.freebsd.org/cgi/man.cgi?query=zzz&amp;sektion=8&amp;format=html">zzz(8)</a> был переписан для его использования.
+Теперь ожидается, что вы будете использовать sysctl <code>kern.power.supported_stype</code> для получения списка поддерживаемых общих типов сна и устанавливать sysctl <code>kern.power.suspend</code> для указания типа сна, который должен использовать <a href="https://man.freebsd.org/cgi/man.cgi?query=zzz&amp;sektion=8&amp;format=html">zzz(8)</a>.</p>
+</div>
+<div class="paragraph">
+<p>В драйвер acpi_spmc было внесено множество мелких исправлений и улучшений.</p>
+</div>
+<div class="paragraph">
+<p>Общая поддержка USB4 NHI также была закоммичена.
+Единственное, что осталось закоммитить для поддержки USB4, необходимой для входа в S0i3, — это сама процедура приостановки.
+Справочная страница <a href="https://man.freebsd.org/cgi/man.cgi?query=thunderbolt&amp;sektion=4&amp;format=html">thunderbolt(4)</a> была обновлена, чтобы более чётко указать, что она предназначена только для поддержки входа в S0i3.</p>
+</div>
+<div class="paragraph">
+<p>Была написана справочная страница для <a href="https://man.freebsd.org/cgi/man.cgi?query=amdsmu&amp;sektion=4&amp;format=html">amdsmu(4)</a>, чтобы лучше объяснить, как диагностировать вход в S0i3.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_hibernate_aka_suspend_to_disk">Гибернация (также известная как Suspend-to-disk)</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://github.com/OlCe2/freebsd-src/tree/oc-hibernate">Прототип сохранения образа</a> URL: <a href="https://github.com/OlCe2/freebsd-src/tree/oc-hibernate" class="bare">https://github.com/OlCe2/freebsd-src/tree/oc-hibernate</a><br/>
+<a href="https://github.com/OlCe2/freebsd-src/tree/for_kib-hiber">Загрузчик EFI</a> URL: <a href="https://github.com/OlCe2/freebsd-src/tree/for_kib-hiber" class="bare">https://github.com/OlCe2/freebsd-src/tree/for_kib-hiber</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Olivier Certner &lt;<a href="mailto:olce@FreeBSD.org">olce@FreeBSD.org</a>&gt;<br/>
+Контактное лицо: Konstantin Belousov &lt;<a href="mailto:kib@FreeBSD.org">kib@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Продолжается работа по обеспечению поддержки гибернации (приостановки с сохранением состояния на диск) во FreeBSD без помощи BIOS/прошивки для сохранения текущего состояния машины для машин <code>amd64</code>, загружаемых через UEFI.
+См. также <a href="../report-2026-01-2026-03/#_hibernate_aka_suspend_to_disk">предыдущий отчёт</a>.</p>
+</div>
+<div class="paragraph">
+<p>После почти двухмесячной паузы мы исправили некоторые ошибки в прототипе сохранения образа, перебазировали его на актуальный код и пересмотрели интерфейс между ядром и загрузчиком возобновления EFI, что потребовало изменений с обеих сторон.
+Это привело к ряду изменений в общем коде приостановки/возобновления ACPI и попутным исправлениям.
+В настоящее время ведётся работа над загрузчиком EFI (этап 1).
+Был разработан набросок части ядра для возобновления (этап 2).</p>
+</div>
+<div class="paragraph">
+<p>Состоялось ещё несколько обсуждений о том, как сохранять образ системы, сохраняя его согласованность, поскольку сама операция дампа изменяет память ядра.
+Цель состоит в том, чтобы сузить круг компонентов, которые могут мешать дампу, и определить, как предотвратить это вмешательство.
+В частности, похоже, что низкоуровневый код DMA и IOMMU может выполнять выделение памяти при определённых обстоятельствах, и пока неясно, может ли это произойти во время дампа.
+После того как это будет определено, мы постараемся устранить эти обстоятельства, если это возможно, в противном случае будем работать над механизмом, подобным снимкам состояния (snapshot).
+Помимо этого аспекта, механизм живого снимка состояния может быть полезен, поскольку он позволяет использовать любые средства ядра без ограничений для выполнения дампа и, в частности, устраняет необходимость в отдельной процедуре дампа для каждого драйвера диска.</p>
+</div>
+<div class="paragraph">
+<p>Мы представили текущее состояние этой работы, связанные с ней проблемы и возможную реализацию механизма, подобного снимкам состояния, на BSDCan в июне и сделаем это снова на EuroBSDCon в сентябре.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_collaborative_processor_performance_control_cppc">Совместное управление производительностью процессора (CPPC)</h3>
+<div class="paragraph">
+<p>Контактное лицо: Olivier Certner &lt;<a href="mailto:olce@FreeBSD.org">olce@FreeBSD.org</a>&gt;<br/>
+Контактное лицо: ShengYi Hung &lt;<a href="mailto:aokblast@FreeBSD.org">aokblast@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Совместное управление производительностью процессора (CPPC) — это стандарт, введённый ACPI, позволяющий операционной системе управлять уровнями производительности и энергоэффективности процессоров благодаря абстрактной шкале производительности, в общем случае не связанной с уровнями частоты и более детализированной, чем они.</p>
+</div>
+<div class="paragraph">
+<p>Работа возобновлена после очередного начала в ходе Хаккатона в Галифаксе в конце июня.</p>
+</div>
+<div class="paragraph">
+<p>В разработке находятся:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Новые параметры минимальной, максимальной и желаемой производительности для драйвера Intel (<a href="https://man.freebsd.org/cgi/man.cgi?query=hwpstate_intel&amp;sektion=4&amp;format=html">hwpstate_intel(4)</a>).</p>
+</li>
+<li>
+<p>Обучение <a href="https://man.freebsd.org/cgi/man.cgi?query=powerd&amp;sektion=8&amp;format=html">powerd(8)</a> работе с этими параметрами и предоставление базовых политик для них.</p>
+</li>
+<li>
+<p>Параметр для установки EPP (Предпочтение эффективности/производительности) для всех процессоров одновременно и, вероятно, аналогичные параметры для минимального, максимального и желаемого значений производительности.</p>
+</li>
+<li>
+<p>Условное включение функциональности CPPC драйвера AMD (<a href="https://man.freebsd.org/cgi/man.cgi?query=hwpstate_amd&amp;sektion=4&amp;format=html">hwpstate_amd(4)</a>) при наличии таблицы ACPI <code>_CPC</code>.
+Параметр позволит пользователям обходить эту проверку, а также, возможно, проверку на наличие функциональности CPPC, сообщаемой через CPUID.</p>
+</li>
+<li>
+<p>Глобальный параметр профиля с предопределёнными значениями (например, «Сбалансированный», «Производительность» и т.д.), который устанавливает все остальные более детальные параметры.
+Явная установка детального параметра переключит профиль на «Пользовательский».</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>В конце июня было закоммичено несколько предварительных чисток и исправлений.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_audio_stack_improvements">Улучшения аудиостека</h3>
+<div class="paragraph">
+<p>Контактное лицо: Christos Margiolis &lt;<a href="mailto:christos@FreeBSD.org">christos@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Я работаю над аудиостеком с 2024Q1.
+Ниже приведён список предыдущих отчётов о состоянии:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.freebsd.org/status/report-2024-01-2024-03/#_audio_stack_improvements">2024Q1</a> URL: <a href="https://www.freebsd.org/status/report-2024-01-2024-03/#_audio_stack_improvements" class="bare">https://www.freebsd.org/status/report-2024-01-2024-03/#_audio_stack_improvements</a><br/>
+<a href="https://www.freebsd.org/status/report-2024-04-2024-06/#_audio_stack_improvements">2024Q2</a> URL: <a href="https://www.freebsd.org/status/report-2024-04-2024-06/#_audio_stack_improvements" class="bare">https://www.freebsd.org/status/report-2024-04-2024-06/#_audio_stack_improvements</a><br/>
+<a href="https://www.freebsd.org/status/report-2024-07-2024-09/#_audio_stack_improvements">2024Q3</a> URL: <a href="https://www.freebsd.org/status/report-2024-07-2024-09/#_audio_stack_improvements" class="bare">https://www.freebsd.org/status/report-2024-07-2024-09/#_audio_stack_improvements</a><br/>
+<a href="https://www.freebsd.org/status/report-2024-10-2024-12/#_audio_stack_improvements">2024Q4</a> URL: <a href="https://www.freebsd.org/status/report-2024-10-2024-12/#_audio_stack_improvements" class="bare">https://www.freebsd.org/status/report-2024-10-2024-12/#_audio_stack_improvements</a><br/>
+<a href="https://www.freebsd.org/status/report-2025-01-2025-03/#_audio_stack_improvements">2025Q1</a> URL: <a href="https://www.freebsd.org/status/report-2025-01-2025-03/#_audio_stack_improvements" class="bare">https://www.freebsd.org/status/report-2025-01-2025-03/#_audio_stack_improvements</a><br/>
+<a href="https://www.freebsd.org/status/report-2025-04-2025-06/#_audio_stack_improvements">2025Q2</a> URL: <a href="https://www.freebsd.org/status/report-2025-04-2025-06/#_audio_stack_improvements" class="bare">https://www.freebsd.org/status/report-2025-04-2025-06/#_audio_stack_improvements</a><br/>
+<a href="https://www.freebsd.org/status/report-2025-07-2025-09/#_audio_stack_improvements">2025Q3</a> URL: <a href="https://www.freebsd.org/status/report-2025-07-2025-09/#_audio_stack_improvements" class="bare">https://www.freebsd.org/status/report-2025-07-2025-09/#_audio_stack_improvements</a><br/>
+<a href="https://www.freebsd.org/status/report-2025-10-2025-12/#_audio_stack_improvements">2025Q4</a> URL: <a href="https://www.freebsd.org/status/report-2025-10-2025-12/#_audio_stack_improvements" class="bare">https://www.freebsd.org/status/report-2025-10-2025-12/#_audio_stack_improvements</a><br/>
+<a href="https://www.freebsd.org/status/report-2026-01-2026-03/#_audio_stack_improvements">2026Q1</a> URL: <a href="https://www.freebsd.org/status/report-2026-01-2026-03/#_audio_stack_improvements" class="bare">https://www.freebsd.org/status/report-2026-01-2026-03/#_audio_stack_improvements</a></p>
+</div>
+<div class="paragraph">
+<p>Важные работы со времени <a href="https://www.freebsd.org/status/report-2026-01-2026-03/#_audio_stack_improvements">последнего отчёта</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Очистка, исправления и улучшения для <a href="https://man.freebsd.org/cgi/man.cgi?query=sound&amp;sektion=4&amp;format=html">sound(4)</a>, драйверов устройств и <a href="https://man.freebsd.org/cgi/man.cgi?query=virtual_oss&amp;sektion=8&amp;format=html">virtual_oss(8)</a>.</p>
+</li>
+<li>
+<p>Исправление безопасности в <a href="https://man.freebsd.org/cgi/man.cgi?query=sound&amp;sektion=4&amp;format=html">sound(4)</a> (<a href="https://www.freebsd.org/security/advisories/FreeBSD-SA-26:27.sound.asc">SA</a>).</p>
+</li>
+<li>
+<p>Исправление безопасности в <a href="https://man.freebsd.org/cgi/man.cgi?query=virtual_oss&amp;sektion=8&amp;format=html">virtual_oss(8)</a> (<a href="https://cgit.freebsd.org/src/commit/?id=453de99b386d40754a038cc4b804f4c7a3b04624">коммит</a>).</p>
+</li>
+<li>
+<p>Введение группы audio (GID 43) и её использование во всех узлах звуковых устройств (<a href="https://cgit.freebsd.org/src/commit/?id=a6aa95eba6ee2dd199d6cb8063dbaccd8a6f7512">коммит</a>).</p>
+</li>
+<li>
+<p>Поддержка USB-аудиоинтерфейса Roland UA-33.</p>
+</li>
+<li>
+<p>Опция службы <a href="https://man.freebsd.org/cgi/man.cgi?query=virtual_oss&amp;sektion=8&amp;format=html">virtual_oss(8)</a> в установщике.</p>
+</li>
+<li>
+<p>Улучшения <a href="https://man.freebsd.org/cgi/man.cgi?query=kqueue&amp;sektion=2&amp;format=html">kqueue(2)</a> для <a href="https://man.freebsd.org/cgi/man.cgi?query=sound&amp;sektion=4&amp;format=html">sound(4)</a>, благодаря Goran Mekić &lt;meka@tilda.center&gt;.</p>
+</li>
+<li>
+<p>Улучшенная горячая замена (<a href="https://cgit.freebsd.org/src/commit/?id=9fb56421425fa35e56ce294284c08b09852052a5">коммит</a>).</p>
+</li>
+<li>
+<p>Элементы управления эквалайзером для <a href="https://man.freebsd.org/cgi/man.cgi?query=sndctl&amp;sektion=8&amp;format=html">sndctl(8)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=mixer&amp;sektion=8&amp;format=html">mixer(8)</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Вы также можете следить за процессом разработки в <a href="https://github.com/FreeBSDFoundation/status-updates/tree/main/Christos_Margiolis">репозитории статус-отчётов</a> FreeBSD Foundation, где я публикую еженедельные отчёты.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_linuxkpi_802_11_and_native_wireless_update">Обновление LinuxKPI 802.11 и нативного беспроводного стека</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://github.com/FreeBSDFoundation/proj-laptop/issues/66">Поддержка беспроводных карт MediaTek</a> URL: <a href="https://github.com/FreeBSDFoundation/proj-laptop/issues/66" class="bare">https://github.com/FreeBSDFoundation/proj-laptop/issues/66</a><br/>
+<a href="https://github.com/FreeBSDFoundation/proj-laptop/issues/99">Поддержка беспроводных карт Realtek</a> URL: <a href="https://github.com/FreeBSDFoundation/proj-laptop/issues/99" class="bare">https://github.com/FreeBSDFoundation/proj-laptop/issues/99</a><br/>
+<a href="https://github.com/FreeBSDFoundation/proj-laptop/issues/58">Wi-Fi на основе LinuxKPI и приостановка/возобновление</a> URL: <a href="https://github.com/FreeBSDFoundation/proj-laptop/issues/58" class="bare">https://github.com/FreeBSDFoundation/proj-laptop/issues/58</a><br/>
+<a href="https://bugs.freebsd.org/bugzilla/showdependencytree.cgi?id=277512&amp;hide_resolved=1">Сообщения о проблемах с беспроводной связью</a> URL: <a href="https://bugs.freebsd.org/bugzilla/showdependencytree.cgi?id=277512&amp;hide_resolved=1" class="bare">https://bugs.freebsd.org/bugzilla/showdependencytree.cgi?id=277512&amp;hide_resolved=1</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Bjoern A. Zeeb &lt;<a href="mailto:bz@FreeBSD.org">bz@FreeBSD.org</a>&gt;<br/>
+Контактное лицо: Список рассылки беспроводной связи FreeBSD &lt;<a href="mailto:wireless@FreeBSD.org">wireless@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Этот отчёт посвящён усилиям по использованию свободно лицензируемых беспроводных драйверов Linux, в основном без изменений, во FreeBSD, а также подготовке нативного стека net80211 для поддержки новых стандартов.</p>
+</div>
+<div class="sect3">
+<h4 id="_15_1_release">15.1-RELEASE</h4>
+<div class="paragraph">
+<p>Из-за жизненных обстоятельств некоторые изменения, которые я надеялся включить в 15.1-RELEASE, не попали в релиз (см. ниже).
+В итоге я только обновил справочные страницы для различных поставляемых драйверов.
+Мы также обновили порты прошивок, поскольку изменение в src.git main препятствовало их сборке.
+Вместе с этим <a href="https://man.freebsd.org/cgi/man.cgi?query=fwget&amp;sektion=8&amp;format=html">fwget(8)</a> был также обновлён для поддержки большего количества PCI Id.
+Наконец, я помог убедиться, что уже отлично подготовленные примечания к выпуску содержат дополнительные примечания об известных проблемах.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_обновления_драйверов">Обновления драйверов</h4>
+<div class="paragraph">
+<p>Все беспроводные драйверы на основе LinuxKPI были обновлены до Linux v7.0 в main и stable/15.
+Изначально это не планировалось, но оказалось, что изменений немного, поэтому это можно было сделать за один рабочий день.
+Обновление включает:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>поставляемые драйверы Intel <a href="https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&amp;sektion=4&amp;format=html">iwlwifi(4)</a> mvm/mld, Realtek <a href="https://man.freebsd.org/cgi/man.cgi?query=rtw88&amp;sektion=4&amp;format=html">rtw88(4)</a> и <a href="https://man.freebsd.org/cgi/man.cgi?query=rtw89&amp;sektion=4&amp;format=html">rtw89(4)</a>,</p>
+</li>
+<li>
+<p>драйвер Mediatek mt76, который находится в разработке,</p>
+</li>
+<li>
+<p>три драйвера Qualcomm Atheros: ath10k, ath11k и ath12k, которые ещё предстоит сделать, а также</p>
+</li>
+<li>
+<p>Broadcom brcmfmac, который компилируется и загружает прошивку, но ему не хватает прослойки совместимости cfg80211 и некоторой работы над netdev.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_приостановка_и_возобновление_802_11_на_основе_linuxkpi">Приостановка и возобновление 802.11 на основе LinuxKPI</h4>
+<div class="paragraph">
+<p>Благодаря тому, что drm-kmod 6.12 позволил одному из моих ноутбуков приостанавливаться и возобновляться, я наконец смог отладить последние части приостановки и возобновления LinuxKPI 802.11, и я рад сообщить, что автоматическая приостановка и возобновление для <a href="https://man.freebsd.org/cgi/man.cgi?query=iwlwifi&amp;sektion=4&amp;format=html">iwlwifi(4)</a> доступны в main и stable/15.
+На данный момент отзывы исключительно положительные.
+К сожалению, я не успел к выходу 15.1-RELEASE, так что попробуйте stable или следите за обновлениями в декабре.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_настройки_linuxkpi_802_11">Настройки LinuxKPI 802.11</h4>
+<div class="paragraph">
+<p>В рамках подготовительных работ для Realtek и Mediatek были улучшены различные детали реализации LinuxKPI 802.11:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Переработка chandef / chanctx: это определения канала, на котором мы работаем.
+Переработана эмуляция chandef и способ обновления контекстов; подготовка к поддержке нескольких chanctx и т.д.</p>
+</li>
+<li>
+<p>Аппаратное шифрование TX: mt7921 отлично работал с программным шифрованием, но после включения аппаратного ускорения шифрования мы могли только принимать некоторые пакеты, но больше не могли отправлять корректные кадры.
+Оказалось, что в зависимости от типа ключа драйвер использует разные пути для ключей, и мы устанавливали оба ключа одинаково, по сути перезаписывая первый вторым.
+Исправлен аргумент, передаваемый при вызове установки ключа, чтобы избежать этой проблемы.
+Это также может помочь rtw8x, где мы видели периодические проблемы, связанные с MC-пакетами, но проверка всё ещё ожидается.</p>
+</li>
+<li>
+<p>Скорости (rates): начато заполнение и обновление большинства полей скоростей в LinuxKPI 802.11 (кроме одного, который нужен только для mt7615).
+Часть этой работы была выполнена для rtw8x в конце прошлого года, а большая часть дополнена для Mediatek.</p>
+</li>
+<li>
+<p>Исправлена проблема порядка совместимости: оказалось, что порядок некоторых событий, который мы реализовали, не полностью соответствовал ожиданиям некоторых драйверов.
+Хотя мы настраивали и синхронизировали различные части, связанные со скоростями, от net80211 до LinuxKPI 802.11 и до драйвера, одно обновление приходило слишком поздно, оставляя mt7921 с базовыми скоростями.
+Простое перемещение кода для вызова в другом порядке решило проблему и позволило получить пропускную способность 11n и 11ac.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_изменения_в_linuxkpi">Изменения в LinuxKPI:</h4>
+<div class="paragraph">
+<p>В дополнение к частям 802.11 в LinuxKPI, есть также общая инфраструктура LinuxKPI, которая требует корректировок.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>PAGE_IS_LKPI_PAGE: это проект по преобразованию раннего сокращения, согласно которому struct page из Linux сопоставляется 1:1 с нативной vm_page, в полноценную struct page из Linux с поддержкой vm_page.
+Это в основном необходимо для некоторых драйверов Mediatek mt76, но также drm-kmod наконец сможет отказаться от некоторых специфических для FreeBSD хаков после того, как это будет включено.</p>
+</li>
+<li>
+<p>Функции отсоединения (очистки) PCI в LinuxKPI: драйвер Mediatek вызывал панику ядра при выгрузке или завершении работы.
+Оказалось, что различные процедуры очистки PCI в LinuxKPI были не совсем корректны, на что уже указывал комментарий в одной из частей.
+Мы исправили это, а также очистили часть файла.
+На момент написания отчёта рецензирование всё ещё продолжается, но мы надеемся, что по крайней мере основные части будут закоммичены в ближайшее время.</p>
+</li>
+<li>
+<p>Код IDR в LinuxKPI используется некоторыми драйверами Mediatek mt76, но также используется в drm-kmod и ряде полунативных драйверов.
+К сожалению, этот фреймворк имеет известные проблемы (как показывает история) и больше не соответствует современным ожиданиям.
+Переписывание этого кода несколько сложно из-за большого влияния, но мы надеемся завершить его в начале 26Q3.</p>
+</li>
+<li>
+<p>Улучшен и дополнен код <a href="https://man.freebsd.org/cgi/man.cgi?query=lindebugfs&amp;sektion=4&amp;format=html">lindebugfs(4)</a> для возможности использования debugfs для отладки mt7921.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_поддержка_realtek_rtw8x">Поддержка Realtek rtw8x</h4>
+<div class="paragraph">
+<p>После обновлений до Linux v7.0 проблемы с некоторыми чипсетами, не способными установить соединение, усилились.
+Как <a href="https://man.freebsd.org/cgi/man.cgi?query=rtw88&amp;sektion=4&amp;format=html">rtw88(4)</a>, так и <a href="https://man.freebsd.org/cgi/man.cgi?query=rtw89&amp;sektion=4&amp;format=html">rtw89(4)</a> теперь демонстрируют различные проблемы.
+Была обнаружена дополнительная проблема: драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=rtw88&amp;sektion=4&amp;format=html">rtw88(4)</a> для по крайней мере одного чипсета уходит в ожидание на 6 секунд, по сути приводя к тайм-ауту аутентификации.
+Пока неясно, при каких обстоятельствах этого не происходит, поскольку в Linux это, очевидно, не является проблемой.
+К сожалению, не удалось отладить это к моменту выхода 15.1-RELEASE.
+Мы надеемся заняться этим в начале 26Q3, чтобы оценить, можно ли выпустить исправление (EN) до того, как 15.0 станет EOL, и исправить регрессии.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_поддержка_mediatek_mt76">Поддержка Mediatek mt76</h4>
+<div class="paragraph">
+<p>Продолжается работа по поддержке нескольких драйверов Mediatek mt76, в первую очередь mt7921 и mt7925.
+После нескольких улучшений LinuxKPI и LinuxKPI 802.11 можно сказать, что mt7921 передаёт пакеты с приемлемой пропускной способностью для первого этапа.
+mt7925 делает то же самое, но по крайней мере незавершённая работа над IDR в LinuxKPI приводит к нестабильности.
+mt7915 также требует IDR, но, кроме того, похоже, не поддерживает аппаратное сканирование, что означает, что нам нужно исправить программное сканирование как следует, что также поможет rtw8x, у которых есть странный запасной вариант программного сканирования в случае, если аппаратное сканирование недоступно.
+Другие чипсеты будут протестированы после того, как эти изменения будут включены и полностью активированы в main.</p>
+</div>
+<div class="paragraph">
+<p>В дополнение к работам над LinuxKPI мы отладили одну панику, вызванную драйвером.
+Оказалось, что драйверы перепланируют некоторые работы во время отсоединения (завершения работы), но затем освобождают нижележащую память.
+Это оставляло запланированный вызов, и когда мы пытались обойти список вызовов, это вызывало панику.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_поддержка_usb_в_linuxkpi">Поддержка USB в LinuxKPI</h4>
+<div class="paragraph">
+<p>В первом квартале мы сообщали о блокирующей проблеме для этого.
+Я рад сообщить, что половина проблемы была решена: опция компилятора, которую я изначально хотел добавить, теперь полностью удалена из дерева исходных кодов в main и stable/15.
+В LLVM теперь есть более новая опция, которая является лишь подмножеством того, что разрешала проблемная оригинальная опция, что будет хорошо для перехода через год или два, когда более новые версии LLVM и GCC будут поставляться с ней.
+Теперь остаётся найти минималистичное решение для повторного введения этой функциональности, а не разносить её по всему ядру или множеству отдельных файлов.
+Есть надежда, что это будет решено в течение 26Q3.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_обновления_нативного_net80211_технический_долг">Обновления нативного net80211 (технический долг)</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Некоторая работа в прошлом году выявила проблемы в том, как мы представляем RSSI пользовательскому пространству.
+Из-за возможного двойного переполнения значения могут быть некорректными.
+Части этой проблемы, относящиеся к драйверу и net80211, были исправлены.
+API пользовательского пространства пока не исправлен, чтобы избежать поломок (включая основные веб-браузеры).</p>
+</li>
+<li>
+<p>Переговоры возобновились в последнюю неделю июня, чтобы исправить порты, использующие lib80211, что поможет нам продвигаться в решении различных проблем без постоянной поломки пользовательского пространства.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_заключительное_замечание">Заключительное замечание</h4>
+<div class="paragraph">
+<p>В последнее время стало тихо с сообщениями о проблемах, несмотря на то, что всё больше людей снова используют беспроводную связь во FreeBSD.
+Я не уверен, хороший это знак или нет.</p>
+</div>
+<div class="paragraph">
+<p>Мы ценим все отзывы и сообщения о проблемах, которые получаем, и если они поступают в bugzilla, мы также стараемся классифицировать их по конкретным группам (см. ссылку).
+Некоторые из них могут казаться потерянными, но мы в целом стараемся не допускать этого.
+Иногда большие работы планируются специально для области вашей проблемы, и поэтому немедленной помощи может не быть, иногда другие вещи могут быть в очереди раньше.
+Если проблемы должным образом документированы, будет легче вернуться к ним позже.
+Если у вас есть какие-либо проблемы с беспроводной связью (на основе LinuxKPI), пожалуйста, попробуйте использовать официальные каналы: проверьте открытые PR, отправьте сообщение в список рассылки беспроводной связи, при необходимости напишите мне личное письмо (например, если у вас есть дамп ядра с возможной личной информацией) или откройте новый PR, если проблема ещё не известна (или кажется потерянной, тогда она будет доступна для публичного отслеживания).</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_drm_drivers">Драйверы DRM</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://github.com/freebsd/drm-kmod/pull/469">Обновление до драйверов DRM из Linux 6.13</a> URL: <a href="https://github.com/freebsd/drm-kmod/pull/469" class="bare">https://github.com/freebsd/drm-kmod/pull/469</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Jean-Sébastien Pédron &lt;<a href="mailto:dumbbell@FreeBSD.org">dumbbell@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Драйверы DRM — это <strong>драйверы ядра для встроенных и дискретных графических процессоров</strong>.
+Они поддерживаются в ядре Linux, и мы портируем их во FreeBSD.
+На момент данного отчёта мы берём только драйверы DRM для AMD и Intel (драйверы NVIDIA для FreeBSD являются проприетарными и предоставляются самой NVIDIA).</p>
+</div>
+<div class="paragraph">
+<p>Мы портируем их по одной версии Linux за раз.
+Это позволяет нам выпускать обновления чаще и упрощает портирование и отладку, поскольку дельта изменений меньше по сравнению с большим скачком через несколько версий.</p>
+</div>
+<div class="paragraph">
+<p>В этом квартале мы <strong>завершили портирование драйверов DRM из Linux 6.12 LTS к моменту выхода FreeBSD 15.1-RELEASE</strong>.
+Поскольку это версия с долгосрочной поддержкой (LTS), мы будем отслеживать изменения в патчах Linux 6.12.x.
+В настоящее время мы находимся на версии 6.12.81, и ведётся работа по дальнейшему обновлению до последней версии патчей.
+Эти драйверы доступны в дереве портов и в виде пакетов.</p>
+</div>
+<div class="paragraph">
+<p>В рамках работы над драйверами версии 6.12 было исправлено несколько ошибок или регрессий для уже поддерживаемых графических процессоров.
+Некоторые новые графические процессоры также начали работать.</p>
+</div>
+<div class="paragraph">
+<p>У нас всё ещё остаётся несколько проблем с нестабильностью, которые необходимо исправить как в драйверах i915, так и в amdgpu.</p>
+</div>
+<div class="paragraph">
+<p>Мы также продолжили портирование драйверов DRM из следующих версий Linux:
+* <strong>Обновление до Linux 6.13 находится на стадии рецензирования и тестирования</strong>.
+* Обновление до Linux 6.14 также готово и будет рецензироваться после обновления до 6.13.</p>
+</div>
+<div class="paragraph">
+<p>Эта работа щедро спонсируется Фондом FreeBSD в рамках Проекта «Ноутбуки и настольные компьютеры».</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_туннель_geneve">Туннель GENEVE</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://reviews.freebsd.org/D54172">Добавление поддержки Geneve (RFC8926)</a> URL: <a href="https://reviews.freebsd.org/D54172" class="bare">https://reviews.freebsd.org/D54172</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Pouria Mousavizadeh Tehrani &lt;<a href="mailto:pouria@FreeBSD.org">pouria@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>С момента последнего отчёта я закоммитил драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=geneve&amp;sektion=4&amp;format=html">geneve(4)</a>, и теперь он доступен в CURRENT.</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_серия_улучшений_ipv6">Серия улучшений IPv6</h3>
+<div class="paragraph">
+<p>Контактное лицо: Pouria Mousavizadeh Tehrani &lt;<a href="mailto:pouria@FreeBSD.org">pouria@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>В течение последних 6 месяцев я работал над обновлением нашего стека IPv6 и реализацией ожидающих RFC в нашем стеке, и теперь они доступны в CURRENT.</p>
+</div>
+<div class="paragraph">
+<p>На данный момент я добавил поддержку:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>RFC 9131 и RFC 9898, раздел 3.9: Поддержка Gratuitous Neighbor Discovery (GRAND).</p>
+</li>
+<li>
+<p>RFC 8781 (раздел 5): Возможность использования нескольких опций PREF64.</p>
+</li>
+<li>
+<p>RFC 4861 (разделы 7.2.6 – 7.2.8): Поддержка отложенных сообщений Neighbor Advertisement для адресов anycast и proxy.</p>
+</li>
+<li>
+<p>RFC 4191: Поддержка опции Route Information в Router Advertisement.</p>
+</li>
+<li>
+<p>Удалена поддержка DRAFT_IETF_6MAN_IPV6ONLY_FLAG с заменой на RFC 8925.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Текущие работы:
+* RFC 8925: IPv6-Only Preferred Option для DHCPv4
+<a href="https://reviews.freebsd.org/D56637">(D56637)</a>
+* RFC 4429: Добавление поддержки Optimistic DAD.
+<a href="https://reviews.freebsd.org/D55229">(D55229)</a></p>
+</div>
+<div class="paragraph">
+<p>Я хочу выразить особую благодарность <a href="mailto:glebius@FreeBSD">Глебу Смирнову</a> за его бесценное руководство и помощь в этих работах.</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_поддержка_метрики_маршрутизации">Поддержка метрики маршрутизации</h3>
+<div class="paragraph">
+<p>Контактное лицо: Pouria Mousavizadeh Tehrani &lt;<a href="mailto:pouria@FreeBSD.org">pouria@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Я работаю над реализацией метрики с 2026Q1.
+Метрики маршрутизации — это значения конфигурации, используемые маршрутизатором для принятия решений о маршрутизации.
+Метрики маршрутизации помогают стеку маршрутизации выбирать наилучший маршрут среди нескольких возможных маршрутов к пункту назначения.
+Трафик будет направлен в сторону шлюза с наименьшей метрикой.
+Поддержка метрики в нашем стеке маршрутизации реализована и доступна в CURRENT.
+Поддержка метрики требует многочисленных обновлений как в ядре, так и в пользовательском пространстве.</p>
+</div>
+<div class="paragraph">
+<p>Вот некоторые основные добавленные возможности:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Поддержка метрики в rtsock через rmx_metric.</p>
+</li>
+<li>
+<p>Поддержка RTA_PRIORITY для метрики в netlink.</p>
+</li>
+<li>
+<p>Удалено резервирование 8 старших битов для метрики.</p>
+</li>
+<li>
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=route&amp;sektion=8&amp;format=html">route(8)</a> теперь отображает значение метрики.</p>
+</li>
+<li>
+<p><a href="https://man.freebsd.org/cgi/man.cgi?query=netstat&amp;sektion=1&amp;format=html">netstat(1)</a> теперь отображает значение метрики каждого маршрута при использовании -w.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Вы также можете использовать метрику с помощью <a href="https://cgit.freebsd.org/ports/tree/net/bird/">net/bird</a> для ваших протоколов маршрутизации.</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_нативная_поддержка_mpls_для_freebsd">Нативная поддержка MPLS для FreeBSD</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://wiki.freebsd.org/SummerOfCode2026Projects/NativeMPLSSupportForFreeBSD">Вики проекта GSoC</a><br/>
+<a href="https://codeberg.org/Subhash_Murmu/freebsd-src">Форк исходного кода FreeBSD</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Subhash Murmu &lt;<a href="mailto:subhashmurmujsr2511@gmail.com">subhashmurmujsr2511@gmail.com</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Этот проект добавляет нативную поддержку Multiprotocol Label Switching (MPLS) в ядро FreeBSD в рамках Google Summer of Code 2026 под руководством наставников Bruce Simpson и Alexander Chernikov.
+MPLS широко используется для коммутации с метками в производственных сетях, но во FreeBSD отсутствует плоскость данных MPLS в базовой системе, поэтому демоны маршрутизации с поддержкой MPLS не имеют пути пересылки в ядре для программирования.
+Работа ведётся снизу вверх: от инкапсуляции на канальном уровне до плоскости управления, и интегрируется с существующим сетевым стеком FreeBSD, а не существует рядом с ним.</p>
+</div>
+<div class="paragraph">
+<p>Этапы с 1 по 3 завершены и представлены в виде пятикоммитной истории с наслоением на ветке <code>mpls</code> форка на Codeberg.
+Этап 1 добавляет инкапсуляцию канального уровня и диспетчеризацию <a href="https://man.freebsd.org/cgi/man.cgi?query=netisr&amp;sektion=9&amp;format=html">netisr(9)</a> для EtherType 0x8847.
+Этап 2 портирует <a href="https://man.freebsd.org/cgi/man.cgi?query=ldpd&amp;sektion=8&amp;format=html">ldpd(8)</a> из OpenBSD во FreeBSD, где он теперь собирается и работает.
+Этап 3 добавляет механизм пересылки и информационную базу меток (Label Information Base) для каждого VNET, при этом сквозная передача LSP была проверена с помощью tcpdump между VNET-клетками через <a href="https://man.freebsd.org/cgi/man.cgi?query=epair&amp;sektion=4&amp;format=html">epair(4)</a>.</p>
+</div>
+<div class="paragraph">
+<p>Серия изменений ещё не отправлена в Phabricator.
+Продолжается работа над программированием маршрутов ядра для ldpd.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: Google Summer of Code 2026</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_драйверы_hid_для_bluetooth">Драйверы HID для Bluetooth</h3>
+<div class="paragraph">
+<p>Ссылки:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://wiki.freebsd.org/SummerOfCode2026Projects/BluetoothSupportForHIDDevices">Страница проекта в вики FreeBSD</a> URL: <a href="https://wiki.freebsd.org/SummerOfCode2026Projects/BluetoothSupportForHIDDevices" class="bare">https://wiki.freebsd.org/SummerOfCode2026Projects/BluetoothSupportForHIDDevices</a><br/>
+<a href="https://github.com/majintosh/freebsd-bthid">Репозиторий проекта на Github</a> URL: <a href="https://github.com/majintosh/freebsd-bthid" class="bare">https://github.com/majintosh/freebsd-bthid</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Majed Alkhaleefah &lt;<a href="mailto:majed@FreeBSD.org">majed@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Я работаю над двумя драйверами для обеспечения поддержки HID-драйверов для устройств Bluetooth в рамках GSoC 2026.</p>
+</div>
+<div class="paragraph">
+<p>Основная цель этого проекта — регистрация подключаемых Bluetooth-устройств HID как устройств Newbus с помощью двух новых драйверов: <code>bthidbus</code> и <code>bthid</code>.
+<code>bthidbus</code> выступает в роли родительской шины, управляющей созданием и подключением дочерних устройств <code>bthid</code>.
+<code>bthid</code> служит транспортным уровнем, создавая устройство <code>hidbus</code> и перенаправляя на него все полученные пакеты после удаления их заголовков.
+Краткосрочная цель здесь — обеспечить поддержку беспроводных HID-подключений.
+Долгосрочная цель — начать закладывать основу, которая позволит другим писать драйверы для устройств, подключаемых только через Bluetooth.</p>
+</div>
+<div class="paragraph">
+<p>Что было сделано:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>bthidbus</code> может успешно открывать соединение с Bluetooth-устройством через сокеты.</p>
+</li>
+<li>
+<p><code>bthid</code> может принимать сокеты, переданные от <code>bthidbus</code> через ivars, и управлять ими.</p>
+</li>
+<li>
+<p><code>bthid</code> может отправлять дескриптор отчёта в <code>hidbus</code>, который успешно создаёт соответствующее HID-устройство и драйвер.
+(например, геймпад, подключённый по Bluetooth, создаёт устройство <code>hgame</code> и узел <code>evdev</code>.)</p>
+</li>
+<li>
+<p>Ввод с Bluetooth-устройств успешно принимается <code>hidbus</code> и <code>evdev</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Текущие проблемы и планируемые изменения:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Фактические дескрипторы отчётов, Bluetooth-адреса и т.д. должны быть жёстко закодированы в <code>bthidbus</code>.
+Изначально я рассматривал возможность добавления логики запросов/прослушивания в <code>bthidbus</code>, чтобы он действовал как псевдо-сервер, но я опасался, что это приведёт к раздуванию кода и расширению области ответственности.
+Вместо этого я планирую положиться на существующую логику запросов демона <code>bthidd</code> и передавать новую информацию о подключении в <code>bthidbus</code> через <code>ioctl</code>.
+Это избавит <code>bthidbus</code> от текущей роли инициатора соединения и сделает его ответственным только за управление уже открытыми соединениями.</p>
+</li>
+<li>
+<p>Наблюдается значительная задержка ввода при мониторинге через <code>evtest</code>.
+У меня есть две рабочие гипотезы.
+Первая заключается в том, что проблема кроется в <code>bthid</code> и в том, как он управляет прерываниями через очереди задач (taskqueues).
+Вторая — что проблема в сетевом стеке, поскольку Bluetooth-пакеты передаются через несколько различных узлов Netgraph перед тем, как быть полученными <code>bthid</code>.
+Также вполне возможно, что это проблема <code>evtest</code>; мне ещё предстоит это выяснить.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>На данный момент все тесты проводились с контроллером Nintendo Switch Pro.</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_ntsync9">NTSYNC(9)</h3>
+<div class="paragraph">
+<p>Контактное лицо: Konstantin Belousov &lt;<a href="mailto:kib@FreeBSD.org">kib@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>В последнее время появился поток статей, рекламирующих драйвер Linux ntsync, который реализует вспомогательный механизм для Wine для ускорения примитивов синхронизации Windows NT.
+Субстрат для реализации семафоров, мьютексов и событий из мира Win32 предоставляется им.
+Драйвер представляет каждый объект NT как файловый дескриптор, для которого определён набор ioctl, напрямую отображаемых на операции Win32.</p>
+</div>
+<div class="paragraph">
+<p>Проект реализовал драйвер, предоставляющий совместимый интерфейс ntsync, как указано в документе Linux 7.0-rc3 Documentation/userspace-api/ntsync.rst.
+Написаны как нативный интерфейс FreeBSD, так и слои совместимости ABI Linux.</p>
+</div>
+<div class="paragraph">
+<p>Для тестирования драйвера был портирован минимальный набор тестов из набора тестов ядра Linux.
+Драйвер FreeBSD следует деталям интерфейса, закодированным в тестах, когда было обнаружено расхождение между документацией Linux и тестами.</p>
+</div>
+<div class="paragraph">
+<p>Как драйвер, так и его справочная страница man:ntsync(4) были написаны с нуля без обращения к исходному коду Linux.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="architectures">Архитектуры</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Обновление специфичных платформенных функций и добавление поддержки новых аппаратных платформ.</p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="_raspberry_pi_imager_freebsd_port">Порт Raspberry Pi Imager для FreeBSD</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://github.com/raspberrypi/rpi-imager">основной репозиторий rpi-imager</a> URL: <a href="https://github.com/raspberrypi/rpi-imager" class="bare">https://github.com/raspberrypi/rpi-imager</a><br/>
+<a href="https://github.com/raspberrypi/rpi-imager/pull/1655">запрос на включение порта для FreeBSD</a> URL: <a href="https://github.com/raspberrypi/rpi-imager/pull/1655" class="bare">https://github.com/raspberrypi/rpi-imager/pull/1655</a><br/>
+<a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=296480">PR 296480 - открытое рецензирование порта FreeBSD</a> URL: <a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=296480" class="bare">https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=296480</a></p>
+</div>
+<div class="paragraph">
+<p>Контакт: Jim Chen &lt;<a href="mailto:jim.chen.1827@gmail.com">jim.chen.1827@gmail.com</a>&gt;
+Контакт: Nimish Jain &lt;<a href="mailto:njain15@protonmail.com">njain15@protonmail.com</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Raspberry Pi Imager — это удобный графический инструмент, разработанный Raspberry Pi Foundation, который позволяет пользователям легко настраивать и записывать образы операционных систем на карты памяти для одноплатных компьютеров Raspberry Pi Zero и Raspberry Pi серий 1–5.</p>
+</div>
+<div class="paragraph">
+<p>Наша цель при переносе этого приложения во FreeBSD — продолжать снижать порог входа.
+Мы хотим, чтобы пользователи, не знакомые с командной строкой, могли легко записывать операционные системы на свои Raspberry Pi.</p>
+</div>
+<div class="paragraph">
+<p>В настоящее время основной проект поддерживает только Linux, MacOS и Windows.
+Мы создали порт FreeBSD, который использует собственные API ввода-вывода, дисковые и сетевые API и компонуется с предварительно упакованными библиотеками FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>Основным препятствием для этого проекта в настоящее время является неопределённость в основном репозитории.
+Сопровождающие запросили поддержку со стороны разработчиков FreeBSD для долгосрочного сопровождения кода, специфичного для FreeBSD.
+Если вы являетесь коммиттером или участником, заинтересованным в инструментарии для Raspberry Pi во FreeBSD, пожалуйста, сообщите нам об этом или присоединитесь к обсуждению в запросе на включение на GitHub!</p>
+</div>
+<div class="paragraph">
+<p>Если эта работа будет принята в основной репозиторий, Makefile для репозитория портов FreeBSD готов к рецензированию как PR 296480 (<a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=296480" class="bare">https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=296480</a>).</p>
+</div>
+<div class="paragraph">
+<p>Если вы заинтересованы, пожалуйста, попробуйте локальную сборку, клонировав дерево портов и применив патч из указанного выше PR, и сообщите нам, если у вас возникнут какие-либо проблемы!</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_улучшение_экосистемы_разработки_для_arduino_и_esp32_во_freebsd">Улучшение экосистемы разработки для Arduino и ESP32 во FreeBSD</h3>
+<div class="paragraph">
+<p>Контактное лицо: Deepan Sai &lt;<a href="mailto:skdeepan.sai@gmail.com">skdeepan.sai@gmail.com</a>&gt;</p>
+</div>
+<div class="sect3">
+<h4 id="_обзор_проекта_2">Обзор проекта</h4>
+<div class="paragraph">
+<p>Я работаю над добавлением пакета Arduino CLI в Коллекцию Портов FreeBSD.
+Arduino CLI — это инструмент командной строки, который помогает пользователям работать с платами Arduino.
+Добавив его во FreeBSD, я хочу упростить работу разработчиков.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_важность_работы">Важность работы</h4>
+<div class="paragraph">
+<p>Многие люди используют Arduino CLI для встраиваемых систем и автоматизации.
+Наличие его во FreeBSD в виде порта упрощает установку и обновление программного обеспечения.
+Это помогает поддерживать FreeBSD на одном уровне с инструментами, которые используют аппаратные и встраиваемые разработчики.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_прогресс_за_этот_период">Прогресс за этот период</h4>
+<div class="paragraph">
+<p>На этот раз я работал над подготовкой нового порта к проверке.
+Я написал Makefile и убедился, что пакет собирается корректно.
+Я обнаружил проблему, при которой один тест падал, потому что в нём отсутствовали настройки для FreeBSD.
+Я исправил это.
+Теперь тест работает.</p>
+</div>
+<div class="paragraph">
+<p>Я выполнил все проверки для нового порта, такие как проверка правильности расположения файлов и корректного выполнения тестов.
+Я также исправил некоторые проблемы, которые обнаружили люди при проверке моей работы.
+Теперь порт гораздо ближе к тому, чтобы быть добавленным в Коллекцию Портов FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: Google Summer of Code</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_разработка_драйверов_freebsd_для_bananapi_r64r2_pro">Разработка драйверов FreeBSD для BananaPi-R64/R2-PRO</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://wiki.freebsd.org/arm/Bananapi">Wiki</a> URL: <a href="https://wiki.freebsd.org/arm/Bananapi" class="bare">https://wiki.freebsd.org/arm/Bananapi</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Martin Filla &lt;<a href="mailto:freebsd@sysctl.cz">freebsd@sysctl.cz</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Приветствуются участники.
+Если вы заинтересованы в помощи с этим проектом, тестировании текущей
+реализации или внесении кода, пожалуйста, свяжитесь со мной.</p>
+</div>
+<div class="sect3">
+<h4 id="_введение_в_r64">Введение в R64</h4>
+<div class="paragraph">
+<p>Banana Pi R64 — это плата разработки на базе MediaTek MT7622 (ARM Cortex-A53, двухъядерный ~1.35 ГГц), оснащённая 4× Gigabit LAN, 1× Gigabit WAN, Wi-Fi (4×4n), Bluetooth 5.0 и множеством периферийных интерфейсов (UART, SPI, I²C, GPIO, SATA, mini-PCIe, eMMC и т.д.).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_текущее_состояние_поддержки_freebsd_для_r64">Текущее состояние поддержки FreeBSD для R64</h4>
+<div class="paragraph">
+<p>Реализовано на данный момент:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Драйвер UART</strong></p>
+</li>
+<li>
+<p><strong>Управление тактовой частотой (clocks)</strong></p>
+</li>
+<li>
+<p><strong>Pinctrl</strong></p>
+</li>
+<li>
+<p><strong>Драйвер контроллеров хранилища (eMMC/SD/MMC)</strong></p>
+</li>
+<li>
+<p><strong>Драйвер Ethernet-коммутатора mt7531</strong></p>
+</li>
+<li>
+<p><strong>Драйвер Ethernet mt7622</strong></p>
+</li>
+<li>
+<p><strong>Драйвер XHCI</strong></p>
+</li>
+<li>
+<p><strong>Драйвер Watchdog</strong></p>
+</li>
+<li>
+<p><strong>Драйвер RTC</strong></p>
+</li>
+<li>
+<p><strong>Драйвер RNG</strong></p>
+</li>
+<li>
+<p><strong>Драйвер Pciecfg</strong></p>
+</li>
+<li>
+<p><strong>Драйвер SysIRQ</strong></p>
+</li>
+<li>
+<p><strong>USB3</strong></p>
+</li>
+<li>
+<p><strong>T-PHY</strong></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_план_разработки_для_r64">План разработки для R64</h4>
+<div class="paragraph">
+<p>Реализовать недостающие драйверы:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SATA / AHCI</p>
+</li>
+<li>
+<p>Wi-Fi (вероятно, MediaTek MT7615)</p>
+</li>
+<li>
+<p>Подсистемы GPIO</p>
+</li>
+<li>
+<p>I2C</p>
+</li>
+<li>
+<p>SPI</p>
+</li>
+<li>
+<p>PWM</p>
+</li>
+<li>
+<p>PCIE</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_введение_в_r2_pro">Введение в R2-PRO</h4>
+<div class="paragraph">
+<p>Banana Pi BPI-R2 Pro — это плата разработки для маршрутизаторов следующего поколения.
+Она работает на процессоре Rockchip RK3568.
+На борту 2 ГБ оперативной памяти LPDDR4 и 16 ГБ встроенной памяти eMMC, поддерживается 2 интерфейса USB 3.0, 5 гигабитных сетевых портов.
+Интерфейс M.2 key-E и mini PCIe, 2 интерфейса mipi DSI (один можно программно изменить на LVDS), 1 интерфейс камеры CSI, 1 выход HDMI.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_текущее_состояние_поддержки_freebsd_для_r2_pro">Текущее состояние поддержки FreeBSD для R2-PRO</h4>
+<div class="paragraph">
+<p>Реализовано на данный момент:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Драйвер UART</strong></p>
+</li>
+<li>
+<p><strong>Управление тактовой частотой (clocks)</strong></p>
+</li>
+<li>
+<p><strong>Pinctrl</strong></p>
+</li>
+<li>
+<p><strong>GPIO</strong></p>
+</li>
+<li>
+<p><strong>Драйвер контроллеров хранилища (eMMC/SD/MMC)</strong></p>
+</li>
+<li>
+<p><strong>Драйвер XHCI</strong></p>
+</li>
+<li>
+<p><strong>Драйвер Watchdog</strong></p>
+</li>
+<li>
+<p><strong>Драйвер PCIE</strong></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_план_разработки_для_r2_pro">План разработки для R2-PRO</h4>
+<div class="paragraph">
+<p>Реализовать недостающие драйверы:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>HDMI</p>
+</li>
+<li>
+<p>MIPI</p>
+</li>
+<li>
+<p>USB3</p>
+</li>
+<li>
+<p>SATA</p>
+</li>
+</ul>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_framework_laptop_support">Поддержка Framework Laptop</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://wiki.freebsd.org/Laptops/Framework_Laptop/">Страница Framework Laptop в вики FreeBSD</a> URL: <a href="https://wiki.freebsd.org/Laptops/Framework_Laptop/" class="bare">https://wiki.freebsd.org/Laptops/Framework_Laptop/</a><br/>
+<a href="https://github.com/FrameworkComputer/freebsd-on-framework">Руководство по установке и использованию FreeBSD на системах Framework</a> URL: <a href="https://github.com/FrameworkComputer/freebsd-on-framework" class="bare">https://github.com/FrameworkComputer/freebsd-on-framework</a><br/>
+<a href="https://github.com/FrameworkComputer/framework-system">Инструменты управления системой Framework</a> URL: <a href="https://github.com/FrameworkComputer/framework-system" class="bare">https://github.com/FrameworkComputer/framework-system</a><br/>
+<a href="https://bugs.freebsd.org/262152">Отслеживаемая задача: Framework Laptop: Поддержка функций, ошибки и улучшения</a> URL: <a href="https://bugs.freebsd.org/262152" class="bare">https://bugs.freebsd.org/262152</a></p>
+</div>
+<div class="paragraph">
+<p>Контакт: Daniel Schaefer &lt;<a href="mailto:dhs@frame.work">dhs@frame.work</a>&gt;<br/>
+Контакт: Li-Wen Hsu &lt;<a href="mailto:lwhsu@FreeBSD.org">lwhsu@FreeBSD.org</a>&gt;<br/>
+Контакт: Sheng-Yi Hong &lt;<a href="mailto:aokblast@FreeBSD.org">aokblast@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Framework Computer Inc. продолжает оказывать поддержку проекту FreeBSD во многих направлениях.
+Это включает предоставление инженерных образцов и аппаратного обеспечения для разработки Фонду FreeBSD, помощь в тестировании оборудования и совместную работу с разработчиками FreeBSD над улучшениями совместимости.</p>
+</div>
+<div class="paragraph">
+<p>Фонд продолжает улучшать общую поддержку ноутбуков.
+Ноутбуки Framework входят в число <a href="https://github.com/FreeBSDFoundation/proj-laptop/blob/main/supported/laptops.md">целевых платформ</a> <a href="https://github.com/FreeBSDFoundation/proj-laptop/">проекта по поддержке и удобству использования ноутбуков</a>.</p>
+</div>
+<div class="paragraph">
+<p>В течение второго квартала 2026 года Daniel обновил порт <a href="https://cgit.freebsd.org/ports/tree/sysutils/framework-system/">sysutils/framework-system</a> до <a href="https://cgit.freebsd.org/ports/commit/?id=44c4f4f51c57114020a677eab11f41cd498b5275">версии 0.6.2</a>, а затем до <a href="https://cgit.freebsd.org/ports/commit/?id=10313ba3d036d8d981a68dd7c87416ed568e4201">версии 0.6.4</a>.
+Этот пакет предоставляет пользователям FreeBSD инструменты управления системой и прошивкой, специфичные для Framework.</p>
+</div>
+<div class="paragraph">
+<p>Framework также провела небольшой хакатон в своём офисе в Тайбэе в течение квартала.
+Разработчики FreeBSD тестировали недавно анонсированное оборудование, включая Framework Laptop 13 Pro на базе Intel Panther Lake и адаптер 10GbE.</p>
+</div>
+<div class="paragraph">
+<p>Li-Wen работает над поддержкой FreeBSD для адаптера 10GbE, в котором используется контроллер Realtek RTL8159.</p>
+</div>
+<div class="paragraph">
+<p>Поддержка систем на базе Intel Panther Lake также продвинулась благодаря разработке и тестированию на оборудовании Framework, включая предварительные системы, предоставленные Framework во время хакатона в Тайбэе.
+Daniel добавил <a href="https://cgit.freebsd.org/src/commit/?id=39e297bf54a57a17d8b44c20e502d6f2c6db08f6">идентификаторы PCI для контроллеров I2C и SMBus Panther Lake</a>, и Sheng-Yi добавил эту работу в FreeBSD.
+<a href="https://cgit.freebsd.org/src/commit/?id=4ccbceefeb0f2898e2e4bb951862125d0bc5ce34">Последующее исправление</a> удалило идентификатор для контроллера SPI Flash, который был ошибочно идентифицирован как контроллер шины SPI.</p>
+</div>
+<div class="paragraph">
+<p>В июне Li-Wen также начал тестирование и отладку драйверов DRM на основе Linux 6.12 из порта <a href="https://cgit.freebsd.org/ports/tree/graphics/drm-612-kmod/">graphics/drm-612-kmod</a>, который был <a href="https://cgit.freebsd.org/ports/commit/?id=9c021c6bac866056943a39062b09d39a177c3021">добавлен в течение квартала</a>.
+Он исследовал проблемы с отображением на системах Framework и предположил, что некоторые из них могут совпадать или быть связанными с проблемой горячего подключения внешних дисплеев, отслеживаемой в <a href="https://github.com/FreeBSDFoundation/proj-laptop/issues/27">проекте по поддержке и удобству использования ноутбуков</a>.
+Расследование всё ещё продолжалось в конце квартала и перешло в третий квартал.</p>
+</div>
+<div class="paragraph">
+<p>Управление питанием и производительностью продолжало улучшаться как на системах Intel, так и на AMD.
+Системы Framework входили в число платформ разработки и тестирования, используемых для этой работы.
+Некоторые системы были предоставлены Framework, в то время как разработчики FreeBSD также проводили разработку и тестирование на собственном оборудовании Framework.</p>
+</div>
+<div class="paragraph">
+<p>Sheng-Yi <a href="https://cgit.freebsd.org/src/commit/?id=7b26353a59d66dc1bc611fd042a49b9e3bd13699">отключил режим управления пакетами Intel HWP на процессорах с гибридными ядрами</a>.
+Без этого изменения запрос от энергоэффективного ядра мог ограничить все ядра его уровнем производительности, что приводило к значительной потере производительности.</p>
+</div>
+<div class="paragraph">
+<p>Другие улучшения HWP и CPPC, завершённые в течение квартала, включают:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=095cbb1bb7f7b4f742b0a500aa2c61a8c97d4b41">Отображение доступных узлов AMD legacy-pstate</a>.</p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=e48e9794589993da039a2f4d1c66f8fdd6421155">Кеширование информации CPUID для AMD</a>.</p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=29b8220b179bf0ce93c0034ec5d9f46db9092353">Использование IPI для обновлений HWP на каждое ядро Intel</a>.</p>
+</li>
+<li>
+<p><a href="https://cgit.freebsd.org/src/commit/?id=8452afeb5682052b2533363ee3351d6d0e183e60">Использование полной 8-битной шкалы предпочтений энергоэффективности Intel</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Также продвинулась работа по поддержке приостановки и возобновления работы для Framework Laptop 12.
+Devin Teske разработал и протестировал <a href="https://reviews.freebsd.org/D57712">предлагаемое исправление ACPI</a> для проблемы с пробуждением, которая могла привести к немедленному повторному приостановлению системы после возобновления работы.
+Daniel исследовал поведение ACPI и прошивки встроенного контроллера ноутбука, а Warner Losh и Olivier Certner предоставили техническую оценку и помогли улучшить реализацию.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation за работу Li-Wen и Sheng-Yi<br/>
+Спонсор: Framework Computer Inc. за работу Daniel, а также за оборудование и помещения, предоставленные проекту</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_rocm_support_on_freebsd">Поддержка ROCm во FreeBSD</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://github.com/Yohello1/drm-kmod-rocm/tree/super-special">Форк drm-kmod с частичной поддержкой amdkfd</a> URL: <a href="https://github.com/Yohello1/drm-kmod-rocm/tree/super-special" class="bare">https://github.com/Yohello1/drm-kmod-rocm/tree/super-special</a><br/>
+<a href="https://github.com/Yohello1/rocm-systems">Форк rocm-systems с исправлениями для FreeBSD</a> URL: <a href="github.com/Yohello1/rocm-systems" class="bare">github.com/Yohello1/rocm-systems</a><br/></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Sourojeet Adhikari &lt;<a href="mailto:siri@racha.ca">siri@racha.ca</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>ROCm — это вычислительная платформа, используемая AMD для своих графических процессоров. На данный момент FreeBSD вообще не поддерживает ROCm ни на уровне инструментария, ни на уровне драйверов.
+Я работаю над изменением этой ситуации и переносом необходимых изменений в вышестоящие проекты.</p>
+</div>
+<div class="paragraph">
+<p>Насколько мне известно, во FreeBSD есть несколько способов выполнять вычислительные задачи (такие как ИИ/МО, графика и т.д.) на графическом процессоре; эти способы, насколько мне известно, — это Vulkan и OpenGL.
+Как Vulkan, так и OpenGL достаточно хороши для вычислительных задач, в основном в графике, а иногда и в задачах машинного обучения.
+Но иногда существуют задачи, которые плохо подходят для Vulkan и OpenGL и вместо этого выполняются в ROCm/CUDA, поскольку ROCm и CUDA предоставляют разработчику гораздо больше контроля над выполнением задачи.
+Поэтому я пытаюсь внедрить поддержку ROCm во FreeBSD, чтобы мы могли запускать код/программы ROCm на FreeBSD.
+Для работы ROCm нам нужно несколько вещей.
+Первое — это форк LLVM от AMD, который я пропатчил, добился его работоспособности и отправил патчи в вышестоящий проект.
+Далее идут среды выполнения ROCm, которые были пропатчены, и в настоящее время я работаю над отправкой патчей в вышестоящий проект.
+Наконец, драйвер amdkfd, над патчингом которого я работаю и отправляю некоторые патчи, связанные с LinuxKPI, обратно в ядро FreeBSD.</p>
+</div>
+<div class="paragraph">
+<p>За последнее время я отправил изменения в форк LLVM от AMD, позволяющие компилировать его во FreeBSD, чтобы вы могли собирать их инструментарий ROCm.
+Кроме того, я работал над внедрением серии патчей в LinuxKPI для постепенного добавления поддержки amdkfd.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud">Облачная архитектура</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Обновление специфичных облачных функций и добавление поддержки новых облачных платформ.</p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="_freebsd_на_ec2">FreeBSD на EC2</h3>
+<div class="paragraph">
+<p>Контактное лицо: Colin Percival &lt;<a href="mailto:cperciva@FreeBSD.org">cperciva@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>FreeBSD доступна на EC2-инстансах как amd64 (Intel и AMD), так и arm64 (Graviton).</p>
+</div>
+<div class="paragraph">
+<p>Была исправлена проблема, из-за которой драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=ena&amp;sektion=4&amp;format=html">ena(4)</a> терял пакеты при приёме джамбограмм (jumbogram).
+Исправление присутствовало в 15.1-RELEASE (июнь) и будет присутствовать в 14.5-RELEASE (сентябрь).
+Это исправление улучшило производительность сети для одного TCP-потока на некоторых EC2-инстансах со 110 Мбит/с до 9.5 Гбит/с, а также значительно улучшило пропускную способность для нескольких TCP-потоков.</p>
+</div>
+<div class="paragraph">
+<p>Была выявлена проблема, из-за которой драйвер <a href="https://man.freebsd.org/cgi/man.cgi?query=ena&amp;sektion=4&amp;format=html">ena(4)</a> запускал очереди задач (taskqueues) на неверных процессорах в системах NUMA.
+Исправление должно появиться в 14.5-RELEASE (сентябрь) и даёт двукратное увеличение пропускной способности для нескольких TCP-потоков на инстансах c8gn.48xlarge.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: Amazon<br/>
+Спонсор: <a href="https://www.patreon.com/cperciva" class="bare">https://www.patreon.com/cperciva</a></p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_freebsd_on_microsoft_hyperv_and_azure">FreeBSD в Microsoft HyperV и Azure</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://wiki.freebsd.org/MicrosoftAzure">Статья о Microsoft Azure в вики FreeBSD</a> URL: <a href="https://wiki.freebsd.org/MicrosoftAzure" class="bare">https://wiki.freebsd.org/MicrosoftAzure</a><br/>
+<a href="https://wiki.freebsd.org/HyperV">Статья о Microsoft HyperV в вики FreeBSD</a> URL: <a href="https://wiki.freebsd.org/HyperV" class="bare">https://wiki.freebsd.org/HyperV</a></p>
+</div>
+<div class="paragraph">
+<p>Контакт: Команда Microsoft FreeBSD Integration Services &lt;<a href="mailto:bsdic@microsoft.com">bsdic@microsoft.com</a>&gt;<br/>
+Контакт: <a href="https://lists.freebsd.org/subscription/freebsd-cloud">Список рассылки freebsd-cloud</a><br/>
+Контакт: Команда инженеров по выпуску релизов FreeBSD для Azure &lt;<a href="mailto:releng-azure@FreeBSD.org">releng-azure@FreeBSD.org</a>&gt;<br/>
+Контакт: Wei Hu &lt;<a href="mailto:whu@FreeBSD.org">whu@FreeBSD.org</a>&gt;, &lt;<a href="mailto:weh@microsoft.com">weh@microsoft.com</a>&gt;<br/>
+Контакт: Li-Wen Hsu &lt;<a href="mailto:lwhsu@FreeBSD.org">lwhsu@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Публикация образа 15.1-RELEASE в Azure Marketplace находится в процессе.
+Ожидается, что он станет общедоступным в начале третьего квартала.</p>
+</div>
+<div class="paragraph">
+<p>Li-Wen изучает технические детали, необходимые для поддержки Azure Trusted Launch.</p>
+</div>
+<div class="paragraph">
+<p>Wei и Li-Wen совместно с другими инженерами Microsoft исследуют проблему, из-за которой mana(4) некорректно работает на Azure-виртуальных машинах на базе AMD.
+Устройство mana(4) присутствует на новейших виртуальных машинах Azure седьмого поколения.</p>
+</div>
+<div class="paragraph">
+<p>Задачи в процессе выполнения:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Автоматизация процесса публикации образов и интеграция его в <span class="filename">src/release/</span>.</p>
+</li>
+<li>
+<p>Улучшение процесса публикации в Azure Marketplace.</p>
+</li>
+<li>
+<p>Поддержка FreeBSD в <a href="https://github.com/Azure/azure-vm-utils/">утилитах для виртуальных машин Azure</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Открытые задачи:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Обновление документации, связанной с FreeBSD, на <a href="https://learn.microsoft.com">Microsoft Learn</a>.</p>
+</li>
+<li>
+<p>Обновление пакета <a href="https://cgit.freebsd.org/ports/tree/sysutils/azure-agent/">sysutils/azure-agent</a> до последней версии.</p>
+</li>
+<li>
+<p>Перенос <a href="https://github.com/Azure/WALinuxAgent/pull/1892">локальных изменений агента Azure</a> в основной репозиторий.</p>
+</li>
+<li>
+<p>Перенос <a href="https://github.com/Azure/azure-linux-extensions">расширений для виртуальных машин Linux в Azure</a>.</p>
+</li>
+<li>
+<p>Добавление поддержки FreeBSD в <a href="https://azure.microsoft.com/products/devops/pipelines/">Azure Pipelines</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/microsoft/azure-pipelines-agent/pull/3266" class="bare">https://github.com/microsoft/azure-pipelines-agent/pull/3266</a></p>
+</li>
+<li>
+<p>Сборка и публикация снимков сборок (snapshot builds) в <a href="https://learn.microsoft.com/azure/virtual-machines/share-gallery-community">сообщество Azure</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Спонсор: Microsoft за сотрудников Microsoft и за ресурсы для остальных<br/>
+Спонсор: The FreeBSD Foundation за всё остальное</p>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="documentation">Документация</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Значительные изменения в дереве документации, страницах Справочника или новые внешние книги/документы.</p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="_проект_русскоязычной_документации_freebsd_the_freebsd_russian_documentation_project">Проект русскоязычной документации FreeBSD (The FreeBSD Russian Documentation Project)</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://www.freebsd.org/ru/">Официальный веб-сайт FreeBSD на русском языке</a> URL: <a href="https://www.freebsd.org/ru/" class="bare">https://www.freebsd.org/ru/</a><br/>
+<a href="https://docs.freebsd.org/ru/books/faq/">FAQ</a> URL: <a href="https://docs.freebsd.org/ru/books/faq/" class="bare">https://docs.freebsd.org/ru/books/faq/</a><br/>
+<a href="https://github.com/freebsd-doc-ru/freebsd-doc/discussions">Сайт проекта русской документации FreeBSD</a> URL: <a href="https://github.com/freebsd-doc-ru/freebsd-doc/discussions" class="bare">https://github.com/freebsd-doc-ru/freebsd-doc/discussions</a></p>
+</div>
+<div class="paragraph">
+<p>Контакт: Андрей Захватов (Andrey Zakhvatov) &lt;<a href="mailto:andy@FreeBSD.org">andy@FreeBSD.org</a>&gt;<br/>
+Контакт: Владлен Пополитов (Vladlen Popolitov) &lt;<a href="mailto:vladlen@FreeBSD.org">vladlen@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Текущая цель Проекта русскоязычной документации FreeBSD — предоставлять актуальные русские переводы наиболее важных частей документации FreeBSD (FAQ, Руководство, содержимое веб-сайта).
+Это необходимо для поддержки русскоязычных пользователей качественными официальными техническими материалами и для расширения распространённости операционной системы по всему миру.
+Мы надеемся, что эта инициатива получит поддержку в русскоязычном сообществе FreeBSD и приведёт к увеличению объёма переведённых материалов.</p>
+</div>
+<div class="paragraph">
+<p>В течение последнего квартала:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>100% текста в Weblate переведено.</p>
+</li>
+<li>
+<p>Русскоязычный раздел сайта <a href="https://www.FreeBSD.org/ru">www.FreeBSD.org/ru</a> полностью переведён — 100% его страниц теперь доступны на русском языке.</p>
+</li>
+<li>
+<p>Для релиза FreeBSD 15.1 полный комплект документации к релизу (примечания к выпуску, errata и так далее) был своевременно переведён на русский язык одновременно с оригинальными английскими версиями.</p>
+</li>
+<li>
+<p>Инициирован проект по переводу справочных страниц (man pages) FreeBSD, который находится на самой ранней стадии.
+Предварительные примеры можно найти на <a href="https://github.com/freebsd-doc-ru/freebsd-man-ru">GitHub</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>План на следующий квартал:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Продолжить текущий проект по переводу страниц Справочника FreeBSD.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ознакомьтесь с <a href="https://docs.freebsd.org/ru/books/fdp-primer/translations/">официальным руководством по переводу</a>, если вы хотите помочь.</p>
+</div>
+<div class="paragraph">
+<p>Мы будем признательны за вашу помощь в переводе следующих материалов:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Веб-страницы</p>
+</li>
+<li>
+<p>Справочные страницы (man pages)</p>
+</li>
+</ul>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ports">Порты</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Изменения, затрагивающие Коллекцию портов, будь то массовые изменения, затрагивающие большую часть дерева, или отдельные порты.</p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="_dockerbox">Dockerbox</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://github.com/leafoliage/freebsd-dockerbox">freebsd-dockerbox на Github</a> URL: <a href="https://github.com/leafoliage/freebsd-dockerbox" class="bare">https://github.com/leafoliage/freebsd-dockerbox</a><br/>
+<a href="https://github.com/leafoliage/dockerbox-broker">dockerbox-broker на Github</a> URL: <a href="https://github.com/leafoliage/dockerbox-broker" class="bare">https://github.com/leafoliage/dockerbox-broker</a><br/>
+<a href="https://github.com/leafoliage/freebsd-dockerbox-debian">freebsd-dockerbox-debian на Github</a> URL: <a href="https://github.com/leafoliage/freebsd-dockerbox-debian" class="bare">https://github.com/leafoliage/freebsd-dockerbox-debian</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Chun-Cheng Yeh &lt;<a href="mailto:leafoliage@FreeBSD.org">leafoliage@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Dockerbox — это виртуализированный демон Docker.
+Хотя демон Docker изначально недоступен во FreeBSD, Dockerbox запускает его внутри виртуальной машины Debian под управлением Bhyve, обеспечивая доступ к нему.
+Dockerbox поддерживает обычные функции Docker, такие как Docker Compose, публикацию портов и привязку монтирований (bind mounts).
+Этот проект направлен на упрощение использования Docker во FreeBSD в непроизводственных средах.</p>
+</div>
+<div class="sect3">
+<h4 id="_связанные_порты_и_репозитории">Связанные порты и репозитории</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/leafoliage/freebsd-dockerbox">freebsd-dockerbox</a><br/>
+Обеспечивает работу Docker во FreeBSD путём запуска <code>dockerd</code> внутри гостевой Linux-виртуальной машины Bhyve.
+Эта служба управляет жизненным циклом гостевой системы Dockerbox, а также её сетевыми настройками и настройками хранилища.<br/>
+<strong>v0.2.5 — портирован.</strong></p>
+</li>
+<li>
+<p><a href="https://github.com/leafoliage/dockerbox-broker">dockerbox-broker</a><br/>
+Дочерняя служба Dockerbox, которая обрабатывает перенаправление портов с хоста на гостевую систему Dockerbox, когда контейнер запрашивает публикацию портов.<br/>
+<strong>Ещё не портирован.</strong></p>
+</li>
+<li>
+<p><a href="https://github.com/leafoliage/freebsd-dockerbox-debian">freebsd-dockerbox-debian</a><br/>
+Кодовая база, используемая для создания дискового образа Dockerbox.<br/>
+<strong>Не портирован.</strong></p>
+</li>
+<li>
+<p><a href="https://www.freshports.org/sysutils/docker-cli/">docker-cli</a><br/>
+Инструмент командной строки Docker CLI.<br/>
+<strong>v29.4.2 — портирован.</strong></p>
+</li>
+<li>
+<p><a href="https://www.freshports.org/sysutils/docker-compose/">docker-compose</a><br/>
+Плагин Docker CLI для определения и запуска многоконтейнерных приложений.<br/>
+<strong>v5.1.3 — портирован.</strong></p>
+</li>
+<li>
+<p><a href="https://www.freshports.org/sysutils/docker-buildx">docker-buildx</a><br/>
+Плагин Docker CLI, предоставляющий расширенные возможности сборки через BuildKit.<br/>
+<strong>v0.34.1 — портирован.</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Пакеты <a href="https://cgit.freebsd.org/ports/tree/sysutils/dockerbox/">sysutils/dockerbox</a>, <a href="https://cgit.freebsd.org/ports/tree/sysutils/docker-cli/">sysutils/docker-cli</a>, <a href="https://cgit.freebsd.org/ports/tree/sysutils/docker-compose/">sysutils/docker-compose</a> и <a href="https://cgit.freebsd.org/ports/tree/sysutils/docker-buildx/">sysutils/docker-buildx</a> теперь доступны в Коллекции Портов FreeBSD и через <code>pkg</code>.</p>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_kde_во_freebsd">KDE во FreeBSD</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://freebsd.kde.org/">Инициатива KDE/FreeBSD</a> URL: <a href="https://freebsd.kde.org/" class="bare">https://freebsd.kde.org/</a><br/>
+<a href="https://community.kde.org/FreeBSD">FreeBSD — Вики сообщества KDE</a> URL: <a href="https://community.kde.org/FreeBSD" class="bare">https://community.kde.org/FreeBSD</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Список рассылки KDE во FreeBSD &lt;<a href="mailto:kde@FreeBSD.org">kde@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Проект KDE во FreeBSD упаковывает CMake, Qt и программное обеспечение из сообщества KDE для дерева портов FreeBSD.
+Программное обеспечение включает полноценную среду рабочего стола под названием KDE Plasma (как для X11, так и для Wayland) и сотни приложений, которые могут использоваться на любой машине FreeBSD.
+Команда <a href="mailto:kde@FreeBSD.org">KDE</a> является частью <a href="mailto:desktop@FreeBSD.org">desktop@</a>, создавая программный стек, чтобы сделать FreeBSD красивой и пригодной для использования в качестве ежедневной графической рабочей станции.</p>
+</div>
+<div class="sect3">
+<h4 id="_инфраструктура">Инфраструктура</h4>
+<div class="paragraph">
+<p>CMake обновлён до версии 3.31.12.</p>
+</div>
+<div class="paragraph">
+<p>Qt6 и PySide6 обновлены до версии 6.11.1.
+PyQt6 обновлён до версии 6.11.0.</p>
+</div>
+<div class="paragraph">
+<p>Qt5 и PySide2 обновлены до набора патчей KDE версии 5.15.19.
+Официальная поддержка Qt5 вышестоящим проектом завершена.
+Это последнее обновление для Qt5.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_стек_kde">Стек KDE</h4>
+<div class="paragraph">
+<p>Релизы KDE Frameworks, Plasma и Gear происходят очень регулярно.
+Команда <a href="mailto:kde@FreeBSD.org">KDE</a> включает эти обновления вскоре после их выхода вышестоящими проектами.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Порты KDE Frameworks обновлены до версии 6.28.0.</p>
+</li>
+<li>
+<p>KDE Plasma Desktop обновлён до версии 6.6.6.</p>
+</li>
+<li>
+<p>KDE Gear обновлён до версии 26.04.3.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_связанные_порты">Связанные порты</h4>
+<div class="paragraph">
+<p>Было добавлено несколько новых портов KDE.
+Amarok, классический музыкальный плеер KDE, был восстановлен и обновлён до версии 3.3.3.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_завершение_поддержки_портов_qt5">Завершение поддержки портов Qt5</h4>
+<div class="paragraph">
+<p>Qt5 всё ещё используется примерно 350 портами.
+Хотя Qt5 объявлен устаревшим, пока нет определённой даты его удаления из дерева портов.
+Тем не менее, порт Qt5WebEngine, основанный на очень старой версии Chromium с множеством уязвимостей, запланирован к удалению непосредственно перед 2026Q4.
+Команда KDE призывает сопровождающих перенести свои порты на Qt6, удалить варианты (flavors) с Qt5 и удалить заброшенное программное обеспечение на Qt5.</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gcc_во_freebsd">GCC во FreeBSD</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://gcc.gnu.org/">Проект GCC</a> URL: <a href="https://gcc.gnu.org/" class="bare">https://gcc.gnu.org/</a><br/>
+<a href="https://gcc.gnu.org/gcc-13/">Серия релизов GCC 13</a> URL: <a href="https://gcc.gnu.org/gcc-13/" class="bare">https://gcc.gnu.org/gcc-13/</a><br/>
+<a href="https://gcc.gnu.org/gcc-14/">Серия релизов GCC 14</a> URL: <a href="https://gcc.gnu.org/gcc-14/" class="bare">https://gcc.gnu.org/gcc-14/</a><br/>
+<a href="https://gcc.gnu.org/gcc-15/">Серия релизов GCC 15</a> URL: <a href="https://gcc.gnu.org/gcc-15/" class="bare">https://gcc.gnu.org/gcc-15/</a><br/>
+<a href="https://gcc.gnu.org/gcc-16/">Серия релизов GCC 16</a> URL: <a href="https://gcc.gnu.org/gcc-16/" class="bare">https://gcc.gnu.org/gcc-16/</a><br/>
+<a href="https://gcc.gnu.org/gcc-17/">Серия релизов GCC 17</a> URL: <a href="https://gcc.gnu.org/gcc-17/" class="bare">https://gcc.gnu.org/gcc-17/</a></p>
+</div>
+<div class="paragraph">
+<p>Контакт: Lorenzo Salvadore &lt;<a href="mailto:salvadore@FreeBSD.org">salvadore@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Было создано два новых порта: <a href="https://cgit.freebsd.org/ports/tree/lang/gcc16/">lang/gcc16</a> и <a href="https://cgit.freebsd.org/ports/tree/lang/gcc17-devel/">lang/gcc17-devel</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=294062">PR 294062</a>, касающийся сбоев сборки на arm64, был исправлен.
+Более точно, во втором квартале 2026 года были исправлены <a href="https://cgit.freebsd.org/ports/tree/lang/gcc16-devel/">lang/gcc16-devel</a> и <a href="https://cgit.freebsd.org/ports/tree/lang/gcc17-devel/">lang/gcc17-devel</a>, в то время как <a href="https://cgit.freebsd.org/ports/tree/lang/gcc16/">lang/gcc16</a> был исправлен в начале третьего квартала 2026 года (на момент написания этого отчёта патч всё ещё должен быть перенесён в квартальную ветку портов).
+К сожалению, решение является локальным для дерева портов FreeBSD и не может быть передано напрямую в основной репозиторий.
+Обсуждение решения в основном репозитории можно найти в <a href="https://gcc.gnu.org/bugzilla/show_bug.cgi?id=125182">багзилле основного репозитория</a>.
+Спасибо всем, кто помог, особенно Mark Millard.</p>
+</div>
+<div class="paragraph">
+<p>Я лично не работал над <a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=292692">процессом</a> по установке GCC_DEFAULT=15 в этом квартале, но ведётся некоторая работа в связанных PR, так что этот вопрос также продвигается.
+Кроме того, планируются обновления минорных версий для <a href="https://cgit.freebsd.org/ports/tree/lang/gcc13/">lang/gcc13</a>, <a href="https://cgit.freebsd.org/ports/tree/lang/gcc14/">lang/gcc14</a> и <a href="https://cgit.freebsd.org/ports/tree/lang/gcc15/">lang/gcc15</a>.</p>
+</div>
+<div class="paragraph">
+<p>Продолжая работать над портами GCC, я понимаю, что у меня становится меньше времени и энергии для их поддержки.
+Эти порты важны, и я предпочитаю не оставлять их без сопровождения, по крайней мере до тех пор, пока я могу заниматься ими, даже если медленно.
+Но если есть кто-то, кто хотел бы взять их на себя, пожалуйста, отзовитесь, и я буду рад передать сопровождение.</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_improve_openjdk_on_freebsd">Улучшение OpenJDK во FreeBSD</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://freebsdfoundation.org/project/improving-openjdk-on-freebsd/">Описание проекта</a> URL: <a href="https://freebsdfoundation.org/project/improving-openjdk-on-freebsd/" class="bare">https://freebsdfoundation.org/project/improving-openjdk-on-freebsd/</a><br/>
+<a href="https://github.com/freebsd/openjdk">Репозиторий проекта</a> URL: <a href="https://github.com/freebsd/openjdk" class="bare">https://github.com/freebsd/openjdk</a><br/>
+<a href="https://github.com/openjdk/bsd-port">Вышестоящий репозиторий BSD-порта</a> URL: <a href="https://github.com/openjdk/bsd-port" class="bare">https://github.com/openjdk/bsd-port</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо:<br/>
+Harald Eilertsen &lt;<a href="mailto:haraldei@FreeBSD.org">haraldei@FreeBSD.org</a>&gt;<br/>
+Список рассылки FreeBSD Java &lt;<a href="mailto:freebsd-java@lists.freebsd.org">freebsd-java@lists.freebsd.org</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Цель этого проекта — улучшить поддержку OpenJDK для FreeBSD/amd64 и FreeBSD/arm64.</p>
+</div>
+<div class="paragraph">
+<p>Java является важной средой выполнения для многих высокопроизводительных критически важных корпоративных систем.
+Обеспечение корректной и эффективной работы приложений на основе Java во FreeBSD важно для того, чтобы FreeBSD оставалась жизнеспособной и привлекательной платформой для предприятий, а также бизнеса и организаций всех размеров.</p>
+</div>
+<div class="paragraph">
+<p>Этот квартал был в основном потрачен на правильную организацию процесса отправки изменений в вышестоящие проекты.
+Мы отправляем патчи в <a href="https://github.com/openjdk/bsd-port">отдельный репозиторий</a> в организации OpenJDK на Github и следим за тем, чтобы каждый PR был проверен по крайней мере одним рецензентом из вышестоящего проекта.
+Таким образом, когда мы дойдём до момента, когда захотим включить наш порт в основную ветку вышестоящего проекта, все коммиты уже должны быть проверены кем-то из проекта.</p>
+</div>
+<div class="paragraph">
+<p>Это довольно медленный процесс, поскольку мы зависим от наличия времени у рецензентов из вышестоящего проекта.
+Мы также сталкиваемся с тем, что некоторые изменения, которые долго жили в нашем порту, отклоняются.
+Тогда нам приходится переделывать их или, если они не строго необходимы, просто отбрасывать.
+Я считаю, что это полезная корректировка, но иногда требует значительного объёма работы.</p>
+</div>
+<div class="paragraph">
+<p>В этом квартале были достигнуты следующие результаты/вехи:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Порт OpenJDK 25 обновлён до <a href="https://reviews.freebsd.org/D56522">версии 25.0.3</a>.</p>
+</li>
+<li>
+<p>Изменения и исправления ошибок в основной ветке вышестоящего проекта:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/openjdk/jdk/pull/30853">8382614: Консолидация реализации current_stack_base_and_size для BSD</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openjdk/jdk/pull/31069">8384085: Сделать os::Bsd::dlopen_helper приватным и удалить неиспользуемый аргумент</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openjdk/jdk/pull/31070">8384088: osThread _thread_id должен быть int на всех BSD</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openjdk/jdk/pull/31199">8384946: os::Bsd::gettid не возвращает значение</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openjdk/jdk/pull/31455">8386344: Сбой сборки runtime/StackGuardPages/TestStackGuardPages после JDK-8303612</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Вышестоящий BSD-порт:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/openjdk/bsd-port/pull/7">Исправление условных секций для BSD в hotspot/cpu</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openjdk/bsd-port/pull/8">Портирование hotspot/os/posix для BSD</a></p>
+</li>
+<li>
+<p>Включены изменения, принятые для основной ветки.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Текущий (вне дерева) BSD-порт:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/battleblow/jdk/pull/49">Слияние + удаление VFORK для BSD + перебазирование рабочего процесса GHA на OpenJDK26</a></p>
+</li>
+<li>
+<p><a href="https://github.com/battleblow/jdk/pull/53">Слияние + исправление использования макроса FREE_C_HEAP_ARRAY для BSD</a></p>
+</li>
+<li>
+<p><a href="https://github.com/battleblow/jdk/pull/54">Синхронизация реализации cpuinfo для aarch64 на *BSD с Linux</a></p>
+</li>
+<li>
+<p><a href="https://github.com/battleblow/jdk/pull/55">Удаление дублирующегося включения в global defs для zero</a></p>
+</li>
+<li>
+<p><a href="https://github.com/battleblow/jdk/pull/59">Удаление ThreadWXEnable из кода BSD</a></p>
+</li>
+<li>
+<p>Перенесены изменения, принятые для вышестоящего BSD-порта в основной ветке.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Порты:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cgit.freebsd.org/ports/commit/?id=7878106082fd1f07814d754ef767c1f59168d1e9">java/javavmwrapper: JAVA_VERSION не работает с openjdk25</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Кроме того, следующие задачи всё ещё выполняются или ожидают рецензирования:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Вышестоящий BSD-порт:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/openjdk/bsd-port/pull/9">Портирование hotspot/os/bsd/os_perf_bsd.cpp для BSD</a> (Ожидает рефакторинга, см. <a href="https://github.com/battleblow/jdk/pull/61">WIP: Разделение реализации os_perf для macOS и BSD</a>)</p>
+</li>
+<li>
+<p><a href="https://github.com/openjdk/bsd-port/pull/11">os::get_process_uid и os::rss для BSD</a> (Всё ещё выполняется)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Другие заметки:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Начата подготовка <a href="https://github.com/snake66/jdk/tree/freebsd-jdk27">OpenJDK 27 порта</a>.</p>
+</li>
+<li>
+<p>Проект представлен на <a href="https://foss-north.se/2026/speakers-and-talks.html#heilertsen">Foss North 2026</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_модернизация_hpc_портов_freebsd_slurm_26_05_ucx_1_20_и_mpi_параллельные_утилиты_для_работы_с_файлами">Модернизация HPC-портов FreeBSD: Slurm 26.05, UCX 1.20 и MPI-параллельные утилиты для работы с файлами</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://cgit.freebsd.org/ports/tree/sysutils/slurm-wlm/">sysutils/slurm-wlm</a> URL: <a href="https://cgit.freebsd.org/ports/tree/sysutils/slurm-wlm/" class="bare">https://cgit.freebsd.org/ports/tree/sysutils/slurm-wlm/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/net/ucx/">net/ucx</a> URL: <a href="https://cgit.freebsd.org/ports/tree/net/ucx/" class="bare">https://cgit.freebsd.org/ports/tree/net/ucx/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/sysutils/mpifileutils/">sysutils/mpifileutils</a> URL: <a href="https://cgit.freebsd.org/ports/tree/sysutils/mpifileutils/" class="bare">https://cgit.freebsd.org/ports/tree/sysutils/mpifileutils/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/devel/libcircle/">devel/libcircle</a> URL: <a href="https://cgit.freebsd.org/ports/tree/devel/libcircle/" class="bare">https://cgit.freebsd.org/ports/tree/devel/libcircle/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/devel/lwgrp/">devel/lwgrp</a> URL: <a href="https://cgit.freebsd.org/ports/tree/devel/lwgrp/" class="bare">https://cgit.freebsd.org/ports/tree/devel/lwgrp/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/devel/dtcmp/">devel/dtcmp</a> URL: <a href="https://cgit.freebsd.org/ports/tree/devel/dtcmp/" class="bare">https://cgit.freebsd.org/ports/tree/devel/dtcmp/</a><br/>
+<a href="https://cgit.freebsd.org/ports/tree/benchmarks/py-reframe-hpc/">benchmarks/py-reframe-hpc</a> URL: <a href="https://cgit.freebsd.org/ports/tree/benchmarks/py-reframe-hpc/" class="bare">https://cgit.freebsd.org/ports/tree/benchmarks/py-reframe-hpc/</a><br/>
+<a href="https://github.com/openucx/ucx/pull/11354">openucx/ucx#11354: Исправления переносимости UCS/TYPE для сред без glibc/Clang (включено)</a> URL: <a href="https://github.com/openucx/ucx/pull/11354" class="bare">https://github.com/openucx/ucx/pull/11354</a><br/>
+<a href="https://github.com/openucx/ucx/pull/11549">openucx/ucx#11549: Исправления переносимости UCS/SYS для платформ, отличных от Linux (на рассмотрении)</a> URL: <a href="https://github.com/openucx/ucx/pull/11549" class="bare">https://github.com/openucx/ucx/pull/11549</a><br/>
+<a href="https://github.com/hpc/mpifileutils/pull/664">hpc/mpifileutils#664: Исправления переносимости для сборок FreeBSD/non-Linux (на рассмотрении)</a> URL: <a href="https://github.com/hpc/mpifileutils/pull/664" class="bare">https://github.com/hpc/mpifileutils/pull/664</a><br/>
+<a href="https://kavocado.net/reports/">Ежемесячные отчёты о состоянии Kavocado – заметки по HPC во FreeBSD</a> URL: <a href="https://kavocado.net/reports/" class="bare">https://kavocado.net/reports/</a></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Generic Rikka &lt;<a href="mailto:rikka.goering@outlook.de">rikka.goering@outlook.de</a>&gt;</p>
+</div>
+<div class="paragraph">
+<p>Этот отчёт продолжает инициативу по модернизации HPC-портов FreeBSD.
+Предыдущие кварталы были посвящены обновлению стека Slurm + PMIx + PRRTE + UCX и заполнению пробелов в сопутствующей экосистеме.
+Работа в этом квартале была сосредоточена на трёх вещах: поддержании основного планировщика и коммуникационных библиотек в актуальном состоянии в соответствии с быстро меняющимися релизами вышестоящих проектов, отправке накопившихся при поддержке этих портов исправлений переносимости для FreeBSD в вышестоящие проекты, чтобы локальные наборы патчей продолжали уменьшаться, и добавлении нового порта для MPI-параллельных утилит для работы с файлами, которые широко используются в больших HPC-файловых системах.</p>
+</div>
+<div class="sect3">
+<h4 id="_выполненные_работы">Выполненные работы</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Дважды обновлён <a href="https://cgit.freebsd.org/ports/tree/sysutils/slurm-wlm/">sysutils/slurm-wlm</a> в этом квартале: с 25.11.4 до 25.11.5, а затем с 25.11.5 до 26.05.1, отслеживая последние вышестоящие релизы.</p>
+</li>
+<li>
+<p>Исправлены несколько проблем времени выполнения, специфичных для FreeBSD, в <a href="https://cgit.freebsd.org/ports/tree/net/ucx/">net/ucx</a>: улучшена обработка состояния асинхронных потоков, исправлена обработка перемещений UCM, исправлена привязка сокетов сигналов mm, а также решены другие проблемы переносимости времени выполнения для FreeBSD.</p>
+</li>
+<li>
+<p>Обновлён <a href="https://cgit.freebsd.org/ports/tree/net/ucx/">net/ucx</a> с 1.20.0 до 1.20.1, а также отдельно исправлена паника при ранней инициализации libucm вместе с несколькими сбоями в наборе тестов gtest, обнаруженными при проверке обновления.</p>
+</li>
+<li>
+<p>Добавлен <a href="https://cgit.freebsd.org/ports/tree/sysutils/mpifileutils/">sysutils/mpifileutils</a> как новый порт вместе со стеком зависимостей: <a href="https://cgit.freebsd.org/ports/tree/devel/libcircle/">devel/libcircle</a>, <a href="https://cgit.freebsd.org/ports/tree/devel/lwgrp/">devel/lwgrp</a> и <a href="https://cgit.freebsd.org/ports/tree/devel/dtcmp/">devel/dtcmp</a>. Они предоставляют MPI-параллельные утилиты для работы с файлами (копирование, удаление, контрольные суммы и т.д.), обычно используемые в больших HPC-файловых системах.</p>
+</li>
+<li>
+<p>Дважды обновлён <a href="https://cgit.freebsd.org/ports/tree/benchmarks/py-reframe-hpc/">benchmarks/py-reframe-hpc</a> в этом квартале для отслеживания вышестоящих релизов фреймворка регрессионного тестирования.</p>
+</li>
+<li>
+<p>Отправлены в вышестоящий проект UCX «UCS/TYPE: Исправления переносимости для сред без glibc/Clang», которые были рассмотрены и включены.</p>
+</li>
+<li>
+<p>Открыт запрос на включение «UCS/SYS: исправления переносимости для платформ, отличных от Linux» в UCX, охватывающий определение размера буфера имени хоста, получение MAC-адреса через <code>getifaddrs()</code>/<code>AF_LINK</code>, сообщение об ошибках разделяемой памяти, перераспределение на основе <code>mmap</code>/<code>munmap</code> и запросы привязки потоков на основе <code>cpuset_getaffinity()</code>; в настоящее время обрабатываются замечания рецензентов.</p>
+</li>
+<li>
+<p>Открыт запрос на включение исправлений переносимости в mpifileutils, ограничивающих использование Linux-специфичных API для FreeBSD и других сборок, отличных от Linux; в настоящее время на рассмотрении.</p>
+</li>
+<li>
+<p>Совместно с SchedMD проведена работа над проверкой во время конфигурации Slurm для <code>H5PTopen</code>, используемой для обнаружения библиотеки высокого уровня HDF5, которая была включена в вышестоящий проект.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_работа_в_процессе">Работа в процессе</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Обработка замечаний рецензентов по открытым запросам на включение исправлений переносимости в UCX и mpifileutils для их включения в вышестоящие проекты и дальнейшего уменьшения локальных наборов патчей в портах FreeBSD.</p>
+</li>
+<li>
+<p>Продолжение сотрудничества с SchedMD для отправки в вышестоящий проект дополнительных исправлений переносимости, обнаруженных при поддержке <a href="https://cgit.freebsd.org/ports/tree/sysutils/slurm-wlm/">sysutils/slurm-wlm</a> во FreeBSD, включая улучшения обработки сокетов BSD.</p>
+</li>
+<li>
+<p>Оценка дизайна плагина Slurm <code>proctrack/freebsd_reaper</code>, ставшего возможным благодаря недавно добавленной в ядро FreeBSD поддержке раскрытия метаданных реперера в информации о процессах.</p>
+</li>
+<li>
+<p>Продолжение внимательного отслеживания вышестоящих релизов Slurm, UCX и PMIx/PRRTE для поддержания портов FreeBSD в актуальном состоянии с минимальным локальным патчированием.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_будущие_планы">Будущие планы</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Включить ожидающие запросы на включение в вышестоящие проекты UCX и mpifileutils и продолжить выявление дальнейших проблем переносимости для отправки в вышестоящие проекты, а не для локального патчирования.</p>
+</li>
+<li>
+<p>Создать прототип и отправить плагин Slurm <code>proctrack/freebsd_reaper</code> после завершения работы над соответствующим интерфейсом ядра.</p>
+</li>
+<li>
+<p>Продолжить расширение экосистемы HPC-программного обеспечения, доступной в Коллекции Портов FreeBSD, и сокращение локальных наборов патчей во всём стеке везде, где возможно принятие вышестоящими проектами.</p>
+</li>
+<li>
+<p>Документировать эталонное развёртывание Slurm + OpenMPI + PMIx + PRRTE + UCX на FreeBSD, чтобы снизить порог входа для новых организаций, экспериментирующих с FreeBSD в контексте HPC.</p>
+</li>
+</ul>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_improve_libvirt_support_for_bhyve_hypervisor">Улучшение поддержки libvirt для гипервизора bhyve</h3>
+<div class="paragraph">
+<p>Ссылки:<br/>
+<a href="https://libvirt.org/drvbhyve.html">libvirt: Драйвер bhyve</a> URL: <a href="https://libvirt.org/drvbhyve.html" class="bare">https://libvirt.org/drvbhyve.html</a><br/></p>
+</div>
+<div class="paragraph">
+<p>Контактное лицо: Roman Bogorodskiy &lt;<a href="mailto:novel@FreeBSD.org">novel@FreeBSD.org</a>&gt;</p>
+</div>
+<div class="sect3">
+<h4 id="_выполненные_работы_2">Выполненные работы</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Драйвер libvirt/bhyve:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Добавлена поддержка устройства <code>virtio-console</code>.</p>
+</li>
+<li>
+<p>Добавлена поддержка QEMU Guest Agent.</p>
+</li>
+<li>
+<p>Реализовано несколько функций на основе QEMU Guest Agent, таких как корректная перезагрузка и выключение, управление временем гостевой ОС, SSH-ключами, паролями пользователей и т.д.</p>
+</li>
+<li>
+<p>Добавлена настройка памяти и настройка ввода-вывода для блочных устройств на основе <a href="https://man.freebsd.org/cgi/man.cgi?query=rctl&amp;sektion=8&amp;format=html">rctl(8)</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>В процессе разработка по расширению CI libvirt для тестирования на снимках виртуальных машин FreeBSD-CURRENT.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_планы_на_следующий_квартал_2">Планы на следующий квартал</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Добавить поддержку настройки порядка загрузки.</p>
+</li>
+<li>
+<p>Добавить поддержку устройств TPM.</p>
+</li>
+<li>
+<p>Завершить поддержку приостановки/возобновления.</p>
+</li>
+<li>
+<p>Продолжить реализацию функций на основе QEMU Guest Agent.</p>
+</li>
+<li>
+<p>Продолжить расширение CI, охватив новые функции на основе гостевого агента новыми тестами.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Спонсор: The FreeBSD Foundation</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <hr />
+    <div>
+      <p><strong>Последнее изменение</strong>: 27 июля 2026 г. от <a href="https://cgit.freebsd.org/doc/commit/?id=000fcf9724" target="_blank">Vladlen Popolitov</a></p>
+    </div>
+    
+  </div>
+</div>
+
+      </main>
+      
+<footer>
+  <div class="footer-container">
+    <section class="logo-column">
+      <img src="/images/beastie-right.svg" width="160" height="250" alt="FreeBSD logo" />
+      <div class="theme-container">
+        <label for="theme-switch" class="theme-switch-label" aria-label="Switch color theme">
+          <i class="fa fa-moon-o theme-icon theme-icon-dark" aria-hidden="true"></i>
+          <i class="fa fa-sun-o theme-icon theme-icon-light" aria-hidden="true"></i>
+        </label>
+      </div>
+      </section>
+      <section class="about-column">
+        <h3 class="column-title">О проекте</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="/ru/about" class="column-element">FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/" class="column-element">Фонд FreeBSD</a>
+          </li>
+          <li>
+            <a href="https://freebsdfoundation.org/our-work/journal/" class="column-element">FreeBSD Journal</a>
+          </li>
+          <li>
+            <a href="/ru/where" class="column-element">Установка FreeBSD</a>
+          </li>
+          <li>
+            <a href="/ru/internal/code-of-conduct" class="column-element">Кодекс поведения</a>
+          </li>
+          <li>
+            <a href="/ru/security" class="column-element">Бюллетени безопасности</a>
+          </li>
+        </ul>
+      </section>
+      <section class="documentation-column">
+        <h3 class="column-title">Документация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc" class="column-element">Портал документации</a>
+          </li>
+          <li>
+            <a href="https://man.FreeBSD.org" target="_blank" class="column-element">Страницы Справочника</a>
+          </li>
+          <li>
+            <a href="https://papers.FreeBSD.org" target="_blank" class="column-element">Презентации и публикации</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/doc/" target="_blank" class="column-element">Предыдущие версии</a>
+          </li>
+          <li>
+            <a href="https://docs-archive.freebsd.org/44doc/" target="_blank" class="column-element">Документы 4.4BSD</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/" target="_blank" class="column-element">Wiki</a>
+          </li>
+        </ul>
+      </section>
+      <section class="community-column">
+        <h3 class="column-title">Сообщество</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://www.freebsd.msk.ru/doc/ru/articles/contributing" class="column-element">Присоединиться</a>
+          </li>
+          <li>
+            <a href="https://forums.freebsd.org/" target="_blank" class="column-element">Форум сообщества</a>
+          </li>
+          <li>
+            <a href="https://lists.freebsd.org/" target="_blank" class="column-element">Списки рассылки</a>
+          </li>
+          <li>
+            <a href="https://wiki.freebsd.org/IRC/Channels" target="_blank" class="column-element">Каналы IRC</a>
+          </li>
+          <li>
+            <a href="https://bugs.freebsd.org/bugzilla/" target="_blank" class="column-element">Трекер ошибок</a>
+          </li>
+        </ul>
+      </section>
+      <section class="legal-column">
+        <h3 class="column-title">Правовая информация</h3>
+        <ul class="column-elements-container">
+          <li>
+            <a href="https://freebsdfoundation.org/donate/" target="_blank" class="column-element">Пожертвования</a>
+          </li>
+          <li>
+            <a href="/ru/copyright/freebsd-license" class="column-element">Лицензирование</a>
+          </li>
+          <li>
+            <a href="/ru/privacy" class="column-element">Политика конфиденциальности</a>
+          </li>
+          <li>
+            <a href="/ru/copyright" class="column-element">Юридические уведомления</a>
+          </li>
+        </ul>
+      </section>
+      <section class="copyright-column">
+        <p>&copy; 1994-2026 Проект FreeBSD. Все права защищены</p>
+        <span>Сделано <span class="heart">❤️</span> сообществом FreeBSD</span>
+      </section>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>
