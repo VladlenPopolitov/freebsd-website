@@ -44,12 +44,12 @@
 # Use standard FreeBSD CGI Style if available.
 # Otherwise print simple HTML design.
 package cgi_style;
-use constant HAS_FREEBSD_CGI_STYLE => eval { require "./cgi-style.pl"; };
+use constant HAS_FREEBSD_CGI_STYLE => eval { require "./cgi-style-responsive.pl"; };
 
 package main;
 
 $debug        = 2;
-$www{'title'} = 'FreeBSD Manual Pages';
+$www{'title'} = 'Manual Pages Archive';
 $www{'home'}  = 'https://www.FreeBSD.org';
 $www{'home_man'}  = 'https://man.FreeBSD.org';
 $www{'cgi_man'}  = '/cgi/man.cgi';
@@ -386,6 +386,8 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     'FreeBSD 15.0-RELEASE and Ports',
 "$manLocalDir/FreeBSD-15.0-RELEASE/man:$manLocalDir/FreeBSD-15.0-RELEASE/openssl/man:$manLocalDir/FreeBSD-ports-15.0-RELEASE/man:$manLocalDir/FreeBSD-ports-15.0-RELEASE/misc",
 
+    'FreeBSD 14.5-RELEASE and Ports',
+"$manLocalDir/FreeBSD-14.5-RELEASE/man:$manLocalDir/FreeBSD-14.5-RELEASE/openssl/man:$manLocalDir/FreeBSD-ports-14.5-RELEASE/man:$manLocalDir/FreeBSD-ports-14.5-RELEASE/misc",
     'FreeBSD 14.4-RELEASE and Ports',
 "$manLocalDir/FreeBSD-14.4-RELEASE/man:$manLocalDir/FreeBSD-14.4-RELEASE/openssl/man:$manLocalDir/FreeBSD-ports-14.4-RELEASE/man:$manLocalDir/FreeBSD-ports-14.4-RELEASE/misc",
     'FreeBSD 14.3-RELEASE and Ports',
@@ -477,6 +479,8 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
 
     'FreeBSD 14.5-STABLE',
 "$manLocalDir/FreeBSD-14.5-STABLE/man:$manLocalDir/FreeBSD-14.5-STABLE/openssl/man",
+    'FreeBSD 14.5-RELEASE',
+"$manLocalDir/FreeBSD-14.5-RELEASE/man:$manLocalDir/FreeBSD-14.5-RELEASE/openssl/man",
     'FreeBSD 14.4-RELEASE',
 "$manLocalDir/FreeBSD-14.4-RELEASE/man:$manLocalDir/FreeBSD-14.4-RELEASE/openssl/man",
     'FreeBSD 14.3-RELEASE',
@@ -621,6 +625,7 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     'FreeBSD Ports 14.2', "$manLocalDir/FreeBSD-ports-14.2-RELEASE/man:$manLocalDir/FreeBSD-ports-14.2-RELEASE/misc",
     'FreeBSD Ports 14.3', "$manLocalDir/FreeBSD-ports-14.3-RELEASE/man:$manLocalDir/FreeBSD-ports-14.3-RELEASE/misc",
     'FreeBSD Ports 14.4', "$manLocalDir/FreeBSD-ports-14.4-RELEASE/man:$manLocalDir/FreeBSD-ports-14.4-RELEASE/misc",
+    'FreeBSD Ports 14.5', "$manLocalDir/FreeBSD-ports-14.5-RELEASE/man:$manLocalDir/FreeBSD-ports-14.5-RELEASE/misc",
     'FreeBSD Ports 15.0', "$manLocalDir/FreeBSD-ports-15.0-RELEASE/man:$manLocalDir/FreeBSD-ports-15.0-RELEASE/misc",
     'FreeBSD Ports 15.1', "$manLocalDir/FreeBSD-ports-15.1-RELEASE/man:$manLocalDir/FreeBSD-ports-15.1-RELEASE/misc",
     'FreeBSD Ports 15.1.quarterly', "$manLocalDir/FreeBSD-ports-15.quarterly-RELEASE/man:$manLocalDir/FreeBSD-ports-15.quarterly-RELEASE/misc",
@@ -692,7 +697,7 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     'FreeBSD 5.3-RELEASE',
 "$manLocalDir/FreeBSD-5.3-RELEASE/man:$manLocalDir/FreeBSD-5.3-RELEASE/openssl/man",
     'FreeBSD 5.2.1-RELEASE',
-"$manLocalDir/FreeBSD-5.2-RELEASE/man:$manLocalDir/FreeBSD-5.2-RELEASE/openssl/man",
+"$manLocalDir/FreeBSD-5.2.1-RELEASE/man:$manLocalDir/FreeBSD-5.2.1-RELEASE/openssl/man",
     'FreeBSD 5.2-RELEASE',
 "$manLocalDir/FreeBSD-5.2-RELEASE/man:$manLocalDir/FreeBSD-5.2-RELEASE/openssl/man",
     'FreeBSD 5.1-RELEASE',
@@ -848,8 +853,10 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     'NetBSD 9.2',   "$manLocalDir/NetBSD-9.2",
     'NetBSD 9.3',   "$manLocalDir/NetBSD-9.3",
     'NetBSD 9.4',   "$manLocalDir/NetBSD-9.4",
+    'NetBSD 9.5',   "$manLocalDir/NetBSD-9.5",
     'NetBSD 10.0',  "$manLocalDir/NetBSD-10.0",
     'NetBSD 10.1',  "$manLocalDir/NetBSD-10.1",
+    'NetBSD 10.2',  "$manLocalDir/NetBSD-10.2",
     'NetBSD 11.0',  "$manLocalDir/NetBSD-11.0",
 
     '2.8 BSD',      "$manLocalDir/2.8BSD",
@@ -862,7 +869,6 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     '4.3BSD NET/2', "$manLocalDir/net2",
     '4.4BSD Lite2', "$manLocalDir/4.4BSD-Lite2",
 
-    'Linux Slackware 3.1',    "$manLocalDir/Slackware-3.1",
     'Red Hat 4.2', "$manLocalDir/RedHat-4.2",
     'Red Hat 5.0', "$manLocalDir/RedHat-5.0",
     'Red Hat 5.2', "$manLocalDir/RedHat-5.2-i386",
@@ -957,12 +963,8 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     'SuSE 11.2', "$manLocalDir/SuSE-11.2",
     'SuSE 11.3', "$manLocalDir/SuSE-11.3",
 
-    'SuSE ES 10 SP1', "$manLocalDir/SLES-10-SP1-i386",
-
     'openSUSE 10.2', "$manLocalDir/openSUSE-10.2",
     'openSUSE 10.3', "$manLocalDir/openSUSE-10.3",
-    #'openSUSE 11.0', "$manLocalDir/openSUSE-11.0",
-    #'openSUSE 11.1', "$manLocalDir/openSUSE-11.1",
     'openSUSE 11.2', "$manLocalDir/openSUSE-11.2",
     'openSUSE 11.3', "$manLocalDir/openSUSE-11.3",
     'openSUSE 11.4', "$manLocalDir/openSUSE-11.4",
@@ -994,8 +996,6 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     'Debian 12.15.0', "$manLocalDir/Debian-12.15.0/man:$manLocalDir/Debian-12.15.0/misc",
     'Debian 13.6.0', "$manLocalDir/Debian-13.6.0/man:$manLocalDir/Debian-13.6.0/misc",
     'Debian 14.0 unstable', "$manLocalDir/Debian-unstable/man:$manLocalDir/Debian-unstable/misc",
-
-    'Ubuntu 23.10 mantic', "$manLocalDir/Ubuntu-mantic-23.10/man:$manLocalDir/Ubuntu-mantic-23.10/misc",
 
     'Ubuntu 26.04 resolute', "$manLocalDir/Ubuntu-resolute-26.04/man:$manLocalDir/Ubuntu-resolute-26.04/misc",
     'Ubuntu 24.04 noble', "$manLocalDir/Ubuntu-noble-24.04/man:$manLocalDir/Ubuntu-noble-24.04/misc",
@@ -1051,8 +1051,9 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     # alias SunOS 0.4, apparently released in April 1983 based on 4.2BSD beta
     'Sun UNIX 0.4', "$manLocalDir/Sun-UNIX-0.4",
 
-    'macOS 26.6.1',   "$manLocalDir/macOS-26.6.1/man:$manLocalDir/macOS-26.6.1/developer-man:$manLocalDir/macOS-26.6.1/developer-platform-sdk-man:$manLocalDir/macOS-26.6.1/xctoolchain-man",  
-    'macOS 15.7.5',   "$manLocalDir/macOS-15.7.5/man:$manLocalDir/macOS-15.7.5/developer-man:$manLocalDir/macOS-15.7.5/developer-platform-sdk-man:$manLocalDir/macOS-15.7.5/xctoolchain-man",  
+    'macOS 27.0',     "$manLocalDir/macOS-27.0/man:$manLocalDir/macOS-27.0/developer-man:$manLocalDir/macOS-27.0/developer-platform-sdk-man:$manLocalDir/macOS-27.0/xctoolchain-man",  
+    'macOS 26.7',   "$manLocalDir/macOS-26.7/man:$manLocalDir/macOS-26.7/developer-man:$manLocalDir/macOS-26.7/developer-platform-sdk-man:$manLocalDir/macOS-26.7/xctoolchain-man",  
+    'macOS 15.8',   "$manLocalDir/macOS-15.8/man:$manLocalDir/macOS-15.8/developer-man:$manLocalDir/macOS-15.8/developer-platform-sdk-man:$manLocalDir/macOS-15.8/xctoolchain-man",  
     'macOS 14.8.5',   "$manLocalDir/macOS-14.8.5/man:$manLocalDir/macOS-14.8.5/developer-man:$manLocalDir/macOS-14.8.5/developer-platform-man:$manLocalDir/macOS-14.8.5/developer-platform-sdk-man:$manLocalDir/macOS-14.8.5/xctoolchain-man",  
     'macOS 13.6.5', "$manLocalDir/macOS-13.6.5/man:$manLocalDir/macOS-13.6.5/developer-man:$manLocalDir/macOS-13.6.5/developer-platform-man:$manLocalDir/macOS-13.6.5/developer-platform-sdk-man:$manLocalDir/macOS-13.6.5/xctoolchain-man",  
     'macOS 12.7.3', "$manLocalDir/macOS-12.7.3/man:$manLocalDir/macOS-12.7.3/developer-man:$manLocalDir/macOS-12.7.3/developer-platform-man:$manLocalDir/macOS-12.7.3/developer-platform-sdk-man:$manLocalDir/macOS-12.7.3/xctoolchain-man",
@@ -1097,7 +1098,7 @@ $manPathDefault = 'FreeBSD 15.1-RELEASE and Ports.quarterly';
     'Minix 3.1.5',                 "$manLocalDir/Minix-3.1.5",
     'Minix 3.1.6',                 "$manLocalDir/Minix-3.1.6",
     'Minix 3.1.7',                 "$manLocalDir/Minix-3.1.7",
-    'Minix 3.1.7',                 "$manLocalDir/Minix-3.1.8",
+    'Minix 3.1.8',                 "$manLocalDir/Minix-3.1.8",
     'Minix 3.2.0',                 "$manLocalDir/Minix-3.2.0",
     'Minix 3.2.1',                 "$manLocalDir/Minix-3.2.1",
     'Minix 3.3.0',                 "$manLocalDir/Minix-3.3.0",
@@ -1211,8 +1212,10 @@ my %arch = (
 'NetBSD 9.2' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
 'NetBSD 9.3' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
 'NetBSD 9.4' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
+'NetBSD 9.5' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
 'NetBSD 10.0' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
 'NetBSD 10.1' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
+'NetBSD 10.2' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
 'NetBSD 11.0' => { 'arch' => [qw/acorn26 acorn32 algor alpha amd64 amiga arc atari bebox cats cesfic cobalt dreamcast emips evbarm evbmips evbppc evbsh3 hp300 hpcarm hpcmips hpcsh hppa i386 ibmnws luna68k mac68k macppc mipsco mmeye mvme68k mvmeppc netwinder news68k newsmips next68k ofppc playstation2 pmax prep sandpoint sbmips sgimips shark sparc sparc64 sun2 sun3 vax x68k x86/] } ,
 'OpenBSD 4.7' => { 'arch' => [qw/alpha amd64 armish aviion hp300 hppa hppa64 i386 landisk loongson luna88k mac68k macppc mvme68k mvme88k mvmeppc palm sgi socppc sparc sparc64 vax zaurus/] }, 
 'OpenBSD 4.8' => { 'arch' => [qw/alpha amd64 armish aviion hp300 hppa hppa64 i386 landisk loongson luna88k mac68k macppc mvme68k mvme88k mvmeppc palm sgi socppc sparc sparc64 vax zaurus/] }, 
@@ -1278,7 +1281,6 @@ while ( ( $key, $val ) = each %manPath ) {
     'freebsd-release-ports', 'FreeBSD 15.1-RELEASE and Ports',
     'freebsd-ports', 'FreeBSD Ports 15.1.quarterly',
 
-    'slackware',  'Linux Slackware 3.1',
     'redhat',     'Red Hat 9.0',
     'suse',       'SuSE 11.3',
     'debian',     'Debian 13.6.0',
@@ -1292,10 +1294,9 @@ while ( ( $key, $val ) = each %manPath ) {
 
     'netbsd',        'NetBSD 11.0',
     'openbsd',       'OpenBSD 7.9',
-    'opensuse',      'openSUSE 15.6',
+    'opensuse',      'openSUSE 16.0',
     'openindiana',   'OpenIndiana 2025.10',
     'v7',            'Unix Seventh Edition',
-    'v7man',         'Unix Seventh Edition',
     'x11',           'X11R7.4',
     'xfree86',       'XFree86 4.8.0',
     'ultrix',        'ULTRIX 4.2',
@@ -1305,10 +1306,10 @@ while ( ( $key, $val ) = each %manPath ) {
     'sunos5',        'SunOS 5.10',
     'sunos4',        'SunOS 4.1.3',
     'sunos',         'SunOS 4.1.3',
-    'macos',         'macOS 26.6.1',
+    'macos',         'macOS 27.0',
     'plan9',         'Plan 9',
     'osf1',          'OSF1 V5.1/alpha',
-    'true64',        'OSF1 V5.1/alpha',
+    'tru64',         'OSF1 V5.1/alpha',
     'minix',         'Minix 3.3.0',
 );
 
@@ -1336,6 +1337,48 @@ sub sort_manpath {
     } 
 
     return sort { &sort_versions } keys %$manpath;
+}
+
+sub grouping_os {
+    my $os = shift;
+
+    # Plan 9
+    if ($os =~ /^([A-Za-z]+)\s+\d$/) {
+        return $os;
+    } 
+
+    # FreeBSD 13.5-RELEASE and Ports: "FreeBSD"
+    elsif ($os =~ /^([A-Za-z0-9\-]+)\s+\d/) {
+        return $1;
+    } 
+
+    # Red Hat 9.0: "Red Hat"
+    elsif ($os =~ /^([A-Za-z]+\s+[A-Za-z]+)\s+\d/) {
+        return $1;
+    }
+
+    # Dell UNIX SVR4 2.2: "Dell UNIX"
+    elsif ($os =~ /^([A-Za-z]+\s+[A-Za-z]+)\s.*\d/) {
+        return $1;
+    }
+
+    # 2.11 BSD: "BSD"
+    elsif ($os =~ /^[\d\.]+\s*([A-Za-z]+)/) {
+        return $1;
+    }
+
+    # X11R7.4: "X11R7"
+    elsif ($os =~ /^([A-Z0-9]+)\.[\d\.]+$/) {
+        return $1;
+    }
+
+    # first word
+    elsif ($os =~ /^(\w+)/) {
+        return $1;
+    }
+
+    # XXX
+    return $os;
 }
 
 #
@@ -1429,7 +1472,7 @@ $sections = join( "|", @sections );    # sections regexp
 $mailto                    = 'wosch@FreeBSD.org';
 $mailtoURL                 = 'https://wolfram.schneider.org';
 $mailtoURL                 = "mailto:$mailto" if !$mailtoURL;
-$full_url                  = 'https://man.freebsd.org/cgi/man.cgi';
+$full_url                  = 'https://man.FreeBSD.org/cgi/man.cgi';
 $want_to_link_to_this_page = 1;
 
 &secure_env;
@@ -1451,7 +1494,7 @@ sub html_footer {
     print qq[</span>\n\n];
 
     if (cgi_style::HAS_FREEBSD_CGI_STYLE) {
-        print q{<hr noshade="noshade" />};
+        print q{<hr noshade="noshade">};
         print &cgi_style::html_footer;
     }
     else {
@@ -1462,39 +1505,100 @@ sub html_footer {
 sub html_header {
     my ( $title, $base ) = @_;
 
-    my $html_meta = q|
-<meta name="robots" content="nofollow" />
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
-<link rel="search" type="application/opensearchdescription+xml" href="https://www.freebsd.org/opensearch/man.xml" title="FreeBSD Man" />
-<link rel="search" type="application/opensearchdescription+xml" href="https://www.freebsd.org/opensearch/man-freebsd-release-ports.xml" title="FreeBSD Man+P" />
+    my $html_meta = <<'EOF';
+<meta name="robots" content="nofollow">
+<link rel="search" type="application/opensearchdescription+xml" href="https://www.FreeBSD.org/opensearch/man.xml" title="FreeBSD Man">
+<link rel="search" type="application/opensearchdescription+xml" href="https://www.FreeBSD.org/opensearch/man-freebsd-release-ports.xml" title="FreeBSD Man+P">
 
-<style type="text/css">
-span.footer_links { font-size: small; }
-span.space { font-size: xx-small; }
-form#man > input, form#man > button { font-size: large; }
-form#man > input[name='query'] { text-align: center; }
-p#section_links, div#footer { max-width: 50em; }
-hr { margin-left: 0em; max-width: 50em; }
+<style>
+span.footer_links { font-size: .9em; margin-left: .5em; }
+
+div#section_links, div#permalink, div#footer { margin-left: 1em; }
+hr { margin-left: 0em; max-width: 50em; margin-top: .4em; }
+
 a:link  { text-decoration:none; }
 a:hover { text-decoration:underline; }
 
-@media only screen and (max-height: 640px), (max-width: 760px) {
-  /* hide logo color top */
-  body { background: #fff !important; } 
+form#man > input[name='query'] { text-align: center; }
+form#man > input[name='query'] { width: 18em; }
+form#man > input, form#man > button, form#man > select { margin-left: 0.2em; }
+form#man > input, form#man > button                    { font-size: large; }
+form#man > button { margin-top: .8em; }
+form#man > select { margin-top: .8em; font-size: 100%; }
+form#man { padding-bottom: 0.9em; margin-top: .2em; }
+form#man + span.footer_links { margin-left: .2em; }
 
-  /* hide menu top */
-  div#header, div#menu { display: none !important; }
-  // div#content { padding-top: 4.9em; }
-  span.spaces { display: none; }
+div#content { padding-top: 0.4em; }
 
-  /* larger search form */
-  form#man > input, button { font-size: 200%; }
-  form#man > button { font-size: 200%; }
-  form#man > input[name='query'] { width: 12em; }
-  form#man > select { font-size: 140%; }
+/* mobile device - portrait mode */
+@media screen and (orientation: portrait) and (max-width: 950px) {
+  #content pre {
+    font-size: clamp(11px, 2.9vw, 13px) !important;
+    line-height: 1.35 !important;
+
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+  }
 }
+
+/* mobile device - landscape mode */
+@media screen and (orientation: landscape) and (max-width: 950px) {
+  #content pre {
+    /* scales with viewport width; tweak the 2.0vw multiplier if 84 cols still doesn't fit */
+    font-size: clamp(9px, 2.0vw, 14px) !important;
+    line-height: 1.35 !important;
+
+    /* keep the original column alignment intact — do NOT let it wrap */
+    white-space: pre !important;
+    word-wrap: normal !important;
+
+    /* fallback: if a line is still too wide, scroll it instead of breaking layout */
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+
+    /* stop iOS from auto-boosting the font size on top of your setting */
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+  }
+  header { display: none; }
+}
+
+/* small devices or laptops */
+@media screen and (max-width: 1300px) {
+  .logo-menu-bars-container { padding: 0px; }
+
+  footer { margin-top: -1.2em; }
+  h3 { padding-top: .2em; }
+} 
+
+details { margin: .3em 0 .3em 1em; }
+details > summary { cursor: pointer; font-weight: bold; padding: .2em 0; }
+details > ul { margin-top: .2em; }
+
 </style>
-|;
+
+<script>
+function input_autofocus_at_end () {
+  const input = document.querySelector('#query'); 
+  if (input) {
+    // XXX: don't open keyboard on Android
+    input.setAttribute('readonly', 'readonly');
+    input.focus({ preventScroll: true });
+    setTimeout(function () {
+      input.removeAttribute('readonly');
+      input.setSelectionRange(input.value.length, input.value.length);
+    }, 50);
+  }
+}
+document.addEventListener('DOMContentLoaded', input_autofocus_at_end);
+</script>
+EOF
 
     return &html_header2( $title, $html_meta )
       if !cgi_style::HAS_FREEBSD_CGI_STYLE;
@@ -1503,7 +1607,7 @@ a:hover { text-decoration:underline; }
       s,</head>,$html_meta\n</head>,s;
 
     $header =~ s,^Content-type:\s+\S+\s+,,s;
-    $header =~ s,<head>,<head>\n<base href="$base" />,s if $base;
+    $header =~ s,<head>,<head>\n<base href="$base">,s if $base;
     return $header;
 }
 
@@ -1584,11 +1688,18 @@ sub do_man {
     $format = 'html' if $no_pdf_output{$manpath} && $format =~ /^(ps|pdf)$/;
 
     local ($fform) = &dec($form);
-    if ( $fform =~ m%^([a-zA-Z_\-\.:]+)$% ) {
-        return &man( $1, '' );
-    }
-    elsif ( $fform =~ m%^([a-zA-Z_\-\.:]+)\(([0-9a-zA-Z]+)\)$% ) {
+
+    # /cgi/man.cgi/socket.2
+    if (    $fform =~ m%^([0-9a-zA-Z_\-\.:]+)\.([1-9n])$% ) {
         return &man( $1, $2 );
+    }
+    # /cgi/man.cgi/socket(2)
+    elsif ( $fform =~ m%^([0-9a-zA-Z_\-\.:]+)\(([0-9a-zA-Z]+)\)$% ) {
+        return &man( $1, $2 );
+    }
+    # /cgi/man.cgi/socket
+    elsif ( $fform =~ m%^([0-9a-zA-Z_\-\.:]+)$% ) {
+        return &man( $1, '' );
     }
 
     # download a man hierarchy as gzip'd tar file
@@ -1644,7 +1755,7 @@ sub download {
 
     $| = 1;
     my $filename = $manpath;
-    $filename =~ s/\s+/_/;
+    $filename =~ s/\s+/_/g;
     $filename = &encode_url($filename);
     $filename .= '.tgz';
 
@@ -1706,8 +1817,7 @@ sub apropos {
     }
 
     &http_header("text/html");
-    print &html_header("Apropos $title");
-    print "<br/>\n<h1>$www{'head'}</h1>\n\n";
+    print &html_header("Apropos $title - $manpath Manual Pages");
 
     $section = $sektion;
     &formquery;
@@ -1753,9 +1863,16 @@ sub apropos {
     close(APROPOS);
 
     if ( !$acounter ) {
-        print "Sorry, no data found for `$query'.\n";
-        print qq{You may look for other }
-          . qq{<a href="https://www.freebsd.org/search/">FreeBSD Search Services</a>.<br/><br/>\n};
+        if ($query eq '') {
+           print "<hr>Empty input. Please type a manual page and search again.\n<hr>\n";
+        } else {
+           my $apropos_query = $query . ($sektion ? "($sektion)" : "");
+           print "Sorry, no apropos results found for `$apropos_query'.\n";
+           print qq{Please try a <a href="$BASE?apropos=1&amp;manpath=$manpath&amp;query=$query">keyword search</a>.\n} if $sektion;
+           print "<br><br>\n";
+           print qq{You can start a <a href="$www{'cgi_man'}">new search</a> or look for other }
+          . qq{<a href="https://www.FreeBSD.org/search/">FreeBSD Search Services</a>.<br><hr>\n};
+        }
     }
     &html_footer;
 }
@@ -1826,8 +1943,8 @@ sub man {
 
     if ( $format eq "html" ) {
         &http_header("text/html");
-        print &html_header("$title");
-        print "<br/>\n<h1>$www{'head'}</h1>\n\n";
+        print &html_header("$title - $manpath Manual Pages");
+        print "<h3>$www{'head'}</h3>\n\n" if !$www{'head'};
         &formquery;
         print "<pre>\n";
     }
@@ -1866,9 +1983,9 @@ sub man {
     $html_section = &encode_data($section);
 
     if ( $name =~ /^\s*$/ ) {
-	print "</pre><hr/>";
+	print "</pre><hr>";
         print "Empty input. Please type a manual page and search again.\n";
-	print "<hr/>\n";
+	print "<hr>\n";
         &html_footer;
         return;
     }
@@ -1955,18 +2072,18 @@ sub man {
 
     if ( eof(MAN) ) {
         if ( $format eq "ascii" ) {
-            print "Sorry, no data found for '$html_name'\n";
-	    return;
+            print "Sorry, no results found for '$html_name'\n";
+            return;
         }
 
         # print "X $command{'man'} @manargs -- x $name x\n";
         print qq{</pre>\n};
-        print "Sorry, no data found for `<i>$html_name</i>"
+        print "Sorry, no results found for `<i>$html_name</i>"
           . ( $html_section ? "($html_section)" : '' ) . "'.\n";
         print
-qq{Please try a <a href="$BASE?apropos=1&amp;manpath=freebsd-release-ports&amp;query=$html_name">keyword search</a>.\n};
-        print qq{<p>You may look for other }
-          . qq{<a href="https://www.freebsd.org/search/">FreeBSD Search Services</a>.</p>\n};
+qq{Please try a <a href="$BASE?apropos=1&amp;manpath=$manpath&amp;query=$html_name">keyword search</a>.\n};
+        print qq{<p>You can start a <a href="$www{'cgi_man'}">new search</a> or look for other }
+          . qq{<a href="https://www.FreeBSD.org/search/">FreeBSD Search Services</a>.</p><hr>\n};
         &html_footer;
         return;
     }
@@ -2058,15 +2175,15 @@ qq{Please try a <a href="$BASE?apropos=1&amp;manpath=freebsd-release-ports&amp;q
             $i = $_;
             $j = &encode_url($i);
             $j =~ s/\+/_/g;
-            $_ = qq{<a name="$j" href="#end"><b>$i</b></a>\n};
+            $_ = qq{<a id="$j" href="#end"><b>$i</b></a>\n};
             push( @sect, $i );
         }
         print;
     }
     close(MAN);
-    print qq{</pre>\n<a name="end" />\n<hr />\n};
+    print qq{</pre>\n<span id="end"></span>\n<hr>\n};
 
-    print qq{\n<p id="section_links">\n};
+    print qq{\n<div id="section_links">\n<p>\n};
     for ( $i = 0 ; $i <= $#sect ; $i++ ) {
         $j = &encode_url( $sect[$i] );
         $j =~ s/\+/_/g;
@@ -2075,15 +2192,15 @@ qq{Please try a <a href="$BASE?apropos=1&amp;manpath=freebsd-release-ports&amp;q
           . qq{">$sect[$i]</a>}
           . ( $i < $#sect ? " |\n" : "\n" );
     }
-    print qq{</p>\n\n};
+    print qq{</p>\n</div>\n};
 
     if ($want_to_link_to_this_page) {
         my $url = qq{$full_url?query=$html_name};
-        $url .= qq{&amp;sektion=$html_section} if $html_section != 0;
+        $url .= qq{&amp;sektion=$html_section} if $html_section ne "0";
         $url .= qq{&amp;manpath=} . &encode_url($manpath);
 
-        print qq{<p align="left">Want to link to this manual page? };
-        print qq{Use this URL:<br/>&lt;<a href="$url">$url</a>&gt;</p>\n};
+        print qq{<div id="permalink">\n<p>\nWant to link to this manual page? };
+        print qq{Use this URL:<br>&lt;<a href="$url">$url</a>&gt;</p>\n</div>\n};
     }
 
     &html_footer;
@@ -2358,7 +2475,7 @@ sub encode_data {
 sub indexpage {
     &http_header("text/html");
     print &html_header("$www{'title'}");
-    print "<br/>\n<h1>$www{'head'}</h1>\n\n"; 
+    print "<h3>$www{'head'}</h3>\n\n"; 
 
     # print &intro;
     &formquery;
@@ -2378,19 +2495,13 @@ sub formquery {
         $bstring = q{ checked="checked"};
     }
 
-    # set focus if the input field is empty 
-    my $autofocus = $query ? "" : "autofocus";
-
     print <<ETX;
 <form id="man" method="get" action="$BASE">
 <!-- Manual Page or Keyword Search: -->
-<span class="spaces">&nbsp;&nbsp;</span>
-<input type="text" id="query" value="$query" name="query" size="36" autocapitalize="none" $autofocus />
+<input type="text" id="query" value="$query" name="query" size="36" autocapitalize="none">
 <button type="submit" name="apropos" value="0">man</button>
 <button type="submit" name="apropos" value="1">apropos</button>
-<br/>
-<span class="space">&nbsp;</span><br/>
-<span class="spaces">&nbsp;&nbsp;</span>
+<br>
 ETX
 
     print qq{<select name="sektion">\n};
@@ -2403,12 +2514,27 @@ ETX
     print qq{</select>\n<select name="manpath">\n};
 
     local ($l) = ( $manpath ? $manpath : $manPathDefault );
+
+    my $os = "";
+    my $os_group = "";
     foreach ( &freebsd_first( &sort_manpath(\%manPath)) ) {
         $key = $_;
-        print "<option"
+        $os = &grouping_os($key);
+
+        if ($os ne $os_group && $os_group ne "") {
+           print join "", &optgroup_html($os_group, @l);
+           undef @l;
+        }
+
+        push @l,  "<option"
           . ( ( $key eq $l ) ? ' selected="selected" ' : ' ' )
           . qq{value="$key">$key</option>\n};
+
+        $os_group = $os;
     }
+
+    # last entry
+    print join "", &optgroup_html($os_group, @l);
 
     print qq{</select>\n};
 
@@ -2459,26 +2585,79 @@ ETX
 </select>
 </form>
 
-<br/>
 <span class="footer_links">
   <a href="$www{'cgi_man'}">home</a> |
   <a href="$www{'cgi_man'}/help.html">help</a>
 </span>
 ETX
     if ($query) {
-	print "<hr/>\n";
+	print "<hr>\n";
     }
+}
+
+sub details_id {
+    my $name = shift;
+
+    $name =~ s/\s+/_/g;
+
+    return lc($name);
+}
+
+sub detail_html {
+   my ($os_group, $os_group_lc, @l) = @_;
+
+   my @list;
+   my $text = scalar(@l) . " release";
+   # release <-> releases
+   $text .= "s" if scalar(@l) > 1;
+
+   push @list, qq[<details id="$os_group_lc">\n];
+   push @list, qq|<summary>$os_group ($text)</summary>\n|;
+   push @list, "<ul>\n", @l, "</ul>\n</details>\n";
+
+   return @list;
+}
+
+sub optgroup_html {
+   my ($label, @l) = @_;
+
+   my @list;
+
+   push @list, qq[<optgroup label="$label">\n];
+   push @list, @l;
+   push @list, qq[</optgroup>\n];
+
+   return @list;
 }
 
 sub faq {
 
     local ( @list, @list2 );
     local ($url);
+
+    my $os = "";
+    my $os_lc = "";
+    my $os_group = "";
+    my $os_group_lc = "";
+    my @l;
     foreach ( &freebsd_first (&sort_manpath(\%manPath) )) {
+        $os = &grouping_os($_);
+        $os_lc = &details_id($os);
+
         $url = &encode_url($_);
         my $download_link = $enable_download ? qq[<a href="/cgi/man.cgi?apropos=2&amp;manpath=$url">tarball</a>] : '';
-        push( @list, qq{<li>$_: <a href="$BASE?manpath=$url">permalink</a> | $download_link</li>\n} );
+
+        if ($os_lc ne $os_group_lc && $os_group_lc ne "") {
+           push @list, &detail_html($os_group, $os_group_lc, @l);
+           undef @l;
+        } 
+        push( @l, qq{<li>$_: <a href="$BASE?manpath=$url">permalink</a> | $download_link</li>\n} );
+        $os_group = $os;
+        $os_group_lc = $os_lc;
     }
+
+    # last entry
+    push @list, &detail_html($os_group, $os_group_lc, @l);
 
     foreach ( &freebsd_first (&sort_manpath(\%manPathAliases) )) {
         if (!$manPathAliases{$_}) {
@@ -2493,22 +2672,123 @@ sub faq {
     }
 
     return qq{\
-<h2>Copyright</h2>
-<pre>
-Copyright (c) 1996-2026 <a href="$mailtoURL">Wolfram Schneider</a>
-Copyright (c) 1993-1995 Berkeley Software Design, Inc.
-</pre>
-<p/>
-
-Copyright (c) for manual pages by OS vendors:
 <p>
+<a href="https://man.FreeBSD.org/">man.FreeBSD.org</a>
+is the largest and oldest manual page archive on the internet.</p>
+
+<p>
+Online continuously since 1996, it hosts manual pages from FreeBSD
+since its first release, version 1.0, and dozens of other operating
+systems and Unix variants - spanning decades of computing history,
+from 1970s Unix Seventh Edition and 2.11 BSD through every FreeBSD
+release, NetBSD, OpenBSD, and current releases of Debian, Ubuntu,
+Rocky Linux, and macOS.
+</p>
+
+<p>
+Whether you're looking up a command on the system in front of you,
+comparing how a syscall's behavior changed across FreeBSD releases, or
+researching how Unix documentation evolved since the 1970s, this
+archive gives you direct, permanent links to the manual pages
+themselves.
+</p>
+
+<p>
+The archive currently contains more than 560 operating-system releases
+and approximately 15 million manual pages. The complete archive
+occupies about 50 GB - individual downloadable tarballs are typically
+much smaller.
+</p>
+
+<h2>Shortcuts for FreeBSD manual pages</h2>
+
+<p>You can use these short URLs to search for FreeBSD man pages:</p>
+<ul>
+<li>socket manpage: <a href="https://man.FreeBSD.org/socket">https://man.FreeBSD.org/socket</a></li>
+<li>socket(2) manpage: <a href="https://man.FreeBSD.org/socket/2">https://man.FreeBSD.org/socket/2</a></li>
+</ul>
+
+<h2>Output formats</h2>
+<p>
+Manual pages can be rendered in three formats: HTML (the default), plain
+ASCII text, or PDF. Choose a format from the drop-down on the query page,
+or select it directly in a URL with the "format" parameter.
+</p>
+
+<p>
+Note that some operating systems only provide preformatted manual pages
+(catpages), e.g., older NetBSD and OpenBSD releases - for these, PDF output is not available.
+</p>
+
+<h2>Updates</h2>
+<p>
+The FreeBSD stable/NN, current, and Ports manual pages are updated 
+every three months, usually around the time a new FreeBSD version is released.
+</p>
+<p>
+Other operating system manual pages are updated as needed.
+</p>
+
+<h2>Notes</h2>
+
+<p>On small mobile devices, manual pages often look better in landscape mode than in portrait mode.</p>
+
+<p>Troff macros work only if they are defined in FreeBSD's groff.
+OS-specific macros, such as "appeared in NetBSD version 1.2", may not be supported.
+</p>
+
+<h2>See also</h2>
+<ul>
+<li><a href="https://www.FreeBSD.org/search/opensearch/">FreeBSD OpenSearch plugins</a> for the manual pages and other services</li>
+<li><a href="https://ports.FreeBSD.org/cgi/ports.cgi">FreeBSD Ports search</a></li>
+<li>Other <a href="https://www.FreeBSD.org/search/">FreeBSD search services</a></li>
+<li><a href="https://cgit.FreeBSD.org/src/tree/share/misc/bsd-family-tree">Unix family tree (BSD part)</a></li>
+<li><a href="https://cgit.FreeBSD.org/doc/tree/website/content/en/cgi/man.cgi">Source code</a> of the man.cgi script</li>
+</ul>
+
+<h2>Release permalinks and tarballs</h2>
+<p>
+Release and release-alias permalinks show how to link to this script for the right OS version.
+</p>
+
+<p>
+You may download the manual pages as a gzip'd tar archive for private or educational purposes.
+A tarball is normally 15-50 MB in size, but can be up to 350 MB for FreeBSD ports.
+</p>
+
+<div id="release-permalinks-tarballs">
+@list
+</div>
+
+<h2>Release alias permalinks</h2>
+
+<p>
+Release aliases are short names that always point to the latest
+release of an operating system, e.g., "netbsd" links to the newest
+NetBSD release. Links using an alias stay valid when a new release
+comes out.
+</p>
+
+<ul>
+@list2
+</ul>
+
+<h2>Copyright</h2>
+<p>
+Copyright (c) 1996-2026 <a href="$mailtoURL">Wolfram Schneider</a><br>
+Copyright (c) 1993-1995 Berkeley Software Design, Inc.
+</p>
+
+<p>
+Copyright (c) for manual pages by OS vendors:
+<span id="os_vendoers">
 <a href="https://en.wikipedia.org/wiki/History_of_the_Berkeley_Software_Distribution">2.11 BSD</a>,
 <a href="https://www.apple.com">Apple</a>,
 <a href="https://www.centos.org">CentOS</a>,
 <a href="https://www.debian.org">Debian</a>,
 <a href="https://www.dell.com">Dell</a>,
 <a href="https://www.dragonflybsd.org">DragonFly BSD</a>,
-<a href="https://www.freebsd.org">FreeBSD</a>,
+<a href="https://www.FreeBSD.org">FreeBSD</a>,
 <a href="https://www.hp.com">HP</a>,
 <a href="https://en.wikipedia.org/wiki/IRIX">IRIX</a>,
 <a href="https://www.minix3.org">Minix</a>,
@@ -2523,88 +2803,23 @@ Copyright (c) for manual pages by OS vendors:
 <a href="https://www.redhat.com">Red Hat</a>,
 <a href="https://en.wikipedia.org/wiki/Rhapsody_(operating_system)">Rhapsody</a>,
 <a href="https://rockylinux.org/">Rocky</a>,
-<a href="https://www.slackware.com">Slackware</a>,
 <a href="https://en.wikipedia.org/wiki/SunOS">SunOS</a>,
 <a href="https://www.suse.com">SuSE</a>,
 <a href="https://ubuntu.com">Ubuntu</a>,
 <a href="https://en.wikipedia.org/wiki/Ultrix">ULTRIX</a>,
 <a href="https://en.wikipedia.org/wiki/Version_7_Unix">Unix Seventh Edition</a>,
-<a href="https://www.x.org">X11R6</a>,
+<a href="https://www.x.org">X.Org</a>,
 <a href="https://www.xfree86.org">XFree86</a>
+<br>
+</span>
 </p>
-
-<h2>Shortcuts for FreeBSD manual pages</h2>
-
-<ul>
-<li>which manpage: <a href="https://man.freebsd.org/which">https://man.freebsd.org/which</a></li>
-<li>socket(2) manpage: <a href="https://man.freebsd.org/socket/2">https://man.freebsd.org/socket/2</a></li>
-</ul>
-
-<p />
-
-<ul>
-<li>which manpage: <a href="$full_url?which">$full_url?which</a></li>
-<li>socket(2) manpage: <a href="$full_url?socket(2)">$full_url?socket(2)</a></li>
-</ul>
-
-<h2>Updates</h2>
-<p>
-The FreeBSD stable/NN, current, and ports manual pages are updated 
-every 3 months, usually around the time a new FreeBSD version is released.
-</p>
-<p>
-Other operating system manual pages are updated as needed.
-</p>
-
-<h2>Release Permalinks and tarballs</h2>
-
-<p>
-Releases and releases aliases permalinks are information how 
-to make a link to this script to the right OS version.
-</p>
-
-<p>
-You may download the manual pages as gzip'd tar archive for private or educational purposes.
-A tarball is normally 15-50 MB in size, but can be up to 350 MB for FreeBSD ports.
-</p>
-
-<ul>
-@list
-</ul>
-
-
-<h2>Releases Aliases Permalinks</h2>
-
-<p>
-Release aliases are for lazy people. Plus, they have a longer
-lifetime, eg. 'netbsd' points always to the latest NetBSD release.
-</p>
-
-<ul>
-@list2
-</ul>
-
-<h2>FAQ</h2>
-
-<ul>
-<li>Get the <a href="$BASE/source">source</a> of the man.cgi script</li>
-<li>Troff macros works only if defined in FreeBSD/groff. OS specific
-macros like `appeared in NetBSD version 1.2' are not supported.</li>
-<li>Some OSs provide only formatted manual pages (catpages), e.g., 
-older NetBSD and OpenBSD releases. In this case it is not possible to create Postscript
-and troff output.</li>
-<li>The <a href="https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree">
-Unix family tree, BSD part</a>.</li>
-<li>The <a href="https://ports.freebsd.org/cgi/ports.cgi">
-FreeBSD Ports Search</a> script.</li>
-</ul>
 };
 
 }
 
 sub intro {
     return qq{\
-<p />
+<p/>
 <i>Man Page Lookup</i> searches for man pages name and section as
 given in the selection menu and the query dialog.  <i>Apropos
 Keyword Search</i> searches the database for the string given in
@@ -2613,15 +2828,15 @@ as short-cuts to various queries:  <i>Section Indexes</i> is apropos
 listings of all man pages by section.  <i>Explanations of Man
 Sections</i> contains pointers to the intro pages for various man
 sections.
-<p />
+<p/>
 };
 }
 
 sub faq_output {
     &http_header("text/html");
-    print &html_header( "FreeBSD manual page help", '/cgi/' );
-    print "<br/>\n<h1>$www{'head'}</h1>\n";
-    print &faq . "<br/>\n";
+    print &html_header( "$www{'head'} Help", '/cgi/' );
+    print "<br>\n<h1>$www{'head'} Help</h1>\n";
+    print &faq . "<br>\n";
     &html_footer('no_help_link' => 1);
 }
 

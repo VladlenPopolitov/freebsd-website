@@ -34,31 +34,69 @@ use JSON;
 use warnings;
 
 our $hsty_base;
-require "./cgi-style.pl";
+require "./cgi-style-responsive.pl";
 
-our $t_style = qq`
+our $t_style = <<'EOF';
 <style type="text/css">
-h3 { font-size: 1.20em; border-bottom: thin solid black; max-width: 42em; }
-
 form#ports > input[name='query'] { text-align: center; }
-form#ports > input[name='query'] { width: 20em; }
-form#ports > input, form#ports > button, form#ports > select { font-size: large; }
+form#ports > input[name='query'] { width: 19em; }
+
+form#ports > input, form#ports > button, form#ports > select { margin-left: 0.2em; }
+form#ports > input, form#ports > button                      { font-size: large; margin-top: 0.8em; }
+form#ports > button { margin-top: .8em; }
+form#ports > select { margin-top: .8em; font-size: 100%; }
+form#ports { padding-bottom: .7em; }
 
 span.footer_links { font-size: small; }
 span.space { font-size: xx-small; }
 
 p#section_links, div#footer { max-width: 50em; }
-hr { margin-left: 0em; max-width: 50em; }
+hr { margin-left: 0em; margin-top: .4em; max-width: 50em; }
 a:link  { text-decoration:none; }
 a:hover { text-decoration:underline; }
 table, th, td { border: 1px solid black; border-collapse: collapse; }
 th, td { padding-left: 0.5em; padding-right: 0.5em; }
 
-span#noscript { color: red; font-size: normal; font-weight: bold; }
+h3 { border-bottom: thin solid black; max-width: 42em; padding-top: .2em; }
+div#content { padding-top: 0.4em; }
+
+.dependencies { margin-top: 0.5em; }
+
+@media screen and (orientation: portrait) and (max-width: 950px) {
+}
+
+@media screen and (orientation: landscape) and (max-width: 950px) {
+  header { display: none; }
+}
+
+@media screen and (max-width: 1300px) {
+    footer { margin-top: -2em; }
+    .logo-menu-bars-container {
+        padding: 0px;
+    }
+
+    pre { white-space: pre-wrap !important; word-wrap: break-word !important; }
+}
 </style>
 
-<link rel="search" type="application/opensearchdescription+xml" href="https://www.freebsd.org/opensearch/ports.xml" title="FreeBSD Ports" />
-`;
+<link rel="search" type="application/opensearchdescription+xml" href="https://www.FreeBSD.org/opensearch/ports.xml" title="FreeBSD Ports" />
+
+<script>
+function input_autofocus_at_end () {
+  const input = document.querySelector('#query'); 
+  if (input) {
+    // XXX: don't auto-open keyboard on Android
+    input.setAttribute('readonly', 'readonly');
+    input.focus({ preventScroll: true });
+    setTimeout(function () {
+      input.removeAttribute('readonly');
+      input.setSelectionRange(input.value.length, input.value.length);
+    }, 50);
+  }
+}
+document.addEventListener('DOMContentLoaded', input_autofocus_at_end);
+</script>
+EOF
 
 my $no_javascript_warning = <<'EOF';
 <span id="noscript">
@@ -218,7 +256,7 @@ sub encode_url {
     local ($_) = @_;
 s/([\000-\032\;\/\?\:\@\&\=\%\'\"\`\<\>\177-\377 ])/sprintf('%%%02x',ord($1))/eg;
 
-    # s/%20/+/g;
+    s/\+/%20/g;
     $_;
 }
 
@@ -237,7 +275,7 @@ sub readindex {
 
     while (<C>) {
         next if $query && !/$query/oi;
-        chop;
+        chomp;
 
         @tmp            = split(/\|/);
         $var{"$tmp[0]"} = $_;
@@ -258,7 +296,7 @@ sub readcoll {
 
     if ( -r $file && open( C, $file ) ) {
         while (<C>) {
-            chop;
+            chomp;
 
             if (/^\s*([^,]+),\s*"([^"]+)",\s*([A-Z]+)/) {
                 @b = split( /\s+/, $1 );
@@ -279,7 +317,7 @@ sub readcoll {
         }
 
         while (<C>) {
-            chop;
+            chomp;
 
             @a = split('\|');
             @b = split( /\s+/, $a[6] );
@@ -313,7 +351,7 @@ sub out {
         if ( !$out_sec || $1 ne $out_sec ) {
             print "</dl>\n" if $counter > 0;
             print qq{\n<h3>}
-              . qq{<a href="$remotePrefixRepo/tree/$1">Category $1</a>}
+              . qq{<a href="$remotePrefixRepo/tree/$1">Category: $1</a>}
               . "</h3>\n<dl>\n";
             $out_sec = $1;
         }
@@ -321,15 +359,11 @@ sub out {
 
     $rdepends //= "";
     $counter++;
-    $pathB = $path;
     my $port_path = $path;
     $port_path =~ s,/usr/ports/,,;
 
-    $pathB =~ s/^$localPrefix/ports/o;
-
     $path     =~ s/^$localPrefix/$remotePrefixFtp/o;
     $descfile =~ s/^$localPrefix/$remotePrefixFtp/o;
-    $version = &encode_url($version);
     $email   = &check_freebsd_mailing_list($email)
       if $enable_check_freebsd_mailing_list;
 
@@ -342,13 +376,13 @@ sub out {
     $descfile =~ s%^$remotePrefixFtp%$remotePrefixRepo/plain%o;
 
     print
-      qq{<dt><b><a name="$version"></a><a href="$t">$version</a></b></dt>\n};
+      qq{<dt><b><a name="@{[ &encode_url($version) ]}" href="$t">}, &escapeHTML($version), qq{</a></b></dt>\n};
     print qq{<dd>}, &escapeHTML($comment), qq{<br />\n};
 
-    print qq[<a href="$descfile?revision=HEAD">Description</a>\n];
+    print qq[<a href="$descfile">Description</a>\n];
 
-    print qq[<b>:</b> <a href="$l">Changes</a>\n];
-    print qq[<b>:</b> <a href="?stype=pkg&amp;query=], escapeHTML($port_path),
+    print qq[<b>:</b> <a href="$l">Commit Log</a>\n];
+    print qq[<b>:</b> <a href="?stype=pkg&amp;query=], &encode_url($port_path),
       qq[">Packages</a>\n]
       if $enable_packages_link;
 
@@ -374,7 +408,8 @@ sub out {
     if ( $bdepends || $rdepends ) {
         local ($flag) = 0;
         local ($last) = '';
-        print qq{<i>Requires:</i> };
+        print qq{<div class="dependencies">\n};
+        print qq{<i>Dependencies:</i> };
         foreach ( sort split( /\s+/, "$bdepends $rdepends" ) ) {
 
             # delete double entries
@@ -383,9 +418,9 @@ sub out {
 
             print ", " if $flag;
             $flag++;
-            print qq{<a href="$script_name?query=^$_&amp;stype=name">$_</a>};
+            print qq{<a href="$script_name?query=%5E$_&amp;stype=name">$_</a>};
         }
-        print "<br />\n";
+        print "</div>\n";
     }
 
     print qq[</dd>];
@@ -439,22 +474,22 @@ sub package_links {
         }
 
         if ( $. == 1 ) {
-            print qq[<h2>$perl->{"name"}: ], escapeHTML( $perl->{"comment"} ),
-              qq[</h2>\n];
-
-            print qq[homepage: <a href="], $perl->{"www"},
-              qq[">] . $perl->{"www"} . "</a><br/>\n";
-            print qq[FreeBSD ports git: <a href="$remotePrefixRepo/tree/]
-              . $perl->{"origin"} . qq[">]
-              . $perl->{"origin"}
-              . qq[</a><br/>\n];
+            print qq[<h3>$perl->{"name"}: ], escapeHTML( $perl->{"comment"} ),
+              qq[</h3>\n];
 
             my $maintainer = $perl->{"maintainer"};
             $maintainer = &check_freebsd_mailing_list($maintainer)
               if $enable_check_freebsd_mailing_list;
-            print qq[maintainer: $maintainer<br/>\n];
+            print qq[Maintainer: $maintainer<br/>\n];
 
-            print qq[<h3>Description</h3>\n];
+            print qq[Homepage <a href="], $perl->{"www"},
+              qq[">] . $perl->{"www"} . "</a><br/>\n";
+
+            print qq[Git: <a href="$remotePrefixRepo/tree/]
+              . $perl->{"origin"} . qq[">]
+              . $perl->{"origin"}
+              . qq[</a><br/>\n];
+
             print "<pre>", escapeHTML( $perl->{"desc"} ), "</pre>\n";
             print qq[<h3>Download packages in *.pkg format</h3>\n];
 
@@ -511,7 +546,7 @@ qq{ <th onclick="sort_table(2)" title="click to sort asc/desc by build time">Bui
           : "";
 
         print "<tr>\n";
-        print "<td>", qq[<a href="https://pkg.freebsd.org/], escapeHTML($path),
+        print "<td>", qq[<a href="https://pkg.FreeBSD.org/], escapeHTML($path),
           "/", escapeHTML($repopath), qq[">$release</a></td>\n];
         print "<td>",                       $version, "</td>\n";
         print qq[<td><span title="$info">], $time,    "</span></td>\n";
@@ -606,7 +641,8 @@ sub forms {
 
     print qq{
 <form id="ports" method="get" action="$script_name">
-<input name="query" value="$query" type="text" autocapitalize="none" autofocus />
+<input name="query" id="query" value="$query" type="text" autocapitalize="none" />
+<input type="submit" value="Search" /><br/>
 <select name="stype">
 };
 
@@ -614,7 +650,7 @@ sub forms {
     %d = (
         'name',       'Package Name', 'all',  'All',
         'maintainer', 'Maintainer',   'text', 'Description',
-        'requires',   'Requires',
+        'requires',   'Dependencies',
     );
 
     foreach ( 'all', 'name', 'text', 'maintainer', 'requires' ) {
@@ -638,11 +674,10 @@ sub forms {
     }
 
     print qq{</select>
-<input type="submit" value="Submit" />
+
 </form>
-<br/>
 @{[ &footer_links ]}
-<hr noshade="noshade" />
+<hr/>
 };
 
 }
@@ -701,84 +736,101 @@ sub check_input {
 
 sub help {
     print <<EOF;
-<br/>
-<h1>FreeBSD Ports Search Help</h1>
+<h2>FreeBSD Ports Search Help</h2>
 
 <p>
 The FreeBSD Ports and Packages Collection offers a simple way for
 users and administrators to install applications.
+Use the search types below to find a port.
 </p>
 
 <p>
-<b>Package Name</b> searches for the name of a port or distribution.
-<b>Description</b> searches case-insensitive in a short comment about the port.
-<b>All</b> searches case-insensitive for the package name and in the
-description about the port.
-<b>Maintainer</b> searches for the email address of the port maintainer.
-<b>Requires</b> searches for ports which depends on this port.
+@{[ &last_update_message ]} - refreshed automatically every two hours from 
+<a href="https://download.FreeBSD.org/ports/index/$ports_database.xz">$ports_database</a>.
+For other FreeBSD release indexes, see the full <a href="https://download.FreeBSD.org/ports/index/">index listing</a>.
+</p>
 
+<h2>Search Types</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>What it searches</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>All</strong></td>
+      <td>Package name and description (case-insensitive)</td>
+      <td><code>netcat</code></td>
+    </tr>
+    <tr>
+      <td><strong>Package Name</strong></td>
+      <td>The name of a port or distribution</td>
+      <td><code>neovim</code></td>
+    </tr>
+    <tr>
+      <td><strong>Description</strong></td>
+      <td>The short one-line comment about a port (case-insensitive)</td>
+      <td><code>vim</code></td>
+    </tr>
+    <tr>
+      <td><strong>Maintainer</strong></td>
+      <td>The maintainer's email address</td>
+      <td><code>emacs\@FreeBSD.org</code></td>
+    </tr>
+    <tr>
+      <td><strong>Dependencies</strong></td>
+      <td>Ports that <em>depend on</em> the given port (not the other way around)</td>
+      <td><code>vim-tiny</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+Note: search is substring-based; wildcards and regular expressions are not supported.
 </p>
 
 <h2>External Links</h2>
 
+<p>
+Each port listed in the search results includes three links to the
+FreeBSD ports Git repository and package builder, described below.
+</p>
+
 <dl>
   <dt><b>Description</b></dt>
-  <dd>A more detailed description (text) via the git repo</dd>
+  <dd>The port's full description text</dd>
 
-  <dt><b>Changes</b></dt>
-  <dd>Read the latest changes via the git repo</dd>
+  <dt><b>Commit Log</b></dt>
+  <dd>Read the latest Git logs</dd>
 
   <dt><b>Packages</b></dt>
-  <dd>List of available packages for all supported releases and branches</dd>
+  <dd>List of packages available for all releases, branches and architectures</dd>
 </dl>
 
-<h2>Documentation</h2>
-<p>
-Handbook: <a href="https://docs.freebsd.org/en/books/handbook/ports/#ports-using">Using the Ports Collection</a>
-</p>
-
-<p>
-You may also search the
-<a href="https://man.FreeBSD.org/cgi/man.cgi?manpath=freebsd-ports">ports manual pages</a>.
-</p>
-
-<h2>Updates</h2>
-
-<p>
-The script ports.cgi use the file
-<a href="https://download.FreeBSD.org/ports/index/$ports_database.xz">$ports_database</a>
-as database for its operations. $ports_database is updated automatically every
-two hours.
-
-For other FreeBSD Releases INDEX files, please look at
-<a href="https://download.freebsd.org/ports/index/">https://download.freebsd.org/ports/index/</a>
-</p>
-
-<p>
-@{[ &last_update_message ]}
-</p>
-
-
-<h2>Copyright</h2>
-<pre>
-Copyright (c) 1996-2026 <a href="https://wolfram.schneider.org">Wolfram Schneider</a> &lt;wosch\@FreeBSD.org&gt;
-</pre>
-<p/>
-
-<h2>Misc</h2>
+<h2>Further Reading</h2>
 <ul>
-<li><a href="https://forums.freebsd.org/categories/ports-and-packages.21/">FreeBSD Forums: Ports and Packages</a></li>
+<li>Handbook: <a href="https://docs.FreeBSD.org/en/books/handbook/ports/#ports-using">Using the Ports Collection</a></li>
+<li><a href="https://man.FreeBSD.org/cgi/man.cgi?manpath=freebsd-ports">Ports manual pages</a></li>
+<li><a href="https://forums.FreeBSD.org/categories/ports-and-packages.21/">FreeBSD Forums: Ports and Packages</a></li>
 <li><a href="https://www.freshports.org/">FreshPorts -- The Place For Ports - Most recent commits</a></li>
 </ul>
 
 <h2>Questions</h2>
 <p>
 General questions about FreeBSD ports should be sent to 
-the <a href="https://lists.freebsd.org/subscription/freebsd-ports">$mailtoList</a> mailing list.
+the <a href="https://lists.FreeBSD.org/subscription/freebsd-ports">$mailtoList</a> mailing list.
+</p>
+
+<h2>Copyright</h2>
+<p>
+Copyright (c) 1996-2026 <a href="https://wolfram.schneider.org">Wolfram Schneider</a> &lt;wosch\@FreeBSD.org&gt;
 </p>
 
 @{[ &footer_links ]}
-<hr noshade="noshade" />
+<hr/>
 EOF
 }
 
@@ -787,6 +839,8 @@ sub footer_links {
 <span class="footer_links">
   <a href="$script_name">home</a>
   @{[ $stype eq "help" ? "" : qq, | <a href="$script_name?stype=help">help</a>, ]}
+  | <a href="https://cgit.FreeBSD.org/ports/tree/">git</a>
+  | <a href="https://download.FreeBSD.org/ports/" title="Ports tree snapshots and INDEX files">download</a>
 </span>
 EOF
 }
@@ -840,12 +894,18 @@ if ( $stype eq "help" ) {
     &exit(0);
 }
 
-print &html_header( "FreeBSD Ports Search", 1 );
 
 # allow `/ports.cgi?netscape' where 'netscape' is the query port to search
 # this make links to this script shorter
 if ( !$query && $query_string =~ /^([^=&]+)$/ ) {
     $query = $1;
+}
+
+if ($query) {
+    print &short_html_header( "Ports Search", 1 );
+    #print "<br/>\n";
+} else {
+    print &html_header( "Ports Search", 1 );
 }
 
 # get all categories
@@ -901,23 +961,27 @@ if ( !$counter ) {
     print <<EOF;
 <p>
 Sorry, nothing found.
-You may look for other <a href="https://www.freebsd.org/search/">FreeBSD Search Services</a>
+<p>
+You can start a <a href="$script_name">new search</a> or look for other
+<a href="https://www.FreeBSD.org/search/">FreeBSD Search Services</a>.
 </p>
+<hr/>
 @{[ &footer_links ]}
 EOF
 }
 
 if ($counter) {
     print "</dl>\n" if $stype ne 'pkg';
-    my $counter_message = $counter;
+    my $counter_message = "$counter result";
+    $counter_message .= "s" if $counter > 1;
     if ( $counter >= $max ) {
         $counter_message .= " (max hit limit reached)";
         warn "$counter_message: query=$query stype=$stype section=$section\n"
           if $debug >= 1;
     }
-    print "<p>Number of results: $counter_message\n</p>\n";
+    print "<p>\n$counter_message\n</p>\n";
     print &footer_links;
 }
 
-print qq{<hr noshade="noshade" />\n};
+print qq{<hr/>\n};
 print &html_footer;
